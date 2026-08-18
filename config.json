@@ -1,0 +1,18 @@
+{
+  "wikis": [
+    "https://hazbin-hotel.fandom.com/ru",
+    "https://returnal.fandom.com/ru"
+  ],
+  "files": [
+    {
+      "localPath": "src/plugins/Mermaid.js",
+      "wikiPage": "MediaWiki:Plugin-Mermaid.js",
+      "summary": "Автоматическое обновление Mermaid.js с GitHub"
+    },
+    {
+      "localPath": "src/styles/Main.scss",
+      "wikiPage": "MediaWiki:SCSS/Main.css",
+      "summary": "Обновление глобальных стилей"
+    }
+  ]
+}
