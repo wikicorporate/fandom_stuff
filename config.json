@@ -1,23 +1,19 @@
 {
-  "wikis": [
-    "https://hazbin-hotel.fandom.com/ru",
-    "https://returnal.fandom.com/ru"
+  "all_wikis": [
+    "ru.hazbinhotel.fandom.com",
+    "ru.helluvaboss.fandom.com",
+    "ru.zoophobia.fandom.com",
+    "ru.helltaker.fandom.com"
   ],
-  "files": [
-    {
-      "localPath": "src/modules/GameDataIntegration.lua",
-      "wikiPage": "Модуль:GameData",
-      "summary": "Обновление логики обработки вложенных массивов"
-    },
-    {
-      "localPath": "src/modules/InterwikiBuilder.lua",
-      "wikiPage": "Модуль:Interwiki",
-      "summary": "Синхронизация глобальных ссылок"
-    },
-    {
-      "localPath": "src/templates/CharacterCard.wikitext",
-      "wikiPage": "Шаблон:Карточка_Персонажа",
-      "summary": "Обновление верстки карточки"
-    }
-  ]
+  "groups": {
+    "vivzie_and_demons": [
+      "ru.hazbinhotel.fandom.com",
+      "ru.zoophobia.fandom.com",
+      "ru.helltaker.fandom.com"
+    ],
+    "hellverse": [
+      "ru.hazbinhotel.fandom.com",
+      "ru.helluvaboss.fandom.com"
+    ]
+  }
 }
