@@ -1,19 +1,16 @@
 {
   "all_wikis": [
-    "ru.hazbinhotel.fandom.com",
-    "ru.helluvaboss.fandom.com",
-    "ru.zoophobia.fandom.com",
-    "ru.helltaker.fandom.com"
+    "ru.hazbin-hotel.fandom.com",
+    "ru.zoophobia.fandom.com"
   ],
+  "local_aliases": {
+    "wikicorporate": "ru.wikicorporate.fandom.com",
+    "hazbin": "ru.hazbin-hotel.fandom.com"
+  },
   "groups": {
-    "vivzie_and_demons": [
-      "ru.hazbinhotel.fandom.com",
-      "ru.zoophobia.fandom.com",
-      "ru.helltaker.fandom.com"
-    ],
-    "hellverse": [
-      "ru.hazbinhotel.fandom.com",
-      "ru.helluvaboss.fandom.com"
+    "vivzieverse": [
+      "ru.hazbin-hotel.fandom.com",
+      "ru.zoophobia.fandom.com"
     ]
   }
 }
