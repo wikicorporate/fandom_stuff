@@ -82,24 +82,31 @@ def process_directory(base_dir, target_domains):
 
 def main():
     if not USERNAME or not PASSWORD:
-        print("❌ Секреты WIKI_USERNAME или WIKI_PASSWORD не найдены!")
+        print("❌ Секреты WIKI_USERNAME или WIKI_PASSWORD не найдены в окружении!")
         return
 
-    with open('config.json', 'r', encoding='utf-8') as f:
-        config = json.load(f)
+    try:
+        with open('config.json', 'r', encoding='utf-8') as f:
+            config = json.load(f)
+    except Exception as e:
+        print(f"❌ Ошибка чтения config.json: {e}")
+        return
 
     print("🚀 Начинаем синхронизацию файлов...")
 
     # 1. Загрузка ГЛОБАЛЬНЫХ файлов (на все вики)
     process_directory('src/global', config.get('all_wikis', []))
 
-    # 2. Загрузка ЛОКАЛЬНЫХ файлов (только на конкретную вики)
+    # 2. Загрузка ЛОКАЛЬНЫХ файлов (только на конкретную вики с учетом алиасов)
     local_dir = 'src/local'
     if os.path.exists(local_dir):
-        for domain_folder in os.listdir(local_dir):
-            domain_path = os.path.join(local_dir, domain_folder)
+        local_aliases = config.get('local_aliases', {})
+        for folder_name in os.listdir(local_dir):
+            domain_path = os.path.join(local_dir, folder_name)
             if os.path.isdir(domain_path):
-                process_directory(domain_path, [domain_folder])
+                # Ищем папку в алиасах. Если не находим — используем название папки как домен.
+                target_domain = local_aliases.get(folder_name, folder_name)
+                process_directory(domain_path, [target_domain])
 
     # 3. Загрузка ГРУППОВЫХ файлов (на кластеры вики)
     shared_dir = 'src/shared'
