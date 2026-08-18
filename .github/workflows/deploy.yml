@@ -1,0 +1,33 @@
+name: Deploy to Fandom Wikis
+
+# Запускать скрипт при каждом пуше в ветку main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Скачиваем твой код на виртуальный сервер GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Устанавливаем Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. Устанавливаем библиотеку mwn
+      - name: Install dependencies
+        run: npm install mwn
+
+      # 4. Запускаем наш скрипт, передав ему Секреты!
+      - name: Run Deploy Script
+        env:
+          FANDOM_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          FANDOM_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+        run: node deploy.js
