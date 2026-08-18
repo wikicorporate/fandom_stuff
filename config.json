@@ -5,14 +5,19 @@
   ],
   "files": [
     {
-      "localPath": "src/plugins/Mermaid.js",
-      "wikiPage": "MediaWiki:Plugin-Mermaid.js",
-      "summary": "Автоматическое обновление Mermaid.js с GitHub"
+      "localPath": "src/modules/GameDataIntegration.lua",
+      "wikiPage": "Модуль:GameData",
+      "summary": "Обновление логики обработки вложенных массивов"
     },
     {
-      "localPath": "src/styles/Main.scss",
-      "wikiPage": "MediaWiki:SCSS/Main.css",
-      "summary": "Обновление глобальных стилей"
+      "localPath": "src/modules/InterwikiBuilder.lua",
+      "wikiPage": "Модуль:Interwiki",
+      "summary": "Синхронизация глобальных ссылок"
+    },
+    {
+      "localPath": "src/templates/CharacterCard.wikitext",
+      "wikiPage": "Шаблон:Карточка_Персонажа",
+      "summary": "Обновление верстки карточки"
     }
   ]
 }
