@@ -1,7 +1,10 @@
 {
   "all_wikis": [
     "ru.hazbin-hotel.fandom.com",
-    "ru.zoophobia.fandom.com"
+    "ru.zoophobia.fandom.com",
+    "ru.returnal.fandom.com",
+    "ru.helltaker.fandom.com",
+    "ru.oneshot.fandom.com"
   ],
   "local_aliases": {
     "wikicorporate": "ru.wikicorporate.fandom.com",
