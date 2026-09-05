@@ -24,12 +24,11 @@ jobs:
       - name: Install dependencies
         run: pip install mwclient
 
-      # ДОБАВЛЕН ЭТОТ ШАГ: сначала клеим код
       - name: Build CWA Script
         run: python src/build_cwa.py
 
       - name: Run Sync Script
         env:
-          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
-          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+          WIKI_USERNAME: ${{ secrets.WIKI_USERNAME }}
+          WIKI_PASSWORD: ${{ secrets.WIKI_PASSWORD }}
         run: python sync.py
