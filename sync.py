@@ -69,16 +69,27 @@ def process_directory(base_dir, target_domains):
         if not os.path.isdir(ns_path) or ns_folder.lower() not in NAMESPACE_MAP:
             continue
 
-        for filename in os.listdir(ns_path):
-            if filename.startswith('.'): continue # Пропускаем системные файлы
-            
-            filepath = os.path.join(ns_path, filename)
-            page_title = get_page_title(ns_folder, filename)
-            
-            if not page_title: continue
+        # Используем os.walk для обхода подпапок (подстраниц)
+        for root, dirs, files in os.walk(ns_path):
+            # Пропускаем исходники, чтобы они не заливались на вики
+            if 'cwa_source' in root:
+                continue
 
-            for domain in target_domains:
-                upload_file(domain, filepath, page_title)
+            for filename in files:
+                if filename.startswith('.'): continue 
+                
+                filepath = os.path.join(root, filename)
+                
+                # Вычисляем относительный путь от корня пространства имён (например, CrossWikiActivity/Main.js)
+                rel_path = os.path.relpath(filepath, ns_path)
+                # Заменяем системные слэши на прямые для MediaWiki
+                page_name_part = rel_path.replace(os.sep, '/')
+                
+                page_title = get_page_title(ns_folder, page_name_part)
+                if not page_title: continue
+
+                for domain in target_domains:
+                    upload_file(domain, filepath, page_title)
 
 def main():
     if not USERNAME or not PASSWORD:
