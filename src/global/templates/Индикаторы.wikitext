@@ -1,0 +1,3 @@
+<indicator name="modern__nameplates/icons">
+{{#invoke:Индикаторы|e|{{{1|}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}}}
+</indicator><noinclude>[[Категория:Шаблоны/Плашки]]</noinclude>
