@@ -19,7 +19,6 @@ def clean_typography(text):
         val = str(node.value)
         
         # 1. Замена прямых кавычек "Текст" на «Текст» (елочки)
-        # Ищем кавычку, за которой идёт текст, а потом закрывающая кавычка
         val = re.sub(r'(^|\s)"([^"]+)"(?=\s|[.,!?]|$)', r'\1«\2»', val)
         
         # 2. Замена дефиса, окруженного пробелами, на длинное тире
@@ -33,15 +32,25 @@ def clean_typography(text):
     return str(parsed)
 
 def main():
-    username = os.environ.get('FANDOM_BOT_USERNAME')
-    password = os.environ.get('FANDOM_BOT_PASSWORD')
+    # Используем проверенные секреты из sync.py
+    username = os.environ.get('WIKI_USERNAME')
+    password = os.environ.get('WIKI_PASSWORD')
+    
+    if not username or not password:
+        print("❌ Ошибка: Секреты логина/пароля не найдены в окружении!")
+        return
     
     for project_name, config in PROJECTS.items():
         if not config.get("all_pages"): continue
             
         print(f"\n[=== Типограф: {project_name} ===]")
         site = mwclient.Site(config["domain"], path=config["path"])
-        site.login(username, password)
+        
+        try:
+            site.login(username, password)
+        except Exception as e:
+            print(f"❌ Ошибка авторизации на {project_name}: {e}")
+            continue # Пропускаем вики, если не удалось войти
         
         for page in site.allpages(namespace=0):
             original = page.text()
@@ -49,7 +58,10 @@ def main():
             
             if original != cleaned:
                 print(f"[!] Исправлена типографика: {page.name}")
-                page.save(cleaned, summary="Автоматическое исправление типографики")
+                try:
+                    page.save(cleaned, summary="Автоматическое исправление типографики")
+                except Exception as e:
+                    print(f"❌ Ошибка при сохранении {page.name}: {e}")
 
 if __name__ == "__main__":
     main()
