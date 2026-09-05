@@ -1,0 +1,29 @@
+name: Auto-Sync Galleries
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # Запуск каждый день в 04:00 по UTC
+  workflow_dispatch: # Кнопка для ручного запуска
+
+jobs:
+  sync-galleries:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install libraries
+        # Ставим библиотеки для работы с API вики и разбора кода
+        run: pip install mwclient mwparserfromhell
+        
+      - name: Run Gallery Bot
+        run: python src/scripts/bots/sync_galleries.py
+        env:
+          # Здесь нужны пароли бота (BotPasswords) из настроек твоей вики
+          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
+          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
