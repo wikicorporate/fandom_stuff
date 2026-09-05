@@ -1,0 +1,2 @@
+{{#invoke:Таббер|main}}
+<noinclude>[[Категория:Шаблоны/Вкладки]]</noinclude>
