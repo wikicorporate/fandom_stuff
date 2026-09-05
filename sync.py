@@ -20,7 +20,17 @@ site_connections = {}
 def get_site(domain):
     if domain not in site_connections:
         print(f"\n🔌 Подключение к {domain}...")
-        site = mwclient.Site(domain, path='/')
+        
+        # --- ОБХОД SSL-ЗАЩИТЫ ФЭНДОМА ---
+        host = domain
+        api_path = '/'
+        if domain.startswith('ru.'):
+            host = domain[3:] # Отрезаем приставку "ru."
+            api_path = '/ru/'   # Переносим её в путь
+            
+        site = mwclient.Site(host, path=api_path)
+        # ---------------------------------
+        
         try:
             site.login(USERNAME, PASSWORD)
             site_connections[domain] = site
@@ -80,7 +90,7 @@ def process_directory(base_dir, target_domains):
                 
                 filepath = os.path.join(root, filename)
                 
-                # Вычисляем относительный путь от корня пространства имён (например, CrossWikiActivity/Main.js)
+                # Вычисляем относительный путь от корня пространства имён
                 rel_path = os.path.relpath(filepath, ns_path)
                 # Заменяем системные слэши на прямые для MediaWiki
                 page_name_part = rel_path.replace(os.sep, '/')
@@ -135,4 +145,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
