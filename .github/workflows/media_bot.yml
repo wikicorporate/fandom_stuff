@@ -1,0 +1,28 @@
+name: Auto-Format Media Links
+
+on:
+  schedule:
+    # Запускается в 02:00 по UTC каждую среду (3) и субботу (6)
+    - cron: '0 2 * * 3,6'
+  workflow_dispatch: # Оставляет возможность запустить бота вручную кнопкой
+
+jobs:
+  format-media:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: pip install mwclient
+        
+      - name: Run Media Replacer Bot
+        run: python src/scripts/bots/media_replacer.py
+        env:
+          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
+          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
