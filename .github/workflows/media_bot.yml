@@ -24,5 +24,5 @@ jobs:
       - name: Run Media Replacer Bot
         run: python src/scripts/bots/media_replacer.py
         env:
-          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
-          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
