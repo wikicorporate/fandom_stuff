@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import time
 
 # Единая база настроек
 PROJECTS = {
@@ -64,27 +65,33 @@ def fetch_interwikis():
             params = {
                 "action": "query",
                 "generator": "allpages",
-                "gaplimit": "500",
+                "gaplimit": "50",  # Снизили нагрузку, чтобы сервер Фэндома не падал
                 "prop": "langlinks",
                 "lllimit": "max",
                 "format": "json"
             }
             
             while True:
-                try:
-                    # Пытаемся получить данные и распарсить JSON
-                    req = session.get(hub_url, params=params, timeout=15)
-                    response = req.json()
-                    
-                    # Проверяем, не вернул ли сам Фэндом внутреннюю ошибку API
-                    if "error" in response:
-                        print(f"  [!] Ошибка API: {response['error'].get('info', 'Неизвестная ошибка')}")
-                        break
+                success = False
+                for attempt in range(3): # Даем 3 попытки на каждую порцию страниц
+                    try:
+                        req = session.get(hub_url, params=params, timeout=60)
+                        response = req.json()
                         
-                except Exception as e:
-                    # Если вернулась 404 страница (HTML), скрипт попадёт сюда, а не упадёт
-                    print(f"  [!] Ошибка доступа: Ссылка вернула не JSON (возможно, мёртвая ссылка). Пропускаем...")
-                    break 
+                        if "error" in response:
+                            print(f"  [!] Ошибка API: {response['error'].get('info', 'Неизвестная ошибка')}")
+                            break # Фатальная ошибка API, прекращаем попытки
+                            
+                        success = True
+                        break # Успешно скачали, прерываем цикл попыток
+                        
+                    except Exception as e:
+                        print(f"  [!] Заминка со связью (попытка {attempt+1}/3). Повтор через 3 секунды...")
+                        time.sleep(3)
+                        
+                if not success:
+                    print("  [!] Не удалось загрузить кусок страниц. Переходим к следующей вики.")
+                    break # Переходим к следующей вики только если все 3 попытки провалились
                 
                 pages = response.get("query", {}).get("pages", {})
                 
