@@ -1,9 +1,8 @@
 import os
 import glob
 
-# Исправлены пути: папки лежат внутри scripts/
+# Правильные пути к исходникам и итоговому файлу
 SOURCE_DIR = 'src/local/wikicorporate/scripts/cwa_source/'
-# Кладём готовый файл туда, где его найдёт sync.py
 OUTPUT_FILE = 'src/local/wikicorporate/scripts/CrossWikiActivity/Main.js'
 
 def build():
