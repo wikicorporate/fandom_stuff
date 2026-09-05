@@ -11,13 +11,13 @@ PROJECTS = {
             "de": "https://hazbinhotel.fandom.com/de/api.php",
             "en": "https://hazbinhotel.fandom.com/api.php",
             "es": "https://hazbinhotel.fandom.com/es/api.php",
-            "fr": "https://hazbinhotel.fandom.com/fr/api.php",
-            "hu": "https://hazbinhotel.fandom.com/hu/api.php",
+            "fr": "https://hazbin-hotel.fandom.com/fr/api.php",
+            "hu": "https://voltvalaki-hotel.fandom.com/hu/api.php",
             "it": "https://hazbinhotel.fandom.com/it/api.php",
             "ja": "https://hazbinhotel.fandom.com/ja/api.php",
             "pl": "https://hazbinhotel.fandom.com/pl/api.php",
             "pt-br": "https://hazbinhotel.fandom.com/pt-br/api.php",
-            "th": "https://hazbinhotel.fandom.com/th/api.php",
+            "th": "https://hazbin-hotel.fandom.com/th/api.php",
             "tr": "https://hazbinhotel.fandom.com/tr/api.php",
             "zh": "https://hazbinhotel.fandom.com/zh/api.php"
         }
