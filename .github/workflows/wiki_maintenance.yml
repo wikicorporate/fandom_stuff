@@ -1,0 +1,34 @@
+name: Wiki Maintenance Bots
+
+on:
+  schedule:
+    # Запускать каждое воскресенье в 05:00 утра
+    - cron: '0 5 * * 0'
+  workflow_dispatch: # Для ручного запуска
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: pip install mwclient mwparserfromhell
+        
+      - name: Run Typographer
+        run: python src/scripts/bots/typographer.py
+        env:
+          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
+          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+
+      - name: Run Redirect Resolver
+        run: python src/scripts/bots/resolve_redirects.py
+        env:
+          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
+          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
