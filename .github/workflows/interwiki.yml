@@ -31,10 +31,14 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Захватываем все обновлённые файлы внутри папки src, где бы они ни лежали
-          git add src/
+          # Принудительно (с ключом -f) добавляем все новые папки и файлы, игнорируя любые блокировки
+          git add -f src/
           
-          git diff --quiet && git diff --staged --quiet || git commit -m "Автоматическое обновление интервики-ссылок"
+          # Выводим статус в лог, чтобы точно видеть, какие файлы готовы к отправке
+          git status
+          
+          # Сохраняем изменения и отправляем в твой репозиторий на GitHub
+          git diff --staged --quiet || git commit -m "Автоматическое обновление интервики-ссылок"
           git push
         
       - name: Sync with Fandom
