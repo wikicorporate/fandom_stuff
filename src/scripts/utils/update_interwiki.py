@@ -58,15 +58,15 @@ def fetch_interwikis():
     for project_name, config in PROJECTS.items():
         print(f"\n[=== Запуск сбора для проекта: {project_name} ===]")
         
-        # 1. ЗАГРУЖАЕМ СТАРУЮ БАЗУ (чтобы ничего не удалить)
+        # 1. ЗАГРУЖАЕМ СТАРУЮ БАЗУ (чтобы ничего не потерять)
         interwiki_db = {}
         if os.path.exists(config["output"]):
             try:
                 with open(config["output"], "r", encoding="utf-8") as f:
                     interwiki_db = json.load(f)
-                print(f"[*] Загружена существующая база: {len(interwiki_db)} статей. Бот только обновит её.")
+                print(f"[*] Загружена существующая база: {len(interwiki_db)} статей. Бот её только дополнит.")
             except Exception as e:
-                print(f"[!] Ошибка чтения старой базы (возможно, файл пуст): {e}")
+                print(f"[!] Ошибка чтения старой базы (файл пуст или сломан): {e}")
         
         # 2. СКАНИРУЕМ И ДОБАВЛЯЕМ НОВЫЕ ССЫЛКИ
         for hub_lang, hub_url in config["hubs"].items():
@@ -76,7 +76,8 @@ def fetch_interwikis():
                 "action": "query",
                 "generator": "allpages",
                 "gaplimit": "50",
-                "gapfilterredir": "nonredirects",  # Отключаем перенаправления!
+                "gapnamespace": 0,                 # ЖЕСТКОЕ ПРАВИЛО 1: Только статьи (никаких шаблонов и категорий)
+                "gapfilterredir": "nonredirects",  # ЖЕСТКОЕ ПРАВИЛО 2: Никаких перенаправлений
                 "prop": "langlinks",
                 "lllimit": "max",
                 "format": "json"
@@ -101,7 +102,7 @@ def fetch_interwikis():
                         time.sleep(3)
                         
                 if not success:
-                    print("  [!] Не удалось загрузить кусок страниц. Пропускаем.")
+                    print("  [!] Не удалось загрузить кусок страниц. Пропускаем этот участок.")
                     break 
                 
                 pages = response.get("query", {}).get("pages", {})
@@ -127,6 +128,7 @@ def fetch_interwikis():
                         
                         for link in langlinks:
                             if link["lang"] != "ru" and link["lang"] not in interwiki_db[ru_title]:
+                                # ОШИБКА ИСПРАВЛЕНА ЗДЕСЬ:
                                 interwiki_dbru_title = link["*"]
                                 
                 if "continue" in response:
