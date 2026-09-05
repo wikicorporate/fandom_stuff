@@ -66,12 +66,64 @@
     "In the Arms of an Angel": {
         "en": "In the Arms of an Angel"
     },
+    "Moxxie": {
+        "fr": "Moxxie"
+    },
+    "One Little Brawl": {
+        "en": "One Little Brawl",
+        "fr": "One Little Brawl"
+    },
+    "Please Don't Sing": {
+        "en": "Please Don't Sing",
+        "fr": "Please Don't Sing"
+    },
     "Princess Bento Studio": {
         "en": "Bento Box Entertainment"
+    },
+    "Professional Bitch": {
+        "en": "Professional Bitch",
+        "fr": "Professional Bitch"
+    },
+    "Send News": {
+        "en": "Send News",
+        "fr": "Send News"
+    },
+    "Sir Pentious Fucking Dies": {
+        "en": "Sir Pentious Fucking Dies"
+    },
+    "Spider Provider": {
+        "en": "Spider Provider"
+    },
+    "SpindleHorse Toons": {
+        "en": "SpindleHorse Toons",
+        "es": "SpindleHorse Toons",
+        "fr": "SpindleHorse Toons"
     },
     "Spring Broken": {
         "it": "Per un parcheggio",
         "pl": "Przerwa wiosenna"
+    },
+    "The Living Tombstone": {
+        "en": "The Living Tombstone",
+        "fr": "The Living Tombstone"
+    },
+    "The Radio Demon": {
+        "en": "The Radio Demon",
+        "fr": "The Radio Demon"
+    },
+    "The World Is a Stage": {
+        "en": "The World Is a Stage"
+    },
+    "This Little Darling Is Husk": {
+        "en": "This Little Darling Is Husk",
+        "fr": "This Little Darling Is Husk"
+    },
+    "This Little Darling Is Niffty": {
+        "en": "This Little Darling Is Niffty"
+    },
+    "We Have a Gay Spider": {
+        "en": "We Have a Gay Spider",
+        "fr": "We Have a Gay Spider"
     },
     "Аве Мария": {
         "en": "Ave Maria",
@@ -242,6 +294,9 @@
         "en": "Adam/Quotes",
         "fr": "Adam/Citations",
         "ja": "アダム/セリフ"
+    },
+    "Адофон": {
+        "es": "Teléfono Infernal"
     },
     "Адские гончие": {
         "en": "Hellhounds",
@@ -429,6 +484,7 @@
     },
     "Ангелы": {
         "en": "Angels",
+        "es": "Ángeles",
         "fr": "Anges",
         "hu": "Angyalok",
         "it": "Angeli",
@@ -486,6 +542,9 @@
     },
     "Апостол Пётр": {
         "de": "Petrus",
+        "en": "St. Peter",
+        "es": "San Pedro",
+        "fr": "Saint-Pierre",
         "hu": "Szent Péter",
         "it": "San Pietro",
         "ja": "聖ピーター",
@@ -495,6 +554,7 @@
     },
     "Апостол Пётр/Галерея": {
         "en": "St. Peter/Gallery",
+        "fr": "Saint-Pierre/Galerie",
         "it": "San Pietro/Galleria"
     },
     "Апостол Пётр/Цитаты": {
@@ -588,9 +648,13 @@
         "en": "Baxter/Quotes"
     },
     "Бал монстров": {
+        "en": "Monster's Ball",
+        "es": "Monster's Ball",
+        "fr": "Monster's Ball",
         "pt-br": "Monster's Ball"
     },
     "Баллада о Страйкере": {
+        "en": "The Ballad of Striker",
         "es": "La balada de Striker",
         "fr": "The Ballad of Striker",
         "pt-br": "The Ballad of Striker"
@@ -636,9 +700,14 @@
         "es": "Tribunal del Infierno"
     },
     "Башня В": {
+        "en": "V Tower",
+        "es": "Torre V",
+        "fr": "V Tower",
         "it": "V Tower"
     },
     "Белое Рождество": {
+        "en": "White Christmas",
+        "es": "White Christmas",
         "pt-br": "White Christmas"
     },
     "Бельфегор": {
@@ -733,6 +802,9 @@
     },
     "Больше всего на свете": {
         "de": "Mehr als Irgendwas",
+        "en": "More Than Anything",
+        "es": "No hay nada igual",
+        "fr": "More Than Anything",
         "hu": "More Than Anything",
         "it": "Sei tutto per me",
         "ja": "More Than Anything",
@@ -744,6 +816,9 @@
     },
     "Больше всего на свете (реприза)": {
         "de": "Mehr als Irgendwas (Reprise)",
+        "en": "More Than Anything (Reprise)",
+        "es": "No hay nada igual (Repetición)",
+        "fr": "More Than Anything (Reprise)",
         "hu": "More Than Anything (repríz)",
         "it": "Sei tutto per me (Ripresa)",
         "pt-br": "More Than Anything (Reprise)",
@@ -773,6 +848,9 @@
         "pl": "Brandon Rogers"
     },
     "Бэд-трип Мокси": {
+        "en": "Moxxie's Bad Trip",
+        "es": "Moxxie's Bad Trip",
+        "fr": "Moxxie's Bad Trip",
         "pt-br": "Moxxie's Bad Trip"
     },
     "В руках Энджела": {
@@ -781,6 +859,9 @@
     "Валентино": {
         "cs": "Valentino",
         "de": "Valentino",
+        "en": "Valentino",
+        "es": "Valentino",
+        "fr": "Valentino",
         "hu": "Valentino",
         "it": "Valentino",
         "ja": "ヴァレンティノ",
@@ -790,30 +871,50 @@
         "zh": "VAL"
     },
     "Валентино/Биография": {
+        "en": "Valentino/History",
+        "fr": "Valentino/Histoire",
         "hu": "Valentino/Történelem",
         "it": "Valentino/Storia",
         "ja": "ヴァレンティノ/歴史",
         "tr": "Valentino/Tarih"
     },
     "Валентино/Взаимоотношения": {
+        "en": "Valentino/Relationships",
+        "es": "Valentino/Relaciones",
+        "fr": "Valentino/Relations",
         "hu": "Valentino/Kapcsolatok",
         "it": "Valentino/Relazioni",
         "ja": "ヴァレンティノ/関係",
         "tr": "Valentino/İlişkileri"
     },
     "Валентино/Галерея": {
+        "en": "Valentino/Gallery",
+        "es": "Valentino/Galería",
+        "fr": "Valentino/Galerie",
         "it": "Valentino/Galleria"
     },
     "Валентино/Галерея/Мерчендайз": {
         "en": "Valentino/Gallery/Merchandise"
     },
+    "Валентино/Галерея/Официальное творчество": {
+        "en": "Valentino/Gallery/Official Artwork",
+        "fr": "Valentino/Galerie/Artworks Officiels"
+    },
+    "Валентино/Цитаты": {
+        "en": "Valentino/Quotes",
+        "fr": "Valentino/Citations"
+    },
     "Вассаго": {
         "en": "Vassago",
+        "es": "Vassago",
+        "fr": "Vassago",
         "pl": "Wassago",
         "tr": "Vassago"
     },
     "Вассаго/Галерея": {
-        "en": "Vassago/Gallery"
+        "en": "Vassago/Gallery",
+        "es": "Vassago/Galería",
+        "fr": "Vassago/Galerie"
     },
     "Вассаго/Галерея/Мерчендайз": {
         "en": "Vassago/Gallery/Merchandise"
@@ -821,6 +922,9 @@
     "Вегги": {
         "cs": "Vaggie",
         "de": "Vaggie",
+        "en": "Vaggie",
+        "es": "Vaggi",
+        "fr": "Vaggie",
         "hu": "Vaggie",
         "it": "Vaggie",
         "ja": "ヴァギー",
@@ -831,27 +935,46 @@
         "zh": "维姬"
     },
     "Вегги/Биография": {
+        "en": "Vaggie/History",
+        "es": "Vaggi/Historia",
+        "fr": "Vaggie/Histoire",
         "hu": "Vaggie/Történelem",
         "it": "Vaggie/Storia",
         "ja": "ヴァギー/歴史",
         "tr": "Vaggie/Tarih"
     },
     "Вегги/Взаимоотношения": {
+        "en": "Vaggie/Relationships",
+        "es": "Vaggi/Relaciones",
+        "fr": "Vaggie/Relations",
         "hu": "Vaggie/Kapcsolatok",
         "it": "Vaggie/Relazioni",
         "ja": "ヴァギー/関係",
         "tr": "Vaggie/İlişkileri"
     },
     "Вегги/Галерея": {
+        "en": "Vaggie/Gallery",
+        "es": "Vaggi/Galería",
+        "fr": "Vaggie/Galerie",
         "it": "Vaggie/Galleria"
     },
     "Вегги/Галерея/Мерчендайз": {
         "en": "Vaggie/Gallery/Merchandise"
     },
+    "Вегги/Галерея/Официальное творчество": {
+        "en": "Vaggie/Gallery/Official Artwork",
+        "fr": "Vaggie/Galerie/Artworks Officiels"
+    },
     "Вегги/Цитаты": {
+        "en": "Vaggie/Quotes",
+        "es": "Vaggi/Frases",
+        "fr": "Vaggie/Citations",
         "ja": "ヴァギー/セリフ"
     },
     "Вельвет": {
+        "en": "Velvette",
+        "es": "Velvette",
+        "fr": "Velvette",
         "hu": "Velvette",
         "it": "Velvette",
         "ja": "ヴェルヴェット",
@@ -860,19 +983,37 @@
         "zh": "VEL"
     },
     "Вельвет/Биография": {
+        "en": "Velvette/History",
+        "es": "Velvette/Historia",
+        "fr": "Velvette/Histoire",
         "hu": "Velvette/Történelem",
         "it": "Velvette/Storia",
         "ja": "ヴェルヴェット/歴史",
         "tr": "Velvette/Tarih"
     },
     "Вельвет/Взаимоотношения": {
+        "en": "Velvette/Relationships",
+        "es": "Velvette/Relaciones",
+        "fr": "Velvette/Relations",
         "hu": "Velvette/Kapcsolatok",
         "it": "Velvette/Relazioni",
         "ja": "ヴェルヴェット/関係",
         "tr": "Velvette/İlişkileri"
     },
     "Вельвет/Галерея": {
+        "en": "Velvette/Gallery",
+        "es": "Velvette/Galería",
+        "fr": "Velvette/Galerie",
         "it": "Velvette/Galleria"
+    },
+    "Вельвет/Галерея/Мерчендайз": {
+        "en": "Velvette/Gallery/Merchandise"
+    },
+    "Вельвет/Галерея/Официальное творчество": {
+        "en": "Velvette/Gallery/Official Artwork"
+    },
+    "Вельвет/Цитаты": {
+        "en": "Velvette/Quotes"
     },
     "Вельзевул": {
         "en": "Beelzebub",
@@ -918,33 +1059,65 @@
         "fr": "Beelzejuice"
     },
     "Веросика Мейдей": {
+        "en": "Verosika Mayday",
+        "es": "Verosika Mayday",
+        "fr": "Verosika Mayday",
         "hu": "Verosika Mayday",
         "ja": "ヴェロシカ・メイデイ",
         "pl": "Verosika Mayday",
         "tr": "Verosika Mayday"
     },
     "Веросика Мейдей/Биография": {
+        "en": "Verosika Mayday/History",
+        "es": "Verosika Mayday/Historia",
+        "fr": "Verosika Mayday/Histoire",
         "hu": "Verosika Mayday/Történelem",
         "it": "Verosika Mayday/Storia",
         "ja": "ヴェロシカ・メイデイ/歴史",
         "tr": "Verosika Mayday/Tarih"
     },
     "Веросика Мейдей/Взаимоотношения": {
+        "en": "Verosika Mayday/Relationships",
+        "es": "Verosika Mayday/Relaciones",
         "fr": "Verosika Mayday/Relations",
         "hu": "Verosika Mayday/Kapcsolatok",
         "it": "Verosika Mayday/Relazioni",
         "ja": "ヴェロシカ・メイデイ/関係",
         "tr": "Verosika Mayday/İlişkileri"
     },
+    "Веросика Мейдей/Галерея": {
+        "en": "Verosika Mayday/Gallery",
+        "es": "Verosika Mayday/Galería",
+        "fr": "Verosika Mayday/Galerie"
+    },
+    "Веросика Мейдей/Галерея/Мерчендайз": {
+        "en": "Verosika Mayday/Gallery/Merchandise"
+    },
+    "Веросика Мейдей/Галерея/Официальное творчество": {
+        "en": "Verosika Mayday/Gallery/Official Artwork",
+        "fr": "Verosika Mayday/Galerie/Artworks Officiels"
+    },
+    "Веросика Мейдей/Цитаты": {
+        "en": "Verosika Mayday/Quotes"
+    },
     "Весеннее обострение": {
         "cs": "Pokažené jarňáky",
+        "en": "Spring Broken",
+        "es": "Spring Broken",
+        "fr": "Spring Broken",
         "hu": "Tavaszi káosz",
         "ja": "ヘル休みブチ壊し",
         "th": "ปิดเทอมเล็ก เข็ดความรัก",
         "tr": "Bahar Tatili Mahvoldu"
     },
     "Весеннее обострение/Галерея": {
+        "en": "Spring Broken/Gallery",
+        "es": "Spring Broken/Galería",
+        "fr": "Spring Broken/Galerie",
         "hu": "Tavaszi káosz/Galéria"
+    },
+    "Весеннее обострение/Транскрипт": {
+        "en": "Spring Broken/Transcript"
     },
     "Взгляни на меня": {
         "en": "Just Look My Way",
@@ -969,16 +1142,25 @@
     },
     "Вивиан Никсон": {
         "cs": "Vivian Nixon",
+        "en": "Vivian Nixon",
+        "es": "Vivian Nixon",
         "ja": "ヴィヴィアン・ニクソン"
     },
     "Вивьен Медрано": {
         "cs": "Vivienne Medrano",
         "de": "Vivienne Medrano",
+        "en": "Vivienne Medrano",
+        "es": "Vivienne Medrano",
+        "fr": "Vivienne Medrano",
         "it": "Vivienne Medrano",
         "ja": "ヴィヴィアン・メドラーノ",
         "pl": "Vivienne Medrano",
         "tr": "Vivienne Medrano",
         "zh": "薇薇安·梅德拉諾"
+    },
+    "Вилла": {
+        "en": "Villa",
+        "es": "Villa"
     },
     "Вишнёвые бомбы": {
         "es": "Bombas cereza",
@@ -997,6 +1179,9 @@
     },
     "Вокс": {
         "cs": "Vox",
+        "en": "Vox",
+        "es": "Vox",
+        "fr": "Vox",
         "hu": "Vox",
         "it": "Vox",
         "ja": "ヴォックス",
@@ -1006,51 +1191,89 @@
         "zh": "VOX"
     },
     "Вокс/Биография": {
+        "en": "Vox/History",
+        "es": "Vox/Historia",
+        "fr": "Vox/Histoire",
         "hu": "Vox/Történelem",
         "it": "Vox/Storia",
         "ja": "ヴォックス/歴史",
         "tr": "Vox/Tarih"
     },
     "Вокс/Взаимоотношения": {
+        "en": "Vox/Relationships",
+        "es": "Vox/Relaciones",
+        "fr": "Vox/Relations",
         "hu": "Vox/Kapcsolatok",
         "it": "Vox/Relazioni",
         "ja": "ヴォックス/関係",
         "tr": "Vox/İlişkileri"
     },
     "Вокс/Галерея": {
+        "en": "Vox/Gallery",
+        "es": "Vox/Galería",
+        "fr": "Vox/Galerie",
         "it": "Vox/Galleria"
     },
+    "Вокс/Галерея/Мерчендайз": {
+        "en": "Vox/Gallery/Merchandise"
+    },
+    "Вокс/Галерея/Официальное творчество": {
+        "en": "Vox/Gallery/Official Artwork",
+        "fr": "Vox/Galerie/Artworks Officiels"
+    },
     "Вокс/Цитаты": {
+        "en": "Vox/Quotes",
         "it": "Vox/Citazioni",
         "pl": "Vox/Cytaty"
     },
     "Вокстаграм": {
+        "en": "Voxtagram",
         "ja": "Voxtagram",
         "pl": "Voxtagram"
     },
     "Вокстек": {
+        "en": "VoxTek",
         "fr": "VoxTek",
         "it": "VoxTek"
     },
     "Вортекс": {
+        "en": "Vortex",
+        "es": "Vortex",
+        "fr": "Vortex",
         "hu": "Vortex",
         "pl": "Vortex",
         "tr": "Vortex"
     },
     "Вортекс/Биография": {
+        "en": "Vortex/History",
+        "es": "Vortex/Historia",
+        "fr": "Vortex/Histoire",
         "hu": "Vortex/Történelem",
         "it": "Vortex/Storia",
         "ja": "ヴォルテックス/歴史",
         "tr": "Vortex/Tarih"
     },
     "Вортекс/Взаимоотношения": {
+        "en": "Vortex/Relationships",
+        "es": "Vortex/Relaciones",
+        "fr": "Vortex/Relations",
         "hu": "Vortex/Kapcsolatok",
         "it": "Vortex/Relazioni",
         "ja": "ヴォルテックス/関係",
         "tr": "Vortex/İlişkileri"
     },
     "Вортекс/Галерея": {
+        "en": "Vortex/Gallery",
+        "es": "Vortex/Galería",
+        "fr": "Vortex/Galerie",
         "pl": "Vortex/Galeria"
+    },
+    "Вортекс/Галерея/Мерчендайз": {
+        "en": "Vortex/Gallery/Merchandise"
+    },
+    "Вортекс/Цитаты": {
+        "en": "Vortex/Quotes",
+        "fr": "Vortex/Citations"
     },
     "Время Чеза": {
         "en": "Chaz Time",
@@ -1070,6 +1293,8 @@
     "ГЛАС БОЖИЙ": {
         "de": "Vox Dei",
         "en": "VOX DEI",
+        "es": "VOX DEI",
+        "fr": "VOX DEI",
         "hu": "VOX DEI",
         "it": "VOX DEI",
         "ja": "VOX DEI",
@@ -1078,6 +1303,8 @@
     },
     "ГЛАС НАРОДА": {
         "en": "VOX POPULI",
+        "es": "VOX POPULI",
+        "fr": "VOX POPULI",
         "hu": "VOX POPULI",
         "it": "VOX POPULI",
         "ja": "VOX POPULI",
@@ -1133,6 +1360,9 @@
         "it": "Cannibal Town",
         "pl": "Osiedle Kanibali"
     },
+    "Город немафии": {
+        "en": "Notamafia Town"
+    },
     "Городок херувимов": {
         "en": "Cherub Towne",
         "es": "Ciudad Querubín",
@@ -1140,8 +1370,14 @@
         "it": "Cherub Towne",
         "pl": "Miasteczko Cherubów"
     },
+    "Госпиталь Святой Анны": {
+        "en": "St. An's Hospital"
+    },
     "Готова к этому": {
         "de": "Bereit dafür",
+        "en": "Ready For This",
+        "es": "Ready For This",
+        "fr": "Ready For This",
         "hu": "Ready For This",
         "it": "Pronta",
         "ja": "Ready For This",
@@ -1173,6 +1409,8 @@
     "Грехждество": {
         "cs": "Hříchnoce (epizoda)",
         "en": "Sinsmas (episode)",
+        "es": "Sinsmas",
+        "fr": "Sinsmas (épisode)",
         "hu": "Démonkari (epizód)",
         "it": "Dannatale (episodio)",
         "ja": "罪犯ス（エピソード）",
@@ -1183,6 +1421,7 @@
     },
     "Грехждество (событие)": {
         "en": "Sinsmas (holiday)",
+        "es": "Pecavidad",
         "fr": "Fête des Péchés (évènement)"
     },
     "Грехждество/Галерея": {
@@ -1194,6 +1433,9 @@
         "en": "Sinsmas (episode)/Transcript"
     },
     "Грешники": {
+        "en": "Sinners",
+        "es": "Pecadores",
+        "fr": "Pécheurs",
         "hu": "Bűnösök",
         "it": "Peccatori",
         "pl": "Grzesznicy",
@@ -1201,6 +1443,7 @@
         "zh": "罪人階級"
     },
     "Гримуар Столаса": {
+        "en": "Stolas' Grimoire",
         "es": "Grimorio de Stolas",
         "fr": "Grimoire de Stolas",
         "pl": "Grymuar Stolasa",
@@ -1238,12 +1481,14 @@
         "pt-br": "Day By Day"
     },
     "Дети Марты и Ральфи": {
+        "en": "Martha and Ralphie's children",
         "es": "Hijos de Martha y Ralphie",
         "fr": "Enfants de Martha et Ralphie",
         "hu": "Martha és Ralphie gyerekei",
         "tr": "Martha ve Ralphie'nin çocukları"
     },
     "Дети Марты и Ральфи/Галерея": {
+        "en": "Martha and Ralphie's children/Gallery",
         "fr": "Enfants de Martha et Ralphie/Galerie"
     },
     "Детка, на улице холодно": {
@@ -1371,13 +1616,18 @@
         "en": "Bathory's Day Spa"
     },
     "До дня нашей смерти": {
+        "en": "Til The Day We Die",
         "es": "Til The Day We Die",
+        "fr": "Til The Day We Die",
         "pt-br": "Til The Day We Die"
     },
     "Добро пожаловать в Рай": {
         "cs": "Vítejte v nebi",
         "de": "Willkommen im Himmel (Folge)",
-        "hu": "Welcome to Heaven",
+        "en": "Welcome to Heaven (episode)",
+        "es": "Welcome to Heaven (episodio)",
+        "fr": "Welcome to Heaven (épisode)",
+        "hu": "Üdv a mennyben",
         "it": "Benvenute in Paradiso",
         "ja": "天国へようこそ",
         "pl": "Witamy w niebie",
@@ -1386,16 +1636,25 @@
     },
     "Добро пожаловать в Рай (песня)": {
         "de": "Willkommen im Himmel (Lied)",
+        "en": "Welcome to Heaven (song)",
+        "es": "Welcome to Heaven (canción)",
+        "fr": "Welcome to Heaven (chanson)",
         "it": "In Paradiso",
         "ja": "Welcome to Heaven",
         "pt-br": "Welcome to Heaven (canção)",
         "tr": "Cennet'e Buyurun"
     },
     "Добро пожаловать в Рай/Галерея": {
+        "en": "Welcome to Heaven (episode)/Gallery",
+        "fr": "Welcome to Heaven (épisode)/Galerie",
         "hu": "Üdv a mennyben/Galéria",
         "pl": "Witamy w niebie/Galeria"
     },
+    "Добро пожаловать в Рай/Транскрипт": {
+        "en": "Welcome to Heaven (episode)/Transcript"
+    },
     "Дождь криков": {
+        "fr": "Pluie hurlante",
         "hu": "Sikolyeső",
         "it": "La pioggia urlante",
         "ja": "叫びの雨",
@@ -1418,6 +1677,7 @@
         "fr": "Don Darryl Rivera"
     },
     "Дурацкий торговый центр весёлого времяпрепровождения Уолли Уокфорда": {
+        "en": "Wacky Wally Wackford's Fun Time Emporium",
         "es": "Emporio de diversión de Wacky Wally Wackford"
     },
     "Духотрахи": {
@@ -1441,6 +1701,10 @@
     },
     "Духотрахи/Транскрипт": {
         "en": "Ghostf**kers/Transcript"
+    },
+    "Души (валюта)": {
+        "en": "Souls",
+        "es": "Souls"
     },
     "Дэйв Кэпдевиль": {
         "cs": "Dave Capdevielle",
@@ -1504,11 +1768,15 @@
         "en": "Cryptic Couture"
     },
     "Заглушённый": {
+        "fr": "Silenced",
         "hu": "Elhallgattatva",
         "it": "In silenzio",
         "ja": "口封じ",
         "th": "ปิดปาก",
         "tr": "Susturulmuş"
+    },
+    "Зак Хадель": {
+        "en": "Zach Hadel"
     },
     "Заткнутый": {
         "en": "Silenced"
@@ -1525,12 +1793,17 @@
     },
     "Земля": {
         "en": "Earth",
+        "es": "Tierra",
+        "fr": "Terre",
         "it": "Terra",
         "ja": "地球",
         "pl": "Ziemia",
         "tr": "Dünya"
     },
     "Зестиал": {
+        "en": "Zestial",
+        "es": "Zestial",
+        "fr": "Zestial",
         "hu": "Zestial",
         "it": "Zestial",
         "ja": "ゼスティアル",
@@ -1538,20 +1811,33 @@
         "tr": "Zestial"
     },
     "Зестиал/Биография": {
+        "en": "Zestial/History",
+        "es": "Zestial/Historia",
+        "fr": "Zestial/Histoire",
         "hu": "Zestial/Történelem",
         "it": "Zestial/Storia",
         "ja": "ゼスティアル/歴史",
         "tr": "Zestial/Tarih"
     },
     "Зестиал/Галерея": {
+        "en": "Zestial/Gallery",
+        "es": "Zestial/Galería",
+        "fr": "Zestial/Galerie",
         "it": "Zestial/Galleria"
     },
+    "Зестиал/Цитаты": {
+        "en": "Zestial/Quotes"
+    },
     "Зизи": {
+        "en": "Zeezi",
+        "es": "Zeezi",
+        "fr": "Zeezi",
         "hu": "Zeezi",
         "ja": "ジージー",
         "tr": "Zeezi"
     },
     "Зизи/Галерея": {
+        "en": "Zeezi/Gallery",
         "es": "Zeezi/Galería",
         "fr": "Zeezi/Galerie"
     },
@@ -1572,6 +1858,9 @@
     },
     "Из-за любви": {
         "de": "Such nach Liebe",
+        "en": "Out For Love",
+        "es": "Por amor",
+        "fr": "Out For Love",
         "hu": "Out For Love",
         "it": "L'amore",
         "ja": "Out For Love",
@@ -1591,6 +1880,9 @@
     },
     "Искатели правды": {
         "cs": "Hledači pravdy",
+        "en": "Truth Seekers",
+        "es": "Truth Seekers",
+        "fr": "Truth Seekers",
         "hu": "Hol az igazság?",
         "it": "Agenti della verità",
         "ja": "本音を伝えて",
@@ -1599,11 +1891,17 @@
         "tr": "Gerçeği Arayanlar"
     },
     "Искатели правды/Галерея": {
+        "en": "Truth Seekers/Gallery",
+        "fr": "Truth Seekers/Galerie",
         "hu": "Hol az igazság?/Galéria"
+    },
+    "Искатели правды/Транскрипт": {
+        "en": "Truth Seekers/Transcript"
     },
     "Исповедь Серы": {
         "de": "Seras Geständnis",
         "en": "Sera's Confession",
+        "fr": "Sera's Confession",
         "hu": "Sera's Confession",
         "it": "Perdono",
         "ja": "Sera's Confession",
@@ -1620,6 +1918,9 @@
     },
     "Исчез": {
         "de": "Nie Hergekommen",
+        "en": "Stayed Gone",
+        "es": "Stayed Gone",
+        "fr": "Stayed Gone",
         "hu": "Stayed Gone",
         "it": "Status quo",
         "ja": "Stayed Gone",
@@ -1632,6 +1933,8 @@
     },
     "Как только мы поднимемся туда": {
         "en": "Once We Get Up There",
+        "es": "Once We Get Up There",
+        "fr": "Once We Get Up There",
         "hu": "Once We Get Up There",
         "it": "Andrò in Paradiso",
         "ja": "Once We Get Up There",
@@ -1708,6 +2011,7 @@
         "en": "Blitzo's apartment"
     },
     "Квартира Мокси и Милли": {
+        "en": "Moxxie and Millie's apartment",
         "es": "Apartamento de Millie y Moxxie",
         "fr": "Appartement de Millie et Moxxie"
     },
@@ -1879,11 +2183,16 @@
     },
     "Когда я думаю о будущем": {
         "de": "Wenn ich an die Zukunft denke",
+        "en": "When I Think About The Future",
+        "es": "When I Think About The Future",
         "fr": "When I Think About The Future",
         "ja": "When I Think About The Future",
         "tr": "Geleceğe Baktığımda"
     },
     "Когда я увижу его": {
+        "en": "When I See Him",
+        "es": "When I See Him",
+        "fr": "When I See Him",
         "pt-br": "When I See Him"
     },
     "Коллин": {
@@ -1926,10 +2235,15 @@
         "en": "Collin/Quotes"
     },
     "Конский хрен": {
-        "cs": "Mustang Dong"
+        "cs": "Mustang Dong",
+        "en": "Mustang Dong",
+        "es": "Mustang Dong"
     },
     "Королева пчёл": {
         "cs": "Královna Bee",
+        "en": "Queen Bee",
+        "es": "Queen Bee",
+        "fr": "Queen Bee",
         "hu": "Méhkirálynő",
         "ja": "クイーン・ビー",
         "pl": "Królowa Bee",
@@ -1937,7 +2251,12 @@
         "tr": "Kraliçe Bee"
     },
     "Королева пчёл/Галерея": {
+        "en": "Queen Bee/Gallery",
+        "fr": "Queen Bee/Galerie",
         "hu": "Méhkirálynő/Galéria"
+    },
+    "Королева пчёл/Транскрипт": {
+        "en": "Queen Bee/Transcript"
     },
     "Кортни Рейн Тейлор": {
         "en": "Courtney Raine Taylor"
@@ -2039,6 +2358,7 @@
         "en": "Scream Rain/Transcript"
     },
     "Круг Гнева": {
+        "en": "Wrath Ring",
         "es": "Círculo de la Ira",
         "fr": "Cercle de la Colère",
         "hu": "Harag bugyra",
@@ -2047,6 +2367,7 @@
         "tr": "Gazap Katı"
     },
     "Круг Гордыни": {
+        "en": "Pride Ring",
         "es": "Círculo del Orgullo",
         "fr": "Cercle de l'Orgueil",
         "ja": "プライドの領域",
@@ -2061,10 +2382,12 @@
         "tr": "Açgözlülük Katı"
     },
     "Круг Лени": {
+        "en": "Sloth Ring",
         "fr": "Cercle de la Paresse",
         "pl": "Krąg Lenistwa"
     },
     "Круг Похоти": {
+        "en": "Lust Ring",
         "es": "Círculo de la Lujuria",
         "fr": "Cercle de la Luxure",
         "ja": "色欲の領域",
@@ -2080,12 +2403,15 @@
         "tr": "Oburluk Katı"
     },
     "Круги Ада": {
+        "en": "Rings of Hell",
         "es": "Círculos del Infierno",
         "fr": "Cercles de l'Enfer"
     },
     "Кукловод": {
         "cs": "Vůdce",
         "en": "Mastermind (episode)",
+        "es": "Mastermind",
+        "fr": "Mastermind (épisode)",
         "hu": "Lángelme (epizód)",
         "it": "Il processo",
         "ja": "黒幕",
@@ -2097,11 +2423,14 @@
     "Кукловод (песня)": {
         "de": "Superhirn (Lied)",
         "en": "Mastermind (song)",
+        "es": "Mastermind (canción)",
+        "fr": "Mastermind (chanson)",
         "pl": "Mastermind (piosenka)",
         "pt-br": "Mastermind (canção)"
     },
     "Кукловод/Галерея": {
         "en": "Mastermind (episode)/Gallery",
+        "fr": "Mastermind (épisode)/Galerie",
         "hu": "Lángelme (epizód)/Galéria",
         "pl": "Mózg całego planu/Galeria"
     },
@@ -2179,6 +2508,7 @@
         "pl": "Obóz Ivannakummore"
     },
     "Лайл Липтон": {
+        "en": "Lyle Lipton",
         "es": "Lyle Lipton",
         "fr": "Lyle Lipton",
         "hu": "Lyle Lipton",
@@ -2186,6 +2516,7 @@
         "tr": "Lyle Lipton"
     },
     "Лайл Липтон/Биография": {
+        "en": "Lyle Lipton/History",
         "es": "Lyle Lipton/Historia",
         "fr": "Lyle Lipton/Histoire",
         "hu": "Lyle Lipton/Történelem",
@@ -2193,6 +2524,7 @@
         "ja": "ライル・リプトン/歴史"
     },
     "Лайл Липтон/Взаимоотношения": {
+        "en": "Lyle Lipton/Relationships",
         "es": "Lyle Lipton/Relaciones",
         "fr": "Lyle Lipton/Relations",
         "hu": "Lyle Lipton/Kapcsolatok",
@@ -2201,9 +2533,11 @@
         "tr": "Lyle Lipton/İlişkileri"
     },
     "Лайл Липтон/Галерея": {
+        "en": "Lyle Lipton/Gallery",
         "fr": "Lyle Lipton/Galerie"
     },
     "Лайл Рат": {
+        "en": "Lyle Rath",
         "es": "Lyle Rath"
     },
     "Леандер Льюис": {
@@ -2255,6 +2589,7 @@
         "en": "Liz Callaway"
     },
     "Лилит": {
+        "en": "Lilith",
         "es": "Lilith",
         "fr": "Lilith",
         "hu": "Lilith",
@@ -2265,6 +2600,7 @@
         "zh": "莉莉絲"
     },
     "Лилит/Биография": {
+        "en": "Lilith/History",
         "es": "Lilith/Historia",
         "fr": "Lilith/Histoire",
         "hu": "Lilith/Történelem",
@@ -2273,6 +2609,7 @@
         "tr": "Lilith/Tarih"
     },
     "Лилит/Взаимоотношения": {
+        "en": "Lilith/Relationships",
         "es": "Lilith/Relaciones",
         "fr": "Lilith/Relations",
         "hu": "Lilith/Kapcsolatok",
@@ -2280,17 +2617,23 @@
         "ja": "リリス/関係"
     },
     "Лилит/Галерея": {
+        "en": "Lilith/Gallery",
         "es": "Lilith/Galería",
         "fr": "Lilith/Galerie",
         "it": "Lilith/Galleria"
     },
+    "Лилит/Галерея/Официальное творчество": {
+        "en": "Lilith/Gallery/Official Artwork"
+    },
     "Лилли Купер": {
+        "en": "Lilli Cooper",
         "es": "Lilli Cooper"
     },
     "Лимузин": {
         "es": "Limusina de la Familia Magne"
     },
     "Лин": {
+        "en": "Lin",
         "es": "Lin",
         "fr": "Lin",
         "hu": "Lin",
@@ -2299,9 +2642,11 @@
         "tr": "Lin"
     },
     "Лин/Галерея": {
+        "en": "Lin/Gallery",
         "fr": "Lin/Galerie"
     },
     "Лин/Цитаты": {
+        "en": "Lin/Quotes",
         "fr": "Lin/Citations"
     },
     "Лифт": {
@@ -2309,12 +2654,16 @@
         "es": "Elevador",
         "pl": "Winda"
     },
+    "Лос-Анджелес": {
+        "en": "Los Angeles"
+    },
     "Лу Лу": {
         "es": "Loo Loo",
         "fr": "Loo Loo"
     },
     "Лу Лу Ленд": {
         "cs": "Loo Loo Land (epizoda)",
+        "en": "Loo Loo Land (episode)",
         "es": "Loo Loo Land (episodio)",
         "fr": "Loo Loo Land (épisode)",
         "hu": "Loo Loo Föld (epizód)",
@@ -2325,15 +2674,18 @@
         "tr": "Loo Loo Land (bölüm)"
     },
     "Лу Лу Ленд (локация)": {
+        "en": "Loo Loo Land (location)",
         "es": "Loo Loo Land (ubicación)",
         "fr": "Loo Loo Land (lieu)",
         "pl": "Loo Loo Land (miejsce)"
     },
     "Лу Лу Ленд (неоднозначность)": {
+        "en": "Loo Loo Land",
         "es": "Loo Loo Land",
         "fr": "Loo Loo Land (homonymie)"
     },
     "Лу Лу Ленд (песня)": {
+        "en": "Loo Loo Land (song)",
         "es": "Loo Loo Land (canción)",
         "fr": "Loo Loo Land (chanson)",
         "ja": "ルー・ルー・ランド（歌）",
@@ -2341,8 +2693,12 @@
         "pt-br": "Loo Loo Land (canção)"
     },
     "Лу Лу Ленд/Галерея": {
+        "en": "Loo Loo Land (episode)/Gallery",
         "fr": "Loo Loo Land (épisode)/Galerie",
         "hu": "Loo Loo Föld (epizód)/Galéria"
+    },
+    "Лу Лу Ленд/Транскрипт": {
+        "en": "Loo Loo Land (episode)/Transcript"
     },
     "Лу Лу/Галерея": {
         "es": "Loo Loo/Galería",
@@ -2350,6 +2706,7 @@
     },
     "Лузер, детка": {
         "de": "Loser, Baby",
+        "en": "Loser, Baby",
         "es": "Loser, Baby",
         "fr": "Loser, Baby",
         "hu": "Loser, Baby",
@@ -2361,6 +2718,7 @@
     },
     "Луна": {
         "de": "Loona",
+        "en": "Loona",
         "es": "Loona",
         "fr": "Loona",
         "hu": "Loona",
@@ -2371,6 +2729,7 @@
         "zh": "露娜"
     },
     "Луна/Биография": {
+        "en": "Loona/History",
         "es": "Loona/Historia",
         "fr": "Loona/Histoire",
         "hu": "Loona/Történelem",
@@ -2379,6 +2738,7 @@
         "tr": "Loona/Tarih"
     },
     "Луна/Взаимоотношения": {
+        "en": "Loona/Relationships",
         "es": "Loona/Relaciones",
         "fr": "Loona/Relations",
         "hu": "Loona/Kapcsolatok",
@@ -2387,6 +2747,7 @@
         "tr": "Loona/İlişkileri"
     },
     "Луна/Галерея": {
+        "en": "Loona/Gallery",
         "es": "Loona/Galería",
         "fr": "Loona/Galerie",
         "it": "Loona/Galleria",
@@ -2396,12 +2757,15 @@
         "en": "Loona/Gallery/Merchandise"
     },
     "Луна/Галерея/Официальное творчество": {
+        "en": "Loona/Gallery/Official Artwork",
         "fr": "Loona/Galerie/Artworks Officiels"
     },
     "Луна/Цитаты": {
+        "en": "Loona/Quotes",
         "es": "Loona/Frases"
     },
     "Лупти Гупти": {
+        "en": "Loopty Goopty",
         "es": "Loopty Goopty",
         "fr": "Loopty Goopty",
         "hu": "Loopty Goopty",
@@ -2409,6 +2773,7 @@
         "tr": "Loopty Goopty"
     },
     "Лупти Гупти/Биография": {
+        "en": "Loopty Goopty/History",
         "es": "Loopty Goopty/Historia",
         "fr": "Loopty Goopty/Histoire",
         "hu": "Loopty Goopty/Történelem",
@@ -2416,6 +2781,7 @@
         "ja": "ループティ・グープティ/歴史"
     },
     "Лупти Гупти/Взаимоотношения": {
+        "en": "Loopty Goopty/Relationships",
         "es": "Loopty Goopty/Relaciones",
         "fr": "Loopty Goopty/Relations",
         "hu": "Loopty Goopty/Kapcsolatok",
@@ -2424,6 +2790,7 @@
         "tr": "Loopty Goopty/İlişkileri"
     },
     "Лупти Гупти/Галерея": {
+        "en": "Loopty Goopty/Gallery",
         "fr": "Loopty Goopty/Galerie"
     },
     "Лучший адский папа": {
@@ -2450,6 +2817,9 @@
     },
     "Любой ценой": {
         "de": "Tu, was zu tun ist",
+        "en": "Whatever It Takes",
+        "es": "Whatever It Takes",
+        "fr": "Whatever It Takes",
         "hu": "Whatever It Takes",
         "it": "Di tutto farei",
         "ja": "Whatever It Takes",
@@ -2465,10 +2835,13 @@
         "tr": "İnsanlar"
     },
     "Людской пляж": {
-        "en": "Human Beach"
+        "en": "Human Beach",
+        "es": "Playa humana",
+        "fr": "Plage des humains"
     },
     "Лют": {
         "de": "Lute",
+        "en": "Lute",
         "es": "Lute",
         "fr": "Lute",
         "hu": "Lute",
@@ -2497,6 +2870,7 @@
         "tr": "Lute/İlişkileri"
     },
     "Лют/Галерея": {
+        "en": "Lute/Gallery",
         "fr": "Lute/Galerie",
         "it": "Lute/Galleria"
     },
@@ -2505,6 +2879,7 @@
     },
     "Люцифер Морнингстар": {
         "de": "Lucifer Morningstar",
+        "en": "Lucifer Morningstar",
         "es": "Lucifer Morningstar",
         "fr": "Lucifer Morningstar",
         "hu": "Lucifer Morningstar",
@@ -2516,6 +2891,7 @@
         "zh": "路西法·晨星"
     },
     "Люцифер Морнингстар/Биография": {
+        "en": "Lucifer Morningstar/History",
         "es": "Lucifer Morningstar/Historia",
         "fr": "Lucifer Morningstar/Histoire",
         "hu": "Lucifer Morningstar/Történelem",
@@ -2524,6 +2900,7 @@
         "tr": "Lucifer Sabahyıldızı/Tarih"
     },
     "Люцифер Морнингстар/Взаимоотношения": {
+        "en": "Lucifer Morningstar/Relationships",
         "es": "Lucifer Morningstar/Relaciones",
         "fr": "Lucifer Morningstar/Relations",
         "hu": "Lucifer Morningstar/Kapcsolatok",
@@ -2532,6 +2909,7 @@
         "tr": "Lucifer Sabahyıldızı/İlişkileri"
     },
     "Люцифер Морнингстар/Галерея": {
+        "en": "Lucifer Morningstar/Gallery",
         "es": "Lucifer Morningstar/Galería",
         "fr": "Lucifer Morningstar/Galerie",
         "it": "Lucifero Stella del Mattino/Galleria"
@@ -2542,54 +2920,108 @@
     "Люцифер Морнингстар/Галерея/Официальное творчество": {
         "en": "Lucifer Morningstar/Gallery/Official Artwork"
     },
+    "Люцифер Морнингстар/Цитаты": {
+        "en": "Lucifer Morningstar/Quotes"
+    },
+    "Майкл Джеймс Руокко": {
+        "en": "Michael James Ruocco",
+        "es": "Michael James Ruocco",
+        "fr": "Michael James Ruocco"
+    },
     "Майкл Ковач": {
         "cs": "Michael Kovach",
+        "en": "Michael Kovach",
+        "es": "Michael Kovach",
         "pl": "Michael Kovach"
+    },
+    "Майкл Кьюсак": {
+        "en": "Michael Cusack",
+        "es": "Michael Cusack"
     },
     "Майкл Ромео Руокко": {
         "cs": "Michael Romeo Ruocco",
+        "en": "Michael Romeo Ruocco",
+        "es": "Michael Romeo Ruocco",
         "ja": "マイケル・ロメオ・ルオッコ"
     },
+    "Максвелл Атомс": {
+        "en": "Maxwell Atoms",
+        "es": "Maxwell Atoms"
+    },
     "Маммон": {
+        "en": "Mammon",
+        "es": "Mammón",
         "fr": "Mammon",
         "hu": "Mammon",
         "pl": "Mammon",
         "tr": "Mammon"
     },
     "Маммон/Биография": {
+        "en": "Mammon/History",
+        "es": "Mammón/Historia",
+        "fr": "Mammon/Histoire",
         "hu": "Mammon/Történelem",
         "it": "Mammona/Storia",
         "ja": "マモン/歴史",
         "tr": "Mammon/Tarih"
     },
     "Маммон/Взаимоотношения": {
+        "en": "Mammon/Relationships",
         "es": "Mammón/Relaciones",
         "hu": "Mammon/Kapcsolatok",
         "it": "Mammona/Relazioni",
         "ja": "マモン/関係",
         "tr": "Mammon/İlişkileri"
     },
+    "Маммон/Галерея": {
+        "en": "Mammon/Gallery",
+        "es": "Mammón/Galería",
+        "fr": "Mammon/Galerie"
+    },
     "Маммон/Галерея/Мерчендайз": {
         "en": "Mammon/Gallery/Merchandise"
     },
+    "Маммон/Цитаты": {
+        "en": "Mammon/Quotes"
+    },
+    "Мара Уилсон": {
+        "en": "Mara Wilson",
+        "es": "Mara Wilson"
+    },
     "Марта": {
+        "en": "Martha",
+        "es": "Martha",
+        "fr": "Martha",
         "hu": "Martha",
         "pl": "Martha",
         "tr": "Martha"
     },
     "Марта/Биография": {
         "en": "Martha/History",
+        "es": "Martha/Historia",
+        "fr": "Martha/Histoire",
         "hu": "Martha/Történelem",
         "it": "Martha/Storia",
         "ja": "マーサ/歴史",
         "tr": "Martha/Tarih"
     },
+    "Марта/Галерея": {
+        "en": "Martha/Gallery",
+        "fr": "Martha/Galerie"
+    },
     "Марта/Галерея/Мерчендайз": {
         "en": "Martha/Gallery/Merchandise"
+    },
+    "Марта/Цитаты": {
+        "en": "Martha/Quotes",
+        "fr": "Martha/Citations"
     },
     "Маскарад": {
         "cs": "Maškaráda",
         "de": "Maskerade",
+        "en": "Masquerade",
+        "es": "Masquerade",
+        "fr": "Mascarade",
         "hu": "Maszkabál",
         "it": "Messinscena",
         "ja": "仮面",
@@ -2598,14 +3030,25 @@
         "tr": "Maskeli Balo"
     },
     "Маскарад/Галерея": {
+        "en": "Masquerade/Gallery",
+        "fr": "Mascarade/Galerie",
         "hu": "Maszkabál/Galéria"
     },
+    "Маскарад/Транскрипт": {
+        "en": "Masquerade/Transcript"
+    },
     "Мать Мокси": {
+        "en": "Moxxie's mother",
         "es": "Madre de Moxxie",
+        "fr": "Mère de Moxxie",
         "pl": "Matka Moxxiego"
+    },
+    "Мать Мокси/Галерея": {
+        "en": "Moxxie's mother/Gallery"
     },
     "Мафия Кримсона": {
         "en": "Crimson's Mafia",
+        "es": "Mafia de Crimson",
         "fr": "Mafia de Crimson",
         "pl": "Mafia Crimsona"
     },
@@ -2614,6 +3057,8 @@
     },
     "Маэстро": {
         "en": "Maestro",
+        "es": "Maestro",
+        "fr": "Miestro",
         "hu": "Miestro",
         "it": "Nergal",
         "ja": "マエストロ",
@@ -2626,14 +3071,20 @@
     },
     "Мейсон Бломберг": {
         "cs": "Mason Blomberg",
+        "en": "Mason Blomberg",
         "ja": "メイソン・ブロンバーグ"
     },
     "Мик Лауэр": {
         "cs": "Mick Lauer",
+        "en": "Mick Lauer",
+        "es": "Mick Lauer",
         "pl": "Mick Lauer"
     },
     "Милли": {
         "de": "Millie",
+        "en": "Millie",
+        "es": "Millie",
+        "fr": "Millie",
         "hu": "Millie",
         "ja": "ミリー",
         "pl": "Millie",
@@ -2643,24 +3094,45 @@
         "zh": "米莉"
     },
     "Милли/Биография": {
+        "en": "Millie/History",
+        "es": "Millie/Historia",
+        "fr": "Millie/Histoire",
         "hu": "Millie/Történelem",
         "it": "Millie/Storia",
         "ja": "ミリー/歴史",
         "tr": "Millie/Tarih"
     },
     "Милли/Взаимоотношения": {
+        "en": "Millie/Relationships",
+        "es": "Millie/Relaciones",
+        "fr": "Millie/Relations",
         "hu": "Millie/Kapcsolatok",
         "it": "Millie/Relazioni",
         "ja": "ミリー/関係",
         "tr": "Millie/İlişkileri"
     },
     "Милли/Галерея": {
+        "en": "Millie/Gallery",
+        "es": "Millie/Galería",
+        "fr": "Millie/Galerie",
         "it": "Millie/Galleria"
     },
     "Милли/Галерея/Мерчендайз": {
         "en": "Millie/Gallery/Merchandise"
     },
+    "Милли/Галерея/Официальное творчество": {
+        "en": "Millie/Gallery/Official Artwork",
+        "fr": "Millie/Galerie/Artworks Officiels"
+    },
+    "Милли/Цитаты": {
+        "en": "Millie/Quotes",
+        "es": "Millie/Frases",
+        "fr": "Millie/Citations"
+    },
     "Мимзи": {
+        "en": "Mimzy",
+        "es": "Mimzy",
+        "fr": "Mimzy",
         "hu": "Mimzy",
         "it": "Mimzy",
         "ja": "ミムジー",
@@ -2669,26 +3141,41 @@
         "tr": "Mimzy"
     },
     "Мимзи/Галерея": {
+        "en": "Mimzy/Gallery",
+        "es": "Mimzy/Galería",
+        "fr": "Mimzy/Galerie",
         "it": "Mimzy/Galleria"
     },
     "Мир Лу Лу": {
+        "en": "Lu Lu World",
         "es": "Lu Lu World",
         "fr": "Lu Lu World",
         "pl": "Lu Lu World"
     },
+    "Мир — это сцена": {
+        "fr": "The World Is a Stage"
+    },
     "Миссис Мейберри": {
+        "en": "Mrs. Mayberry",
+        "es": "Sra. Mayberry",
+        "fr": "Mme Mayberry",
         "hu": "Mayberry asszony",
         "pl": "Pani Mayberry",
         "tr": "Banyan Mayberry"
     },
     "Миссис Мейберри/Биография": {
+        "en": "Mrs. Mayberry/History",
+        "es": "Sra. Mayberry/Historia",
+        "fr": "Mme Mayberry/Histoire",
         "hu": "Mayberry asszony/Történelem",
         "it": "Sig.ra Mayberry/Storia",
         "ja": "メイベリー先生/歴史",
         "tr": "Banyan Mayberry/Tarih"
     },
     "Миссис Мейберри/Галерея": {
-        "es": "Sra. Mayberry/Galería"
+        "en": "Mrs. Mayberry/Gallery",
+        "es": "Sra. Mayberry/Galería",
+        "fr": "Mme Mayberry/Galerie"
     },
     "Миссис Мейберри/Галерея/Мерчендайз": {
         "en": "Mrs. Mayberry/Gallery/Merchandise"
@@ -2696,6 +3183,8 @@
     "Миссия: Антарктида": {
         "cs": "Mission: Antarctica",
         "en": "Mission: Antarctica",
+        "es": "Mission: Antarctica",
+        "fr": "Mission : Antarctica",
         "hu": "Mission: Antarctica",
         "it": "Mission: Antarctica",
         "pl": "Mission: Antarctica",
@@ -2751,6 +3240,8 @@
     "Миссия: время сирот": {
         "cs": "Mission: Orphan Time",
         "en": "Mission: Orphan Time",
+        "es": "Mission: Orphan Time",
+        "fr": "Mission : Orphan Time",
         "hu": "Mission: Orphan Time",
         "it": "Mission: Orphan Time",
         "pl": "Mission: Orphan Time",
@@ -2767,6 +3258,8 @@
     "Миссия: конченный": {
         "cs": "Mission: Whacked Off",
         "en": "Mission: Whacked Off",
+        "es": "Mission: Whacked Off",
+        "fr": "Mission : Whacked Off",
         "hu": "Mission: Whacked Off",
         "it": "Mission: Whacked Off",
         "pl": "Mission: Whacked Off",
@@ -2783,6 +3276,8 @@
     "Миссия: кумир виабушницы": {
         "cs": "Mission: Weeaboo-boo",
         "en": "Mission: Weeaboo-boo",
+        "es": "Mission: Weeaboo-boo",
+        "fr": "Mission : Weeaboo-boo",
         "hu": "Mission: Weeaboo-boo",
         "it": "Mission: Weeaboo-boo",
         "pl": "Mission: Weeaboo-boo",
@@ -2800,6 +3295,8 @@
     "Миссия: первый шаг": {
         "cs": "Mise: Nula",
         "en": "Mission: Zero",
+        "es": "Misión: Cero",
+        "fr": "Mission : Zéro",
         "hu": "Nulladik Bevetés",
         "it": "Missione: Zero",
         "ja": "ミッション：ゼロ",
@@ -2854,6 +3351,7 @@
     "Миссия: хреновый водилц": {
         "cs": "Mission: Bad Drivezo",
         "en": "Mission: Bad Drivezo",
+        "es": "Mission: Bad Drivezo",
         "it": "Mission: Bad Drivezo",
         "th": "Mission: Bad Drivezo",
         "tr": "Mission: Bad Drivezo"
@@ -2868,6 +3366,8 @@
     "Миссия: чупакабры": {
         "cs": "Mission: Chupacabras",
         "en": "Mission: Chupacabras",
+        "es": "Mission: Chupacabras",
+        "fr": "Mission : Chupacabras",
         "hu": "Mission: Chupacabras",
         "it": "Mission: Chupacabras",
         "pl": "Mission: Chupacabras",
@@ -2888,20 +3388,28 @@
     },
     "Мишель Мари": {
         "cs": "Michelle Marie",
+        "en": "Michelle Marie",
+        "es": "Michelle Marie",
         "pl": "Michelle Marie"
     },
     "Младшая школа молокососов": {
+        "en": "Puppies Junior School",
         "es": "Jardín de Niños Cachorritos"
     },
     "Мне нравится это": {
         "pt-br": "I Like It"
     },
     "Мой мир горит вокруг меня": {
+        "en": "My World Is Burning Down Around Me",
+        "es": "My World Is Burning Down Around Me",
+        "fr": "My World Is Burning Down Around Me",
         "ja": "My World Is Burning Down Around Me",
         "pt-br": "My World Is Burning Down Around Me"
     },
     "Мокси": {
         "de": "Moxxie",
+        "en": "Moxxie",
+        "es": "Moxxie",
         "hu": "Moxxie",
         "ja": "モクシー",
         "pl": "Moxxie",
@@ -2910,18 +3418,27 @@
         "zh": "摩西"
     },
     "Мокси/Биография": {
+        "en": "Moxxie/History",
+        "es": "Moxxie/Historia",
+        "fr": "Moxxie/Histoire",
         "hu": "Moxxie/Történelem",
         "it": "Moxxie/Storia",
         "ja": "モクシー/歴史",
         "tr": "Moxxie/Tarih"
     },
     "Мокси/Взаимоотношения": {
+        "en": "Moxxie/Relationships",
+        "es": "Moxxie/Relaciones",
+        "fr": "Moxxie/Relations",
         "hu": "Moxxie/Kapcsolatok",
         "it": "Moxxie/Relazioni",
         "ja": "モクシー/関係",
         "tr": "Moxxie/İlişkileri"
     },
     "Мокси/Галерея": {
+        "en": "Moxxie/Gallery",
+        "es": "Moxxie/Galería",
+        "fr": "Moxxie/Galerie",
         "it": "Moxxie/Galleria",
         "ja": "モクシー/ギャラリー",
         "pl": "Moxxie/Galeria"
@@ -2929,7 +3446,18 @@
     "Мокси/Галерея/Мерчендайз": {
         "en": "Moxxie/Gallery/Merchandise"
     },
+    "Мокси/Галерея/Официальное творчество": {
+        "en": "Moxxie/Gallery/Official Artwork",
+        "fr": "Moxxie/Galerie/Artworks Officiels"
+    },
+    "Мокси/Цитаты": {
+        "en": "Moxxie/Quotes",
+        "es": "Moxxie/Frases"
+    },
     "Молли": {
+        "en": "Molly",
+        "es": "Molly",
+        "fr": "Molly",
         "it": "Molly",
         "ja": "モリー",
         "pl": "Molly",
@@ -2937,6 +3465,8 @@
     },
     "Моника Франко": {
         "cs": "Monica Franco",
+        "en": "Monica Franco",
+        "es": "Monica Franco",
         "pl": "Monica Franco"
     },
     "Монолог Чарли": {
@@ -2949,11 +3479,19 @@
     "Морган Шиван Грин": {
         "en": "Morgan Siobhan Green"
     },
+    "Моргана Игнис": {
+        "en": "Morgana Ignis",
+        "es": "Morgana Ignis"
+    },
     "Мотель Укрытие": {
-        "en": "Hideaway Motel"
+        "en": "Hideaway Motel",
+        "es": "Motel Escondite"
     },
     "Мощь Запада": {
         "cs": "Západní energie",
+        "en": "Western Energy",
+        "es": "Western Energy",
+        "fr": "Western Energy",
         "hu": "Vadnyugati balhé",
         "it": "Trattamento reale",
         "ja": "続・地獄のガンマン",
@@ -2963,12 +3501,20 @@
         "tr": "Batı Havası"
     },
     "Мощь Запада/Галерея": {
+        "en": "Western Energy/Gallery",
+        "fr": "Western Energy/Galerie",
         "hu": "Vadnyugati balhé/Galéria"
+    },
+    "Мощь Запада/Транскрипт": {
+        "en": "Western Energy/Transcript"
     },
     "Мощь Лилит": {
         "en": "Might of Lilith",
         "fr": "Puissance de Lilith",
         "tr": "Lilith'in Gücü"
+    },
+    "Мэгпай Рэйвэн": {
+        "en": "Magpie Raven"
     },
     "Настоящая сюрреалистическая сделка": {
         "fr": "A Real Surreal Deal"
@@ -3006,6 +3552,9 @@
     },
     "Незадачливые туристы": {
         "cs": "Nešťastní táborníci",
+        "en": "Unhappy Campers",
+        "es": "Unhappy Campers",
+        "fr": "Unhappy Campers",
         "hu": "Nyári Tábor",
         "it": "Dov'è Barb?",
         "ja": "不幸なキャンパー",
@@ -3015,10 +3564,32 @@
         "tr": "Mutsuz Kampçılar"
     },
     "Незадачливые туристы/Галерея": {
+        "en": "Unhappy Campers/Gallery",
+        "fr": "Unhappy Campers/Galerie",
         "hu": "Nyári Tábor/Galéria"
+    },
+    "Незадачливые туристы/Транскрипт": {
+        "en": "Unhappy Campers/Transcript"
+    },
+    "Незначительные персонажи": {
+        "en": "Minor Characters",
+        "es": "Otros personajes",
+        "fr": "Personnages mineurs"
+    },
+    "Незначительные персонажи/Адский Босс": {
+        "en": "Minor Characters/Helluva Boss",
+        "es": "Otros personajes/Helluva Boss",
+        "fr": "Personnages mineurs/Helluva Boss"
+    },
+    "Незначительные персонажи/Отель Хазбин": {
+        "en": "Minor Characters/Hazbin Hotel",
+        "fr": "Personnages mineurs/Hazbin Hotel"
     },
     "Неуважение": {
         "de": "Respektlos",
+        "en": "Respectless",
+        "es": "Respectless",
+        "fr": "Respectless",
         "hu": "Respectless",
         "it": "Rispetto",
         "ja": "Respectless",
@@ -3027,6 +3598,9 @@
     },
     "Ниффти": {
         "de": "Niffty",
+        "en": "Niffty",
+        "es": "Niffty",
+        "fr": "Niffty",
         "hu": "Niffty",
         "it": "Niffty",
         "ja": "ニフティ",
@@ -3036,22 +3610,40 @@
         "tr": "Niffty"
     },
     "Ниффти/Биография": {
+        "en": "Niffty/History",
+        "es": "Niffty/Historia",
+        "fr": "Niffty/Histoire",
         "hu": "Niffty/Történelem",
         "it": "Niffty/Storia",
         "ja": "ニフティ/歴史",
         "tr": "Niffty/Tarih"
     },
     "Ниффти/Взаимоотношения": {
+        "en": "Niffty/Relationships",
+        "es": "Niffty/Relaciones",
+        "fr": "Niffty/Relations",
         "hu": "Niffty/Kapcsolatok",
         "it": "Niffty/Relazioni",
         "ja": "ニフティ/関係",
         "tr": "Niffty/İlişkileri"
     },
     "Ниффти/Галерея": {
+        "en": "Niffty/Gallery",
+        "es": "Niffty/Galería",
+        "fr": "Niffty/Galerie",
         "it": "Niffty/Galleria"
     },
     "Ниффти/Галерея/Мерчендайз": {
         "en": "Niffty/Gallery/Merchandise"
+    },
+    "Ниффти/Галерея/Официальное творчество": {
+        "en": "Niffty/Gallery/Official Artwork",
+        "fr": "Niffty/Galerie/Artworks Officiels"
+    },
+    "Ниффти/Цитаты": {
+        "en": "Niffty/Quotes",
+        "es": "Niffty/Frases",
+        "fr": "Niffty/Citations"
     },
     "Новости 666": {
         "en": "666 News",
@@ -3062,6 +3654,8 @@
     },
     "Новый Пентиус": {
         "en": "New Pentious",
+        "es": "New Pentious",
+        "fr": "New Pentious",
         "hu": "Az új Pentious",
         "it": "Il Nuovo Pentious",
         "ja": "新しいペンシャス",
@@ -3077,10 +3671,15 @@
         "en": "New Pentious/Transcript"
     },
     "Норман Ридус": {
-        "cs": "Norman Reedus"
+        "cs": "Norman Reedus",
+        "en": "Norman Reedus",
+        "es": "Norman Reedus",
+        "fr": "Norman Reedus"
     },
     "Ну и зрелище": {
         "de": "Das ist Unterhaltung",
+        "es": "That's Entertainment",
+        "fr": "That's Entertainment",
         "hu": "That's Entertainment",
         "it": "That's Entertainment",
         "ja": "That's Entertainment",
@@ -3088,18 +3687,31 @@
         "tr": "That's Entertainment"
     },
     "Ну и зрелище/Галерея": {
+        "en": "That's Entertainment/Gallery",
+        "es": "That's Entertainment/Galería",
+        "fr": "That's Entertainment/Galerie",
         "hu": "That's Entertainment/Galéria",
         "ja": "That's Entertainment/ギャラリー"
     },
     "Ну и зрелище/Транскрипт": {
+        "en": "That's Entertainment/Transcript",
+        "fr": "That's Entertainment/Transcription",
         "ja": "That's Entertainment/文字起こし"
     },
     "О Милли": {
+        "en": "Oh Millie",
+        "es": "Oh Millie",
+        "fr": "Oh Millie",
         "hu": "Oh Millie",
         "pl": "Oh Millie",
         "pt-br": "Oh Millie"
     },
+    "О Милли/Галерея": {
+        "en": "Oh Millie/Gallery",
+        "fr": "Oh Millie/Galerie"
+    },
     "О чём ты думаешь?": {
+        "en": "Whatcha Thinkin' About?",
         "es": "Whatcha Thinkin' About?",
         "fr": "Whatcha Thinkin' About?",
         "pt-br": "Whatcha Thinkin' About?"
@@ -3124,11 +3736,15 @@
         "en": "IMP Training Video/Transcript"
     },
     "Обычный Джо": {
+        "en": "Regular Joe",
         "es": "Regular Joe",
         "fr": "Regular Joe",
         "pt-br": "Regular Joe"
     },
     "Одетта": {
+        "en": "Odette",
+        "es": "Odette",
+        "fr": "Odette",
         "hu": "Odette",
         "it": "Odette",
         "ja": "オデット",
@@ -3137,13 +3753,19 @@
     },
     "Одетта/Галерея": {
         "en": "Odette/Gallery",
+        "es": "Odette/Galería",
+        "fr": "Odette/Galerie",
         "it": "Odette/Galleria"
     },
     "Оззи (неоднозначность)": {
+        "en": "Ozzie's",
         "fr": "Chez Ozzie (homonymie)",
         "pl": "Ozzie's (ujednoznacznienie)"
     },
     "Октавия": {
+        "en": "Octavia",
+        "es": "Octavia",
+        "fr": "Octavia",
         "hu": "Octavia",
         "ja": "オクタヴィア",
         "pl": "Octavia",
@@ -3151,12 +3773,16 @@
         "tr": "Octavia"
     },
     "Октавия/Биография": {
+        "en": "Octavia/History",
+        "es": "Octavia/Historia",
+        "fr": "Octavia/Histoire",
         "hu": "Octavia/Történelem",
         "it": "Octavia/Storia",
         "ja": "オクタヴィア/歴史",
         "tr": "Octavia/Tarih"
     },
     "Октавия/Взаимоотношения": {
+        "en": "Octavia/Relationships",
         "es": "Octavia/Relaciones",
         "fr": "Octavia/Relations",
         "hu": "Octavia/Kapcsolatok",
@@ -3164,8 +3790,20 @@
         "ja": "オクタヴィア/関係",
         "tr": "Octavia/İlişkileri"
     },
+    "Октавия/Галерея": {
+        "en": "Octavia/Gallery",
+        "es": "Octavia/Galería",
+        "fr": "Octavia/Galerie"
+    },
     "Октавия/Галерея/Мерчендайз": {
         "en": "Octavia/Gallery/Merchandise"
+    },
+    "Октавия/Галерея/Официальное творчество": {
+        "en": "Octavia/Gallery/Official Artwork",
+        "fr": "Octavia/Galerie/Artworks Officiels"
+    },
+    "Октавия/Цитаты": {
+        "en": "Octavia/Quotes"
     },
     "Оригинальный саундтрек Адского Босса (второй сезон)": {
         "en": "Helluva Boss: Season Two (Original Soundtrack)",
@@ -3197,10 +3835,15 @@
         "pt-br": "Hazbin Hotel: Segunda Temporada (Trilha Sonora Original)"
     },
     "Оружие массового отвлечения": {
+        "en": "Weapon of Mass Distraction",
         "tr": "Kitle Oyalama Silahı"
     },
     "Оружие массового отвлечения/Галерея": {
+        "en": "Weapon of Mass Distraction/Gallery",
         "fr": "Arme de distraction massive/Galerie"
+    },
+    "Оружие массового отвлечения/Транскрипт": {
+        "en": "Weapon of Mass Distraction/Transcript"
     },
     "Освящённая винтовка Кармайн": {
         "es": "Fusil Carmine con boquilla bendita",
@@ -3216,7 +3859,8 @@
         "en": "Blessed Knife"
     },
     "Особняк Андреальфуса": {
-        "en": "Andrealphus' mansion"
+        "en": "Andrealphus' mansion",
+        "es": "Mansión de Andrealphus"
     },
     "Особняк Вельзевул": {
         "en": "Beelzebub's mansion",
@@ -3226,9 +3870,15 @@
         "en": "Crimson's mansion"
     },
     "Особняк Столаса": {
+        "en": "Stolas' mansion",
+        "es": "Mansión de Stolas",
+        "fr": "Manoir de Stolas",
         "pl": "Posiadłość Stolasa"
     },
     "Отдых на Бонтауне": {
+        "en": "Vacay to Bonetown",
+        "es": "Vacay to Bonetown",
+        "fr": "Vacay to Bonetown",
         "pt-br": "Vacay to Bonetown"
     },
     "Отель «Чудо с одной звездой»": {
@@ -3360,6 +4010,8 @@
     },
     "Отец Энджела Даста": {
         "en": "Angel Dust's father",
+        "es": "Padre de Angel Dust",
+        "fr": "Père d'Angel Dust",
         "hu": "Angel Dust apja",
         "it": "Padre di Angel Dust",
         "ja": "エンジェル・ダストの父",
@@ -3367,14 +4019,29 @@
         "tr": "Melek Tozu'ın babası"
     },
     "Отряд Веросики": {
+        "en": "Verosika's crew",
+        "es": "Pandilla de Verosika",
         "fr": "Bande de Verosika",
         "pl": "Ekipa Verosiki"
     },
     "Отряд Веросики/Галерея": {
+        "en": "Verosika's crew/Gallery",
         "fr": "Bande de Verosika/Galerie"
+    },
+    "Официальный мерчендайз": {
+        "en": "Official Merchandise",
+        "fr": "Produits dérivés Officiel"
     },
     "Официальный мерчендайз/Аксессуары": {
         "en": "Official Merchandise/Accessories"
+    },
+    "Официальный мерчендайз/Значки": {
+        "en": "Official Merchandise/Pins",
+        "fr": "Produits dérivés Officiel/Pins"
+    },
+    "Официальный мерчендайз/Одежда": {
+        "en": "Official Merchandise/Apparel",
+        "fr": "Produits dérivés Officiel/T-Shirts, Hoodies, et Chandails"
     },
     "Официальный мерчендайз/Постеры, игровые коврики и принты": {
         "en": "Official Merchandise/Prints"
@@ -3428,32 +4095,55 @@
     "Папочки ссорятся/Транскрипт": {
         "en": "Dad Beat Dad/Transcript"
     },
+    "Патина Миллер": {
+        "en": "Patina Miller",
+        "es": "Patina Miller"
+    },
     "Патрик Пейдж": {
         "en": "Patrick Page"
     },
     "Патрик Стамп": {
         "en": "Patrick Stump"
     },
+    "Паучий поставщик": {
+        "fr": "Spider Provider"
+    },
     "Пеймон": {
+        "en": "Paimon",
+        "es": "Paimon",
+        "fr": "Paimon",
         "hu": "Paimon",
         "pl": "Pajmon",
         "tr": "Paimon"
     },
     "Пеймон/Взаимоотношения": {
+        "en": "Paimon/Relationships",
         "es": "Paimon/Relaciones",
         "hu": "Paimon/Kapcsolatok",
         "it": "Paimon/Relazioni",
         "ja": "パイモン/関係",
         "tr": "Paimon/İlişkileri"
     },
+    "Пеймон/Галерея": {
+        "en": "Paimon/Gallery",
+        "es": "Paimon/Galería",
+        "fr": "Paimon/Galerie"
+    },
+    "Пеймон/Цитаты": {
+        "en": "Paimon/Quotes"
+    },
     "Пентаграмм Сити": {
+        "en": "Pentagram City",
         "es": "Ciudad Pentagrama",
+        "fr": "Pentagram City",
         "hu": "Pentagram",
         "it": "Pentagram City",
         "pl": "Pentagram City"
     },
     "Персонажи": {
         "en": "Characters",
+        "es": "Personajes",
+        "fr": "Personnages",
         "it": "Personaggi",
         "ja": "キャラクター一覧",
         "pt-br": "Personagens"
@@ -3462,19 +4152,23 @@
         "ja": "Alastor's Reprise"
     },
     "Песня Страйкера": {
+        "en": "Striker's Song",
         "es": "Canción de Striker",
         "fr": "Chanson de Striker",
         "pl": "Striker's Song",
         "pt-br": "Striker's Song"
     },
     "Песня учительницы": {
+        "en": "Teacher's Song",
         "es": "Canción de la maestra",
+        "fr": "Teacher's Song",
         "hu": "Teacher's Song",
         "ja": "Teacher's Song",
         "pt-br": "Teacher's Song"
     },
     "Пилотный эпизод": {
         "cs": "That's Entertainment",
+        "en": "That's Entertainment",
         "pt-br": "That's Entertainment"
     },
     "Пилотный эпизод Helluva Boss": {
@@ -3484,17 +4178,22 @@
     },
     "Пилотный эпизод Адского Босса": {
         "de": "Helluva Boss Pilot",
+        "es": "Piloto de Helluva Boss",
+        "fr": "Pilote de Helluva Boss",
         "hu": "Helluva Boss Pilot",
         "ja": "Helluva Boss Pilot",
         "tr": "Helluva Boss Pilot"
     },
     "Пилотный эпизод Адского Босса/Галерея": {
         "en": "Helluva Boss Pilot/Gallery",
+        "es": "Piloto de Helluva Boss/Galería",
+        "fr": "Pilote de Helluva Boss/Galerie",
         "hu": "Helluva Boss Pilot/Galéria",
         "ja": "Helluva Boss Pilot/ギャラリー"
     },
     "Пилотный эпизод Адского Босса/Транскрипт": {
-        "en": "Helluva Boss Pilot/Transcript"
+        "en": "Helluva Boss Pilot/Transcript",
+        "fr": "Pilote de Helluva Boss/Transcription"
     },
     "Плохой день Барби": {
         "cs": "Barbie's Bad Day",
@@ -3515,6 +4214,9 @@
         "en": "Barbie's Bad Day/Transcript"
     },
     "Повелители": {
+        "en": "Overlords",
+        "es": "Overlords",
+        "fr": "Overlords",
         "it": "Signori Supremi",
         "pl": "Włodarze",
         "tr": "Efendiler",
@@ -3522,15 +4224,19 @@
     },
     "Полли Пейзано": {
         "en": "Paulie Paesano",
-        "es": "Frank McTickly Wrigglers",
+        "es": "Paulie Paesano",
         "fr": "Paulie Paesano"
     },
     "Полли Пейзано/Галерея": {
         "en": "Paulie Paesano/Gallery"
     },
+    "Полная чаша": {
+        "en": "Richest Cup"
+    },
     "Полнолуние": {
         "cs": "Úplněk",
         "en": "The Full Moon",
+        "es": "The Full Moon",
         "fr": "La Pleine lune",
         "hu": "Telihold",
         "it": "Luna piena",
@@ -3549,9 +4255,12 @@
         "en": "The Full Moon/Transcript"
     },
     "Порно студия": {
+        "es": "Porn Studios",
+        "fr": "Porn Studios",
         "it": "Porn Studios"
     },
     "Порностудия": {
+        "en": "Porn Studios",
         "pl": "Porn Studios"
     },
     "Последний звонок": {
@@ -3566,6 +4275,7 @@
         "en": "Curtain Call/Transcript"
     },
     "Посмотри на это": {
+        "en": "Look At This!",
         "es": "Look At This!",
         "fr": "Look At This!",
         "pt-br": "Look At This!"
@@ -3581,9 +4291,18 @@
         "fr": "Ambassade du Paradis",
         "it": "Ambasciata del Paradiso"
     },
+    "Почему он ненавидит её сильнее, чем любит меня?": {
+        "en": "Why Does He Hate Her More Than He Loves Me?",
+        "es": "Why Does He Hate Her More Than He Loves Me?",
+        "fr": "Why Does He Hate Her More Than He Loves Me?"
+    },
+    "Представление клоунов Маммона": {
+        "en": "Mammon's Clown Pageant"
+    },
     "Привет, Рози!": {
         "cs": "Ahoj, Rosie!",
         "en": "Hello Rosie!",
+        "es": "¡Hola, Rosie!",
         "fr": "Hello Rosie!",
         "hu": "Helló, Rosie!",
         "it": "Ciao Rosie!",
@@ -3602,10 +4321,13 @@
         "en": "Hello Rosie!/Transcript"
     },
     "Приворотное зелье": {
-        "en": "Love Potion"
+        "en": "Love Potion",
+        "es": "Poción de Amor"
     },
     "Прик": {
         "en": "Prick",
+        "es": "Prick",
+        "fr": "Prick",
         "hu": "Prick",
         "ja": "プリック",
         "tr": "Prick"
@@ -3625,12 +4347,19 @@
         "pt-br": "Bad With Us",
         "tr": "Yaramazlık Yap Bizle"
     },
+    "Пэрри Грипп": {
+        "en": "Parry Gripp",
+        "es": "Parry Gripp"
+    },
     "Пятьдесят оттенков яйца": {
         "fr": "Fifty Shades of Egg"
     },
     "Радио убило видео-звезду": {
         "cs": "Rádio zabilo video",
         "de": "Radio Killed the Video Star",
+        "en": "Radio Killed the Video Star",
+        "es": "Radio Killed the Video Star",
+        "fr": "Radio Killed the Video Star",
         "hu": "A rádió megölte a videó sztárját",
         "it": "La radio ha ucciso la televisione",
         "ja": "ビデオ・スターの悲劇",
@@ -3639,18 +4368,25 @@
         "tr": "Radyo Video Yıldızını Öldürdü"
     },
     "Радио убило видео-звезду/Галерея": {
+        "en": "Radio Killed the Video Star/Gallery",
+        "fr": "Radio Killed the Video Star/Galerie",
         "hu": "A rádió megölte a videó sztárját/Galéria"
     },
     "Радио убило видео-звезду/Транскрипт": {
+        "en": "Radio Killed the Video Star/Transcript",
         "pl": "Radio zabiło gwiazdę wideo/Transkrypt"
     },
     "Радио-Демон": {
+        "en": "The Radio Demon (comic)",
+        "es": "The Radio Demon",
         "fr": "A Day in the Afterlife",
         "it": "A day in the afterlife",
         "ja": "The Radio Demon（漫画）"
     },
     "Раздражение (песня о любви)": {
         "en": "Piss (A Love Song)",
+        "es": "Piss (A Love Song)",
+        "fr": "Piss (A Love Song)",
         "hu": "Piss (A Love Song)",
         "it": "Livido (Una canzone d'amore)",
         "ja": "Piss (A Love Song)",
@@ -3659,12 +4395,18 @@
     },
     "Раззл и Даззл": {
         "de": "Razzle und Dazzle",
+        "en": "Razzle and Dazzle",
+        "es": "Razzle y Dazzle",
+        "fr": "Razzle et Dazzle",
         "hu": "Razzle és Dazzle",
         "it": "Razzle e Dazzle",
         "pl": "Razzle i Dazzle",
         "tr": "Razzle ve Dazzle"
     },
     "Раззл и Даззл/Галерея": {
+        "en": "Razzle and Dazzle/Gallery",
+        "es": "Razzle y Dazzle/Galería",
+        "fr": "Razzle et Dazzle/Galerie",
         "it": "Razzle e Dazzle/Galleria"
     },
     "Раззл и Даззл/Галерея/Мерчендайз": {
@@ -3674,17 +4416,28 @@
         "de": "Himmel",
         "en": "Heaven",
         "es": "Cielo",
+        "fr": "Paradis",
         "it": "Paradiso",
         "pl": "Niebo",
         "tr": "Cennet",
         "zh": "天堂"
     },
     "Ральфи": {
+        "en": "Ralphie",
+        "es": "Ralphie",
+        "fr": "Ralphie",
         "hu": "Ralphie",
         "pl": "Ralphie",
         "tr": "Ralphie"
     },
+    "Ральфи/Галерея": {
+        "en": "Ralphie/Gallery",
+        "fr": "Ralphie/Galerie"
+    },
     "Ранчо Грубое Перекати-поле": {
+        "en": "Rough n' Tumbleweed Ranch",
+        "es": "Rancho el Arbusto Rudo y Rodante",
+        "fr": "Rough n' Tumbleweed Ranch",
         "pl": "Ranczo Rough n' Tumbleweed"
     },
     "Распутная паучья поп-полька": {
@@ -3692,6 +4445,8 @@
     },
     "Рассказчик": {
         "en": "Storyteller",
+        "es": "Storyteller",
+        "fr": "Storyteller",
         "hu": "Mesemondó",
         "it": "Cantastorie",
         "ja": "ストーリーテラー",
@@ -3706,6 +4461,9 @@
     "Рассказчик/Транскрипт": {
         "en": "Storyteller/Transcript"
     },
+    "Реми Эджерли": {
+        "en": "Remy Edgerly"
+    },
     "Реприза Аластора": {
         "en": "Alastor's Reprise",
         "es": "Alastor's Reprise",
@@ -3715,37 +4473,50 @@
         "pt-br": "Alastor's Reprise"
     },
     "Ресторан Оззи": {
+        "en": "Ozzie's (location)",
+        "es": "Ozzie's (ubicación)",
         "fr": "Chez Ozzie (lieu)",
         "pl": "Ozzie's (miejsce)"
     },
     "Ричард Хорвиц": {
         "cs": "Richard Horvitz",
+        "en": "Richard Horvitz",
+        "es": "Richard Horvitz",
+        "fr": "Richard Steven Horvitz",
         "ja": "リチャード・ホーヴィッツ",
         "pl": "Richard Horvitz"
     },
     "Робо Физз": {
+        "en": "Robo Fizz",
         "es": "Fizzarolli Robot",
+        "fr": "Robo Fizz",
         "hu": "Robo Fizz",
         "ja": "ロボ・フィッツァローリ",
         "pl": "Robo Fizz",
         "tr": "Robo Fizz"
     },
     "Робо Физз/Биография": {
+        "en": "Robo Fizz/History",
         "es": "Fizzarolli Robot/Historia",
+        "fr": "Robo Fizz/Histoire",
         "hu": "Robo Fizz/Történelem",
         "it": "Robo Fizz/Storia",
         "ja": "ロボ・フィッツァローリ/歴史",
         "tr": "Robo Fizz/Tarih"
     },
     "Робо Физз/Взаимоотношения": {
+        "en": "Robo Fizz/Relationships",
         "es": "Fizzarolli Robot/Relaciones",
+        "fr": "Robo Fizz/Relations",
         "hu": "Robo Fizz/Kapcsolatok",
         "it": "Robo Fizz/Relazioni",
         "ja": "ロボ・フィッツァローリ/関係",
         "tr": "Robo Fizz/İlişkileri"
     },
     "Робо Физз/Галерея": {
-        "es": "Fizzarolli Robot/Galería"
+        "en": "Robo Fizz/Gallery",
+        "es": "Fizzarolli Robot/Galería",
+        "fr": "Robo Fizz/Galerie"
     },
     "Робо Физз/Галерея/Мерчендайз": {
         "en": "Robo Fizz/Gallery/Merchandise"
@@ -3754,7 +4525,9 @@
         "en": "Robo Fizz/Gallery/Official Artwork"
     },
     "Робо Физз/Цитаты": {
-        "es": "Fizzarolli Robot/Frases"
+        "en": "Robo Fizz/Quotes",
+        "es": "Fizzarolli Robot/Frases",
+        "fr": "Robo Fizz/Citations"
     },
     "Робо-шоу Физзи": {
         "fr": "Fizzi's Robo Show"
@@ -3763,6 +4536,9 @@
         "es": "An Egg Bois Christmas"
     },
     "Рози": {
+        "en": "Rosie",
+        "es": "Rosie",
+        "fr": "Rosie",
         "hu": "Rosie",
         "it": "Rosie",
         "ja": "ロージー",
@@ -3770,25 +4546,40 @@
         "tr": "Rosie"
     },
     "Рози/Биография": {
+        "en": "Rosie/History",
+        "es": "Rosie/Historia",
+        "fr": "Rosie/Histoire",
         "hu": "Rosie/Történelem",
         "it": "Rosie/Storia",
         "ja": "ロージー/歴史",
         "tr": "Rosie/Tarih"
     },
     "Рози/Взаимоотношения": {
+        "en": "Rosie/Relationships",
+        "es": "Rosie/Relaciones",
+        "fr": "Rosie/Relations",
         "hu": "Rosie/Kapcsolatok",
         "it": "Rosie/Relazioni",
         "ja": "ロージー/関係",
         "tr": "Rosie/İlişkileri"
     },
     "Рози/Галерея": {
+        "en": "Rosie/Gallery",
+        "es": "Rosie/Galería",
+        "fr": "Rosie/Galerie",
         "it": "Rosie/Galleria"
     },
     "Рози/Галерея/Мерчендайз": {
         "en": "Rosie/Gallery/Merchandise"
     },
+    "Рози/Цитаты": {
+        "en": "Rosie/Quotes",
+        "fr": "Rosie/Citations"
+    },
     "Роландо": {
         "en": "Rolando",
+        "es": "Rolando",
+        "fr": "Rolando",
         "pl": "Rolando"
     },
     "Роландо/Галерея": {
@@ -3797,12 +4588,20 @@
     "Роландо/Цитаты": {
         "en": "Rolando/Quotes"
     },
+    "Рошель Диаманте": {
+        "en": "Rochelle Diamante"
+    },
     "Ру": {
+        "en": "Roo",
+        "es": "Roo",
+        "fr": "Roo",
         "ja": "ルー",
         "pl": "Roo"
     },
     "Рывок к искуплению": {
         "en": "Speedrun To Redemption",
+        "es": "Speedrun To Redemption",
+        "fr": "Speedrun To Redemption",
         "hu": "Speedrun To Redemption",
         "it": "La tua redenzione",
         "ja": "Speedrun To Redemption",
@@ -3810,18 +4609,25 @@
         "tr": "Kefaret İçin Hızlı Koşu"
     },
     "Салли Мэй": {
+        "en": "Sallie May",
+        "es": "Sallie May",
+        "fr": "Sallie May",
         "hu": "Sallie May",
         "ja": "サリー・メイ",
         "pl": "Sallie May",
         "tr": "Sallie May"
     },
     "Салли Мэй/Биография": {
+        "en": "Sallie May/History",
+        "es": "Sallie May/Historia",
+        "fr": "Sallie May/Histoire",
         "hu": "Sallie May/Történelem",
         "it": "Sallie May/Storia",
         "ja": "サリー・メイ/歴史",
         "tr": "Sallie May/Tarih"
     },
     "Салли Мэй/Взаимоотношения": {
+        "en": "Sallie May/Relationships",
         "es": "Sallie May/Relaciones",
         "fr": "Sallie May/Relations",
         "hu": "Sallie May/Kapcsolatok",
@@ -3829,11 +4635,25 @@
         "ja": "サリー・メイ/関係",
         "tr": "Sallie May/İlişkileri"
     },
+    "Салли Мэй/Галерея": {
+        "en": "Sallie May/Gallery",
+        "es": "Sallie May/Galería",
+        "fr": "Sallie May/Galerie"
+    },
     "Салли Мэй/Галерея/Мерчендайз": {
         "en": "Sallie May/Gallery/Merchandise"
     },
+    "Салли Мэй/Цитаты": {
+        "en": "Sallie May/Quotes"
+    },
+    "Сара Стайлз": {
+        "en": "Sarah Stiles",
+        "es": "Sarah Stiles"
+    },
     "Сатана": {
         "en": "Satan",
+        "es": "Satán",
+        "fr": "Satan",
         "hu": "Sátán",
         "pl": "Szatan",
         "tr": "Şeytan"
@@ -3841,6 +4661,7 @@
     "Сатана/Взаимоотношения": {
         "en": "Satan/Relationships",
         "es": "Satán/Relaciones",
+        "fr": "Satan/Relations",
         "hu": "Sátán/Kapcsolatok",
         "it": "Satana/Relazioni",
         "ja": "サタン/関係",
@@ -3854,7 +4675,8 @@
         "en": "Satan/Gallery/Merchandise"
     },
     "Сатана/Цитаты": {
-        "en": "Satan/Quotes"
+        "en": "Satan/Quotes",
+        "fr": "Satan/Citations"
     },
     "Сделка": {
         "en": "It's A Deal",
@@ -3875,15 +4697,23 @@
         "en": "It's A Deal/Transcript"
     },
     "Севиафан фон Элдрич": {
+        "en": "Seviathan von Eldritch",
+        "es": "Seviathan von Eldritch",
+        "fr": "Seviathan von Eldritch",
         "it": "Seviathan von Eldritch",
         "tr": "Seviathan von Eldritch"
     },
     "Семь Смертных Грехов": {
+        "en": "Seven Deadly Sins",
         "es": "Los sietes pecados capitales",
+        "fr": "Sept Péchés Capitaux",
         "hu": "Hét főbűn",
         "pl": "Siedem Grzechów Głównych"
     },
     "Сера": {
+        "en": "Sera",
+        "es": "Sera",
+        "fr": "Sera",
         "hu": "Sera",
         "it": "Sera",
         "ja": "セラ",
@@ -3901,6 +4731,8 @@
     },
     "Сера/Галерея": {
         "en": "Sera/Gallery",
+        "es": "Sera/Galería",
+        "fr": "Sera/Galerie",
         "it": "Sera/Galleria"
     },
     "Сера/Цитаты": {
@@ -3927,6 +4759,10 @@
         "en": "Cécilia Goncalves",
         "es": "Cécilia Goncalves"
     },
+    "Сет Аткинсон": {
+        "en": "Seth Atkinson",
+        "es": "Seth Atkinson"
+    },
     "Скай Хенвуд": {
         "en": "Skye Henwood"
     },
@@ -3938,6 +4774,10 @@
         "pt-br": "Cotton Candy",
         "th": "ขนมสายไหม"
     },
+    "Смотровая площадка влюблённых": {
+        "en": "Lovers' Lookout",
+        "es": "Mirador de los enamorados"
+    },
     "Согласие": {
         "en": "Consent",
         "es": "Consentimiento"
@@ -3945,11 +4785,13 @@
     "Сом-монстр": {
         "en": "Catfish Monster",
         "es": "Bagre Monstruo",
+        "fr": "Monstre poisson-chat",
         "hu": "Catfish Monster",
         "pl": "Sumi Potwór"
     },
     "Специальное среднесезонное великолепное музыкальное предложение Маммона (feat Физзаролли)": {
         "cs": "MAMONŮV MIMOŘÁDNÝ MUZIKÁL UPROSTŘED ŘADY (spolu s Fizzarollim)",
+        "en": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)",
         "es": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)",
         "fr": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)",
         "hu": "MAMMON CSODÁLATOS SZEZONKÖZI ZENEI KÜLÖNLEGESSÉGE (Fizzarollival)",
@@ -3961,8 +4803,12 @@
         "tr": "MAMMON'IN MUHTEŞEM MÜZİKALİ-SEZON ORTASI ÖZEL (Fizzarrolli ile)"
     },
     "Специальное среднесезонное великолепное музыкальное предложение Маммона (feat Физзаролли)/Галерея": {
+        "en": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)/Gallery",
         "fr": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)/Galerie",
         "hu": "MAMMON CSODÁLATOS SZEZONKÖZI ZENEI KÜLÖNLEGESSÉGE (Fizzarollival)/Galéria"
+    },
+    "Специальное среднесезонное великолепное музыкальное предложение Маммона (feat Физзаролли)/Транскрипт": {
+        "en": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)/Transcript"
     },
     "Справься со мной": {
         "en": "Handle Me",
@@ -3977,35 +4823,64 @@
         "pt-br": "Crashin' a Muthafuckin' Wedding"
     },
     "Стелла": {
+        "en": "Stella",
+        "es": "Stella",
+        "fr": "Stella",
         "hu": "Stella",
         "ja": "ステラ",
         "pl": "Stella",
         "tr": "Stella"
     },
     "Стелла/Биография": {
+        "en": "Stella/History",
+        "es": "Stella/Historia",
         "hu": "Stella/Történelem",
         "it": "Stella/Storia",
         "ja": "ステラ/歴史",
         "tr": "Stella/Tarih"
     },
     "Стелла/Взаимоотношения": {
+        "en": "Stella/Relationships",
         "es": "Stella/Relaciones",
+        "fr": "Stella/Relations",
         "hu": "Stella/Kapcsolatok",
         "it": "Stella/Relazioni",
         "ja": "ステラ/関係",
         "tr": "Stella/İlişkileri"
     },
+    "Стелла/Галерея": {
+        "en": "Stella/Gallery",
+        "es": "Stella/Galería",
+        "fr": "Stella/Galerie"
+    },
     "Стелла/Галерея/Мерчендайз": {
         "en": "Stella/Gallery/Merchandise"
     },
+    "Стелла/Галерея/Официальное творчество": {
+        "en": "Stella/Gallery/Official Artwork",
+        "fr": "Stella/Galerie/Artworks Officiels"
+    },
+    "Стелла/Цитаты": {
+        "en": "Stella/Quotes",
+        "fr": "Stella/Citations"
+    },
     "Стефани Беатрис": {
         "cs": "Stephanie Beatriz",
+        "en": "Stephanie Beatriz",
+        "es": "Stephanie Beatriz",
         "hu": "Stephanie Beatriz",
         "it": "Stephanie Beatriz",
         "ja": "ステファニー・ベアトリス"
     },
+    "Стильный Оккультизм": {
+        "en": "Stylish Occult",
+        "es": "Stylish Occult"
+    },
     "Столас": {
         "de": "Stolas",
+        "en": "Stolas",
+        "es": "Stolas",
+        "fr": "Stolas",
         "hu": "Stolas",
         "it": "Stolas",
         "ja": "ストラス",
@@ -4015,51 +4890,96 @@
         "tr": "Stolas",
         "zh": "斯托拉斯"
     },
+    "Столас говорит": {
+        "en": "Stolas Speaks",
+        "es": "Stolas Speaks",
+        "fr": "Stolas Speaks"
+    },
     "Столас поёт": {
+        "en": "Stolas Sings",
+        "es": "Stolas canta",
+        "fr": "Stolas Chante",
         "hu": "Stolas Sings",
         "it": "Stolas Canta",
         "pl": "Stolas Sings",
         "pt-br": "Stolas Sings"
     },
     "Столас/Биография": {
+        "en": "Stolas/History",
+        "es": "Stolas/Historia",
+        "fr": "Stolas/Histoire",
         "hu": "Stolas/Történelem",
         "it": "Stolas/Storia",
         "ja": "ストラス/歴史",
         "tr": "Stolas/Tarih"
     },
     "Столас/Взаимоотношения": {
+        "en": "Stolas/Relationships",
+        "es": "Stolas/Relaciones",
+        "fr": "Stolas/Relations",
         "hu": "Stolas/Kapcsolatok",
         "it": "Stolas/Relazioni",
         "ja": "ストラス/関係",
         "tr": "Stolas/İlişkileri"
     },
     "Столас/Галерея": {
+        "en": "Stolas/Gallery",
+        "es": "Stolas/Galería",
+        "fr": "Stolas/Galerie",
         "it": "Stolas/Galleria"
     },
     "Столас/Галерея/Мерчендайз": {
         "en": "Stolas/Gallery/Merchandise"
     },
+    "Столас/Галерея/Официальное творчество": {
+        "en": "Stolas/Gallery/Official Artwork",
+        "fr": "Stolas/Galerie/Artworks Officiels"
+    },
+    "Столас/Цитаты": {
+        "en": "Stolas/Quotes",
+        "fr": "Stolas/Citations"
+    },
     "Страйкер": {
+        "en": "Striker",
+        "es": "Striker",
+        "fr": "Striker",
         "hu": "Striker",
         "ja": "ストライカー",
         "pl": "Striker",
         "tr": "Striker"
     },
     "Страйкер/Биография": {
+        "en": "Striker/History",
+        "es": "Striker/Historia",
+        "fr": "Striker/Histoire",
         "hu": "Striker/Történelem",
         "it": "Striker/Storia",
         "ja": "ストライカー/歴史",
         "tr": "Striker/Tarih"
     },
     "Страйкер/Взаимоотношения": {
+        "en": "Striker/Relationships",
+        "es": "Striker/Relaciones",
         "fr": "Striker/Relations",
         "hu": "Striker/Kapcsolatok",
         "it": "Striker/Relazioni",
         "ja": "ストライカー/関係",
         "tr": "Striker/İlişkileri"
     },
+    "Страйкер/Галерея": {
+        "en": "Striker/Gallery",
+        "es": "Striker/Galería",
+        "fr": "Striker/Galerie"
+    },
     "Страйкер/Галерея/Мерчендайз": {
         "en": "Striker/Gallery/Merchandise"
+    },
+    "Страйкер/Галерея/Официальное творчество": {
+        "en": "Striker/Gallery/Official Artwork",
+        "fr": "Striker/Galerie/Artworks Officiels"
+    },
+    "Страйкер/Цитаты": {
+        "en": "Striker/Quotes"
     },
     "Студия новостей 666": {
         "en": "666 News Studio",
@@ -4067,12 +4987,18 @@
         "fr": "666 News Studio",
         "it": "666 News Studio"
     },
+    "Стэмпер": {
+        "es": "Stamper"
+    },
     "Суккубы": {
+        "en": "Succubi",
+        "es": "Súcubos",
         "fr": "Succubes",
         "pl": "Sukkuby"
     },
     "Счастливого Грехждества": {
         "en": "Merry Sinsmas",
+        "es": "Merry Sinsmas",
         "fr": "Merry Sinsmas",
         "hu": "Merry Sinsmas",
         "ja": "Merry Sinsmas",
@@ -4090,8 +5016,24 @@
         "pt-br": "Happy Day in Hell",
         "tr": "Hoş Bir Gün Cehennemde"
     },
+    "Сью Ян Чейз": {
+        "en": "Su Jan Chase",
+        "es": "Su Jan Chase"
+    },
+    "Сэм Миллер": {
+        "en": "Sam Miller",
+        "es": "Sam Miller"
+    },
+    "Сэм Хафт": {
+        "en": "Sam Haft",
+        "es": "Sam Haft",
+        "fr": "Sam Haft"
+    },
     "Сэр Пентиус": {
         "de": "Sir Pentious",
+        "en": "Sir Pentious",
+        "es": "Sir Pentious",
+        "fr": "Sir Pentious",
         "hu": "Sir Pentious",
         "it": "Sir Pentious",
         "ja": "サー・ペンシャス",
@@ -4099,32 +5041,59 @@
         "th": "เซอร์ เพนเทียส",
         "tr": "Sör Pentious"
     },
+    "Сэр Пентиус нахрен подыхает": {
+        "fr": "Sir Pentious Fucking Dies"
+    },
     "Сэр Пентиус/Биография": {
+        "en": "Sir Pentious/History",
+        "es": "Sir Pentious/Historia",
+        "fr": "Sir Pentious/Histoire",
         "hu": "Sir Pentious/Történelem",
         "it": "Sir Pentious/Storia",
         "ja": "サー・ペンシャス/歴史",
         "tr": "Sör Pentious/Tarih"
     },
     "Сэр Пентиус/Взаимоотношения": {
+        "en": "Sir Pentious/Relationships",
+        "es": "Sir Pentious/Relaciones",
+        "fr": "Sir Pentious/Relations",
         "hu": "Sir Pentious/Kapcsolatok",
         "it": "Sir Pentious/Relazioni",
         "ja": "サー・ペンシャス/関係",
         "tr": "Sör Pentious/İlişkileri"
     },
     "Сэр Пентиус/Галерея": {
+        "en": "Sir Pentious/Gallery",
+        "es": "Sir Pentious/Galería",
+        "fr": "Sir Pentious/Galerie",
         "it": "Sir Pentious/Galleria",
         "ja": "サー・ペンシャス/ギャラリー"
     },
     "Сэр Пентиус/Галерея/Мерчендайз": {
         "en": "Sir Pentious/Gallery/Merchandise"
     },
+    "Сэр Пентиус/Галерея/Официальное творчество": {
+        "en": "Sir Pentious/Gallery/Official Artwork",
+        "fr": "Sir Pentious/Galerie/Artworks Officiels"
+    },
+    "Сэр Пентиус/Цитаты": {
+        "en": "Sir Pentious/Quotes",
+        "fr": "Sir Pentious/Citations"
+    },
     "Таблетки счастья": {
         "en": "Happy Pills"
+    },
+    "Театр Маммона": {
+        "en": "Mammon Theatre",
+        "es": "Teatro Mammón"
     },
     "Территориальные войны": {
         "es": "Guerras territoriales"
     },
     "Тилла": {
+        "en": "Tilla",
+        "es": "Tilla",
+        "fr": "Tilla",
         "hu": "Tilla",
         "ja": "ティラ",
         "pl": "Tilla"
@@ -4155,6 +5124,9 @@
         "hu": "Tom Kenny"
     },
     "Том Тренч": {
+        "en": "Tom Trench",
+        "es": "Tom Trench",
+        "fr": "Tom Trench",
         "hu": "Tom Trench",
         "it": "Tom Trench",
         "ja": "トム・トレンチ",
@@ -4162,25 +5134,46 @@
         "tr": "Tom Trench"
     },
     "Том Тренч/Взаимоотношения": {
+        "en": "Tom Trench/Relationships",
+        "es": "Tom Trench/Relaciones",
+        "fr": "Tom Trench/Relations",
         "hu": "Tom Trench/Kapcsolatok",
         "it": "Tom Trench/Relazioni",
         "ja": "トム・トレンチ/関係",
         "tr": "Tom Trench/İlişkileri"
     },
     "Том Тренч/Галерея": {
+        "en": "Tom Trench/Gallery",
+        "es": "Tom Trench/Galería",
+        "fr": "Tom Trench/Galerie",
         "it": "Tom Trench/Galleria"
     },
+    "Том Тренч/Цитаты": {
+        "en": "Tom Trench/Quotes",
+        "fr": "Tom Trench/Citations"
+    },
     "Торговый центр Рози": {
+        "en": "Rosie's Emporium",
+        "es": "Rosie's Emporium",
+        "fr": "Rosie's Emporium",
         "it": "Emporio di Rosie",
         "pl": "Emporium Rosie"
     },
     "Трэвис": {
         "de": "Travis",
+        "en": "Travis",
+        "es": "Travis",
+        "fr": "Travis",
         "hu": "Travis",
         "it": "Travis",
         "ja": "トラヴィス",
         "pl": "Travis",
         "tr": "Travis"
+    },
+    "Трэвис/Галерея": {
+        "en": "Travis/Gallery",
+        "es": "Travis/Galería",
+        "fr": "Travis/Galerie"
     },
     "Тур прощений": {
         "cs": "Omluvné turné",
@@ -4204,11 +5197,17 @@
         "en": "Apology Tour/Transcript"
     },
     "Ты будешь в порядке": {
+        "en": "You Will Be Okay",
+        "es": "You Will Be Okay",
+        "fr": "You Will Be Okay",
         "ja": "You Will Be Okay",
         "pt-br": "You Will Be Okay"
     },
     "Ты не знала": {
         "de": "Du wusstest das nicht",
+        "en": "You Didn't Know",
+        "es": "You Didn't Know",
+        "fr": "You Didn't Know",
         "hu": "You Didn't Know",
         "it": "Quindi non sai",
         "ja": "You Didn't Know",
@@ -4218,6 +5217,8 @@
     },
     "У Оззи": {
         "cs": "U Ozzieho (epizoda)",
+        "en": "Ozzie's (episode)",
+        "es": "Ozzie's (episodio)",
         "fr": "Chez Ozzie (épisode)",
         "hu": "Ozzie's",
         "ja": "オジーの店（エピソード）",
@@ -4226,10 +5227,15 @@
         "tr": "Ozzie'nin Yeri (bölüm)"
     },
     "У Оззи/Галерея": {
+        "en": "Ozzie's (episode)/Gallery",
         "fr": "Chez Ozzie (épisode)/Galerie",
         "hu": "Ozzie's/Galéria"
     },
+    "У Оззи/Транскрипт": {
+        "en": "Ozzie's (episode)/Transcript"
+    },
     "У тебя есть сила (большое шоу Милли)": {
+        "en": "You Got the Power (Millie's Big Show)",
         "es": "You Got the Power (Millie's Big Show)",
         "fr": "You Got the Power (Millie's Big Show)",
         "pt-br": "You Got the Power (O Grande Show da Millie)"
@@ -4237,6 +5243,7 @@
     "Уберись!": {
         "de": "Saubermachen",
         "en": "Clean It Up!",
+        "es": "¡A limpiar!",
         "fr": "Clean It Up!",
         "hu": "Clean It Up!",
         "it": "Pulirò",
@@ -4247,6 +5254,9 @@
     },
     "Убийственная семейка": {
         "cs": "Vražedná rodinka",
+        "en": "Murder Family",
+        "es": "Murder Family",
+        "fr": "Murder Family",
         "hu": "Gyilkos család",
         "it": "Una famiglia di assassini",
         "ja": "殺しの一家",
@@ -4256,13 +5266,21 @@
         "tr": "Cinayet Ailesi"
     },
     "Убийственная семейка/Галерея": {
+        "en": "Murder Family/Gallery",
         "es": "Murder Family/Galería",
+        "fr": "Murder Family/Galerie",
         "hu": "Gyilkos család/Galéria",
         "ja": "殺しの一家/ギャラリー"
+    },
+    "Убийственная семейка/Транскрипт": {
+        "en": "Murder Family/Transcript"
     },
     "Увертюра": {
         "cs": "Předehra",
         "de": "Ouvertüre",
+        "en": "Overture",
+        "es": "Obertura",
+        "fr": "Overture",
         "hu": "Nyitány",
         "it": "Ouverture",
         "ja": "幕開け",
@@ -4271,14 +5289,21 @@
         "tr": "Giriş"
     },
     "Увертюра/Галерея": {
+        "en": "Overture/Gallery",
         "es": "Obertura/Galería",
+        "fr": "Overture/Galerie",
         "hu": "Nyitány/Galéria"
     },
     "Увертюра/Транскрипт": {
+        "en": "Overture/Transcript",
+        "es": "Obertura/Transcripción",
         "pl": "Uwertura/Transkrypt"
     },
     "Увидеть звёзды": {
         "cs": "Pozorování hvězd",
+        "en": "Seeing Stars",
+        "es": "Seeing Stars",
+        "fr": "Seeing Stars",
         "hu": "Csillagles",
         "it": "Le lacrime di Azatoth",
         "ja": "星を見るため",
@@ -4288,25 +5313,50 @@
         "tr": "Yıldızları Seyretmek"
     },
     "Увидеть звёзды/Галерея": {
+        "en": "Seeing Stars/Gallery",
+        "fr": "Seeing Stars/Galerie",
         "hu": "Csillagles/Galéria"
     },
+    "Увидеть звёзды/Транскрипт": {
+        "en": "Seeing Stars/Transcript"
+    },
     "Уилл Стэмпер": {
-        "cs": "Stamper"
+        "cs": "Stamper",
+        "en": "Stamper"
     },
     "Уолли Уокфорд": {
+        "en": "Wally Wackford",
+        "es": "Wally Wackford",
+        "fr": "Wally Wackford",
         "hu": "Wally Wackford",
         "ja": "ウォーリー・ワックフォード",
         "pl": "Wally Wackford",
         "tr": "Wally Wackford"
     },
     "Уолли Уокфорд/Биография": {
+        "en": "Wally Wackford/History",
+        "es": "Wally Wackford/Historia",
+        "fr": "Wally Wackford/Histoire",
         "hu": "Wally Wackford/Történelem",
         "it": "Wally Wackford/Storia",
         "ja": "ウォーリー・ワックフォード/歴史",
         "tr": "Wally Wackford/Tarih"
     },
+    "Уолли Уокфорд/Галерея": {
+        "en": "Wally Wackford/Gallery",
+        "fr": "Wally Wackford/Galerie"
+    },
+    "Уолли Уокфорд/Галерея/Мерчендайз": {
+        "en": "Wally Wackford/Gallery/Merchandise"
+    },
+    "Уолли Уокфорд/Цитаты": {
+        "en": "Wally Wackford/Quotes"
+    },
     "Упс": {
         "cs": "Jejda",
+        "en": "Oops",
+        "es": "Ups",
+        "fr": "Oops",
         "hu": "Upsz",
         "it": "È stato un incidente",
         "ja": "あれれ",
@@ -4316,7 +5366,12 @@
         "tr": "Tüh"
     },
     "Упс/Галерея": {
+        "en": "Oops/Gallery",
+        "fr": "Oops/Galerie",
         "hu": "Upsz/Galéria"
+    },
+    "Упс/Транскрипт": {
+        "en": "Oops/Transcript"
     },
     "Услышь мою надежду": {
         "de": "Meine Hoffnung",
@@ -4326,7 +5381,7 @@
         "hu": "Hear My Hope",
         "ja": "Hear My Hope",
         "pt-br": "Hear My Hope",
-        "tr": "Duy Bizi"
+        "tr": "Umudum"
     },
     "Фабрика большого Оззи": {
         "en": "Asmodeus's factory",
@@ -4337,7 +5392,8 @@
     },
     "Фестиваль урожайной луны": {
         "cs": "Festival dožínkového měsíce",
-        "es": "Festival de la Luna de la Cosecha",
+        "en": "The Harvest Moon Festival",
+        "es": "The Harvest Moon Festival",
         "fr": "Le Festival de la Lune des Moissons",
         "hu": "A holdszüreti bál",
         "it": "Il Festival della luna del raccolto",
@@ -4351,9 +5407,13 @@
         "fr": "Festival de la Lune des Moissons (évènement)"
     },
     "Фестиваль урожайной луны/Галерея": {
+        "en": "The Harvest Moon Festival/Gallery",
         "fr": "Le Festival de la Lune des Moissons/Galerie",
         "hu": "A holdszüreti bál/Galéria",
         "pl": "Księżycowe Żniwa/Galeria"
+    },
+    "Фестиваль урожайной луны/Транскрипт": {
+        "en": "The Harvest Moon Festival/Transcript"
     },
     "ФиззаРолли и друзья": {
         "en": "FizzaRolli 'n Friends",
@@ -4563,6 +5623,7 @@
     "Херувимы": {
         "de": "Cherub",
         "en": "Cherubs",
+        "es": "Querubines",
         "fr": "Chérubins",
         "pl": "Cheruby",
         "tr": "Çocuk Melekler",
@@ -4572,6 +5633,7 @@
         "en": "Jorge R. Gutierrez"
     },
     "Хронология": {
+        "en": "Timeline",
         "es": "Cronología",
         "fr": "Chronologie"
     },
@@ -4580,6 +5642,7 @@
     },
     "Цирк": {
         "cs": "Cirkus",
+        "en": "The Circus",
         "es": "El circo",
         "fr": "Le Cirque",
         "hu": "A Cirkusz",
@@ -4591,8 +5654,12 @@
         "tr": "Sirk"
     },
     "Цирк/Галерея": {
+        "en": "The Circus/Gallery",
         "fr": "Le Cirque/Galerie",
         "hu": "A Cirkusz/Galéria"
+    },
+    "Цирк/Транскрипт": {
+        "en": "The Circus/Transcript"
     },
     "Чарли": {
         "pt-br": "Charlie Morningstar"
@@ -4668,6 +5735,7 @@
     },
     "Часовая башня": {
         "en": "Clock Tower",
+        "es": "Torre del Reloj",
         "fr": "La Tour de l'Horloge",
         "it": "Torre dell'Orologio"
     },
@@ -4760,13 +5828,23 @@
         "es": "Jinhee Joung"
     },
     "Член мустанга": {
+        "fr": "Mustang Dong",
         "pt-br": "Mustang Dong"
     },
     "Чёрная метка": {
         "en": "The Black Dot"
     },
+    "Шахта Страйкера": {
+        "en": "Striker's mine shaft"
+    },
+    "Шоба Нараян": {
+        "en": "Shoba Narayan",
+        "es": "Shoba Narayan"
+    },
     "Шоквав": {
         "en": "Shok.wav",
+        "es": "Tibu.wav",
+        "fr": "Shok.wav",
         "tr": "Shok.wav"
     },
     "Шоквав/Галерея": {
@@ -4774,6 +5852,9 @@
     },
     "Шоу должно продолжаться": {
         "cs": "Musíme pokračovat",
+        "en": "The Show Must Go On",
+        "es": "The Show Must Go On",
+        "fr": "The Show Must Go On",
         "hu": "A show-nak folytatódnia kell",
         "it": "Lo spettacolo deve continuare",
         "ja": "ザ・ショー・マスト・ゴー・オン",
@@ -4782,10 +5863,17 @@
         "tr": "Gösteri Devam Etmeli"
     },
     "Шоу должно продолжаться/Галерея": {
+        "en": "The Show Must Go On/Gallery",
+        "fr": "The Show Must Go On/Galerie",
         "hu": "A show-nak folytatódnia kell/Galéria"
+    },
+    "Шоу должно продолжаться/Транскрипт": {
+        "en": "The Show Must Go On/Transcript"
     },
     "Штаб-квартира И.М.П": {
         "en": "I.M.P Headquarters",
+        "es": "Sede de I.M.P.",
+        "fr": "Quartier général d'I.M.P",
         "ja": "ＩＭＰ本部",
         "pl": "Siedziba I.M.P"
     },
@@ -4973,6 +6061,9 @@
         "es": "I Like It",
         "fr": "I Like It"
     },
+    "Эту малышку зовут Ниффти": {
+        "fr": "This Little Darling Is Niffty"
+    },
     "Эшли Николс": {
         "en": "Ashley Nichols",
         "es": "Ashley Nichols",
@@ -5000,6 +6091,9 @@
     },
     "Яд": {
         "de": "Gift",
+        "en": "Poison",
+        "es": "Veneno",
+        "fr": "Poison",
         "hu": "Poison",
         "it": "Veleno",
         "ja": "Poison",
@@ -5010,7 +6104,9 @@
     "Яичница-болтунья": {
         "cs": "Míchaná vajíčka",
         "de": "Vertrauen ist gut, Eier sind besser",
+        "en": "Scrambled Eggs",
         "es": "Huevos revueltos",
+        "fr": "Œufs brouillés",
         "hu": "Rántotta",
         "it": "Uova strapazzate",
         "ja": "スクランブルなエッギーズ",
@@ -5019,7 +6115,12 @@
         "tr": "Omlet"
     },
     "Яичница-болтунья/Галерея": {
+        "en": "Scrambled Eggs/Gallery",
+        "fr": "Œufs brouillés/Galerie",
         "hu": "Rántotta/Galéria"
+    },
+    "Яичница-болтунья/Транскрипт": {
+        "en": "Scrambled Eggs/Transcript"
     },
     "Яичные приспешники": {
         "de": "Eierlinge",
