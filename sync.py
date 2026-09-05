@@ -46,7 +46,11 @@ def get_page_title(folder_name, filename):
         return None
         
     if ns in ['Module', 'Template', 'Widget']:
-        name = os.path.splitext(filename)[0] # Убираем .lua или .wikitext
+        # Исключение: оставляем расширение .json для баз данных
+        if filename.lower().endswith('.json'):
+            name = filename
+        else:
+            name = os.path.splitext(filename)[0] # Убираем .lua или .wikitext
     else:
         name = filename # Оставляем .js или .css для MediaWiki
         
