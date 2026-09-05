@@ -1,149 +1,179 @@
 {
-    "Helltaker": {
-        "en": "Helltaker"
-    },
-    "Vanripper": {
-        "en": "Vanripper"
-    },
-    "Ад": {
-        "en": "Hell"
-    },
-    "Азазель": {
-        "en": "Azazel"
-    },
-    "Азазель продолжает падение": {
-        "en": "Azazel Continues To Fall"
-    },
-    "Вельзевул": {
-        "en": "Beelzebub"
-    },
-    "Гарем Модеус": {
-        "en": "Modeus' Harem"
-    },
-    "Генерика": {
-        "en": "Generic"
-    },
-    "Демонессы обсуждают дела": {
-        "en": "Demon Women Talking Business"
-    },
-    "Джаджмент": {
-        "en": "Judgement"
-    },
-    "Джастис": {
-        "en": "Justice"
-    },
-    "Джастис присоединяется к команде": {
-        "en": "Justice Joins the Team"
-    },
-    "Достижения": {
-        "en": "Achievements"
-    },
-    "Ещё один короткий комикс про ангелов": {
-        "en": "Another Short Comic About Angels"
-    },
-    "Ещё один короткий комикс про историю демонов 🐐": {
-        "en": "Another Short Comic About Demon Lore 🐐"
-    },
-    "Здрада": {
-        "en": "Zdrada"
-    },
-    "Земля": {
-        "en": "Earth"
-    },
-    "Змей и запретный плод": {
-        "en": "The Snake and The Forbidden Fruit"
-    },
-    "Зомби": {
-        "en": "Zombies"
-    },
-    "И ещё один короткий комикс про историю демонов 🐑": {
-        "en": "Yet Another Short Comic About Demon Lore 🐑"
-    },
-    "Игра в Songs of Conquest": {
-        "en": "Playing Songs of Conquest"
-    },
-    "Изгнание в бездну заставляет искать самые странные увлечения": {
-        "en": "Abyssal Exile Makes You Seek the Weirdest Hobbies"
-    },
-    "Инферно": {
-        "en": "Inferno"
-    },
-    "Качество сюжета падает с каждым новым комиксом": {
-        "en": "Quality of the Plot is Dropping Down with Each New Comic"
-    },
-    "Клуб пошаговых стратегий": {
-        "en": "Turn-Based Strategy Club"
-    },
-    "Короткий комикс про историю демонов 🐕🐕🐕": {
-        "en": "Short Comic About Demon Lore 🐕🐕🐕"
-    },
-    "Лормастер": {
-        "en": "Loremaster"
-    },
-    "Люцифер": {
-        "en": "Lucifer"
-    },
-    "Малина": {
-        "en": "Malina"
-    },
-    "Модеус": {
-        "en": "Modeus"
-    },
-    "Мрачная гавань": {
-        "en": "Gloomhaven Comic"
-    },
-    "Непристойная музыка": {
-        "en": "Lewd Music"
-    },
-    "Пандемоника": {
-        "en": "Pandemonica"
-    },
-    "Полиция": {
-        "en": "The Police"
-    },
-    "Пришельцы": {
-        "en": "Aliens"
-    },
-    "Пролог": {
-        "en": "Prologue"
-    },
-    "Просто короткий демонический комикс": {
-        "en": "Just a Short Demon Comic"
-    },
-    "Просто короткий комикс о мрачной тьме далёкого будущего": {
-        "en": "Just a Short Comic About the Grim Darkness of the Far Future"
-    },
-    "Просто короткий комикс про ангелов": {
-        "en": "Just a Short Comic About Angels"
-    },
-    "Просто короткий комикс про очки": {
-        "en": "Just a Short Comic About Glasses"
-    },
-    "Разложение мира смертных": {
-        "en": "Corruption of the Mortal Realm"
-    },
-    "Романтические комедии": {
-        "en": "Romantic Comedies"
-    },
-    "Романтический ужин с мухой 🪰": {
-        "en": "Romantic Dinner with a Fly 🪰"
-    },
-    "Саундтреки": {
-        "en": "Soundtrack"
-    },
-    "Скелеты": {
-        "en": "Skeleton"
-    },
-    "Субъект 67": {
-        "en": "Subject 67"
-    },
-    "Хеллтейкер": {
-        "en": "The Helltaker"
-    },
-    "Хеллтейкер против Лагеря монстров": {
-        "en": "Helltaker vs. Monster Camp"
-    },
-    "Цербер": {
-        "en": "Cerberus"
-    }
+	"Ад": {
+		"en": "Hell"
+	},
+	"Азазель": {
+		"en": "Azazel"
+	},
+	"Азазель продолжает падение": {
+		"en": "Azazel Continues To Fall"
+	},
+	"Вельзевул": {
+		"en": "Beelzebub"
+	},
+	"Гарем Модеус": {
+		"en": "Modeus' Harem"
+	},
+	"Генерика": {
+		"en": "Generic"
+	},
+	"Джастис": {
+		"en": "Justice"
+	},
+	"Джаджмент": {
+		"en": "Judgement"
+	},
+	"Глава I — Уставший Демон": {
+		"en": "Chapter I — The Tired Demon"
+	},
+	"Глава II — Похотливый Демон": {
+		"en": "Chapter II — The Lustful Demon"
+	},
+	"Глава III — Тройной демон": {
+		"en": "Chapter III — The Triple Demon"
+	},
+	"Глава IV — Мрачный Демон": {
+		"en": "Chapter IV — The Sour Demon"
+	},
+	"Глава V — Демон-сучка": {
+		"en": "Chapter V — The Bitch Demon"
+	},
+	"Глава VI — Любопытный ангел": {
+		"en": "Chapter VI — The Curious Angel"
+	},
+	"Глава VII — Потрясающий Демон": {
+		"en": "Chapter VII — The Awesome Demon"
+	},
+	"Глава VIII — Босс Ада": {
+		"en": "Chapter VIII — The CEO of Hell"
+	},
+	"Глава IX — Джаджмент": {
+		"en": "Chapter IX — Judgement"
+	},
+	"Глава X — Эпилог": {
+		"en": "Chapter X — Epilogue"
+	},
+	"Достижения": {
+		"en": "Achievements"
+	},
+	"Ещё один короткий комикс про историю демонов 🐐": {
+		"en": "Another Short Comic About Demon Lore 🐐"
+	},
+	"Джастис присоединяется к команде": {
+		"en": "Justice Joins the Team (Comic)"
+	},
+	"Ещё один короткий комикс про ангелов": {
+		"en": "Another Short Comic About Angels"
+	},
+	"Демонессы обсуждают дела": {
+		"en": "Demon Women Talking Business"
+	},
+	"Заглавная страница": {
+		"en": ""
+	},
+	"Здрада": {
+		"en": "Zdrada"
+	},
+	"Инферно": {
+		"en": "Inferno"
+	},
+	"И ещё один короткий комикс про историю демонов 🐑": {
+		"en": "Yet Another Short Comic About Demon Lore 🐑"
+	},
+	"Изгнание в бездну заставляет искать самые странные увлечения": {
+		"en": "Abyssal Exile Makes You Seek the Weirdest Hobbies"
+	},
+	"Змей и запретный плод": {
+		"en": "The Snake and The Forbidden Fruit"
+	},
+	"Игра в Songs of Conquest": {
+		"en": "Playing Songs of Conquest"
+	},
+	"Зомби": {
+		"en": "Zombies"
+	},
+	"Земля": {
+		"en": "Earth"
+	},
+	"Модеус": {
+		"en": "Modeus"
+	},
+	"Малина": {
+		"en": "Malina"
+	},
+	"Люцифер": {
+		"en": "Lucifer"
+	},
+	"Лормастер": {
+		"en": "Loremaster"
+	},
+	"Непристойная музыка": {
+		"en": "Lewd Music"
+	},
+	"Клуб пошаговых стратегий": {
+		"en": "Turn-Based Strategy Club"
+	},
+	"Мрачная гавань": {
+		"en": "Gloomhaven Comic"
+	},
+	"Короткий комикс про историю демонов 🐕🐕🐕": {
+		"en": "Short Comic About Demon Lore 🐕🐕🐕"
+	},
+	"Качество сюжета падает с каждым новым комиксом": {
+		"en": "Quality of the Plot is Dropping Down with Each New Comic"
+	},
+	"Пандемоника": {
+		"en": "Pandemonica"
+	},
+	"Полиция": {
+		"en": "The Police"
+	},
+	"Пролог": {
+		"en": "Prologue"
+	},
+	"Просто короткий демонический комикс": {
+		"en": "Just a Short Demon Comic"
+	},
+	"Просто короткий комикс про ангелов": {
+		"en": "Just a Short Comic About Angels"
+	},
+	"Просто короткий комикс про очки": {
+		"en": "Just a Short Comic About Glasses"
+	},
+	"Просто короткий комикс о мрачной тьме далёкого будущего": {
+		"en": "Just a Short Comic About the Grim Darkness of the Far Future"
+	},
+	"Пришельцы": {
+		"en": "Aliens"
+	},
+	"Субъект 67": {
+		"en": "Subject 67"
+	},
+	"Разложение мира смертных": {
+		"en": "Corruption of the Mortal Realm"
+	},
+	"Романтический ужин с мухой 🪰": {
+		"en": "Romantic Dinner with a Fly 🪰"
+	},
+	"Романтические комедии": {
+		"en": "Romantic Comedies"
+	},
+	"Скелеты": {
+		"en": "Skeleton"
+	},
+	"Цербер": {
+		"en": "Cerberus"
+	},
+	"Хеллтейкер": {
+		"en": "The Helltaker"
+	},
+	"Хеллтейкер против Лагеря монстров": {
+		"en": "Helltaker vs. Monster Camp"
+	},
+	"Vanripper": {
+		"en": "Vanripper"
+	},
+	"Helltaker": {
+		"en": "Helltaker"
+	}
 }
