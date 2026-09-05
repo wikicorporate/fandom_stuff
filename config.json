@@ -1,6 +1,6 @@
 {
   "all_wikis": [
-    "ru.hazbin-hotel.fandom.com",
+    "ru.hazbinhotel.fandom.com",
     "ru.zoophobia.fandom.com",
     "ru.returnal.fandom.com",
     "ru.helltaker.fandom.com",
@@ -8,11 +8,11 @@
   ],
   "local_aliases": {
     "wikicorporate": "ru.wikicorporate.fandom.com",
-    "hazbin": "ru.hazbin-hotel.fandom.com"
+    "hazbin": "ru.hazbinhotel.fandom.com"
   },
   "groups": {
     "vivzieverse": [
-      "ru.hazbin-hotel.fandom.com",
+      "ru.hazbinhotel.fandom.com",
       "ru.zoophobia.fandom.com"
     ]
   }
