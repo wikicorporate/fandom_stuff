@@ -1,0 +1,44 @@
+name: Auto-Update Interwiki
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # Запуск каждый день в 03:00 по UTC (06:00 по Москве)
+  workflow_dispatch: # Кнопка для ручного запуска во вкладке "Actions" на GitHub
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: pip install requests
+        
+      - name: Run Interwiki Spider
+        run: python src/scripts/utils/update_interwiki.py
+        
+      - name: Commit updated JSONs back to GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Захватываем все обновлённые файлы внутри папки src, где бы они ни лежали
+          git add src/
+          
+          git diff --quiet && git diff --staged --quiet || git commit -m "Автоматическое обновление интервики-ссылок"
+          git push
+        
+      - name: Sync with Fandom
+        run: python sync.py
+        env:
+          FANDOM_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          FANDOM_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
