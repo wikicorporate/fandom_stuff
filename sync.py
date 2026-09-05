@@ -65,7 +65,7 @@ def upload_file(domain, filepath, page_title):
     if local_content.strip() != remote_content.strip():
         print(f"   [Обновление] {page_title} -> {domain}")
         try:
-            page.save(local_content, summary="Автоматическая синхронизация (GitHub Actions)")
+            page.save(local_content, summary="Синхронизация GitHub Actions")
         except Exception as e:
             print(f"   ❌ Ошибка при загрузке {page_title}: {e}")
     else:
