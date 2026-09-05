@@ -1,3 +1,7 @@
+import requests
+import json
+import os
+
 # Единая база настроек
 PROJECTS = {
     "Hazbin Hotel": {
@@ -46,3 +50,77 @@ PROJECTS = {
         }
     }
 }
+
+def fetch_interwikis():
+    session = requests.Session()
+    
+    for project_name, config in PROJECTS.items():
+        print(f"\n[=== Запуск сбора для проекта: {project_name} ===]")
+        interwiki_db = {}
+        
+        for hub_lang, hub_url in config["hubs"].items():
+            print(f"[*] Сканирую {hub_lang.upper()} вики ({hub_url})...")
+            
+            params = {
+                "action": "query",
+                "generator": "allpages",
+                "gaplimit": "500",
+                "prop": "langlinks",
+                "lllimit": "max",
+                "format": "json"
+            }
+            
+            while True:
+                try:
+                    # Пытаемся получить данные и распарсить JSON
+                    req = session.get(hub_url, params=params, timeout=15)
+                    response = req.json()
+                    
+                    # Проверяем, не вернул ли сам Фэндом внутреннюю ошибку API
+                    if "error" in response:
+                        print(f"  [!] Ошибка API: {response['error'].get('info', 'Неизвестная ошибка')}")
+                        break
+                        
+                except Exception as e:
+                    # Если вернулась 404 страница (HTML), скрипт попадёт сюда, а не упадёт
+                    print(f"  [!] Ошибка доступа: Ссылка вернула не JSON (возможно, мёртвая ссылка). Пропускаем...")
+                    break 
+                
+                pages = response.get("query", {}).get("pages", {})
+                
+                for page_id, page_data in pages.items():
+                    langlinks = page_data.get("langlinks", [])
+                    if not langlinks:
+                        continue
+                    
+                    hub_title = page_data["title"]
+                    ru_title = None
+                    
+                    for link in langlinks:
+                        if link["lang"] == "ru":
+                            ru_title = link["*"]
+                            break
+                    
+                    if ru_title:
+                        if ru_title not in interwiki_db:
+                            interwiki_db[ru_title] = {}
+                        
+                        interwiki_db[ru_title][hub_lang] = hub_title
+                        
+                        for link in langlinks:
+                            if link["lang"] != "ru" and link["lang"] not in interwiki_db[ru_title]:
+                                interwiki_dbru_title = link["*"]
+                                
+                if "continue" in response:
+                    params.update(response["continue"])
+                else:
+                    break
+                    
+        os.makedirs(os.path.dirname(config["output"]), exist_ok=True)
+        with open(config["output"], "w", encoding="utf-8") as f:
+            json.dump(interwiki_db, f, ensure_ascii=False, indent=4, sort_keys=True)
+            
+        print(f"[+] Успешно! База {project_name} обновлена: {len(interwiki_db)} статей.")
+
+if __name__ == "__main__":
+    fetch_interwikis()
