@@ -10,7 +10,7 @@ PASSWORD = os.environ.get('WIKI_PASSWORD')
 NAMESPACE_MAP = {
     'modules': 'Module',
     'templates': 'Template',
-    'mediawiki': 'MediaWiki',
+    'scripts': 'MediaWiki',
     'widgets': 'Widget'
 }
 
