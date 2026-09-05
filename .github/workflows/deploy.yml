@@ -30,6 +30,6 @@ jobs:
 
       - name: Run Sync Script
         env:
-          WIKI_USERNAME: ${{ secrets.WIKI_USERNAME }}
-          WIKI_PASSWORD: ${{ secrets.WIKI_PASSWORD }}
+          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
         run: python sync.py
