@@ -1,0 +1,2 @@
+<includeonly>{{#invoke:Интервики|e|{{PAGENAME}}}}</includeonly>
+<noinclude>[[Категория:Шаблоны/Данные]] </noinclude>
