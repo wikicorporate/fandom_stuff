@@ -24,11 +24,11 @@ jobs:
       - name: Run Typographer
         run: python src/scripts/bots/typographer.py
         env:
-          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
-          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
 
       - name: Run Redirect Resolver
         run: python src/scripts/bots/resolve_redirects.py
         env:
-          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
-          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
