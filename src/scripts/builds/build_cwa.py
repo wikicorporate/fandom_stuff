@@ -17,12 +17,12 @@ def build():
         print(f"[-] JS файлы не найдены в {SOURCE_DIR}")
         return
 
-    combined_code = "/* Сгенерировано автоматически из модулей */\n"
+    combined_code = "/* Исходные файлы располагаются на GitHub и обновляются автоматически */\n"
     
     for file in files:
         with open(file, 'r', encoding='utf-8') as f:
             file_name = os.path.basename(file)
-            combined_code += f"\n/* =============== ОРИГИНАЛ: {file_name} =============== */\n\n"
+            combined_code += f"\n/* {file_name} */\n\n"
             combined_code += f.read().strip() + "\n"
 
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
