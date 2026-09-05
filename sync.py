@@ -43,19 +43,19 @@ def get_site(domain):
 def get_page_title(folder_name, filename):
     """Определяет правильное имя страницы. Модулям и шаблонам отрезает расширения."""
     ns = NAMESPACE_MAP.get(folder_name.lower())
-    if not ns:
+    if ns is None:
         return None
         
     if ns in ['Module', 'Template', 'Widget']:
-        # Исключение: оставляем расширение .json для баз данных
         if filename.lower().endswith('.json'):
             name = filename
         else:
-            name = os.path.splitext(filename)[0] # Убираем .lua или .wikitext
+            name = os.path.splitext(filename)[0]
     else:
-        name = filename # Оставляем .js или .css для MediaWiki
+        name = filename 
         
-    return f"{ns}:{name}"
+    # Если пространство пустое (main), возвращаем чистое имя файла без двоеточия
+    return name if ns == '' else f"{ns}:{name}"
 
 def upload_file(domain, filepath, page_title):
     site = get_site(domain)
