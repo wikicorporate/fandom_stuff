@@ -1,9 +1,10 @@
 import os
 import glob
 
-# Откуда берём исходники и куда кладём результат
-SOURCE_DIR = 'src/local/wikicorporate/cwa_source/'
-OUTPUT_FILE = 'src/local/wikicorporate/mediawiki/CrossWikiActivity/Main.js'
+# Исправлены пути: папки лежат внутри scripts/
+SOURCE_DIR = 'src/local/wikicorporate/scripts/cwa_source/'
+# Кладём готовый файл туда, где его найдёт sync.py
+OUTPUT_FILE = 'src/local/wikicorporate/scripts/CrossWikiActivity/Main.js'
 
 def build():
     if not os.path.exists(SOURCE_DIR):
@@ -11,7 +12,6 @@ def build():
         print(f"[!] Создана папка {SOURCE_DIR}. Положите туда модули.")
         return
 
-    # Получаем список файлов и сортируем по алфавиту (01_, 02_ и т.д.)
     files = sorted(glob.glob(os.path.join(SOURCE_DIR, '*.js')))
 
     if not files:
@@ -26,10 +26,8 @@ def build():
             combined_code += f"\n/* =============== ОРИГИНАЛ: {file_name} =============== */\n\n"
             combined_code += f.read().strip() + "\n"
 
-    # Создаём целевую папку mediawiki/CrossWikiActivity/, если её нет
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     
-    # Записываем готовый файл
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(combined_code)
 
