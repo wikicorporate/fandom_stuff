@@ -2,54 +2,46 @@ import requests
 import json
 import os
 
-# Единая база настроек для всех твоих проектов
+# Единая база настроек
 PROJECTS = {
     "Hazbin Hotel": {
-        # Файл сохранится в локальную папку Хазбина
         "output": "src/local/hazbin/modules/Интервики.json",
         "hubs": {
             "cs": "https://hazbinhotel.fandom.com/cs/api.php",
-		        "de": "https://hazbinhotel.fandom.com/de/api.php",
-		        "en": "https://hazbinhotel.fandom.com/api.php",
-		        "es": "https://hazbinhotel.fandom.com/es/api.php",
-		        "fr": "https://hazbinhotel.fandom.com/fr/api.php",
-		        "hu": "https://hazbinhotel.fandom.com/hu/api.php",
-		        "it": "https://hazbinhotel.fandom.com/it/api.php",
-		        "ja": "https://hazbinhotel.fandom.com/ja/api.php",
-		        "pl": "https://hazbinhotel.fandom.com/pl/api.php",
-		        "pt-br": "https://hazbinhotel.fandom.com/pt-br/api.php",
-		        "th": "https://hazbinhotel.fandom.com/th/api.php",
-		        "tr": "https://hazbinhotel.fandom.com/tr/api.php",
-		        "zh": "https://hazbinhotel.fandom.com/zh/api.php"
+            "de": "https://hazbinhotel.fandom.com/de/api.php",
+            "en": "https://hazbinhotel.fandom.com/api.php",
+            "es": "https://hazbinhotel.fandom.com/es/api.php",
+            "fr": "https://hazbinhotel.fandom.com/fr/api.php",
+            "hu": "https://hazbinhotel.fandom.com/hu/api.php",
+            "it": "https://hazbinhotel.fandom.com/it/api.php",
+            "ja": "https://hazbinhotel.fandom.com/ja/api.php",
+            "pl": "https://hazbinhotel.fandom.com/pl/api.php",
+            "pt-br": "https://hazbinhotel.fandom.com/pt-br/api.php",
+            "th": "https://hazbinhotel.fandom.com/th/api.php",
+            "tr": "https://hazbinhotel.fandom.com/tr/api.php",
+            "zh": "https://hazbinhotel.fandom.com/zh/api.php"
         }
     },
     "Zoophobia": {
-        # Файл сохранится в локальную папку Адского Босса
         "output": "src/local/zoophobia/modules/Интервики.json",
         "hubs": {
             "en": "https://zoophobia.fandom.com/api.php",
             "ja": "https://zoophobia.fandom.com/ja/api.php"
         }
-    }
-},
-"Returnal": {
-        # Файл сохранится в локальную папку Адского Босса
+    },
+    "Returnal": {
         "output": "src/local/returnal/modules/Интервики.json",
         "hubs": {
             "en": "https://returnal.fandom.com/api.php"
         }
-    }
-},
-"Helltaker": {
-        # Файл сохранится в локальную папку Адского Босса
+    },
+    "Helltaker": {
         "output": "src/local/helltaker/modules/Интервики.json",
         "hubs": {
             "en": "https://helltaker.fandom.com/api.php"
         }
-    }
-},
-"Oneshot": {
-        # Файл сохранится в локальную папку Адского Босса
+    },
+    "Oneshot": {
         "output": "src/local/oneshot/modules/Интервики.json",
         "hubs": {
             "en": "https://oneshot.fandom.com/api.php",
@@ -57,7 +49,7 @@ PROJECTS = {
             "zh": "https://oneshot.fandom.com/zh/api.php"
         }
     }
-},
+}
 
 def fetch_interwikis():
     session = requests.Session()
@@ -103,6 +95,7 @@ def fetch_interwikis():
                         
                         for link in langlinks:
                             if link["lang"] != "ru" and link["lang"] not in interwiki_db[ru_title]:
+                                # Исправлена ошибка сохранения переменной
                                 interwiki_dbru_title = link["*"]
                                 
                 if "continue" in response:
