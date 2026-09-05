@@ -57,15 +57,26 @@ def fetch_interwikis():
     
     for project_name, config in PROJECTS.items():
         print(f"\n[=== Запуск сбора для проекта: {project_name} ===]")
-        interwiki_db = {}
         
+        # 1. ЗАГРУЖАЕМ СТАРУЮ БАЗУ (чтобы ничего не удалить)
+        interwiki_db = {}
+        if os.path.exists(config["output"]):
+            try:
+                with open(config["output"], "r", encoding="utf-8") as f:
+                    interwiki_db = json.load(f)
+                print(f"[*] Загружена существующая база: {len(interwiki_db)} статей. Бот только обновит её.")
+            except Exception as e:
+                print(f"[!] Ошибка чтения старой базы (возможно, файл пуст): {e}")
+        
+        # 2. СКАНИРУЕМ И ДОБАВЛЯЕМ НОВЫЕ ССЫЛКИ
         for hub_lang, hub_url in config["hubs"].items():
             print(f"[*] Сканирую {hub_lang.upper()} вики ({hub_url})...")
             
             params = {
                 "action": "query",
                 "generator": "allpages",
-                "gaplimit": "50",  # Снизили нагрузку, чтобы сервер Фэндома не падал
+                "gaplimit": "50",
+                "gapfilterredir": "nonredirects",  # Отключаем перенаправления!
                 "prop": "langlinks",
                 "lllimit": "max",
                 "format": "json"
@@ -73,25 +84,25 @@ def fetch_interwikis():
             
             while True:
                 success = False
-                for attempt in range(3): # Даем 3 попытки на каждую порцию страниц
+                for attempt in range(3):
                     try:
                         req = session.get(hub_url, params=params, timeout=60)
                         response = req.json()
                         
                         if "error" in response:
                             print(f"  [!] Ошибка API: {response['error'].get('info', 'Неизвестная ошибка')}")
-                            break # Фатальная ошибка API, прекращаем попытки
+                            break
                             
                         success = True
-                        break # Успешно скачали, прерываем цикл попыток
+                        break
                         
                     except Exception as e:
                         print(f"  [!] Заминка со связью (попытка {attempt+1}/3). Повтор через 3 секунды...")
                         time.sleep(3)
                         
                 if not success:
-                    print("  [!] Не удалось загрузить кусок страниц. Переходим к следующей вики.")
-                    break # Переходим к следующей вики только если все 3 попытки провалились
+                    print("  [!] Не удалось загрузить кусок страниц. Пропускаем.")
+                    break 
                 
                 pages = response.get("query", {}).get("pages", {})
                 
@@ -123,11 +134,12 @@ def fetch_interwikis():
                 else:
                     break
                     
+        # 3. СОХРАНЯЕМ ОБЪЕДИНЁННЫЕ ДАННЫЕ
         os.makedirs(os.path.dirname(config["output"]), exist_ok=True)
         with open(config["output"], "w", encoding="utf-8") as f:
             json.dump(interwiki_db, f, ensure_ascii=False, indent=4, sort_keys=True)
             
-        print(f"[+] Успешно! База {project_name} обновлена: {len(interwiki_db)} статей.")
+        print(f"[+] Успешно! База {project_name} сохранена: {len(interwiki_db)} статей.")
 
 if __name__ == "__main__":
     fetch_interwikis()
