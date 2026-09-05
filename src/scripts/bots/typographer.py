@@ -8,7 +8,7 @@ PROJECTS = {
     "Zoophobia": {"domain": "zoophobia.fandom.com", "path": "/ru/", "all_pages": True},
     "Returnal": {"domain": "returnal.fandom.com", "path": "/ru/", "all_pages": True},
     "Helltaker": {"domain": "helltaker.fandom.com", "path": "/ru/", "all_pages": True},
-    "OneShot": {"domain": "oneshot.fandom.com", "path": "/ru/", "all_pages": True},
+    "OneShot": {"domain": "oneshot.fandom.com", "path": "/ru/", "all_pages": True}
 }
 
 def clean_typography(text):
