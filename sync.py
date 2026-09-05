@@ -11,7 +11,8 @@ NAMESPACE_MAP = {
     'modules': 'Module',
     'templates': 'Template',
     'scripts': 'MediaWiki',
-    'widgets': 'Widget'
+    'widgets': 'Widget',
+    'main': ''  
 }
 
 # Кэш подключений, чтобы не логиниться перед загрузкой каждого файла
