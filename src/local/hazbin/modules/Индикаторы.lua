@@ -22,28 +22,26 @@ local function compile_stats()
     
     local counts = { image = 0, video = 0, audio = 0, animation = 0, file = 0 }
 
-    -- Считаем расширения только если они находятся в конце строки (файла)
-    -- Мы ищем паттерн: точка + буквы/цифры + конец строки
-    for line in content:gmatch("[^\r\n]+") do
-        -- Убираем лишние пробелы и артефакты форматирования в конце строки
-        local cleanLine = mw.text.trim(line)
-        local ext = cleanLine:match("%.([a-zA-Z0-9]+)$")
-        
-        if ext then
-            ext = ext:lower()
-            if ext == "png" or ext == "jpg" or ext == "jpeg" or ext == "webp" then
-                counts.image = counts.image + 1
-            elseif ext == "ogg" or ext == "mp3" or ext == "flac" or ext == "wav" then
-                counts.audio = counts.audio + 1
-            elseif ext == "gif" then
-                counts.animation = counts.animation + 1
-            elseif ext == "woff" or ext == "woff2" or ext == "ttf" then
-                counts.file = counts.file + 1
-            end
+    -- МАСКИРОВКА ПЕРСОНАЖА:
+    -- Заменяем Shok.wav (в любом регистре) на Shok_wav перед проверкой, 
+    -- чтобы скрипт не принял точку в его имени за расширение файла.
+    local safe_content = content:gsub("[Ss][Hh][Oo][Kk]%.[Ww][Aa][Vv]", "Shok_wav")
+
+    -- Твой исходный, надёжный поиск по всему тексту
+    for ext in safe_content:gmatch("%.([a-zA-Z0-9]+)") do
+        ext = ext:lower()
+        if ext == "png" or ext == "jpg" or ext == "jpeg" or ext == "webp" then
+            counts.image = counts.image + 1
+        elseif ext == "ogg" or ext == "mp3" or ext == "flac" or ext == "wav" then
+            counts.audio = counts.audio + 1
+        elseif ext == "gif" then
+            counts.animation = counts.animation + 1
+        elseif ext == "woff" or ext == "woff2" or ext == "ttf" then
+            counts.file = counts.file + 1
         end
     end
 
-    -- Считаем количество видео
+    -- Считаем количество видео (используем оригинальный content)
     for galleryContent in content:gmatch("{{Галерея|(.-)}}") do
         local cleanGallery = galleryContent:gsub("|%s*Open%s*=%s*True", "")
         for line in cleanGallery:gmatch("[^\r\n]+") do
