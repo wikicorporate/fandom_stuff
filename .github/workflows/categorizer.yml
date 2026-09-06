@@ -1,0 +1,29 @@
+name: Auto-Categorize Files
+
+on:
+  schedule:
+    - cron: '0 */4 * * *' # Запуск каждые 4 часа
+  workflow_dispatch: # Позволяет запускать скрипт вручную кнопкой
+
+jobs:
+  categorize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install mwclient
+
+      - name: Run Categorizer
+        env:
+          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
+          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+        
+        run: python src/scripts/bots/categorizer.py
