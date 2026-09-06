@@ -22,28 +22,19 @@ local function compile_stats()
     
     local counts = { image = 0, video = 0, audio = 0, animation = 0, file = 0 }
 
-    -- Считаем расширения только если они находятся в конце строки (файла)
-    -- Мы ищем паттерн: точка + буквы/цифры + конец строки
-    for line in content:gmatch("[^\r\n]+") do
-        -- Убираем лишние пробелы и артефакты форматирования в конце строки
-        local cleanLine = mw.text.trim(line)
-        local ext = cleanLine:match("%.([a-zA-Z0-9]+)$")
-        
-        if ext then
-            ext = ext:lower()
-            if ext == "png" or ext == "jpg" or ext == "jpeg" or ext == "webp" then
-                counts.image = counts.image + 1
-            elseif ext == "ogg" or ext == "mp3" or ext == "flac" or ext == "wav" then
-                counts.audio = counts.audio + 1
-            elseif ext == "gif" then
-                counts.animation = counts.animation + 1
-            elseif ext == "woff" or ext == "woff2" or ext == "ttf" then
-                counts.file = counts.file + 1
-            end
+    for ext in content:gmatch("%.([a-zA-Z0-9]+)") do
+        ext = ext:lower()
+        if ext == "png" or ext == "jpg" or ext == "jpeg" or ext == "webp" then
+            counts.image = counts.image + 1
+        elseif ext == "ogg" or ext == "mp3" or ext == "flac" or ext == "wav" then
+            counts.audio = counts.audio + 1
+        elseif ext == "gif" then
+            counts.animation = counts.animation + 1
+        elseif ext == "woff" or ext == "woff2" or ext == "ttf" then
+            counts.file = counts.file + 1
         end
     end
 
-    -- Считаем количество видео
     for galleryContent in content:gmatch("{{Галерея|(.-)}}") do
         local cleanGallery = galleryContent:gsub("|%s*Open%s*=%s*True", "")
         for line in cleanGallery:gmatch("[^\r\n]+") do
@@ -60,7 +51,6 @@ local function compile_stats()
         end
     end
 
-    -- Сборка HTML статистики
     local result = {}
     if counts.image > 0 then 
         table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--image"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-image"></i>%d</div>', counts.image, ruslangadopt(counts.image, "изображение.", "изображения.", "изображений."), counts.image)) 
