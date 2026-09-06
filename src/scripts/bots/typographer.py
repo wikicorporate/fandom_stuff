@@ -13,23 +13,24 @@ PROJECTS = {
 }
 
 def clean_typography(text):
+    # 1. Умные кавычки (обрабатываем сырой текст, чтобы не разрывать ссылки)
+    def smart_quotes(match):
+        before, inside = match.group(1), match.group(2)
+        # Если внутри есть кириллица, ставим ёлочки
+        if re.search(r'[а-яА-ЯёЁ]', inside):
+            return f'{before}«{inside}»'
+        # Иначе (для английских слов типа "Yolo") оставляем прямые кавычки
+        return f'{before}"{inside}"'
+
+    # Заменяем кавычки так, чтобы не сломать HTML атрибуты (например, class="...")
+    text = re.sub(r'(^|[\s(\[-|>])"([^"]+)"(?=[.,!?\)\];:]|\s|-|<|$)', smart_quotes, text)
+
+    # 2. Дефисы и пробелы (через парсер, чтобы не сломать таблицы и шаблоны)
     parsed = mwparserfromhell.parse(text)
-    
     for node in parsed.filter_text():
         val = str(node.value)
-        
-        # Умная замена кавычек в зависимости от языка
-        def smart_quotes(match):
-            before, inside = match.group(1), match.group(2)
-            # Если есть кириллица — ёлочки, если только латиница/цифры — оставляем лапки
-            if re.search(r'[а-яА-ЯёЁ]', inside):
-                return f'{before}«{inside}»'
-            return f'{before}"{inside}"'
-
-        val = re.sub(r'(^|\s)"([^"]+)"(?=\s|[.,!?]|$)', smart_quotes, val)
         val = re.sub(r'(?<=\S) - (?=\S)', r' — ', val)
         val = re.sub(r'[ \t]{2,}', ' ', val)
-        
         node.value = val
         
     return str(parsed)
@@ -62,7 +63,7 @@ def main():
                 print(f"[!] Исправлена типографика: {page.name}")
                 try:
                     page.save(cleaned, summary="Автоматическое исправление типографики")
-                    time.sleep(3) # Пауза 3 секунды, чтобы Фэндом не забанил бота
+                    time.sleep(3) # ПАУЗА 3 СЕКУНДЫ ДЛЯ ОБХОДА БАНА
                 except Exception as e:
                     print(f"❌ Ошибка при сохранении {page.name}: {e}")
 
