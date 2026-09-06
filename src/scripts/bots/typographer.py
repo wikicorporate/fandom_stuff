@@ -13,25 +13,34 @@ PROJECTS = {
 }
 
 def clean_typography(text):
-    # 1. Умные кавычки (обрабатываем сырой текст, чтобы не разрывать ссылки)
+    # 1. Умные кавычки
     def smart_quotes(match):
         before, inside = match.group(1), match.group(2)
-        # Если внутри есть кириллица, ставим ёлочки
         if re.search(r'[а-яА-ЯёЁ]', inside):
             return f'{before}«{inside}»'
-        # Иначе (для английских слов) оставляем прямые кавычки
         return f'{before}"{inside}"'
 
-    # Заменяем кавычки так, чтобы не сломать HTML атрибуты
     text = re.sub(r'(^|[\s(\[-|>])"([^"]+)"(?=[.,!?\)\];:]|\s|-|<|$)', smart_quotes, text)
 
-    # 2. Дефисы и пробелы (через парсер, чтобы не сломать таблицы и шаблоны)
+    # 2. Дефисы и пробелы (с защитой файлов и ссылок)
     parsed = mwparserfromhell.parse(text)
     for node in parsed.filter_text():
         val = str(node.value)
-        val = re.sub(r'(?<=\S) - (?=\S)', r' — ', val)
-        val = re.sub(r'[ \t]{2,}', ' ', val)
-        node.value = val
+        lines = val.split('\n')
+        new_lines = []
+        
+        for line in lines:
+            # ЗАЩИТА: Пропускаем строки с файлами, префиксами файлов и URL
+            if (re.search(r'\.(jpg|jpeg|png|gif|webp|svg)\b', line, re.IGNORECASE) or 
+                re.match(r'^\s*(File|Файл):', line, re.IGNORECASE) or 
+                'http' in line):
+                new_lines.append(line)
+            else:
+                line = re.sub(r'(?<=\S) - (?=\S)', r' — ', line)
+                line = re.sub(r'[ \t]{2,}', ' ', line)
+                new_lines.append(line)
+                
+        node.value = '\n'.join(new_lines)
         
     return str(parsed)
 
@@ -56,9 +65,7 @@ def main():
             continue
         
         for page in site.allpages(namespace=0):
-            # === ЗАЩИТА ОТ ПОЛОМКИ JSON ===
-            if page.name.lower().endswith('.json'):
-                print(f"[*] Пропуск технической страницы: {page.name}")
+            if page.name.lower().endswith('.json') or page.name.lower().endswith('.css') or page.name.lower().endswith('.js'):
                 continue
 
             original = page.text()
@@ -67,8 +74,8 @@ def main():
             if original != cleaned:
                 print(f"[!] Исправлена типографика: {page.name}")
                 try:
-                    page.save(cleaned, summary="Автоматическое исправление типографики")
-                    time.sleep(3) # ПАУЗА 3 СЕКУНДЫ ДЛЯ ОБХОДА БАНА
+                    page.save(cleaned, summary="🤖 Автоматическое исправление типографики")
+                    time.sleep(3)
                 except Exception as e:
                     print(f"❌ Ошибка при сохранении {page.name}: {e}")
 
