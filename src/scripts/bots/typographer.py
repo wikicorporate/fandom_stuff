@@ -19,10 +19,10 @@ def clean_typography(text):
         # Если внутри есть кириллица, ставим ёлочки
         if re.search(r'[а-яА-ЯёЁ]', inside):
             return f'{before}«{inside}»'
-        # Иначе (для английских слов типа "Yolo") оставляем прямые кавычки
+        # Иначе (для английских слов) оставляем прямые кавычки
         return f'{before}"{inside}"'
 
-    # Заменяем кавычки так, чтобы не сломать HTML атрибуты (например, class="...")
+    # Заменяем кавычки так, чтобы не сломать HTML атрибуты
     text = re.sub(r'(^|[\s(\[-|>])"([^"]+)"(?=[.,!?\)\];:]|\s|-|<|$)', smart_quotes, text)
 
     # 2. Дефисы и пробелы (через парсер, чтобы не сломать таблицы и шаблоны)
@@ -56,6 +56,11 @@ def main():
             continue
         
         for page in site.allpages(namespace=0):
+            # === ЗАЩИТА ОТ ПОЛОМКИ JSON ===
+            if page.name.lower().endswith('.json'):
+                print(f"[*] Пропуск технической страницы: {page.name}")
+                continue
+
             original = page.text()
             cleaned = clean_typography(original)
             
