@@ -131,10 +131,13 @@ def fetch_interwikis():
                 else:
                     break
 
-        # 3. ПРОВЕРЯЕМ РУССКУЮ ВИКИ И РЕЗОЛВИМ ПЕРЕНАПРАВЛЕНИЯ
-        print("[*] Сверка с русской вики и исправление перенаправлений...")
+        # 3. ПРОВЕРЯЕМ РУССКУЮ ВИКИ: ОТСЕИВАЕМ МУСОР И РЕЗОЛВИМ ПЕРЕНАПРАВЛЕНИЯ
+        print("[*] Сверка с русской вики (поиск редиректов и удаление несуществующих статей)...")
         ru_titles = list(temp_db.keys())
+        
+        norm_map = {}
         redirect_map = {}
+        valid_ru_titles = set()
         
         # Разбиваем на порции по 50 статей
         for i in range(0, len(ru_titles), 50):
@@ -148,16 +151,37 @@ def fetch_interwikis():
             try:
                 # Отправляем POST, чтобы длинный список не сломал URL
                 res = session.post(config["ru_api"], data=params, timeout=30).json()
-                if "query" in res and "redirects" in res["query"]:
-                    for redir in res["query"]["redirects"]:
-                        redirect_map[redir["from"]] = redir["to"]
+                
+                if "query" in res:
+                    # Захватываем нормализацию (поправки регистра)
+                    if "normalized" in res["query"]:
+                        for norm in res["query"]["normalized"]:
+                            norm_map[norm["from"]] = norm["to"]
+                            
+                    # Захватываем перенаправления
+                    if "redirects" in res["query"]:
+                        for redir in res["query"]["redirects"]:
+                            redirect_map[redir["from"]] = redir["to"]
+                            
+                    # Записываем только те статьи, которые РЕАЛЬНО существуют
+                    if "pages" in res["query"]:
+                        for page_id, page_info in res["query"]["pages"].items():
+                            # ID меньше нуля или флаг "missing" означает, что статьи нет
+                            if int(page_id) > 0 and "missing" not in page_info:
+                                valid_ru_titles.add(page_info["title"])
             except Exception as e:
                 print(f"  [!] Ошибка при проверке редиректов: {e}")
 
-        # 4. ОБЪЕДИНЯЕМ ЧИСТЫЕ ДАННЫЕ СО СТАРОЙ БАЗОЙ
+        # 4. ОБЪЕДИНЯЕМ ТОЛЬКО ЧИСТЫЕ ДАННЫЕ СО СТАРОЙ БАЗОЙ
         for ru_title, links in temp_db.items():
-            # Если статья оказалась редиректом, берем ее настоящее имя
-            true_title = redirect_map.get(ru_title, ru_title)
+            # Шаг А: Применяем нормализацию (исправляем регистр)
+            normalized_title = norm_map.get(ru_title, ru_title)
+            # Шаг Б: Применяем редиректы (находим конечную статью)
+            true_title = redirect_map.get(normalized_title, normalized_title)
+            
+            # ШАГ В: Если после всех проверок статьи не существует на ру-вики — ПРОПУСКАЕМ! (Это защита от красных ссылок)
+            if true_title not in valid_ru_titles:
+                continue
             
             if true_title not in interwiki_db:
                 interwiki_db[true_title] = {}
@@ -166,8 +190,8 @@ def fetch_interwikis():
                 if lang not in interwiki_db[true_title]:
                     interwiki_db[true_title][lang] = title
 
-        # Удаляем из базы ключи, которые остались от старых кривых ссылок
-        for bad_title in redirect_map.keys():
+        # Удаляем из финальной базы старый мусор, если мы обнаружили, что это редирект или кривой регистр
+        for bad_title in list(norm_map.keys()) + list(redirect_map.keys()):
             if bad_title in interwiki_db:
                 del interwiki_db[bad_title]
 
