@@ -1,11 +1,11 @@
-
 import os
 import time
+from datetime import datetime, timedelta
 import mwclient
 
 PREFIX_MAP = {
     "HH-": "Категория:Изображения Отеля Хазбин",
-    "HB-": "Категория:Изображения Адского Босса" # Исправлен пробел
+    "HB-": "Категория:Изображения Адского Босса"
 }
 
 def categorize_simple(site, page):
@@ -22,7 +22,6 @@ def categorize_simple(site, page):
         return
 
     # ПРОВЕРКА 2: Находится ли файл в общем хранилище (Shared Repository)
-    # Делаем API-запрос, чтобы узнать точное расположение файла
     res = site.api('query', prop='imageinfo', titles=page.name)
     pages = res.get('query', {}).get('pages', {})
     for pid, pdata in pages.items():
@@ -59,13 +58,29 @@ def main():
         print(f"[-] Ошибка авторизации: {e}")
         return
     
+    # Определяем границу времени: текущее время по UTC минус 24 часа
+    cutoff_time = datetime.utcnow() - timedelta(hours=24)
+    print(f"[*] Проверка файлов, загруженных после: {cutoff_time.strftime('%Y-%m-%d %H:%M:%S')} UTC")
+
     try:
-        uploads = site.logevents(type='upload', limit=50)
+        # Убираем жесткий лимит в 50 файлов, скрипт остановится сам по времени
+        uploads = site.logevents(type='upload')
+        
         for upload in uploads:
+            # Получаем время загрузки файла и переводим в формат datetime
+            timestamp_str = upload.get('timestamp')
+            event_time = datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%SZ")
+            
+            # Если наткнулись на файл старше 24 часов — останавливаем скрипт
+            if event_time < cutoff_time:
+                print("\n[+] Достигнут предел в 24 часа. Остановка скрипта.")
+                break
+                
             title = upload.get('title')
             if title:
                 page = site.pages[title]
                 categorize_simple(site, page)
+                
     except Exception as e:
         print(f"[-] Ошибка при получении лога загрузок: {e}")
 
