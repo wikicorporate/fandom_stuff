@@ -1,5 +1,6 @@
 import os
 import re
+import time
 import mwclient
 import mwparserfromhell
 
@@ -14,17 +15,19 @@ PROJECTS = {
 def clean_typography(text):
     parsed = mwparserfromhell.parse(text)
     
-    # filter_text() возвращает только текстовые узлы, не трогая код шаблонов и ссылок!
     for node in parsed.filter_text():
         val = str(node.value)
         
-        # 1. Замена прямых кавычек "Текст" на «Текст» (елочки)
-        val = re.sub(r'(^|\s)"([^"]+)"(?=\s|[.,!?]|$)', r'\1«\2»', val)
-        
-        # 2. Замена дефиса, окруженного пробелами, на длинное тире
+        # Умная замена кавычек в зависимости от языка
+        def smart_quotes(match):
+            before, inside = match.group(1), match.group(2)
+            # Если есть кириллица — ёлочки, если только латиница/цифры — оставляем лапки
+            if re.search(r'[а-яА-ЯёЁ]', inside):
+                return f'{before}«{inside}»'
+            return f'{before}"{inside}"'
+
+        val = re.sub(r'(^|\s)"([^"]+)"(?=\s|[.,!?]|$)', smart_quotes, val)
         val = re.sub(r'(?<=\S) - (?=\S)', r' — ', val)
-        
-        # 3. Удаление двойных пробелов (но не трогаем переносы строк и отступы)
         val = re.sub(r'[ \t]{2,}', ' ', val)
         
         node.value = val
@@ -32,7 +35,6 @@ def clean_typography(text):
     return str(parsed)
 
 def main():
-    # Используем проверенные секреты из sync.py
     username = os.environ.get('WIKI_USERNAME')
     password = os.environ.get('WIKI_PASSWORD')
     
@@ -50,7 +52,7 @@ def main():
             site.login(username, password)
         except Exception as e:
             print(f"❌ Ошибка авторизации на {project_name}: {e}")
-            continue # Пропускаем вики, если не удалось войти
+            continue
         
         for page in site.allpages(namespace=0):
             original = page.text()
@@ -60,6 +62,7 @@ def main():
                 print(f"[!] Исправлена типографика: {page.name}")
                 try:
                     page.save(cleaned, summary="Автоматическое исправление типографики")
+                    time.sleep(3) # Пауза 3 секунды, чтобы Фэндом не забанил бота
                 except Exception as e:
                     print(f"❌ Ошибка при сохранении {page.name}: {e}")
 
