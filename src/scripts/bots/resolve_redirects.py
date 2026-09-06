@@ -1,6 +1,7 @@
 import os
 import mwclient
 import mwparserfromhell
+import time
 
 PROJECTS = {
     "Hazbin Hotel": {"domain": "hazbinhotel.fandom.com", "path": "/ru/", "all_pages": True},
@@ -11,8 +12,8 @@ PROJECTS = {
 }
 
 def main():
-    username = os.environ.get('FANDOM_BOT_USERNAME')
-    password = os.environ.get('FANDOM_BOT_PASSWORD')
+    username = os.environ.get('WIKI_USERNAME')
+    password = os.environ.get('WIKI_PASSWORD')
     
     for project_name, config in PROJECTS.items():
         if not config.get("all_pages"): continue
@@ -59,6 +60,7 @@ def main():
                 new_text = str(parsed)
                 print(f"[!] Обновлены ссылки в статье: {page.name}")
                 page.save(new_text, summary="Замена перенаправлений на прямые ссылки")
+                time.sleep(3) # Задержка для обхода лимитов
 
 if __name__ == "__main__":
     main()
