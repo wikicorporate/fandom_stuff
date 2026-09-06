@@ -114,8 +114,8 @@ def merge_galleries(en_text, ru_text):
     return str(ru_parsed)
 
 def main():
-    username = os.environ.get('FANDOM_BOT_USERNAME')
-    password = os.environ.get('FANDOM_BOT_PASSWORD')
+    username = os.environ.get('WIKI_USERNAME')
+    password = os.environ.get('WIKI_PASSWORD')
     
     if not username or not password:
         print("[-] Ошибка: Не найдены BotPasswords в секретах GitHub!")
