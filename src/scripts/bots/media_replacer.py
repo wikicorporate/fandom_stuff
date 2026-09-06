@@ -1,6 +1,8 @@
 import os
 import re
+import time
 import mwclient
+from mwclient.errors import APIError
 
 # Настройки проектов
 PROJECTS = {
@@ -24,7 +26,7 @@ PROJECTS = {
         "path": "/ru/",
         "all_pages": True
     },
-  "OneShot": {
+    "OneShot": {
         "domain": "oneshot.fandom.com",
         "path": "/ru/",
         "all_pages": True
@@ -93,19 +95,44 @@ def main():
             
         print(f"\n[=== Запуск глобального сканирования для: {project_name} ===]")
         site = mwclient.Site(config["domain"], path=config["path"])
-        site.login(username, password)
         
-        # site.allpages(namespace=0) перебирает только обычные статьи (без шаблонов, категорий и обсуждений)
+        try:
+            site.login(username, password)
+        except Exception as e:
+            print(f"[-] Ошибка авторизации: {e}")
+            continue
+        
+        # site.allpages(namespace=0) перебирает только обычные статьи
         for page in site.allpages(namespace=0):
             title = page.name
             
             original_text = page.text()
             new_text = replace_media_links(original_text)
             
-            # Сохраняем, только если регулярки что-то изменили
             if original_text != new_text:
                 print(f"[!] Форматирую ссылки в статье: {title}")
-                page.save(new_text, summary="Стандартизация внешних ссылок (шаблон {{Медиа}})")
+                
+                # Блок безопасного сохранения с защитой от API лимитов
+                max_retries = 3
+                for attempt in range(max_retries):
+                    try:
+                        page.save(new_text, summary="🤖 Стандартизация внешних ссылок (шаблон {{Медиа}})")
+                        time.sleep(5)  # Базовая пауза для обхода антиспама
+                        break  # Успешно сохранили — выходим из цикла попыток
+                        
+                    except APIError as e:
+                        if e.code == 'ratelimited':
+                            wait_time = 30 * (attempt + 1)
+                            print(f"    [!] Лимит API (ratelimited). Ждём {wait_time} секунд...")
+                            time.sleep(wait_time)
+                        else:
+                            print(f"    [-] Ошибка API при сохранении {title}: {e}")
+                            break
+                    except Exception as e:
+                        print(f"    [-] Неизвестная ошибка при сохранении {title}: {e}")
+                        break
+                else:
+                    print(f"    [-] Не удалось сохранить {title} после {max_retries} попыток.")
 
 if __name__ == "__main__":
     main()
