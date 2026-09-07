@@ -1,7 +1,4 @@
 {
-    "/Галерея/Короткометражные эпизоды Адского Босса": {
-        "en": "Blitzo/Gallery/HB Shorts"
-    },
     "2 минуты славы": {
         "en": "2 Minutes Notice",
         "es": "2 Minutes Notice",
@@ -66,9 +63,6 @@
         "en": "Abel/Gallery/HH Season 2",
         "fr": "Abel/Galerie/HH Saison 2"
     },
-    "Авель/Галерея/Мерчендайз": {
-        "en": "Abel/Gallery/Merchandise"
-    },
     "Авель/Цитаты": {
         "en": "Abel/Quotes"
     },
@@ -102,9 +96,6 @@
         "en": "Agent Two/Gallery",
         "fr": "Agent Deux/Galerie"
     },
-    "Агент Два/Галерея/Мерчендайз": {
-        "en": "Agent Two/Gallery/Merchandise"
-    },
     "Агент Два/Цитаты": {
         "en": "Agent Two/Quotes"
     },
@@ -136,9 +127,6 @@
         "en": "Agent One/Gallery",
         "fr": "Agent Un/Galerie"
     },
-    "Агент Один/Галерея/Мерчендайз": {
-        "en": "Agent One/Gallery/Merchandise"
-    },
     "Агент Один/Цитаты": {
         "en": "Agent One/Quotes"
     },
@@ -151,9 +139,6 @@
     "Агентство Х.Е.Р.У.В.И.М/Галерея": {
         "en": "C.H.E.R.U.B (group)/Gallery",
         "fr": "C.H.E.R.U.B (groupe)/Galerie"
-    },
-    "Агентство Х.Е.Р.У.В.И.М/Галерея/Мерчендайз": {
-        "en": "C.H.E.R.U.B (group)/Gallery/Merchandise"
     },
     "Ад": {
         "en": "Hell",
@@ -227,9 +212,6 @@
         "en": "Adam/Gallery/HH Season 2",
         "fr": "Adam/Galerie/HH Saison 2"
     },
-    "Адам/Галерея/Мерчендайз": {
-        "en": "Adam/Gallery/Merchandise"
-    },
     "Адам/Галерея/Первый сезон Отеля Хазбин": {
         "en": "Adam/Gallery/HH Season 1",
         "fr": "Adam/Galerie/HH Saison 1"
@@ -267,9 +249,6 @@
         "en": "Hell's Belles/Gallery",
         "fr": "Hell's Belles/Galerie",
         "hu": "Hell's Belles/Galéria"
-    },
-    "Адские красавицы/Галерея/Мерчендайз": {
-        "en": "Hell's Belles/Gallery/Merchandise"
     },
     "Адские красавицы/Транскрипт": {
         "en": "Hell's Belles/Transcript"
@@ -408,11 +387,6 @@
         "en": "Alastor/Gallery/HH Season 2",
         "fr": "Alastor/Galerie/HH Saison 2"
     },
-    "Аластор/Галерея/Дизайн": {
-        "en": "Alastor/Gallery/Designs",
-        "fr": "Alastor/Images/Designs",
-        "ja": "アラスター/ギャラリー/デザイン"
-    },
     "Аластор/Галерея/Мерчендайз": {
         "en": "Alastor/Gallery/Merchandise",
         "fr": "Alastor/Galerie/Produits dérivés",
@@ -533,9 +507,6 @@
         "fr": "Saint-Pierre/Galerie",
         "it": "San Pietro/Galleria"
     },
-    "Апостол Пётр/Галерея/Мерчендайз": {
-        "en": "St. Peter/Gallery/Merchandise"
-    },
     "Апостол Пётр/Цитаты": {
         "en": "St. Peter/Quotes"
     },
@@ -554,9 +525,6 @@
         "es": "Arackniss/Galería",
         "fr": "Arackniss/Galerie",
         "it": "Arackniss/Galleria"
-    },
-    "Арахнисс/Галерея/Мерчендайз": {
-        "en": "Arackniss/Gallery/Merchandise"
     },
     "Асмодей": {
         "de": "Asmodeus",
@@ -593,10 +561,6 @@
     "Асмодей/Галерея/Второй сезон Адского Босса": {
         "en": "Asmodeus/Gallery/HB Season 2",
         "fr": "Asmodeus/Galerie/HB Saison 2"
-    },
-    "Асмодей/Галерея/Дизайн": {
-        "en": "Asmodeus/Gallery/Designs",
-        "fr": "Asmodeus/Images/Designs"
     },
     "Асмодей/Галерея/Мерчендайз": {
         "en": "Asmodeus/Gallery/Merchandise",
@@ -644,9 +608,6 @@
     "Бакстер/Галерея/Второй сезон Отеля Хазбин": {
         "en": "Baxter/Gallery/HH Season 2",
         "fr": "Baxter/Galerie/HH Saison 2"
-    },
-    "Бакстер/Галерея/Мерчендайз": {
-        "en": "Baxter/Gallery/Merchandise"
     },
     "Бакстер/Цитаты": {
         "en": "Baxter/Quotes"
@@ -746,9 +707,6 @@
     "Берни Бернс/Галерея": {
         "en": "Burnie Burnz/Gallery"
     },
-    "Берни Бернс/Галерея/Мерчендайз": {
-        "en": "Burnie Burnz/Gallery/Merchandise"
-    },
     "Бесы": {
         "cs": "Impové",
         "en": "Imps",
@@ -811,10 +769,6 @@
     "Блиц/Галерея/Второй сезон Адского Босса": {
         "en": "Blitzo/Gallery/HB Season 2",
         "fr": "Blitzo/Galerie/HB Saison 2"
-    },
-    "Блиц/Галерея/Дизайн": {
-        "en": "Blitzo/Gallery/Designs",
-        "fr": "Blitzo/Images/Designs"
     },
     "Блиц/Галерея/Мерчендайз": {
         "en": "Blitzo/Gallery/Merchandise",
@@ -933,9 +887,6 @@
         "en": "Valentino/Gallery/HH Season 2",
         "fr": "Valentino/Galerie/HH Saison 2"
     },
-    "Валентино/Галерея/Дизайн": {
-        "en": "Valentino/Gallery/Designs"
-    },
     "Валентино/Галерея/Мерчендайз": {
         "en": "Valentino/Gallery/Merchandise",
         "fr": "Valentino/Galerie/Produits dérivés"
@@ -1012,10 +963,6 @@
         "en": "Vaggie/Gallery/HH Season 2",
         "fr": "Vaggie/Galerie/HH Saison 2"
     },
-    "Вегги/Галерея/Дизайн": {
-        "en": "Vaggie/Gallery/Designs",
-        "fr": "Vaggie/Images/Designs"
-    },
     "Вегги/Галерея/Мерчендайз": {
         "en": "Vaggie/Gallery/Merchandise",
         "fr": "Vaggie/Galerie/Produits dérivés"
@@ -1072,9 +1019,6 @@
     "Вельвет/Галерея/Второй сезон Отеля Хазбин": {
         "en": "Velvette/Gallery/HH Season 2",
         "fr": "Velvette/Galerie/HH Saison 2"
-    },
-    "Вельвет/Галерея/Дизайн": {
-        "en": "Velvette/Gallery/Designs"
     },
     "Вельвет/Галерея/Мерчендайз": {
         "en": "Velvette/Gallery/Merchandise",
@@ -1174,10 +1118,6 @@
         "en": "Verosika Mayday/Gallery/HB Season 2",
         "fr": "Verosika Mayday/Galerie/HB Saison 2"
     },
-    "Веросика Мейдей/Галерея/Дизайн": {
-        "en": "Verosika Mayday/Gallery/Designs",
-        "fr": "Verosika Mayday/Images/Designs"
-    },
     "Веросика Мейдей/Галерея/Мерчендайз": {
         "en": "Verosika Mayday/Gallery/Merchandise",
         "fr": "Verosika Mayday/Galerie/Produits dérivés"
@@ -1211,9 +1151,6 @@
         "fr": "Spring Broken/Galerie",
         "hu": "Tavaszi káosz/Galéria"
     },
-    "Весеннее обострение/Галерея/Мерчендайз": {
-        "en": "Spring Broken/Gallery/Merchandise"
-    },
     "Весеннее обострение/Транскрипт": {
         "en": "Spring Broken/Transcript"
     },
@@ -1231,9 +1168,6 @@
         "en": "Just Look My Way/Gallery",
         "fr": "Just Look My Way/Galerie"
     },
-    "Взгляни на меня/Галерея/Мерчендайз": {
-        "en": "Just Look My Way/Gallery/Merchandise"
-    },
     "Взрывостойкий": {
         "en": "Bombproof",
         "es": "Bombproof",
@@ -1243,9 +1177,6 @@
     "Взрывостойкий/Галерея": {
         "en": "Bombproof/Gallery",
         "fr": "Bombproof/Galerie"
-    },
-    "Взрывостойкий/Галерея/Мерчендайз": {
-        "en": "Bombproof/Gallery/Merchandise"
     },
     "Вивиан Никсон": {
         "cs": "Vivian Nixon",
@@ -1323,13 +1254,6 @@
         "fr": "Vox/Galerie",
         "it": "Vox/Galleria"
     },
-    "Вокс/Галерея/Второй сезон Отеля Хазбин": {
-        "en": "Vox/Gallery/HH Season 2",
-        "fr": "Vox/Galerie/HH Saison 2"
-    },
-    "Вокс/Галерея/Дизайн": {
-        "en": "Vox/Gallery/Designs"
-    },
     "Вокс/Галерея/Мерчендайз": {
         "en": "Vox/Gallery/Merchandise",
         "fr": "Vox/Galerie/Produits dérivés"
@@ -1337,10 +1261,6 @@
     "Вокс/Галерея/Официальное творчество": {
         "en": "Vox/Gallery/Official Artwork",
         "fr": "Vox/Galerie/Artworks Officiels"
-    },
-    "Вокс/Галерея/Первый сезон Отеля Хазбин": {
-        "en": "Vox/Gallery/HH Season 1",
-        "fr": "Vox/Galerie/HH Saison 1"
     },
     "Вокс/Цитаты": {
         "en": "Vox/Quotes",
@@ -1390,10 +1310,6 @@
         "es": "Vortex/Galería",
         "fr": "Vortex/Galerie",
         "pl": "Vortex/Galeria"
-    },
-    "Вортекс/Галерея/Дизайн": {
-        "en": "Vortex/Gallery/Designs",
-        "fr": "Vortex/Images/Designs"
     },
     "Вортекс/Галерея/Мерчендайз": {
         "en": "Vortex/Gallery/Merchandise",
@@ -1469,9 +1385,6 @@
     },
     "Глашатай Бога/Галерея": {
         "en": "Speaker of God/Gallery"
-    },
-    "Глашатай Бога/Галерея/Мерчендайз": {
-        "en": "Speaker of God/Gallery/Merchandise"
     },
     "Глиц и Глэм": {
         "en": "Glitz and Glam",
@@ -1565,9 +1478,6 @@
         "hu": "Démonkari (epizód)/Galéria",
         "pl": "Grzesznica (odcinek)/Galeria"
     },
-    "Грехждество/Галерея/Мерчендайз": {
-        "en": "Sinsmas (episode)/Gallery/Merchandise"
-    },
     "Грехждество/Транскрипт": {
         "en": "Sinsmas (episode)/Transcript"
     },
@@ -1630,9 +1540,6 @@
         "en": "Martha and Ralphie's children/Gallery",
         "fr": "Enfants de Martha et Ralphie/Galerie"
     },
-    "Дети Марты и Ральфи/Галерея/Мерчендайз": {
-        "en": "Martha and Ralphie's children/Gallery/Merchandise"
-    },
     "Детка, на улице холодно": {
         "en": "Baby It's Cold Outside",
         "es": "Baby It's Cold Outside",
@@ -1689,9 +1596,6 @@
     "Джингл Х.Е.Р.У.В.И.М/Галерея": {
         "en": "C.H.E.R.U.B Jingle/Gallery"
     },
-    "Джингл Х.Е.Р.У.В.И.М/Галерея/Мерчендайз": {
-        "en": "C.H.E.R.U.B Jingle/Gallery/Merchandise"
-    },
     "Джинкс Монсун": {
         "cs": "Jinkx Monsoon",
         "en": "Jinkx Monsoon",
@@ -1714,9 +1618,6 @@
     "Джо/Галерея": {
         "en": "Joe/Gallery",
         "fr": "Joe/Galerie"
-    },
-    "Джо/Галерея/Мерчендайз": {
-        "en": "Joe/Gallery/Merchandise"
     },
     "Джо/Цитаты": {
         "en": "Joe/Quotes",
@@ -1759,9 +1660,6 @@
     },
     "Дири/Галерея": {
         "en": "Deerie/Gallery"
-    },
-    "Дири/Галерея/Мерчендайз": {
-        "en": "Deerie/Gallery/Merchandise"
     },
     "Дирижабль сэра Пентиуса": {
         "es": "Dirigible de Sir Pentious"
@@ -1806,9 +1704,6 @@
         "hu": "Üdv a mennyben/Galéria",
         "pl": "Witamy w niebie/Galeria"
     },
-    "Добро пожаловать в Рай/Галерея/Мерчендайз": {
-        "en": "Welcome to Heaven (episode)/Gallery/Merchandise"
-    },
     "Добро пожаловать в Рай/Транскрипт": {
         "en": "Welcome to Heaven (episode)/Transcript"
     },
@@ -1849,9 +1744,6 @@
         "es": "Ghostf**kers/Galería",
         "fr": "Ghostf**kers/Galerie",
         "hu": "Szellemb***ók/Galéria"
-    },
-    "Духотрахи/Галерея/Мерчендайз": {
-        "en": "Ghostf**kers/Gallery/Merchandise"
     },
     "Духотрахи/Транскрипт": {
         "en": "Ghostf**kers/Transcript"
@@ -1920,9 +1812,6 @@
         "fr": "ADDICT/Galerie",
         "it": "ADDICT/Galleria"
     },
-    "ЗАВИСИМЫЙ/Галерея/Мерчендайз": {
-        "en": "ADDICT/Gallery/Merchandise"
-    },
     "Загадочная мода": {
         "en": "Cryptic Couture"
     },
@@ -1959,9 +1848,6 @@
     "Заткнутый/Галерея": {
         "en": "Silenced/Gallery",
         "fr": "Silenced/Galerie"
-    },
-    "Заткнутый/Галерея/Мерчендайз": {
-        "en": "Silenced/Gallery/Merchandise"
     },
     "Заткнутый/Транскрипт": {
         "en": "Silenced/Transcript"
@@ -2006,15 +1892,6 @@
         "fr": "Zestial/Galerie",
         "it": "Zestial/Galleria"
     },
-    "Зестиал/Галерея/Второй сезон Отеля Хазбин": {
-        "en": "Zestial/Gallery/HH Season 2"
-    },
-    "Зестиал/Галерея/Мерчендайз": {
-        "en": "Zestial/Gallery/Merchandise"
-    },
-    "Зестиал/Галерея/Первый сезон Отеля Хазбин": {
-        "en": "Zestial/Gallery/HH Season 1"
-    },
     "Зестиал/Цитаты": {
         "en": "Zestial/Quotes"
     },
@@ -2030,9 +1907,6 @@
         "en": "Zeezi/Gallery",
         "es": "Zeezi/Galería",
         "fr": "Zeezi/Galerie"
-    },
-    "Зизи/Галерея/Мерчендайз": {
-        "en": "Zeezi/Gallery/Merchandise"
     },
     "И.М.П": {
         "en": "I.M.P",
@@ -2085,9 +1959,6 @@
         "en": "Truth Seekers/Gallery",
         "fr": "Truth Seekers/Galerie",
         "hu": "Hol az igazság?/Galéria"
-    },
-    "Искатели правды/Галерея/Мерчендайз": {
-        "en": "Truth Seekers/Gallery/Merchandise"
     },
     "Искатели правды/Транскрипт": {
         "en": "Truth Seekers/Transcript"
@@ -2186,17 +2057,6 @@
         "fr": "Carmilla Carmine/Galerie",
         "it": "Carmilla Carmine/Galleria"
     },
-    "Кармилла Кармайн/Галерея/Второй сезон Отеля Хазбин": {
-        "en": "Carmilla Carmine/Gallery/HH Season 2",
-        "fr": "Carmilla Carmine/Galerie/HH Saison 2"
-    },
-    "Кармилла Кармайн/Галерея/Мерчендайз": {
-        "en": "Carmilla Carmine/Gallery/Merchandise"
-    },
-    "Кармилла Кармайн/Галерея/Первый сезон Отеля Хазбин": {
-        "en": "Carmilla Carmine/Gallery/HH Season 1",
-        "fr": "Carmilla Carmine/Galerie/HH Saison 1"
-    },
     "Кармилла Кармайн/Цитаты": {
         "en": "Carmilla Carmine/Quotes"
     },
@@ -2245,16 +2105,8 @@
         "es": "KeeKee/Galería",
         "fr": "KeeKee/Galerie"
     },
-    "КиКи/Галерея/Второй сезон Отеля Хазбин": {
-        "en": "KeeKee/Gallery/HH Season 2",
-        "fr": "KeeKee/Galerie/HH Saison 2"
-    },
     "КиКи/Галерея/Мерчендайз": {
         "en": "KeeKee/Gallery/Merchandise"
-    },
-    "КиКи/Галерея/Первый сезон Отеля Хазбин": {
-        "en": "KeeKee/Gallery/HH Season 1",
-        "fr": "KeeKee/Galerie/HH Saison 1"
     },
     "Кимико Гленн": {
         "cs": "Kimiko Glenn",
@@ -2323,9 +2175,6 @@
         "en": "Clara/Gallery",
         "fr": "Clara/Galerie",
         "it": "Clara/Galleria"
-    },
-    "Клара/Галерея/Мерчендайз": {
-        "en": "Clara/Gallery/Merchandise"
     },
     "Клетус": {
         "en": "Cletus",
@@ -2467,9 +2316,6 @@
         "fr": "Queen Bee/Galerie",
         "hu": "Méhkirálynő/Galéria"
     },
-    "Королева пчёл/Галерея/Мерчендайз": {
-        "en": "Queen Bee/Gallery/Merchandise"
-    },
     "Королева пчёл/Транскрипт": {
         "en": "Queen Bee/Transcript"
     },
@@ -2492,9 +2338,6 @@
         "en": "Crymini/Gallery",
         "es": "Crymini/Galería",
         "fr": "Crymini/Galerie"
-    },
-    "Краймини/Галерея/Мерчендайз": {
-        "en": "Crymini/Gallery/Merchandise"
     },
     "Кривой": {
         "en": "Crooked",
@@ -2531,10 +2374,6 @@
     "Кримсон/Галерея": {
         "en": "Crimson/Gallery",
         "fr": "Crimson/Galerie"
-    },
-    "Кримсон/Галерея/Второй сезон Адского Босса": {
-        "en": "Crimson/Gallery/HB Season 2",
-        "fr": "Crimson/Galerie/HB Saison 2"
     },
     "Кримсон/Галерея/Мерчендайз": {
         "en": "Crimson/Gallery/Merchandise"
@@ -2583,9 +2422,6 @@
     "Кричащий дождь/Галерея": {
         "en": "Scream Rain/Gallery",
         "fr": "Pluie hurlante/Galerie"
-    },
-    "Кричащий дождь/Галерея/Мерчендайз": {
-        "en": "Scream Rain/Gallery/Merchandise"
     },
     "Кричащий дождь/Транскрипт": {
         "en": "Scream Rain/Transcript"
@@ -2667,9 +2503,6 @@
         "hu": "Lángelme (epizód)/Galéria",
         "pl": "Mózg całego planu/Galeria"
     },
-    "Кукловод/Галерея/Мерчендайз": {
-        "en": "Mastermind (episode)/Gallery/Merchandise"
-    },
     "Кукловод/Транскрипт": {
         "en": "Mastermind (episode)/Transcript"
     },
@@ -2710,9 +2543,6 @@
     "Кэти Киллджой/Галерея/Второй сезон Отеля Хазбин": {
         "en": "Katie Killjoy/Gallery/HH Season 2"
     },
-    "Кэти Киллджой/Галерея/Мерчендайз": {
-        "en": "Katie Killjoy/Gallery/Merchandise"
-    },
     "Кэти Киллджой/Галерея/Официальное творчество": {
         "en": "Katie Killjoy/Gallery/Official Artwork",
         "fr": "Katie Killjoy/Galerie/Artworks Officiels"
@@ -2741,9 +2571,6 @@
     "Кэш Баксо/Галерея": {
         "en": "Cash Buckzo/Gallery",
         "fr": "Cash Buckzo/Galerie"
-    },
-    "Кэш Баксо/Галерея/Мерчендайз": {
-        "en": "Cash Buckzo/Gallery/Merchandise"
     },
     "Кэш Баксо/Цитаты": {
         "en": "Cash Buckzo/Quotes"
@@ -2781,9 +2608,6 @@
     "Лайл Липтон/Галерея": {
         "en": "Lyle Lipton/Gallery",
         "fr": "Lyle Lipton/Galerie"
-    },
-    "Лайл Липтон/Галерея/Мерчендайз": {
-        "en": "Lyle Lipton/Gallery/Merchandise"
     },
     "Лайл Рат": {
         "en": "Lyle Rath",
@@ -2873,9 +2697,6 @@
         "fr": "Lilith/Galerie",
         "it": "Lilith/Galleria"
     },
-    "Лилит/Галерея/Мерчендайз": {
-        "en": "Lilith/Gallery/Merchandise"
-    },
     "Лилит/Галерея/Официальное творчество": {
         "en": "Lilith/Gallery/Official Artwork"
     },
@@ -2898,9 +2719,6 @@
     "Лин/Галерея": {
         "en": "Lin/Gallery",
         "fr": "Lin/Galerie"
-    },
-    "Лин/Галерея/Мерчендайз": {
-        "en": "Lin/Gallery/Merchandise"
     },
     "Лин/Цитаты": {
         "en": "Lin/Quotes",
@@ -2955,18 +2773,12 @@
         "fr": "Loo Loo Land (épisode)/Galerie",
         "hu": "Loo Loo Föld (epizód)/Galéria"
     },
-    "Лу Лу Ленд/Галерея/Мерчендайз": {
-        "en": "Loo Loo Land (episode)/Gallery/Merchandise"
-    },
     "Лу Лу Ленд/Транскрипт": {
         "en": "Loo Loo Land (episode)/Transcript"
     },
     "Лу Лу/Галерея": {
         "es": "Loo Loo/Galería",
         "fr": "Loo Loo/Images"
-    },
-    "Лу Лу/Галерея/Мерчендайз": {
-        "en": "Loo Loo/Gallery/Merchandise"
     },
     "Лузер, детка": {
         "de": "Loser, Baby",
@@ -3021,10 +2833,6 @@
         "en": "Loona/Gallery/HB Season 2",
         "fr": "Loona/Galerie/HB Saison 2"
     },
-    "Луна/Галерея/Дизайн": {
-        "en": "Loona/Gallery/Designs",
-        "fr": "Loona/Images/Designs"
-    },
     "Луна/Галерея/Короткометражные эпизоды Адского Босса": {
         "en": "Loona/Gallery/HB Shorts"
     },
@@ -3073,9 +2881,6 @@
     "Лупти Гупти/Галерея": {
         "en": "Loopty Goopty/Gallery",
         "fr": "Loopty Goopty/Galerie"
-    },
-    "Лупти Гупти/Галерея/Мерчендайз": {
-        "en": "Loopty Goopty/Gallery/Merchandise"
     },
     "Лучший адский папа": {
         "de": "Bester Vater der Hölle",
@@ -3214,9 +3019,6 @@
         "en": "Lucifer Morningstar/Gallery/HH Season 2",
         "fr": "Lucifer Morningstar/Galerie/HH Saison 2"
     },
-    "Люцифер Морнингстар/Галерея/Дизайн": {
-        "en": "Lucifer Morningstar/Gallery/Designs"
-    },
     "Люцифер Морнингстар/Галерея/Мерчендайз": {
         "en": "Lucifer Morningstar/Gallery/Merchandise",
         "fr": "Lucifer Morningstar/Galerie/Produits dérivés"
@@ -3349,9 +3151,6 @@
         "fr": "Mascarade/Galerie",
         "hu": "Maszkabál/Galéria"
     },
-    "Маскарад/Галерея/Мерчендайз": {
-        "en": "Masquerade/Gallery/Merchandise"
-    },
     "Маскарад/Транскрипт": {
         "en": "Masquerade/Transcript"
     },
@@ -3364,9 +3163,6 @@
     "Мать Мокси/Галерея": {
         "en": "Moxxie's mother/Gallery"
     },
-    "Мать Мокси/Галерея/Мерчендайз": {
-        "en": "Moxxie's mother/Gallery/Merchandise"
-    },
     "Мафия Кримсона": {
         "en": "Crimson's Mafia",
         "es": "Mafia de Crimson",
@@ -3375,9 +3171,6 @@
     },
     "Мафия Кримсона/Галерея": {
         "en": "Crimson's Mafia/Gallery"
-    },
-    "Мафия Кримсона/Галерея/Мерчендайз": {
-        "en": "Crimson's Mafia/Gallery/Merchandise"
     },
     "Маэстро": {
         "en": "Maestro",
@@ -3392,9 +3185,6 @@
         "en": "Maestro/Gallery",
         "es": "Maestro/Galería",
         "fr": "Miestro/Galerie"
-    },
-    "Маэстро/Галерея/Мерчендайз": {
-        "en": "Maestro/Gallery/Merchandise"
     },
     "Мейсон Бломберг": {
         "cs": "Mason Blomberg",
@@ -3448,10 +3238,6 @@
         "en": "Millie/Gallery/HB Season 2",
         "fr": "Millie/Galerie/HB Saison 2"
     },
-    "Милли/Галерея/Дизайн": {
-        "en": "Millie/Gallery/Designs",
-        "fr": "Millie/Images/Designs"
-    },
     "Милли/Галерея/Короткометражные эпизоды Адского Босса": {
         "en": "Millie/Gallery/HB Shorts"
     },
@@ -3488,9 +3274,6 @@
         "es": "Mimzy/Galería",
         "fr": "Mimzy/Galerie",
         "it": "Mimzy/Galleria"
-    },
-    "Мимзи/Галерея/Мерчендайз": {
-        "en": "Mimzy/Gallery/Merchandise"
     },
     "Мир Лу Лу": {
         "en": "Lu Lu World",
@@ -3543,9 +3326,6 @@
         "fr": "Mission : Antarctica/Galerie",
         "hu": "Mission: Antarctica/Galéria"
     },
-    "Миссия: Антарктида/Галерея/Мерчендайз": {
-        "en": "Mission: Antarctica/Gallery/Merchandise"
-    },
     "Миссия: Антарктида/Транскрипт": {
         "en": "Mission: Antarctica/Transcript"
     },
@@ -3582,9 +3362,6 @@
         "en": "Mission: Big Boss/Gallery",
         "fr": "Mission : Big Boss/Galerie"
     },
-    "Миссия: большой босс/Галерея/Мерчендайз": {
-        "en": "Mission: Big Boss/Gallery/Merchandise"
-    },
     "Миссия: большой босс/Транскрипт": {
         "en": "Mission: Big Boss/Transcript"
     },
@@ -3603,9 +3380,6 @@
         "en": "Mission: Orphan Time/Gallery",
         "fr": "Mission : Orphan Time/Galerie",
         "pl": "Mission: Orphan Time/Galeria"
-    },
-    "Миссия: время сирот/Галерея/Мерчендайз": {
-        "en": "Mission: Orphan Time/Gallery/Merchandise"
     },
     "Миссия: время сирот/Транскрипт": {
         "en": "Mission: Orphan Time/Transcript"
@@ -3626,9 +3400,6 @@
         "fr": "Mission : Whacked Off/Galerie",
         "pl": "Mission: Whacked Off/Galeria"
     },
-    "Миссия: конченный/Галерея/Мерчендайз": {
-        "en": "Mission: Whacked Off/Gallery/Merchandise"
-    },
     "Миссия: конченный/Транскрипт": {
         "en": "Mission: Whacked Off/Transcript"
     },
@@ -3648,9 +3419,6 @@
         "fr": "Mission : Weeaboo-boo/Galerie",
         "hu": "Mission: Weeaboo-boo/Galéria"
     },
-    "Миссия: кумир виабушницы/Галерея/Мерчендайз": {
-        "en": "Mission: Weeaboo-boo/Gallery/Merchandise"
-    },
     "Миссия: кумир виабушницы/Транскрипт": {
         "en": "Mission: Weeaboo-boo/Transcript"
     },
@@ -3669,9 +3437,6 @@
     "Миссия: первый шаг/Галерея": {
         "en": "Mission: Zero/Gallery",
         "fr": "Mission : Zéro/Galerie"
-    },
-    "Миссия: первый шаг/Галерея/Мерчендайз": {
-        "en": "Mission: Zero/Gallery/Merchandise"
     },
     "Миссия: первый шаг/Транскрипт": {
         "en": "Mission: Zero/Transcript"
@@ -3728,9 +3493,6 @@
         "en": "Mission: Bad Drivezo/Gallery",
         "fr": "Mission : Bad Drivezo/Galerie"
     },
-    "Миссия: хреновый водилц/Галерея/Мерчендайз": {
-        "en": "Mission: Bad Drivezo/Gallery/Merchandise"
-    },
     "Миссия: хреновый водилц/Транскрипт": {
         "en": "Mission: Bad Drivezo/Transcript"
     },
@@ -3749,9 +3511,6 @@
         "en": "Mission: Chupacabras/Gallery",
         "fr": "Mission : Chupacabras/Galerie",
         "hu": "Mission: Chupacabras/Galéria"
-    },
-    "Миссия: чупакабры/Галерея/Мерчендайз": {
-        "en": "Mission: Chupacabras/Gallery/Merchandise"
     },
     "Миссия: чупакабры/Транскрипт": {
         "en": "Mission: Chupacabras/Transcript"
@@ -3818,10 +3577,6 @@
     "Мокси/Галерея/Второй сезон Адского Босса": {
         "en": "Moxxie/Gallery/HB Season 2",
         "fr": "Moxxie/Galerie/HB Saison 2"
-    },
-    "Мокси/Галерея/Дизайн": {
-        "en": "Moxxie/Gallery/Designs",
-        "fr": "Moxxie/Images/Designs"
     },
     "Мокси/Галерея/Короткометражные эпизоды Адского Босса": {
         "en": "Moxxie/Gallery/HB Shorts"
@@ -3894,9 +3649,6 @@
         "fr": "Western Energy/Galerie",
         "hu": "Vadnyugati balhé/Galéria"
     },
-    "Мощь Запада/Галерея/Мерчендайз": {
-        "en": "Western Energy/Gallery/Merchandise"
-    },
     "Мощь Запада/Транскрипт": {
         "en": "Western Energy/Transcript"
     },
@@ -3963,9 +3715,6 @@
         "en": "Unhappy Campers/Gallery",
         "fr": "Unhappy Campers/Galerie",
         "hu": "Nyári Tábor/Galéria"
-    },
-    "Незадачливые туристы/Галерея/Мерчендайз": {
-        "en": "Unhappy Campers/Gallery/Merchandise"
     },
     "Незадачливые туристы/Транскрипт": {
         "en": "Unhappy Campers/Transcript"
@@ -4037,10 +3786,6 @@
         "en": "Niffty/Gallery/HH Season 2",
         "fr": "Niffty/Galerie/HH Saison 2"
     },
-    "Ниффти/Галерея/Дизайн": {
-        "en": "Niffty/Gallery/Designs",
-        "fr": "Niffty/Images/Designs"
-    },
     "Ниффти/Галерея/Мерчендайз": {
         "en": "Niffty/Gallery/Merchandise",
         "fr": "Niffty/Galerie/Produits dérivés"
@@ -4082,9 +3827,6 @@
         "en": "New Pentious/Gallery",
         "fr": "New Pentious/Galerie"
     },
-    "Новый Пентиус/Галерея/Мерчендайз": {
-        "en": "New Pentious/Gallery/Merchandise"
-    },
     "Новый Пентиус/Транскрипт": {
         "en": "New Pentious/Transcript"
     },
@@ -4115,9 +3857,6 @@
         "hu": "That's Entertainment/Galéria",
         "ja": "That's Entertainment/ギャラリー"
     },
-    "Ну и зрелище/Галерея/Мерчендайз": {
-        "en": "That's Entertainment/Gallery/Merchandise"
-    },
     "Ну и зрелище/Транскрипт": {
         "en": "That's Entertainment/Transcript",
         "fr": "That's Entertainment/Transcription",
@@ -4135,9 +3874,6 @@
     "О Милли/Галерея": {
         "en": "Oh Millie/Gallery",
         "fr": "Oh Millie/Images"
-    },
-    "О Милли/Галерея/Мерчендайз": {
-        "en": "Oh Millie/Gallery/Merchandise"
     },
     "О чём ты думаешь?": {
         "en": "Whatcha Thinkin' About?",
@@ -4186,9 +3922,6 @@
         "fr": "Odette/Galerie",
         "it": "Odette/Galleria"
     },
-    "Одетта/Галерея/Мерчендайз": {
-        "en": "Odette/Gallery/Merchandise"
-    },
     "Одна маленькая драка": {
         "en": "One Little Brawl",
         "fr": "One Little Brawl"
@@ -4234,10 +3967,6 @@
     "Октавия/Галерея/Второй сезон Адского Босса": {
         "en": "Octavia/Gallery/HB Season 2",
         "fr": "Octavia/Galerie/HB Saison 2"
-    },
-    "Октавия/Галерея/Дизайн": {
-        "en": "Octavia/Gallery/Designs",
-        "fr": "Octavia/Images/Designs"
     },
     "Октавия/Галерея/Мерчендайз": {
         "en": "Octavia/Gallery/Merchandise",
@@ -4297,9 +4026,6 @@
     "Оружие массового отвлечения/Галерея": {
         "en": "Weapon of Mass Distraction/Gallery",
         "fr": "Arme de distraction massive/Galerie"
-    },
-    "Оружие массового отвлечения/Галерея/Мерчендайз": {
-        "en": "Weapon of Mass Distraction/Gallery/Merchandise"
     },
     "Оружие массового отвлечения/Транскрипт": {
         "en": "Weapon of Mass Distraction/Transcript"
@@ -4471,9 +4197,6 @@
         "en": "Hazbin Hotel: Behind Closed Doors/Gallery",
         "fr": "Hazbin Hotel: Behind Closed Doors/Galerie"
     },
-    "Отель Хазбин: за закрытыми дверьми/Галерея/Мерчендайз": {
-        "en": "Hazbin Hotel: Behind Closed Doors/Gallery/Merchandise"
-    },
     "Отель Хазбин: за закрытыми дверьми/Транскрипт": {
         "en": "Hazbin Hotel: Behind Closed Doors/Transcript"
     },
@@ -4496,12 +4219,6 @@
     "Отряд Веросики/Галерея": {
         "en": "Verosika's posse/Gallery",
         "fr": "Bande de Verosika/Images"
-    },
-    "Отряд Веросики/Галерея/Дизайн": {
-        "en": "Verosika's crew/Gallery/Designs"
-    },
-    "Отряд Веросики/Галерея/Мерчендайз": {
-        "en": "Verosika's posse/Gallery/Merchandise"
     },
     "Официальный мерчендайз": {
         "en": "Official Merchandise",
@@ -4546,9 +4263,6 @@
         "hu": "Exek találkozása/Galéria",
         "ja": "元カレと元カノの憂鬱/ギャラリー"
     },
-    "Охи и вздохи/Галерея/Мерчендайз": {
-        "en": "Exes and Oohs/Gallery/Merchandise"
-    },
     "Охи и вздохи/Транскрипт": {
         "en": "Exes and Oohs/Transcript"
     },
@@ -4569,9 +4283,6 @@
         "en": "Dad Beat Dad/Gallery",
         "fr": "Dad Beat Dad/Galerie",
         "hu": "Hanyag apa/Galéria"
-    },
-    "Папочки ссорятся/Галерея/Мерчендайз": {
-        "en": "Dad Beat Dad/Gallery/Merchandise"
     },
     "Папочки ссорятся/Транскрипт": {
         "en": "Dad Beat Dad/Transcript"
@@ -4612,9 +4323,6 @@
         "en": "Paimon/Gallery",
         "es": "Paimon/Galería",
         "fr": "Paimon/Galerie"
-    },
-    "Пеймон/Галерея/Мерчендайз": {
-        "en": "Paimon/Gallery/Merchandise"
     },
     "Пеймон/Цитаты": {
         "en": "Paimon/Quotes"
@@ -4668,9 +4376,6 @@
         "hu": "Helluva Boss Pilot/Galéria",
         "ja": "Helluva Boss Pilot/ギャラリー"
     },
-    "Пилотный эпизод Адского Босса/Галерея/Мерчендайз": {
-        "en": "Helluva Boss Pilot/Gallery/Merchandise"
-    },
     "Пилотный эпизод Адского Босса/Транскрипт": {
         "en": "Helluva Boss Pilot/Transcript",
         "fr": "Pilote de Helluva Boss/Transcription"
@@ -4714,9 +4419,6 @@
     "Полли Пейзано/Галерея": {
         "en": "Paulie Paesano/Gallery"
     },
-    "Полли Пейзано/Галерея/Мерчендайз": {
-        "en": "Paulie Paesano/Gallery/Merchandise"
-    },
     "Полная чаша": {
         "en": "Richest Cup"
     },
@@ -4737,9 +4439,6 @@
         "en": "The Full Moon/Gallery",
         "fr": "La Pleine lune/Galerie",
         "hu": "Telihold/Galéria"
-    },
-    "Полнолуние/Галерея/Мерчендайз": {
-        "en": "The Full Moon/Gallery/Merchandise"
     },
     "Полнолуние/Транскрипт": {
         "en": "The Full Moon/Transcript"
@@ -4766,9 +4465,6 @@
         "en": "Curtain Call/Gallery",
         "es": "Curtain Call/Galería",
         "fr": "Curtain Call/Galerie"
-    },
-    "Последний звонок/Галерея/Мерчендайз": {
-        "en": "Curtain Call/Gallery/Merchandise"
     },
     "Последний звонок/Транскрипт": {
         "en": "Curtain Call/Transcript"
@@ -4818,9 +4514,6 @@
         "hu": "Helló, Rosie!/Galéria",
         "pl": "Hejka, Rosie!/Galeria"
     },
-    "Привет, Рози!/Галерея/Мерчендайз": {
-        "en": "Hello Rosie!/Gallery/Merchandise"
-    },
     "Привет, Рози!/Транскрипт": {
         "en": "Hello Rosie!/Transcript"
     },
@@ -4844,9 +4537,6 @@
         "en": "Prick/Gallery",
         "es": "Prick/Galería",
         "fr": "Prick/Galerie"
-    },
-    "Прик/Галерея/Мерчендайз": {
-        "en": "Prick/Gallery/Merchandise"
     },
     "Пришли новости": {
         "en": "Send News",
@@ -4891,9 +4581,6 @@
         "en": "Radio Killed the Video Star/Gallery",
         "fr": "Radio Killed the Video Star/Galerie",
         "hu": "A rádió megölte a videó sztárját/Galéria"
-    },
-    "Радио убило видео-звезду/Галерея/Мерчендайз": {
-        "en": "Radio Killed the Video Star/Gallery/Merchandise"
     },
     "Радио убило видео-звезду/Транскрипт": {
         "en": "Radio Killed the Video Star/Transcript",
@@ -4971,9 +4658,6 @@
         "en": "Ralphie/Gallery",
         "fr": "Ralphie/Galerie"
     },
-    "Ральфи/Галерея/Мерчендайз": {
-        "en": "Ralphie/Gallery/Merchandise"
-    },
     "Ранчо Грубое Перекати-поле": {
         "en": "Rough n' Tumbleweed Ranch",
         "es": "Rancho el Arbusto Rudo y Rodante",
@@ -4998,9 +4682,6 @@
     "Рассказчик/Галерея": {
         "en": "Storyteller/Gallery",
         "fr": "Storyteller/Galerie"
-    },
-    "Рассказчик/Галерея/Мерчендайз": {
-        "en": "Storyteller/Gallery/Merchandise"
     },
     "Рассказчик/Транскрипт": {
         "en": "Storyteller/Transcript"
@@ -5063,9 +4744,6 @@
         "en": "Robo Fizz/Gallery",
         "es": "Fizzarolli Robot/Galería",
         "fr": "Robo Fizz/Galerie"
-    },
-    "Робо Физз/Галерея/Дизайн": {
-        "en": "Robo Fizz/Gallery/Designs"
     },
     "Робо Физз/Галерея/Мерчендайз": {
         "en": "Robo Fizz/Gallery/Merchandise"
@@ -5140,9 +4818,6 @@
     },
     "Роландо/Галерея": {
         "en": "Rolando/Gallery"
-    },
-    "Роландо/Галерея/Мерчендайз": {
-        "en": "Rolando/Gallery/Merchandise"
     },
     "Роландо/Цитаты": {
         "en": "Rolando/Quotes",
@@ -5254,9 +4929,6 @@
         "en": "It's A Deal/Gallery",
         "fr": "It's A Deal/Galerie"
     },
-    "Сделка/Галерея/Мерчендайз": {
-        "en": "It's A Deal/Gallery/Merchandise"
-    },
     "Сделка/Транскрипт": {
         "en": "It's A Deal/Transcript"
     },
@@ -5304,17 +4976,6 @@
         "fr": "Sera/Galerie",
         "it": "Sera/Galleria"
     },
-    "Сера/Галерея/Второй сезон Отеля Хазбин": {
-        "en": "Sera/Gallery/HH Season 2",
-        "fr": "Sera/Galerie/HH Saison 2"
-    },
-    "Сера/Галерея/Мерчендайз": {
-        "en": "Sera/Gallery/Merchandise"
-    },
-    "Сера/Галерея/Первый сезон Отеля Хазбин": {
-        "en": "Sera/Gallery/HH Season 1",
-        "fr": "Sera/Galerie/HH Saison 1"
-    },
     "Сера/Цитаты": {
         "en": "Sera/Quotes"
     },
@@ -5343,10 +5004,6 @@
     "Сет Аткинсон": {
         "en": "Seth Atkinson",
         "es": "Seth Atkinson"
-    },
-    "Сила Лилит": {
-        "en": "Might of Lilith",
-        "tr": "Lilith'in Gücü"
     },
     "Скай Хенвуд": {
         "en": "Skye Henwood"
@@ -5391,9 +5048,6 @@
         "en": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)/Gallery",
         "fr": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)/Galerie",
         "hu": "MAMMON CSODÁLATOS SZEZONKÖZI ZENEI KÜLÖNLEGESSÉGE (Fizzarollival)/Galéria"
-    },
-    "Специальное среднесезонное великолепное музыкальное предложение Маммона (feat Физзаролли)/Галерея/Мерчендайз": {
-        "en": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)/Gallery/Merchandise"
     },
     "Специальное среднесезонное великолепное музыкальное предложение Маммона (feat Физзаролли)/Транскрипт": {
         "en": "MAMMON'S MAGNIFICENT MUSICAL MID-SEASON SPECIAL (ft Fizzarolli)/Transcript"
@@ -5526,10 +5180,6 @@
         "en": "Stolas/Gallery/HB Season 2",
         "fr": "Stolas/Galerie/HB Saison 2"
     },
-    "Столас/Галерея/Дизайн": {
-        "en": "Stolas/Gallery/Designs",
-        "fr": "Stolas/Images/Designs"
-    },
     "Столас/Галерея/Мерчендайз": {
         "en": "Stolas/Gallery/Merchandise",
         "fr": "Stolas/Galerie/Produits dérivés"
@@ -5581,9 +5231,6 @@
     "Страйкер/Галерея/Второй сезон Адского Босса": {
         "en": "Striker/Gallery/HB Season 2",
         "fr": "Striker/Galerie/HB Saison 2"
-    },
-    "Страйкер/Галерея/Дизайн": {
-        "en": "Striker/Gallery/Designs"
     },
     "Страйкер/Галерея/Мерчендайз": {
         "en": "Striker/Gallery/Merchandise",
@@ -5696,9 +5343,6 @@
         "en": "Sir Pentious/Gallery/HH Season 2",
         "fr": "Sir Pentious/Galerie/HH Saison 2"
     },
-    "Сэр Пентиус/Галерея/Дизайн": {
-        "en": "Sir Pentious/Gallery/Designs"
-    },
     "Сэр Пентиус/Галерея/Мерчендайз": {
         "en": "Sir Pentious/Gallery/Merchandise",
         "fr": "Sir Pentious/Galerie/Produits dérivés"
@@ -5795,9 +5439,6 @@
         "fr": "Tom Trench/Galerie",
         "it": "Tom Trench/Galleria"
     },
-    "Том Тренч/Галерея/Мерчендайз": {
-        "en": "Tom Trench/Gallery/Merchandise"
-    },
     "Том Тренч/Цитаты": {
         "en": "Tom Trench/Quotes",
         "fr": "Tom Trench/Citations"
@@ -5826,9 +5467,6 @@
         "es": "Travis/Galería",
         "fr": "Travis/Galerie"
     },
-    "Трэвис/Галерея/Мерчендайз": {
-        "en": "Travis/Gallery/Merchandise"
-    },
     "Тур прощений": {
         "cs": "Omluvné turné",
         "en": "Apology Tour",
@@ -5846,9 +5484,6 @@
         "en": "Apology Tour/Gallery",
         "fr": "Apology Tour/Galerie",
         "hu": "Békülő túra/Galéria"
-    },
-    "Тур прощений/Галерея/Мерчендайз": {
-        "en": "Apology Tour/Gallery/Merchandise"
     },
     "Тур прощений/Транскрипт": {
         "en": "Apology Tour/Transcript"
@@ -5888,9 +5523,6 @@
         "en": "Ozzie's (episode)/Gallery",
         "fr": "Chez Ozzie (épisode)/Galerie",
         "hu": "Ozzie's/Galéria"
-    },
-    "У Оззи/Галерея/Мерчендайз": {
-        "en": "Ozzie's (episode)/Gallery/Merchandise"
     },
     "У Оззи/Транскрипт": {
         "en": "Ozzie's (episode)/Transcript"
@@ -5937,9 +5569,6 @@
         "hu": "Gyilkos család/Galéria",
         "ja": "殺しの一家/ギャラリー"
     },
-    "Убийственная семейка/Галерея/Мерчендайз": {
-        "en": "Murder Family/Gallery/Merchandise"
-    },
     "Убийственная семейка/Транскрипт": {
         "en": "Murder Family/Transcript"
     },
@@ -5961,9 +5590,6 @@
         "es": "Obertura/Galería",
         "fr": "Overture/Galerie",
         "hu": "Nyitány/Galéria"
-    },
-    "Увертюра/Галерея/Мерчендайз": {
-        "en": "Overture/Gallery/Merchandise"
     },
     "Увертюра/Транскрипт": {
         "en": "Overture/Transcript",
@@ -5987,9 +5613,6 @@
         "en": "Seeing Stars/Gallery",
         "fr": "Seeing Stars/Galerie",
         "hu": "Csillagles/Galéria"
-    },
-    "Увидеть звёзды/Галерея/Мерчендайз": {
-        "en": "Seeing Stars/Gallery/Merchandise"
     },
     "Увидеть звёзды/Транскрипт": {
         "en": "Seeing Stars/Transcript"
@@ -6016,9 +5639,6 @@
         "en": "Wally Wackford/Gallery",
         "fr": "Wally Wackford/Galerie"
     },
-    "Уолли Уокфорд/Галерея/Дизайн": {
-        "en": "Wally Wackford/Gallery/Designs"
-    },
     "Уолли Уокфорд/Галерея/Мерчендайз": {
         "en": "Wally Wackford/Gallery/Merchandise"
     },
@@ -6042,9 +5662,6 @@
         "en": "Oops/Gallery",
         "fr": "Oops/Galerie",
         "hu": "Upsz/Galéria"
-    },
-    "Упс/Галерея/Мерчендайз": {
-        "en": "Oops/Gallery/Merchandise"
     },
     "Упс/Транскрипт": {
         "en": "Oops/Transcript"
@@ -6101,9 +5718,6 @@
         "hu": "A holdszüreti bál/Galéria",
         "pl": "Księżycowe Żniwa/Galeria"
     },
-    "Фестиваль урожайной луны/Галерея/Мерчендайз": {
-        "en": "The Harvest Moon Festival/Gallery/Merchandise"
-    },
     "Фестиваль урожайной луны/Транскрипт": {
         "en": "The Harvest Moon Festival/Transcript"
     },
@@ -6149,10 +5763,6 @@
         "en": "Fizzarolli/Gallery/HB Season 2",
         "fr": "Fizzarolli/Galerie/HB Saison 2"
     },
-    "Физзаролли/Галерея/Дизайн": {
-        "en": "Fizzarolli/Gallery/Designs",
-        "fr": "Fizzarolli/Images/Designs"
-    },
     "Физзаролли/Галерея/Мерчендайз": {
         "en": "Fizzarolli/Gallery/Merchandise",
         "fr": "Fizzarolli/Galerie/Produits dérivés"
@@ -6187,9 +5797,6 @@
         "en": "Frank McTickly Wrigglers/Gallery",
         "pl": "Frank McTickly Wrigglers/Galeria"
     },
-    "Фрэнк МакТикли Ригглерс/Галерея/Мерчендайз": {
-        "en": "Frank McTickly Wrigglers/Gallery/Merchandise"
-    },
     "Фэй Мата": {
         "en": "Faye Mata",
         "es": "Faye Mata"
@@ -6216,9 +5823,6 @@
         "en": "C.H.E.R.U.B (episode)/Gallery",
         "fr": "C.H.E.R.U.B (épisode)/Galerie",
         "hu": "K.E.R.U.B (epizód)/Galéria"
-    },
-    "Х.Е.Р.У.В.И.М/Галерея/Мерчендайз": {
-        "en": "C.H.E.R.U.B (episode)/Gallery/Merchandise"
     },
     "Х.Е.Р.У.В.И.М/Транскрипт": {
         "en": "C.H.E.R.U.B (episode)/Transcript"
@@ -6270,10 +5874,6 @@
         "en": "Husk/Gallery/HH Season 2",
         "fr": "Husk/Galerie/HH Saison 2"
     },
-    "Хаск/Галерея/Дизайн": {
-        "en": "Husk/Gallery/Designs",
-        "fr": "Husk/Images/Designs"
-    },
     "Хаск/Галерея/Мерчендайз": {
         "en": "Husk/Gallery/Merchandise",
         "fr": "Husk/Galerie/Produits dérivés"
@@ -6305,9 +5905,6 @@
         "es": "Hatchet/Galería",
         "fr": "Hatchet/Galerie"
     },
-    "Хатчет/Галерея/Мерчендайз": {
-        "en": "Hatchet/Gallery/Merchandise"
-    },
     "Хелавёрс": {
         "en": "Hellaverse",
         "ja": "ヘラバース"
@@ -6334,9 +5931,6 @@
         "en": "Helsa von Eldritch/Gallery",
         "es": "Helsa von Eldritch/Galería"
     },
-    "Хелса фон Элдрич/Галерея/Мерчендайз": {
-        "en": "Helsa von Eldritch/Gallery/Merchandise"
-    },
     "Херардо Веласкес": {
         "en": "Gerardo Velazquez",
         "es": "Gerardo Velazquez",
@@ -6345,9 +5939,6 @@
     },
     "Херардо Веласкес/Галерея": {
         "en": "Gerardo Velazquez/Gallery"
-    },
-    "Херардо Веласкес/Галерея/Мерчендайз": {
-        "en": "Gerardo Velazquez/Gallery/Merchandise"
     },
     "Херувимы": {
         "de": "Himmel",
@@ -6386,9 +5977,6 @@
         "en": "The Circus/Gallery",
         "fr": "Le Cirque/Galerie",
         "hu": "A Cirkusz/Galéria"
-    },
-    "Цирк/Галерея/Мерчендайз": {
-        "en": "The Circus/Gallery/Merchandise"
     },
     "Цирк/Транскрипт": {
         "en": "The Circus/Transcript"
@@ -6440,10 +6028,6 @@
         "cs": "Charlie Morningstarová/Galerie/HH 2. řada",
         "en": "Charlie Morningstar/Gallery/HH Season 2",
         "fr": "Charlie Morningstar/Galerie/HH Saison 2"
-    },
-    "Чарли Морнингстар/Галерея/Дизайн": {
-        "en": "Charlie Morningstar/Gallery/Designs",
-        "fr": "Charlie Morningstar/Images/Designs"
     },
     "Чарли Морнингстар/Галерея/Мерчендайз": {
         "en": "Charlie Morningstar/Gallery/Merchandise",
@@ -6555,10 +6139,6 @@
         "en": "Cherri Bomb/Gallery/HH Season 2",
         "fr": "Cherri Bomb/Galerie/HH Saison 2"
     },
-    "Черри Бомб/Галерея/Дизайн": {
-        "en": "Cherri Bomb/Gallery/Designs",
-        "fr": "Cherri Bomb/Images/Designs"
-    },
     "Черри Бомб/Галерея/Мерчендайз": {
         "en": "Cherri Bomb/Gallery/Merchandise",
         "fr": "Cherri Bomb/Galerie/Produits dérivés"
@@ -6599,9 +6179,6 @@
     "Шоквав/Галерея": {
         "en": "Shok.wav/Gallery"
     },
-    "Шоквав/Галерея/Мерчендайз": {
-        "en": "Shok.wav/Gallery/Merchandise"
-    },
     "Шоу должно продолжаться": {
         "cs": "Musíme pokračovat",
         "en": "The Show Must Go On",
@@ -6618,9 +6195,6 @@
         "en": "The Show Must Go On/Gallery",
         "fr": "The Show Must Go On/Galerie",
         "hu": "A show-nak folytatódnia kell/Galéria"
-    },
-    "Шоу должно продолжаться/Галерея/Мерчендайз": {
-        "en": "The Show Must Go On/Gallery/Merchandise"
     },
     "Шоу должно продолжаться/Транскрипт": {
         "en": "The Show Must Go On/Transcript"
@@ -6670,9 +6244,6 @@
     "Экзорцисты/Галерея": {
         "en": "Exorcists/Gallery",
         "fr": "Exorcistes/Galerie"
-    },
-    "Экзорцисты/Галерея/Мерчендайз": {
-        "en": "Exorcists/Gallery/Merchandise"
     },
     "Эллисон Каплан": {
         "en": "Allison Kaplan"
@@ -6786,11 +6357,6 @@
     "Энджел Даст/Галерея/Второй сезон Отеля Хазбин": {
         "en": "Angel Dust/Gallery/HH Season 2",
         "fr": "Angel Dust/Galerie/HH Saison 2"
-    },
-    "Энджел Даст/Галерея/Дизайн": {
-        "en": "Angel Dust/Gallery/Designs",
-        "fr": "Angel Dust/Images/Designs",
-        "ja": "エンジェル・ダスト/ギャラリー/デザイン"
     },
     "Энджел Даст/Галерея/Мерчендайз": {
         "en": "Angel Dust/Gallery/Merchandise",
@@ -6912,9 +6478,6 @@
         "en": "Scrambled Eggs/Gallery",
         "fr": "Œufs brouillés/Galerie",
         "hu": "Rántotta/Galéria"
-    },
-    "Яичница-болтунья/Галерея/Мерчендайз": {
-        "en": "Scrambled Eggs/Gallery/Merchandise"
     },
     "Яичница-болтунья/Транскрипт": {
         "en": "Scrambled Eggs/Transcript"
