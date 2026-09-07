@@ -133,7 +133,8 @@ def fetch_interwikis():
 
         # 3. ПРОВЕРЯЕМ РУССКУЮ ВИКИ: ОТСЕИВАЕМ МУСОР И РЕЗОЛВИМ ПЕРЕНАПРАВЛЕНИЯ
         print("[*] Сверка с русской вики (поиск редиректов и удаление несуществующих статей)...")
-        ru_titles = list(temp_db.keys())
+        # БЕРЁМ ВСЕ СТАТЬИ: и свежие из temp_db, и старые из interwiki_db
+        ru_titles = list(set(list(temp_db.keys()) + list(interwiki_db.keys())))
         
         norm_map = {}
         redirect_map = {}
@@ -190,10 +191,14 @@ def fetch_interwikis():
                 if lang not in interwiki_db[true_title]:
                     interwiki_db[true_title][lang] = title
 
-        # Удаляем из финальной базы старый мусор, если мы обнаружили, что это редирект или кривой регистр
-        for bad_title in list(norm_map.keys()) + list(redirect_map.keys()):
-            if bad_title in interwiki_db:
-                del interwiki_db[bad_title]
+        # 5. ГЕНЕРАЛЬНАЯ УБОРКА: СНОСИМ УДАЛЁННЫЕ СТРАНИЦЫ И РЕДИРЕКТЫ ИЗ БАЗЫ
+        for old_title in list(interwiki_db.keys()):
+            # Если старой статьи больше нет на вики — удаляем её из базы
+            if old_title not in valid_ru_titles:
+                del interwiki_db[old_title]
+            # Если старая статья оказалась редиректом или имела кривой регистр — удаляем старый ключ
+            elif old_title in norm_map or old_title in redirect_map:
+                del interwiki_db[old_title]
 
         os.makedirs(os.path.dirname(config["output"]), exist_ok=True)
         with open(config["output"], "w", encoding="utf-8") as f:
