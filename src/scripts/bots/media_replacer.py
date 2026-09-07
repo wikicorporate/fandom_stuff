@@ -116,7 +116,7 @@ def main():
                 max_retries = 3
                 for attempt in range(max_retries):
                     try:
-                        page.save(new_text, summary="🤖 Стандартизация внешних ссылок (шаблон {{Медиа}})")
+                        page.save(new_text, summary="Стандартизация внешних ссылок")
                         time.sleep(5)  # Базовая пауза для обхода антиспама
                         break  # Успешно сохранили — выходим из цикла попыток
                         
