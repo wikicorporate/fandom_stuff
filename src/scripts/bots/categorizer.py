@@ -35,7 +35,7 @@ def categorize_simple(site, page):
     new_text = text.strip() + f"\n\n{category_name}"
     
     try:
-        page.save(new_text, summary="🤖 Автоматическая категоризация")
+        page.save(new_text, summary="Автоматическая категоризация")
         print(f"[+] Добавлена категория для {filename}")
         time.sleep(3)
     except Exception as e:
