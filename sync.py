@@ -1,5 +1,6 @@
 import os
 import json
+import time
 import mwclient
 
 # --- НАСТРОЙКИ ---
@@ -30,6 +31,11 @@ def get_site(domain):
             api_path = '/ru/'   # Переносим её в путь
             
         site = mwclient.Site(host, path=api_path)
+        
+        # ОТКЛЮЧАЕМ ВНУТРЕННЮЮ ПАРАНОЙЮ MWCLIENT
+        # Это заставит скрипт отправить правку на сервер в любом случае. 
+        # Если что-то не так с токеном, мы увидим реальную ошибку Fandom API.
+        site.force_login = False 
         # ---------------------------------
         
         try:
@@ -70,7 +76,8 @@ def upload_file(domain, filepath, page_title):
     if local_content.strip() != remote_content.strip():
         print(f"   [Обновление] {page_title} -> {domain}")
         try:
-            page.save(local_content, summary="Синхронизация GitHub Actions")
+            page.save(local_content, summary="🤖 Синхронизация GitHub Actions")
+            time.sleep(3) # ПАУЗА, ЧТОБЫ ФЭНДОМ НЕ ВЫДАЛ RATELIMITED
         except Exception as e:
             print(f"   ❌ Ошибка при загрузке {page_title}: {e}")
     else:
@@ -150,4 +157,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
