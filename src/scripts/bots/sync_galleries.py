@@ -15,11 +15,9 @@ CATEGORIES_TO_CHECK = [
     "Категория:Галереи Адского Босса" 
 ]
 
-IGNORE_SECTIONS = [
-    "screenshots", 
-    "скриншоты",
-    "animations",
-    "анимация"
+# Разделы, которые мы НЕ трогаем и оставляем из русской версии (для будущих хабов)
+PRESERVE_RU_SECTIONS = [
+    "Скриншоты"
 ]
 
 HEADERS_MAP = {
@@ -54,197 +52,136 @@ HEADERS_MAP = {
     "T-Shirts, Sweatshirts, and Hoodies": "Футболки, толстовки и свитеры", "Trading Cards": "Коллекционные карты"
 }
 
-def clean_fname(name):
-    return re.sub(r'^(?:File|Файл|Image|Изображение):\s*', '', name, flags=re.IGNORECASE).strip()
+def clean_en_junk(text):
+    """Удаляет английские шаблоны, категории и интервики, чтобы они не переносились в русскую статью."""
+    text = re.sub(r'\{\{(HazbinGallery|HelluvaGallery|Main|GalleryTabber|Character gallery navbox)[^}]*\}\}\n?', '', text, flags=re.IGNORECASE)
+    text = re.sub(r'\[\[Category:[^\]]+\]\]\n?', '', text, flags=re.IGNORECASE)
+    text = re.sub(r'\[\[[a-z-]{2,10}:[^\]]+\]\]\n?', '', text, flags=re.IGNORECASE)
+    return text.strip()
 
-def clean_header_title(title):
-    t = re.sub(r"'''?", "", title)
-    t = re.sub(r'</?[^>]+>', '', t)
-    t = re.sub(r'\[\[(?:[^|\]]*\|)?([^\]]+)\]\]', r'\1', t)
-    return t.strip()
-
-def detach_footer(text):
-    match = re.search(r'(==\s*Навигация\s*==.*)', text, re.IGNORECASE | re.DOTALL)
-    if match:
-        footer = match.group(1).strip()
-        body = text[:match.start()].strip()
-        return body, footer
+def translate_headings(text):
+    """Переводит все уровни заголовков (==, ===, ====) с помощью словаря."""
+    def repl(match):
+        level = match.group(1)
+        title = match.group(2).strip()
         
-    footer_elements = re.findall(r'^(\{\{(?:Галереи|Интервики|HazbinGallery|HelluvaGallery)\}\}|\[\[Категория:[^\]]+\]\])\s*$', text, re.MULTILINE | re.IGNORECASE)
-    
-    if footer_elements:
-        body = re.sub(r'^(\{\{(?:Галереи|Интервики|HazbinGallery|HelluvaGallery)\}\}|\[\[Категория:[^\]]+\]\])\s*$\n?', '', text, flags=re.MULTILINE | re.IGNORECASE)
-        footer = "== Навигация ==\n" + "\n".join(footer_elements)
-        return body.strip(), footer.strip()
+        # Счищаем жирный шрифт и ссылки для поиска в словаре
+        clean_title = re.sub(r"'''?", "", title)
+        clean_title = re.sub(r'</?[^>]+>', '', clean_title)
+        clean_title = re.sub(r'\[\[(?:[^|\]]*\|)?([^\]]+)\]\]', r'\1', clean_title)
         
-    return text, ""
-
-def get_sections_map(parsed, is_ru=False):
-    sec_map = {}
-    for sec in parsed.get_sections(include_lead=False, levels=[2]):
-        headings = [h for h in sec.filter_headings() if h.level == 2]
-        if not headings: continue
+        ru_title = HEADERS_MAP.get(clean_title) or HEADERS_MAP.get(clean_title.title(), clean_title)
+        return f"{level} {ru_title} {level}"
         
-        raw_title = headings[0].title.strip()
-        clean_title = clean_header_title(raw_title)
-        is_ignored = any(word in clean_title.lower() for word in IGNORE_SECTIONS)
-            
-        if is_ru:
-            gals = [tpl for tpl in sec.filter_templates() if tpl.name.strip().lower() in ('галерея', 'gallery')]
-        else:
-            gals = sec.filter_tags(matches=lambda node: node.tag.lower() == 'gallery')
-            
-        sec_map[clean_title] = {
-            'section': sec,
-            'heading_str': str(headings[0]),
-            'gals': gals,
-            'ignored': is_ignored
-        }
-    return sec_map
+    return re.sub(r'^(={2,6})\s*(.*?)\s*\1$', repl, text, flags=re.MULTILINE)
 
-def create_new_ru_section(ru_title, en_gals):
-    lines = [f"== {ru_title} =="]
-    for gal in en_gals:
-        lines.append("{{Галерея")
-        if gal.contents:
-            for line in str(gal.contents).strip().split('\n'):
-                line = line.strip()
-                if not line: continue
-                line = re.sub(r'\|\s*alt\s*=[^|]*', '', line)
-                parts = line.split('|', 1)
-                fname = clean_fname(parts[0])
-                if len(parts) > 1:
-                    lines.append(f"|{fname}|{parts[1].strip()}")
-                else:
-                    lines.append(f"|{fname}")
-        lines.append("}}")
-    return "\n".join(lines)
-
-def merge_single_gallery(en_gal, ru_gal):
-    ru_items = {}
-    ru_filenames_ordered = [] 
-    
-    ru_positional = [str(p.value) for p in ru_gal.params if not p.showkey]
-    ru_raw = "|".join(ru_positional)
-    
-    for line in ru_raw.split('\n'):
-        line = line.strip()
-        if not line: continue
-        parts = line.split('|', 1)
-        fname = clean_fname(parts[0])
-        ru_items[fname] = line 
-        ru_filenames_ordered.append(fname)
-            
-    new_ru_lines = []
-    changed = False
-    
-    if en_gal.contents:
-        for line in str(en_gal.contents).strip().split('\n'):
+def convert_galleries(text):
+    """Конвертирует <gallery> в {{Галерея|...}}, убирает alt= и пустые строки."""
+    def gal_repl(match):
+        inner = match.group(1).strip()
+        lines = inner.split('\n')
+        res = ["{{Галерея|"]
+        
+        for line in lines:
             line = line.strip()
             if not line: continue
             
+            # Вырезаем alt=
             line = re.sub(r'\|\s*alt\s*=[^|]*', '', line)
+            
             parts = line.split('|', 1)
-            fname = clean_fname(parts[0])
-            en_caption = parts[1].strip() if len(parts) > 1 else ""
+            fname = re.sub(r'^(?:File|Файл|Image|Изображение):\s*', '', parts[0], flags=re.IGNORECASE).strip()
             
-            if fname in ru_items:
-                new_ru_lines.append(ru_items[fname])
-                del ru_items[fname]
-            else:
-                if en_caption:
-                    new_ru_lines.append(f"{fname}|{en_caption}")
-                else:
-                    new_ru_lines.append(f"{fname}")
-                changed = True 
+            if not fname:
+                continue
                 
-    for fname in ru_filenames_ordered:
-        if fname in ru_items:
-            new_ru_lines.append(ru_items[fname])
-            
-    if not changed:
-        return None
+            if len(parts) > 1:
+                caption = parts[1].strip()
+                if caption:
+                    res.append(f"{fname}|{caption}")
+                else:
+                    res.append(fname)
+            else:
+                res.append(fname)
+                
+        res.append("}}")
+        return '\n'.join(res)
         
-    named_params = [p for p in ru_gal.params if p.showkey]
-    new_template = "{{Галерея\n"
-    for p in named_params:
-        new_template += f"|{str(p.name).strip()}={str(p.value).strip()}\n"
-        
-    for line in new_ru_lines:
-        new_template += f"|{line}\n"
-    new_template += "}}"
-    
-    return new_template
+    return re.sub(r'<gallery[^>]*>(.*?)</gallery>', gal_repl, text, flags=re.IGNORECASE | re.DOTALL)
 
-def merge_and_sort_galleries(en_text, ru_text):
-    ru_body, ru_footer = detach_footer(ru_text)
+def extract_ru_structure(ru_text):
+    """Вытаскивает шапку, защищенные разделы и подвал из русской статьи."""
+    parsed = mwparserfromhell.parse(ru_text)
     
-    en_parsed = mwparserfromhell.parse(en_text)
-    ru_parsed = mwparserfromhell.parse(ru_body)
-    
-    en_map = get_sections_map(en_parsed, is_ru=False)
-    ru_map = get_sections_map(ru_parsed, is_ru=True)
-    
-    changed = False
-    final_sections = []
-    used_ru_titles = set()
-    new_sequence_raw = []
-    
+    # Извлекаем шапку (всё до первого H2)
     lead_nodes = []
-    for node in ru_parsed.nodes:
+    for node in parsed.nodes:
         if isinstance(node, mwparserfromhell.nodes.heading.Heading) and node.level == 2:
             break
         lead_nodes.append(str(node))
-    lead_text = "".join(lead_nodes).strip()
+    lead = "".join(lead_nodes).strip()
     
-    for en_title, en_data in en_map.items():
-        ru_title = HEADERS_MAP.get(en_title) or HEADERS_MAP.get(en_title.title(), f"TODO: {en_title}")
-        
-        if ru_title in ru_map:
-            ru_data = ru_map[ru_title]
-            used_ru_titles.add(ru_title)
-            new_sequence_raw.append(ru_title)
-            
-            if not en_data['ignored'] and not ru_data['ignored']:
-                if len(en_data['gals']) == len(ru_data['gals']) and len(en_data['gals']) > 0:
-                    sec_parsed = ru_data['section']
-                    for en_gal, ru_gal in zip(en_data['gals'], ru_data['gals']):
-                        new_template = merge_single_gallery(en_gal, ru_gal)
-                        if new_template:
-                            sec_parsed.replace(ru_gal, new_template)
-                            changed = True
-                    final_sections.append(str(sec_parsed).strip())
-                else:
-                    final_sections.append(str(ru_data['section']).strip())
-            else:
-                final_sections.append(str(ru_data['section']).strip())
+    # Извлекаем защищенные разделы
+    preserved = {}
+    for sec in parsed.get_sections(include_lead=False, levels=[2]):
+        headings = [h for h in sec.filter_headings() if h.level == 2]
+        if headings:
+            title = headings[0].title.strip()
+            if title in PRESERVE_RU_SECTIONS:
+                preserved[title] = str(sec).strip()
                 
+    # Извлекаем подвал (через регулярки, так как он может быть без заголовка)
+    footer_match = re.search(r'(==\s*Навигация\s*==.*)', ru_text, re.IGNORECASE | re.DOTALL)
+    if footer_match:
+        footer = footer_match.group(1).strip()
+    else:
+        footer_pattern = r'^(\{\{(?:Галереи|Интервики|HazbinGallery|HelluvaGallery|Character gallery navbox)\}\}|\[\[Категория:[^\]]+\]\]|\[\[[a-z-]{2,10}:[^\]]+\]\])\s*$'
+        footer_elements = re.findall(footer_pattern, ru_text, re.MULTILINE | re.IGNORECASE)
+        if footer_elements:
+            footer = "== Навигация ==\n" + "\n".join(footer_elements)
         else:
-            if not en_data['ignored'] and len(en_data['gals']) > 0:
-                print(f"    [+] Добавлен новый раздел: {en_title} -> {ru_title}")
-                new_sec_text = create_new_ru_section(ru_title, en_data['gals'])
-                final_sections.append(new_sec_text)
-                new_sequence_raw.append(ru_title)
-                changed = True
-                
-    for ru_title, ru_data in ru_map.items():
-        if ru_title not in used_ru_titles:
-            final_sections.append(str(ru_data['section']).strip())
-            new_sequence_raw.append(ru_title)
+            footer = ""
             
-    old_sequence = list(ru_map.keys())
-    reordered_existing = [x for x in new_sequence_raw if x in old_sequence]
+    return lead, preserved, footer
+
+def process_article(en_text, ru_text):
+    lead, preserved_ru, footer = extract_ru_structure(ru_text)
     
-    if reordered_existing != old_sequence:
-        print("    [!] Обнаружено несовпадение порядка разделов. Структура отсортирована!")
-        changed = True
+    en_parsed = mwparserfromhell.parse(en_text)
+    new_sections = []
+    
+    # Обрабатываем разделы с английской вики
+    for sec in en_parsed.get_sections(include_lead=False, levels=[2]):
+        headings = [h for h in sec.filter_headings() if h.level == 2]
+        if not headings: continue
         
-    if not changed:
-        return None
+        raw_en_title = headings[0].title.strip()
+        clean_en_title = clean_header_title(raw_en_title)
+        ru_title = HEADERS_MAP.get(clean_en_title) or HEADERS_MAP.get(clean_en_title.title(), clean_en_title)
         
-    final_text = lead_text + "\n\n" + "\n\n".join(final_sections)
-    if ru_footer:
-        final_text += "\n\n" + ru_footer
+        # Если раздел защищён, вставляем его русскую версию
+        if ru_title in PRESERVE_RU_SECTIONS:
+            if ru_title in preserved_ru:
+                new_sections.append(preserved_ru[ru_title])
+            continue
+            
+        # Иначе собираем чистый раздел из английского кода
+        sec_text = str(sec)
+        sec_text = clean_en_junk(sec_text)
+        sec_text = translate_headings(sec_text)
+        sec_text = convert_galleries(sec_text)
+        
+        if sec_text.strip():
+            new_sections.append(sec_text.strip())
+            
+    # Добавляем защищенные разделы, которые были на RU, но которых нет на EN (на всякий случай)
+    for title, content in preserved_ru.items():
+        if title not in str(new_sections):
+            new_sections.append(content)
+            
+    final_text = lead + "\n\n" + "\n\n".join(new_sections)
+    if footer:
+        final_text += "\n\n" + footer
         
     final_text = re.sub(r'\n{3,}', '\n\n', final_text)
     return final_text.strip()
@@ -261,7 +198,6 @@ def main():
     ru_site = mwclient.Site(RU_DOMAIN, path=RU_PATH)
     en_site = mwclient.Site(EN_DOMAIN, path=EN_PATH)
     
-    # ПРАВИЛЬНАЯ АВТОРИЗАЦИЯ ДЛЯ MWCLIENT
     try:
         ru_site.login(username, password)
         print("[+] Успешная авторизация бота на русской вики.")
@@ -297,26 +233,11 @@ def main():
             ru_text = ru_page.text()
             en_text = en_page.text()
             
-            def resolve_todo(match):
-                en_name = match.group(1).strip()
-                clean_en = clean_header_title(en_name)
-                ru_name = HEADERS_MAP.get(clean_en) or HEADERS_MAP.get(clean_en.title(), f"TODO: {clean_en}")
-                return f"== {ru_name} =="
-                
-            ru_text_cleaned = re.sub(r'^==\s*TODO:\s*([^=]+?)\s*==$', resolve_todo, ru_text, flags=re.MULTILINE | re.IGNORECASE)
-            todos_resolved = (ru_text != ru_text_cleaned)
-            
-            if "{{галерея" not in ru_text_cleaned.lower() and "{{gallery" not in ru_text_cleaned.lower():
+            if "{{галерея" not in ru_text.lower() and "{{gallery" not in ru_text.lower():
                 continue
                 
-            new_ru_text = merge_and_sort_galleries(en_text, ru_text_cleaned)
+            new_ru_text = process_article(en_text, ru_text)
             
-            if new_ru_text is None:
-                if todos_resolved:
-                    new_ru_text = ru_text_cleaned
-                else:
-                    continue
-                
             if new_ru_text == ru_text:
                 continue
                 
@@ -324,7 +245,7 @@ def main():
             
             for attempt in range(3):
                 try:
-                    ru_page.save(new_ru_text, summary="Дополнение галерей")
+                    ru_page.save(new_ru_text, summary="Техническая синхронизация: полная реконструкция структуры галереи из оригинала")
                     time.sleep(3)
                     break
                 except mwclient.errors.APIError as e:
