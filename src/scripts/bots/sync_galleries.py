@@ -1,5 +1,6 @@
 import os
 import re
+import time
 import mwclient
 import mwparserfromhell
 
@@ -17,7 +18,9 @@ CATEGORIES_TO_CHECK = [
 # Разделы, внутри которых мы НЕ объединяем файлы, но их порядок сортируем
 IGNORE_SECTIONS = [
     "screenshots", 
-    "скриншоты"
+    "скриншоты",
+    "animations",
+    "анимация"
 ]
 
 # Полный словарь переводов
@@ -53,48 +56,80 @@ HEADERS_MAP = {
     "T-Shirts, Sweatshirts, and Hoodies": "Футболки, толстовки и свитеры", "Trading Cards": "Коллекционные карты"
 }
 
+def clean_fname(name):
+    """Вырезает префиксы File:, Файл:, Image: перед вставкой в галерею."""
+    return re.sub(r'^(?:File|Файл|Image|Изображение):\s*', '', name, flags=re.IGNORECASE).strip()
+
+def clean_header_title(title):
+    """Счищает жирный шрифт и ссылки из заголовков для поиска в словаре."""
+    t = re.sub(r"'''?", "", title)
+    t = re.sub(r'</?[^>]+>', '', t)
+    t = re.sub(r'\[\[(?:[^|\]]*\|)?([^\]]+)\]\]', r'\1', t)
+    return t.strip()
+
 def detach_footer(text):
     """Отделяет Навигацию и категории от тела статьи для безопасной сортировки."""
-    # 1. Ищем явный заголовок Навигации
     match = re.search(r'(==\s*Навигация\s*==.*)', text, re.IGNORECASE | re.DOTALL)
     if match:
         footer = match.group(1).strip()
         body = text[:match.start()].strip()
         return body, footer
         
-    # 2. Если заголовка нет, собираем шаблоны и категории с самого низа
     footer_elements = re.findall(r'^(\{\{(?:Галереи|Интервики|HazbinGallery|HelluvaGallery)\}\}|\[\[Категория:[^\]]+\]\])\s*$', text, re.MULTILINE | re.IGNORECASE)
     
     if footer_elements:
         body = re.sub(r'^(\{\{(?:Галереи|Интервики|HazbinGallery|HelluvaGallery)\}\}|\[\[Категория:[^\]]+\]\])\s*$\n?', '', text, flags=re.MULTILINE | re.IGNORECASE)
-        # Автоматически оборачиваем их в красивый заголовок Навигации
         footer = "== Навигация ==\n" + "\n".join(footer_elements)
         return body.strip(), footer.strip()
         
     return text, ""
 
 def get_sections_map(parsed, is_ru=False):
-    """Разбивает статью на словарь {Название_раздела: данные_раздела}"""
+    """Разбивает статью на словарь {Чистое_Имя_Раздела: данные_раздела}"""
     sec_map = {}
     for sec in parsed.get_sections(include_lead=False, levels=[2]):
         headings = [h for h in sec.filter_headings() if h.level == 2]
         if not headings: continue
         
-        title = headings[0].title.strip()
-        is_ignored = any(word in title.lower() for word in IGNORE_SECTIONS)
+        raw_title = headings[0].title.strip()
+        clean_title = clean_header_title(raw_title)
+        
+        is_ignored = any(word in clean_title.lower() for word in IGNORE_SECTIONS)
             
         if is_ru:
             gals = [tpl for tpl in sec.filter_templates() if tpl.name.strip().lower() in ('галерея', 'gallery')]
         else:
             gals = sec.filter_tags(matches=lambda node: node.tag.lower() == 'gallery')
             
-        sec_map[title] = {
+        sec_map[clean_title] = {
             'section': sec,
             'heading_str': str(headings[0]),
             'gals': gals,
             'ignored': is_ignored
         }
     return sec_map
+
+def create_new_ru_section(ru_title, en_gals):
+    """Создаёт чистый русский раздел только с галереями (игнорирует англ. шаблоны и интервики)."""
+    lines = [f"== {ru_title} =="]
+    for gal in en_gals:
+        lines.append("{{Галерея")
+        if gal.contents:
+            for line in str(gal.contents).strip().split('\n'):
+                line = line.strip()
+                if not line: continue
+                # Вырезаем alt=...
+                line = re.sub(r'\|\s*alt\s*=[^|]*', '', line)
+                parts = line.split('|', 1)
+                
+                # Очищаем префикс (File: и т.д.)
+                fname = clean_fname(parts[0])
+                if len(parts) > 1:
+                    lines.append(f"|{fname}|{parts[1].strip()}")
+                else:
+                    lines.append(f"|{fname}")
+        lines.append("}}")
+    return "\n".join(lines)
 
 def merge_single_gallery(en_gal, ru_gal):
     """Сливает две идентичные галереи, добавляя новые файлы из EN в RU."""
@@ -107,10 +142,10 @@ def merge_single_gallery(en_gal, ru_gal):
     for line in ru_raw.split('\n'):
         line = line.strip()
         if not line: continue
-        parts = line.split('|')
-        filename = parts[0].strip()
-        ru_items[filename] = line 
-        ru_filenames_ordered.append(filename)
+        parts = line.split('|', 1)
+        fname = clean_fname(parts[0])
+        ru_items[fname] = line 
+        ru_filenames_ordered.append(fname)
             
     new_ru_lines = []
     changed = False
@@ -119,21 +154,22 @@ def merge_single_gallery(en_gal, ru_gal):
         for line in str(en_gal.contents).strip().split('\n'):
             line = line.strip()
             if not line: continue
+            
+            line = re.sub(r'\|\s*alt\s*=[^|]*', '', line)
             parts = line.split('|', 1)
-            filename = parts[0].strip()
+            fname = clean_fname(parts[0])
             en_caption = parts[1].strip() if len(parts) > 1 else ""
             
-            if filename in ru_items:
-                new_ru_lines.append(ru_items[filename])
-                del ru_items[filename]
+            if fname in ru_items:
+                new_ru_lines.append(ru_items[fname])
+                del ru_items[fname]
             else:
                 if en_caption:
-                    new_ru_lines.append(f"{filename}|{en_caption}")
+                    new_ru_lines.append(f"{fname}|{en_caption}")
                 else:
-                    new_ru_lines.append(f"{filename}")
+                    new_ru_lines.append(f"{fname}")
                 changed = True 
                 
-    # Эксклюзивные русские файлы возвращаем в конец
     for fname in ru_filenames_ordered:
         if fname in ru_items:
             new_ru_lines.append(ru_items[fname])
@@ -152,30 +188,7 @@ def merge_single_gallery(en_gal, ru_gal):
     
     return new_template
 
-def convert_en_section_to_ru(en_sec_str, ru_title, en_heading_str):
-    """Конвертирует целый английский раздел в русский формат."""
-    sec_text = en_sec_str.replace(en_heading_str, f"== {ru_title} ==", 1)
-    
-    sec_text = re.sub(r'<gallery[^>]*>', '{{Галерея|\n', sec_text, flags=re.IGNORECASE)
-    sec_text = re.sub(r'</gallery>', '}}', sec_text, flags=re.IGNORECASE)
-    
-    lines = sec_text.split('\n')
-    new_lines = []
-    in_gallery = False
-    for line in lines:
-        if '{{Галерея' in line:
-            in_gallery = True
-        elif line.strip() == '}}':
-            in_gallery = False
-            
-        if in_gallery and '|' in line and not line.startswith('{{'):
-            line = re.sub(r'\|\s*alt\s*=[^|]*', '', line)
-        new_lines.append(line)
-        
-    return "\n".join(new_lines).strip()
-
 def merge_and_sort_galleries(en_text, ru_text):
-    # 1. Отделяем безопасный подвал от тела статьи
     ru_body, ru_footer = detach_footer(ru_text)
     
     en_parsed = mwparserfromhell.parse(en_text)
@@ -189,7 +202,6 @@ def merge_and_sort_galleries(en_text, ru_text):
     used_ru_titles = set()
     new_sequence_raw = []
     
-    # 2. Вытаскиваем "Голову" (Вступление, Табвью)
     lead_nodes = []
     for node in ru_parsed.nodes:
         if isinstance(node, mwparserfromhell.nodes.heading.Heading) and node.level == 2:
@@ -197,17 +209,15 @@ def merge_and_sort_galleries(en_text, ru_text):
         lead_nodes.append(str(node))
     lead_text = "".join(lead_nodes).strip()
     
-    # 3. Собираем тело статьи строго по английскому порядку
     for en_title, en_data in en_map.items():
-        ru_title = HEADERS_MAP.get(en_title) or HEADERS_MAP.get(en_title.title(), en_title)
+        # Если перевода нет, явно ставим TODO:, чтобы не потерять
+        ru_title = HEADERS_MAP.get(en_title) or HEADERS_MAP.get(en_title.title(), f"TODO: {en_title}")
         
-        # Если раздел уже есть на русской вики
         if ru_title in ru_map:
             ru_data = ru_map[ru_title]
             used_ru_titles.add(ru_title)
             new_sequence_raw.append(ru_title)
             
-            # Мержим галереи (если они не в черном списке и совпадают по количеству)
             if not en_data['ignored'] and not ru_data['ignored']:
                 if len(en_data['gals']) == len(ru_data['gals']) and len(en_data['gals']) > 0:
                     sec_parsed = ru_data['section']
@@ -220,25 +230,21 @@ def merge_and_sort_galleries(en_text, ru_text):
                 else:
                     final_sections.append(str(ru_data['section']).strip())
             else:
-                # Черный список (Скриншоты и т.д.): переносим как есть, но на нужное место
                 final_sections.append(str(ru_data['section']).strip())
                 
-        # Если раздела на русской вики нет
         else:
             if not en_data['ignored'] and len(en_data['gals']) > 0:
                 print(f"    [+] Добавлен новый раздел: {en_title} -> {ru_title}")
-                new_sec_text = convert_en_section_to_ru(str(en_data['section']), ru_title, en_data['heading_str'])
+                new_sec_text = create_new_ru_section(ru_title, en_data['gals'])
                 final_sections.append(new_sec_text)
                 new_sequence_raw.append(ru_title)
                 changed = True
                 
-    # 4. Добавляем уникальные русские разделы (которых нет на англовики) в самый низ списка
     for ru_title, ru_data in ru_map.items():
         if ru_title not in used_ru_titles:
             final_sections.append(str(ru_data['section']).strip())
             new_sequence_raw.append(ru_title)
             
-    # 5. Проверяем, изменился ли порядок сортировки существующих разделов
     old_sequence = list(ru_map.keys())
     reordered_existing = [x for x in new_sequence_raw if x in old_sequence]
     
@@ -249,12 +255,10 @@ def merge_and_sort_galleries(en_text, ru_text):
     if not changed:
         return None
         
-    # 6. Собираем всё воедино: Голова + Отсортированное тело + Навигация
     final_text = lead_text + "\n\n" + "\n\n".join(final_sections)
     if ru_footer:
         final_text += "\n\n" + ru_footer
         
-    # Очищаем от лишних пустых строк
     final_text = re.sub(r'\n{3,}', '\n\n', final_text)
     return final_text.strip()
 
@@ -302,7 +306,9 @@ def main():
             # --- ПЕРЕВОД TODO-ЗАГОЛОВКОВ ---
             def resolve_todo(match):
                 en_name = match.group(1).strip()
-                ru_name = HEADERS_MAP.get(en_name) or HEADERS_MAP.get(en_name.title(), en_name)
+                clean_en = clean_header_title(en_name)
+                # Если перевода нет, оставляем TODO: на месте, чтобы не потерять!
+                ru_name = HEADERS_MAP.get(clean_en) or HEADERS_MAP.get(clean_en.title(), f"TODO: {clean_en}")
                 return f"== {ru_name} =="
                 
             ru_text_cleaned = re.sub(r'^==\s*TODO:\s*([^=]+?)\s*==$', resolve_todo, ru_text, flags=re.MULTILINE | re.IGNORECASE)
@@ -314,7 +320,6 @@ def main():
                 
             new_ru_text = merge_and_sort_galleries(en_text, ru_text_cleaned)
             
-            # Обработка ситуаций, если изменились только TODO-заголовки
             if new_ru_text is None:
                 if todos_resolved:
                     new_ru_text = ru_text_cleaned
@@ -325,7 +330,23 @@ def main():
                 continue
                 
             print(f"  [+] Сохраняю изменения в статье {ru_title}...")
-            ru_page.save(new_ru_text, summary="Обновление галереи")
+            
+            # --- ЛОГИКА СОХРАНЕНИЯ С ЗАЩИТОЙ ОТ АНТИСПАМА ---
+            for attempt in range(3):
+                try:
+                    ru_page.save(new_ru_text, summary="Дополнение галерей")
+                    time.sleep(3) # Стандартная пауза, чтобы не злить Фэндом
+                    break # Успешно сохранили, идём к следующей статье
+                except mwclient.errors.APIError as e:
+                    if e.code == 'ratelimited':
+                        print(f"    [!] Сработал антиспам (ratelimited). Ждём 15 секунд... (Попытка {attempt + 1}/3)")
+                        time.sleep(15)
+                    else:
+                        print(f"    [-] Ошибка API при сохранении: {e}")
+                        break
+                except Exception as e:
+                    print(f"    [-] Неизвестная ошибка при сохранении: {e}")
+                    break
 
 if __name__ == "__main__":
     main()
