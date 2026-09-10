@@ -15,7 +15,6 @@ CATEGORIES_TO_CHECK = [
     "Категория:Галереи Адского Босса" 
 ]
 
-# Разделы, внутри которых мы НЕ объединяем файлы, но их порядок сортируем
 IGNORE_SECTIONS = [
     "screenshots", 
     "скриншоты",
@@ -23,7 +22,6 @@ IGNORE_SECTIONS = [
     "анимация"
 ]
 
-# Полный словарь переводов
 HEADERS_MAP = {
     "Screenshots": "Скриншоты", "Animations": "Анимация", "Official Artwork": "Официальное творчество",
     "Merchandise": "Мерчендайз", "Concept Art": "Концепт-арты", "Miscellaneous": "Разное",
@@ -57,18 +55,15 @@ HEADERS_MAP = {
 }
 
 def clean_fname(name):
-    """Вырезает префиксы File:, Файл:, Image: перед вставкой в галерею."""
     return re.sub(r'^(?:File|Файл|Image|Изображение):\s*', '', name, flags=re.IGNORECASE).strip()
 
 def clean_header_title(title):
-    """Счищает жирный шрифт и ссылки из заголовков для поиска в словаре."""
     t = re.sub(r"'''?", "", title)
     t = re.sub(r'</?[^>]+>', '', t)
     t = re.sub(r'\[\[(?:[^|\]]*\|)?([^\]]+)\]\]', r'\1', t)
     return t.strip()
 
 def detach_footer(text):
-    """Отделяет Навигацию и категории от тела статьи для безопасной сортировки."""
     match = re.search(r'(==\s*Навигация\s*==.*)', text, re.IGNORECASE | re.DOTALL)
     if match:
         footer = match.group(1).strip()
@@ -85,7 +80,6 @@ def detach_footer(text):
     return text, ""
 
 def get_sections_map(parsed, is_ru=False):
-    """Разбивает статью на словарь {Чистое_Имя_Раздела: данные_раздела}"""
     sec_map = {}
     for sec in parsed.get_sections(include_lead=False, levels=[2]):
         headings = [h for h in sec.filter_headings() if h.level == 2]
@@ -93,7 +87,6 @@ def get_sections_map(parsed, is_ru=False):
         
         raw_title = headings[0].title.strip()
         clean_title = clean_header_title(raw_title)
-        
         is_ignored = any(word in clean_title.lower() for word in IGNORE_SECTIONS)
             
         if is_ru:
@@ -110,7 +103,6 @@ def get_sections_map(parsed, is_ru=False):
     return sec_map
 
 def create_new_ru_section(ru_title, en_gals):
-    """Создаёт чистый русский раздел только с галереями (игнорирует англ. шаблоны и интервики)."""
     lines = [f"== {ru_title} =="]
     for gal in en_gals:
         lines.append("{{Галерея")
@@ -118,11 +110,8 @@ def create_new_ru_section(ru_title, en_gals):
             for line in str(gal.contents).strip().split('\n'):
                 line = line.strip()
                 if not line: continue
-                # Вырезаем alt=...
                 line = re.sub(r'\|\s*alt\s*=[^|]*', '', line)
                 parts = line.split('|', 1)
-                
-                # Очищаем префикс (File: и т.д.)
                 fname = clean_fname(parts[0])
                 if len(parts) > 1:
                     lines.append(f"|{fname}|{parts[1].strip()}")
@@ -132,7 +121,6 @@ def create_new_ru_section(ru_title, en_gals):
     return "\n".join(lines)
 
 def merge_single_gallery(en_gal, ru_gal):
-    """Сливает две идентичные галереи, добавляя новые файлы из EN в RU."""
     ru_items = {}
     ru_filenames_ordered = [] 
     
@@ -210,7 +198,6 @@ def merge_and_sort_galleries(en_text, ru_text):
     lead_text = "".join(lead_nodes).strip()
     
     for en_title, en_data in en_map.items():
-        # Если перевода нет, явно ставим TODO:, чтобы не потерять
         ru_title = HEADERS_MAP.get(en_title) or HEADERS_MAP.get(en_title.title(), f"TODO: {en_title}")
         
         if ru_title in ru_map:
@@ -271,9 +258,16 @@ def main():
         return
 
     print("[i] Подключение к API Фэндома...")
-    en_site = mwclient.Site(EN_DOMAIN, path=EN_PATH)
     ru_site = mwclient.Site(RU_DOMAIN, path=RU_PATH)
-    ru_site.login(username, password)
+    en_site = mwclient.Site(EN_DOMAIN, path=EN_PATH)
+    
+    # ПРАВИЛЬНАЯ АВТОРИЗАЦИЯ ДЛЯ MWCLIENT
+    try:
+        ru_site.login(username, password)
+        print("[+] Успешная авторизация бота на русской вики.")
+    except Exception as e:
+        print(f"[-] Ошибка авторизации: {e}")
+        return
     
     for cat_name in CATEGORIES_TO_CHECK:
         print(f"\n[=== Сканирование: {cat_name} ===]")
@@ -303,17 +297,14 @@ def main():
             ru_text = ru_page.text()
             en_text = en_page.text()
             
-            # --- ПЕРЕВОД TODO-ЗАГОЛОВКОВ ---
             def resolve_todo(match):
                 en_name = match.group(1).strip()
                 clean_en = clean_header_title(en_name)
-                # Если перевода нет, оставляем TODO: на месте, чтобы не потерять!
                 ru_name = HEADERS_MAP.get(clean_en) or HEADERS_MAP.get(clean_en.title(), f"TODO: {clean_en}")
                 return f"== {ru_name} =="
                 
             ru_text_cleaned = re.sub(r'^==\s*TODO:\s*([^=]+?)\s*==$', resolve_todo, ru_text, flags=re.MULTILINE | re.IGNORECASE)
             todos_resolved = (ru_text != ru_text_cleaned)
-            # -------------------------------
             
             if "{{галерея" not in ru_text_cleaned.lower() and "{{gallery" not in ru_text_cleaned.lower():
                 continue
@@ -331,12 +322,11 @@ def main():
                 
             print(f"  [+] Сохраняю изменения в статье {ru_title}...")
             
-            # --- ЛОГИКА СОХРАНЕНИЯ С ЗАЩИТОЙ ОТ АНТИСПАМА ---
             for attempt in range(3):
                 try:
                     ru_page.save(new_ru_text, summary="Дополнение галерей")
-                    time.sleep(3) # Стандартная пауза, чтобы не злить Фэндом
-                    break # Успешно сохранили, идём к следующей статье
+                    time.sleep(3)
+                    break
                 except mwclient.errors.APIError as e:
                     if e.code == 'ratelimited':
                         print(f"    [!] Сработал антиспам (ratelimited). Ждём 15 секунд... (Попытка {attempt + 1}/3)")
