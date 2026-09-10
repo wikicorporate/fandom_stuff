@@ -35,7 +35,7 @@ def categorize_simple(site, page):
     new_text = text.strip() + f"\n\n{category_name}"
     
     try:
-        page.save(new_text, summary="Автоматическая категоризация")
+        page.save(new_text, summary="🤖 Автоматическая категоризация новых файлов")
         print(f"[+] Добавлена категория для {filename}")
         time.sleep(3)
     except Exception as e:
@@ -63,14 +63,12 @@ def main():
     print(f"[*] Проверка файлов, загруженных после: {cutoff_time.strftime('%Y-%m-%d %H:%M:%S')} UTC")
 
     try:
-        # Убираем жесткий лимит в 50 файлов, скрипт остановится сам по времени
         uploads = site.logevents(type='upload')
         
         for upload in uploads:
-            # Получаем время загрузки файла и переводим в формат datetime
-            timestamp_str = upload.get('timestamp')
-            import time
-            event_time = datetime.fromtimestamp(time.mktime(log['timestamp']))
+            # mwclient возвращает время в виде объекта time.struct_time
+            # Безопасно собираем из него datetime (год, месяц, день, час, минута, секунда)
+            event_time = datetime(*upload['timestamp'][:6])
             
             # Если наткнулись на файл старше 24 часов — останавливаем скрипт
             if event_time < cutoff_time:
