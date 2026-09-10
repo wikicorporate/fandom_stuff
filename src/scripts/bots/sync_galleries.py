@@ -325,7 +325,7 @@ def main():
                 continue
                 
             print(f"  [+] Сохраняю изменения в статье {ru_title}...")
-            ru_page.save(new_ru_text, summary="🤖 Автоматическая синхронизация (перевод заголовков, сортировка структуры и обновление файлов)")
+            ru_page.save(new_ru_text, summary="Обновление галереи")
 
 if __name__ == "__main__":
     main()
