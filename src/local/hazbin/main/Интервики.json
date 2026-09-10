@@ -1257,6 +1257,9 @@
         "fr": "Vox/Galerie",
         "it": "Vox/Galleria"
     },
+    "Вокс/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Vox/Gallery/HH Season 2"
+    },
     "Вокс/Галерея/Мерчендайз": {
         "en": "Vox/Gallery/Merchandise",
         "fr": "Vox/Galerie/Produits dérivés"
@@ -1264,6 +1267,9 @@
     "Вокс/Галерея/Официальное творчество": {
         "en": "Vox/Gallery/Official Artwork",
         "fr": "Vox/Galerie/Artworks Officiels"
+    },
+    "Вокс/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Vox/Gallery/HH Season 1"
     },
     "Вокс/Цитаты": {
         "en": "Vox/Quotes",
@@ -1895,6 +1901,12 @@
         "fr": "Zestial/Galerie",
         "it": "Zestial/Galleria"
     },
+    "Зестиал/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Zestial/Gallery/HH Season 2"
+    },
+    "Зестиал/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Zestial/Gallery/HH Season 1"
+    },
     "Зестиал/Цитаты": {
         "en": "Zestial/Quotes"
     },
@@ -2060,6 +2072,12 @@
         "fr": "Carmilla Carmine/Galerie",
         "it": "Carmilla Carmine/Galleria"
     },
+    "Кармилла Кармайн/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Carmilla Carmine/Gallery/HH Season 2"
+    },
+    "Кармилла Кармайн/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Carmilla Carmine/Gallery/HH Season 1"
+    },
     "Кармилла Кармайн/Цитаты": {
         "en": "Carmilla Carmine/Quotes"
     },
@@ -2110,6 +2128,9 @@
     },
     "КиКи/Галерея/Мерчендайз": {
         "en": "KeeKee/Gallery/Merchandise"
+    },
+    "КиКи/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "KeeKee/Gallery/HH Season 2"
     },
     "Кимико Гленн": {
         "cs": "Kimiko Glenn",
@@ -2377,6 +2398,9 @@
     "Кримсон/Галерея": {
         "en": "Crimson/Gallery",
         "fr": "Crimson/Galerie"
+    },
+    "Кримсон/Галерея/Второй сезон Адского Босса": {
+        "en": "Crimson/Gallery/HB Season 2"
     },
     "Кримсон/Галерея/Мерчендайз": {
         "en": "Crimson/Gallery/Merchandise"
@@ -4978,6 +5002,12 @@
         "es": "Sera/Galería",
         "fr": "Sera/Galerie",
         "it": "Sera/Galleria"
+    },
+    "Сера/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Sera/Gallery/HH Season 2"
+    },
+    "Сера/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Sera/Gallery/HH Season 1"
     },
     "Сера/Цитаты": {
         "en": "Sera/Quotes"
