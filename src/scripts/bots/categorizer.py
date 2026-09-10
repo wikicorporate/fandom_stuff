@@ -69,7 +69,8 @@ def main():
         for upload in uploads:
             # Получаем время загрузки файла и переводим в формат datetime
             timestamp_str = upload.get('timestamp')
-            event_time = datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%SZ")
+            import time
+            event_time = datetime.fromtimestamp(time.mktime(log['timestamp']))
             
             # Если наткнулись на файл старше 24 часов — останавливаем скрипт
             if event_time < cutoff_time:
