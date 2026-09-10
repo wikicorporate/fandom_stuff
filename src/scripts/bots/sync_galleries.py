@@ -55,8 +55,19 @@ HEADERS_MAP = {
     "T-Shirts, Sweatshirts, and Hoodies": "Футболки, толстовки и свитеры", "Trading Cards": "Коллекционные карты"
 }
 
+def clean_fname(name):
+    """Вырезает префиксы File:, Файл: перед вставкой в галерею."""
+    return re.sub(r'^(?:File|Файл|Image|Изображение):\s*', '', name, flags=re.IGNORECASE).strip()
+
+def clean_header_title(title):
+    """Счищает жирный шрифт и ссылки из заголовков для поиска в словаре."""
+    t = re.sub(r"'''?", "", title)
+    t = re.sub(r'</?[^>]+>', '', t)
+    t = re.sub(r'\[\[(?:[^|\]]*\|)?([^\]]+)\]\]', r'\1', t)
+    return t.strip()
+
 def clean_en_junk(text):
-    """Удаляет английские шаблоны, категории и интервики, чтобы они не переносились в русскую статью."""
+    """Удаляет английские шаблоны, категории и интервики."""
     text = re.sub(r'\{\{(HazbinGallery|HelluvaGallery|Main|GalleryTabber|Character gallery navbox)[^}]*\}\}\n?', '', text, flags=re.IGNORECASE)
     text = re.sub(r'\[\[Category:[^\]]+\]\]\n?', '', text, flags=re.IGNORECASE)
     text = re.sub(r'\[\[[a-z-]{2,10}:[^\]]+\]\]\n?', '', text, flags=re.IGNORECASE)
@@ -67,13 +78,9 @@ def translate_headings(text):
     def repl(match):
         level = match.group(1)
         title = match.group(2).strip()
+        clean_title = clean_header_title(title)
         
-        # Счищаем жирный шрифт и ссылки для поиска в словаре
-        clean_title = re.sub(r"'''?", "", title)
-        clean_title = re.sub(r'</?[^>]+>', '', clean_title)
-        clean_title = re.sub(r'\[\[(?:[^|\]]*\|)?([^\]]+)\]\]', r'\1', clean_title)
-        
-        ru_title = HEADERS_MAP.get(clean_title) or HEADERS_MAP.get(clean_title.title(), clean_title)
+        ru_title = HEADERS_MAP.get(clean_title) or HEADERS_MAP.get(clean_title.title(), f"TODO: {clean_title}")
         return f"{level} {ru_title} {level}"
         
     return re.sub(r'^(={2,6})\s*(.*?)\s*\1$', repl, text, flags=re.MULTILINE)
@@ -89,11 +96,9 @@ def convert_galleries(text):
             line = line.strip()
             if not line: continue
             
-            # Вырезаем alt=
             line = re.sub(r'\|\s*alt\s*=[^|]*', '', line)
-            
             parts = line.split('|', 1)
-            fname = re.sub(r'^(?:File|Файл|Image|Изображение):\s*', '', parts[0], flags=re.IGNORECASE).strip()
+            fname = clean_fname(parts[0])
             
             if not fname:
                 continue
@@ -116,7 +121,7 @@ def extract_ru_structure(ru_text):
     """Вытаскивает шапку, защищенные разделы и подвал из русской статьи."""
     parsed = mwparserfromhell.parse(ru_text)
     
-    # Извлекаем шапку (всё до первого H2)
+    # Извлекаем шапку
     lead_nodes = []
     for node in parsed.nodes:
         if isinstance(node, mwparserfromhell.nodes.heading.Heading) and node.level == 2:
@@ -133,7 +138,7 @@ def extract_ru_structure(ru_text):
             if title in PRESERVE_RU_SECTIONS:
                 preserved[title] = str(sec).strip()
                 
-    # Извлекаем подвал (через регулярки, так как он может быть без заголовка)
+    # Извлекаем подвал
     footer_match = re.search(r'(==\s*Навигация\s*==.*)', ru_text, re.IGNORECASE | re.DOTALL)
     if footer_match:
         footer = footer_match.group(1).strip()
@@ -160,7 +165,7 @@ def process_article(en_text, ru_text):
         
         raw_en_title = headings[0].title.strip()
         clean_en_title = clean_header_title(raw_en_title)
-        ru_title = HEADERS_MAP.get(clean_en_title) or HEADERS_MAP.get(clean_en_title.title(), clean_en_title)
+        ru_title = HEADERS_MAP.get(clean_en_title) or HEADERS_MAP.get(clean_en_title.title(), f"TODO: {clean_en_title}")
         
         # Если раздел защищён, вставляем его русскую версию
         if ru_title in PRESERVE_RU_SECTIONS:
