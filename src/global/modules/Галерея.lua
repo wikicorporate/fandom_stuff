@@ -1,5 +1,39 @@
 local p = {}
 
+-- Умная функция разделения по пайпам, которая игнорирует пайпы внутри скобок [[...]] и {{...}}
+local function split_line(line)
+    local parts = {}
+    local current = {}
+    local bracket_level = 0
+    local brace_level = 0
+    
+    for i = 1, #line do
+        local c = line:sub(i, i)
+        if c == '[' then
+            bracket_level = bracket_level + 1
+            table.insert(current, c)
+        elseif c == ']' then
+            bracket_level = bracket_level - 1
+            if bracket_level < 0 then bracket_level = 0 end
+            table.insert(current, c)
+        elseif c == '{' then
+            brace_level = brace_level + 1
+            table.insert(current, c)
+        elseif c == '}' then
+            brace_level = brace_level - 1
+            if brace_level < 0 then brace_level = 0 end
+            table.insert(current, c)
+        elseif c == '|' and bracket_level == 0 and brace_level == 0 then
+            table.insert(parts, table.concat(current))
+            current = {}
+        else
+            table.insert(current, c)
+        end
+    end
+    table.insert(parts, table.concat(current))
+    return parts
+end
+
 function p.e(frame)
     local input = frame.args[1] or ""
     return frame:preprocess('<div class="mw-collapsible mw-collapsed mw-made-collapsible t-gallery"><gallery>\n' .. input:gsub('\\', '|') .. '</gallery></div>')
@@ -44,7 +78,8 @@ function p.e2(frame)
     for _, line in ipairs(lines) do
         line = mw.text.trim(line)
         if line ~= "" and line ~= "|" then
-            local parts = mw.text.split(line, "|")
+            -- ИСПОЛЬЗУЕМ НОВУЮ ФУНКЦИЮ ВМЕСТО mw.text.split
+            local parts = split_line(line)
             local filename = mw.text.trim(parts[1] or "")
             
             if filename ~= "" then
