@@ -35,7 +35,7 @@ def categorize_simple(site, page):
     new_text = text.strip() + f"\n\n{category_name}"
     
     try:
-        page.save(new_text, summary="🤖 Автоматическая категоризация новых файлов")
+        page.save(new_text, summary="🤖 Автоматическая категоризация новых и восстановленных файлов")
         print(f"[+] Добавлена категория для {filename}")
         time.sleep(3)
     except Exception as e:
@@ -58,9 +58,11 @@ def main():
         print(f"[-] Ошибка авторизации: {e}")
         return
     
-    # Определяем границу времени: текущее время по UTC минус 24 часа
+    processed_files = set() # Хранилище обработанных файлов, чтобы избежать дублей
+    
+    # ЭТАП 1: Проверка лога загрузок за последние 24 часа
     cutoff_time = datetime.utcnow() - timedelta(hours=24)
-    print(f"[*] Проверка файлов, загруженных после: {cutoff_time.strftime('%Y-%m-%d %H:%M:%S')} UTC")
+    print(f"\n[*] ЭТАП 1: Проверка файлов, загруженных после: {cutoff_time.strftime('%Y-%m-%d %H:%M:%S')} UTC")
 
     try:
         uploads = site.logevents(type='upload')
@@ -70,18 +72,49 @@ def main():
             # Безопасно собираем из него datetime (год, месяц, день, час, минута, секунда)
             event_time = datetime(*upload['timestamp'][:6])
             
-            # Если наткнулись на файл старше 24 часов — останавливаем скрипт
+            # Если наткнулись на файл старше 24 часов — останавливаем первый этап
             if event_time < cutoff_time:
-                print("\n[+] Достигнут предел в 24 часа. Остановка скрипта.")
+                print("[+] Достигнут предел в 24 часа. Загрузки проверены.")
                 break
                 
             title = upload.get('title')
-            if title:
+            if title and title not in processed_files:
+                processed_files.add(title)
                 page = site.pages[title]
                 categorize_simple(site, page)
                 
     except Exception as e:
         print(f"[-] Ошибка при получении лога загрузок: {e}")
+
+    # ЭТАП 2: Проверка служебной страницы "Некатегоризованные файлы"
+    print("\n[*] ЭТАП 2: Сканирование служебной страницы 'Некатегоризованные файлы'...")
+    try:
+        qpoffset = 0
+        while True:
+            # Используем API для получения списка некатегоризованных файлов
+            response = site.api('query', list='querypage', qppage='Uncategorizedimages', qplimit='max', qpoffset=qpoffset)
+            results = response.get('query', {}).get('querypage', {}).get('results', [])
+            
+            if not results:
+                break
+                
+            for item in results:
+                title = item.get('title')
+                if title and title not in processed_files:
+                    processed_files.add(title)
+                    page = site.pages[title]
+                    categorize_simple(site, page)
+            
+            # Проверяем, есть ли еще страницы для пагинации (если файлов больше лимита выдачи)
+            if 'continue' in response and 'qpoffset' in response['continue']:
+                qpoffset = response['continue']['qpoffset']
+            else:
+                break
+                
+        print("[+] Сканирование некатегоризованных файлов завершено.")
+        
+    except Exception as e:
+        print(f"[-] Ошибка при получении списка некатегоризованных файлов: {e}")
 
 if __name__ == "__main__":
     main()
