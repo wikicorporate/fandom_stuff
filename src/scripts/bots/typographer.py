@@ -13,24 +13,47 @@ PROJECTS = {
 }
 
 def clean_typography(text):
-    # 1. Умные кавычки
+    # 1. Защита галерей: временно извлекаем их из текста
+    protected_blocks = {}
+    parsed_for_protection = mwparserfromhell.parse(text)
+    
+    counter = 0
+    # Ищем шаблоны Галерея
+    for node in parsed_for_protection.filter_templates():
+        name = node.name.strip().lower()
+        if name in ('галерея', 'gallery', 'hazbingallery', 'helluvagallery'):
+            marker = f"__PROTECTED_BLOCK_{counter}__"
+            protected_blocks[marker] = str(node)
+            parsed_for_protection.replace(node, marker)
+            counter += 1
+            
+    # Ищем теги <gallery>
+    for node in parsed_for_protection.filter_tags():
+        if node.tag.lower() == 'gallery':
+            marker = f"__PROTECTED_BLOCK_{counter}__"
+            protected_blocks[marker] = str(node)
+            parsed_for_protection.replace(node, marker)
+            counter += 1
+
+    working_text = str(parsed_for_protection)
+
+    # 2. Умные кавычки
     def smart_quotes(match):
         before, inside = match.group(1), match.group(2)
         if re.search(r'[а-яА-ЯёЁ]', inside):
             return f'{before}«{inside}»'
         return f'{before}"{inside}"'
 
-    text = re.sub(r'(^|[\s(\[-|>])"([^"]+)"(?=[.,!?\)\];:]|\s|-|<|$)', smart_quotes, text)
+    working_text = re.sub(r'(^|[\s(\[-|>])"([^"]+)"(?=[.,!?\)\];:]|\s|-|<|$)', smart_quotes, working_text)
 
-    # 2. Дефисы и пробелы (с защитой файлов и ссылок)
-    parsed = mwparserfromhell.parse(text)
+    # 3. Дефисы и пробелы в оставшемся тексте
+    parsed = mwparserfromhell.parse(working_text)
     for node in parsed.filter_text():
         val = str(node.value)
         lines = val.split('\n')
         new_lines = []
         
         for line in lines:
-            # ЗАЩИТА: Пропускаем строки с файлами, префиксами файлов и URL
             if (re.search(r'\.(jpg|jpeg|png|gif|webp|svg)\b', line, re.IGNORECASE) or 
                 re.match(r'^\s*(File|Файл):', line, re.IGNORECASE) or 
                 'http' in line):
@@ -42,15 +65,20 @@ def clean_typography(text):
                 
         node.value = '\n'.join(new_lines)
         
-    return str(parsed)
+    working_text = str(parsed)
+
+    # 4. Возвращаем защищенные галереи на место
+    for marker, original_block in protected_blocks.items():
+        working_text = working_text.replace(marker, original_block)
+
+    return working_text
 
 def main():
-    # ИСПРАВЛЕНО: Теперь используются правильные названия секретов из GitHub Actions
     username = os.environ.get('FANDOM_BOT_USERNAME')
     password = os.environ.get('FANDOM_BOT_PASSWORD')
     
     if not username or not password:
-        print("❌ Ошибка: Секреты логина/пароля не найдены в окружении (нужны FANDOM_BOT_USERNAME и FANDOM_BOT_PASSWORD)!")
+        print("[-] Ошибка: Секреты логина/пароля не найдены в окружении!")
         return
     
     for project_name, config in PROJECTS.items():
@@ -63,7 +91,7 @@ def main():
             site.login(username, password)
             print(f"[*] Успешная авторизация на {project_name}")
         except Exception as e:
-            print(f"❌ Ошибка авторизации на {project_name}: {e}")
+            print(f"[-] Ошибка авторизации на {project_name}: {e}")
             continue
         
         for page in site.allpages(namespace=0):
@@ -86,10 +114,10 @@ def main():
                                 print(f"    [!] Сработал антиспам. Ждём 15 секунд... (Попытка {attempt + 1}/3)")
                                 time.sleep(15)
                             else:
-                                print(f"    ❌ Ошибка API при сохранении: {e}")
+                                print(f"    [-] Ошибка API при сохранении: {e}")
                                 break
             except Exception as e:
-                print(f"❌ Ошибка при обработке {page.name}: {e}")
+                print(f"[-] Ошибка при обработке {page.name}: {e}")
 
 if __name__ == "__main__":
     main()
