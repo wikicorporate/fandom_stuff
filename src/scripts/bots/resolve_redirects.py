@@ -12,19 +12,28 @@ PROJECTS = {
 }
 
 def main():
-    username = os.environ.get('WIKI_USERNAME')
-    password = os.environ.get('WIKI_PASSWORD')
+    username = os.environ.get('FANDOM_BOT_USERNAME')
+    password = os.environ.get('FANDOM_BOT_PASSWORD')
+    
+    if not username or not password:
+        print("[-] Ошибка: Секреты логина/пароля не найдены в окружении!")
+        return
     
     for project_name, config in PROJECTS.items():
         if not config.get("all_pages"): continue
             
         print(f"\n[=== Резолвер редиректов: {project_name} ===]")
         site = mwclient.Site(config["domain"], path=config["path"])
-        site.login(username, password)
+        
+        try:
+            site.login(username, password)
+            print("[+] Успешная авторизация.")
+        except Exception as e:
+            print(f"[-] Ошибка авторизации на {project_name}: {e}")
+            continue
         
         print("[*] Составление карты перенаправлений (это займёт пару минут)...")
         redirect_map = {}
-        # Запрашиваем только страницы-редиректы
         for page in site.allpages(namespace=0, filterredir='redirects'):
             target = page.redirects_to()
             if target:
@@ -32,7 +41,6 @@ def main():
                 
         print(f"[+] Найдено редиректов: {len(redirect_map)}")
         
-        # Теперь сканируем обычные статьи
         print("[*] Сканирование статей на наличие старых ссылок...")
         for page in site.allpages(namespace=0, filterredir='nonredirects'):
             text = page.text()
@@ -42,25 +50,35 @@ def main():
             for wikilink in parsed.filter_wikilinks():
                 link_title = str(wikilink.title).strip()
                 
-                # Если ссылка ведёт на редирект
                 if link_title in redirect_map:
                     real_target = redirect_map[link_title]
                     
-                    # Если текст ссылки не был указан, сохраняем старое название как текст
-                    # [[Старое имя]] -> [[Новое имя|Старое имя]]
                     if not wikilink.text:
                         if link_title != real_target:
                             wikilink.text = link_title
                             
-                    # Меняем саму ссылку на актуальную
                     wikilink.title = real_target
                     changed = True
                     
             if changed:
                 new_text = str(parsed)
                 print(f"[!] Обновлены ссылки в статье: {page.name}")
-                page.save(new_text, summary="Замена перенаправлений на прямые ссылки")
-                time.sleep(3) # Задержка для обхода лимитов
+                
+                for attempt in range(3):
+                    try:
+                        page.save(new_text, summary="Автоматическая замена перенаправлений на прямые ссылки")
+                        time.sleep(3) 
+                        break
+                    except mwclient.errors.APIError as e:
+                        if e.code == 'ratelimited':
+                            print(f"    [!] Сработал антиспам. Ждём 15 секунд... (Попытка {attempt + 1}/3)")
+                            time.sleep(15)
+                        else:
+                            print(f"    [-] Ошибка API при сохранении: {e}")
+                            break
+                    except Exception as e:
+                        print(f"    [-] Неизвестная ошибка при сохранении: {e}")
+                        break
 
 if __name__ == "__main__":
     main()
