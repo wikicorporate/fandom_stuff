@@ -45,11 +45,12 @@ def clean_typography(text):
     return str(parsed)
 
 def main():
+    # ИСПРАВЛЕНО: Теперь используются правильные названия секретов из GitHub Actions
     username = os.environ.get('FANDOM_BOT_USERNAME')
     password = os.environ.get('FANDOM_BOT_PASSWORD')
     
     if not username or not password:
-        print("❌ Ошибка: Секреты логина/пароля не найдены в окружении!")
+        print("❌ Ошибка: Секреты логина/пароля не найдены в окружении (нужны FANDOM_BOT_USERNAME и FANDOM_BOT_PASSWORD)!")
         return
     
     for project_name, config in PROJECTS.items():
@@ -60,6 +61,7 @@ def main():
         
         try:
             site.login(username, password)
+            print(f"[*] Успешная авторизация на {project_name}")
         except Exception as e:
             print(f"❌ Ошибка авторизации на {project_name}: {e}")
             continue
@@ -68,16 +70,26 @@ def main():
             if page.name.lower().endswith('.json') or page.name.lower().endswith('.css') or page.name.lower().endswith('.js'):
                 continue
 
-            original = page.text()
-            cleaned = clean_typography(original)
-            
-            if original != cleaned:
-                print(f"[!] Исправлена типографика: {page.name}")
-                try:
-                    page.save(cleaned, summary="🤖 Автоматическое исправление типографики")
-                    time.sleep(3)
-                except Exception as e:
-                    print(f"❌ Ошибка при сохранении {page.name}: {e}")
+            try:
+                original = page.text()
+                cleaned = clean_typography(original)
+                
+                if original != cleaned:
+                    print(f"[!] Исправлена типографика: {page.name}")
+                    for attempt in range(3):
+                        try:
+                            page.save(cleaned, summary="Автоматическое исправление типографики")
+                            time.sleep(3)
+                            break
+                        except mwclient.errors.APIError as e:
+                            if e.code == 'ratelimited':
+                                print(f"    [!] Сработал антиспам. Ждём 15 секунд... (Попытка {attempt + 1}/3)")
+                                time.sleep(15)
+                            else:
+                                print(f"    ❌ Ошибка API при сохранении: {e}")
+                                break
+            except Exception as e:
+                print(f"❌ Ошибка при обработке {page.name}: {e}")
 
 if __name__ == "__main__":
     main()
