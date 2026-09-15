@@ -45,8 +45,8 @@ def clean_typography(text):
     return str(parsed)
 
 def main():
-    username = os.environ.get('WIKI_USERNAME')
-    password = os.environ.get('WIKI_PASSWORD')
+    username = os.environ.get('FANDOM_BOT_USERNAME')
+    password = os.environ.get('FANDOM_BOT_PASSWORD')
     
     if not username or not password:
         print("❌ Ошибка: Секреты логина/пароля не найдены в окружении!")
