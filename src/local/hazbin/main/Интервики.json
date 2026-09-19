@@ -45,6 +45,7 @@
     },
     "Аве Мария": {
         "en": "Ave Maria",
+        "ja": "Ave Maria",
         "pt-br": "Ave Maria"
     },
     "Авель": {
@@ -327,6 +328,7 @@
         "it": "Helluva Boss/Stagione 3",
         "ja": "ヘルヴァ･ボス/シーズン３",
         "pl": "Helluva Boss/Sezon 3",
+        "pt-br": "Helluva Boss/3ª Temporada",
         "th": "เฮลลูวา บอส บอสวายป่วง ทะลวงนรก/ซีซั่น 3",
         "tr": "Helluva Boss/Sezon 3"
     },
@@ -5192,6 +5194,7 @@
         "fr": "Stolas Sings",
         "hu": "Stolas Sings",
         "it": "Stolas Canta",
+        "ja": "Stolas Sings",
         "pl": "Stolas Sings",
         "pt-br": "Stolas Sings"
     },
