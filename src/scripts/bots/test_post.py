@@ -4,7 +4,7 @@ import mwclient
 
 DOMAIN = "hazbinhotel.fandom.com"
 PATH = "/ru/"
-TEST_USER = "Swit4er"  # или никнейм тестового аккаунта
+TEST_USER = os.environ.get("TEST_USER", "Swit4er")  # или никнейм тестового аккаунта
 
 user = os.environ.get("WIKI_USERNAME")
 password = os.environ.get("WIKI_PASSWORD")
