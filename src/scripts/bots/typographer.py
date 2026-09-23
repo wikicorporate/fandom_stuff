@@ -13,27 +13,31 @@ PROJECTS = {
 }
 
 def clean_typography(text):
-    # 1. Защита галерей: временно извлекаем их из текста
+    # 1. Защита всех шаблонов и HTML-тегов: временно извлекаем их из текста
     protected_blocks = {}
     parsed_for_protection = mwparserfromhell.parse(text)
     
     counter = 0
-    # Ищем шаблоны Галерея
-    for node in parsed_for_protection.filter_templates():
-        name = node.name.strip().lower()
-        if name in ('галерея', 'gallery', 'hazbingallery', 'helluvagallery'):
-            marker = f"__PROTECTED_BLOCK_{counter}__"
-            protected_blocks[marker] = str(node)
+    
+    # Ищем абсолютно все шаблоны (извлекаем целиком без рекурсии во вложенные элементы)
+    for node in parsed_for_protection.filter_templates(recursive=False):
+        marker = f"__PROTECTED_BLOCK_{counter}__"
+        protected_blocks[marker] = str(node)
+        try:
             parsed_for_protection.replace(node, marker)
             counter += 1
+        except ValueError:
+            pass
             
-    # Ищем теги <gallery>
-    for node in parsed_for_protection.filter_tags():
-        if node.tag.lower() == 'gallery':
-            marker = f"__PROTECTED_BLOCK_{counter}__"
-            protected_blocks[marker] = str(node)
+    # Ищем абсолютно все HTML-теги (например, <gallery>, <div>, <span>, <ref> и т.д.)
+    for node in parsed_for_protection.filter_tags(recursive=False):
+        marker = f"__PROTECTED_BLOCK_{counter}__"
+        protected_blocks[marker] = str(node)
+        try:
             parsed_for_protection.replace(node, marker)
             counter += 1
+        except ValueError:
+            pass
 
     working_text = str(parsed_for_protection)
 
@@ -67,8 +71,9 @@ def clean_typography(text):
         
     working_text = str(parsed)
 
-    # 4. Возвращаем защищенные галереи на место
-    for marker, original_block in protected_blocks.items():
+    # 4. Возвращаем защищенные блоки на место
+    # Используем reversed(), чтобы корректно раскрыть вложенные маркеры, если они есть
+    for marker, original_block in reversed(list(protected_blocks.items())):
         working_text = working_text.replace(marker, original_block)
 
     return working_text
