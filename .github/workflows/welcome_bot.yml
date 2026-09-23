@@ -1,0 +1,39 @@
+name: Welcome Users
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-welcome:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install mwclient requests
+
+      - name: Run welcome script
+        env:
+          WIKI_USERNAME: ${{ secrets.WIKI_USERNAME }}
+          WIKI_PASSWORD: ${{ secrets.WIKI_PASSWORD }}
+        run: |
+          python src/scripts/bots/welcome_bot.py
+
+      - name: Commit updated database
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Update welcomed users database"
+          file_pattern: "src/data/welcomed_users.json"
