@@ -17,4 +17,4 @@ jobs:
           WIKI_USERNAME: ${{ secrets.WIKI_USERNAME }}
           WIKI_PASSWORD: ${{ secrets.WIKI_PASSWORD }}
           TEST_USER: "Swit4er"
-        run: python test_post.py
+        run: python src/scripts/bots/test_post.py
