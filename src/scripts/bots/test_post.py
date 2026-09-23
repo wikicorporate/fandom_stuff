@@ -8,11 +8,11 @@ DOMAIN = "hazbinhotel.fandom.com"
 PATH = "/ru/"
 TEST_USER = os.environ.get("TEST_USER", "Swit4er")
 
-user = os.environ.get("WIKI_USERNAME")
-password = os.environ.get("WIKI_PASSWORD")
+user = os.environ.get("MAIN_ACCOUNT_USER")
+password = os.environ.get("MAIN_ACCOUNT_PASSWORD")
 
 if not user or not password:
-    print("[-] Ошибка: Переменные WIKI_USERNAME или WIKI_PASSWORD не заданы.")
+    print("[-] Ошибка: Переменные MAIN_ACCOUNT_USER или MAIN_ACCOUNT_PASSWORD не заданы.")
     sys.exit(1)
 
 site = mwclient.Site(DOMAIN, path=PATH)
