@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 import requests
 import mwclient
 
@@ -10,9 +11,8 @@ TEST_USER = os.environ.get("TEST_USER", "Swit4er")
 user = os.environ.get("WIKI_USERNAME")
 password = os.environ.get("WIKI_PASSWORD")
 
-# 1. Проверка наличия секретов
 if not user or not password:
-    print("[-] Ошибка: Секреты WIKI_USERNAME или WIKI_PASSWORD не найдены в окружении!")
+    print("[-] Ошибка: Переменные WIKI_USERNAME или WIKI_PASSWORD не заданы.")
     sys.exit(1)
 
 site = mwclient.Site(DOMAIN, path=PATH)
@@ -24,7 +24,7 @@ except Exception as e:
     print(f"[-] Ошибка входа в аккаунт: {e}")
     sys.exit(1)
 
-# 2. Получение User ID целевого пользователя
+# 1. Получаем User ID целевого пользователя
 user_query = site.api("query", list="users", ususers=TEST_USER)
 users_data = user_query.get("query", {}).get("users", [])
 
@@ -35,24 +35,52 @@ if not users_data or "userid" not in users_data[0]:
 user_id = users_data[0]["userid"]
 print(f"[*] Найден ID пользователя {TEST_USER}: {user_id}")
 
-# 3. Получение CSRF токена
+# 2. Получаем CSRF-токен
 token_res = site.api("query", meta="tokens")
 csrf_token = token_res.get("query", {}).get("tokens", {}).get("csrftoken")
 
-# 4. Отправка сообщения на стену
+# 3. Формируем тело сообщения
+msg_title = "Тестовое приветствие"
+msg_text = "Проверка работы автоматического скрипта приветствий."
+
+json_model = {
+    "type": "doc",
+    "content": [
+        {
+            "type": "paragraph",
+            "content": [
+                {
+                    "type": "text",
+                    "text": msg_text
+                }
+            ]
+        }
+    ]
+}
+
+attachments = {
+    "contentImages": [],
+    "openGraphs": [],
+    "atMentions": []
+}
+
+# 4. Отправляем запрос через точный UCP-контроллер
 url = f"https://{DOMAIN}{PATH}wikia.php"
 params = {
-    "controller": "Wall",
-    "method": "postNewMessage",
+    "controller": r"Fandom\MessageWall\MessageWall",
+    "method": "createThread",
     "format": "json"
 }
+
 data = {
+    "token": csrf_token,
     "wallOwnerId": user_id,
-    "wallOwner": TEST_USER,
-    "messagetitle": "Тестовое приветствие",
-    "body": "Проверка работы автоматического скрипта приветствий.",
-    "token": csrf_token
+    "title": msg_title,
+    "rawContent": msg_text,
+    "jsonModel": json.dumps(json_model, ensure_ascii=False),
+    "attachments": json.dumps(attachments)
 }
+
 headers = {
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     "X-Requested-With": "XMLHttpRequest"
