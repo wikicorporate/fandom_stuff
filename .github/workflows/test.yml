@@ -14,7 +14,7 @@ jobs:
       - run: pip install mwclient requests
       - name: Run test
         env:
-          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
-          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+          MAIN_ACCOUNT_USER: ${{ secrets.MAIN_ACCOUNT_USER }}
+          MAIN_ACCOUNT_PASSWORD: ${{ secrets.MAIN_ACCOUNT_PASSWORD }}
           TEST_USER: "Swit4er"
         run: python src/scripts/bots/test_post.py
