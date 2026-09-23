@@ -2,7 +2,6 @@ import os
 import sys
 import json
 import requests
-import mwclient
 
 DOMAIN = "hazbinhotel.fandom.com"
 PATH = "/ru/"
@@ -15,19 +14,46 @@ if not user or not password:
     print("[-] Ошибка: Переменные MAIN_ACCOUNT_USER или MAIN_ACCOUNT_PASSWORD не заданы.")
     sys.exit(1)
 
-site = mwclient.Site(DOMAIN, path=PATH)
+session = requests.Session()
 
-try:
-    site.login(user, password)
-    print(f"[+] Авторизация успешна под аккаунтом: {user}")
-except Exception as e:
-    print(f"[-] Ошибка входа в аккаунт: {e}")
+# 1. Авторизация через центральный сервис Fandom Helios
+print(f"[*] Авторизация через Helios под аккаунтом: {user}...")
+auth_url = "https://services.fandom.com/auth/token"
+auth_data = {
+    "username": user,
+    "password": password
+}
+auth_headers = {
+    "Content-Type": "application/x-www-form-urlencoded"
+}
+
+auth_resp = session.post(auth_url, data=auth_data, headers=auth_headers)
+if auth_resp.status_code != 200:
+    print(f"[-] Ошибка авторизации Helios ({auth_resp.status_code}): {auth_resp.text}")
     sys.exit(1)
 
-# 1. Получаем User ID целевого пользователя
-user_query = site.api("query", list="users", ususers=TEST_USER)
-users_data = user_query.get("query", {}).get("users", [])
+auth_json = auth_resp.json()
+access_token = auth_json.get("access_token")
+if not access_token:
+    print("[-] Токен доступа не получен из ответа Helios.")
+    sys.exit(1)
 
+# Устанавливаем cookie access_token для домена fandom.com
+session.cookies.set("access_token", access_token, domain=".fandom.com")
+print("[+] Успешная авторизация в Helios, сессионный токен установлен.")
+
+# 2. Получение User ID целевого пользователя и CSRF-токена через api.php
+api_url = f"https://{DOMAIN}{PATH}api.php"
+
+# Поиск ID пользователя
+u_params = {
+    "action": "query",
+    "list": "users",
+    "ususers": TEST_USER,
+    "format": "json"
+}
+u_resp = session.get(api_url, params=u_params).json()
+users_data = u_resp.get("query", {}).get("users", [])
 if not users_data or "userid" not in users_data[0]:
     print(f"[-] Не удалось найти пользователя {TEST_USER} или его ID.")
     sys.exit(1)
@@ -35,11 +61,17 @@ if not users_data or "userid" not in users_data[0]:
 user_id = users_data[0]["userid"]
 print(f"[*] Найден ID пользователя {TEST_USER}: {user_id}")
 
-# 2. Получаем CSRF-токен
-token_res = site.api("query", meta="tokens")
-csrf_token = token_res.get("query", {}).get("tokens", {}).get("csrftoken")
+# Получение CSRF-токена
+token_params = {
+    "action": "query",
+    "meta": "tokens",
+    "format": "json"
+}
+t_resp = session.get(api_url, params=token_params).json()
+csrf_token = t_resp.get("query", {}).get("tokens", {}).get("csrftoken")
+print("[*] CSRF-токен получен.")
 
-# 3. Формируем тело сообщения
+# 3. Формирование структуры сообщения
 msg_title = "Тестовое приветствие"
 msg_text = "Проверка работы автоматического скрипта приветствий."
 
@@ -64,15 +96,15 @@ attachments = {
     "atMentions": []
 }
 
-# 4. Отправляем запрос через точный UCP-контроллер
-url = f"https://{DOMAIN}{PATH}wikia.php"
-params = {
+# 4. Отправка темы на стену
+wall_url = f"https://{DOMAIN}{PATH}wikia.php"
+wall_params = {
     "controller": r"Fandom\MessageWall\MessageWall",
     "method": "createThread",
     "format": "json"
 }
 
-data = {
+wall_data = {
     "token": csrf_token,
     "wallOwnerId": user_id,
     "title": msg_title,
@@ -81,11 +113,11 @@ data = {
     "attachments": json.dumps(attachments)
 }
 
-headers = {
+wall_headers = {
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     "X-Requested-With": "XMLHttpRequest"
 }
 
-resp = site.connection.post(url, params=params, data=data, headers=headers)
+resp = session.post(wall_url, params=wall_params, data=wall_data, headers=wall_headers)
 print(f"[*] Статус отправки на стену: {resp.status_code}")
 print(f"[*] Ответ сервера: {resp.text}")
