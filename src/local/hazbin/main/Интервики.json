@@ -1171,6 +1171,7 @@
         "en": "Just Look My Way",
         "es": "Just Look My Way",
         "fr": "Just Look My Way",
+        "ja": "Just Look My Way",
         "pl": "Just Look My Way",
         "pt-br": "Just Look My Way"
     },
@@ -1353,6 +1354,7 @@
         "en": "All 2 U (Motherf*cker)",
         "es": "All 2 U (Motherf*cker)",
         "fr": "All 2 U (Motherf*cker)",
+        "ja": "All 2 U (Motherf*cker)",
         "pt-br": "All 2 U (Motherf*cker)"
     },
     "ГЛАС БОЖИЙ": {
@@ -1544,6 +1546,7 @@
         "en": "Day By Day",
         "es": "Lo tomas como es",
         "fr": "Day By Day",
+        "ja": "Day By Day",
         "pt-br": "Day By Day"
     },
     "Дети Марты и Ральфи": {
@@ -1788,6 +1791,7 @@
         "es": "Inside of Every Demon is a Rainbow",
         "fr": "En Chaque Démon se Trouve un Bel Arc-En-Ciel",
         "it": "Inside of Every Demon is a Rainbow",
+        "ja": "Inside of Every Demon is a Rainbow",
         "pl": "Inside of Every Demon is a Rainbow",
         "pt-br": "Inside of Every Demon is a Rainbow"
     },
@@ -1811,12 +1815,14 @@
     "Жужжание": {
         "en": "Buzzzn",
         "fr": "Buzzzn",
+        "ja": "Buzzzn",
         "pt-br": "Buzzzn"
     },
     "Жутковатая любовь": {
         "en": "A Spooky Kind of Love",
         "es": "A Spooky Kind of Love",
         "fr": "A Spooky Kind of Love",
+        "ja": "A Spooky Kind of Love",
         "pt-br": "A Spooky Kind of Love",
         "tr": "Perili Bir Aşk"
     },
@@ -1964,6 +1970,7 @@
         "en": "Over You",
         "es": "Over You",
         "fr": "Over You",
+        "ja": "Over You",
         "pt-br": "Over You"
     },
     "Имп Сити": {
@@ -2542,6 +2549,7 @@
         "en": "Mastermind (song)",
         "es": "Mastermind (canción)",
         "fr": "Mastermind (chanson)",
+        "ja": "Mastermind",
         "pl": "Mastermind (piosenka)",
         "pt-br": "Mastermind (canção)"
     },
@@ -3365,6 +3373,7 @@
         "fr": "Mission : Antartica",
         "hu": "Mission: Antarctica",
         "it": "Mission: Antarctica",
+        "ja": "Mission: Antarctica",
         "pl": "Mission: Antarctica",
         "th": "Mission: Antarctica",
         "tr": "Mission: Antarctica"
@@ -3384,6 +3393,7 @@
         "fr": "Mission : Bigfoot",
         "hu": "Mission: Bigfoot",
         "it": "Mission: Bigfoot",
+        "ja": "Mission: Bigfoot",
         "pl": "Mission: Bigfoot",
         "th": "Mission: Bigfoot",
         "tr": "Mission: Bigfoot"
@@ -3402,6 +3412,7 @@
         "fr": "Mission : Big Boss",
         "hu": "Mission: Big Boss",
         "it": "Mission: Big Boss",
+        "ja": "Mission: Big Boss",
         "pl": "Mission: Big Boss",
         "th": "Mission: Big Boss",
         "tr": "Mission: Big Boss"
@@ -3420,6 +3431,7 @@
         "fr": "Mission : Orphan Time",
         "hu": "Mission: Orphan Time",
         "it": "Mission: Orphan Time",
+        "ja": "Mission: Orphan Time",
         "pl": "Mission: Orphan Time",
         "th": "Mission: Orphan Time",
         "tr": "Mission: Orphan Time"
@@ -3439,6 +3451,7 @@
         "fr": "Mission : Whacked Off",
         "hu": "Mission: Whacked Off",
         "it": "Mission: Whacked Off",
+        "ja": "Mission: Whacked Off",
         "pl": "Mission: Whacked Off",
         "th": "Mission: Whacked Off",
         "tr": "Mission: Whacked Off"
@@ -3458,6 +3471,7 @@
         "fr": "Mission : Weeaboo-boo",
         "hu": "Mission: Weeaboo-boo",
         "it": "Mission: Weeaboo-boo",
+        "ja": "Mission: Weeaboo-boo",
         "pl": "Mission: Weeaboo-boo",
         "th": "Mission: Weeaboo-boo",
         "tr": "Mission: Weeaboo-boo"
@@ -3496,6 +3510,7 @@
         "fr": "Mission : It's Chaz Funeral",
         "hu": "Mission: It's Chaz Funeral",
         "it": "Mission: It's Chaz Funeral",
+        "ja": "Mission: It's Chaz Funeral",
         "pl": "Mission: It's Chaz Funeral",
         "th": "Mission: It's Chaz Funeral",
         "tr": "Mission: It's Chaz Funeral"
@@ -3533,6 +3548,7 @@
         "fr": "Mission : Bad Drivezo",
         "hu": "Mission: Bad Drivezo",
         "it": "Mission: Bad Drivezo",
+        "ja": "Mission: Bad Drivezo",
         "pl": "Mission: Bad Drivezo",
         "th": "Mission: Bad Drivezo",
         "tr": "Mission: Bad Drivezo"
@@ -3551,6 +3567,7 @@
         "fr": "Mission : Chupacabras",
         "hu": "Mission: Chupacabras",
         "it": "Mission: Chupacabras",
+        "ja": "Mission: Chupacabras",
         "pl": "Mission: Chupacabras",
         "th": "Mission: Chupacabras",
         "tr": "Mission: Chupacabras"
@@ -3916,6 +3933,7 @@
         "es": "Oh Millie",
         "fr": "Oh Millie",
         "hu": "Oh Millie",
+        "ja": "Oh Millie",
         "pl": "Oh Millie",
         "pt-br": "Oh Millie"
     },
@@ -4438,6 +4456,7 @@
         "fr": "Barbie's Bad Day",
         "hu": "Barbie's Bad Day",
         "it": "Barbie's Bad Day",
+        "ja": "Barbie's Bad Day",
         "pl": "Barbie's Bad Day",
         "th": "Barbie's Bad Day",
         "tr": "Barbie's Bad Day"
@@ -5115,6 +5134,7 @@
         "en": "Handle Me",
         "es": "Handle Me",
         "fr": "Handle Me",
+        "ja": "Handle Me",
         "pt-br": "Handle Me"
     },
     "Срываем чёртову свадьбу": {
@@ -6495,6 +6515,7 @@
         "en": "I Will Be Okay",
         "es": "I Will Be Okay",
         "fr": "I Will Be Okay",
+        "ja": "I Will Be Okay",
         "pt-br": "I Will Be Okay"
     },
     "Я всегда следую за радугой": {
@@ -6502,6 +6523,7 @@
         "es": "I'm Always Chasing Rainbows",
         "fr": "Je Cherche Encore l'Arc-En-Ciel",
         "it": "I'm Always Chasing Rainbows",
+        "ja": "I'm Always Chasing Rainbows",
         "pl": "I'm Always Chasing Rainbows",
         "pt-br": "I'm Always Chasing Rainbows"
     },
@@ -6509,6 +6531,7 @@
         "en": "I Wanna Fuck a Ghost",
         "es": "I Wanna Fuck a Ghost",
         "fr": "I Wanna Fuck a Ghost",
+        "ja": "I Wanna Fuck a Ghost",
         "pt-br": "I Wanna Fuck a Ghost"
     },
     "Яд": {
