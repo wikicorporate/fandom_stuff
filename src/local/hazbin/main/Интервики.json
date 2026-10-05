@@ -1801,6 +1801,7 @@
         "es": "Live To Live",
         "fr": "Live To Live",
         "hu": "Live To Live",
+        "it": "Vivrò",
         "ja": "Live To Live",
         "pt-br": "Live To Live",
         "tr": "Yaşamak İçin Yaşa"
@@ -2290,6 +2291,7 @@
         "es": "When I Think About The Future",
         "fr": "When I Think About The Future",
         "hu": "When I Think About The Future",
+        "it": "Quando Penso Al Mio Futuro",
         "ja": "When I Think About The Future",
         "pt-br": "When I Think About The Future",
         "tr": "Geleceğe Baktığımda"
@@ -3935,7 +3937,8 @@
         "hu": "Oh Millie",
         "ja": "Oh Millie",
         "pl": "Oh Millie",
-        "pt-br": "Oh Millie"
+        "pt-br": "Oh Millie",
+        "tr": "Oh Millie"
     },
     "О Милли/Галерея": {
         "en": "Oh Millie/Gallery",
@@ -4425,7 +4428,8 @@
         "fr": "La Chanson de Mrs. Mayberry",
         "hu": "Teacher's Song",
         "ja": "Teacher's Song",
-        "pt-br": "Teacher's Song"
+        "pt-br": "Teacher's Song",
+        "tr": "Öğretmen'in Şarkısı"
     },
     "Пилотный эпизод Адского Босса": {
         "cs": "Helluva Boss Pilot",
@@ -5754,6 +5758,7 @@
         "es": "Hear My Hope",
         "fr": "Hear My Hear",
         "hu": "Hear My Hope",
+        "it": "È Per Noi",
         "ja": "Hear My Hope",
         "pt-br": "Hear My Hope",
         "tr": "Umudum"
