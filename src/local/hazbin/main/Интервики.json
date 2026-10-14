@@ -46,6 +46,7 @@
     },
     "Аве Мария": {
         "en": "Ave Maria",
+        "fr": "Ave Maria",
         "ja": "Ave Maria",
         "pt-br": "Ave Maria"
     },
@@ -2827,7 +2828,8 @@
         "fr": "Loo Loo Land (chanson)",
         "ja": "ルー・ルー・ランド（歌）",
         "pl": "Loo Loo Land (piosenka)",
-        "pt-br": "Loo Loo Land (canção)"
+        "pt-br": "Loo Loo Land (canção)",
+        "tr": "Loo Loo Land (şarkı)"
     },
     "Лу Лу Ленд/Галерея": {
         "en": "Loo Loo Land (episode)/Gallery",
@@ -3604,7 +3606,8 @@
         "es": "Mi papi me cagó la vida",
         "fr": "My World Is Burning Down Around Me",
         "ja": "My World Is Burning Down Around Me",
-        "pt-br": "My World Is Burning Down Around Me"
+        "pt-br": "My World Is Burning Down Around Me",
+        "tr": "Dünyam Yıkılıyor Etrafımda"
     },
     "Мокси": {
         "de": "Moxxie",
@@ -5149,6 +5152,7 @@
         "en": "Crashin' a Muthafuckin' Wedding",
         "es": "Crashin' a Muthafuckin' Wedding",
         "fr": "Crashin' a Muthafuckin' Wedding",
+        "ja": "Crashin' a Muthafuckin' Wedding",
         "pt-br": "Crashin' a Muthafuckin' Wedding"
     },
     "Стелла": {
