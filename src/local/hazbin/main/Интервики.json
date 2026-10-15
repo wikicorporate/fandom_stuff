@@ -3508,7 +3508,8 @@
         "fr": "Mission : Zéro/Galerie"
     },
     "Миссия: первый шаг/Транскрипт": {
-        "en": "Mission: Zero/Transcript"
+        "en": "Mission: Zero/Transcript",
+        "fr": "Mission : Zéro/Transcription"
     },
     "Миссия: похороны Чеза": {
         "cs": "Mission: It's Chaz Funeral",
@@ -4665,6 +4666,7 @@
     },
     "Радио убило видео-звезду/Транскрипт": {
         "en": "Radio Killed the Video Star/Transcript",
+        "fr": "Radio Killed the Video Star/Transcription",
         "pl": "Radio zabiło gwiazdę wideo/Transkrypt"
     },
     "Радио-Демон": {
@@ -5689,6 +5691,7 @@
     "Увертюра/Транскрипт": {
         "en": "Overture/Transcript",
         "es": "Obertura/Transcripción",
+        "fr": "Overture/Transcription",
         "pl": "Uwertura/Transkrypt"
     },
     "Увидеть звёзды": {
@@ -6625,7 +6628,8 @@
         "ja": "エッグ君/セリフ"
     },
     "Ярость ледяного маркиза": {
-        "en": "Rage of the Frost Marquis"
+        "en": "Rage of the Frost Marquis",
+        "fr": "Rage of the Frost Marquis"
     },
     "Ярче": {
         "de": "Heller",
