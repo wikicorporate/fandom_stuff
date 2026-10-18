@@ -1,210 +1,180 @@
-import requests
 import json
 import os
+import sys
 import time
+from pathlib import Path
+from typing import Dict, Set
 
-# Единая база настроек
-PROJECTS = {
-    "Hazbin Hotel": {
-        "output": "src/local/hazbin/main/Интервики.json",
-        "ru_api": "https://hazbinhotel.fandom.com/ru/api.php",
-        "hubs": {
-            "cs": "https://hazbinhotel.fandom.com/cs/api.php",
-            "de": "https://hazbinhotel.fandom.com/de/api.php",
-            "en": "https://hazbinhotel.fandom.com/api.php",
-            "es": "https://hazbinhotel.fandom.com/es/api.php",
-            "fr": "https://hazbin-hotel.fandom.com/fr/api.php",
-            "hu": "https://voltvalaki-hotel.fandom.com/hu/api.php",
-            "it": "https://hazbinhotel.fandom.com/it/api.php",
-            "ja": "https://hazbinhotel.fandom.com/ja/api.php",
-            "pl": "https://hazbinhotel.fandom.com/pl/api.php",
-            "pt-br": "https://hazbinhotel.fandom.com/pt-br/api.php",
-            "th": "https://hazbin-hotel.fandom.com/th/api.php",
-            "tr": "https://hazbinhotel.fandom.com/tr/api.php",
-            "zh": "https://hazbinhotel.fandom.com/zh/api.php"
-        }
-    },
-    "Zoophobia": {
-        "output": "src/local/zoophobia/main/Интервики.json",
-        "ru_api": "https://zoophobia.fandom.com/ru/api.php",
-        "hubs": {
-            "en": "https://zoophobia.fandom.com/api.php",
-            "ja": "https://zoophobia.fandom.com/ja/api.php"
-        }
-    },
-    "Returnal": {
-        "output": "src/local/returnal/main/Интервики.json",
-        "ru_api": "https://returnal.fandom.com/ru/api.php",
-        "hubs": {
-            "en": "https://returnal.fandom.com/api.php"
-        }
-    },
-    "Helltaker": {
-        "output": "src/local/helltaker/main/Интервики.json",
-        "ru_api": "https://helltaker.fandom.com/ru/api.php",
-        "hubs": {
-            "en": "https://helltaker.fandom.com/api.php"
-        }
-    },
-    "Oneshot": {
-        "output": "src/local/oneshot/main/Интервики.json",
-        "ru_api": "https://oneshot.fandom.com/ru/api.php",
-        "hubs": {
-            "en": "https://oneshot.fandom.com/api.php",
-            "fr": "https://oneshot.fandom.com/fr/api.php",
-            "zh": "https://oneshot.fandom.com/zh/api.php"
-        }
-    }
-}
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from utils.wiki_client import REPO_ROOT, create_http_session, load_projects
 
-def fetch_interwikis():
-    session = requests.Session()
-    
-    for project_name, config in PROJECTS.items():
-        print(f"\n[=== Запуск сбора для проекта: {project_name} ===]")
-        
-        # 1. ЗАГРУЖАЕМ СТАРУЮ БАЗУ
-        interwiki_db = {}
-        if os.path.exists(config["output"]):
+
+def fetch_interwikis() -> None:
+    session = create_http_session()
+    projects = load_projects()
+
+    for project_name, cfg in projects.items():
+        output_rel = cfg.get("interwiki_output")
+        hubs: Dict[str, str] = cfg.get("hubs", {})
+        domain = cfg.get("domain")
+        api_path = cfg.get("path", "/ru/")
+
+        if not output_rel or not hubs or not domain:
+            continue
+
+        output_path = REPO_ROOT / output_rel
+        ru_api = f"https://{domain}{api_path}api.php"
+
+        print(f"\n[=== Запуск сбора интервики для проекта: {project_name} ===]")
+
+        # 1. Загружаем существующую базу
+        interwiki_db: Dict[str, Dict[str, str]] = {}
+        if output_path.exists():
             try:
-                with open(config["output"], "r", encoding="utf-8") as f:
-                    interwiki_db = json.load(f)
+                with open(output_path, "r", encoding="utf-8") as f:
+                    loaded = json.load(f)
+                    if isinstance(loaded, dict):
+                        interwiki_db = loaded
                 print(f"[*] Загружена существующая база: {len(interwiki_db)} статей.")
             except Exception as e:
-                print(f"[!] Ошибка чтения старой базы: {e}")
-        
-        # 2. СОБИРАЕМ НОВЫЕ ССЫЛКИ В ТЕМПОВЫЙ СЛОВАРЬ
-        temp_db = {}
-        for hub_lang, hub_url in config["hubs"].items():
+                print(f"[!] Ошибка чтения старой базы {output_path}: {e}")
+
+        # 2. Собираем свежие ссылки со всех языковых хабов
+        temp_db: Dict[str, Dict[str, str]] = {}
+        for hub_lang, hub_url in hubs.items():
             print(f"[*] Сканирую {hub_lang.upper()} вики ({hub_url})...")
             params = {
                 "action": "query",
                 "generator": "allpages",
                 "gaplimit": "50",
-                "gapnamespace": 0,
+                "gapnamespace": "0",
                 "gapfilterredir": "nonredirects",
                 "prop": "langlinks",
                 "lllimit": "max",
-                "format": "json"
+                "format": "json",
             }
-            
+
             while True:
-                success = False
-                for attempt in range(3):
+                response = None
+                for attempt in range(1, 4):
                     try:
                         req = session.get(hub_url, params=params, timeout=60)
-                        response = req.json()
-                        if "error" in response:
-                            print(f"  [!] Ошибка API: {response['error'].get('info', 'Unknown')}")
+                        req.raise_for_status()
+                        data = req.json()
+                        if "error" in data:
+                            print(f"  [!] Ошибка API ({hub_lang}): {data['error'].get('info', 'Unknown')}")
                             break
-                        success = True
+                        response = data
                         break
                     except Exception as e:
-                        time.sleep(3)
-                        
-                if not success: break 
-                
+                        if attempt < 3:
+                            time.sleep(3 * attempt)
+                        else:
+                            print(f"  [!] Сбой сети при запросе к {hub_url}: {e}")
+
+                if not response:
+                    break
+
                 pages = response.get("query", {}).get("pages", {})
-                for page_id, page_data in pages.items():
+                for _, page_data in pages.items():
                     langlinks = page_data.get("langlinks", [])
-                    if not langlinks: continue
-                    
-                    hub_title = page_data["title"]
+                    if not langlinks:
+                        continue
+
+                    hub_title = page_data.get("title", "").strip()
+                    if not hub_title:
+                        continue
+
                     ru_title = None
-                    
                     for link in langlinks:
-                        if link["lang"] == "ru":
-                            ru_title = link["*"]
+                        if link.get("lang") == "ru":
+                            ru_title = (link.get("*") or "").strip()
                             break
-                    
+
                     if ru_title:
                         if ru_title not in temp_db:
                             temp_db[ru_title] = {}
                         temp_db[ru_title][hub_lang] = hub_title
-                        
+
+                        # Сохраняем транзитивные интервики-ссылки на другие языки
                         for link in langlinks:
-                            if link["lang"] != "ru" and link["lang"] not in temp_db[ru_title]:
-                                temp_dbru_title = link["*"]
-                                
+                            l_code = link.get("lang")
+                            l_title = (link.get("*") or "").strip()
+                            if l_code and l_code != "ru" and l_title and l_code not in temp_db[ru_title]:
+                                temp_db[ru_title][l_code] = l_title
+
                 if "continue" in response:
                     params.update(response["continue"])
                 else:
                     break
 
-        # 3. ПРОВЕРЯЕМ РУССКУЮ ВИКИ: ОТСЕИВАЕМ МУСОР И РЕЗОЛВИМ ПЕРЕНАПРАВЛЕНИЯ
+        # 3. Сверка с русской вики: нормализация, редиректы и проверка существования статей
         print("[*] Сверка с русской вики (поиск редиректов и удаление несуществующих статей)...")
-        # БЕРЁМ ВСЕ СТАТЬИ: и свежие из temp_db, и старые из interwiki_db
-        ru_titles = list(set(list(temp_db.keys()) + list(interwiki_db.keys())))
-        
-        norm_map = {}
-        redirect_map = {}
-        valid_ru_titles = set()
-        
-        # Разбиваем на порции по 50 статей
+        ru_titles = sorted(set(list(temp_db.keys()) + list(interwiki_db.keys())))
+
+        norm_map: Dict[str, str] = {}
+        redirect_map: Dict[str, str] = {}
+        valid_ru_titles: Set[str] = set()
+
         for i in range(0, len(ru_titles), 50):
-            chunk = ru_titles[i:i+50]
-            params = {
+            chunk = ru_titles[i : i + 50]
+            post_data = {
                 "action": "query",
                 "titles": "|".join(chunk),
                 "redirects": "1",
-                "format": "json"
+                "format": "json",
             }
             try:
-                # Отправляем POST, чтобы длинный список не сломал URL
-                res = session.post(config["ru_api"], data=params, timeout=30).json()
-                
-                if "query" in res:
-                    # Захватываем нормализацию (поправки регистра)
-                    if "normalized" in res["query"]:
-                        for norm in res["query"]["normalized"]:
-                            norm_map[norm["from"]] = norm["to"]
-                            
-                    # Захватываем перенаправления
-                    if "redirects" in res["query"]:
-                        for redir in res["query"]["redirects"]:
-                            redirect_map[redir["from"]] = redir["to"]
-                            
-                    # Записываем только те статьи, которые РЕАЛЬНО существуют
-                    if "pages" in res["query"]:
-                        for page_id, page_info in res["query"]["pages"].items():
-                            # ID меньше нуля или флаг "missing" означает, что статьи нет
-                            if int(page_id) > 0 and "missing" not in page_info:
-                                valid_ru_titles.add(page_info["title"])
-            except Exception as e:
-                print(f"  [!] Ошибка при проверке редиректов: {e}")
+                res = session.post(ru_api, data=post_data, timeout=30).json()
+                query_data = res.get("query", {})
 
-        # 4. ОБЪЕДИНЯЕМ ТОЛЬКО ЧИСТЫЕ ДАННЫЕ СО СТАРОЙ БАЗОЙ
-        for ru_title, links in temp_db.items():
-            # Шаг А: Применяем нормализацию (исправляем регистр)
-            normalized_title = norm_map.get(ru_title, ru_title)
-            # Шаг Б: Применяем редиректы (находим конечную статью)
-            true_title = redirect_map.get(normalized_title, normalized_title)
-            
-            # ШАГ В: Если после всех проверок статьи не существует на ру-вики — ПРОПУСКАЕМ! (Это защита от красных ссылок)
+                for norm in query_data.get("normalized", []):
+                    norm_map[norm["from"]] = norm["to"]
+
+                for redir in query_data.get("redirects", []):
+                    redirect_map[redir["from"]] = redir["to"]
+
+                for page_id, page_info in query_data.get("pages", {}).items():
+                    if int(page_id) > 0 and "missing" not in page_info:
+                        valid_ru_titles.add(page_info["title"])
+            except Exception as e:
+                print(f"  [!] Ошибка при проверке пачки статей на {ru_api}: {e}")
+
+        # 4. Переносим валидные старые записи на нормализованные/перенаправленные названия
+        cleaned_db: Dict[str, Dict[str, str]] = {}
+        for old_title, links in interwiki_db.items():
+            norm_title = norm_map.get(old_title, old_title)
+            true_title = redirect_map.get(norm_title, norm_title)
             if true_title not in valid_ru_titles:
                 continue
-            
-            if true_title not in interwiki_db:
-                interwiki_db[true_title] = {}
-                
-            for lang, title in links.items():
-                if lang not in interwiki_db[true_title]:
-                    interwiki_db[true_title][lang] = title
+            if true_title not in cleaned_db:
+                cleaned_db[true_title] = {}
+            for lang, target in links.items():
+                if target and target.strip():
+                    cleaned_db[true_title][lang] = target.strip()
 
-        # 5. ГЕНЕРАЛЬНАЯ УБОРКА: СНОСИМ УДАЛЁННЫЕ СТРАНИЦЫ И РЕДИРЕКТЫ ИЗ БАЗЫ
-        for old_title in list(interwiki_db.keys()):
-            # Если старой статьи больше нет на вики — удаляем её из базы
-            if old_title not in valid_ru_titles:
-                del interwiki_db[old_title]
-            # Если старая статья оказалась редиректом или имела кривой регистр — удаляем старый ключ
-            elif old_title in norm_map or old_title in redirect_map:
-                del interwiki_db[old_title]
+        # 5. Накатываем свежие данные поверх старых (актуализируя переименованные статьи)
+        for ru_title, links in temp_db.items():
+            norm_title = norm_map.get(ru_title, ru_title)
+            true_title = redirect_map.get(norm_title, norm_title)
+            if true_title not in valid_ru_titles:
+                continue
+            if true_title not in cleaned_db:
+                cleaned_db[true_title] = {}
+            for lang, target in links.items():
+                if target and target.strip():
+                    cleaned_db[true_title][lang] = target.strip()
 
-        os.makedirs(os.path.dirname(config["output"]), exist_ok=True)
-        with open(config["output"], "w", encoding="utf-8") as f:
-            json.dump(interwiki_db, f, ensure_ascii=False, indent=4, sort_keys=True)
-            
-        print(f"[+] Успешно! База {project_name} сохранена: {len(interwiki_db)} чистых статей.")
+        # Удаляем записи без единой непустой интервики-ссылки
+        cleaned_db = {k: v for k, v in cleaned_db.items() if v}
+
+        os.makedirs(output_path.parent, exist_ok=True)
+        with open(output_path, "w", encoding="utf-8", newline="\n") as f:
+            json.dump(cleaned_db, f, ensure_ascii=False, indent=4, sort_keys=True)
+            f.write("\n")
+
+        print(f"[+] Успешно! База {project_name} сохранена: {len(cleaned_db)} чистых статей.")
+
 
 if __name__ == "__main__":
     fetch_interwikis()
