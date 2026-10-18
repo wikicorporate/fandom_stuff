@@ -5,30 +5,52 @@ on:
     branches:
       - main
     paths:
-      - 'src/**'
+      - 'src/global/**'
+      - 'src/shared/**'
+      - 'src/local/**'
+      - 'src/scripts/builds/**'
       - 'config.json'
       - 'sync.py'
+  workflow_dispatch:
+
+concurrency:
+  group: fandom-deploy
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install mwclient
+        run: pip install mwclient requests
 
       - name: Build CWA Script
         run: python src/scripts/builds/build_cwa.py
 
-      - name: Run Sync Script
+      - name: Commit built CWA bundle if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/local/wikicorporate/scripts/CrossWikiActivity/Main.js
+          if ! git diff --staged --quiet; then
+            git commit -m "Автосборка CrossWikiActivity/Main.js [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Run Sync Script (Admin Account)
         env:
-          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
-          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+          FANDOM_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          FANDOM_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
         run: python sync.py
