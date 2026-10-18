@@ -19,5 +19,82 @@
       "ru.hazbinhotel.fandom.com",
       "ru.zoophobia.fandom.com"
     ]
+  },
+  "projects": {
+    "Hazbin Hotel": {
+      "alias": "hazbin",
+      "domain": "hazbinhotel.fandom.com",
+      "path": "/ru/",
+      "all_pages": true,
+      "interwiki_output": "src/local/hazbin/main/Интервики.json",
+      "wall_title": "Добро пожаловать на Вики!",
+      "wall_message": "Приветствуем на проекте! Спасибо за {action_phrase}. Если у вас возникнут вопросы по оформлению или правилам вики, вы всегда можете задать их на этой стене.",
+      "hubs": {
+        "cs": "https://hazbinhotel.fandom.com/cs/api.php",
+        "de": "https://hazbinhotel.fandom.com/de/api.php",
+        "en": "https://hazbinhotel.fandom.com/api.php",
+        "es": "https://hazbinhotel.fandom.com/es/api.php",
+        "fr": "https://hazbin-hotel.fandom.com/fr/api.php",
+        "hu": "https://voltvalaki-hotel.fandom.com/hu/api.php",
+        "it": "https://hazbinhotel.fandom.com/it/api.php",
+        "ja": "https://hazbinhotel.fandom.com/ja/api.php",
+        "pl": "https://hazbinhotel.fandom.com/pl/api.php",
+        "pt-br": "https://hazbinhotel.fandom.com/pt-br/api.php",
+        "th": "https://hazbin-hotel.fandom.com/th/api.php",
+        "tr": "https://hazbinhotel.fandom.com/tr/api.php",
+        "zh": "https://hazbinhotel.fandom.com/zh/api.php"
+      }
+    },
+    "Zoophobia": {
+      "alias": "zoophobia",
+      "domain": "zoophobia.fandom.com",
+      "path": "/ru/",
+      "all_pages": true,
+      "interwiki_output": "src/local/zoophobia/main/Интервики.json",
+      "wall_title": "Добро пожаловать на Zoophobia Вики!",
+      "wall_message": "Приветствуем! Спасибо за {action_phrase}. Если понадобится помощь с кодом, шаблонами или содержанием статей — пишите на стену.",
+      "hubs": {
+        "en": "https://zoophobia.fandom.com/api.php",
+        "ja": "https://zoophobia.fandom.com/ja/api.php"
+      }
+    },
+    "Returnal": {
+      "alias": "returnal",
+      "domain": "returnal.fandom.com",
+      "path": "/ru/",
+      "all_pages": true,
+      "interwiki_output": "src/local/returnal/main/Интервики.json",
+      "wall_title": "Добро пожаловать!",
+      "wall_message": "Приветствуем исследователя Атропоса! Спасибо за {action_phrase}.",
+      "hubs": {
+        "en": "https://returnal.fandom.com/api.php"
+      }
+    },
+    "Helltaker": {
+      "alias": "helltaker",
+      "domain": "helltaker.fandom.com",
+      "path": "/ru/",
+      "all_pages": true,
+      "interwiki_output": "src/local/helltaker/main/Интервики.json",
+      "wall_title": "Добро пожаловать в Ад!",
+      "wall_message": "Приветствуем на проекте! Спасибо за {action_phrase}.",
+      "hubs": {
+        "en": "https://helltaker.fandom.com/api.php"
+      }
+    },
+    "OneShot": {
+      "alias": "oneshot",
+      "domain": "oneshot.fandom.com",
+      "path": "/ru/",
+      "all_pages": true,
+      "interwiki_output": "src/local/oneshot/main/Интервики.json",
+      "wall_title": "Добро пожаловать в мир OneShot!",
+      "wall_message": "Приветствуем! Спасибо за {action_phrase}.",
+      "hubs": {
+        "en": "https://oneshot.fandom.com/api.php",
+        "fr": "https://oneshot.fandom.com/fr/api.php",
+        "zh": "https://oneshot.fandom.com/zh/api.php"
+      }
+    }
   }
 }
