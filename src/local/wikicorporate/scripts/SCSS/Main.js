@@ -1,4 +1,4 @@
-/* jshint esversion: 11 */
+/* SCSS Preprocessor Adapter (ES2024) */
 (() => {
     'use strict';
 
@@ -13,40 +13,29 @@
         styleId: 'fandom-compiled-scss',
         cacheKey: 'fandom_custom_scss_css',
         cacheTimeKey: 'fandom_custom_scss_time',
-        cacheTTL: 60 * 60 * 1000 // Время жизни кэша: 1 час
+        cacheTTL: 60 * 60 * 1000 // 1 час
     };
 
-    // Безопасное чтение из кэша
     const getCache = () => {
         try {
             const urlParams = new URLSearchParams(window.location.search);
             const wgAction = mw.config.get('wgAction');
-            
-            // Игнорируем кэш, если администратор форсирует обновление
-            const forceReload = urlParams.has('clearcache') || wgAction === 'purge' || wgAction === 'edit';
-            if (forceReload) return null;
+            if (urlParams.has('clearcache') || wgAction === 'purge' || wgAction === 'edit') return null;
 
             const cachedCss = localStorage.getItem(CONFIG.cacheKey);
             const cachedTime = localStorage.getItem(CONFIG.cacheTimeKey);
-            
-            // Если кэш существует и ему меньше часа — отдаем его
             if (cachedCss && cachedTime && (Date.now() - parseInt(cachedTime, 10) < CONFIG.cacheTTL)) {
                 return cachedCss;
             }
-        } catch { 
-            /* Игнорируем ошибки localStorage */ 
-        }
+        } catch {}
         return null;
     };
 
-    // Безопасная запись в кэш
     const setCache = (css) => {
         try {
             localStorage.setItem(CONFIG.cacheKey, css);
             localStorage.setItem(CONFIG.cacheTimeKey, Date.now().toString());
-        } catch { 
-            /* Игнорируем ошибки превышения квоты памяти */ 
-        }
+        } catch {}
     };
 
     const applyCSS = (css) => {
@@ -60,9 +49,8 @@
     };
 
     const loadScssLibrary = () => {
+        if (window.Sass) return Promise.resolve();
         return new Promise((resolve, reject) => {
-            if (window.Sass) return resolve();
-            
             const script = document.createElement('script');
             script.src = CONFIG.cdnUrl;
             script.onload = resolve;
@@ -89,56 +77,48 @@
 
             const data = await response.json();
             const rawContent = data.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content;
-            
             if (!rawContent) return '';
 
-            const match = rawContent.match(/\[=\[\s*([\s\S]*?)\s*\]=\]/);
-            return match ? match[1] : '';
+            const match = rawContent.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
+            return match ? match[2] : '';
         } catch {
             return '';
         }
     };
 
-    // Обертка компилятора в Promise для использования с async/await
-    const compileScss = (rawCode) => {
-        return new Promise((resolve, reject) => {
-            const sass = new window.Sass();
-            sass.compile(rawCode, (result) => {
-                if (result.status === 0) {
-                    resolve(result.text);
-                } else {
-                    reject(new Error(`Строка ${result.line}, Колонка ${result.column}: ${result.message}`));
-                }
-            });
+    const compileScss = (rawCode) => new Promise((resolve, reject) => {
+        const sass = new window.Sass();
+        sass.compile(rawCode, (result) => {
+            if (result.status === 0) {
+                resolve(result.text);
+            } else {
+                reject(new Error(`Строка ${result.line}, Колонка ${result.column}: ${result.message}`));
+            }
         });
-    };
+    });
 
     const initCompiler = async () => {
         try {
-            // 1. Пробуем достать готовый CSS из кэша
             const cachedCSS = getCache();
             if (cachedCSS) {
                 applyCSS(cachedCSS);
-                return; // Мгновенный выход, экономим 2.5 МБ трафика и API-запросы!
+                return;
             }
 
-            // 2. Если кэша нет, грузим библиотеку и модули параллельно
             const [, globalCode, localCode] = await Promise.all([
                 loadScssLibrary(),
                 fetchSource(CONFIG.centralPage, CONFIG.centralApiUrl),
                 fetchSource(CONFIG.localPage)
             ]);
 
-            const combinedCode = `${globalCode}\n\n${localCode}`;
-            if (!combinedCode.trim()) return;
+            const combinedCode = `${globalCode}\n\n${localCode}`.trim();
+            if (!combinedCode) return;
 
-            // 3. Компилируем свежий CSS
             const compiledCss = await compileScss(combinedCode);
-
-            // 4. Применяем на страницу и сохраняем в кэш
-            applyCSS(compiledCss);
-            setCache(compiledCss);
-
+            if (compiledCss) {
+                applyCSS(compiledCss);
+                setCache(compiledCss);
+            }
         } catch (error) {
             console.error('[SCSS Adapter Error]', error);
         }
