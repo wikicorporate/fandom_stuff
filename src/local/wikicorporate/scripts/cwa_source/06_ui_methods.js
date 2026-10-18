@@ -1,4 +1,19 @@
 const AppMethodsUi = {
+        sanitizeUrl(rawUrl) {
+            if (!rawUrl || typeof rawUrl !== 'string') return '#';
+            const trimmed = rawUrl.trim();
+            if (trimmed.startsWith('/') && !trimmed.startsWith('//')) {
+                return mw.html.escape(trimmed);
+            }
+            try {
+                const parsed = new URL(trimmed);
+                if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+                    return mw.html.escape(parsed.href);
+                }
+            } catch (e) {}
+            return '#';
+        },
+
         savePatrolledId(id) {
             if (!id) return;
             if (!this.patrolledIds.includes(id)) {
@@ -11,20 +26,31 @@ const AppMethodsUi = {
                 } catch (e) {}
             }
         },
-        openInNewTab(url) { window.open(url, '_blank'); },
+
+        openInNewTab(url) {
+            if (!url) return;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        },
+
         pluralize(count, words) {
             const cases = [2, 0, 1, 1, 1, 2];
             return count + ' ' + words[(count % 100 > 4 && count % 100 < 20) ? 2 : cases[(count % 10 < 5) ? count % 10 : 5]];
         },
-        getEditsByTab(tabId) { return this.edits.filter(edit => edit.category === tabId); },
-        toggleGroup(key) { this.expandedGroups[key] = !this.expandedGroups[key]; },
-        
+
+        getEditsByTab(tabId) {
+            return this.edits.filter(edit => edit.category === tabId);
+        },
+
+        toggleGroup(key) {
+            this.expandedGroups[key] = !this.expandedGroups[key];
+        },
+
         getGroupDiff(group) {
             const diffableEdits = group.items.filter(i => i.revid && i.old_revid);
             if (diffableEdits.length === 0) return null;
             return { from: diffableEdits[diffableEdits.length - 1].old_revid, to: diffableEdits[0].revid };
         },
-        
+
         formatWikiUrl(inputUrl) {
             const urlToParse = inputUrl.startsWith('http') ? inputUrl : 'https://' + inputUrl;
             let parsed;
@@ -34,24 +60,24 @@ const AppMethodsUi = {
                 throw new Error('Security Error: Invalid URL format.');
             }
 
-            const hostname = parsed.hostname;
-
+            const hostname = parsed.hostname.toLowerCase();
             if (!hostname.endsWith('.fandom.com') && hostname !== 'fandom.com') {
                 throw new Error('Security Error: Only fandom.com domains are allowed.');
             }
 
-            let url = parsed.host + parsed.pathname;
+            let url = hostname + parsed.pathname;
             url = url.replace(/\/$/, '');
 
-            const oldFormatMatch = url.match(/^([a-z\-]{2,3})\.([^\.]+)\.fandom\.com$/);
+            const oldFormatMatch = url.match(/^([a-z]{2,3}(?:-[a-z]{2,4})?)\.([^.]+)\.fandom\.com$/);
             if (oldFormatMatch) {
-                let wikiName = oldFormatMatch[2];
-                url = `${wikiName}.fandom.com/${oldFormatMatch[1]}`;
+                const langCode = oldFormatMatch[1];
+                const wikiName = oldFormatMatch[2];
+                url = `${wikiName}.fandom.com/${langCode}`;
             }
 
-            return url; 
+            return url;
         },
-        
+
         setupAutoRefresh() {
             if (this.refreshInterval) {
                 clearInterval(this.refreshInterval);
@@ -64,16 +90,18 @@ const AppMethodsUi = {
                 }, this.settings.autoRefresh * 1000);
             }
         },
-        
+
         getIconForType(edit) {
-            if (edit.type === 'discussion' && edit.socialContext) {
-                const act = edit.socialContext.activityType; 
-                const ctx = edit.socialContext.contentType;  
+            if (edit.socialContext) {
+                const act = edit.socialContext.activityType;
+                const ctx = edit.socialContext.contentType;
 
                 if (CwaDicts.icons.social[act] && CwaDicts.icons.social[act][ctx]) {
                     return CwaDicts.icons.social[act][ctx];
                 }
-                return 'fa-solid fa-comment';
+                if (edit.type === 'discussion') {
+                    return 'fa-solid fa-comment';
+                }
             }
 
             if (edit.type === 'log') {
@@ -81,10 +109,10 @@ const AppMethodsUi = {
             }
 
             if (edit.type === 'new') return 'fa-solid fa-folder-plus';
-            
+
             return CwaDicts.icons.ns[edit.ns] || 'fa-solid fa-pen-to-square';
         },
-        
+
         getSizeClass(diff) {
             if (diff > 500) return 'cwa-rc__size--large-plus';
             if (diff > 0) return 'cwa-rc__size--plus';
@@ -95,16 +123,16 @@ const AppMethodsUi = {
 
         async doPatrol(edit) {
             try {
-                const api = new mw.ForeignApi(`https://${edit.wikiDomain}/api.php`);
+                const api = this.getForeignApi(edit.wikiDomain, false);
                 const params = { action: 'patrol', formatversion: 2 };
-                
+
                 if (edit.rcid) params.rcid = edit.rcid;
                 else if (edit.revid) params.revid = edit.revid;
                 else throw new Error('No ID');
-                
+
                 await api.postWithToken('patrol', params);
                 mw.notify(`Правка на странице "${edit.title}" отпатрулирована.`, { type: 'success' });
-                
+
                 this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
 
                 const index = this.edits.findIndex(e => e.id === edit.id);
@@ -121,7 +149,7 @@ const AppMethodsUi = {
             if (!unpatrolled.length) return;
 
             try {
-                const api = new mw.ForeignApi(`https://${group.wikiDomain}/api.php`);
+                const api = this.getForeignApi(group.wikiDomain, false);
                 for (const edit of unpatrolled) {
                     const params = { action: 'patrol', formatversion: 2 };
                     if (edit.rcid) params.rcid = edit.rcid;
@@ -129,7 +157,7 @@ const AppMethodsUi = {
                     else continue;
 
                     await api.postWithToken('patrol', params);
-                    
+
                     this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
 
                     const index = this.edits.findIndex(e => e.id === edit.id);
@@ -142,11 +170,11 @@ const AppMethodsUi = {
                 mw.notify('Ошибка при патрулировании группы: ' + (e.info || 'Нет прав.'), { type: 'error' });
             }
         },
-        
+
         async patrolAll() {
             const unpatrolled = this.edits.filter(e => e.unpatrolled && e.category === this.activeTab);
             if (!unpatrolled.length) return;
-            
+
             if (!confirm(`Найдено действий для патрулирования на текущей вкладке: ${unpatrolled.length}. Начать процесс?`)) return;
 
             this.isPatrolling = true;
@@ -160,9 +188,9 @@ const AppMethodsUi = {
             });
 
             for (const domain of Object.keys(byDomain)) {
-                const api = new mw.ForeignApi(`https://${domain}/api.php`);
+                const api = this.getForeignApi(domain, false);
                 const items = byDomain[domain];
-                
+
                 for (let i = 0; i < items.length; i += 4) {
                     const chunk = items.slice(i, i + 4);
                     const chunkPromises = chunk.map(async (edit) => {
@@ -173,7 +201,7 @@ const AppMethodsUi = {
                             else return;
 
                             await api.postWithToken('patrol', params);
-                            
+
                             this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
 
                             const index = this.edits.findIndex(e => e.id === edit.id);
@@ -190,16 +218,24 @@ const AppMethodsUi = {
                     await new Promise(r => setTimeout(r, 250));
                 }
             }
-            
+
             this.isPatrolling = false;
-            mw.notify(`Готово! Успешно: ${successCount}` + (errorCount > 0 ? `, Ошибок: ${errorCount}` : ''), { type: errorCount > 0 ? 'warn' : 'success' });
+            mw.notify(
+                `Готово! Успешно: ${successCount}` + (errorCount > 0 ? `, Ошибок: ${errorCount}` : ''),
+                { type: errorCount > 0 ? 'warn' : 'success' }
+            );
         },
 
         async doRollback(edit) {
             if (!confirm(`Откатить правки участника ${edit.user} на странице "${edit.title}"?`)) return;
             try {
-                const api = new mw.ForeignApi(`https://${edit.wikiDomain}/api.php`);
-                await api.postWithToken('rollback', { action: 'rollback', title: edit.title, user: edit.user, formatversion: 2 });
+                const api = this.getForeignApi(edit.wikiDomain, false);
+                await api.postWithToken('rollback', {
+                    action: 'rollback',
+                    title: edit.title,
+                    user: edit.user,
+                    formatversion: 2
+                });
                 mw.notify(`Правки участника ${edit.user} успешно откачены.`, { type: 'success' });
                 this.edits = this.edits.filter(e => e.id !== edit.id);
             } catch (e) {
@@ -208,7 +244,7 @@ const AppMethodsUi = {
         },
 
         cleanUpRemoteResources() {
-            ['cwa-remote-styles', 'cwa-remote-scripts', 'cwa-remote-inline', 'cwa-remote-styles-preload'].forEach(id => {
+            ['cwa-remote-styles', 'cwa-remote-inline', 'cwa-remote-styles-preload'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.remove();
             });
@@ -219,11 +255,13 @@ const AppMethodsUi = {
             this.modal.isOpen = false;
             this.modal.content = '';
         },
-        
+
         openDiffModal(wikiDomain, fromRev, toRev, title) {
-            this.modal.isOpen = true; this.modal.isLoading = true;
+            this.cleanUpRemoteResources();
+            this.modal.isOpen = true;
+            this.modal.isLoading = true;
             this.modal.title = `Сравнение версий: ${title}`;
-            
+
             const siteStylesUrl = `https://${wikiDomain}/load.php?lang=ru&modules=mediawiki.diff.styles|site.styles&only=styles&skin=fandomdesktop`;
             const preloadLink = document.createElement('link');
             preloadLink.rel = 'preload';
@@ -231,37 +269,47 @@ const AppMethodsUi = {
             preloadLink.href = siteStylesUrl;
             preloadLink.id = 'cwa-remote-styles-preload';
             document.head.appendChild(preloadLink);
-            
-            const api = new mw.ForeignApi(`https://${wikiDomain}/api.php`, { anonymous: true });
-            api.get({ action: 'compare', fromrev: fromRev, torev: toRev, prop: 'diff|ids|title|user|timestamp|parsedcomment', formatversion: 2 }).then(data => {
+
+            const api = this.getForeignApi(wikiDomain, true);
+            api.get({
+                action: 'compare',
+                fromrev: fromRev,
+                torev: toRev,
+                prop: 'diff|ids|title|user|timestamp|parsedcomment',
+                formatversion: 2
+            }).then(data => {
                 if (data?.compare?.body) {
                     const c = data.compare;
                     const serverUrl = `https://${wikiDomain}`;
-                    const articleUrl = `${serverUrl}/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`;
-                    
+                    const articleUrl = mw.html.escape(`${serverUrl}/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`);
+
                     const formatTime = (ts) => {
                         if (!ts) return '';
                         const d = new Date(ts);
                         const time = d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
                         const date = d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }).replace(' г.', '');
-                        return `${time}, ${date}`;
+                        return mw.html.escape(`${time}, ${date}`);
                     };
 
                     const fromTs = formatTime(c.fromtimestamp);
                     const toTs = formatTime(c.totimestamp);
-                    const fromUser = mw.html.escape(c.fromuser || 'Аноним');
-                    const toUser = mw.html.escape(c.touser || 'Аноним');
-                    
+                    const rawFromUser = c.fromuser || 'Аноним';
+                    const rawToUser = c.touser || 'Аноним';
+                    const fromUser = mw.html.escape(rawFromUser);
+                    const toUser = mw.html.escape(rawToUser);
+                    const fromRevId = Number(c.fromrevid) || 0;
+                    const toRevId = Number(c.torevid) || 0;
+
                     const headerHtml = `
                         <tr class="diff-header" valign="top">
                             <td class="diff-otitle" colspan="2">
-                                <div class="mw-diff-otitle1"><strong><a href="${articleUrl}?oldid=${c.fromrevid}" target="_blank" data-action="revision-link-before">Версия от ${fromTs}</a> <span class="mw-rev-head-action">(<a href="${articleUrl}?oldid=${c.fromrevid}&action=edit" target="_blank" data-action="edit-revision-before">править</a>)</span></strong></div>
-                                <div class="mw-diff-otitle2"><span class="mw-usertoollinks"><a href="${serverUrl}/wiki/User:${encodeURIComponent(fromUser)}" target="_blank" data-username="${fromUser}">${fromUser}</a> (<a href="${serverUrl}/wiki/User_talk:${encodeURIComponent(fromUser)}" target="_blank">обсуждение</a> | <a href="${serverUrl}/wiki/Special:Contributions/${encodeURIComponent(fromUser)}" target="_blank">вклад</a>)</span></div>
+                                <div class="mw-diff-otitle1"><strong><a href="${articleUrl}?oldid=${fromRevId}" target="_blank" rel="noopener noreferrer" data-action="revision-link-before">Версия от ${fromTs}</a> <span class="mw-rev-head-action">(<a href="${articleUrl}?oldid=${fromRevId}&action=edit" target="_blank" rel="noopener noreferrer" data-action="edit-revision-before">править</a>)</span></strong></div>
+                                <div class="mw-diff-otitle2"><span class="mw-usertoollinks"><a href="${serverUrl}/wiki/User:${encodeURIComponent(rawFromUser)}" target="_blank" rel="noopener noreferrer" data-username="${fromUser}">${fromUser}</a> (<a href="${serverUrl}/wiki/User_talk:${encodeURIComponent(rawFromUser)}" target="_blank" rel="noopener noreferrer">обсуждение</a> | <a href="${serverUrl}/wiki/Special:Contributions/${encodeURIComponent(rawFromUser)}" target="_blank" rel="noopener noreferrer">вклад</a>)</span></div>
                                 <div class="mw-diff-otitle3 cwa-rc__summary">${c.fromparsedcomment || ''}</div>
                             </td>
                             <td class="diff-ntitle" colspan="2">
-                                <div class="mw-diff-ntitle1"><strong><a href="${articleUrl}?oldid=${c.torevid}" target="_blank" data-action="revision-link-after">Версия от ${toTs}</a> <span class="mw-rev-head-action">(<a href="${articleUrl}?oldid=${c.torevid}&action=edit" target="_blank" data-action="edit-revision-after">править</a>)</span><span class="mw-rev-head-action">(<a href="${articleUrl}?action=edit&undoafter=${c.fromrevid}&undo=${c.torevid}" target="_blank" data-action="undo">отменить</a>)</span></strong></div>
-                                <div class="mw-diff-ntitle2"><span class="mw-usertoollinks"><a href="${serverUrl}/wiki/User:${encodeURIComponent(toUser)}" target="_blank" data-username="${toUser}">${toUser}</a> (<a href="${serverUrl}/wiki/User_talk:${encodeURIComponent(toUser)}" target="_blank">обсуждение</a> | <a href="${serverUrl}/wiki/Special:Contributions/${encodeURIComponent(toUser)}" target="_blank">вклад</a>)</span></div>
+                                <div class="mw-diff-ntitle1"><strong><a href="${articleUrl}?oldid=${toRevId}" target="_blank" rel="noopener noreferrer" data-action="revision-link-after">Версия от ${toTs}</a> <span class="mw-rev-head-action">(<a href="${articleUrl}?oldid=${toRevId}&action=edit" target="_blank" rel="noopener noreferrer" data-action="edit-revision-after">править</a>)</span><span class="mw-rev-head-action">(<a href="${articleUrl}?action=edit&undoafter=${fromRevId}&undo=${toRevId}" target="_blank" rel="noopener noreferrer" data-action="undo">отменить</a>)</span></strong></div>
+                                <div class="mw-diff-ntitle2"><span class="mw-usertoollinks"><a href="${serverUrl}/wiki/User:${encodeURIComponent(rawToUser)}" target="_blank" rel="noopener noreferrer" data-username="${toUser}">${toUser}</a> (<a href="${serverUrl}/wiki/User_talk:${encodeURIComponent(rawToUser)}" target="_blank" rel="noopener noreferrer">обсуждение</a> | <a href="${serverUrl}/wiki/Special:Contributions/${encodeURIComponent(rawToUser)}" target="_blank" rel="noopener noreferrer">вклад</a>)</span></div>
                                 <div class="mw-diff-ntitle3 cwa-rc__summary">${c.toparsedcomment || ''}</div>
                             </td>
                         </tr>
@@ -284,10 +332,9 @@ const AppMethodsUi = {
                     linkNode.onload = finishLoading;
                     linkNode.onerror = finishLoading;
                     document.body.appendChild(linkNode);
-
-                } else { 
-                    this.modal.content = '<em>Изменения скрыты или не найдены.</em>'; 
-                    this.modal.isLoading = false; 
+                } else {
+                    this.modal.content = '<em>Изменения скрыты или не найдены.</em>';
+                    this.modal.isLoading = false;
                 }
             }).catch(() => {
                 this.modal.content = '<em>Не удалось загрузить изменения.</em>';
@@ -296,30 +343,36 @@ const AppMethodsUi = {
         },
 
         parseProseMirror(jsonString, fallbackText) {
-            if (!jsonString) return fallbackText ? `<p>${mw.html.escape(fallbackText)}</p>` : '<em>Нет содержимого</em>';
+            if (!jsonString) {
+                return fallbackText ? `<p>${mw.html.escape(fallbackText)}</p>` : '<em>Нет содержимого</em>';
+            }
             try {
                 const doc = typeof jsonString === 'string' ? JSON.parse(jsonString) : jsonString;
-                
+
                 const renderMarks = (text, marks) => {
-                    if (!marks || !marks.length) return mw.html.escape(text);
-                    let res = mw.html.escape(text);
+                    let res = mw.html.escape(text || '');
+                    if (!marks || !marks.length) return res;
                     marks.forEach(m => {
                         if (m.type === 'strong') res = `<strong>${res}</strong>`;
                         else if (m.type === 'em') res = `<em>${res}</em>`;
                         else if (m.type === 'code') res = `<code>${res}</code>`;
                         else if (m.type === 'underline') res = `<u>${res}</u>`;
                         else if (m.type === 'strike') res = `<s>${res}</s>`;
-                        else if (m.type === 'link') res = `<a href="${mw.html.escape(m.attrs?.href || '#')}" target="_blank">${res}</a>`;
+                        else if (m.type === 'link') {
+                            const safeHref = this.sanitizeUrl(m.attrs?.href);
+                            res = `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${res}</a>`;
+                        }
                     });
                     return res;
                 };
 
                 const renderNode = (n) => {
+                    if (!n || typeof n !== 'object') return '';
                     if (n.type === 'text') return renderMarks(n.text, n.marks);
                     if (n.type === 'hardBreak') return '<br>';
-                    
-                    const innerHTML = (n.content || []).map(renderNode).join('');
-                    
+
+                    const innerHTML = Array.isArray(n.content) ? n.content.map(renderNode).join('') : '';
+
                     switch (n.type) {
                         case 'doc': return innerHTML;
                         case 'paragraph': return `<p>${innerHTML}</p>`;
@@ -327,7 +380,10 @@ const AppMethodsUi = {
                         case 'bulletList': return `<ul>${innerHTML}</ul>`;
                         case 'orderedList': return `<ol>${innerHTML}</ol>`;
                         case 'listItem': return `<li>${innerHTML}</li>`;
-                        case 'heading': return `<h${n.attrs?.level || 2}>${innerHTML}</h${n.attrs?.level || 2}>`;
+                        case 'heading': {
+                            const lvl = Math.min(Math.max(parseInt(n.attrs?.level, 10) || 2, 1), 6);
+                            return `<h${lvl}>${innerHTML}</h${lvl}>`;
+                        }
                         case 'code_block': return `<pre><code>${innerHTML}</code></pre>`;
                         case 'mention': return `<em>@${mw.html.escape(n.attrs?.text || 'User')}</em>`;
                         default: return innerHTML;
@@ -343,12 +399,13 @@ const AppMethodsUi = {
         openPreviewModal(edit) {
             this.cleanUpRemoteResources();
 
-            this.modal.isOpen = true; this.modal.isLoading = true;
+            this.modal.isOpen = true;
+            this.modal.isLoading = true;
             this.modal.title = `Предпросмотр: ${edit.title}`;
 
             if (edit.type === 'discussion') {
                 const parsedHtml = this.parseProseMirror(edit.jsonModel, edit.rawContent);
-                
+
                 const siteStylesUrl = `https://${edit.wikiDomain}/load.php?lang=ru&modules=site.styles&only=styles&skin=fandomdesktop`;
                 const linkNode = document.createElement('link');
                 linkNode.id = 'cwa-remote-styles';
@@ -367,28 +424,24 @@ const AppMethodsUi = {
                 };
 
                 linkNode.onload = finishLoading;
-                linkNode.onerror = finishLoading; 
+                linkNode.onerror = finishLoading;
                 document.body.appendChild(linkNode);
-                
                 return;
-            }
-            
-            if (edit.ns !== 6) {
-                const siteStylesUrl = `https://${edit.wikiDomain}/load.php?lang=ru&modules=site.styles&only=styles&skin=fandomdesktop`;
-                const preloadLink = document.createElement('link');
-                preloadLink.rel = 'preload';
-                preloadLink.as = 'style';
-                preloadLink.href = siteStylesUrl;
-                preloadLink.id = 'cwa-remote-styles-preload';
-                document.head.appendChild(preloadLink);
             }
 
             if (edit.ns === 6) {
-                const api = new mw.ForeignApi(`https://${edit.wikiDomain}/api.php`, { anonymous: true });
-                api.get({ action: 'query', titles: edit.title, prop: 'imageinfo', iiprop: 'url', formatversion: 2 }).then(data => {
+                const api = this.getForeignApi(edit.wikiDomain, true);
+                api.get({
+                    action: 'query',
+                    titles: edit.title,
+                    prop: 'imageinfo',
+                    iiprop: 'url',
+                    formatversion: 2
+                }).then(data => {
                     const pages = data?.query?.pages;
                     if (pages && pages[0] && pages[0].imageinfo && pages[0].imageinfo.length > 0) {
-                        this.modal.content = `<div class="cwa-modal__img-wrap"><img src="${pages[0].imageinfo[0].url}" class="cwa-modal__img" /></div>`;
+                        const safeImgUrl = this.sanitizeUrl(pages[0].imageinfo[0].url);
+                        this.modal.content = `<div class="cwa-modal__img-wrap"><img src="${safeImgUrl}" class="cwa-modal__img" loading="lazy" /></div>`;
                     } else {
                         this.modal.content = '<em>Не удалось загрузить изображение. Возможно, файл удалён.</em>';
                     }
@@ -400,19 +453,34 @@ const AppMethodsUi = {
                 return;
             }
 
-            const api = new mw.ForeignApi(`https://${edit.wikiDomain}/api.php`, { anonymous: true });
+            const siteStylesUrl = `https://${edit.wikiDomain}/load.php?lang=ru&modules=site.styles&only=styles&skin=fandomdesktop`;
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'style';
+            preloadLink.href = siteStylesUrl;
+            preloadLink.id = 'cwa-remote-styles-preload';
+            document.head.appendChild(preloadLink);
+
+            const api = this.getForeignApi(edit.wikiDomain, true);
             const parseParams = edit.pageid ? { pageid: edit.pageid } : { page: edit.title };
-            
-            api.get({ action: 'parse', ...parseParams, prop: 'text|modules|headhtml', useskin: 'fandomdesktop', disabletoc: true, formatversion: 2 }).then(data => {
+
+            api.get({
+                action: 'parse',
+                ...parseParams,
+                prop: 'text|modules|headhtml',
+                useskin: 'fandomdesktop',
+                disabletoc: true,
+                formatversion: 2
+            }).then(data => {
                 if (data?.parse?.text) {
                     let html = data.parse.text;
                     html = html.replace(/(href|src)="(\/(?!\/).*?)"/g, `$1="https://${edit.wikiDomain}$2"`);
 
                     let inlineStyles = '';
                     if (data.parse.headhtml) {
-                        const tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = data.parse.headhtml;
-                        tempDiv.querySelectorAll('style').forEach(st => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(data.parse.headhtml, 'text/html');
+                        doc.querySelectorAll('style').forEach(st => {
                             inlineStyles += st.textContent + '\n';
                         });
                     }
@@ -424,17 +492,10 @@ const AppMethodsUi = {
                         document.body.appendChild(styleNode);
                     }
 
-                    const siteStylesUrl = `https://${edit.wikiDomain}/load.php?lang=ru&modules=site.styles&only=styles&skin=fandomdesktop`;
-                    const siteScriptsUrl = `https://${edit.wikiDomain}/load.php?lang=ru&modules=site.scripts&only=scripts&skin=fandomdesktop`;
-
                     const linkNode = document.createElement('link');
                     linkNode.id = 'cwa-remote-styles';
                     linkNode.rel = 'stylesheet';
                     linkNode.href = siteStylesUrl;
-
-                    const scriptNode = document.createElement('script');
-                    scriptNode.id = 'cwa-remote-scripts';
-                    scriptNode.src = siteScriptsUrl;
 
                     const finishLoading = () => {
                         this.modal.content = `
@@ -444,7 +505,7 @@ const AppMethodsUi = {
                                 </div>
                             </div>
                         `;
-                        this.modal.isLoading = false; 
+                        this.modal.isLoading = false;
 
                         this.$nextTick(() => {
                             const modules = [
@@ -456,8 +517,6 @@ const AppMethodsUi = {
                                 mw.loader.load(safeModules);
                             }
 
-                            document.body.appendChild(scriptNode);
-
                             setTimeout(() => {
                                 const contentElement = document.querySelector('.cwa-remote-container .mw-parser-output');
                                 if (contentElement && window.mw && window.mw.hook && window.$) {
@@ -468,21 +527,33 @@ const AppMethodsUi = {
                     };
 
                     linkNode.onload = finishLoading;
-                    linkNode.onerror = finishLoading; 
+                    linkNode.onerror = finishLoading;
                     document.body.appendChild(linkNode);
-
                 } else {
                     throw new Error('No content');
                 }
             }).catch(() => {
-                const authApi = new mw.ForeignApi(`https://${edit.wikiDomain}/api.php`);
-                authApi.get({ action: 'query', prop: 'deletedrevisions', titles: edit.title, drvprop: 'content', drvlimit: 1, formatversion: 2 }).then(data => {
+                const authApi = this.getForeignApi(edit.wikiDomain, false);
+                authApi.get({
+                    action: 'query',
+                    prop: 'deletedrevisions',
+                    titles: edit.title,
+                    drvprop: 'content',
+                    drvlimit: 1,
+                    formatversion: 2
+                }).then(data => {
                     const pages = data?.query?.pages;
                     if (pages && pages[0] && pages[0].deletedrevisions && pages[0].deletedrevisions.length > 0) {
                         const content = pages[0].deletedrevisions[0].content;
-                        authApi.post({ action: 'parse', text: content, contentmodel: 'wikitext', disabletoc: true, formatversion: 2 }).then(parseData => {
-                            this.modal.content = `<div class="cwa-modal__alert">Внимание: Это содержимое удалённой страницы</div>` + 
-                                (parseData?.parse?.text || '').replace(/href="\//g, `target="_blank" href="https://${edit.wikiDomain}/`);
+                        authApi.post({
+                            action: 'parse',
+                            text: content,
+                            contentmodel: 'wikitext',
+                            disabletoc: true,
+                            formatversion: 2
+                        }).then(parseData => {
+                            this.modal.content = `<div class="cwa-modal__alert">Внимание: Это содержимое удалённой страницы</div>` +
+                                (parseData?.parse?.text || '').replace(/href="\//g, `target="_blank" rel="noopener noreferrer" href="https://${edit.wikiDomain}/`);
                             this.modal.isLoading = false;
                         }).catch(() => {
                             this.modal.content = `<div class="cwa-modal__alert">Внимание: Это содержимое удалённой страницы</div><div class="cwa-modal__pre-wrap">${mw.html.escape(content)}</div>`;
