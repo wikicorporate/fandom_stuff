@@ -1,138 +1,167 @@
-import os
 import re
-import time
-import mwclient
-from mwclient.errors import APIError
+import sys
+from pathlib import Path
+from typing import Callable, Dict, List, Pattern, Tuple
 
-# Настройки проектов
-PROJECTS = {
-    "Hazbin Hotel": {
-        "domain": "hazbinhotel.fandom.com",
-        "path": "/ru/",
-        "all_pages": True  # Флаг полного сканирования вики
-    },
-    "Zoophobia": {
-        "domain": "zoophobia.fandom.com",
-        "path": "/ru/",
-        "all_pages": True
-    },
-    "Returnal": {
-        "domain": "returnal.fandom.com",
-        "path": "/ru/",
-        "all_pages": True
-    },
-    "Helltaker": {
-        "domain": "helltaker.fandom.com",
-        "path": "/ru/",
-        "all_pages": True
-    },
-    "OneShot": {
-        "domain": "oneshot.fandom.com",
-        "path": "/ru/",
-        "all_pages": True
-    }
-}
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from utils.wiki_client import connect_site, get_credentials, load_projects, safe_save
 
-# Полный список правил замены (от сложных к простым)
-REPLACEMENTS = [
+# Полный список правил замены: (компилированный паттерн, имя сервиса, количество аргументов)
+RAW_RULES: List[Tuple[str, str, int]] = [
     # === YOUTUBE ===
-    (r'\[https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_\-]+)(?:[&?]t=)(\d+)s?\s+([^\]]+)\]', r'{{Медиа|YOUTUBE|\1|\2|\3}}'),
-    (r'\[https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|YOUTUBE|\1|\2}}'),
-    (r'\[https?://(?:www\.)?youtube\.com/(@[a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|YOUTUBE-HANDLE|\1|\2}}'),
-    (r'\[https?://(?:www\.)?youtube\.com/channel/([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|YOUTUBE-CHANNEL|\1|\2}}'),
-    (r'\[https?://(?:www\.)?youtube\.com/playlist\?list=([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|YOUTUBE-PLAYLIST|\1|\2}}'),
-
+    (
+        r"\[https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_\-]+)(?:[&?]t=)(\d+)s?[^\s\]]*\s+([^\]]+)\]",
+        "YOUTUBE",
+        3,
+    ),
+    (
+        r"\[https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]",
+        "YOUTUBE",
+        2,
+    ),
+    (
+        r"\[https?://(?:www\.)?youtube\.com/(@[a-zA-Z0-9_\-.]+)[^\s\]]*\s+([^\]]+)\]",
+        "YOUTUBE-HANDLE",
+        2,
+    ),
+    (
+        r"\[https?://(?:www\.)?youtube\.com/channel/([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]",
+        "YOUTUBE-CHANNEL",
+        2,
+    ),
+    (
+        r"\[https?://(?:www\.)?youtube\.com/playlist\?list=([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]",
+        "YOUTUBE-PLAYLIST",
+        2,
+    ),
     # === МУЗЫКАЛЬНЫЕ СЕРВИСЫ ===
-    (r'\[https?://open\.spotify\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|SPOTIFY|\1|\2}}'),
-    (r'\[https?://music\.apple\.com/([^\s\]?]+)\?i=(\d+)\s+([^\]]+)\]', r'{{Медиа|APPLE-MUSIC|\1|\2|\3}}'),
-    (r'\[https?://music\.apple\.com/([^\s\]?]+)\s+([^\]]+)\]', r'{{Медиа|APPLE-MUSIC|\1|\2}}'),
-    (r'\[https?://(?:www\.)?soundcloud\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|SOUNDCLOUD|\1|\2}}'),
-    (r'\[https?://music\.youtube\.com/watch\?v=([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|YT-MUSIC|\1|\2}}'),
-
+    (r"\[https?://open\.spotify\.com/([^\s\]]+)\s+([^\]]+)\]", "SPOTIFY", 2),
+    (r"\[https?://music\.apple\.com/([^\s\]?]+)\?i=(\d+)[^\s\]]*\s+([^\]]+)\]", "APPLE-MUSIC", 3),
+    (r"\[https?://music\.apple\.com/([^\s\]?]+)\s+([^\]]+)\]", "APPLE-MUSIC", 2),
+    (r"\[https?://(?:www\.)?soundcloud\.com/([^\s\]]+)\s+([^\]]+)\]", "SOUNDCLOUD", 2),
+    (r"\[https?://music\.youtube\.com/watch\?v=([a-zA-Z0-9_\-]+)[^\s\]]*\s+([^\]]+)\]", "YT-MUSIC", 2),
     # === СОЦСЕТИ И БЛОГИ ===
-    (r'\[https?://(?:www\.)?(?:twitter|x)\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|TWITTER|\1|\2}}'),
-    (r'\[https?://(?:www\.)?t\.me/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|TELEGRAM|\1|\2}}'),
-    (r'\[https?://(?:www\.)?instagram\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|INSTAGRAM|\1|\2}}'),
-    (r'\[https?://(?:www\.)?tiktok\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|TIKTOK|\1|\2}}'),
-    (r'\[https?://([a-zA-Z0-9_\-]+)\.tumblr\.com/post/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|TUMBLR|\1|\2|\3}}'),
-    (r'\[https?://([a-zA-Z0-9_\-]+)\.tumblr\.com/?\s+([^\]]+)\]', r'{{Медиа|TUMBLR|\1|\2}}'),
-    (r'\[https?://(?:www\.)?facebook\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|FACEBOOK|\1|\2}}'),
-    (r'\[https?://(?:www\.)?reddit\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|REDDIT|\1|\2}}'),
-    (r'\[https?://bsky\.app/profile/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|BLUESKY|\1|\2}}'),
-
+    (r"\[https?://(?:www\.)?(?:twitter|x)\.com/([^\s\]]+)\s+([^\]]+)\]", "TWITTER", 2),
+    (r"\[https?://(?:www\.)?t\.me/([^\s\]]+)\s+([^\]]+)\]", "TELEGRAM", 2),
+    (r"\[https?://(?:www\.)?instagram\.com/([^\s\]]+)\s+([^\]]+)\]", "INSTAGRAM", 2),
+    (r"\[https?://(?:www\.)?tiktok\.com/([^\s\]]+)\s+([^\]]+)\]", "TIKTOK", 2),
+    (r"\[https?://([a-zA-Z0-9_\-]+)\.tumblr\.com/post/([^\s\]]+)\s+([^\]]+)\]", "TUMBLR", 3),
+    (r"\[https?://([a-zA-Z0-9_\-]+)\.tumblr\.com/?\s+([^\]]+)\]", "TUMBLR", 2),
+    (r"\[https?://(?:www\.)?facebook\.com/([^\s\]]+)\s+([^\]]+)\]", "FACEBOOK", 2),
+    (r"\[https?://(?:www\.)?reddit\.com/([^\s\]]+)\s+([^\]]+)\]", "REDDIT", 2),
+    (r"\[https?://bsky\.app/profile/([^\s\]]+)\s+([^\]]+)\]", "BLUESKY", 2),
     # === ТВОРЧЕСТВО, ДОКУМЕНТЫ И ИГРЫ ===
-    (r'\[https?://(?:www\.)?patreon\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|PATREON|\1|\2}}'),
-    (r'\[https?://(?:www\.)?deviantart\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|DEVIANTART|\1|\2}}'),
-    (r'\[https?://docs\.google\.com/document/d/([^\/\s\]]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|G-DOCS|\1|\2}}'),
-    (r'\[https?://docs\.google\.com/spreadsheets/(?:u/\d+/)?d/([^\/\s\]]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|G-TABLES|\1|\2}}'),
-    (r'\[https?://(?:www\.)?imdb\.com/name/([^\/\s\]]+)[^\s\]]*\s+([^\]]+)\]', r'{{Медиа|IMDB|\1|\2}}'),
-    (r'\[https?://(?:www\.)?imgur\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|IMGUR|\1|\2}}'),
-    (r'\[https?://store\.steampowered\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|STEAM-STORE|\1|\2}}'),
-    (r'\[https?://steamcommunity\.com/([^\s\]]+)\s+([^\]]+)\]', r'{{Медиа|STEAM-COMMUNITY|\1|\2}}'),
-
+    (r"\[https?://(?:www\.)?patreon\.com/([^\s\]]+)\s+([^\]]+)\]", "PATREON", 2),
+    (r"\[https?://(?:www\.)?deviantart\.com/([^\s\]]+)\s+([^\]]+)\]", "DEVIANTART", 2),
+    (r"\[https?://docs\.google\.com/document/d/([^/\s\]]+)[^\s\]]*\s+([^\]]+)\]", "G-DOCS", 2),
+    (
+        r"\[https?://docs\.google\.com/spreadsheets/(?:u/\d+/)?d/([^/\s\]]+)[^\s\]]*\s+([^\]]+)\]",
+        "G-TABLES",
+        2,
+    ),
+    (r"\[https?://(?:www\.)?imdb\.com/name/([^/\s\]]+)[^\s\]]*\s+([^\]]+)\]", "IMDB", 2),
+    (r"\[https?://(?:www\.)?imgur\.com/([^\s\]]+)\s+([^\]]+)\]", "IMGUR", 2),
+    (r"\[https?://store\.steampowered\.com/([^\s\]]+)\s+([^\]]+)\]", "STEAM-STORE", 2),
+    (r"\[https?://steamcommunity\.com/([^\s\]]+)\s+([^\]]+)\]", "STEAM-COMMUNITY", 2),
     # === АРХИВЫ ===
-    (r'\[https?://web\.archive\.org/web/((?!https?://www\.youtube\.com/watch)[^\s\]]+)\s+([^\]]+)\](?:\s*\(архивировано\))?', r'{{Медиа|WEB-ARCHIVE|\1|\2}}'),
-    (r'\[https?://web\.archive\.org/web/https?://(?:www\.)?youtube\.com/watch\?v=([a-zA-Z0-9_\-]+)\s+([^\]]+)\](?:\s*\(архивировано\))?', r'{{Медиа|WEB-ARCHIVE-VIDEO|\1|\2}}')
+    (
+        r"\[https?://web\.archive\.org/web/https?://(?:www\.)?youtube\.com/watch\?v=([a-zA-Z0-9_\-]+)\s+([^\]]+)\](?:\s*\(архивировано\))?",
+        "WEB-ARCHIVE-VIDEO",
+        2,
+    ),
+    (
+        r"\[https?://web\.archive\.org/web/((?!https?://(?:www\.)?youtube\.com/watch)[^\s\]]+)\s+([^\]]+)\](?:\s*\(архивировано\))?",
+        "WEB-ARCHIVE",
+        2,
+    ),
 ]
 
-def replace_media_links(text):
-    new_text = text
-    for pattern, replacement in REPLACEMENTS:
-        new_text = re.sub(pattern, replacement, new_text, flags=re.IGNORECASE)
-    return new_text
+COMPILED_RULES: List[Tuple[Pattern[str], str, int]] = [
+    (re.compile(pat, re.IGNORECASE), service, arg_count)
+    for pat, service, arg_count in RAW_RULES
+]
 
-def main():
-    username = os.environ.get('WIKI_USERNAME')
-    password = os.environ.get('WIKI_PASSWORD')
-    
+PROTECTED_TAG_RE = re.compile(
+    r"(<!--[\s\S]*?-->|<(?:nowiki|pre|code|syntaxhighlight)\b[^>]*>[\s\S]*?</(?:nowiki|pre|code|syntaxhighlight)>)",
+    re.IGNORECASE,
+)
+
+
+def _make_replacer(service: str, arg_count: int) -> Callable[[re.Match[str]], str]:
+    def _repl(match: re.Match[str]) -> str:
+        params = [match.group(i).strip() for i in range(1, arg_count)]
+        # Экранируем пайпы в видимом тексте ссылки, чтобы не разбивать параметры шаблона
+        label = match.group(arg_count).strip().replace("|", "{{!}}")
+        joined = "|".join(params + [label])
+        return f"{{{{Медиа|{service}|{joined}}}}}"
+
+    return _repl
+
+
+def replace_media_links(text: str) -> str:
+    protected: Dict[str, str] = {}
+    counter = 0
+
+    def _mask(match: re.Match[str]) -> str:
+        nonlocal counter
+        key = f"__MEDIA_PROTECTED_{counter}__"
+        protected[key] = match.group(0)
+        counter += 1
+        return key
+
+    working = PROTECTED_TAG_RE.sub(_mask, text)
+
+    for pattern, service, arg_count in COMPILED_RULES:
+        working = pattern.sub(_make_replacer(service, arg_count), working)
+
+    for key, original in reversed(list(protected.items())):
+        working = working.replace(key, original)
+
+    return working
+
+
+def main() -> None:
+    username, password = get_credentials(prefer_bot=True)
     if not username or not password:
-        print("[-] Ошибка: Не найдены BotPasswords в секретах GitHub!")
-        return
+        print("[-] Ошибка: Не найдены учётные данные бота в переменных окружения!")
+        raise SystemExit(1)
 
-    for project_name, config in PROJECTS.items():
+    projects = load_projects()
+
+    for project_name, config in projects.items():
         if not config.get("all_pages"):
             continue
-            
-        print(f"\n[=== Запуск глобального сканирования для: {project_name} ===]")
-        site = mwclient.Site(config["domain"], path=config["path"])
-        
-        try:
-            site.login(username, password)
-        except Exception as e:
-            print(f"[-] Ошибка авторизации: {e}")
+
+        print(f"\n[=== Запуск сканирования медиа-ссылок для: {project_name} ===]")
+        site = connect_site(
+            config["domain"],
+            path=config.get("path", "/ru/"),
+            username=username,
+            password=password,
+        )
+        if not site:
             continue
-        
-        # site.allpages(namespace=0) перебирает только обычные статьи
-        for page in site.allpages(namespace=0):
+
+        for page in site.allpages(namespace=0, filterredir="nonredirects"):
             title = page.name
-            
-            original_text = page.text()
+            try:
+                original_text = page.text()
+            except Exception as e:
+                print(f"[-] Ошибка чтения {title}: {e}")
+                continue
+
             new_text = replace_media_links(original_text)
-            
             if original_text != new_text:
                 print(f"[!] Форматирую ссылки в статье: {title}")
-                
-                # Блок безопасного сохранения с защитой от API лимитов
-                max_retries = 3
-                for attempt in range(max_retries):
-                    try:
-                        page.save(new_text, summary="Стандартизация внешних ссылок")
-                        time.sleep(5)  # Базовая пауза для обхода антиспама
-                        break  # Успешно сохранили — выходим из цикла попыток
-                        
-                    except APIError as e:
-                        if e.code == 'ratelimited':
-                            wait_time = 30 * (attempt + 1)
-                            print(f"    [!] Лимит API (ratelimited). Ждём {wait_time} секунд...")
-                            time.sleep(wait_time)
-                        else:
-                            print(f"    [-] Ошибка API при сохранении {title}: {e}")
-                            break
-                    except Exception as e:
-                        print(f"    [-] Неизвестная ошибка при сохранении {title}: {e}")
-                        break
-                else:
-                    print(f"    [-] Не удалось сохранить {title} после {max_retries} попыток.")
+                safe_save(
+                    page,
+                    new_text,
+                    summary="Стандартизация внешних ссылок",
+                    bot=True,
+                    minor=True,
+                    sleep_after=4.0,
+                )
+
 
 if __name__ == "__main__":
     main()
