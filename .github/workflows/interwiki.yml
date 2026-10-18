@@ -2,47 +2,48 @@ name: Auto-Update Interwiki
 
 on:
   schedule:
-    - cron: '0 3 * * *' # Запуск каждый день в 03:00 по UTC (06:00 по Москве)
-  workflow_dispatch: # Кнопка для ручного запуска во вкладке "Actions" на GitHub
+    - cron: '0 3 * * *' # Каждый день в 03:00 UTC (06:00 МСК)
+  workflow_dispatch:
+
+concurrency:
+  group: fandom-interwiki
+  cancel-in-progress: false
 
 jobs:
   update-json:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
-          
+          python-version: '3.12'
+
       - name: Install dependencies
         run: pip install requests mwclient
-        
+
       - name: Run Interwiki Spider
         run: python src/scripts/utils/update_interwiki.py
-        
+
       - name: Commit updated JSONs back to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Принудительно (с ключом -f) добавляем все новые папки и файлы, игнорируя любые блокировки
-          git add -f src/
-          
-          # Выводим статус в лог, чтобы точно видеть, какие файлы готовы к отправке
+          git add "src/local/*/main/Интервики.json"
           git status
-          
-          # Сохраняем изменения и отправляем в твой репозиторий на GitHub
-          git diff --staged --quiet || git commit -m "Автоматическое обновление интервики-ссылок"
-          git push
-        
-      - name: Sync with Fandom
-        run: python sync.py
+          if ! git diff --staged --quiet; then
+            git commit -m "Автоматическое обновление интервики-ссылок [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Sync with Fandom (Admin Account)
         env:
-          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
-          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+          FANDOM_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          FANDOM_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+        run: python sync.py
