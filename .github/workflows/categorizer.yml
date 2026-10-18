@@ -2,8 +2,12 @@ name: Auto-Categorize Files
 
 on:
   schedule:
-    - cron: '0 */4 * * *' # Запуск каждые 4 часа
-  workflow_dispatch: # Позволяет запускать скрипт вручную кнопкой
+    - cron: '0 */4 * * *' # Каждые 4 часа
+  workflow_dispatch:
+
+concurrency:
+  group: fandom-categorizer
+  cancel-in-progress: false
 
 jobs:
   categorize:
@@ -11,19 +15,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install mwclient
+        run: pip install mwclient requests
 
-      - name: Run Categorizer
+      - name: Run Categorizer (Bot Account)
         env:
           FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
           FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
-        
         run: python src/scripts/bots/categorizer.py
