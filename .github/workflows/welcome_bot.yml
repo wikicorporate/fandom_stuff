@@ -2,8 +2,12 @@ name: Welcome Users
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 */3 * * *' # Каждые 3 часа
   workflow_dispatch:
+
+concurrency:
+  group: fandom-welcome-bot
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -14,26 +18,29 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          pip install mwclient requests
+        run: pip install mwclient requests
 
-      - name: Run welcome script
+      - name: Run Welcome Script (Bot Account)
         env:
-          WIKI_USERNAME: ${{ secrets.WIKI_USERNAME }}
-          WIKI_PASSWORD: ${{ secrets.WIKI_PASSWORD }}
-        run: |
-          python src/scripts/bots/welcome_bot.py
+          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
+          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+        run: python src/scripts/bots/welcome_bot.py
 
-      - name: Commit updated database
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Update welcomed users database"
-          file_pattern: "src/data/welcomed_users.json"
+      - name: Commit updated welcomed_users database
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/welcomed_users.json
+          if ! git diff --staged --quiet; then
+            git commit -m "Обновление базы поприветствованных участников [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
