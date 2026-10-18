@@ -1,20 +1,15 @@
 const AppState = {
         data() {
-            const uGroups = mw.config.get('wgUserGroups') || [];
+            const uGroups = mw.config.get('wgUserGroups') ?? [];
             const hasRollback = uGroups.some(g => ['sysop', 'content-moderator', 'rollback', 'staff', 'wiki-representative', 'soap'].includes(g));
             const hasPatrol = uGroups.some(g => ['sysop', 'content-moderator', 'staff', 'wiki-representative', 'soap', 'wiki-specialist'].includes(g));
             const hasBlock = uGroups.some(g => ['sysop', 'staff', 'wiki-representative', 'soap'].includes(g));
 
             let cachedPatrolled = [];
             try {
-                const stored = localStorage.getItem('cwa-patrolled-cache');
-                if (stored) {
-                    const parsed = JSON.parse(stored);
-                    if (Array.isArray(parsed)) {
-                        cachedPatrolled = parsed;
-                    }
-                }
-            } catch (e) {}
+                const parsed = JSON.parse(localStorage.getItem('cwa-patrolled-cache') ?? '[]');
+                if (Array.isArray(parsed)) cachedPatrolled = parsed;
+            } catch {}
 
             return {
                 canRollback: hasRollback,
@@ -47,19 +42,17 @@ const AppState = {
             editsByDate() {
                 const filtered = this.getEditsByTab(this.activeTab);
                 const groupMap = new Map();
-                const groups = [];
 
-                for (let i = 0; i < filtered.length; i++) {
-                    const edit = filtered[i];
+                for (const edit of filtered) {
                     const dateKey = new Date(edit.timestamp).toDateString();
                     const groupKey = `${edit.wikiDomain}-${edit.groupWithID}-${dateKey}`;
+                    const existing = groupMap.get(groupKey);
 
-                    let existingGroup = groupMap.get(groupKey);
-                    if (existingGroup) {
-                        existingGroup.items.push(edit);
-                        existingGroup.totalSizeDiff += edit.sizeDiff;
+                    if (existing) {
+                        existing.items.push(edit);
+                        existing.totalSizeDiff += edit.sizeDiff;
                     } else {
-                        const newGroup = {
+                        groupMap.set(groupKey, {
                             key: groupKey,
                             wikiDomain: edit.wikiDomain,
                             wikiName: edit.wikiName,
@@ -67,20 +60,17 @@ const AppState = {
                             title: edit.title,
                             totalSizeDiff: edit.sizeDiff,
                             items: [edit]
-                        };
-                        groupMap.set(groupKey, newGroup);
-                        groups.push(newGroup);
+                        });
                     }
                 }
 
                 const result = [];
-                for (let i = 0; i < groups.length; i++) {
-                    const g = groups[i];
+                for (const g of groupMap.values()) {
                     const d = new Date(g.items[0].timestamp);
                     const dateStr = d.toLocaleString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }).replace(' г.', '');
 
-                    const lastDateGroup = result[result.length - 1];
-                    if (lastDateGroup && lastDateGroup.date === dateStr) {
+                    const lastDateGroup = result.at(-1);
+                    if (lastDateGroup?.date === dateStr) {
                         lastDateGroup.groups.push(g);
                     } else {
                         result.push({ date: dateStr, groups: [g] });
