@@ -8,8 +8,13 @@ const AppState = {
             let cachedPatrolled = [];
             try {
                 const stored = localStorage.getItem('cwa-patrolled-cache');
-                if (stored) cachedPatrolled = JSON.parse(stored);
-            } catch(e) {}
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (Array.isArray(parsed)) {
+                        cachedPatrolled = parsed;
+                    }
+                }
+            } catch (e) {}
 
             return {
                 canRollback: hasRollback,
@@ -19,9 +24,10 @@ const AppState = {
                 isPatrolling: false,
                 activeTab: 'content',
                 settings: { limit: 4000, days: 3, showBots: false, showMinor: true, autoRefresh: 60 },
-                refreshInterval: null, 
-                wikis: [], 
-                edits: [], 
+                refreshInterval: null,
+                apiCache: {},
+                wikis: [],
+                edits: [],
                 failedWikis: [],
                 expandedGroups: {},
                 patrolledIds: cachedPatrolled,
@@ -40,41 +46,46 @@ const AppState = {
             },
             editsByDate() {
                 const filtered = this.getEditsByTab(this.activeTab);
+                const groupMap = new Map();
                 const groups = [];
-                
-                filtered.forEach(edit => {
+
+                for (let i = 0; i < filtered.length; i++) {
+                    const edit = filtered[i];
                     const dateKey = new Date(edit.timestamp).toDateString();
                     const groupKey = `${edit.wikiDomain}-${edit.groupWithID}-${dateKey}`;
-                    
-                    let existingGroup = groups.find(g => g.key === groupKey);
+
+                    let existingGroup = groupMap.get(groupKey);
                     if (existingGroup) {
                         existingGroup.items.push(edit);
                         existingGroup.totalSizeDiff += edit.sizeDiff;
                     } else {
-                        groups.push({
-                            key: groupKey, 
-                            wikiDomain: edit.wikiDomain, 
-                            wikiName: edit.wikiName, 
+                        const newGroup = {
+                            key: groupKey,
+                            wikiDomain: edit.wikiDomain,
+                            wikiName: edit.wikiName,
                             wikiFavicon: edit.wikiFavicon,
-                            title: edit.title, 
-                            totalSizeDiff: edit.sizeDiff, 
+                            title: edit.title,
+                            totalSizeDiff: edit.sizeDiff,
                             items: [edit]
-                        });
+                        };
+                        groupMap.set(groupKey, newGroup);
+                        groups.push(newGroup);
                     }
-                });
+                }
 
                 const result = [];
-                groups.forEach(g => {
+                for (let i = 0; i < groups.length; i++) {
+                    const g = groups[i];
                     const d = new Date(g.items[0].timestamp);
                     const dateStr = d.toLocaleString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }).replace(' г.', '');
-                    
-                    let lastDateGroup = result[result.length - 1];
+
+                    const lastDateGroup = result[result.length - 1];
                     if (lastDateGroup && lastDateGroup.date === dateStr) {
                         lastDateGroup.groups.push(g);
                     } else {
                         result.push({ date: dateStr, groups: [g] });
                     }
-                });
+                }
                 return result;
             }
         }
