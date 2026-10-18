@@ -3,8 +3,8 @@ local p = {}
 -- Статистика (Подсчёт файлов)
 local function ruslangadopt(num, word1, word2, word3)
     local count = num % 100
-    if count >= 5 and count <= 20 then 
-        return word3 
+    if count >= 5 and count <= 20 then
+        return word3
     end
     count = count % 10
     if count == 1 then
@@ -16,10 +16,8 @@ local function ruslangadopt(num, word1, word2, word3)
     end
 end
 
-local function compile_stats()
-    local title = mw.title.getCurrentTitle()
+local function compile_stats(title)
     local content = title:getContent() or ""
-    
     local counts = { image = 0, video = 0, audio = 0, animation = 0, file = 0 }
 
     for ext in content:gmatch("%.([a-zA-Z0-9]+)") do
@@ -35,12 +33,15 @@ local function compile_stats()
         end
     end
 
-    for galleryContent in content:gmatch("{{Галерея|(.-)}}") do
-        local cleanGallery = galleryContent:gsub("|%s*Open%s*=%s*True", "")
-        for line in cleanGallery:gmatch("[^\r\n]+") do
-            local cleanLine = mw.text.trim(line:gsub("|.*", ""))
-            if cleanLine ~= "" and not cleanLine:match("%.") then
-                counts.video = counts.video + 1
+    for block in content:gmatch("%b{}") do
+        local galleryContent = block:match("^%{%{%s*[Гг]алерея%s*|(.*)%}%}$")
+        if galleryContent then
+            local cleanGallery = galleryContent:gsub("|%s*Open%s*=%s*True", ""):gsub("|%s*Closed%s*=%s*[^|\r\n]+", "")
+            for line in cleanGallery:gmatch("[^\r\n]+") do
+                local cleanLine = mw.text.trim(line:gsub("|.*", ""))
+                if cleanLine ~= "" and not cleanLine:match("%.") then
+                    counts.video = counts.video + 1
+                end
             end
         end
     end
@@ -52,37 +53,44 @@ local function compile_stats()
     end
 
     local result = {}
-    if counts.image > 0 then 
-        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--image"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-image"></i>%d</div>', counts.image, ruslangadopt(counts.image, "изображение.", "изображения.", "изображений."), counts.image)) 
+    if counts.image > 0 then
+        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--image"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-image"></i>%d</div>', counts.image, ruslangadopt(counts.image, "изображение.", "изображения.", "изображений."), counts.image))
     end
-    if counts.video > 0 then 
-        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--video"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-play"></i>%d</div>', counts.video, ruslangadopt(counts.video, "видео.", "видео.", "видео."), counts.video)) 
+    if counts.video > 0 then
+        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--video"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-play"></i>%d</div>', counts.video, ruslangadopt(counts.video, "видео.", "видео.", "видео."), counts.video))
     end
-    if counts.audio > 0 then 
-        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--audio"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-headphones"></i>%d</div>', counts.audio, ruslangadopt(counts.audio, "аудиофайл.", "аудиофайла.", "аудиофайлов."), counts.audio)) 
+    if counts.audio > 0 then
+        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--audio"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-headphones"></i>%d</div>', counts.audio, ruslangadopt(counts.audio, "аудиофайл.", "аудиофайла.", "аудиофайлов."), counts.audio))
     end
-    if counts.animation > 0 then 
-        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--animation"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-rotate"></i>%d</div>', counts.animation, ruslangadopt(counts.animation, "анимацию.", "анимации.", "анимаций."), counts.animation)) 
+    if counts.animation > 0 then
+        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--animation"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-rotate"></i>%d</div>', counts.animation, ruslangadopt(counts.animation, "анимацию.", "анимации.", "анимаций."), counts.animation))
     end
-    if counts.file > 0 then 
-        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--file"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-folder"></i>%d</div>', counts.file, ruslangadopt(counts.file, "прочий файл.", "прочих файла.", "прочих файлов."), counts.file)) 
+    if counts.file > 0 then
+        table.insert(result, string.format('<div class="mw-indicator__icon mw-indicator__icon--file"><div class="mw-indicator__icon-tooltip">Данная страница содержит \'\'\'%d\'\'\' %s</div><i class="fa-solid fa-folder"></i>%d</div>', counts.file, ruslangadopt(counts.file, "прочий файл.", "прочих файла.", "прочих файлов."), counts.file))
     end
 
     return table.concat(result)
 end
 
--- Индикаторы и плашки
 local function navigator_special_lux_function(text, text2)
     return {
-        "<i class='fa-solid fa-compass'></i>Навигатор", 
-        "mw-indicator__nameplate--navigation", 
+        "<i class='fa-solid fa-compass'></i>Навигатор",
+        "mw-indicator__nameplate--navigation",
         "Эта статья " .. tostring(text or "") .. ". Также посмотрите " .. tostring(text2 or "")
     }
 end
 
 local Nameplate = {
-    ["Незавершённая статья"] = {"<i class='fa-solid fa-screwdriver-wrench'></i> Незавершённая статья", "mw-indicator__nameplate--unfinished", "Это [[:Категория:Незавершённые статьи|незавершённая статья]].</span> Она содержит неполную информацию. Вы можете помочь '''{{SITENAME}}''', [{{SERVER}}{{localurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} дополнив её].</span>[[Категория:Незавершённые статьи]]"},
-    ["Неканон"] = {"<i class='fa-solid fa-scroll'></i> Неканон", "mw-indicator__nameplate--noncanon", "Это [[:Категория:Неканон|неканоничная статья]].</span> Информация на данной странице не относится к канону.[[Категория:Неканон]]"},
+    ["Незавершённая статья"] = {
+        "<i class='fa-solid fa-screwdriver-wrench'></i> Незавершённая статья",
+        "mw-indicator__nameplate--unfinished",
+        "Это [[:Категория:Незавершённые статьи|незавершённая статья]]. Она содержит неполную информацию. Вы можете помочь '''{{SITENAME}}''', [{{SERVER}}{{localurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} дополнив её].[[Категория:Незавершённые статьи]]"
+    },
+    ["Неканон"] = {
+        "<i class='fa-solid fa-scroll'></i> Неканон",
+        "mw-indicator__nameplate--noncanon",
+        "Это [[:Категория:Неканон|неканоничная статья]]. Информация на данной странице не относится к канону.[[Категория:Неканон]]"
+    },
 }
 
 local Icon = {
@@ -100,18 +108,21 @@ local function get_icon(key)
     return Icon[key] or {'<i class="fa-solid fa-xmark"></i>', '', 'Неизвестная иконка!'}
 end
 
--- Основная функция
 function p.e(frame)
+    local title = mw.title.getCurrentTitle()
     local str_nameplates = frame.args[1]
     local str_icons = frame.args[2]
     local html = {}
-    
+
     if str_nameplates and str_nameplates ~= "" then
         table.insert(html, '<div class="mw-indicator__nameplates">')
         local parts = mw.text.split(str_nameplates, "%.")
         for _, value in ipairs(parts) do
-            local np = get_nameplate(mw.text.trim(value), frame)
-            table.insert(html, string.format('<div class="mw-indicator__nameplate %s"><div class="mw-indicator__nameplate-tooltip">%s</div>%s</div>', np[2], frame:preprocess(np[3]), np[1]))
+            local key = mw.text.trim(value)
+            if key ~= "" then
+                local np = get_nameplate(key, frame)
+                table.insert(html, string.format('<div class="mw-indicator__nameplate %s"><div class="mw-indicator__nameplate-tooltip">%s</div>%s</div>', np[2], frame:preprocess(np[3]), np[1]))
+            end
         end
         table.insert(html, '</div>')
     end
@@ -120,12 +131,18 @@ function p.e(frame)
     if str_icons and str_icons ~= "" then
         local parts = mw.text.split(str_icons, "%.")
         for _, value in ipairs(parts) do
-            local ic = get_icon(mw.text.trim(value))
-            table.insert(icons_html, string.format('<div class="mw-indicator__icon %s"><div class="mw-indicator__icon-tooltip">%s</div>%s</div>', ic[2], frame:preprocess(ic[3]), ic[1]))
+            local key = mw.text.trim(value)
+            if key ~= "" then
+                local ic = get_icon(key)
+                table.insert(icons_html, string.format('<div class="mw-indicator__icon %s"><div class="mw-indicator__icon-tooltip">%s</div>%s</div>', ic[2], frame:preprocess(ic[3]), ic[1]))
+            end
         end
     end
-    
-    table.insert(icons_html, compile_stats())
+
+    local stats_html = compile_stats(title)
+    if stats_html ~= "" then
+        table.insert(icons_html, stats_html)
+    end
 
     if #icons_html > 0 then
         table.insert(html, string.format('<div class="mw-indicator__icons">%s</div>', table.concat(icons_html)))
