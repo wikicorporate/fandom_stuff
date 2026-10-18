@@ -6,6 +6,9 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   pull:
     runs-on: ubuntu-latest
@@ -21,16 +24,16 @@ jobs:
       - name: Install dependencies
         run: pip install mwclient requests
 
-      - name: Pull all JS from wikicorporate
+      - name: Pull all JS and Lua from wikicorporate
         run: python src/scripts/utils/pull_wikicorporate.py
 
       - name: Commit downloaded scripts to repository
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/local/wikicorporate/scripts/ wikicorporate_dump.txt
+          git add src/local/wikicorporate/ wikicorporate_dump.txt
           if ! git diff --staged --quiet; then
-            git commit -m "Выгрузка всех скриптов с wikicorporate [skip ci]"
+            git commit -m "Выгрузка скриптов и модулей с wikicorporate [skip ci]"
             git pull --rebase origin main
             git push
           fi
