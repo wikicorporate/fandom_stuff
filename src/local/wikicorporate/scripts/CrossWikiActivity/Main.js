@@ -493,11 +493,10 @@ const AppState = {
 const AppMethodsApi = {
         getForeignApi(cleanDomain, anonymous = false) {
             const cacheKey = `${cleanDomain}:${anonymous ? 'anon' : 'auth'}`;
-            if (!this.apiCache[cacheKey]) {
-                const options = anonymous ? { anonymous: true } : {};
-                this.apiCache[cacheKey] = new mw.ForeignApi(`https://${cleanDomain}/api.php`, options);
-            }
-            return this.apiCache[cacheKey];
+            return (this.apiCache[cacheKey] ??= new mw.ForeignApi(
+                `https://${cleanDomain}/api.php`,
+                anonymous ? { anonymous: true } : {}
+            ));
         },
 
         async fetchConfig() {
@@ -510,8 +509,9 @@ const AppMethodsApi = {
                     formatversion: 2,
                     _: Date.now()
                 });
-                if (res?.expandtemplates?.wikitext) {
-                    const parsed = JSON.parse(res.expandtemplates.wikitext.trim());
+                const rawText = res?.expandtemplates?.wikitext?.trim();
+                if (rawText) {
+                    const parsed = JSON.parse(rawText);
                     this.wikis = Array.isArray(parsed.wikis) ? parsed.wikis : [];
                     if (parsed.settings && typeof parsed.settings === 'object') {
                         Object.assign(this.settings, parsed.settings);
@@ -533,7 +533,6 @@ const AppMethodsApi = {
 
             try {
                 const editsMap = new Map();
-
                 const endDate = new Date();
                 endDate.setDate(endDate.getDate() - (this.settings.days || 3));
                 const rcend = endDate.toISOString();
@@ -542,177 +541,145 @@ const AppMethodsApi = {
                 if (this.settings.showBots === false) rcshow.push('!bot');
                 if (this.settings.showMinor === false) rcshow.push('!minor');
 
-                const fetchPromises = this.wikis.map((rawDomain, index) => {
-                    return new Promise((resolve) => {
-                        setTimeout(async () => {
-                            let cleanDomain;
-                            try {
-                                cleanDomain = this.formatWikiUrl(rawDomain);
-                            } catch (err) {
-                                if (!this.failedWikis.includes(rawDomain)) this.failedWikis.push(rawDomain);
-                                resolve([]);
-                                return;
+                const fetchPromises = this.wikis.map((rawDomain, index) => new Promise((resolve) => {
+                    setTimeout(async () => {
+                        let cleanDomain;
+                        try {
+                            cleanDomain = this.formatWikiUrl(rawDomain);
+                        } catch {
+                            if (!this.failedWikis.includes(rawDomain)) this.failedWikis.push(rawDomain);
+                            return resolve([]);
+                        }
+
+                        const wikiEdits = [];
+                        let currentWikiName = cleanDomain;
+
+                        try {
+                            const baseParams = {
+                                action: 'query',
+                                list: 'recentchanges',
+                                meta: 'siteinfo',
+                                siprop: 'general',
+                                rclimit: this.settings.limit || 4000,
+                                rctype: 'edit|new|log',
+                                rcend,
+                                formatversion: 2,
+                                _: Date.now()
+                            };
+                            if (rcshow.length > 0) baseParams.rcshow = rcshow.join('|');
+
+                            const anonProps = 'user|title|ids|sizes|timestamp|loginfo|parsedcomment|flags';
+                            const rcPromise = this.canPatrol
+                                ? this.getForeignApi(cleanDomain, false)
+                                    .get({ ...baseParams, rcprop: `${anonProps}|patrolled` })
+                                    .catch(() => this.getForeignApi(cleanDomain, true).get({ ...baseParams, rcprop: anonProps }).catch(() => null))
+                                : this.getForeignApi(cleanDomain, true).get({ ...baseParams, rcprop: anonProps }).catch(() => null);
+
+                            const discLimit = Math.min(this.settings.limit || 100, 100);
+                            const discPromise = fetch(
+                                `https://${cleanDomain}/wikia.php?controller=DiscussionPost&method=getPosts&limit=${discLimit}&viewableOnly=true&format=json&cb=${Date.now()}`,
+                                { mode: 'cors' }
+                            ).then(r => (r.ok ? r.json() : null)).catch(() => null);
+
+                            const [res, discData] = await Promise.all([rcPromise, discPromise]);
+
+                            if (res?.query?.recentchanges) {
+                                currentWikiName = res.query.general?.sitename || cleanDomain;
+                                const rcEdits = res.query.recentchanges;
+
+                                if (this.canPatrol && rcEdits.length > 0) {
+                                    const trustedGroups = new Set([
+                                        'sysop', 'content-moderator', 'rollback', 'staff',
+                                        'wiki-representative', 'soap', 'wiki-specialist',
+                                        'bot', 'autopatrolled', 'vanguard', 'voldev',
+                                        'global-discussions-moderator'
+                                    ]);
+                                    const trustedUsers = new Set([
+                                        'GlobalJSReviewer', 'Fandom', 'Fandombot', 'Wikia', 'WikiaBot', 'Default',
+                                        mw.config.get('wgUserName')
+                                    ]);
+
+                                    const uniqueUsers = [...new Set(rcEdits.map(rc => rc.user).filter(Boolean))];
+                                    const uApi = this.getForeignApi(cleanDomain, true);
+                                    const userChunks = Array.from(
+                                        { length: Math.ceil(uniqueUsers.length / 50) },
+                                        (_, i) => uniqueUsers.slice(i * 50, i * 50 + 50)
+                                    );
+
+                                    const uResults = await Promise.all(
+                                        userChunks.map(chunk => uApi.get({
+                                            action: 'query',
+                                            list: 'users',
+                                            ususers: chunk.join('|'),
+                                            usprop: 'groups',
+                                            formatversion: 2
+                                        }).catch(() => null))
+                                    );
+
+                                    for (const uRes of uResults) {
+                                        for (const u of uRes?.query?.users ?? []) {
+                                            if (u.groups?.some(g => trustedGroups.has(g))) {
+                                                trustedUsers.add(u.name);
+                                            }
+                                        }
+                                    }
+
+                                    for (const rc of rcEdits) {
+                                        if (trustedUsers.has(rc.user)) delete rc.unpatrolled;
+                                    }
+                                }
+
+                                wikiEdits.push(...rcEdits.map(rc => this.normalizeData(rc, cleanDomain, currentWikiName)));
+                            } else if (!this.failedWikis.includes(rawDomain)) {
+                                this.failedWikis.push(rawDomain);
                             }
 
-                            const wikiEdits = [];
-                            let currentWikiName = cleanDomain;
-
-                            try {
-                                const baseParams = {
-                                    action: 'query',
-                                    list: 'recentchanges',
-                                    meta: 'siteinfo',
-                                    siprop: 'general',
-                                    rclimit: this.settings.limit || 4000,
-                                    rctype: 'edit|new|log',
-                                    rcend: rcend,
-                                    formatversion: 2,
-                                    _: Date.now()
-                                };
-                                if (rcshow.length > 0) baseParams.rcshow = rcshow.join('|');
-
-                                let rcPromise;
-                                if (this.canPatrol) {
-                                    const apiAuth = this.getForeignApi(cleanDomain, false);
-                                    rcPromise = apiAuth.get({
-                                        ...baseParams,
-                                        rcprop: 'user|title|ids|sizes|timestamp|loginfo|parsedcomment|flags|patrolled'
-                                    }).catch(() => {
-                                        const apiAnon = this.getForeignApi(cleanDomain, true);
-                                        return apiAnon.get({
-                                            ...baseParams,
-                                            rcprop: 'user|title|ids|sizes|timestamp|loginfo|parsedcomment|flags'
-                                        }).catch(() => null);
-                                    });
-                                } else {
-                                    const apiAnon = this.getForeignApi(cleanDomain, true);
-                                    rcPromise = apiAnon.get({
-                                        ...baseParams,
-                                        rcprop: 'user|title|ids|sizes|timestamp|loginfo|parsedcomment|flags'
-                                    }).catch(() => null);
-                                }
-
-                                const discLimit = Math.min(this.settings.limit || 100, 100);
-                                const discPromise = fetch(
-                                    `https://${cleanDomain}/wikia.php?controller=DiscussionPost&method=getPosts&limit=${discLimit}&viewableOnly=true&format=json&cb=${Date.now()}`,
-                                    { mode: 'cors' }
-                                )
-                                    .then(r => (r.ok ? r.json() : null))
-                                    .catch(() => null);
-
-                                const [res, discData] = await Promise.all([rcPromise, discPromise]);
-
-                                if (res) {
-                                    if (res?.query?.general?.sitename) {
-                                        currentWikiName = res.query.general.sitename;
-                                    }
-                                    if (res?.query?.recentchanges) {
-                                        const rcEdits = res.query.recentchanges;
-
-                                        if (this.canPatrol && rcEdits.length > 0) {
-                                            const trustedGroups = [
-                                                'sysop', 'content-moderator', 'rollback', 'staff',
-                                                'wiki-representative', 'soap', 'wiki-specialist',
-                                                'bot', 'autopatrolled', 'vanguard', 'voldev',
-                                                'global-discussions-moderator'
-                                            ];
-                                            const systemUsers = ['GlobalJSReviewer', 'Fandom', 'Fandombot', 'Wikia', 'WikiaBot', 'Default'];
-                                            const uniqueUsers = [...new Set(rcEdits.map(rc => rc.user).filter(Boolean))];
-                                            const trustedUsers = new Set();
-
-                                            const chunkArray = (arr, size) => Array.from(
-                                                { length: Math.ceil(arr.length / size) },
-                                                (v, i) => arr.slice(i * size, i * size + size)
-                                            );
-                                            const userChunks = chunkArray(uniqueUsers, 50);
-
-                                            const uApi = this.getForeignApi(cleanDomain, true);
-                                            const userPromises = userChunks.map(chunk =>
-                                                uApi.get({
-                                                    action: 'query',
-                                                    list: 'users',
-                                                    ususers: chunk.join('|'),
-                                                    usprop: 'groups',
-                                                    formatversion: 2
-                                                }).catch(() => null)
-                                            );
-
-                                            const uResults = await Promise.all(userPromises);
-                                            uResults.forEach(uRes => {
-                                                if (uRes?.query?.users) {
-                                                    uRes.query.users.forEach(u => {
-                                                        if (u.groups && u.groups.some(g => trustedGroups.includes(g))) {
-                                                            trustedUsers.add(u.name);
-                                                        }
-                                                    });
-                                                }
-                                            });
-
-                                            const currentUserName = mw.config.get('wgUserName');
-                                            rcEdits.forEach(rc => {
-                                                if (trustedUsers.has(rc.user) || systemUsers.includes(rc.user) || rc.user === currentUserName) {
-                                                    delete rc.unpatrolled;
-                                                }
-                                            });
-                                        }
-
-                                        wikiEdits.push(...rcEdits.map(rc => this.normalizeData(rc, cleanDomain, currentWikiName)));
-                                    } else if (!this.failedWikis.includes(rawDomain)) {
-                                        this.failedWikis.push(rawDomain);
-                                    }
-                                } else if (!this.failedWikis.includes(rawDomain)) {
-                                    this.failedWikis.push(rawDomain);
-                                }
-
-                                if (discData) {
-                                    const posts = discData?._embedded?.['doc:posts'] || [];
-                                    const articleIds = posts
+                            if (discData) {
+                                const posts = discData._embedded?.['doc:posts'] ?? [];
+                                const uniqueIds = [...new Set(
+                                    posts
                                         .filter(p => p._embedded?.thread?.[0]?.containerType === 'ARTICLE_COMMENT')
                                         .map(p => p.forumId)
-                                        .filter(Boolean);
-                                    let articleData = {};
+                                        .filter(Boolean)
+                                )];
+                                let articleData = {};
 
-                                    if (articleIds.length > 0) {
-                                        try {
-                                            const uniqueIds = [...new Set(articleIds)];
-                                            const artRes = await fetch(
-                                                `https://${cleanDomain}/wikia.php?controller=FeedsAndPosts&method=getArticleNamesAndUsernames&stablePageIds=${uniqueIds.join(',')}&format=json&cb=${Date.now()}`,
-                                                { mode: 'cors' }
-                                            );
-                                            if (artRes.ok) {
-                                                const artJson = await artRes.json();
-                                                articleData = artJson.articleNames || {};
-                                            }
-                                        } catch (e) {}
-                                    }
-
-                                    posts.forEach(p => {
-                                        try {
-                                            wikiEdits.push(this.normalizeDiscussion(p, cleanDomain, articleData, currentWikiName));
-                                        } catch (err) {}
-                                    });
+                                if (uniqueIds.length > 0) {
+                                    try {
+                                        const artRes = await fetch(
+                                            `https://${cleanDomain}/wikia.php?controller=FeedsAndPosts&method=getArticleNamesAndUsernames&stablePageIds=${uniqueIds.join(',')}&format=json&cb=${Date.now()}`,
+                                            { mode: 'cors' }
+                                        );
+                                        if (artRes.ok) {
+                                            articleData = (await artRes.json()).articleNames ?? {};
+                                        }
+                                    } catch {}
                                 }
 
-                                resolve(wikiEdits);
-                            } catch (e) {
-                                if (!this.failedWikis.includes(rawDomain)) this.failedWikis.push(rawDomain);
-                                resolve([]);
+                                for (const p of posts) {
+                                    try {
+                                        wikiEdits.push(this.normalizeDiscussion(p, cleanDomain, articleData, currentWikiName));
+                                    } catch {}
+                                }
                             }
-                        }, index * 50);
-                    });
-                });
+
+                            resolve(wikiEdits);
+                        } catch {
+                            if (!this.failedWikis.includes(rawDomain)) this.failedWikis.push(rawDomain);
+                            resolve([]);
+                        }
+                    }, index * 50);
+                }));
 
                 const results = await Promise.all(fetchPromises);
+                for (const e of this.edits) editsMap.set(e.id, e);
+                for (const wikiEdits of results) {
+                    for (const e of wikiEdits) editsMap.set(e.id, e);
+                }
 
-                this.edits.forEach(e => editsMap.set(e.id, e));
-                results.forEach(wikiEdits => {
-                    wikiEdits.forEach(e => editsMap.set(e.id, e));
-                });
-
-                let allEdits = Array.from(editsMap.values());
-                allEdits = allEdits.filter(edit => new Date(edit.timestamp) >= endDate);
-                allEdits.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-                this.edits = allEdits;
+                this.edits = Array.from(editsMap.values())
+                    .filter(edit => new Date(edit.timestamp) >= endDate)
+                    .toSorted((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
             } finally {
                 this.isLoading = false;
             }
@@ -724,7 +691,7 @@ const AppMethodsApi = {
 
             let category = 'content';
             let groupWithID = rc.title;
-            const isBot = !!rc.bot;
+            const isBot = Boolean(rc.bot);
 
             const mediaNs = [-2, 6];
             const systemNs = [-1, 2, 8, 828];
@@ -732,14 +699,15 @@ const AppMethodsApi = {
 
             if (rc.type === 'log') {
                 groupWithID = rc.logtype;
-                if (['upload'].includes(rc.logtype) || mediaNs.includes(rc.ns)) category = 'media';
+                if (rc.logtype === 'upload' || mediaNs.includes(rc.ns)) category = 'media';
                 else if (rc.ns % 2 !== 0 || socialNs.includes(rc.ns)) category = 'social';
                 else category = 'system';
-            } else {
-                if (mediaNs.includes(rc.ns)) category = 'media';
-                else if (rc.ns % 2 !== 0 || socialNs.includes(rc.ns)) category = 'social';
-                else if (systemNs.includes(rc.ns)) category = 'system';
-                else category = 'content';
+            } else if (mediaNs.includes(rc.ns)) {
+                category = 'media';
+            } else if (rc.ns % 2 !== 0 || socialNs.includes(rc.ns)) {
+                category = 'social';
+            } else if (systemNs.includes(rc.ns)) {
+                category = 'system';
             }
 
             const flagsArr = [];
@@ -751,10 +719,10 @@ const AppMethodsApi = {
             let socialContext = null;
 
             if (category === 'social') {
-                const isMessage = (rc.ns === 1200 || rc.ns === 1201 || rc.ns === 1202);
-                const isPost = (rc.ns === 2000 || rc.ns === 2001 || rc.ns === 2002);
-                const isBlog = (rc.ns === 500 || rc.ns === 501 || rc.ns === 502 || rc.ns === 503);
-                const isTalk = (!isMessage && !isPost && !isBlog);
+                const isMessage = [1200, 1201, 1202].includes(rc.ns);
+                const isPost = [2000, 2001, 2002].includes(rc.ns);
+                const isBlog = [500, 501, 502, 503].includes(rc.ns);
+                const isTalk = !isMessage && !isPost && !isBlog;
 
                 let act = 'Изменение';
                 let actKey = 'update';
@@ -762,53 +730,41 @@ const AppMethodsApi = {
                     act = 'Новый';
                     actKey = 'create';
                 } else if (rc.type === 'log') {
-                    act = CwaDicts.logActMap[rc.logaction] || 'Изменение';
-                    if (rc.logaction === 'delete') actKey = 'delete';
-                    else if (rc.logaction === 'restore') actKey = 'undelete';
-                    else if (rc.logaction === 'protect') actKey = 'lock';
-                    else if (rc.logaction === 'unprotect') actKey = 'unlock';
+                    act = CwaDicts.logActMap[rc.logaction] ?? 'Изменение';
+                    const logKeyMap = { delete: 'delete', restore: 'undelete', protect: 'lock', unprotect: 'unlock' };
+                    actKey = logKeyMap[rc.logaction] ?? 'update';
                 }
 
                 const cType = isTalk ? 'talk' : isBlog ? 'blog' : isMessage ? 'message' : 'post';
                 const iconContentBase = isTalk ? 'comment' : cType;
-                let isReply = false;
-                if (isBlog) isReply = (rc.ns === 501 || rc.ns === 503);
-                if (isMessage) isReply = (rc.ns === 1201);
-                if (isPost) isReply = (rc.ns === 2001);
+                const isReply = (isBlog && (rc.ns === 501 || rc.ns === 503)) || (isMessage && rc.ns === 1201) || (isPost && rc.ns === 2001);
 
                 socialContext = {
                     activityType: actKey,
-                    contentType: iconContentBase + (isReply ? '-reply' : '')
+                    contentType: `${iconContentBase}${isReply ? '-reply' : ''}`
                 };
 
                 if (act === 'Новый' && isReply) {
-                    const replyMap = {
-                        'blog': 'Ответ на блог',
-                        'message': 'Ответ на сообщение',
-                        'post': 'Ответ на пост'
-                    };
-                    actionTitle = replyMap[cType] || 'Новое обсуждение';
+                    const replyMap = { blog: 'Ответ на блог', message: 'Ответ на сообщение', post: 'Ответ на пост' };
+                    actionTitle = replyMap[cType] ?? 'Новое обсуждение';
                 } else {
-                    actionTitle = CwaDicts.socialTitleMap?.[cType]?.[act] || 'Изменение';
+                    actionTitle = CwaDicts.socialTitleMap?.[cType]?.[act] ?? 'Изменение';
                 }
+            } else if (rc.type === 'new') {
+                actionTitle = rc.ns === 6 ? 'Загружен новый файл' : 'Создана новая страница';
+            } else if (rc.type === 'log') {
+                actionTitle = CwaDicts.logMap[`${rc.logtype}/${rc.logaction}`] ?? `${rc.logtype} / ${rc.logaction}`;
             } else {
-                if (rc.type === 'new') {
-                    actionTitle = (rc.ns === 6) ? 'Загружен новый файл' : 'Создана новая страница';
-                } else if (rc.type === 'log') {
-                    const logAct = rc.logtype + '/' + rc.logaction;
-                    actionTitle = CwaDicts.logMap[logAct] || (rc.logtype + ' / ' + rc.logaction);
-                } else {
-                    actionTitle = (rc.ns === 6) ? 'Отредактирован файл' : 'Отредактирована страница';
-                }
+                actionTitle = rc.ns === 6 ? 'Отредактирован файл' : 'Отредактирована страница';
             }
 
             const targetId = rc.rcid || rc.logid || rc.revid;
             const fallbackLogComment = rc.type === 'log'
-                ? (CwaDicts.logNamesMap[rc.logtype] || `Журнал: ${mw.html.escape(String(rc.logtype || ''))} (${mw.html.escape(String(rc.logaction || ''))})`)
+                ? (CwaDicts.logNamesMap[rc.logtype] ?? `Журнал: ${mw.html.escape(String(rc.logtype ?? ''))} (${mw.html.escape(String(rc.logaction ?? ''))})`)
                 : '';
 
             return Object.freeze({
-                id: rc.rcid || rc.logid || Math.random().toString(36).substring(2, 9),
+                id: rc.rcid || rc.logid || Math.random().toString(36).slice(2, 9),
                 revid: rc.revid,
                 rcid: rc.rcid,
                 old_revid: rc.old_revid,
@@ -823,9 +779,9 @@ const AppMethodsApi = {
                 timestamp: rc.timestamp,
                 time: new Date(rc.timestamp).toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' }),
                 parsedComment: rc.parsedcomment || fallbackLogComment,
-                sizeDiff: rc.newlen !== undefined && rc.oldlen !== undefined ? rc.newlen - rc.oldlen : 0,
+                sizeDiff: (rc.newlen ?? 0) - (rc.oldlen ?? 0),
                 flags: flagsArr,
-                wikiDomain: wikiDomain,
+                wikiDomain,
                 wikiName: wikiName || wikiDomain,
                 wikiFavicon: `${serverUrl}/wiki/Special:FilePath/Site-favicon.ico`,
                 pageUrl: `${articlePath}${encodeURIComponent(rc.title)}`,
@@ -834,17 +790,17 @@ const AppMethodsApi = {
                 userContribsUrl: `${articlePath}Special:Contributions/${encodeURIComponent(rc.user)}`,
                 userBlockUrl: `${articlePath}Special:Block/${encodeURIComponent(rc.user)}`,
                 undoUrl: rc.revid && rc.old_revid ? `${articlePath}${encodeURIComponent(rc.title)}?action=edit&undo=${rc.revid}&undoafter=${rc.old_revid}` : null,
-                category: category,
-                groupWithID: groupWithID,
-                actionTitle: actionTitle,
-                socialContext: socialContext
+                category,
+                groupWithID,
+                actionTitle,
+                socialContext
             });
         },
 
         normalizeDiscussion(post, wikiDomain, articleData, wikiName) {
-            const thread = post._embedded?.thread?.[0] || {};
-            const createdEpoch = post.creationDate?.epochSecond || 0;
-            const modifiedEpoch = post.modificationDate?.epochSecond || createdEpoch;
+            const thread = post._embedded?.thread?.[0] ?? {};
+            const createdEpoch = post.creationDate?.epochSecond ?? 0;
+            const modifiedEpoch = post.modificationDate?.epochSecond ?? createdEpoch;
             const date = new Date((modifiedEpoch || createdEpoch) * 1000);
             const isReply = post.position > 1;
             const containerType = thread.containerType || 'FORUM';
@@ -854,31 +810,26 @@ const AppMethodsApi = {
             let displayTitle = thread.title || post.title;
 
             if (containerType === 'ARTICLE_COMMENT') {
-                if (displayTitle && (displayTitle.startsWith('User blog:') || displayTitle.startsWith('Блог участника:'))) {
-                    contentType = 'blog';
-                } else {
-                    contentType = 'comment';
-                }
-                const info = articleData && articleData[post.forumId] ? articleData[post.forumId] : null;
+                contentType = (displayTitle?.startsWith('User blog:') || displayTitle?.startsWith('Блог участника:')) ? 'blog' : 'comment';
+                const info = articleData?.[post.forumId] ?? null;
                 if (info) {
-                    pageUrl = `https://${wikiDomain}/wiki/${encodeURIComponent(info.title.replace(/ /g, '_'))}?commentId=${encodeURIComponent(post.threadId)}${isReply ? '&replyId=' + encodeURIComponent(post.id) : ''}`;
+                    pageUrl = `https://${wikiDomain}/wiki/${encodeURIComponent(info.title.replaceAll(' ', '_'))}?commentId=${encodeURIComponent(post.threadId)}${isReply ? `&replyId=${encodeURIComponent(post.id)}` : ''}`;
                     displayTitle = info.title;
                 } else {
                     pageUrl = `https://${wikiDomain}/f/p/${encodeURIComponent(post.threadId)}`;
                     displayTitle = post.forumName || 'Комментарий к статье';
                 }
             } else if (containerType === 'WALL' || containerType === 'MESSAGE_WALL') {
-                const cleanWallName = (post.forumName || '').replace(/ Message Wall$/, '').replace(/^Стена обсуждения:/, '');
-                pageUrl = `https://${wikiDomain}/wiki/Message_Wall:${encodeURIComponent(cleanWallName.replace(/ /g, '_'))}?threadId=${encodeURIComponent(post.threadId)}${isReply ? '#' + encodeURIComponent(post.id) : ''}`;
+                const cleanWallName = (post.forumName ?? '').replace(/ Message Wall$/, '').replace(/^Стена обсуждения:/, '');
+                pageUrl = `https://${wikiDomain}/wiki/Message_Wall:${encodeURIComponent(cleanWallName.replaceAll(' ', '_'))}?threadId=${encodeURIComponent(post.threadId)}${isReply ? `#${encodeURIComponent(post.id)}` : ''}`;
                 if (!displayTitle || displayTitle.startsWith('@')) displayTitle = 'Стена обсуждения';
                 contentType = 'message';
             } else {
-                pageUrl = `https://${wikiDomain}/f/p/${encodeURIComponent(post.threadId)}${isReply ? '/r/' + encodeURIComponent(post.id) : ''}`;
-                if (!displayTitle) displayTitle = 'Обсуждение на форуме';
+                pageUrl = `https://${wikiDomain}/f/p/${encodeURIComponent(post.threadId)}${isReply ? `/r/${encodeURIComponent(post.id)}` : ''}`;
+                displayTitle ||= 'Обсуждение на форуме';
             }
 
             let summary = post.snippet || post.rawContent || post.body;
-
             if (!summary && post.jsonModel) {
                 try {
                     const texts = [];
@@ -887,11 +838,11 @@ const AppMethodsApi = {
                         return value;
                     });
                     summary = texts.join(' ').replace(/\s+/g, ' ').trim();
-                } catch (e) {}
+                } catch {}
             }
 
-            summary = summary || '(Вложение / Опрос)';
-            if (summary.length > 85) summary = summary.substring(0, 85) + '...';
+            summary ||= '(Вложение / Опрос)';
+            if (summary.length > 85) summary = `${summary.slice(0, 85)}...`;
 
             let act = 'Новый';
             let activityType = 'create';
@@ -907,24 +858,20 @@ const AppMethodsApi = {
             }
 
             const safeContentType = ['comment', 'message', 'blog', 'post'].includes(contentType) ? contentType : 'post';
-            let actionTitle;
-
-            if (act === 'Новый' && isReply) {
-                const replyMap = {
-                    'comment': 'Ответ на комментарий',
-                    'message': 'Ответ на сообщение',
-                    'blog': 'Ответ на блог',
-                    'post': 'Ответ на пост'
-                };
-                actionTitle = replyMap[safeContentType];
-            } else {
-                actionTitle = CwaDicts.socialTitleMap?.[safeContentType]?.[act] || 'Изменение';
-            }
+            const replyMap = {
+                comment: 'Ответ на комментарий',
+                message: 'Ответ на сообщение',
+                blog: 'Ответ на блог',
+                post: 'Ответ на пост'
+            };
+            const actionTitle = (act === 'Новый' && isReply)
+                ? replyMap[safeContentType]
+                : (CwaDicts.socialTitleMap?.[safeContentType]?.[act] ?? 'Изменение');
 
             const userName = post.createdBy?.name || 'Аноним';
 
             return Object.freeze({
-                id: 'disc-' + post.id,
+                id: `disc-${post.id}`,
                 revid: null,
                 rcid: null,
                 old_revid: null,
@@ -935,26 +882,26 @@ const AppMethodsApi = {
                 logaction: '',
                 ns: -5234,
                 title: displayTitle,
-                actionTitle: actionTitle,
+                actionTitle,
                 user: userName,
                 timestamp: date.toISOString(),
                 time: date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' }),
                 parsedComment: mw.html.escape(summary),
                 sizeDiff: 0,
                 flags: [],
-                wikiDomain: wikiDomain,
+                wikiDomain,
                 wikiName: wikiName || wikiDomain,
                 wikiFavicon: `https://${wikiDomain}/wiki/Special:FilePath/Site-favicon.ico`,
-                pageUrl: pageUrl,
+                pageUrl,
                 userUrl: `https://${wikiDomain}/wiki/User:${encodeURIComponent(userName)}`,
                 userTalkUrl: `https://${wikiDomain}/wiki/User_talk:${encodeURIComponent(userName)}`,
                 userContribsUrl: `https://${wikiDomain}/wiki/Special:Contributions/${encodeURIComponent(userName)}`,
                 userBlockUrl: `https://${wikiDomain}/wiki/Special:Block/${encodeURIComponent(userName)}`,
                 category: 'social',
-                groupWithID: 'disc-' + post.threadId,
+                groupWithID: `disc-${post.threadId}`,
                 socialContext: {
-                    activityType: activityType,
-                    contentType: safeContentType + (isReply ? '-reply' : '')
+                    activityType,
+                    contentType: `${safeContentType}${isReply ? '-reply' : ''}`
                 },
                 jsonModel: post.jsonModel,
                 rawContent: post.rawContent
@@ -975,31 +922,28 @@ const AppMethodsUi = {
                 if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
                     return mw.html.escape(parsed.href);
                 }
-            } catch (e) {}
+            } catch {}
             return '#';
         },
 
         savePatrolledId(id) {
-            if (!id) return;
-            if (!this.patrolledIds.includes(id)) {
-                this.patrolledIds.push(id);
-                if (this.patrolledIds.length > 2000) {
-                    this.patrolledIds = this.patrolledIds.slice(-2000);
-                }
-                try {
-                    localStorage.setItem('cwa-patrolled-cache', JSON.stringify(this.patrolledIds));
-                } catch (e) {}
+            if (!id || this.patrolledIds.includes(id)) return;
+            this.patrolledIds.push(id);
+            if (this.patrolledIds.length > 2000) {
+                this.patrolledIds = this.patrolledIds.slice(-2000);
             }
+            try {
+                localStorage.setItem('cwa-patrolled-cache', JSON.stringify(this.patrolledIds));
+            } catch {}
         },
 
         openInNewTab(url) {
-            if (!url) return;
-            window.open(url, '_blank', 'noopener,noreferrer');
+            if (url) window.open(url, '_blank', 'noopener,noreferrer');
         },
 
         pluralize(count, words) {
             const cases = [2, 0, 1, 1, 1, 2];
-            return count + ' ' + words[(count % 100 > 4 && count % 100 < 20) ? 2 : cases[(count % 10 < 5) ? count % 10 : 5]];
+            return `${count} ${words[(count % 100 > 4 && count % 100 < 20) ? 2 : cases[Math.min(count % 10, 5)]]}`;
         },
 
         getEditsByTab(tabId) {
@@ -1013,69 +957,47 @@ const AppMethodsUi = {
         getGroupDiff(group) {
             const diffableEdits = group.items.filter(i => i.revid && i.old_revid);
             if (diffableEdits.length === 0) return null;
-            return { from: diffableEdits[diffableEdits.length - 1].old_revid, to: diffableEdits[0].revid };
+            return { from: diffableEdits.at(-1).old_revid, to: diffableEdits[0].revid };
         },
 
         formatWikiUrl(inputUrl) {
-            const urlToParse = inputUrl.startsWith('http') ? inputUrl : 'https://' + inputUrl;
-            let parsed;
-            try {
-                parsed = new URL(urlToParse);
-            } catch (e) {
-                throw new Error('Security Error: Invalid URL format.');
-            }
-
+            const urlToParse = inputUrl.startsWith('http') ? inputUrl : `https://${inputUrl}`;
+            const parsed = new URL(urlToParse);
             const hostname = parsed.hostname.toLowerCase();
+
             if (!hostname.endsWith('.fandom.com') && hostname !== 'fandom.com') {
                 throw new Error('Security Error: Only fandom.com domains are allowed.');
             }
 
-            let url = hostname + parsed.pathname;
-            url = url.replace(/\/$/, '');
-
+            let url = `${hostname}${parsed.pathname}`.replace(/\/$/, '');
             const oldFormatMatch = url.match(/^([a-z]{2,3}(?:-[a-z]{2,4})?)\.([^.]+)\.fandom\.com$/);
             if (oldFormatMatch) {
-                const langCode = oldFormatMatch[1];
-                const wikiName = oldFormatMatch[2];
-                url = `${wikiName}.fandom.com/${langCode}`;
+                url = `${oldFormatMatch[2]}.fandom.com/${oldFormatMatch[1]}`;
             }
-
             return url;
         },
 
         setupAutoRefresh() {
-            if (this.refreshInterval) {
-                clearInterval(this.refreshInterval);
-            }
-            if (this.settings.autoRefresh && this.settings.autoRefresh > 0) {
+            if (this.refreshInterval) clearInterval(this.refreshInterval);
+            if (this.settings.autoRefresh > 0) {
                 this.refreshInterval = setInterval(() => {
-                    if (!this.isLoading && !this.isPatrolling) {
-                        this.fetchData();
-                    }
+                    if (!this.isLoading && !this.isPatrolling) this.fetchData();
                 }, this.settings.autoRefresh * 1000);
             }
         },
 
         getIconForType(edit) {
             if (edit.socialContext) {
-                const act = edit.socialContext.activityType;
-                const ctx = edit.socialContext.contentType;
-
-                if (CwaDicts.icons.social[act] && CwaDicts.icons.social[act][ctx]) {
-                    return CwaDicts.icons.social[act][ctx];
-                }
-                if (edit.type === 'discussion') {
-                    return 'fa-solid fa-comment';
-                }
+                const { activityType, contentType } = edit.socialContext;
+                const socialIcon = CwaDicts.icons.social[activityType]?.[contentType];
+                if (socialIcon) return socialIcon;
+                if (edit.type === 'discussion') return 'fa-solid fa-comment';
             }
-
             if (edit.type === 'log') {
-                return CwaDicts.icons.log[edit.logtype] || 'fa-solid fa-clipboard-list';
+                return CwaDicts.icons.log[edit.logtype] ?? 'fa-solid fa-clipboard-list';
             }
-
             if (edit.type === 'new') return 'fa-solid fa-folder-plus';
-
-            return CwaDicts.icons.ns[edit.ns] || 'fa-solid fa-pen-to-square';
+            return CwaDicts.icons.ns[edit.ns] ?? 'fa-solid fa-pen-to-square';
         },
 
         getSizeClass(diff) {
@@ -1090,7 +1012,6 @@ const AppMethodsUi = {
             try {
                 const api = this.getForeignApi(edit.wikiDomain, false);
                 const params = { action: 'patrol', formatversion: 2 };
-
                 if (edit.rcid) params.rcid = edit.rcid;
                 else if (edit.revid) params.revid = edit.revid;
                 else throw new Error('No ID');
@@ -1099,13 +1020,12 @@ const AppMethodsUi = {
                 mw.notify(`Правка на странице "${edit.title}" отпатрулирована.`, { type: 'success' });
 
                 this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
-
                 const index = this.edits.findIndex(e => e.id === edit.id);
                 if (index !== -1) {
                     this.edits[index] = Object.freeze({ ...this.edits[index], unpatrolled: false });
                 }
             } catch (e) {
-                mw.notify('Ошибка при патрулировании: ' + (e.info || 'Нет прав.'), { type: 'error' });
+                mw.notify(`Ошибка при патрулировании: ${e.info || 'Нет прав.'}`, { type: 'error' });
             }
         },
 
@@ -1122,7 +1042,6 @@ const AppMethodsUi = {
                     else continue;
 
                     await api.postWithToken('patrol', params);
-
                     this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
 
                     const index = this.edits.findIndex(e => e.id === edit.id);
@@ -1132,33 +1051,28 @@ const AppMethodsUi = {
                 }
                 mw.notify('Группа правок отпатрулирована.', { type: 'success' });
             } catch (e) {
-                mw.notify('Ошибка при патрулировании группы: ' + (e.info || 'Нет прав.'), { type: 'error' });
+                mw.notify(`Ошибка при патрулировании группы: ${e.info || 'Нет прав.'}`, { type: 'error' });
             }
         },
 
         async patrolAll() {
             const unpatrolled = this.edits.filter(e => e.unpatrolled && e.category === this.activeTab);
             if (!unpatrolled.length) return;
-
             if (!confirm(`Найдено действий для патрулирования на текущей вкладке: ${unpatrolled.length}. Начать процесс?`)) return;
 
             this.isPatrolling = true;
             let successCount = 0;
             let errorCount = 0;
 
-            const byDomain = {};
-            unpatrolled.forEach(edit => {
-                if (!byDomain[edit.wikiDomain]) byDomain[edit.wikiDomain] = [];
-                byDomain[edit.wikiDomain].push(edit);
-            });
+            // ES2024 Object.groupBy
+            const byDomain = Object.groupBy(unpatrolled, edit => edit.wikiDomain);
 
-            for (const domain of Object.keys(byDomain)) {
+            for (const [domain, items] of Object.entries(byDomain)) {
                 const api = this.getForeignApi(domain, false);
-                const items = byDomain[domain];
 
                 for (let i = 0; i < items.length; i += 4) {
                     const chunk = items.slice(i, i + 4);
-                    const chunkPromises = chunk.map(async (edit) => {
+                    await Promise.all(chunk.map(async (edit) => {
                         try {
                             const params = { action: 'patrol', formatversion: 2 };
                             if (edit.rcid) params.rcid = edit.rcid;
@@ -1166,7 +1080,6 @@ const AppMethodsUi = {
                             else return;
 
                             await api.postWithToken('patrol', params);
-
                             this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
 
                             const index = this.edits.findIndex(e => e.id === edit.id);
@@ -1174,19 +1087,17 @@ const AppMethodsUi = {
                                 this.edits[index] = Object.freeze({ ...this.edits[index], unpatrolled: false });
                             }
                             successCount++;
-                        } catch (e) {
+                        } catch {
                             errorCount++;
                         }
-                    });
-
-                    await Promise.all(chunkPromises);
+                    }));
                     await new Promise(r => setTimeout(r, 250));
                 }
             }
 
             this.isPatrolling = false;
             mw.notify(
-                `Готово! Успешно: ${successCount}` + (errorCount > 0 ? `, Ошибок: ${errorCount}` : ''),
+                `Готово! Успешно: ${successCount}${errorCount > 0 ? `, Ошибок: ${errorCount}` : ''}`,
                 { type: errorCount > 0 ? 'warn' : 'success' }
             );
         },
@@ -1204,15 +1115,14 @@ const AppMethodsUi = {
                 mw.notify(`Правки участника ${edit.user} успешно откачены.`, { type: 'success' });
                 this.edits = this.edits.filter(e => e.id !== edit.id);
             } catch (e) {
-                mw.notify('Ошибка при откате: ' + (e.info || 'Недостаточно прав или правка уже откачена.'), { type: 'error' });
+                mw.notify(`Ошибка при откате: ${e.info || 'Недостаточно прав или правка уже откачена.'}`, { type: 'error' });
             }
         },
 
         cleanUpRemoteResources() {
-            ['cwa-remote-styles', 'cwa-remote-inline', 'cwa-remote-styles-preload'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.remove();
-            });
+            for (const id of ['cwa-remote-styles', 'cwa-remote-inline', 'cwa-remote-styles-preload']) {
+                document.getElementById(id)?.remove();
+            }
         },
 
         closeModal() {
@@ -1246,7 +1156,7 @@ const AppMethodsUi = {
                 if (data?.compare?.body) {
                     const c = data.compare;
                     const serverUrl = `https://${wikiDomain}`;
-                    const articleUrl = mw.html.escape(`${serverUrl}/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`);
+                    const articleUrl = mw.html.escape(`${serverUrl}/wiki/${encodeURIComponent(title.replaceAll(' ', '_'))}`);
 
                     const formatTime = (ts) => {
                         if (!ts) return '';
@@ -1315,19 +1225,18 @@ const AppMethodsUi = {
                 const doc = typeof jsonString === 'string' ? JSON.parse(jsonString) : jsonString;
 
                 const renderMarks = (text, marks) => {
-                    let res = mw.html.escape(text || '');
-                    if (!marks || !marks.length) return res;
-                    marks.forEach(m => {
+                    let res = mw.html.escape(text ?? '');
+                    if (!marks?.length) return res;
+                    for (const m of marks) {
                         if (m.type === 'strong') res = `<strong>${res}</strong>`;
                         else if (m.type === 'em') res = `<em>${res}</em>`;
                         else if (m.type === 'code') res = `<code>${res}</code>`;
                         else if (m.type === 'underline') res = `<u>${res}</u>`;
                         else if (m.type === 'strike') res = `<s>${res}</s>`;
                         else if (m.type === 'link') {
-                            const safeHref = this.sanitizeUrl(m.attrs?.href);
-                            res = `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${res}</a>`;
+                            res = `<a href="${this.sanitizeUrl(m.attrs?.href)}" target="_blank" rel="noopener noreferrer">${res}</a>`;
                         }
-                    });
+                    }
                     return res;
                 };
 
@@ -1350,27 +1259,25 @@ const AppMethodsUi = {
                             return `<h${lvl}>${innerHTML}</h${lvl}>`;
                         }
                         case 'code_block': return `<pre><code>${innerHTML}</code></pre>`;
-                        case 'mention': return `<em>@${mw.html.escape(n.attrs?.text || 'User')}</em>`;
+                        case 'mention': return `<em>@${mw.html.escape(n.attrs?.text ?? 'User')}</em>`;
                         default: return innerHTML;
                     }
                 };
 
                 return renderNode(doc);
-            } catch (e) {
+            } catch {
                 return fallbackText ? `<p>${mw.html.escape(fallbackText)}</p>` : '<em>Ошибка обработки содержимого</em>';
             }
         },
 
         openPreviewModal(edit) {
             this.cleanUpRemoteResources();
-
             this.modal.isOpen = true;
             this.modal.isLoading = true;
             this.modal.title = `Предпросмотр: ${edit.title}`;
 
             if (edit.type === 'discussion') {
                 const parsedHtml = this.parseProseMirror(edit.jsonModel, edit.rawContent);
-
                 const siteStylesUrl = `https://${edit.wikiDomain}/load.php?lang=ru&modules=site.styles&only=styles&skin=fandomdesktop`;
                 const linkNode = document.createElement('link');
                 linkNode.id = 'cwa-remote-styles';
@@ -1380,9 +1287,7 @@ const AppMethodsUi = {
                 const finishLoading = () => {
                     this.modal.content = `
                         <div class="cwa-remote-container skin-fandomdesktop theme-fandomdesktop-dark sitedir-ltr">
-                            <div class="mw-parser-output">
-                                ${parsedHtml}
-                            </div>
+                            <div class="mw-parser-output">${parsedHtml}</div>
                         </div>
                     `;
                     this.modal.isLoading = false;
@@ -1403,10 +1308,9 @@ const AppMethodsUi = {
                     iiprop: 'url',
                     formatversion: 2
                 }).then(data => {
-                    const pages = data?.query?.pages;
-                    if (pages && pages[0] && pages[0].imageinfo && pages[0].imageinfo.length > 0) {
-                        const safeImgUrl = this.sanitizeUrl(pages[0].imageinfo[0].url);
-                        this.modal.content = `<div class="cwa-modal__img-wrap"><img src="${safeImgUrl}" class="cwa-modal__img" loading="lazy" /></div>`;
+                    const imgUrl = data?.query?.pages?.[0]?.imageinfo?.[0]?.url;
+                    if (imgUrl) {
+                        this.modal.content = `<div class="cwa-modal__img-wrap"><img src="${this.sanitizeUrl(imgUrl)}" class="cwa-modal__img" loading="lazy" /></div>`;
                     } else {
                         this.modal.content = '<em>Не удалось загрузить изображение. Возможно, файл удалён.</em>';
                     }
@@ -1437,66 +1341,54 @@ const AppMethodsUi = {
                 disabletoc: true,
                 formatversion: 2
             }).then(data => {
-                if (data?.parse?.text) {
-                    let html = data.parse.text;
-                    html = html.replace(/(href|src)="(\/(?!\/).*?)"/g, `$1="https://${edit.wikiDomain}$2"`);
+                if (!data?.parse?.text) throw new Error('No content');
 
-                    let inlineStyles = '';
-                    if (data.parse.headhtml) {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data.parse.headhtml, 'text/html');
-                        doc.querySelectorAll('style').forEach(st => {
-                            inlineStyles += st.textContent + '\n';
-                        });
-                    }
+                const html = data.parse.text.replace(/(href|src)="(\/(?!\/).*?)"/g, `$1="https://${edit.wikiDomain}$2"`);
 
+                if (data.parse.headhtml) {
+                    const doc = new DOMParser().parseFromString(data.parse.headhtml, 'text/html');
+                    const inlineStyles = Array.from(doc.querySelectorAll('style'), st => st.textContent).join('\n');
                     if (inlineStyles) {
                         const styleNode = document.createElement('style');
                         styleNode.id = 'cwa-remote-inline';
                         styleNode.textContent = inlineStyles;
                         document.body.appendChild(styleNode);
                     }
-
-                    const linkNode = document.createElement('link');
-                    linkNode.id = 'cwa-remote-styles';
-                    linkNode.rel = 'stylesheet';
-                    linkNode.href = siteStylesUrl;
-
-                    const finishLoading = () => {
-                        this.modal.content = `
-                            <div class="cwa-remote-container skin-fandomdesktop theme-fandomdesktop-dark sitedir-ltr">
-                                <div class="mw-parser-output">
-                                    ${html}
-                                </div>
-                            </div>
-                        `;
-                        this.modal.isLoading = false;
-
-                        this.$nextTick(() => {
-                            const modules = [
-                                ...(data.parse.modules || []),
-                                ...(data.parse.modulestyles || [])
-                            ];
-                            const safeModules = modules.filter(m => m.startsWith('ext.') || m.startsWith('mediawiki.'));
-                            if (safeModules.length > 0) {
-                                mw.loader.load(safeModules);
-                            }
-
-                            setTimeout(() => {
-                                const contentElement = document.querySelector('.cwa-remote-container .mw-parser-output');
-                                if (contentElement && window.mw && window.mw.hook && window.$) {
-                                    window.mw.hook('wikipage.content').fire(window.$(contentElement));
-                                }
-                            }, 100);
-                        });
-                    };
-
-                    linkNode.onload = finishLoading;
-                    linkNode.onerror = finishLoading;
-                    document.body.appendChild(linkNode);
-                } else {
-                    throw new Error('No content');
                 }
+
+                const linkNode = document.createElement('link');
+                linkNode.id = 'cwa-remote-styles';
+                linkNode.rel = 'stylesheet';
+                linkNode.href = siteStylesUrl;
+
+                const finishLoading = () => {
+                    this.modal.content = `
+                        <div class="cwa-remote-container skin-fandomdesktop theme-fandomdesktop-dark sitedir-ltr">
+                            <div class="mw-parser-output">${html}</div>
+                        </div>
+                    `;
+                    this.modal.isLoading = false;
+
+                    this.$nextTick(() => {
+                        const safeModules = [
+                            ...(data.parse.modules ?? []),
+                            ...(data.parse.modulestyles ?? [])
+                        ].filter(m => m.startsWith('ext.') || m.startsWith('mediawiki.'));
+
+                        if (safeModules.length > 0) mw.loader.load(safeModules);
+
+                        setTimeout(() => {
+                            const contentElement = document.querySelector('.cwa-remote-container .mw-parser-output');
+                            if (contentElement && window.mw?.hook && window.$) {
+                                window.mw.hook('wikipage.content').fire(window.$(contentElement));
+                            }
+                        }, 100);
+                    });
+                };
+
+                linkNode.onload = finishLoading;
+                linkNode.onerror = finishLoading;
+                document.body.appendChild(linkNode);
             }).catch(() => {
                 const authApi = this.getForeignApi(edit.wikiDomain, false);
                 authApi.get({
@@ -1507,9 +1399,8 @@ const AppMethodsUi = {
                     drvlimit: 1,
                     formatversion: 2
                 }).then(data => {
-                    const pages = data?.query?.pages;
-                    if (pages && pages[0] && pages[0].deletedrevisions && pages[0].deletedrevisions.length > 0) {
-                        const content = pages[0].deletedrevisions[0].content;
+                    const content = data?.query?.pages?.[0]?.deletedrevisions?.[0]?.content;
+                    if (content) {
                         authApi.post({
                             action: 'parse',
                             text: content,
@@ -1518,7 +1409,7 @@ const AppMethodsUi = {
                             formatversion: 2
                         }).then(parseData => {
                             this.modal.content = `<div class="cwa-modal__alert">Внимание: Это содержимое удалённой страницы</div>` +
-                                (parseData?.parse?.text || '').replace(/href="\//g, `target="_blank" rel="noopener noreferrer" href="https://${edit.wikiDomain}/`);
+                                (parseData?.parse?.text ?? '').replaceAll('href="/', `target="_blank" rel="noopener noreferrer" href="https://${edit.wikiDomain}/`);
                             this.modal.isLoading = false;
                         }).catch(() => {
                             this.modal.content = `<div class="cwa-modal__alert">Внимание: Это содержимое удалённой страницы</div><div class="cwa-modal__pre-wrap">${mw.html.escape(content)}</div>`;
