@@ -10,31 +10,28 @@ const AppMethodsUi = {
                 if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
                     return mw.html.escape(parsed.href);
                 }
-            } catch (e) {}
+            } catch {}
             return '#';
         },
 
         savePatrolledId(id) {
-            if (!id) return;
-            if (!this.patrolledIds.includes(id)) {
-                this.patrolledIds.push(id);
-                if (this.patrolledIds.length > 2000) {
-                    this.patrolledIds = this.patrolledIds.slice(-2000);
-                }
-                try {
-                    localStorage.setItem('cwa-patrolled-cache', JSON.stringify(this.patrolledIds));
-                } catch (e) {}
+            if (!id || this.patrolledIds.includes(id)) return;
+            this.patrolledIds.push(id);
+            if (this.patrolledIds.length > 2000) {
+                this.patrolledIds = this.patrolledIds.slice(-2000);
             }
+            try {
+                localStorage.setItem('cwa-patrolled-cache', JSON.stringify(this.patrolledIds));
+            } catch {}
         },
 
         openInNewTab(url) {
-            if (!url) return;
-            window.open(url, '_blank', 'noopener,noreferrer');
+            if (url) window.open(url, '_blank', 'noopener,noreferrer');
         },
 
         pluralize(count, words) {
             const cases = [2, 0, 1, 1, 1, 2];
-            return count + ' ' + words[(count % 100 > 4 && count % 100 < 20) ? 2 : cases[(count % 10 < 5) ? count % 10 : 5]];
+            return `${count} ${words[(count % 100 > 4 && count % 100 < 20) ? 2 : cases[Math.min(count % 10, 5)]]}`;
         },
 
         getEditsByTab(tabId) {
@@ -48,69 +45,47 @@ const AppMethodsUi = {
         getGroupDiff(group) {
             const diffableEdits = group.items.filter(i => i.revid && i.old_revid);
             if (diffableEdits.length === 0) return null;
-            return { from: diffableEdits[diffableEdits.length - 1].old_revid, to: diffableEdits[0].revid };
+            return { from: diffableEdits.at(-1).old_revid, to: diffableEdits[0].revid };
         },
 
         formatWikiUrl(inputUrl) {
-            const urlToParse = inputUrl.startsWith('http') ? inputUrl : 'https://' + inputUrl;
-            let parsed;
-            try {
-                parsed = new URL(urlToParse);
-            } catch (e) {
-                throw new Error('Security Error: Invalid URL format.');
-            }
-
+            const urlToParse = inputUrl.startsWith('http') ? inputUrl : `https://${inputUrl}`;
+            const parsed = new URL(urlToParse);
             const hostname = parsed.hostname.toLowerCase();
+
             if (!hostname.endsWith('.fandom.com') && hostname !== 'fandom.com') {
                 throw new Error('Security Error: Only fandom.com domains are allowed.');
             }
 
-            let url = hostname + parsed.pathname;
-            url = url.replace(/\/$/, '');
-
+            let url = `${hostname}${parsed.pathname}`.replace(/\/$/, '');
             const oldFormatMatch = url.match(/^([a-z]{2,3}(?:-[a-z]{2,4})?)\.([^.]+)\.fandom\.com$/);
             if (oldFormatMatch) {
-                const langCode = oldFormatMatch[1];
-                const wikiName = oldFormatMatch[2];
-                url = `${wikiName}.fandom.com/${langCode}`;
+                url = `${oldFormatMatch[2]}.fandom.com/${oldFormatMatch[1]}`;
             }
-
             return url;
         },
 
         setupAutoRefresh() {
-            if (this.refreshInterval) {
-                clearInterval(this.refreshInterval);
-            }
-            if (this.settings.autoRefresh && this.settings.autoRefresh > 0) {
+            if (this.refreshInterval) clearInterval(this.refreshInterval);
+            if (this.settings.autoRefresh > 0) {
                 this.refreshInterval = setInterval(() => {
-                    if (!this.isLoading && !this.isPatrolling) {
-                        this.fetchData();
-                    }
+                    if (!this.isLoading && !this.isPatrolling) this.fetchData();
                 }, this.settings.autoRefresh * 1000);
             }
         },
 
         getIconForType(edit) {
             if (edit.socialContext) {
-                const act = edit.socialContext.activityType;
-                const ctx = edit.socialContext.contentType;
-
-                if (CwaDicts.icons.social[act] && CwaDicts.icons.social[act][ctx]) {
-                    return CwaDicts.icons.social[act][ctx];
-                }
-                if (edit.type === 'discussion') {
-                    return 'fa-solid fa-comment';
-                }
+                const { activityType, contentType } = edit.socialContext;
+                const socialIcon = CwaDicts.icons.social[activityType]?.[contentType];
+                if (socialIcon) return socialIcon;
+                if (edit.type === 'discussion') return 'fa-solid fa-comment';
             }
-
             if (edit.type === 'log') {
-                return CwaDicts.icons.log[edit.logtype] || 'fa-solid fa-clipboard-list';
+                return CwaDicts.icons.log[edit.logtype] ?? 'fa-solid fa-clipboard-list';
             }
-
             if (edit.type === 'new') return 'fa-solid fa-folder-plus';
-
-            return CwaDicts.icons.ns[edit.ns] || 'fa-solid fa-pen-to-square';
+            return CwaDicts.icons.ns[edit.ns] ?? 'fa-solid fa-pen-to-square';
         },
 
         getSizeClass(diff) {
@@ -125,7 +100,6 @@ const AppMethodsUi = {
             try {
                 const api = this.getForeignApi(edit.wikiDomain, false);
                 const params = { action: 'patrol', formatversion: 2 };
-
                 if (edit.rcid) params.rcid = edit.rcid;
                 else if (edit.revid) params.revid = edit.revid;
                 else throw new Error('No ID');
@@ -134,13 +108,12 @@ const AppMethodsUi = {
                 mw.notify(`Правка на странице "${edit.title}" отпатрулирована.`, { type: 'success' });
 
                 this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
-
                 const index = this.edits.findIndex(e => e.id === edit.id);
                 if (index !== -1) {
                     this.edits[index] = Object.freeze({ ...this.edits[index], unpatrolled: false });
                 }
             } catch (e) {
-                mw.notify('Ошибка при патрулировании: ' + (e.info || 'Нет прав.'), { type: 'error' });
+                mw.notify(`Ошибка при патрулировании: ${e.info || 'Нет прав.'}`, { type: 'error' });
             }
         },
 
@@ -157,7 +130,6 @@ const AppMethodsUi = {
                     else continue;
 
                     await api.postWithToken('patrol', params);
-
                     this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
 
                     const index = this.edits.findIndex(e => e.id === edit.id);
@@ -167,33 +139,28 @@ const AppMethodsUi = {
                 }
                 mw.notify('Группа правок отпатрулирована.', { type: 'success' });
             } catch (e) {
-                mw.notify('Ошибка при патрулировании группы: ' + (e.info || 'Нет прав.'), { type: 'error' });
+                mw.notify(`Ошибка при патрулировании группы: ${e.info || 'Нет прав.'}`, { type: 'error' });
             }
         },
 
         async patrolAll() {
             const unpatrolled = this.edits.filter(e => e.unpatrolled && e.category === this.activeTab);
             if (!unpatrolled.length) return;
-
             if (!confirm(`Найдено действий для патрулирования на текущей вкладке: ${unpatrolled.length}. Начать процесс?`)) return;
 
             this.isPatrolling = true;
             let successCount = 0;
             let errorCount = 0;
 
-            const byDomain = {};
-            unpatrolled.forEach(edit => {
-                if (!byDomain[edit.wikiDomain]) byDomain[edit.wikiDomain] = [];
-                byDomain[edit.wikiDomain].push(edit);
-            });
+            // ES2024 Object.groupBy
+            const byDomain = Object.groupBy(unpatrolled, edit => edit.wikiDomain);
 
-            for (const domain of Object.keys(byDomain)) {
+            for (const [domain, items] of Object.entries(byDomain)) {
                 const api = this.getForeignApi(domain, false);
-                const items = byDomain[domain];
 
                 for (let i = 0; i < items.length; i += 4) {
                     const chunk = items.slice(i, i + 4);
-                    const chunkPromises = chunk.map(async (edit) => {
+                    await Promise.all(chunk.map(async (edit) => {
                         try {
                             const params = { action: 'patrol', formatversion: 2 };
                             if (edit.rcid) params.rcid = edit.rcid;
@@ -201,7 +168,6 @@ const AppMethodsUi = {
                             else return;
 
                             await api.postWithToken('patrol', params);
-
                             this.savePatrolledId(edit.rcid || edit.logid || edit.revid);
 
                             const index = this.edits.findIndex(e => e.id === edit.id);
@@ -209,19 +175,17 @@ const AppMethodsUi = {
                                 this.edits[index] = Object.freeze({ ...this.edits[index], unpatrolled: false });
                             }
                             successCount++;
-                        } catch (e) {
+                        } catch {
                             errorCount++;
                         }
-                    });
-
-                    await Promise.all(chunkPromises);
+                    }));
                     await new Promise(r => setTimeout(r, 250));
                 }
             }
 
             this.isPatrolling = false;
             mw.notify(
-                `Готово! Успешно: ${successCount}` + (errorCount > 0 ? `, Ошибок: ${errorCount}` : ''),
+                `Готово! Успешно: ${successCount}${errorCount > 0 ? `, Ошибок: ${errorCount}` : ''}`,
                 { type: errorCount > 0 ? 'warn' : 'success' }
             );
         },
@@ -239,15 +203,14 @@ const AppMethodsUi = {
                 mw.notify(`Правки участника ${edit.user} успешно откачены.`, { type: 'success' });
                 this.edits = this.edits.filter(e => e.id !== edit.id);
             } catch (e) {
-                mw.notify('Ошибка при откате: ' + (e.info || 'Недостаточно прав или правка уже откачена.'), { type: 'error' });
+                mw.notify(`Ошибка при откате: ${e.info || 'Недостаточно прав или правка уже откачена.'}`, { type: 'error' });
             }
         },
 
         cleanUpRemoteResources() {
-            ['cwa-remote-styles', 'cwa-remote-inline', 'cwa-remote-styles-preload'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.remove();
-            });
+            for (const id of ['cwa-remote-styles', 'cwa-remote-inline', 'cwa-remote-styles-preload']) {
+                document.getElementById(id)?.remove();
+            }
         },
 
         closeModal() {
@@ -281,7 +244,7 @@ const AppMethodsUi = {
                 if (data?.compare?.body) {
                     const c = data.compare;
                     const serverUrl = `https://${wikiDomain}`;
-                    const articleUrl = mw.html.escape(`${serverUrl}/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`);
+                    const articleUrl = mw.html.escape(`${serverUrl}/wiki/${encodeURIComponent(title.replaceAll(' ', '_'))}`);
 
                     const formatTime = (ts) => {
                         if (!ts) return '';
@@ -350,19 +313,18 @@ const AppMethodsUi = {
                 const doc = typeof jsonString === 'string' ? JSON.parse(jsonString) : jsonString;
 
                 const renderMarks = (text, marks) => {
-                    let res = mw.html.escape(text || '');
-                    if (!marks || !marks.length) return res;
-                    marks.forEach(m => {
+                    let res = mw.html.escape(text ?? '');
+                    if (!marks?.length) return res;
+                    for (const m of marks) {
                         if (m.type === 'strong') res = `<strong>${res}</strong>`;
                         else if (m.type === 'em') res = `<em>${res}</em>`;
                         else if (m.type === 'code') res = `<code>${res}</code>`;
                         else if (m.type === 'underline') res = `<u>${res}</u>`;
                         else if (m.type === 'strike') res = `<s>${res}</s>`;
                         else if (m.type === 'link') {
-                            const safeHref = this.sanitizeUrl(m.attrs?.href);
-                            res = `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${res}</a>`;
+                            res = `<a href="${this.sanitizeUrl(m.attrs?.href)}" target="_blank" rel="noopener noreferrer">${res}</a>`;
                         }
-                    });
+                    }
                     return res;
                 };
 
@@ -385,27 +347,25 @@ const AppMethodsUi = {
                             return `<h${lvl}>${innerHTML}</h${lvl}>`;
                         }
                         case 'code_block': return `<pre><code>${innerHTML}</code></pre>`;
-                        case 'mention': return `<em>@${mw.html.escape(n.attrs?.text || 'User')}</em>`;
+                        case 'mention': return `<em>@${mw.html.escape(n.attrs?.text ?? 'User')}</em>`;
                         default: return innerHTML;
                     }
                 };
 
                 return renderNode(doc);
-            } catch (e) {
+            } catch {
                 return fallbackText ? `<p>${mw.html.escape(fallbackText)}</p>` : '<em>Ошибка обработки содержимого</em>';
             }
         },
 
         openPreviewModal(edit) {
             this.cleanUpRemoteResources();
-
             this.modal.isOpen = true;
             this.modal.isLoading = true;
             this.modal.title = `Предпросмотр: ${edit.title}`;
 
             if (edit.type === 'discussion') {
                 const parsedHtml = this.parseProseMirror(edit.jsonModel, edit.rawContent);
-
                 const siteStylesUrl = `https://${edit.wikiDomain}/load.php?lang=ru&modules=site.styles&only=styles&skin=fandomdesktop`;
                 const linkNode = document.createElement('link');
                 linkNode.id = 'cwa-remote-styles';
@@ -415,9 +375,7 @@ const AppMethodsUi = {
                 const finishLoading = () => {
                     this.modal.content = `
                         <div class="cwa-remote-container skin-fandomdesktop theme-fandomdesktop-dark sitedir-ltr">
-                            <div class="mw-parser-output">
-                                ${parsedHtml}
-                            </div>
+                            <div class="mw-parser-output">${parsedHtml}</div>
                         </div>
                     `;
                     this.modal.isLoading = false;
@@ -438,10 +396,9 @@ const AppMethodsUi = {
                     iiprop: 'url',
                     formatversion: 2
                 }).then(data => {
-                    const pages = data?.query?.pages;
-                    if (pages && pages[0] && pages[0].imageinfo && pages[0].imageinfo.length > 0) {
-                        const safeImgUrl = this.sanitizeUrl(pages[0].imageinfo[0].url);
-                        this.modal.content = `<div class="cwa-modal__img-wrap"><img src="${safeImgUrl}" class="cwa-modal__img" loading="lazy" /></div>`;
+                    const imgUrl = data?.query?.pages?.[0]?.imageinfo?.[0]?.url;
+                    if (imgUrl) {
+                        this.modal.content = `<div class="cwa-modal__img-wrap"><img src="${this.sanitizeUrl(imgUrl)}" class="cwa-modal__img" loading="lazy" /></div>`;
                     } else {
                         this.modal.content = '<em>Не удалось загрузить изображение. Возможно, файл удалён.</em>';
                     }
@@ -472,66 +429,54 @@ const AppMethodsUi = {
                 disabletoc: true,
                 formatversion: 2
             }).then(data => {
-                if (data?.parse?.text) {
-                    let html = data.parse.text;
-                    html = html.replace(/(href|src)="(\/(?!\/).*?)"/g, `$1="https://${edit.wikiDomain}$2"`);
+                if (!data?.parse?.text) throw new Error('No content');
 
-                    let inlineStyles = '';
-                    if (data.parse.headhtml) {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data.parse.headhtml, 'text/html');
-                        doc.querySelectorAll('style').forEach(st => {
-                            inlineStyles += st.textContent + '\n';
-                        });
-                    }
+                const html = data.parse.text.replace(/(href|src)="(\/(?!\/).*?)"/g, `$1="https://${edit.wikiDomain}$2"`);
 
+                if (data.parse.headhtml) {
+                    const doc = new DOMParser().parseFromString(data.parse.headhtml, 'text/html');
+                    const inlineStyles = Array.from(doc.querySelectorAll('style'), st => st.textContent).join('\n');
                     if (inlineStyles) {
                         const styleNode = document.createElement('style');
                         styleNode.id = 'cwa-remote-inline';
                         styleNode.textContent = inlineStyles;
                         document.body.appendChild(styleNode);
                     }
-
-                    const linkNode = document.createElement('link');
-                    linkNode.id = 'cwa-remote-styles';
-                    linkNode.rel = 'stylesheet';
-                    linkNode.href = siteStylesUrl;
-
-                    const finishLoading = () => {
-                        this.modal.content = `
-                            <div class="cwa-remote-container skin-fandomdesktop theme-fandomdesktop-dark sitedir-ltr">
-                                <div class="mw-parser-output">
-                                    ${html}
-                                </div>
-                            </div>
-                        `;
-                        this.modal.isLoading = false;
-
-                        this.$nextTick(() => {
-                            const modules = [
-                                ...(data.parse.modules || []),
-                                ...(data.parse.modulestyles || [])
-                            ];
-                            const safeModules = modules.filter(m => m.startsWith('ext.') || m.startsWith('mediawiki.'));
-                            if (safeModules.length > 0) {
-                                mw.loader.load(safeModules);
-                            }
-
-                            setTimeout(() => {
-                                const contentElement = document.querySelector('.cwa-remote-container .mw-parser-output');
-                                if (contentElement && window.mw && window.mw.hook && window.$) {
-                                    window.mw.hook('wikipage.content').fire(window.$(contentElement));
-                                }
-                            }, 100);
-                        });
-                    };
-
-                    linkNode.onload = finishLoading;
-                    linkNode.onerror = finishLoading;
-                    document.body.appendChild(linkNode);
-                } else {
-                    throw new Error('No content');
                 }
+
+                const linkNode = document.createElement('link');
+                linkNode.id = 'cwa-remote-styles';
+                linkNode.rel = 'stylesheet';
+                linkNode.href = siteStylesUrl;
+
+                const finishLoading = () => {
+                    this.modal.content = `
+                        <div class="cwa-remote-container skin-fandomdesktop theme-fandomdesktop-dark sitedir-ltr">
+                            <div class="mw-parser-output">${html}</div>
+                        </div>
+                    `;
+                    this.modal.isLoading = false;
+
+                    this.$nextTick(() => {
+                        const safeModules = [
+                            ...(data.parse.modules ?? []),
+                            ...(data.parse.modulestyles ?? [])
+                        ].filter(m => m.startsWith('ext.') || m.startsWith('mediawiki.'));
+
+                        if (safeModules.length > 0) mw.loader.load(safeModules);
+
+                        setTimeout(() => {
+                            const contentElement = document.querySelector('.cwa-remote-container .mw-parser-output');
+                            if (contentElement && window.mw?.hook && window.$) {
+                                window.mw.hook('wikipage.content').fire(window.$(contentElement));
+                            }
+                        }, 100);
+                    });
+                };
+
+                linkNode.onload = finishLoading;
+                linkNode.onerror = finishLoading;
+                document.body.appendChild(linkNode);
             }).catch(() => {
                 const authApi = this.getForeignApi(edit.wikiDomain, false);
                 authApi.get({
@@ -542,9 +487,8 @@ const AppMethodsUi = {
                     drvlimit: 1,
                     formatversion: 2
                 }).then(data => {
-                    const pages = data?.query?.pages;
-                    if (pages && pages[0] && pages[0].deletedrevisions && pages[0].deletedrevisions.length > 0) {
-                        const content = pages[0].deletedrevisions[0].content;
+                    const content = data?.query?.pages?.[0]?.deletedrevisions?.[0]?.content;
+                    if (content) {
                         authApi.post({
                             action: 'parse',
                             text: content,
@@ -553,7 +497,7 @@ const AppMethodsUi = {
                             formatversion: 2
                         }).then(parseData => {
                             this.modal.content = `<div class="cwa-modal__alert">Внимание: Это содержимое удалённой страницы</div>` +
-                                (parseData?.parse?.text || '').replace(/href="\//g, `target="_blank" rel="noopener noreferrer" href="https://${edit.wikiDomain}/`);
+                                (parseData?.parse?.text ?? '').replaceAll('href="/', `target="_blank" rel="noopener noreferrer" href="https://${edit.wikiDomain}/`);
                             this.modal.isLoading = false;
                         }).catch(() => {
                             this.modal.content = `<div class="cwa-modal__alert">Внимание: Это содержимое удалённой страницы</div><div class="cwa-modal__pre-wrap">${mw.html.escape(content)}</div>`;
