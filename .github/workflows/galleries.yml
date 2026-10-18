@@ -1,29 +1,66 @@
 name: Auto-Sync Galleries
 
 on:
-  schedule:
-    - cron: '0 4 * * *' # Запуск каждый день в 04:00 по UTC
-  workflow_dispatch: # Кнопка для ручного запуска
+  # Автозапуск по расписанию отключён до завершения тестирования скрипта.
+  # Раскомментируй блок schedule после проверки в режиме dry-run:
+  # schedule:
+  #   - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Тестовый режим без сохранения на вики (вывод diff в лог)'
+        required: true
+        default: true
+        type: boolean
+      page:
+        description: 'Название одной страницы для теста (например: Аластор/Галерея)'
+        required: false
+        default: ''
+        type: string
+      limit:
+        description: 'Лимит статей за прогон (0 = без лимита)'
+        required: false
+        default: '5'
+        type: string
+
+concurrency:
+  group: fandom-galleries
+  cancel-in-progress: false
 
 jobs:
   sync-galleries:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
-          
-      - name: Install libraries
-        # Ставим библиотеки для работы с API вики и разбора кода
-        run: pip install mwclient mwparserfromhell
-        
-      - name: Run Gallery Bot
-        run: python src/scripts/bots/sync_galleries.py
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install mwclient mwparserfromhell requests
+
+      - name: Run Gallery Bot (Bot Account)
         env:
-          # Здесь нужны пароли бота (BotPasswords) из настроек твоей вики
-          WIKI_USERNAME: ${{ secrets.FANDOM_USERNAME }}
-          WIKI_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
+          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+          INPUT_DRY_RUN: ${{ inputs.dry_run }}
+          INPUT_PAGE: ${{ inputs.page }}
+          INPUT_LIMIT: ${{ inputs.limit }}
+        run: |
+          ARGS=()
+          if [ "$INPUT_DRY_RUN" = "false" ]; then
+            ARGS+=("--enable")
+          else
+            ARGS+=("--dry-run")
+          fi
+          if [ -n "$INPUT_PAGE" ]; then
+            ARGS+=("--page" "$INPUT_PAGE")
+          fi
+          if [ -n "$INPUT_LIMIT" ] && [ "$INPUT_LIMIT" != "0" ]; then
+            ARGS+=("--limit" "$INPUT_LIMIT")
+          fi
+          python src/scripts/bots/sync_galleries.py "${ARGS[@]}"
