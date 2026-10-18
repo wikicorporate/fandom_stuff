@@ -56,14 +56,14 @@ const AppTemplate = `
                                      :data-content-type="group.items[0].socialContext ? group.items[0].socialContext.contentType : null">
                                      
                                     <div class="cwa-rc__favicon-wrap">
-                                        <img :src="group.items[0].wikiFavicon" class="cwa-rc__favicon" :title="group.items[0].wikiName">
+                                        <img :src="group.items[0].wikiFavicon" class="cwa-rc__favicon" :title="group.items[0].wikiName" loading="lazy">
                                     </div>
                                     <div class="cwa-rc__main-info">
                                         <div class="cwa-rc__meta">
                                             <i :class="getIconForType(group.items[0])" class="cwa-rc__type-icon" :title="group.items[0].actionTitle || group.items[0].logaction || group.items[0].type"></i>
                                             <span v-if="group.items[0].unpatrolled" class="cwa-rc__unpatrolled" title="Неотпатрулированная правка">!</span>
                                             <span class="cwa-rc__time">{{ group.items[0].time }}</span>
-                                            <a :href="group.items[0].pageUrl" class="cwa-rc__page-title" target="_blank">{{ group.items[0].title }}</a>
+                                            <a :href="group.items[0].pageUrl" class="cwa-rc__page-title" target="_blank" rel="noopener noreferrer">{{ group.items[0].title }}</a>
                                             <span v-if="group.items[0].actionText" class="cwa-rc__action-text">({{ group.items[0].actionText }})</span>
                                             <span v-if="group.items[0].type !== 'log' && group.items[0].type !== 'discussion'" class="cwa-rc__size" :class="getSizeClass(group.items[0].sizeDiff)">
                                                 ({{ group.items[0].sizeDiff > 0 ? '+' : '' }}{{ group.items[0].sizeDiff }})
@@ -76,7 +76,7 @@ const AppTemplate = `
                                         </div>
                                         <div class="cwa-rc__details">
                                             <span class="cwa-rc__user-wrap">
-                                                <a :href="group.items[0].userUrl" class="cwa-rc__user" target="_blank">{{ group.items[0].user }}</a>
+                                                <a :href="group.items[0].userUrl" class="cwa-rc__user" target="_blank" rel="noopener noreferrer">{{ group.items[0].user }}</a>
                                                 <span class="cwa-rc__user-actions">
                                                     <button class="cwa-rc__action-btn" title="Стена обсуждения" @click.stop="openInNewTab(group.items[0].userTalkUrl)"><i class="fa-solid fa-comment-dots"></i></button>
                                                     <button class="cwa-rc__action-btn" title="Вклад" @click.stop="openInNewTab(group.items[0].userContribsUrl)"><i class="fa-solid fa-list-ul"></i></button>
@@ -116,7 +116,7 @@ const AppTemplate = `
                                          :data-content-type="group.items[0].socialContext ? group.items[0].socialContext.contentType : null">
                                          
                                         <div class="cwa-rc__favicon-wrap">
-                                            <img :src="group.wikiFavicon" class="cwa-rc__favicon" :title="group.wikiName">
+                                            <img :src="group.wikiFavicon" class="cwa-rc__favicon" :title="group.wikiName" loading="lazy">
                                         </div>
                                         <div class="cwa-rc__main-info">
                                             <div class="cwa-rc__meta">
@@ -124,7 +124,7 @@ const AppTemplate = `
                                                 <i class="fa-solid fa-chevron-right cwa-rc__toggle-icon" :class="{'cwa-rc__toggle-icon--expanded': expandedGroups[group.key]}"></i>
                                                 <span v-if="group.items.some(i => i.unpatrolled)" class="cwa-rc__unpatrolled" title="Есть неотпатрулированные правки">!</span>
                                                 <span class="cwa-rc__time">{{ group.items[0].time }}</span>
-                                                <a :href="group.items[0].pageUrl" class="cwa-rc__page-title" target="_blank" @click.stop>{{ group.title }}</a>
+                                                <a :href="group.items[0].pageUrl" class="cwa-rc__page-title" target="_blank" rel="noopener noreferrer" @click.stop>{{ group.title }}</a>
                                                 <span v-if="group.items[0].actionText" class="cwa-rc__action-text">({{ group.items[0].actionText }})</span>
                                                 <span class="cwa-rc__group-count">{{ pluralize(group.items.length, ['изменение', 'изменения', 'изменений']) }}</span>
                                                 <span v-if="group.items[0].type !== 'log' && group.items[0].type !== 'discussion'" class="cwa-rc__size" :class="getSizeClass(group.totalSizeDiff)">
@@ -174,7 +174,7 @@ const AppTemplate = `
                                                 </div>
                                                 <div class="cwa-rc__details">
                                                     <span class="cwa-rc__user-wrap">
-                                                        <a :href="subEdit.userUrl" class="cwa-rc__user" target="_blank">{{ subEdit.user }}</a>
+                                                        <a :href="subEdit.userUrl" class="cwa-rc__user" target="_blank" rel="noopener noreferrer">{{ subEdit.user }}</a>
                                                         <span class="cwa-rc__user-actions">
                                                             <button class="cwa-rc__action-btn" title="Стена обсуждения" @click.stop="openInNewTab(subEdit.userTalkUrl)"><i class="fa-solid fa-comment-dots"></i></button>
                                                             <button class="cwa-rc__action-btn" title="Вклад" @click.stop="openInNewTab(subEdit.userContribsUrl)"><i class="fa-solid fa-list-ul"></i></button>
