@@ -1,128 +1,156 @@
-import os
 import re
-import time
-import mwclient
+import sys
+from pathlib import Path
+from typing import Dict
 import mwparserfromhell
 
-PROJECTS = {
-    "Hazbin Hotel": {"domain": "hazbinhotel.fandom.com", "path": "/ru/", "all_pages": True},
-    "Zoophobia": {"domain": "zoophobia.fandom.com", "path": "/ru/", "all_pages": True},
-    "Returnal": {"domain": "returnal.fandom.com", "path": "/ru/", "all_pages": True},
-    "Helltaker": {"domain": "helltaker.fandom.com", "path": "/ru/", "all_pages": True},
-    "OneShot": {"domain": "oneshot.fandom.com", "path": "/ru/", "all_pages": True}
-}
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from utils.wiki_client import connect_site, get_credentials, load_projects, safe_save
 
-def clean_typography(text):
-    # 1. Защита всех шаблонов и HTML-тегов: временно извлекаем их из текста
-    protected_blocks = {}
-    parsed_for_protection = mwparserfromhell.parse(text)
-    
+SKIP_LINK_PREFIXES = (
+    "file:",
+    "файл:",
+    "image:",
+    "изображение:",
+    "category:",
+    "категория:",
+)
+
+QUOTES_REGEX = re.compile(r'(^|[\s(\[-|>])"([^"\n]+)"(?=[.,!?\)\];:]|\s|-|<|$)')
+DASH_REGEX = re.compile(r"(?<=\S) - (?=\S)")
+MULTISPACE_REGEX = re.compile(r"[ \t]{2,}")
+MEDIA_EXT_REGEX = re.compile(
+    r"\.(?:jpg|jpeg|png|gif|webp|svg|ogg|mp3|flac|wav|mp4|woff|woff2|ttf)\b",
+    re.IGNORECASE,
+)
+
+
+def _smart_quotes_repl(match: re.Match[str]) -> str:
+    before, inside = match.group(1), match.group(2)
+    if re.search(r"[а-яА-ЯёЁ]", inside):
+        return f"{before}«{inside}»"
+    return f'{before}"{inside}"'
+
+
+def _format_plain_text(val: str) -> str:
+    val = QUOTES_REGEX.sub(_smart_quotes_repl, val)
+    lines = val.split("\n")
+    new_lines = []
+
+    for line in lines:
+        if (
+            MEDIA_EXT_REGEX.search(line)
+            or re.match(r"^\s*(?:File|Файл|Image|Изображение):", line, re.IGNORECASE)
+            or "http://" in line
+            or "https://" in line
+        ):
+            new_lines.append(line)
+        else:
+            line = DASH_REGEX.sub(" — ", line)
+            line = MULTISPACE_REGEX.sub(" ", line)
+            new_lines.append(line)
+
+    return "\n".join(new_lines)
+
+
+def clean_typography(text: str) -> str:
+    protected_blocks: Dict[str, str] = {}
+    parsed = mwparserfromhell.parse(text)
     counter = 0
-    
-    # Ищем абсолютно все шаблоны (извлекаем целиком без рекурсии во вложенные элементы)
-    for node in parsed_for_protection.filter_templates(recursive=False):
+
+    def protect_node(node: object, replacement_str: str) -> None:
+        nonlocal counter
         marker = f"__PROTECTED_BLOCK_{counter}__"
-        protected_blocks[marker] = str(node)
+        protected_blocks[marker] = replacement_str
         try:
-            parsed_for_protection.replace(node, marker)
-            counter += 1
-        except ValueError:
-            pass
-            
-    # Ищем абсолютно все HTML-теги (например, <gallery>, <div>, <span>, <ref> и т.д.)
-    for node in parsed_for_protection.filter_tags(recursive=False):
-        marker = f"__PROTECTED_BLOCK_{counter}__"
-        protected_blocks[marker] = str(node)
-        try:
-            parsed_for_protection.replace(node, marker)
+            parsed.replace(node, marker)
             counter += 1
         except ValueError:
             pass
 
-    working_text = str(parsed_for_protection)
+    # 1. Защищаем комментарии, шаблоны, HTML-теги и внешние ссылки
+    for node in list(parsed.filter_comments(recursive=False)):
+        protect_node(node, str(node))
 
-    # 2. Умные кавычки
-    def smart_quotes(match):
-        before, inside = match.group(1), match.group(2)
-        if re.search(r'[а-яА-ЯёЁ]', inside):
-            return f'{before}«{inside}»'
-        return f'{before}"{inside}"'
+    for node in list(parsed.filter_templates(recursive=False)):
+        protect_node(node, str(node))
 
-    working_text = re.sub(r'(^|[\s(\[-|>])"([^"]+)"(?=[.,!?\)\];:]|\s|-|<|$)', smart_quotes, working_text)
+    for node in list(parsed.filter_tags(recursive=False)):
+        protect_node(node, str(node))
 
-    # 3. Дефисы и пробелы в оставшемся тексте
-    parsed = mwparserfromhell.parse(working_text)
-    for node in parsed.filter_text():
-        val = str(node.value)
-        lines = val.split('\n')
-        new_lines = []
-        
-        for line in lines:
-            if (re.search(r'\.(jpg|jpeg|png|gif|webp|svg)\b', line, re.IGNORECASE) or 
-                re.match(r'^\s*(File|Файл):', line, re.IGNORECASE) or 
-                'http' in line):
-                new_lines.append(line)
-            else:
-                line = re.sub(r'(?<=\S) - (?=\S)', r' — ', line)
-                line = re.sub(r'[ \t]{2,}', ' ', line)
-                new_lines.append(line)
-                
-        node.value = '\n'.join(new_lines)
-        
-    working_text = str(parsed)
+    for node in list(parsed.filter_external_links(recursive=False)):
+        protect_node(node, str(node))
 
-    # 4. Возвращаем защищенные блоки на место
-    # Используем reversed(), чтобы корректно раскрыть вложенные маркеры, если они есть
+    # 2. Обрабатываем вики-ссылки: защищаем целевой адрес (title),
+    # а в обычных ссылках [[ Статья | Видимый текст ]] форматируем только видимый текст
+    for wikilink in list(parsed.filter_wikilinks(recursive=False)):
+        raw_title = str(wikilink.title).strip().lstrip(":").lower()
+        if raw_title.startswith(SKIP_LINK_PREFIXES):
+            protect_node(wikilink, str(wikilink))
+            continue
+
+        if wikilink.text is not None:
+            cleaned_label = clean_typography(str(wikilink.text))
+            wikilink.text = cleaned_label
+
+        protect_node(wikilink, str(wikilink))
+
+    # 3. Применяем типографику к оставшемуся чистому тексту статьи
+    working_text = _format_plain_text(str(parsed))
+
+    # 4. Возвращаем защищённые блоки в обратном порядке
     for marker, original_block in reversed(list(protected_blocks.items())):
         working_text = working_text.replace(marker, original_block)
 
     return working_text
 
-def main():
-    username = os.environ.get('FANDOM_BOT_USERNAME')
-    password = os.environ.get('FANDOM_BOT_PASSWORD')
-    
+
+def main() -> None:
+    username, password = get_credentials(prefer_bot=True)
     if not username or not password:
-        print("[-] Ошибка: Секреты логина/пароля не найдены в окружении!")
-        return
-    
-    for project_name, config in PROJECTS.items():
-        if not config.get("all_pages"): continue
-            
-        print(f"\n[=== Типограф: {project_name} ===]")
-        site = mwclient.Site(config["domain"], path=config["path"])
-        
-        try:
-            site.login(username, password)
-            print(f"[*] Успешная авторизация на {project_name}")
-        except Exception as e:
-            print(f"[-] Ошибка авторизации на {project_name}: {e}")
+        print("[-] Ошибка: Секреты логина/пароля бота не найдены в окружении!")
+        raise SystemExit(1)
+
+    projects = load_projects()
+
+    for project_name, config in projects.items():
+        if not config.get("all_pages"):
             continue
-        
-        for page in site.allpages(namespace=0):
-            if page.name.lower().endswith('.json') or page.name.lower().endswith('.css') or page.name.lower().endswith('.js'):
+
+        print(f"\n[=== Типограф: {project_name} ===]")
+        site = connect_site(
+            config["domain"],
+            path=config.get("path", "/ru/"),
+            username=username,
+            password=password,
+        )
+        if not site:
+            continue
+
+        print(f"[*] Успешная авторизация на {project_name}")
+
+        for page in site.allpages(namespace=0, filterredir="nonredirects"):
+            lower_name = page.name.lower()
+            if lower_name.endswith((".json", ".css", ".js")):
                 continue
 
             try:
                 original = page.text()
                 cleaned = clean_typography(original)
-                
+
                 if original != cleaned:
                     print(f"[!] Исправлена типографика: {page.name}")
-                    for attempt in range(3):
-                        try:
-                            page.save(cleaned, summary="Автоматическое исправление типографики")
-                            time.sleep(3)
-                            break
-                        except mwclient.errors.APIError as e:
-                            if e.code == 'ratelimited':
-                                print(f"    [!] Сработал антиспам. Ждём 15 секунд... (Попытка {attempt + 1}/3)")
-                                time.sleep(15)
-                            else:
-                                print(f"    [-] Ошибка API при сохранении: {e}")
-                                break
+                    safe_save(
+                        page,
+                        cleaned,
+                        summary="Автоматическое исправление типографики",
+                        bot=True,
+                        minor=True,
+                        sleep_after=3.0,
+                    )
             except Exception as e:
                 print(f"[-] Ошибка при обработке {page.name}: {e}")
+
 
 if __name__ == "__main__":
     main()
