@@ -2,7 +2,7 @@ local p = {}
 
 local config = {
     settings = {
-        limit = 4000,     
+        limit = 4000,
         days = 365,
         showBots = true,
         showMinor = true,
@@ -10,7 +10,7 @@ local config = {
     },
     wikis = {
         "ru.wikicorporate.fandom.com",
-        "ru.hazbin-hotel.fandom.com",
+        "ru.hazbinhotel.fandom.com",
         "ru.zoophobia.fandom.com",
         "ru.returnal.fandom.com",
         "ru.helltaker.fandom.com",
@@ -18,7 +18,7 @@ local config = {
     }
 }
 
-function p.toJSON(frame)
+function p.toJSON()
     return mw.text.jsonEncode(config)
 end
 
