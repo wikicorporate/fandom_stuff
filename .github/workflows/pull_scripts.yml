@@ -1,0 +1,36 @@
+name: Pull Wikicorporate Scripts
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install mwclient requests
+
+      - name: Pull all JS from wikicorporate
+        run: python src/scripts/utils/pull_wikicorporate.py
+
+      - name: Commit downloaded scripts to repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/local/wikicorporate/scripts/ wikicorporate_dump.txt
+          if ! git diff --staged --quiet; then
+            git commit -m "Выгрузка всех скриптов с wikicorporate [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
