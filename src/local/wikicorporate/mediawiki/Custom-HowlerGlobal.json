@@ -1,0 +1,12 @@
+{
+    "click": {
+        "file": "UI_Click.ogg",
+        "volume": 0.6,
+        "loop": false
+    },
+    "notify": {
+        "file": "UI_Notify.ogg",
+        "volume": 0.8,
+        "loop": false
+    }
+}
