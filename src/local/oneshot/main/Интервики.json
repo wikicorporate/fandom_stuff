@@ -1,9 +1,11 @@
 {
     "OneShot": {
-        "en": "OneShot"
+        "en": "OneShot",
+        "zh": "OneShot"
     },
     "Алула": {
-        "en": "Alula"
+        "en": "Alula",
+        "fr": "Alula"
     },
     "Алула/Галерея": {
         "en": "Alula/Gallery"
@@ -15,29 +17,34 @@
         "en": "Glen"
     },
     "Джордж": {
-        "en": "George"
+        "en": "George",
+        "fr": "George"
     },
     "Достижения": {
         "en": "Steam Achievements"
     },
     "Игрок": {
-        "en": "The Player"
+        "en": "The Player",
+        "zh": "The Player"
     },
     "Каламус": {
         "en": "Calamus",
         "fr": "Calamus"
     },
     "Кельвин": {
-        "en": "Kelvin"
+        "en": "Kelvin",
+        "fr": "Kelvin"
     },
     "Кип Сильверпоинт": {
-        "en": "Kip"
+        "en": "Kip",
+        "fr": "Kip"
     },
     "Концовки": {
         "en": "Endings"
     },
     "Линг": {
-        "en": "Ling"
+        "en": "Ling",
+        "fr": "Ling"
     },
     "Мейз": {
         "en": "Maize",
@@ -47,31 +54,39 @@
         "en": "The World Machine"
     },
     "Мэгпай": {
-        "en": "Magpie"
+        "en": "Magpie",
+        "fr": "Magpie"
     },
     "Наблюдатель": {
         "en": "Watcher"
     },
     "Нико": {
-        "en": "Niko"
+        "en": "Niko",
+        "fr": "Niko",
+        "zh": "Niko"
     },
     "Обновление «Солнцестояние»": {
-        "en": "Solstice"
+        "en": "Solstice",
+        "zh": "至日结局"
     },
     "Пингвин": {
         "en": "Penguin"
     },
     "Предметы": {
-        "en": "Items"
+        "en": "Items",
+        "zh": "物品"
     },
     "Пристанище": {
         "en": "Refuge"
     },
     "Прототип": {
-        "en": "Prototype"
+        "en": "Prototype",
+        "fr": "Prototype",
+        "zh": "Prototype"
     },
     "Профетбот": {
-        "en": "Prophetbot"
+        "en": "Prophetbot",
+        "fr": "Prophètebot"
     },
     "Пустоши": {
         "en": "Barrens"
@@ -83,16 +98,19 @@
         "en": "Rowbot"
     },
     "Рю": {
-        "en": "Rue"
+        "en": "Rue",
+        "fr": "Rue"
     },
     "Саундтреки": {
         "en": "Soundtrack"
     },
     "Седрик": {
-        "en": "Cedric"
+        "en": "Cedric",
+        "fr": "Cedric"
     },
     "Сильвер": {
-        "en": "Silver"
+        "en": "Silver",
+        "fr": "Silver"
     },
     "Солнце": {
         "en": "The Sun"
