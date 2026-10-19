@@ -64,6 +64,10 @@
         "en": "Abel/Gallery",
         "fr": "Abel/Galerie"
     },
+    "Авель/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Abel/Gallery/HH Season 2",
+        "fr": "Abel/Galerie/HH Saison 2"
+    },
     "Авель/Цитаты": {
         "en": "Abel/Quotes"
     },
@@ -405,6 +409,10 @@
         "th": "อลาสเตอร์/แกลลอรี่",
         "tr": "Alastor/Galeri"
     },
+    "Аластор/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Alastor/Gallery/HH Season 2",
+        "fr": "Alastor/Galerie/HH Saison 2"
+    },
     "Аластор/Галерея/Мерчендайз": {
         "en": "Alastor/Gallery/Merchandise",
         "fr": "Alastor/Galerie/Produits dérivés",
@@ -414,6 +422,11 @@
         "en": "Alastor/Gallery/Official Artwork",
         "fr": "Alastor/Galerie/Artworks Officiels",
         "ja": "アラスター/ギャラリー/オフシャルアートワーク"
+    },
+    "Аластор/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Alastor/Gallery/HH Season 1",
+        "fr": "Alastor/Galerie/HH Saison 1",
+        "ja": "アラスター/ギャラリー/HH シーズン１"
     },
     "Аластор/Цитаты": {
         "en": "Alastor/Quotes",
@@ -489,6 +502,10 @@
         "en": "Andrealphus/Gallery",
         "es": "Andrealphus/Galería",
         "fr": "Andrealphus/Galerie"
+    },
+    "Андреальфус/Галерея/Второй сезон Адского Босса": {
+        "en": "Andrealphus/Gallery/HB Season 2",
+        "fr": "Andrealphus/Galerie/HB Saison 2"
     },
     "Андреальфус/Галерея/Мерчендайз": {
         "en": "Andrealphus/Gallery/Merchandise"
@@ -573,6 +590,10 @@
         "es": "Asmodeo/Galería",
         "fr": "Asmodeus/Galerie"
     },
+    "Асмодей/Галерея/Второй сезон Адского Босса": {
+        "en": "Asmodeus/Gallery/HB Season 2",
+        "fr": "Asmodeus/Galerie/HB Saison 2"
+    },
     "Асмодей/Галерея/Мерчендайз": {
         "en": "Asmodeus/Gallery/Merchandise",
         "fr": "Asmodeus/Galerie/Produits dérivés"
@@ -600,6 +621,7 @@
         "hu": "Baxter/Történelem",
         "it": "Baxter/Storia",
         "ja": "バクスター/歴史",
+        "pt-br": "Baxter/História",
         "tr": "Baxter/Tarih"
     },
     "Бакстер/Взаимоотношения": {
@@ -616,6 +638,10 @@
         "es": "Baxter/Galería",
         "fr": "Baxter/Galerie",
         "it": "Baxter/Galleria"
+    },
+    "Бакстер/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Baxter/Gallery/HH Season 2",
+        "fr": "Baxter/Galerie/HH Saison 2"
     },
     "Бакстер/Цитаты": {
         "en": "Baxter/Quotes"
@@ -658,7 +684,15 @@
     "Барби Уайр/Галерея": {
         "en": "Barbie Wire/Gallery",
         "es": "Barbie Wire/Galería",
-        "fr": "Barbie Wire/Galerie"
+        "fr": "Barbie Wire/Galerie",
+        "it": "Baxter/Galleria"
+    },
+    "Барби Уайр/Галерея/Второй сезон Адского Босса": {
+        "en": "Barbie Wire/Gallery/HB Season 2",
+        "fr": "Barbie Wire/Galerie/HB Saison 2"
+    },
+    "Барби Уайр/Галерея/Короткометражные эпизоды Адского Босса": {
+        "en": "Barbie Wire/Gallery/HB Shorts"
     },
     "Барби Уайр/Галерея/Мерчендайз": {
         "en": "Barbie Wire/Gallery/Merchandise"
@@ -709,6 +743,9 @@
         "fr": "Arick Burnz",
         "pl": "Burnie Burnz",
         "tr": "Arick Burnz"
+    },
+    "Берни Бернс/Галерея": {
+        "en": "Burnie Burnz/Gallery"
     },
     "Бесы": {
         "cs": "Impové",
@@ -771,6 +808,10 @@
         "ja": "ブリッツォ/ギャラリー",
         "pl": "Blitzo/Galeria"
     },
+    "Блиц/Галерея/Второй сезон Адского Босса": {
+        "en": "Blitzo/Gallery/HB Season 2",
+        "fr": "Blitzo/Galerie/HB Saison 2"
+    },
     "Блиц/Галерея/Короткометражные эпизоды Адского Босса": {
         "en": "Blitzo/Gallery/HB Shorts"
     },
@@ -781,6 +822,10 @@
     "Блиц/Галерея/Официальное творчество": {
         "en": "Blitzo/Gallery/Official Artwork",
         "fr": "Blitzo/Galerie/Artworks Officiels"
+    },
+    "Блиц/Галерея/Первый сезон Адского Босса": {
+        "en": "Blitzo/Gallery/HB Season 1",
+        "fr": "Blitzo/Galerie/HB Saison 1"
     },
     "Блиц/Цитаты": {
         "en": "Blitzo/Quotes",
@@ -808,6 +853,11 @@
         "pl": "More Than Anything (Repryza)",
         "pt-br": "More Than Anything (Reprise)",
         "tr": "Her Şeyden Öte (Reprise)"
+    },
+    "Большой Вубли": {
+        "en": "Minor Characters/Helluva Boss",
+        "es": "Otros personajes/Helluva Boss",
+        "fr": "Personnages mineurs/Helluva Boss"
     },
     "Брайан Сэдлер": {
         "en": "Brian Sadler"
@@ -882,6 +932,10 @@
         "fr": "Valentino/Galerie",
         "it": "Valentino/Galleria"
     },
+    "Валентино/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Valentino/Gallery/HH Season 2",
+        "fr": "Valentino/Galerie/HH Saison 2"
+    },
     "Валентино/Галерея/Мерчендайз": {
         "en": "Valentino/Gallery/Merchandise",
         "fr": "Valentino/Galerie/Produits dérivés"
@@ -889,6 +943,10 @@
     "Валентино/Галерея/Официальное творчество": {
         "en": "Valentino/Gallery/Official Artwork",
         "fr": "Valentino/Galerie/Artworks Officiels"
+    },
+    "Валентино/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "/Gallery/HH Season 1",
+        "fr": "/Galerie/HH Saison 1"
     },
     "Валентино/Цитаты": {
         "en": "Valentino/Quotes",
@@ -962,6 +1020,10 @@
         "en": "Vaggie/Gallery/Official Artwork",
         "fr": "Vaggie/Galerie/Artworks Officiels"
     },
+    "Вегги/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Vaggie/Gallery/HH Season 1",
+        "fr": "Vaggie/Galerie/HH Saison 1"
+    },
     "Вегги/Цитаты": {
         "en": "Vaggie/Quotes",
         "es": "Vaggi/Frases",
@@ -1005,6 +1067,10 @@
         "fr": "Velvette/Galerie",
         "it": "Velvette/Galleria"
     },
+    "Вельвет/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Velvette/Gallery/HH Season 2",
+        "fr": "Velvette/Galerie/HH Saison 2"
+    },
     "Вельвет/Галерея/Мерчендайз": {
         "en": "Velvette/Gallery/Merchandise",
         "fr": "Velvette/Galerie/Produits dérivés"
@@ -1012,6 +1078,10 @@
     "Вельвет/Галерея/Официальное творчество": {
         "en": "Velvette/Gallery/Official Artwork",
         "fr": "Velvette/Galerie/Artworks Officiels"
+    },
+    "Вельвет/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Velvette/Gallery/HH Season 1",
+        "fr": "Velvette/Galerie/HH Saison 1"
     },
     "Вельвет/Цитаты": {
         "en": "Velvette/Quotes"
@@ -1052,6 +1122,10 @@
     },
     "Вельзевул/Галерея/Мерчендайз": {
         "en": "Beelzebub/Gallery/Merchandise"
+    },
+    "Вельзевул/Галерея/Первый сезон Адского Босса": {
+        "en": "Beelzebub/Gallery/HB Season 1",
+        "fr": "Belzébuth/Galerie/HB Saison 1"
     },
     "Вельзевул/Цитаты": {
         "en": "Beelzebub/Quotes"
@@ -1096,6 +1170,10 @@
         "es": "Verosika Mayday/Galería",
         "fr": "Verosika Mayday/Galerie"
     },
+    "Веросика Мейдей/Галерея/Второй сезон Адского Босса": {
+        "en": "Verosika Mayday/Gallery/HB Season 2",
+        "fr": "Verosika Mayday/Galerie/HB Saison 2"
+    },
     "Веросика Мейдей/Галерея/Мерчендайз": {
         "en": "Verosika Mayday/Gallery/Merchandise",
         "fr": "Verosika Mayday/Galerie/Produits dérivés"
@@ -1103,6 +1181,10 @@
     "Веросика Мейдей/Галерея/Официальное творчество": {
         "en": "Verosika Mayday/Gallery/Official Artwork",
         "fr": "Verosika Mayday/Galerie/Artworks Officiels"
+    },
+    "Веросика Мейдей/Галерея/Первый сезон Адского Босса": {
+        "en": "Verosika Mayday/Gallery/HB Season 1",
+        "fr": "Verosika Mayday/Galerie/HB Saison 1"
     },
     "Веросика Мейдей/Цитаты": {
         "en": "Verosika Mayday/Quotes"
@@ -1129,6 +1211,9 @@
     },
     "Весеннее обострение/Транскрипт": {
         "en": "Spring Broken/Transcript"
+    },
+    "Вечеринка «Сдохни Блиц»": {
+        "en": "Anti-Blitzo Party"
     },
     "Взгляни на меня": {
         "en": "Just Look My Way",
@@ -1264,7 +1349,8 @@
         "en": "VoxTek",
         "es": "VoxTek",
         "fr": "VoxTek",
-        "it": "VoxTek"
+        "it": "VoxTek",
+        "pl": "VoxTek"
     },
     "Вортекс": {
         "en": "Vortex",
@@ -1303,6 +1389,10 @@
     "Вортекс/Галерея/Мерчендайз": {
         "en": "Vortex/Gallery/Merchandise",
         "ja": "Vortex/Galerie/Produits dérivés"
+    },
+    "Вортекс/Галерея/Первый сезон Адского Босса": {
+        "en": "Vortex/Gallery/HB Season 1",
+        "fr": "Vortex/Galerie/HB Saison 1"
     },
     "Вортекс/Цитаты": {
         "en": "Vortex/Quotes",
@@ -1676,6 +1766,9 @@
         "pt-br": "Deerie",
         "tr": "Deerie"
     },
+    "Дири/Взаимоотношения": {
+        "en": "Deerie/Relationships"
+    },
     "Дири/Галерея": {
         "en": "Deerie/Gallery"
     },
@@ -1912,6 +2005,9 @@
         "it": "Zestial/Storia",
         "ja": "ゼスティアル/歴史",
         "tr": "Zestial/Tarih"
+    },
+    "Зестиал/Взаимоотношения": {
+        "en": "Zestial"
     },
     "Зестиал/Галерея": {
         "en": "Zestial/Gallery",
@@ -2632,6 +2728,9 @@
         "fr": "Katie Killjoy/Galerie",
         "it": "Katie Killjoy/Galleria"
     },
+    "Кэти Киллджой/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Katie Killjoy/Gallery/HH Season 2"
+    },
     "Кэти Киллджой/Галерея/Официальное творчество": {
         "en": "Katie Killjoy/Gallery/Official Artwork",
         "fr": "Katie Killjoy/Galerie/Artworks Officiels"
@@ -2833,6 +2932,7 @@
         "en": "Los Angeles"
     },
     "Лу Лу": {
+        "en": "Minor Characters/Helluva Boss",
         "es": "Loo Loo",
         "fr": "Loo Loo"
     },
@@ -2934,6 +3034,13 @@
         "it": "Loona/Galleria",
         "pl": "Loona/Galeria"
     },
+    "Луна/Галерея/Второй сезон Адского Босса": {
+        "en": "Loona/Gallery/HB Season 2",
+        "fr": "Loona/Galerie/HB Saison 2"
+    },
+    "Луна/Галерея/Короткометражные эпизоды Адского Босса": {
+        "en": "Loona/Gallery/HB Shorts"
+    },
     "Луна/Галерея/Мерчендайз": {
         "en": "Loona/Gallery/Merchandise",
         "fr": "Loona/Galerie/Produits dérivés"
@@ -2941,6 +3048,10 @@
     "Луна/Галерея/Официальное творчество": {
         "en": "Loona/Gallery/Official Artwork",
         "fr": "Loona/Galerie/Artworks Officiels"
+    },
+    "Луна/Галерея/Первый сезон Адского Босса": {
+        "en": "Loona/Gallery/HB Season 1",
+        "fr": "Loona/Galerie/HB Saison 1"
     },
     "Луна/Цитаты": {
         "en": "Loona/Quotes",
@@ -3062,8 +3173,20 @@
         "fr": "Lute/Galerie",
         "it": "Lute/Galleria"
     },
+    "Лют/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Lute/Gallery/HH Season 2",
+        "fr": "Lute/Galerie/HH Saison 2"
+    },
     "Лют/Галерея/Мерчендайз": {
         "en": "Lute/Gallery/Merchandise"
+    },
+    "Лют/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Lute/Gallery/HH Season 1",
+        "fr": "Lute/Galerie/HH Saison 1"
+    },
+    "Лют/Цитаты": {
+        "en": "Lute/Quotes",
+        "fr": "Lute/Citations"
     },
     "Люцифер Морнингстар": {
         "de": "Lucifer Morningstar",
@@ -3102,6 +3225,10 @@
         "fr": "Lucifer Morningstar/Galerie",
         "it": "Lucifero Stella del Mattino/Galleria"
     },
+    "Люцифер Морнингстар/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Lucifer Morningstar/Gallery/HH Season 2",
+        "fr": "Lucifer Morningstar/Galerie/HH Saison 2"
+    },
     "Люцифер Морнингстар/Галерея/Мерчендайз": {
         "en": "Lucifer Morningstar/Gallery/Merchandise",
         "fr": "Lucifer Morningstar/Galerie/Produits dérivés"
@@ -3110,6 +3237,10 @@
         "en": "Lucifer Morningstar/Gallery/Official Artwork",
         "es": "Lucifer Morningstar/Galería",
         "fr": "Lucifer Morningstar/Galerie"
+    },
+    "Люцифер Морнингстар/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Lucifer Morningstar/Gallery/HH Season 1",
+        "fr": "Lucifer Morningstar/Galerie/HH Saison 1"
     },
     "Люцифер Морнингстар/Цитаты": {
         "en": "Lucifer Morningstar/Quotes"
@@ -3171,6 +3302,10 @@
         "en": "Mammon/Gallery",
         "es": "Mammón/Galería",
         "fr": "Mammon/Galerie"
+    },
+    "Маммон/Галерея/Второй сезон Адского Босса": {
+        "en": "Mammon/Gallery/HB Season 2",
+        "fr": "Mammon/Galerie/HB Saison 2"
     },
     "Маммон/Галерея/Мерчендайз": {
         "en": "Mammon/Gallery/Merchandise"
@@ -3317,6 +3452,13 @@
         "fr": "Millie/Galerie",
         "it": "Millie/Galleria"
     },
+    "Милли/Галерея/Второй сезон Адского Босса": {
+        "en": "Millie/Gallery/HB Season 2",
+        "fr": "Millie/Galerie/HB Saison 2"
+    },
+    "Милли/Галерея/Короткометражные эпизоды Адского Босса": {
+        "en": "Millie/Gallery/HB Shorts"
+    },
     "Милли/Галерея/Мерчендайз": {
         "en": "Millie/Gallery/Merchandise",
         "fr": "Millie/Galerie/Produits dérivés"
@@ -3324,6 +3466,10 @@
     "Милли/Галерея/Официальное творчество": {
         "en": "Millie/Gallery/Official Artwork",
         "fr": "Millie/Galerie/Artworks Officiels"
+    },
+    "Милли/Галерея/Первый сезон Адского Босса": {
+        "en": "MillieMillie/Gallery/HB Season 1",
+        "fr": "Millie/Galerie/HB Saison 1"
     },
     "Милли/Цитаты": {
         "en": "Millie/Quotes",
@@ -3690,6 +3836,13 @@
         "ja": "モクシー/ギャラリー",
         "pl": "Moxxie/Galeria"
     },
+    "Мокси/Галерея/Второй сезон Адского Босса": {
+        "en": "Moxxie/Gallery/HB Season 2",
+        "fr": "Moxxie/Galerie/HB Saison 2"
+    },
+    "Мокси/Галерея/Короткометражные эпизоды Адского Босса": {
+        "en": "Moxxie/Gallery/HB Shorts"
+    },
     "Мокси/Галерея/Мерчендайз": {
         "en": "Moxxie/Gallery/Merchandise",
         "fr": "Moxxie/Galerie/Produits dérivés"
@@ -3697,6 +3850,10 @@
     "Мокси/Галерея/Официальное творчество": {
         "en": "Moxxie/Gallery/Official Artwork",
         "fr": "Moxxie/Galerie/Artworks Officiels"
+    },
+    "Мокси/Галерея/Первый сезон Адского Босса": {
+        "en": "Moxxie/Gallery/HB Season 1",
+        "fr": "Moxxie/Galerie/HB Saison 1"
     },
     "Мокси/Цитаты": {
         "en": "Moxxie/Quotes",
@@ -3894,6 +4051,10 @@
         "fr": "Niffty/Galerie",
         "it": "Niffty/Galleria"
     },
+    "Ниффти/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Niffty/Gallery/HH Season 2",
+        "fr": "Niffty/Galerie/HH Saison 2"
+    },
     "Ниффти/Галерея/Мерчендайз": {
         "en": "Niffty/Gallery/Merchandise",
         "fr": "Niffty/Galerie/Produits dérivés"
@@ -3901,6 +4062,10 @@
     "Ниффти/Галерея/Официальное творчество": {
         "en": "Niffty/Gallery/Official Artwork",
         "fr": "Niffty/Galerie/Artworks Officiels"
+    },
+    "Ниффти/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Niffty/Gallery/HH Season 1",
+        "fr": "Niffty/Galerie/HH Saison 1"
     },
     "Ниффти/Цитаты": {
         "en": "Niffty/Quotes",
@@ -4079,6 +4244,10 @@
         "es": "Octavia/Galería",
         "fr": "Octavia/Galerie"
     },
+    "Октавия/Галерея/Второй сезон Адского Босса": {
+        "en": "Octavia/Gallery/HB Season 2",
+        "fr": "Octavia/Galerie/HB Saison 2"
+    },
     "Октавия/Галерея/Мерчендайз": {
         "en": "Octavia/Gallery/Merchandise",
         "fr": "Octavia/Galerie/Produits dérivés"
@@ -4086,6 +4255,10 @@
     "Октавия/Галерея/Официальное творчество": {
         "en": "Octavia/Gallery/Official Artwork",
         "fr": "Octavia/Galerie/Artworks Officiels"
+    },
+    "Октавия/Галерея/Первый сезон Адского Босса": {
+        "en": "Octavia/Gallery/HB Season 1",
+        "fr": "Octavia/Galerie/HB Saison 1"
     },
     "Октавия/Цитаты": {
         "en": "Octavia/Quotes"
@@ -4420,7 +4593,8 @@
         "en": "Patrick Page"
     },
     "Патрик Стамп": {
-        "en": "Patrick Stump"
+        "en": "Patrick Stump",
+        "es": "Patrick Stump"
     },
     "Паучий поставщик": {
         "en": "Spider Provider",
@@ -4736,6 +4910,10 @@
         "it": "A day in the afterlife",
         "ja": "The Radio Demon（漫画）"
     },
+    "Радио-Демон (трек)": {
+        "en": "The Radio Demon",
+        "fr": "The Radio Demon"
+    },
     "Раздражение (песня о любви)": {
         "en": "Piss (A Love Song)",
         "es": "Piss (A Love Song)",
@@ -4764,8 +4942,16 @@
         "fr": "Razzle et Dazzle/Galerie",
         "it": "Razzle e Dazzle/Galleria"
     },
+    "Раззл и Даззл/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Razzle and Dazzle/Gallery/HH Season 2",
+        "fr": "Razzle et Dazzle/Galerie/HH Saison 2"
+    },
     "Раззл и Даззл/Галерея/Мерчендайз": {
         "en": "Razzle and Dazzle/Gallery/Merchandise"
+    },
+    "Раззл и Даззл/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Razzle and Dazzle/Gallery/HH Season 1",
+        "fr": "Razzle et Dazzle/Galerie/HH Saison 1"
     },
     "Рай": {
         "de": "Himmel",
@@ -4934,8 +5120,16 @@
         "fr": "Rosie/Galerie",
         "it": "Rosie/Galleria"
     },
+    "Рози/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Rosie/Gallery/HH Season 2",
+        "fr": "Rosie/Galerie/HH Saison 2"
+    },
     "Рози/Галерея/Мерчендайз": {
         "en": "Rosie/Gallery/Merchandise"
+    },
+    "Рози/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Rosie/Gallery/HH Season 1",
+        "fr": "Rosie/Galerie/HH Saison 1"
     },
     "Рози/Цитаты": {
         "en": "Rosie/Quotes",
@@ -4951,7 +5145,8 @@
         "en": "Rolando/Gallery"
     },
     "Роландо/Цитаты": {
-        "en": "Rolando/Quotes"
+        "en": "Rolando/Quotes",
+        "fr": "Martha/Citations"
     },
     "Рошель Диаманте": {
         "en": "Rochelle Diamante"
@@ -5256,6 +5451,10 @@
         "es": "Stella/Galería",
         "fr": "Stella/Galerie"
     },
+    "Стелла/Галерея/Второй сезон Адского Босса": {
+        "en": "Stella/Gallery/HB Season 2",
+        "fr": "Stella/Galerie/HB Saison 2"
+    },
     "Стелла/Галерея/Мерчендайз": {
         "en": "Stella/Gallery/Merchandise",
         "fr": "Stella/Galerie/Produits dérivés"
@@ -5334,6 +5533,10 @@
         "fr": "Stolas/Galerie",
         "it": "Stolas/Galleria"
     },
+    "Столас/Галерея/Второй сезон Адского Босса": {
+        "en": "Stolas/Gallery/HB Season 2",
+        "fr": "Stolas/Galerie/HB Saison 2"
+    },
     "Столас/Галерея/Мерчендайз": {
         "en": "Stolas/Gallery/Merchandise",
         "fr": "Stolas/Galerie/Produits dérivés"
@@ -5341,6 +5544,10 @@
     "Столас/Галерея/Официальное творчество": {
         "en": "Stolas/Gallery/Official Artwork",
         "fr": "Stolas/Galerie/Artworks Officiels"
+    },
+    "Столас/Галерея/Первый сезон Адского Босса": {
+        "en": "Stolas/Gallery/HB Season 1",
+        "fr": "Stolas/Galerie/HB Saison 1"
     },
     "Столас/Цитаты": {
         "en": "Stolas/Quotes",
@@ -5380,6 +5587,10 @@
         "es": "Striker/Galería",
         "fr": "Striker/Galerie"
     },
+    "Страйкер/Галерея/Второй сезон Адского Босса": {
+        "en": "Striker/Gallery/HB Season 2",
+        "fr": "Striker/Galerie/HB Saison 2"
+    },
     "Страйкер/Галерея/Мерчендайз": {
         "en": "Striker/Gallery/Merchandise",
         "fr": "Striker/Galerie/Produits dérivés"
@@ -5387,6 +5598,10 @@
     "Страйкер/Галерея/Официальное творчество": {
         "en": "Striker/Gallery/Official Artwork",
         "fr": "Striker/Galerie/Artworks Officiels"
+    },
+    "Страйкер/Галерея/Первый сезон Адского Босса": {
+        "en": "Striker/Gallery/HB Season 1",
+        "fr": "Striker/Galerie/HB Saison 1"
     },
     "Страйкер/Цитаты": {
         "en": "Striker/Quotes"
@@ -5398,6 +5613,7 @@
         "it": "666 News Studio"
     },
     "Стэмпер": {
+        "cs": "Stamper",
         "en": "Stamper",
         "es": "Stamper"
     },
@@ -5489,6 +5705,10 @@
         "it": "Sir Pentious/Galleria",
         "ja": "サー・ペンシャス/ギャラリー"
     },
+    "Сэр Пентиус/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Sir Pentious/Gallery/HH Season 2",
+        "fr": "Sir Pentious/Galerie/HH Saison 2"
+    },
     "Сэр Пентиус/Галерея/Мерчендайз": {
         "en": "Sir Pentious/Gallery/Merchandise",
         "fr": "Sir Pentious/Galerie/Produits dérivés"
@@ -5496,6 +5716,10 @@
     "Сэр Пентиус/Галерея/Официальное творчество": {
         "en": "Sir Pentious/Gallery/Official Artwork",
         "fr": "Sir Pentious/Galerie/Artworks Officiels"
+    },
+    "Сэр Пентиус/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Sir Pentious/Gallery/HH Season 1",
+        "fr": "Sir Pentious/Galerie/HH Saison 1"
     },
     "Сэр Пентиус/Цитаты": {
         "en": "Sir Pentious/Quotes",
@@ -5535,14 +5759,25 @@
         "pt-br": "Fat Nuggets",
         "tr": "Şişko Haya"
     },
+    "Толстый Наггетс/Взаимоотношения": {
+        "en": "Fat Nuggets/Relationships"
+    },
     "Толстый Наггетс/Галерея": {
         "en": "Fat Nuggets/Gallery",
         "es": "Fat Nuggets/Galería",
         "fr": "Fat Nuggets/Galerie"
     },
+    "Толстый Наггетс/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Fat Nuggets/Gallery/HH Season 2",
+        "fr": "Fat Nuggets/Galerie/HH Saison 2"
+    },
     "Толстый Наггетс/Галерея/Мерчендайз": {
         "en": "Fat Nuggets/Gallery/Merchandise",
         "fr": "Fat Nuggets/Galerie/Produits dérivés"
+    },
+    "Толстый Наггетс/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Fat Nuggets/Gallery/HH Season 1",
+        "fr": "Fat Nuggets/Galerie/HH Saison 1"
     },
     "Том Кенни": {
         "cs": "Tom Kenny",
@@ -5851,6 +6086,18 @@
         "th": "เทศกาลจันทร์เก็บเกี่ยว",
         "tr": "Hasat Ayı Festivali"
     },
+    "Фестиваль урожайной луны (неоднозначность)": {
+        "cs": "Festival dožínkového měsíce",
+        "en": "The Harvest Moon Festival",
+        "es": "The Harvest Moon Festival",
+        "fr": "Le Festival de la Lune des Moissons",
+        "hu": "A holdszüreti bál",
+        "it": "Il Festival della luna del raccolto",
+        "ja": "ハーベストムーン・フェスティバル",
+        "pl": "Księżycowe Żniwa",
+        "th": "เทศกาลจันทร์เก็บเกี่ยว",
+        "tr": "Hasat Ayı Festivali"
+    },
     "Фестиваль урожайной луны (событие)": {
         "en": "Harvest Moon Festival",
         "es": "Festival de la Luna de la Cosecha",
@@ -5903,6 +6150,10 @@
         "en": "Fizzarolli/Gallery",
         "es": "Fizzarolli/Galería",
         "fr": "Fizzarolli/Galerie"
+    },
+    "Физзаролли/Галерея/Второй сезон Адского Босса": {
+        "en": "Fizzarolli/Gallery/HB Season 2",
+        "fr": "Fizzarolli/Galerie/HB Saison 2"
     },
     "Физзаролли/Галерея/Мерчендайз": {
         "en": "Fizzarolli/Gallery/Merchandise",
@@ -6016,6 +6267,10 @@
         "fr": "Husk/Galerie",
         "it": "Husk/Galleria"
     },
+    "Хаск/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Husk/Gallery/HH Season 2",
+        "fr": "Husk/Galerie/HH Saison 2"
+    },
     "Хаск/Галерея/Мерчендайз": {
         "en": "Husk/Gallery/Merchandise",
         "fr": "Husk/Galerie/Produits dérivés"
@@ -6023,6 +6278,10 @@
     "Хаск/Галерея/Официальное творчество": {
         "en": "Husk/Gallery/Official Artwork",
         "fr": "Husk/Galerie/Artworks Officiels"
+    },
+    "Хаск/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Husk/Gallery/HH Season 1",
+        "fr": "Husk/Galerie/HH Saison 1"
     },
     "Хаск/Цитаты": {
         "en": "Husk/Quotes",
@@ -6237,6 +6496,10 @@
         "en": "Chazwick Thurman/Gallery",
         "fr": "Chazwick Thurman/Galerie"
     },
+    "Чезвик Турман/Галерея/Второй сезон Адского Босса": {
+        "en": "Chazwick Thurman/Gallery/HB Season 2",
+        "fr": "Chazwick Thurman/Galerie/HB Saison 2"
+    },
     "Чезвик Турман/Галерея/Мерчендайз": {
         "en": "Chazwick Thurman/Gallery/Merchandise"
     },
@@ -6275,10 +6538,15 @@
         "tr": "Bomba Cherri/İlişkileri"
     },
     "Черри Бомб/Галерея": {
+        "de": "Cherri Bomb/Galerie",
         "en": "Cherri Bomb/Gallery",
         "es": "Cherri Bomb/Galería",
         "fr": "Cherri Bomb/Galerie",
         "it": "Cherri Bomb/Galleria"
+    },
+    "Черри Бомб/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Cherri Bomb/Gallery/HH Season 2",
+        "fr": "Cherri Bomb/Galerie/HH Saison 2"
     },
     "Черри Бомб/Галерея/Мерчендайз": {
         "en": "Cherri Bomb/Gallery/Merchandise",
@@ -6287,6 +6555,10 @@
     "Черри Бомб/Галерея/Официальное творчество": {
         "en": "Cherri Bomb/Gallery/Official Artwork",
         "fr": "Cherri Bomb/Galerie/Artworks Officiels"
+    },
+    "Черри Бомб/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Cherri Bomb/Gallery/HH Season 1",
+        "fr": "Cherri Bomb/Galerie/HH Saison 1"
     },
     "Черри Бомб/Цитаты": {
         "en": "Cherri Bomb/Quotes",
@@ -6355,6 +6627,7 @@
         "cs": "Edward Bosco",
         "en": "Edward Bosco",
         "es": "Edward Bosco",
+        "fr": "Edward Bosco",
         "ja": "エドワード・ボスコ",
         "pl": "Edward Bosco"
     },
@@ -6403,6 +6676,9 @@
         "fr": "Emberlynn Pinkle",
         "pl": "Emberlynn Pinkle"
     },
+    "Эмберлин Пинкл/Галерея": {
+        "en": "Emberlynn Pinkle/Gallery"
+    },
     "Эмберлин Пинкл/Галерея/Мерчендайз": {
         "en": "Emberlynn Pinkle/Gallery/Merchandise"
     },
@@ -6442,8 +6718,16 @@
         "fr": "Emily/Galerie",
         "it": "Emily/Galleria"
     },
+    "Эмили/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Emily/Gallery/HH Season 2",
+        "fr": "Emily/Galerie/HH Saison 2"
+    },
     "Эмили/Галерея/Мерчендайз": {
         "en": "Emily/Gallery/Merchandise"
+    },
+    "Эмили/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Emily/Gallery/HH Season 1",
+        "fr": "Emily/Galerie/HH Saison 1"
     },
     "Эмили/Цитаты": {
         "en": "Emily/Quotes"
@@ -6482,12 +6766,17 @@
         "tr": "Melek Tozu/İlişkileri"
     },
     "Энджел Даст/Галерея": {
+        "de": "Angel Dust/Galerie",
         "en": "Angel Dust/Gallery",
         "es": "Angel Dust/Galería",
         "fr": "Angel Dust/Galerie",
         "hu": "Angel Dust/Galéria",
         "it": "Angel Dust/Galleria",
         "ja": "エンジェル・ダスト/ギャラリー"
+    },
+    "Энджел Даст/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Angel Dust/Gallery/HH Season 2",
+        "fr": "Angel Dust/Galerie/HH Saison 2"
     },
     "Энджел Даст/Галерея/Мерчендайз": {
         "en": "Angel Dust/Gallery/Merchandise",
@@ -6497,6 +6786,10 @@
         "en": "Angel Dust/Gallery/Official Artwork",
         "fr": "Angel Dust/Galerie/Artworks Officiels",
         "ja": "エンジェル・ダスト/ギャラリー/オフシャルアートワーク"
+    },
+    "Энджел Даст/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Angel Dust/Gallery/HH Season 1",
+        "fr": "Angel Dust/Galerie/HH Saison 1"
     },
     "Энджел Даст/Цитаты": {
         "en": "Angel Dust/Quotes",
@@ -6646,8 +6939,16 @@
         "es": "Egg Boiz/Galería",
         "fr": "Egg Boiz/Galerie"
     },
+    "Яичные приспешники/Галерея/Второй сезон Отеля Хазбин": {
+        "en": "Egg Boiz/Gallery/HH Season 2",
+        "fr": "Egg Boiz/Galerie/HH Saison 2"
+    },
     "Яичные приспешники/Галерея/Мерчендайз": {
         "en": "Egg Boiz/Gallery/Merchandise"
+    },
+    "Яичные приспешники/Галерея/Первый сезон Отеля Хазбин": {
+        "en": "Egg Boiz/Gallery/HH Season 1",
+        "fr": "Egg Boiz/Galerie/HH Saison 1"
     },
     "Яичные приспешники/Цитаты": {
         "en": "Egg Boiz/Quotes",
