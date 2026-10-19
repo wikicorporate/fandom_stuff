@@ -1,0 +1,79 @@
+/* @doodle: stars */
+:doodle {
+    @grid: 1x35 / 100% 220px;
+    background: var(--bg-color, radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%));
+    overflow: hidden;
+    border-radius: var(--radius, 8px);
+}
+@size: @r(2px, 5px);
+border-radius: 50%;
+background: var(--color, #ffffff);
+position: absolute;
+left: @r(2%, 98%);
+top: @r(5%, 95%);
+opacity: @r(0.2, 0.95);
+box-shadow: 0 0 @r(4px, 10px) var(--color, #ffffff);
+animation: twinkle @r(2s, 5s) ease-in-out infinite alternate;
+animation-delay: -@r(0s, 5s);
+
+@keyframes twinkle {
+    0% { transform: scale(0.6); opacity: 0.2; }
+    100% { transform: scale(1.3); opacity: 1; }
+}
+
+/* @doodle: embers */
+:doodle {
+    @grid: 1x30 / 100% 220px;
+    background: var(--bg-color, linear-gradient(180deg, #120408 0%, #2a0810 100%));
+    overflow: hidden;
+    border-radius: var(--radius, 8px);
+}
+@size: @r(3px, 7px);
+border-radius: 50%;
+background: @p(#ff2a54, #ff7b00, #ffbe0b, #ff0055);
+position: absolute;
+left: @r(5%, 95%);
+bottom: -10px;
+filter: blur(@r(0px, 1px));
+box-shadow: 0 0 8px @p(#ff2a54, #ff7b00);
+animation: rise @r(3s, 7s) linear infinite;
+animation-delay: -@r(0s, 6s);
+
+@keyframes rise {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.9; }
+    50% { transform: translateY(-110px) translateX(@r(-20px, 20px)) scale(0.8); opacity: 0.7; }
+    100% { transform: translateY(-230px) translateX(@r(-40px, 40px)) scale(0.2); opacity: 0; }
+}
+
+/* @doodle: cyber-grid */
+:doodle {
+    @grid: 12x6 / 100% 200px;
+    background: var(--bg-color, #0d0f17);
+    gap: 1px;
+    border-radius: var(--radius, 8px);
+    overflow: hidden;
+}
+background: rgba(255, 255, 255, 0.02);
+border: 1px solid rgba(0, 240, 255, @r(0.05, 0.25));
+transition: 0.3s ease;
+
+:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+/* @doodle: geometric */
+:doodle {
+    @grid: 10x5 / 100% 180px;
+    background: var(--bg-color, var(--theme-page-background-color--secondary));
+    border-radius: var(--radius, 8px);
+    overflow: hidden;
+}
+background: @p(
+    linear-gradient(45deg, var(--color, var(--theme-accent-color)) 50%, transparent 50%),
+    linear-gradient(135deg, var(--color, var(--theme-accent-color)) 50%, transparent 50%),
+    linear-gradient(225deg, var(--color, var(--theme-accent-color)) 50%, transparent 50%),
+    linear-gradient(315deg, var(--color, var(--theme-accent-color)) 50%, transparent 50%)
+);
+opacity: @r(0.15, 0.55);
+transition: opacity 0.25s ease, transform 0.25s ease;
