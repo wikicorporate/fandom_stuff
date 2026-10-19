@@ -1,9 +1,14 @@
 const AppState = {
         data() {
-            const uGroups = mw.config.get('wgUserGroups') ?? [];
-            const hasRollback = uGroups.some(g => ['sysop', 'content-moderator', 'rollback', 'staff', 'wiki-representative', 'soap'].includes(g));
-            const hasPatrol = uGroups.some(g => ['sysop', 'content-moderator', 'staff', 'wiki-representative', 'soap', 'wiki-specialist'].includes(g));
-            const hasBlock = uGroups.some(g => ['sysop', 'staff', 'wiki-representative', 'soap'].includes(g));
+            const uGroupsSet = new Set(mw.config.get('wgUserGroups') ?? []);
+            const rollbackGroups = new Set(['sysop', 'content-moderator', 'rollback', 'staff', 'wiki-representative', 'soap']);
+            const patrolGroups = new Set(['sysop', 'content-moderator', 'staff', 'wiki-representative', 'soap', 'wiki-specialist']);
+            const blockGroups = new Set(['sysop', 'staff', 'wiki-representative', 'soap']);
+
+            // ES2025/ES2026 Set.prototype.isDisjointFrom (O(1) проверка пересечения множеств групп)
+            const hasRollback = !uGroupsSet.isDisjointFrom(rollbackGroups);
+            const hasPatrol = !uGroupsSet.isDisjointFrom(patrolGroups);
+            const hasBlock = !uGroupsSet.isDisjointFrom(blockGroups);
 
             let cachedPatrolled = [];
             try {
