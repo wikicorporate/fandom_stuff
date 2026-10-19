@@ -8,6 +8,8 @@ from typing import Dict, Set
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from utils.wiki_client import REPO_ROOT, create_http_session, load_projects
 
+MAIN_PAGE_TITLE = "Заглавная страница"
+
 
 def fetch_interwikis() -> None:
     session = create_http_session()
@@ -29,9 +31,13 @@ def fetch_interwikis() -> None:
 
         print(f"\n[=== Запуск сбора интервики для проекта: {project_name} ===]")
 
-        # 1. Загружаем существующую базу (с автоматической миграцией из старого пути main/Интервики.json)
+        # 1. Загружаем существующую базу (с поддержкой миграции из main/Интервики.json)
         interwiki_db: Dict[str, Dict[str, str]] = {}
-        source_to_read = output_path if output_path.exists() else (legacy_path if legacy_path and legacy_path.exists() else None)
+        source_to_read = (
+            output_path
+            if output_path.exists()
+            else (legacy_path if legacy_path and legacy_path.exists() else None)
+        )
 
         if source_to_read:
             try:
@@ -148,34 +154,47 @@ def fetch_interwikis() -> None:
         for old_title, links in interwiki_db.items():
             norm_title = norm_map.get(old_title, old_title)
             true_title = redirect_map.get(norm_title, norm_title)
-            if true_title not in valid_ru_titles:
+            if true_title != MAIN_PAGE_TITLE and true_title not in valid_ru_titles:
                 continue
             if true_title not in cleaned_db:
                 cleaned_db[true_title] = {}
             for lang, target in links.items():
-                if target and target.strip():
+                if true_title == MAIN_PAGE_TITLE:
+                    cleaned_db[true_title][lang] = ""
+                elif target and target.strip():
                     cleaned_db[true_title][lang] = target.strip()
 
         # 5. Накатываем свежие данные поверх старых
         for ru_title, links in temp_db.items():
             norm_title = norm_map.get(ru_title, ru_title)
             true_title = redirect_map.get(norm_title, norm_title)
-            if true_title not in valid_ru_titles:
+            if true_title != MAIN_PAGE_TITLE and true_title not in valid_ru_titles:
                 continue
             if true_title not in cleaned_db:
                 cleaned_db[true_title] = {}
             for lang, target in links.items():
-                if target and target.strip():
+                if true_title == MAIN_PAGE_TITLE:
+                    cleaned_db[true_title][lang] = ""
+                elif target and target.strip():
                     cleaned_db[true_title][lang] = target.strip()
 
-        cleaned_db = {k: v for k, v in cleaned_db.items() if v}
+        # 6. Автоматическое восстановление и защита "Заглавной страницы":
+        # Для всех языковых хабов проекта гарантируем наличие пустых ссылок "" ([[lang:]])
+        if MAIN_PAGE_TITLE not in cleaned_db:
+            cleaned_db[MAIN_PAGE_TITLE] = {}
+        for hub_lang in hubs.keys():
+            cleaned_db[MAIN_PAGE_TITLE][hub_lang] = ""
+
+        # Удаляем пустые словари у обычных статей, но никогда не трогаем Заглавную страницу
+        cleaned_db = {
+            k: v for k, v in cleaned_db.items() if v or k == MAIN_PAGE_TITLE
+        }
 
         os.makedirs(output_path.parent, exist_ok=True)
         with open(output_path, "w", encoding="utf-8", newline="\n") as f:
             json.dump(cleaned_db, f, ensure_ascii=False, indent=4, sort_keys=True)
             f.write("\n")
 
-        # Удаляем старый файл main/Интервики.json после успешной миграции в mediawiki/Custom-Интервики.json
         if legacy_path and legacy_path.exists() and legacy_path != output_path:
             try:
                 legacy_path.unlink()
@@ -183,7 +202,10 @@ def fetch_interwikis() -> None:
             except OSError:
                 pass
 
-        print(f"[+] Успешно! База {project_name} сохранена в {output_path.relative_to(REPO_ROOT)}: {len(cleaned_db)} статей.")
+        print(
+            f"[+] Успешно! База {project_name} сохранена в {output_path.relative_to(REPO_ROOT)}: "
+            f"{len(cleaned_db)} статей (Заглавная страница защищена: {len(cleaned_db[MAIN_PAGE_TITLE])} яз.)."
+        )
 
 
 if __name__ == "__main__":
