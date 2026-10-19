@@ -2,28 +2,33 @@ local p = {}
 
 local config = {
     tags = {
-        bureaucrat = { 
-            icon = "fa-solid fa-code", 
-            tooltip = "Бюрократ", 
+        bureaucrat = {
+            icon = "fa-solid fa-code",
+            tooltip = "Бюрократ",
             class = "custom-tag-bureaucrat"
         },
-        admin = { 
-            icon = "fa-solid fa-gear", 
-            tooltip = "Администратор", 
-            class = "custom-tag-admin" 
+        admin = {
+            icon = "fa-solid fa-gear",
+            tooltip = "Администратор",
+            class = "custom-tag-admin"
+        },
+        bot = {
+            icon = "fa-solid fa-robot",
+            tooltip = "Бот",
+            class = "custom-tag-bot"
         }
     },
-    
+
     users = {
-        ["Swit4er"] = { 
-            hideDefault = true, -- true: скрыть стандартные теги Фэндома
-            tags = {"bureaucrat", "admin"}, -- Указываем ID тегов из базы выше
-            mainTag = "bureaucrat" -- Выведется только данный тег (в комментариях / на стене / в таблице лидеров)
+        ["Swit4er"] = {
+            hideDefault = true,
+            tags = {"bureaucrat", "admin"},
+            mainTag = "bureaucrat"
         },
-        ["Имя_Участника_2"] = { 
-            hideDefault = false, -- false: оставить стандартные теги (добавятся к вашим)
-            tags = {"bot"} 
-        },
+        ["Имя_Участника_2"] = {
+            hideDefault = false,
+            tags = {"bot"}
+        }
     }
 }
 
