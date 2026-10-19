@@ -1,61 +1,85 @@
 local p = {}
 
 p.LessCode = [=[
-
-// ---
+/* ==========================================================================
    FANDOM LESS FRAMEWORK (v4.x)
-   Глобальные переменные и миксины для удобной разработки
-    ---
+   Глобальные переменные, миксины и утилиты для всех проектов сети
+   ========================================================================== */
 
-// --- 1. ПЕРЕМЕННЫЕ (Связка с нативными токенами Fandom) ---
-@bg-base:        var(--theme-page-background-color);
-@bg-secondary:   var(--theme-page-background-color--secondary);
-@text-main:      var(--theme-page-text-color);
-@text-secondary: var(--theme-page-text-color--secondary);
-@link-color:     var(--theme-link-color);
-@accent-color:   var(--theme-accent-color);
-@border-color:   var(--theme-border-color);
-@shadow-base:    0 2px 4px rgba(0, 0, 0, 0.15);
+// --- 1. ТОКЕНЫ ТЕМЫ FANDOM DESKTOP ---
+@bg-base:          var(--theme-page-background-color);
+@bg-secondary:     var(--theme-page-background-color--secondary);
+@text-main:        var(--theme-page-text-color);
+@text-secondary:   var(--theme-page-text-color--secondary);
+@link-color:       var(--theme-link-color);
+@accent-color:     var(--theme-accent-color);
+@border-color:     var(--theme-border-color);
+
+@surface-glass:    ~"color-mix(in srgb, var(--theme-page-background-color--secondary) 80%, transparent)";
+@accent-hover:     ~"color-mix(in srgb, var(--theme-accent-color) 85%, #000)";
+@accent-active:    ~"color-mix(in srgb, var(--theme-accent-color) 75%, #000)";
+@accent-subtle:    ~"color-mix(in srgb, var(--theme-accent-color) 15%, transparent)";
+
+@radius-sm:        4px;
+@radius-md:        8px;
+@radius-lg:        12px;
+@shadow-sm:        0 2px 4px rgba(0, 0, 0, 0.15);
+@shadow-md:        0 4px 12px rgba(0, 0, 0, 0.25);
+@shadow-lg:        0 8px 24px rgba(0, 0, 0, 0.35);
+@transition-base:  0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
 // --- 2. БРЕЙКПОИНТЫ (Медиазапросы) ---
-@mobile:  ~"screen and (max-width: 768px)";
-@tablet:  ~"screen and (max-width: 1024px)";
-@desktop: ~"screen and (min-width: 1025px)";
+@mobile:           ~"screen and (max-width: 767px)";
+@tablet:           ~"screen and (max-width: 1023px)";
+@desktop:          ~"screen and (min-width: 1024px)";
+@wide:             ~"screen and (min-width: 1440px)";
 
-// --- 3. БАЗОВЫЕ МИКСИНЫ ---
+// --- 3. МИКСИНЫ РАСКЛАДКИ И ПОЗИЦИОНИРОВАНИЯ ---
 
-// Идеальное центрирование (Flex)
 .flex-center() {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-// Абсолютное позиционирование на весь контейнер
-.absolute-fill() {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.flex-between() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-// Быстрое обрезание длинного текста троеточием
+.flex-column(@gap: 8px) {
+    display: flex;
+    flex-direction: column;
+    gap: @gap;
+}
+
+.absolute-fill() {
+    position: absolute;
+    inset: 0;
+}
+
+.auto-grid(@min-width: 200px, @gap: 16px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(@min-width, 1fr));
+    gap: @gap;
+}
+
+// --- 4. МИКСИНЫ ТИПОГРАФИКИ ---
+
 .text-truncate() {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-// Ограничение текста по количеству строк (Line clamp)
 .line-clamp(@lines: 3) {
     display: -webkit-box;
     -webkit-line-clamp: @lines;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-// Скрытие элемента только визуально (остается для скринридеров)
 .visually-hidden() {
     position: absolute;
     width: 1px;
@@ -64,13 +88,16 @@ p.LessCode = [=[
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
     border: 0;
 }
 
-// --- 4. МИКСИНЫ ОФОРМЛЕНИЯ ---
+// --- 5. МИКСИНЫ ПОВЕРХНОСТЕЙ И ОФОРМЛЕНИЯ ---
 
-// Красивый скроллбар WDS-стайла
-.custom-scrollbar(@thumb: @accent-color, @track: rgba(0,0,0,0.1), @size: 8px) {
+.custom-scrollbar(@thumb: @accent-color, @track: rgba(0, 0, 0, 0.1), @size: 8px) {
+    scrollbar-width: thin;
+    scrollbar-color: @thumb @track;
+
     &::-webkit-scrollbar {
         width: @size;
         height: @size;
@@ -82,56 +109,76 @@ p.LessCode = [=[
     &::-webkit-scrollbar-thumb {
         background: @thumb;
         border-radius: (@size / 2);
-        
+
         &:hover {
-            background: darken(@thumb, 10%);
+            background: @accent-hover;
         }
     }
 }
 
-// Кнопки в стиле WDS
+.glass-panel(@blur: 10px, @bg: @surface-glass) {
+    background: @bg;
+    backdrop-filter: blur(@blur);
+    -webkit-backdrop-filter: blur(@blur);
+    border: 1px solid @border-color;
+}
+
+.wiki-card(@padding: 16px, @radius: @radius-md) {
+    background-color: @bg-secondary;
+    color: @text-main;
+    border: 1px solid @border-color;
+    border-radius: @radius;
+    padding: @padding;
+    box-shadow: @shadow-sm;
+    transition: transform @transition-base, box-shadow @transition-base, border-color @transition-base;
+
+    &:hover {
+        border-color: @accent-color;
+        box-shadow: @shadow-md;
+    }
+}
+
 .wds-button-custom(@bg-color: @accent-color, @text-color: #fff) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
     background-color: @bg-color;
     color: @text-color;
-    border: none;
-    border-radius: 3px;
+    border: 1px solid transparent;
+    border-radius: @radius-sm;
     font-size: 12px;
     font-weight: 600;
     line-height: 1;
-    padding: 7px 18px;
+    padding: 8px 18px;
     text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color @transition-base, transform @transition-base, filter @transition-base;
 
     &:hover {
-        background-color: darken(@bg-color, 12%);
+        filter: brightness(1.1);
         text-decoration: none;
     }
 
     &:active {
-        background-color: darken(@bg-color, 20%);
+        transform: translateY(1px);
+        filter: brightness(0.95);
     }
 }
 
-// --- 5. МИКСИНЫ КАК ФУНКЦИИ (Продвинутый Less) ---
-
-// Перевод пикселей в rem (База браузера обычно 16px)
-.px-to-rem(@px) {
-    @rem: (@px / 16);
-    return: ~"@{rem}rem";
+.wds-badge(@bg: @accent-subtle, @color: @link-color) {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: @bg;
+    color: @color;
+    border: 1px solid @border-color;
 }
-
-// Генерация сетки (Grid) с автозаполнением
-.auto-grid(@min-width: 200px, @gap: 15px) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(@min-width, 1fr));
-    gap: @gap;
-}
-
 ]=]
 
--- Возвращаем таблицу для возможного использования другими модулями
 return p
