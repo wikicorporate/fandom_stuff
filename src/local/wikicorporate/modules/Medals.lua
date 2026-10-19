@@ -3,33 +3,62 @@ local p = {}
 local medals = mw.loadData('Module:MedalList')
 local users = mw.loadData('Module:UsersMedals')
 
-function GetUserMedalsMassive(userid, medalstable, userstable)
-	massive = {}
-	i = 1
-	for _,value in ipairs(userstable[userid][2]) do
-		massive[i] = value
-		i = i + 1
-	end
-	return massive
+local function generatepage(medalstable, userstable)
+    local out = {}
+
+    for key, value in pairs(userstable) do
+        local username, medal_ids, desc, image
+
+        -- Поддержка обоих форматов записи в Module:UsersMedals:
+        -- 1) ["Ник"] = { {1, 3}, "Описание", "Картинка" }
+        -- 2) { "Ник", {1, 3}, "Описание", "Картинка" }
+        if type(key) == "string" then
+            username = key
+            medal_ids = value[1]
+            desc = value[2] or ""
+            image = value[3] or ""
+        else
+            username = value[1] or ""
+            medal_ids = value[2]
+            desc = value[3] or ""
+            image = value[4] or ""
+        end
+
+        table.insert(
+            out,
+            string.format(
+                '<div class="userboard__user">%s\n== %s ==\n\n%s</div><div class="userboard__medals">',
+                image,
+                username,
+                desc
+            )
+        )
+
+        if medal_ids then
+            for _, medal_idx in ipairs(medal_ids) do
+                local medal = medalstable[medal_idx]
+                if medal then
+                    table.insert(
+                        out,
+                        string.format(
+                            '<div class="userboard__medal">%s<div class="userboard__medal-tooltip">\n=== %s ===\n%s</div></div>\n\n',
+                            medal[2] or "",
+                            medal[1] or "",
+                            medal[3] or ""
+                        )
+                    )
+                end
+            end
+        end
+
+        table.insert(out, '</div>\n')
+    end
+
+    return table.concat(out)
 end
 
-function getdesc(userid, userstable) return userstable[userid][3] end
-function getimage(userid, userstable) return userstable[userid][4] end
-
-function generatepage(medalstable, userstable)
-	stra = ""
-	for _,value in ipairs(userstable) do
-		stra = stra.."<div class=userboard__user>"..getimage(_,userstable).."\n== "..value[1].." ==\n\n"..getdesc(_,userstable).."</div>".."<div class=userboard__medals>"
-		for __,value2 in pairs(GetUserMedalsMassive(_, medalstable, userstable)) do
-			stra = stra.."<div class=userboard__medal>"..medalstable[value2][2].."<div class=userboard__medal-tooltip> \n=== "..medalstable[value2][1].." === \n"..medalstable[value2][3].."</div></div>".."\n\n"
-		end
-		stra = stra.."</div>".."\n"
-	end
-	return stra
-end
-
-function p.e(frame)
-	return generatepage(medals, users)
+function p.e()
+    return generatepage(medals, users)
 end
 
 return p
