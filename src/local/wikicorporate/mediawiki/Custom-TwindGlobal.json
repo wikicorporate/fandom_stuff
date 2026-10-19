@@ -1,0 +1,28 @@
+{
+    "darkMode": "class",
+    "theme": {
+        "extend": {
+            "colors": {
+                "wiki": {
+                    "bg": "var(--theme-page-background-color)",
+                    "surface": "var(--theme-page-background-color--secondary)",
+                    "text": "var(--theme-page-text-color)",
+                    "muted": "var(--theme-page-text-color--secondary)",
+                    "link": "var(--theme-link-color)",
+                    "accent": "var(--theme-accent-color)",
+                    "border": "var(--theme-border-color)"
+                }
+            },
+            "borderRadius": {
+                "wiki-sm": "4px",
+                "wiki-md": "8px",
+                "wiki-lg": "12px"
+            },
+            "boxShadow": {
+                "wiki-sm": "0 2px 4px rgba(0, 0, 0, 0.15)",
+                "wiki-md": "0 4px 12px rgba(0, 0, 0, 0.25)",
+                "wiki-lg": "0 8px 24px rgba(0, 0, 0, 0.35)"
+            }
+        }
+    }
+}
