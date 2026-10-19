@@ -78,7 +78,7 @@
     }
 })();
 
-/* 2. Исправление достижений */
+/* 2. Исправление достижений (чтение из MediaWiki:Custom-AchievementDescriptions.json с фоллбэком) */
 (() => {
     'use strict';
     const namespace = mw.config.get('wgNamespaceNumber');
@@ -89,6 +89,7 @@
     window.isAchievementsFixed = true;
 
     const missingDescriptions = {};
+    const CENTRAL_API = 'https://wikicorporate.fandom.com/ru/api.php';
 
     const getPlural = (number) => {
         const absNum = Math.abs(number);
@@ -100,7 +101,6 @@
         return 'изображений в статьи';
     };
 
-    // Безопасное восстановление тегов без возможности инъекции обработчиков событий или javascript: URI
     const unescapeSafeHTML = (html) => {
         return html
             .replace(/&lt;(\/?(?:strong|b|i|em))&gt;/gi, '<$1>')
@@ -111,14 +111,21 @@
     };
 
     const loadDescriptions = () => {
-        const url = mw.config.get('wgScriptPath') +
-            '/api.php?action=query&prop=revisions&titles=Module:AchievementDescriptions&rvprop=content&rvslots=main&formatversion=2&format=json';
-        return fetch(url)
+        const params = 'action=query&prop=revisions&titles=MediaWiki:Custom-AchievementDescriptions.json|Module:AchievementDescriptions&rvprop=content&rvslots=main&formatversion=2&format=json&origin=*';
+        return fetch(`${CENTRAL_API}?${params}`)
             .then(res => res.json())
             .then(data => {
-                const pages = data.query && data.query.pages;
-                if (pages && pages[0] && pages[0].revisions && pages[0].revisions[0]) {
-                    const content = pages[0].revisions[0].slots.main.content;
+                const pages = (data.query && data.query.pages) || [];
+                const jsonPage = pages.find(p => p.title.indexOf('.json') !== -1 && !p.missing);
+                const luaPage = pages.find(p => p.title.indexOf('Module:') !== -1 && !p.missing);
+
+                if (jsonPage && jsonPage.revisions && jsonPage.revisions[0]) {
+                    const parsed = JSON.parse(jsonPage.revisions[0].slots.main.content);
+                    Object.keys(parsed).forEach(k => {
+                        missingDescriptions[k.toLowerCase()] = mw.html.escape(String(parsed[k]));
+                    });
+                } else if (luaPage && luaPage.revisions && luaPage.revisions[0]) {
+                    const content = luaPage.revisions[0].slots.main.content;
                     const regex = /\[\s*['"]([^'"]+)['"]\s*\]\s*=\s*['"]([^'"]+)['"]/g;
                     let match;
                     while ((match = regex.exec(content)) !== null) {
@@ -126,7 +133,7 @@
                     }
                 }
             })
-            .catch(e => console.warn('Ошибка при загрузке Module:AchievementDescriptions:', e));
+            .catch(e => console.warn('[Achievements] Ошибка загрузки описаний:', e));
     };
 
     const fixTooltip = (tooltipNode) => {
@@ -273,97 +280,98 @@
     });
 })();
 
-/* 4. Исправление локализации интерфейса */
+/* 4. Исправление локализации интерфейса (чтение из MediaWiki:Custom-UILocalization.json без парсера Wikitext) */
 (() => {
     'use strict';
     if (window.isUILocalizationLoaded) return;
     window.isUILocalizationLoaded = true;
 
-    const initLocalization = () => {
-        mw.loader.using(['mediawiki.api', 'mediawiki.ForeignApi']).then(() => {
-            const CENTRAL_WIKI_API = 'https://wikicorporate.fandom.com/ru/api.php';
-            const api = new mw.ForeignApi(CENTRAL_WIKI_API, { anonymous: true });
+    const CENTRAL_API = 'https://wikicorporate.fandom.com/ru/api.php';
+    const CACHE_KEY = 'fandom_ui_localization_dict';
+    const CACHE_TIME_KEY = 'fandom_ui_localization_time';
+    const CACHE_TTL = 60 * 60 * 1000; // 1 час
 
-            api.get({
-                action: 'expandtemplates',
-                text: '{{#invoke:UILocalization|toJSON}}',
-                prop: 'wikitext',
-                formatversion: 2
-            }).then(res => {
-                if (!res || !res.expandtemplates || !res.expandtemplates.wikitext) return;
+    const fetchDictionary = () => {
+        try {
+            const cached = localStorage.getItem(CACHE_KEY);
+            const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+            if (cached && cachedTime && (Date.now() - parseInt(cachedTime, 10) < CACHE_TTL)) {
+                return Promise.resolve(JSON.parse(cached));
+            }
+        } catch (e) {}
 
-                let dict = {};
-                try {
-                    dict = JSON.parse(res.expandtemplates.wikitext.trim());
-                } catch (parseError) {
-                    console.error('[Localization] Ошибка парсинга словаря:', parseError);
-                    return;
+        const params = 'action=query&prop=revisions&titles=MediaWiki:Custom-UILocalization.json&rvprop=content&rvslots=main&formatversion=2&format=json&origin=*';
+        return fetch(`${CENTRAL_API}?${params}`)
+            .then(res => res.json())
+            .then(data => {
+                const page = data.query && data.query.pages && data.query.pages[0];
+                if (page && !page.missing && page.revisions && page.revisions[0]) {
+                    const dict = JSON.parse(page.revisions[0].slots.main.content);
+                    try {
+                        localStorage.setItem(CACHE_KEY, JSON.stringify(dict));
+                        localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+                    } catch (e) {}
+                    return dict;
                 }
+                return {};
+            })
+            .catch(() => ({}));
+    };
 
-                if (Object.keys(dict).length === 0) return;
+    const initLocalization = () => {
+        fetchDictionary().then(dict => {
+            if (!dict || Object.keys(dict).length === 0) return;
 
-                let rafScheduled = false;
-                const translateUI = () => {
-                    rafScheduled = false;
-                    const widgetTitles = document.querySelectorAll('.wds-widget-frame__title:not(.is-translated)');
-                    widgetTitles.forEach(title => {
-                        const originalText = (title.getAttribute('title') || title.textContent || '').trim();
-                        if (dict[originalText]) {
-                            title.textContent = dict[originalText];
-                            title.setAttribute('title', dict[originalText]);
-                            title.classList.add('is-translated');
-                        }
-                    });
-
-                    const safeTextElements = document.querySelectorAll(
-                        '.ActionItem_action-item__dll5i:not(.is-translated), .wds-tabs__tab-label a:not(.is-translated), .wds-tooltip:not(.is-translated)'
-                    );
-
-                    safeTextElements.forEach(item => {
-                        item.childNodes.forEach(node => {
-                            if (node.nodeType === 3) {
-                                const originalText = node.nodeValue.trim();
-                                if (dict[originalText]) {
-                                    node.nodeValue = node.nodeValue.replace(originalText, dict[originalText]);
-                                    item.classList.add('is-translated');
-                                }
-                            }
-                        });
-                    });
-                };
-
-                translateUI();
-
-                const observer = new MutationObserver(mutations => {
-                    if (rafScheduled) return;
-                    for (let i = 0; i < mutations.length; i++) {
-                        if (mutations[i].addedNodes.length > 0 || mutations[i].type === 'characterData') {
-                            rafScheduled = true;
-                            window.requestAnimationFrame(translateUI);
-                            break;
-                        }
+            let rafScheduled = false;
+            const translateUI = () => {
+                rafScheduled = false;
+                const widgetTitles = document.querySelectorAll('.wds-widget-frame__title:not(.is-translated)');
+                widgetTitles.forEach(title => {
+                    const originalText = (title.getAttribute('title') || title.textContent || '').trim();
+                    if (dict[originalText]) {
+                        title.textContent = dict[originalText];
+                        title.setAttribute('title', dict[originalText]);
+                        title.classList.add('is-translated');
                     }
                 });
 
-                observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-            }).catch(e => {
-                console.error('[Localization] Ошибка загрузки словаря с центральной Вики:', e);
+                const safeTextElements = document.querySelectorAll(
+                    '.ActionItem_action-item__dll5i:not(.is-translated), .wds-tabs__tab-label a:not(.is-translated), .wds-tooltip:not(.is-translated)'
+                );
+
+                safeTextElements.forEach(item => {
+                    item.childNodes.forEach(node => {
+                        if (node.nodeType === 3) {
+                            const originalText = node.nodeValue.trim();
+                            if (dict[originalText]) {
+                                node.nodeValue = node.nodeValue.replace(originalText, dict[originalText]);
+                                item.classList.add('is-translated');
+                            }
+                        }
+                    });
+                });
+            };
+
+            translateUI();
+
+            const observer = new MutationObserver(mutations => {
+                if (rafScheduled) return;
+                for (let i = 0; i < mutations.length; i++) {
+                    if (mutations[i].addedNodes.length > 0 || mutations[i].type === 'characterData') {
+                        rafScheduled = true;
+                        window.requestAnimationFrame(translateUI);
+                        break;
+                    }
+                }
             });
+
+            observer.observe(document.body, { childList: true, subtree: true, characterData: true });
         });
     };
 
-    if (typeof window.mw !== 'undefined') {
-        initLocalization();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLocalization);
     } else {
-        let attempts = 0;
-        const mwInterval = setInterval(() => {
-            attempts++;
-            if (typeof window.mw !== 'undefined') {
-                clearInterval(mwInterval);
-                initLocalization();
-            } else if (attempts >= 40) {
-                clearInterval(mwInterval);
-            }
-        }, 250);
+        initLocalization();
     }
 })();
