@@ -1,12 +1,14 @@
-/* Master CSS Runtime Adapter (ES2024) */
+/* Master CSS Runtime Adapter (ES2026) */
 (async () => {
     'use strict';
     if (window.fandomMasterCssLoaded) return;
     window.fandomMasterCssLoaded = true;
 
     const CONFIG = {
-        localPage: 'Модуль:MasterCSS',
-        centralPage: 'Модуль:GlobalMasterCSS',
+        localJsonPage: 'MediaWiki:Custom-MasterCSS.json',
+        localFallbackLua: 'Модуль:MasterCSS',
+        centralJsonPage: 'MediaWiki:Custom-GlobalMasterCSS.json',
+        centralFallbackLua: 'Модуль:GlobalMasterCSS',
         centralApiUrl: 'https://wikicorporate.fandom.com/ru/api.php',
         cdnUrl: 'https://cdn.jsdelivr.net/npm/@master/css-runtime@2.0.0-rc.33/+esm',
         cacheKey: 'fandom_mastercss_config',
@@ -49,12 +51,12 @@
         } catch {}
     };
 
-    const fetchSource = async (pageTitle, apiUrl = mw.util.wikiScript('api')) => {
+    const fetchSource = async (jsonTitle, luaTitle, apiUrl = mw.util.wikiScript('api')) => {
         try {
             const params = new URLSearchParams({
                 action: 'query',
                 prop: 'revisions',
-                titles: pageTitle,
+                titles: `${jsonTitle}|${luaTitle}`,
                 rvprop: 'content',
                 rvslots: 'main',
                 format: 'json',
@@ -64,30 +66,40 @@
             const response = await fetch(`${apiUrl}?${params.toString()}`);
             if (!response.ok) return {};
             const data = await response.json();
-            const rawContent = data.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content;
-            if (!rawContent) return {};
-            const match = rawContent.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
-            return match ? JSON.parse(match[2]) : {};
-        } catch {
-            return {};
-        }
+            const pages = data.query?.pages ?? [];
+
+            const jsonPage = pages.find(p => p.title.endsWith('.json') && !p.missing);
+            if (jsonPage?.revisions?.[0]?.slots?.main?.content) {
+                return JSON.parse(jsonPage.revisions[0].slots.main.content);
+            }
+
+            const luaPage = pages.find(p => !p.title.endsWith('.json') && !p.missing);
+            const rawLua = luaPage?.revisions?.[0]?.slots?.main?.content;
+            if (rawLua) {
+                const match = rawLua.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
+                return match ? JSON.parse(match[2]) : {};
+            }
+        } catch {}
+        return {};
     };
 
-    // Санитайзер классов (защита от CSS-инъекций и внешней подгрузки через url())
     const sanitizeClasses = (node) => {
         if (!node || node.nodeType !== 1) return;
 
         const cleanNode = (element) => {
             if (!element.hasAttribute('class')) return;
-            const badClasses = Array.from(element.classList).filter(cls => {
-                const lower = cls.toLowerCase();
-                return (
-                    lower.includes('url(') ||
-                    lower.includes('expression(') ||
-                    lower.includes('@import') ||
-                    lower.includes('javascript:')
-                );
-            });
+            const badClasses = element.classList.values()
+                .filter(cls => {
+                    const lower = cls.toLowerCase();
+                    return (
+                        lower.includes('url(') ||
+                        lower.includes('expression(') ||
+                        lower.includes('@import') ||
+                        lower.includes('javascript:')
+                    );
+                })
+                .toArray();
+
             if (badClasses.length > 0) {
                 element.classList.remove(...badClasses);
                 console.warn('[MasterCSS Security] Вырезан запрещённый класс:', badClasses);
@@ -110,8 +122,8 @@
             let finalConfig = getCache();
             if (!finalConfig) {
                 const [globalConfig, localConfig] = await Promise.all([
-                    fetchSource(CONFIG.centralPage, CONFIG.centralApiUrl),
-                    fetchSource(CONFIG.localPage)
+                    fetchSource(CONFIG.centralJsonPage, CONFIG.centralFallbackLua, CONFIG.centralApiUrl),
+                    fetchSource(CONFIG.localJsonPage, CONFIG.localFallbackLua)
                 ]);
                 finalConfig = mergeConfigs(globalConfig, localConfig);
                 setCache(finalConfig);
