@@ -1,15 +1,16 @@
-local templates = {
-	'Заголовок',
-	'GameSlider',
-}
 local p = {}
 
+local templates = {
+    'Заголовок',
+    'GameSlider',
+}
+
 function p.render(frame)
-    ret = ''
-    for i,v in ipairs(templates) do
-    	ret = ret .. frame:expandTemplate{title = v}
+    local ret = {}
+    for _, v in ipairs(templates) do
+        table.insert(ret, frame:expandTemplate{ title = v })
     end
-    return ret
+    return table.concat(ret)
 end
 
 return p
