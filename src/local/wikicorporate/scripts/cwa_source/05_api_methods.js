@@ -9,17 +9,26 @@ const AppMethodsApi = {
 
         async fetchConfig() {
             try {
-                const api = new mw.Api();
-                const res = await api.get({
-                    action: 'expandtemplates',
-                    text: '{{#invoke:CrossWikiActivity|toJSON}}',
-                    prop: 'wikitext',
-                    formatversion: 2,
-                    _: Date.now()
-                });
-                const rawText = res?.expandtemplates?.wikitext?.trim();
-                if (rawText) {
-                    const parsed = JSON.parse(rawText);
+                let parsed = null;
+                const rawUrl = `${mw.util.wikiScript()}?title=MediaWiki:Custom-CrossWikiActivity.json&action=raw&ctype=application/json`;
+                const rawRes = await fetch(rawUrl).catch(() => null);
+
+                if (rawRes?.ok) {
+                    parsed = await rawRes.json();
+                } else {
+                    const api = new mw.Api();
+                    const res = await api.get({
+                        action: 'expandtemplates',
+                        text: '{{#invoke:CrossWikiActivity|toJSON}}',
+                        prop: 'wikitext',
+                        formatversion: 2,
+                        _: Date.now()
+                    });
+                    const rawText = res?.expandtemplates?.wikitext?.trim();
+                    if (rawText) parsed = JSON.parse(rawText);
+                }
+
+                if (parsed) {
                     this.wikis = Array.isArray(parsed.wikis) ? parsed.wikis : [];
                     if (parsed.settings && typeof parsed.settings === 'object') {
                         Object.assign(this.settings, parsed.settings);
@@ -126,7 +135,7 @@ const AppMethodsApi = {
 
                                     for (const uRes of uResults) {
                                         for (const u of uRes?.query?.users ?? []) {
-                                            if (u.groups?.some(g => trustedGroups.has(g))) {
+                                            if (u.groups && !new Set(u.groups).isDisjointFrom(trustedGroups)) {
                                                 trustedUsers.add(u.name);
                                             }
                                         }
@@ -185,8 +194,9 @@ const AppMethodsApi = {
                     for (const e of wikiEdits) editsMap.set(e.id, e);
                 }
 
-                this.edits = Array.from(editsMap.values())
+                this.edits = editsMap.values()
                     .filter(edit => new Date(edit.timestamp) >= endDate)
+                    .toArray()
                     .toSorted((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
             } finally {
                 this.isLoading = false;
