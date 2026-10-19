@@ -1,12 +1,14 @@
 /**
  * Кастомные плашки и теги участников в профиле, комментариях и лидерборде
+ * Источник данных: MediaWiki:Custom-Users.json (с фоллбэком на Модуль:Users)
  */
 (() => {
     'use strict';
     if (window.isCustomUsersTagsLoaded) return;
     window.isCustomUsersTagsLoaded = true;
 
-    const MODULE_NAME = 'Users';
+    const JSON_PAGE = 'MediaWiki:Custom-Users.json';
+    const FALLBACK_MODULE = 'Users';
 
     const renderProfileTags = (data) => {
         const profileUser = mw.config.get('profileUserName');
@@ -130,18 +132,27 @@
         scanLinks();
     };
 
-    const init = () => {
-        const api = new mw.Api();
-        api.get({
-            action: 'expandtemplates',
-            text: `{{#invoke:${MODULE_NAME}|toJSON}}`,
-            prop: 'wikitext',
-            formatversion: 2
-        }).then(response => {
-            if (!response || !response.expandtemplates || !response.expandtemplates.wikitext) return;
-            const data = JSON.parse(response.expandtemplates.wikitext);
-            if (!data || !data.users || !data.tags) return;
+    const fetchUsersConfig = () => {
+        const rawUrl = `${mw.util.wikiScript()}?title=${encodeURIComponent(JSON_PAGE)}&action=raw&ctype=application/json`;
+        return fetch(rawUrl)
+            .then(res => {
+                if (!res.ok) throw new Error('JSON page not found');
+                return res.json();
+            })
+            .catch(() => {
+                const api = new mw.Api();
+                return api.get({
+                    action: 'expandtemplates',
+                    text: `{{#invoke:${FALLBACK_MODULE}|toJSON}}`,
+                    prop: 'wikitext',
+                    formatversion: 2
+                }).then(response => JSON.parse(response.expandtemplates.wikitext));
+            });
+    };
 
+    const init = () => {
+        fetchUsersConfig().then(data => {
+            if (!data || !data.users || !data.tags) return;
             renderProfileTags(data);
             renderInlineTags(data);
         }).catch(error => {
@@ -149,5 +160,5 @@
         });
     };
 
-    mw.loader.using('mediawiki.api').then(init);
+    mw.loader.using(['mediawiki.api', 'mediawiki.util']).then(init);
 })();
