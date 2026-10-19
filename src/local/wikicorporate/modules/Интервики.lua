@@ -43,18 +43,25 @@ function p.e(frame)
         return ''
     end
 
+    local is_main_page = (page == 'Заглавная страница')
+
     -- Сортируем языковые префиксы по алфавиту для стабильного вывода
     local langs = {}
     for lang, target in pairs(links) do
-        if type(lang) == 'string' and type(target) == 'string' and mw.text.trim(target) ~= '' then
-            table.insert(langs, lang)
+        if type(lang) == 'string' and type(target) == 'string' then
+            local clean_target = mw.text.trim(target)
+            -- Для Заглавной страницы пустая строка "" генерирует валидный [[lang:]] на корень вики
+            if clean_target ~= '' or is_main_page then
+                table.insert(langs, lang)
+            end
         end
     end
     table.sort(langs)
 
     local res = {}
     for _, lang in ipairs(langs) do
-        table.insert(res, string.format('[[%s:%s]]', lang, mw.text.trim(links[lang])))
+        local clean_target = mw.text.trim(links[lang] or '')
+        table.insert(res, string.format('[[%s:%s]]', lang, clean_target))
     end
 
     return table.concat(res, '\n')
