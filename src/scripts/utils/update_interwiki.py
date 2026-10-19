@@ -15,6 +15,7 @@ def fetch_interwikis() -> None:
 
     for project_name, cfg in projects.items():
         output_rel = cfg.get("interwiki_output")
+        legacy_rel = cfg.get("legacy_interwiki_output")
         hubs: Dict[str, str] = cfg.get("hubs", {})
         domain = cfg.get("domain")
         api_path = cfg.get("path", "/ru/")
@@ -23,21 +24,24 @@ def fetch_interwikis() -> None:
             continue
 
         output_path = REPO_ROOT / output_rel
+        legacy_path = (REPO_ROOT / legacy_rel) if legacy_rel else None
         ru_api = f"https://{domain}{api_path}api.php"
 
         print(f"\n[=== Запуск сбора интервики для проекта: {project_name} ===]")
 
-        # 1. Загружаем существующую базу
+        # 1. Загружаем существующую базу (с автоматической миграцией из старого пути main/Интервики.json)
         interwiki_db: Dict[str, Dict[str, str]] = {}
-        if output_path.exists():
+        source_to_read = output_path if output_path.exists() else (legacy_path if legacy_path and legacy_path.exists() else None)
+
+        if source_to_read:
             try:
-                with open(output_path, "r", encoding="utf-8") as f:
+                with open(source_to_read, "r", encoding="utf-8") as f:
                     loaded = json.load(f)
                     if isinstance(loaded, dict):
                         interwiki_db = loaded
-                print(f"[*] Загружена существующая база: {len(interwiki_db)} статей.")
+                print(f"[*] Загружена существующая база ({source_to_read.name}): {len(interwiki_db)} статей.")
             except Exception as e:
-                print(f"[!] Ошибка чтения старой базы {output_path}: {e}")
+                print(f"[!] Ошибка чтения старой базы {source_to_read}: {e}")
 
         # 2. Собираем свежие ссылки со всех языковых хабов
         temp_db: Dict[str, Dict[str, str]] = {}
@@ -96,7 +100,6 @@ def fetch_interwikis() -> None:
                             temp_db[ru_title] = {}
                         temp_db[ru_title][hub_lang] = hub_title
 
-                        # Сохраняем транзитивные интервики-ссылки на другие языки
                         for link in langlinks:
                             l_code = link.get("lang")
                             l_title = (link.get("*") or "").strip()
@@ -140,7 +143,7 @@ def fetch_interwikis() -> None:
             except Exception as e:
                 print(f"  [!] Ошибка при проверке пачки статей на {ru_api}: {e}")
 
-        # 4. Переносим валидные старые записи на нормализованные/перенаправленные названия
+        # 4. Переносим валидные старые записи
         cleaned_db: Dict[str, Dict[str, str]] = {}
         for old_title, links in interwiki_db.items():
             norm_title = norm_map.get(old_title, old_title)
@@ -153,7 +156,7 @@ def fetch_interwikis() -> None:
                 if target and target.strip():
                     cleaned_db[true_title][lang] = target.strip()
 
-        # 5. Накатываем свежие данные поверх старых (актуализируя переименованные статьи)
+        # 5. Накатываем свежие данные поверх старых
         for ru_title, links in temp_db.items():
             norm_title = norm_map.get(ru_title, ru_title)
             true_title = redirect_map.get(norm_title, norm_title)
@@ -165,7 +168,6 @@ def fetch_interwikis() -> None:
                 if target and target.strip():
                     cleaned_db[true_title][lang] = target.strip()
 
-        # Удаляем записи без единой непустой интервики-ссылки
         cleaned_db = {k: v for k, v in cleaned_db.items() if v}
 
         os.makedirs(output_path.parent, exist_ok=True)
@@ -173,7 +175,15 @@ def fetch_interwikis() -> None:
             json.dump(cleaned_db, f, ensure_ascii=False, indent=4, sort_keys=True)
             f.write("\n")
 
-        print(f"[+] Успешно! База {project_name} сохранена: {len(cleaned_db)} чистых статей.")
+        # Удаляем старый файл main/Интервики.json после успешной миграции в mediawiki/Custom-Интервики.json
+        if legacy_path and legacy_path.exists() and legacy_path != output_path:
+            try:
+                legacy_path.unlink()
+                print(f"[*] Удалён устаревший файл: {legacy_path.relative_to(REPO_ROOT)}")
+            except OSError:
+                pass
+
+        print(f"[+] Успешно! База {project_name} сохранена в {output_path.relative_to(REPO_ROOT)}: {len(cleaned_db)} статей.")
 
 
 if __name__ == "__main__":
