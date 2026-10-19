@@ -26,7 +26,8 @@
       "domain": "hazbinhotel.fandom.com",
       "path": "/ru/",
       "all_pages": true,
-      "interwiki_output": "src/local/hazbin/main/Интервики.json",
+      "interwiki_output": "src/local/hazbin/mediawiki/Custom-Интервики.json",
+      "legacy_interwiki_output": "src/local/hazbin/main/Интервики.json",
       "wall_title": "Добро пожаловать на Вики!",
       "wall_message": "Приветствуем на проекте! Спасибо за {action_phrase}. Если у вас возникнут вопросы по оформлению или правилам вики, вы всегда можете задать их на этой стене.",
       "hubs": {
@@ -50,7 +51,8 @@
       "domain": "zoophobia.fandom.com",
       "path": "/ru/",
       "all_pages": true,
-      "interwiki_output": "src/local/zoophobia/main/Интервики.json",
+      "interwiki_output": "src/local/zoophobia/mediawiki/Custom-Интервики.json",
+      "legacy_interwiki_output": "src/local/zoophobia/main/Интервики.json",
       "wall_title": "Добро пожаловать на Zoophobia Вики!",
       "wall_message": "Приветствуем! Спасибо за {action_phrase}. Если понадобится помощь с кодом, шаблонами или содержанием статей — пишите на стену.",
       "hubs": {
@@ -63,7 +65,8 @@
       "domain": "returnal.fandom.com",
       "path": "/ru/",
       "all_pages": true,
-      "interwiki_output": "src/local/returnal/main/Интервики.json",
+      "interwiki_output": "src/local/returnal/mediawiki/Custom-Интервики.json",
+      "legacy_interwiki_output": "src/local/returnal/main/Интервики.json",
       "wall_title": "Добро пожаловать!",
       "wall_message": "Приветствуем исследователя Атропоса! Спасибо за {action_phrase}.",
       "hubs": {
@@ -75,7 +78,8 @@
       "domain": "helltaker.fandom.com",
       "path": "/ru/",
       "all_pages": true,
-      "interwiki_output": "src/local/helltaker/main/Интервики.json",
+      "interwiki_output": "src/local/helltaker/mediawiki/Custom-Интервики.json",
+      "legacy_interwiki_output": "src/local/helltaker/main/Интервики.json",
       "wall_title": "Добро пожаловать в Ад!",
       "wall_message": "Приветствуем на проекте! Спасибо за {action_phrase}.",
       "hubs": {
@@ -87,7 +91,8 @@
       "domain": "oneshot.fandom.com",
       "path": "/ru/",
       "all_pages": true,
-      "interwiki_output": "src/local/oneshot/main/Интервики.json",
+      "interwiki_output": "src/local/oneshot/mediawiki/Custom-Интервики.json",
+      "legacy_interwiki_output": "src/local/oneshot/main/Интервики.json",
       "wall_title": "Добро пожаловать в мир OneShot!",
       "wall_message": "Приветствуем! Спасибо за {action_phrase}.",
       "hubs": {
