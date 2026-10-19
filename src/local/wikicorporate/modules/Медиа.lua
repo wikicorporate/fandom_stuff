@@ -2,7 +2,6 @@ local p = {}
 
 local tabli = mw.loadData('Модуль:Медиа/Данные')
 
--- Быстрая нативная декодировка вместо ручного string.char
 function p.decodeString(str)
     if str and str ~= "" then
         return mw.uri.decode(str, "WIKI")
@@ -11,50 +10,61 @@ function p.decodeString(str)
 end
 
 function p.e(frame)
-    -- Защита от nil (если шаблон вызвали вообще без аргументов)
-    if not frame.args[1] or frame.args[1] == "" then return "" end
-    
-    local typeofcall = mw.ustring.upper(frame.args[1])
-    
-    -- Собираем аргументы, игнорируя первый (это ключ)
-    local argsList = {}
-    for i = 2, 10 do -- Ограничиваемся 10 аргументами
-        if frame.args[i] and frame.args[i] ~= "" then
-            table.insert(argsList, frame.args[i])
+    local args = frame.args
+    if not args[1] or mw.text.trim(args[1]) == "" then
+        local parent = frame:getParent()
+        if parent and parent.args and parent.args[1] then
+            args = parent.args
         else
-            break -- Прерываем цикл на первом же пустом аргументе
+            return ""
         end
     end
-    
+
+    local serviceKey = mw.text.trim(args[1] or "")
+    if serviceKey == "" then
+        return ""
+    end
+
+    local typeofcall = mw.ustring.upper(serviceKey)
+
+    -- Собираем аргументы, игнорируя первый (ключ сервиса)
+    local argsList = {}
+    for i = 2, 10 do
+        local rawVal = args[i]
+        if rawVal then
+            local trimmed = mw.text.trim(rawVal)
+            if trimmed ~= "" then
+                table.insert(argsList, trimmed)
+            else
+                break
+            end
+        else
+            break
+        end
+    end
+
     local numofargs = #argsList
-    
-    -- Логика разрешения псевдонимов
     local serviceData = tabli[typeofcall]
-    
-    -- Если по ключу лежит строка (например, 'YOUTUBE'), значит это псевдоним.
-    -- Запрашиваем реальные данные по этому псевдониму.
+
+    -- Разрешение псевдонима
     if type(serviceData) == "string" then
         serviceData = tabli[serviceData]
     end
-    
-    -- Если сервис или нужное количество аргументов не найдено
-    if not serviceData or not serviceData[numofargs] then
+
+    if type(serviceData) ~= "table" or not serviceData[numofargs] then
         return "'''[Ошибка: Неверный формат или сервис не поддерживается]'''"
     end
-    -- ===========================================
-    
+
     local text = serviceData[numofargs].pattern
-    
-    -- Вживляем аргументы в строку
+
+    -- Безопасная подстановка аргументов через функцию (защита от символа % в строке замены)
     for i, v in ipairs(argsList) do
         local decodedArg = p.decodeString(v)
-        -- Заменяем $url1, $url2... (с заменой пробелов на %20)
         local urlArg = decodedArg:gsub(" ", "%%20")
-        text = text:gsub("%$url" .. tostring(i), urlArg)
-        -- Заменяем обычные $1, $2...
-        text = text:gsub("%$" .. tostring(i), decodedArg)
+        text = text:gsub("%$url" .. tostring(i), function() return urlArg end)
+        text = text:gsub("%$" .. tostring(i), function() return decodedArg end)
     end
-    
+
     return text
 end
 
