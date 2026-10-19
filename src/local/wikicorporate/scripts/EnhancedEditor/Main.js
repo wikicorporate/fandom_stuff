@@ -1,4 +1,4 @@
-/* EnhancedEditor - Автодополнение ссылок, файлов и шаблонов в ProseMirror (ES2024) */
+/* EnhancedEditor - Автодополнение ссылок, файлов и шаблонов в ProseMirror (ES2026) */
 (() => {
     'use strict';
 
@@ -37,10 +37,9 @@
             a.href = config.wgServer + a.getAttribute('href');
         });
 
-        let processedHtml = parserOutput.innerHTML
+        return parserOutput.innerHTML
             .replaceAll(/<br ?\/?><br ?\/?>/g, '</p><p><br /></p><p>')
             .replaceAll(/<br ?\/?>(?!\s*<\/p>)/g, '</p><p>');
-        return processedHtml;
     };
 
     const EnhancedEditor = {
@@ -84,9 +83,11 @@
             ]);
 
             const merged = { ...central, ...local };
-            const userGroups = config.wgUserGroups ?? [];
-            const modGroups = ['bureaucrat', 'sysop', 'threadmoderator', 'content-moderator', 'rollback', 'staff', 'soap'];
-            const isMod = userGroups.some(g => modGroups.includes(g));
+            const userGroupsSet = new Set(config.wgUserGroups ?? []);
+            const modGroupsSet = new Set(['bureaucrat', 'sysop', 'threadmoderator', 'content-moderator', 'rollback', 'staff', 'soap']);
+
+            // ES2026 Set.prototype.isDisjointFrom
+            const isMod = !userGroupsSet.isDisjointFrom(modGroupsSet);
 
             for (const key of Object.keys(merged)) {
                 if (merged[key].modOnly && !isMod) delete merged[key];
@@ -221,9 +222,12 @@
                         search = { node: caret.node, offsets: [match.index, match[0].length], type: 'template' };
 
                         const query = match[1].toLowerCase();
-                        const results = Object.values(EnhancedEditor.templateDB).filter(t =>
-                            t.title?.toLowerCase().includes(query) || t.name?.toLowerCase().includes(query)
-                        ).slice(0, 6);
+                        // ES2026 Iterator Helpers: ленивая фильтрация с остановкой после первых 6 совпадений
+                        const results = Object.values(EnhancedEditor.templateDB)
+                            .values()
+                            .filter(t => t.title?.toLowerCase().includes(query) || t.name?.toLowerCase().includes(query))
+                            .take(6)
+                            .toArray();
 
                         if (results.length) methods.buildSuggestions(results);
                         else methods.appendMessage('Шаблоны не найдены');
@@ -292,7 +296,7 @@
                             } catch {
                                 methods.appendMessage(`Неверный URL интервики: "${interwiki.url}".`);
                             }
-                        } catch { /* Aborted or failed */ }
+                        } catch { /* Aborted */ }
                     } else if (search.type === 'link') {
                         lastRequest = api.get({ list: 'prefixsearch', pssearch: cleanPrefix, pslimit: '6', maxage: '60' });
                         try {
@@ -421,7 +425,7 @@
                     searchNode.replaceWith(safeMarker);
 
                     methods.closeSuggestions();
-                    const wikitext = `{{#invoke:${tpl.moduleName}\vert{}main\vert{}${tpl.name}}}`;
+                    const wikitext = `{{#invoke:${tpl.moduleName}|main|${tpl.name}}}`;
 
                     try {
                         const res = await localApi.get({
