@@ -1,15 +1,16 @@
-/* Fandom Loader: Howler.js (ES2022) with Dual Lua Config */
-(async () => {
+/* Fandom Loader: Howler.js with Dual Lua Config (ES2024) */
+(() => {
+    'use strict';
     if (window.FandomHowlerLoaded) return;
     window.FandomHowlerLoaded = true;
 
-    let Howl; 
-    window.FandomHowlerPresets = window.FandomHowlerPresets || {};
+    let Howl = null;
+    let initPromise = null;
+    window.FandomHowlerPresets ??= {};
 
-    // Ссылка на центральную вики, где лежит глобальный модуль
-    const CENTRAL_WIKI_API = 'https://wikicorporate.fandom.com/ru/api.php'; 
+    const CENTRAL_WIKI_API = 'https://wikicorporate.fandom.com/ru/api.php';
+    const ALLOWED_EVENTS = new Set(['click', 'mouseenter', 'mouseleave', 'focus', 'pointerdown']);
 
-    // Функция загрузки и парсинга Lua -> JSON
     const fetchConfig = async (api, moduleName) => {
         try {
             const data = await api.get({
@@ -18,100 +19,96 @@
                 prop: 'wikitext',
                 formatversion: 2
             });
-            return JSON.parse(data.expandtemplates.wikitext.trim() || '{}');
-        } catch (e) {
-            return {}; // Тихий фоллбек, если модуля нет на вики
+            return JSON.parse(data?.expandtemplates?.wikitext?.trim() || '{}');
+        } catch {
+            return {};
         }
     };
 
-    const initEngineAndPresets = async () => {
-        // Подключаем необходимые API-библиотеки MediaWiki
-        await mw.loader.using(['mediawiki.api', 'mediawiki.ForeignApi', 'mediawiki.util']);
+    const initEngineAndPresets = () => {
+        if (Howl) return Promise.resolve();
+        initPromise ??= (async () => {
+            await mw.loader.using(['mediawiki.api', 'mediawiki.ForeignApi', 'mediawiki.util']);
 
-        const localApi = new mw.Api();
-        const foreignApi = new mw.ForeignApi(CENTRAL_WIKI_API, { anonymous: true });
+            const localApi = new mw.Api();
+            const foreignApi = new mw.ForeignApi(CENTRAL_WIKI_API, { anonymous: true });
 
-        // Асинхронно параллельно качаем глобальный и локальный конфиги
-        const [centralConfig, localConfig] = await Promise.all([
-            fetchConfig(foreignApi, 'HowlerGlobal'), // Имя глобального модуля
-            fetchConfig(localApi, 'HowlerLocal')     // Имя локального модуля
-        ]);
+            const [centralConfig, localConfig] = await Promise.all([
+                fetchConfig(foreignApi, 'HowlerGlobal'),
+                fetchConfig(localApi, 'HowlerLocal')
+            ]);
 
-        // Сливаем конфиги (Локальный имеет больший приоритет при совпадении ключей)
-        const mergedConfig = { ...centralConfig, ...localConfig };
+            const mergedConfig = { ...centralConfig, ...localConfig };
 
-        // Загружаем сам движок Howler, если конфиги не пустые
-        if (Object.keys(mergedConfig).length > 0 && !window.Howl) {
-            await new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js';
-                script.onload = resolve;
-                script.onerror = () => reject(new Error('Failed to load Howler.js'));
-                document.head.append(script);
-            });
-        }
-        
-        Howl = window.Howl;
-        if (!Howl) return;
+            if (Object.keys(mergedConfig).length > 0 && !window.Howl) {
+                await new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js';
+                    script.onload = resolve;
+                    script.onerror = () => reject(new Error('Failed to load Howler.js'));
+                    document.head.append(script);
+                });
+            }
 
-        // Инициализируем пресеты из объединенного JSON
-        for (const [presetName, config] of Object.entries(mergedConfig)) {
-            const fileName = config.file || config.src;
-            if (!fileName) continue;
+            Howl = window.Howl;
+            if (!Howl) return;
 
-            // Если передали полный URL (начинается с http), берем его, иначе генерируем локальный путь Фэндома
-            const srcUrl = fileName.startsWith('http') 
-                ? fileName 
-                : mw.util.getUrl(`Special:FilePath/${fileName}`);
+            for (const [presetName, cfg] of Object.entries(mergedConfig)) {
+                const fileName = cfg?.file || cfg?.src;
+                if (!fileName || typeof fileName !== 'string') continue;
 
-            window.FandomHowlerPresets[presetName] = new Howl({
-                src: [srcUrl],
-                volume: config.volume ?? 1.0,
-                sprite: config.sprite || undefined,
-                loop: config.loop || false
-            });
-        }
+                const srcUrl = fileName.startsWith('https://')
+                    ? fileName
+                    : mw.util.getUrl(`Special:FilePath/${fileName.replace(/^(?:File|Файл):/i, '')}`);
+
+                window.FandomHowlerPresets[presetName] = new Howl({
+                    src: [srcUrl],
+                    volume: cfg.volume ?? 1.0,
+                    sprite: cfg.sprite || undefined,
+                    loop: Boolean(cfg.loop)
+                });
+            }
+        })();
+        return initPromise;
     };
 
     const processHowlerNodes = async (nodes) => {
-        if (!Howl) {
-            try {
-                await initEngineAndPresets();
-            } catch (error) {
-                console.error('[Howler Adapter] Ошибка инициализации:', error);
-                return;
-            }
+        try {
+            await initEngineAndPresets();
+        } catch (error) {
+            console.error('[Howler Adapter] Ошибка инициализации:', error);
+            return;
         }
-        
-        if (!Howl) return; // Если после инициализации движка всё равно нет
 
-        nodes.forEach(node => {
-            if (node.dataset.processedHowler) return;
-            node.dataset.processedHowler = "true";
+        if (!Howl) return;
 
-            const soundName = window.DOMPurify?.sanitize(node.dataset.sound) || node.dataset.sound;
-            const preset = window.FandomHowlerPresets[soundName];
-            
+        for (const node of nodes) {
+            if (node.dataset.processedHowler) continue;
+            node.dataset.processedHowler = 'true';
+
+            const soundName = (node.dataset.sound ?? '').trim();
+            const preset = Object.hasOwn(window.FandomHowlerPresets, soundName)
+                ? window.FandomHowlerPresets[soundName]
+                : null;
+
             if (!soundName || !preset) {
                 console.warn(`[Howler] Звуковой пресет "${soundName}" не найден в реестрах.`);
-                return;
+                continue;
             }
 
-            const eventType = node.dataset.event || 'click';
+            const rawEvent = (node.dataset.event ?? 'click').trim();
+            const eventType = ALLOWED_EVENTS.has(rawEvent) ? rawEvent : 'click';
             const spriteId = node.dataset.play;
 
             node.addEventListener(eventType, () => {
-                if (spriteId) {
-                    preset.play(spriteId);
-                } else {
-                    preset.play();
-                }
+                if (spriteId) preset.play(spriteId);
+                else preset.play();
             });
 
             if (eventType === 'click') {
                 node.style.cursor = 'pointer';
             }
-        });
+        }
     };
 
     const domObserver = new MutationObserver((mutations) => {
@@ -122,7 +119,7 @@
     });
 
     domObserver.observe(document.body, { childList: true, subtree: true });
-    
+
     const initialNodes = document.querySelectorAll('.wiki-howler:not([data-processed-howler])');
     if (initialNodes.length > 0) processHowlerNodes(initialNodes);
 })();
