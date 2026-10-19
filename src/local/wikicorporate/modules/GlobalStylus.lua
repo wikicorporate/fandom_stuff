@@ -1,48 +1,101 @@
 local p = {}
 
 p.StylusCode = [=[
-
 /* ==========================================================================
    FANDOM STYLUS FRAMEWORK
-   Синтаксис Stylus: минимум лишних символов (отступы решают всё)
+   Лаконичный синтаксис на отступах с поддержкой токенов FandomDesktop
    ========================================================================== */
 
-// Переменные объявляются просто через знак равно
-bg-base = var(--theme-page-background-color)
-text-main = var(--theme-page-text-color)
-accent-color = var(--theme-accent-color)
+// --- 1. ПЕРЕМЕННЫЕ ТЕМЫ ---
+bg-base          = var(--theme-page-background-color)
+bg-secondary     = var(--theme-page-background-color--secondary)
+text-main        = var(--theme-page-text-color)
+text-secondary   = var(--theme-page-text-color--secondary)
+link-color       = var(--theme-link-color)
+accent-color     = var(--theme-accent-color)
+border-color     = var(--theme-border-color)
 
-// Миксин в Stylus (прозрачное примешивание)
-// Даже не нужно писать "mixin", просто имя функции
+surface-glass    = unquote('color-mix(in srgb, var(--theme-page-background-color--secondary) 80%, transparent)')
+accent-hover     = unquote('color-mix(in srgb, var(--theme-accent-color) 85%, #000)')
+accent-subtle    = unquote('color-mix(in srgb, var(--theme-accent-color) 15%, transparent)')
+
+radius-sm        = 4px
+radius-md        = 8px
+radius-lg        = 12px
+shadow-sm        = 0 2px 4px rgba(0, 0, 0, 0.15)
+shadow-md        = 0 4px 12px rgba(0, 0, 0, 0.25)
+transition-base  = 0.25s cubic-bezier(0.4, 0, 0.2, 1)
+
+// --- 2. МИКСИНЫ РАСКЛАДКИ И ТИПОГРАФИКИ ---
 flex-center()
   display flex
   justify-content center
   align-items center
 
-// Кастомный скроллбар (проброс аргументов)
-custom-scrollbar(thumb = accent-color, track = transparent)
+flex-between()
+  display flex
+  justify-content space-between
+  align-items center
+
+absolute-fill()
+  position absolute
+  inset 0
+
+auto-grid(min-w = 200px, gap-size = 16px)
+  display grid
+  grid-template-columns repeat(auto-fill, minmax(min-w, 1fr))
+  gap gap-size
+
+text-truncate()
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+
+line-clamp(lines = 3)
+  display -webkit-box
+  -webkit-line-clamp lines
+  -webkit-box-orient vertical
+  overflow hidden
+
+// --- 3. МИКСИНЫ ПОВЕРХНОСТЕЙ ---
+custom-scrollbar(thumb = accent-color, track = transparent, size = 8px)
+  scrollbar-width thin
+  scrollbar-color thumb track
   &::-webkit-scrollbar
-    width 8px
-    height 8px
+    width size
+    height size
   &::-webkit-scrollbar-track
     background track
   &::-webkit-scrollbar-thumb
     background thumb
     border-radius 4px
+    &:hover
+      background accent-hover
 
-// --- Использование ---
+glass-panel(blur-radius = 10px)
+  background surface-glass
+  backdrop-filter blur(blur-radius)
+  -webkit-backdrop-filter blur(blur-radius)
+  border 1px solid border-color
 
-.stylus-custom-widget
-  background bg-base
+wiki-card(pad = 16px, rad = radius-md)
+  background bg-secondary
   color text-main
-  border 1px solid accent-color
-  padding 20px
-  border-radius 8px
-  
-  // Вложенность работает так же, как в Less/SCSS
+  border 1px solid border-color
+  border-radius rad
+  padding pad
+  box-shadow shadow-sm
+  transition transform transition-base, box-shadow transition-base, border-color transition-base
+  &:hover
+    border-color accent-color
+    box-shadow shadow-md
+
+// --- 4. БАЗОВЫЙ КОМПОНЕНТ ---
+.stylus-custom-widget
+  wiki-card(20px, radius-md)
+
   &__header
-    flex-center()
-    justify-content space-between
+    flex-between()
     border-bottom 2px solid accent-color
     padding-bottom 10px
 
@@ -54,8 +107,11 @@ custom-scrollbar(thumb = accent-color, track = transparent)
     margin-top 15px
     max-height 200px
     overflow-y auto
-    custom-scrollbar() // Вызов миксина
+    custom-scrollbar()
 
+  &__desc
+    line-clamp(2)
+    color text-secondary
 ]=]
 
 return p
