@@ -1,0 +1,36 @@
+// @template: card
+.wiki-pug-card(style="background:var(--theme-page-background-color--secondary);border:1px solid var(--theme-border-color);border-radius:8px;padding:16px;margin:10px 0;")
+  .wiki-pug-card__header(style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--theme-border-color);padding-bottom:8px;margin-bottom:10px;")
+    .wiki-pug-card__titles
+      h3(style="margin:0;color:var(--theme-page-text-color);font-size:1.15rem;")= title || 'Без названия'
+      if subtitle
+        span(style="font-size:0.85rem;color:var(--theme-page-text-color--secondary);")= subtitle
+    if badge
+      span.wiki-pug-card__badge(style="background:var(--theme-accent-color);color:#fff;padding:2px 8px;border-radius:999px;font-size:0.75rem;font-weight:600;")= badge
+  .wiki-pug-card__body(style="color:var(--theme-page-text-color);line-height:1.5;")
+    p(style="margin:0;")= desc || text || ''
+
+// @template: quote
+blockquote.wiki-pug-quote(style="background:var(--theme-page-background-color--secondary);border-left:4px solid var(--theme-accent-color);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;")
+  p.wiki-pug-quote__text(style="margin:0 0 6px 0;font-style:italic;font-size:1.05rem;")= '«' + (text || '') + '»'
+  if author
+    footer.wiki-pug-quote__footer(style="font-size:0.85rem;color:var(--theme-page-text-color--secondary);")
+      strong= '— ' + author
+      if source
+        span= ', ' + source
+
+// @template: alert
+.wiki-pug-alert(style="display:flex;gap:12px;align-items:flex-start;background:var(--theme-page-background-color--secondary);border:1px solid var(--theme-accent-color);border-radius:8px;padding:12px 16px;margin:10px 0;")
+  i(class=icon || 'fa-solid fa-circle-info' style="color:var(--theme-accent-color);font-size:1.25rem;margin-top:2px;")
+  .wiki-pug-alert__content
+    if title
+      strong(style="display:block;margin-bottom:4px;color:var(--theme-page-text-color);")= title
+    span(style="color:var(--theme-page-text-color--secondary);font-size:0.95rem;")= text || desc || ''
+
+// @template: stat-bar
+.wiki-pug-stat(style="margin:8px 0;")
+  .wiki-pug-stat__top(style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;")
+    strong= label || 'Характеристика'
+    span= (value || '50') + '%'
+  .wiki-pug-stat__track(style="height:8px;background:rgba(0,0,0,0.25);border-radius:4px;overflow:hidden;")
+    .wiki-pug-stat__fill(style="height:100%;background:var(--theme-accent-color);width:" + (value || '50') + "%;")
