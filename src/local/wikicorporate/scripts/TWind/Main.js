@@ -1,4 +1,4 @@
-/* TWind (Tailwind-in-JS) Runtime Adapter (ES2024) */
+/* TWind (Tailwind-in-JS) Runtime Adapter (ES2026) */
 (async () => {
     'use strict';
 
@@ -6,8 +6,10 @@
     window.fandomTwindLoaded = true;
 
     const CONFIG = {
-        localPage: 'Модуль:Twind/LocalConfig',
-        centralPage: 'Модуль:Twind/GlobalConfig',
+        localJsonPage: 'MediaWiki:Custom-TwindLocal.json',
+        localFallbackLua: 'Модуль:Twind/LocalConfig',
+        centralJsonPage: 'MediaWiki:Custom-TwindGlobal.json',
+        centralFallbackLua: 'Модуль:Twind/GlobalConfig',
         centralApiUrl: 'https://wikicorporate.fandom.com/ru/api.php',
         cacheKey: 'fandom_twind_config',
         cacheTimeKey: 'fandom_twind_time',
@@ -49,12 +51,12 @@
         } catch {}
     };
 
-    const fetchSource = async (pageTitle, apiUrl = mw.util.wikiScript('api')) => {
+    const fetchSource = async (jsonTitle, luaTitle, apiUrl = mw.util.wikiScript('api')) => {
         try {
             const params = new URLSearchParams({
                 action: 'query',
                 prop: 'revisions',
-                titles: pageTitle,
+                titles: `${jsonTitle}|${luaTitle}`,
                 rvprop: 'content',
                 rvslots: 'main',
                 format: 'json',
@@ -64,32 +66,42 @@
             const response = await fetch(`${apiUrl}?${params.toString()}`);
             if (!response.ok) return {};
             const data = await response.json();
-            const rawContent = data.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content;
-            if (!rawContent) return {};
+            const pages = data.query?.pages ?? [];
 
-            const match = rawContent.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
-            return match ? JSON.parse(match[2]) : {};
+            const jsonPage = pages.find(p => p.title.endsWith('.json') && !p.missing);
+            if (jsonPage?.revisions?.[0]?.slots?.main?.content) {
+                return JSON.parse(jsonPage.revisions[0].slots.main.content);
+            }
+
+            const luaPage = pages.find(p => !p.title.endsWith('.json') && !p.missing);
+            const rawLua = luaPage?.revisions?.[0]?.slots?.main?.content;
+            if (rawLua) {
+                const match = rawLua.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
+                return match ? JSON.parse(match[2]) : {};
+            }
         } catch (error) {
-            console.warn(`[Twind] Ошибка загрузки конфига ${pageTitle}:`, error);
-            return {};
+            console.warn(`[Twind] Ошибка загрузки конфига ${jsonTitle}:`, error);
         }
+        return {};
     };
 
-    // Фильтрация опасных произвольных классов Tailwind (например bg-[url(...)])
     const sanitizeClasses = (node) => {
         if (!node || node.nodeType !== 1) return;
 
         const cleanNode = (element) => {
             if (!element.hasAttribute('class')) return;
-            const badClasses = Array.from(element.classList).filter(cls => {
-                const lower = cls.toLowerCase();
-                return (
-                    lower.includes('url(') ||
-                    lower.includes('expression(') ||
-                    lower.includes('@import') ||
-                    lower.includes('javascript:')
-                );
-            });
+            const badClasses = element.classList.values()
+                .filter(cls => {
+                    const lower = cls.toLowerCase();
+                    return (
+                        lower.includes('url(') ||
+                        lower.includes('expression(') ||
+                        lower.includes('@import') ||
+                        lower.includes('javascript:')
+                    );
+                })
+                .toArray();
+
             if (badClasses.length > 0) {
                 element.classList.remove(...badClasses);
                 console.warn('[TWind Security] Вырезан запрещённый класс:', badClasses);
@@ -106,8 +118,8 @@
 
             if (!finalConfig) {
                 const [globalConfig, localConfig] = await Promise.all([
-                    fetchSource(CONFIG.centralPage, CONFIG.centralApiUrl),
-                    fetchSource(CONFIG.localPage)
+                    fetchSource(CONFIG.centralJsonPage, CONFIG.centralFallbackLua, CONFIG.centralApiUrl),
+                    fetchSource(CONFIG.localJsonPage, CONFIG.localFallbackLua)
                 ]);
 
                 finalConfig = mergeConfigs(globalConfig, localConfig);
