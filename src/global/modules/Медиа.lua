@@ -27,7 +27,6 @@ function p.e(frame)
 
     local typeofcall = mw.ustring.upper(serviceKey)
 
-    -- Собираем аргументы, игнорируя первый (ключ сервиса)
     local argsList = {}
     for i = 2, 10 do
         local rawVal = args[i]
@@ -46,18 +45,12 @@ function p.e(frame)
     local numofargs = #argsList
     local serviceData = tabli[typeofcall]
 
-    -- Разрешение псевдонима
-    if type(serviceData) == "string" then
-        serviceData = tabli[serviceData]
-    end
-
     if type(serviceData) ~= "table" or not serviceData[numofargs] then
         return "'''[Ошибка: Неверный формат или сервис не поддерживается]'''"
     end
 
     local text = serviceData[numofargs].pattern
 
-    -- Безопасная подстановка аргументов через функцию (защита от символа % в строке замены)
     for i, v in ipairs(argsList) do
         local decodedArg = p.decodeString(v)
         local urlArg = decodedArg:gsub(" ", "%%20")
