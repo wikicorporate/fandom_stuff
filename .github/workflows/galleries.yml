@@ -2,7 +2,6 @@ name: Auto-Sync Galleries
 
 on:
   # Автозапуск по расписанию отключён до завершения тестирования скрипта.
-  # Раскомментируй блок schedule после проверки в режиме dry-run:
   # schedule:
   #   - cron: '0 4 * * *'
   workflow_dispatch:
@@ -27,6 +26,9 @@ concurrency:
   group: fandom-galleries
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   sync-galleries:
     runs-on: ubuntu-latest
@@ -43,10 +45,10 @@ jobs:
       - name: Install dependencies
         run: pip install mwclient mwparserfromhell requests
 
-      - name: Run Gallery Bot (Bot Account)
+      - name: Run Gallery Bot (Personal Account)
         env:
-          FANDOM_BOT_USERNAME: ${{ secrets.FANDOM_BOT_USERNAME }}
-          FANDOM_BOT_PASSWORD: ${{ secrets.FANDOM_BOT_PASSWORD }}
+          FANDOM_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          FANDOM_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
           INPUT_DRY_RUN: ${{ inputs.dry_run }}
           INPUT_PAGE: ${{ inputs.page }}
           INPUT_LIMIT: ${{ inputs.limit }}
