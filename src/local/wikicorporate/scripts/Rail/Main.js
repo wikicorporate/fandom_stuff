@@ -1,4 +1,4 @@
-/* Custom Rail Modules - Модули боковой панели на Vue 3 (ES2024) */
+/* Custom Rail Modules - Модули боковой панели на Vue 3 (ES2026) */
 (async () => {
     'use strict';
 
@@ -45,23 +45,16 @@
 
     const fetchAndParseModules = async () => {
         try {
-            const sourceResponse = await api.get({
-                action: 'query',
-                prop: 'revisions',
-                titles: 'Module:Rail',
-                rvprop: 'content',
-                rvslots: 'main',
-                formatversion: 2
-            });
+            const rawUrl = `${mw.util.wikiScript()}?title=MediaWiki:Custom-Rail.json&action=raw&ctype=application/json`;
+            const res = await fetch(rawUrl);
+            if (!res.ok) return null;
 
-            const luaCode = sourceResponse.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content;
-            if (!luaCode) return null;
+            const railBlocks = await res.json();
+            const entries = Object.entries(railBlocks ?? {}).filter(([, text]) => typeof text === 'string' && text.trim());
+            if (!entries.length) return null;
 
-            const matches = [...luaCode.matchAll(/local\s+([a-zA-Z0-9_]+)\s*=\s*\[==\[([\s\S]*?)\]==\]/g)];
-            if (!matches.length) return null;
-
-            const combinedWikitext = matches.map(m =>
-                `<div class="temp-rail-wrapper" data-module-name="${m[1]}">\n${m[2]}\n</div>\n`
+            const combinedWikitext = entries.map(([name, text]) =>
+                `<div class="temp-rail-wrapper" data-module-name="${mw.html.escape(name)}">\n${text}\n</div>\n`
             ).join('') + '\n__NOTOC__\n';
 
             const parseResponse = await api.post({
@@ -76,7 +69,7 @@
 
             return parseResponse.parse?.text ?? null;
         } catch (e) {
-            console.warn('Ошибка загрузки Module:Rail:', e);
+            console.warn('Ошибка загрузки MediaWiki:Custom-Rail.json:', e);
             return null;
         }
     };
