@@ -10,7 +10,7 @@
         'wgServer', 'wgUserLanguage', 'wgUserGroups',
         'articleHasCommentingEnabled', 'profileIsMessageWallPage'
     ]);
-    const CENTRAL_WIKI = 'https://wikicorporate.fandom.com/ru';
+    const CENTRAL_WIKI_API = 'https://wikicorporate.fandom.com/ru/api.php';
 
     if (!config.articleHasCommentingEnabled && !config.profileIsMessageWallPage) return;
 
@@ -42,6 +42,30 @@
             .replaceAll(/<br ?\/?>(?!\s*<\/p>)/g, '</p><p>');
     };
 
+    const fetchJsonPage = async (apiUrl, pageTitle) => {
+        try {
+            const params = new URLSearchParams({
+                action: 'query',
+                prop: 'revisions',
+                titles: pageTitle,
+                rvprop: 'content',
+                rvslots: 'main',
+                format: 'json',
+                formatversion: '2',
+                origin: '*'
+            });
+            const res = await fetch(`${apiUrl}?${params.toString()}`);
+            if (!res.ok) return {};
+            const data = await res.json();
+            const page = data.query?.pages?.[0];
+            if (!page || page.missing) return {};
+            const content = page.revisions?.[0]?.slots?.main?.content;
+            return content ? JSON.parse(content) : {};
+        } catch {
+            return {};
+        }
+    };
+
     const EnhancedEditor = {
         templateDB: {},
 
@@ -54,39 +78,15 @@
         },
 
         async loadTemplates() {
-            const foreignApi = getForeignApi(`${CENTRAL_WIKI}/api.php`, true);
-
-            const fetchModule = async (api, moduleName) => {
-                try {
-                    const data = await api.get({
-                        action: 'expandtemplates',
-                        text: `{{#invoke:${moduleName}|toJSON}}`,
-                        prop: 'wikitext'
-                    });
-
-                    const raw = data?.expandtemplates?.wikitext;
-                    if (!raw) return {};
-
-                    const parsed = JSON.parse(raw);
-                    for (const key of Object.keys(parsed)) {
-                        parsed[key].moduleName = moduleName;
-                    }
-                    return parsed;
-                } catch {
-                    return {};
-                }
-            };
-
+            const localApiUrl = mw.util.wikiScript('api');
             const [central, local] = await Promise.all([
-                fetchModule(foreignApi, 'Модерация'),
-                fetchModule(localApi, 'Дополнительно')
+                fetchJsonPage(CENTRAL_WIKI_API, 'MediaWiki:Custom-Moderation.json'),
+                fetchJsonPage(localApiUrl, 'MediaWiki:Custom-ExtraTemplates.json')
             ]);
 
             const merged = { ...central, ...local };
             const userGroupsSet = new Set(config.wgUserGroups ?? []);
             const modGroupsSet = new Set(['bureaucrat', 'sysop', 'threadmoderator', 'content-moderator', 'rollback', 'staff', 'soap']);
-
-            // ES2026 Set.prototype.isDisjointFrom
             const isMod = !userGroupsSet.isDisjointFrom(modGroupsSet);
 
             for (const key of Object.keys(merged)) {
@@ -222,7 +222,6 @@
                         search = { node: caret.node, offsets: [match.index, match[0].length], type: 'template' };
 
                         const query = match[1].toLowerCase();
-                        // ES2026 Iterator Helpers: ленивая фильтрация с остановкой после первых 6 совпадений
                         const results = Object.values(EnhancedEditor.templateDB)
                             .values()
                             .filter(t => t.title?.toLowerCase().includes(query) || t.name?.toLowerCase().includes(query))
@@ -425,7 +424,7 @@
                     searchNode.replaceWith(safeMarker);
 
                     methods.closeSuggestions();
-                    const wikitext = `{{#invoke:${tpl.moduleName}|main|${tpl.name}}}`;
+                    const wikitext = tpl.text || `{{${tpl.name}}}`;
 
                     try {
                         const res = await localApi.get({
