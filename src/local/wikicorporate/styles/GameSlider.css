@@ -1,0 +1,57 @@
+.game-slider {
+	display: grid;
+	grid-template-rows: 200px 400px;
+	position: relative;
+}
+.game-slider__list {
+	display: flex;
+	overflow-x: scroll;
+	overflow-y: visible;
+}
+.game-slider__item {
+	height: 100%;
+	aspect-ratio: 3/4;
+}
+:is(.game-slider__item, .game-slider__item-image) :is(a, img) {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+.game-slider__item-content {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 400px;
+	width: 100%;
+	grid-template-rows: 200px 50px 350px;
+	grid-template-columns: 300px 1fr 1fr;
+}
+.game-slider__item:hover .game-slider__item-content {
+	display: grid;
+}
+.game-slider__item-image {
+	grid-row-start: 2;
+	grid-row-end: 4;
+	height: 100%;
+	aspect-ratio: 3/4;
+}
+.game-slider__item-title {
+	grid-row-start: 2;
+}
+.game-slider__item-links {
+	grid-row-start: 3;
+}
+.game-slider__item-link {
+	 position: relative;
+}
+.game-slider__item-sublinks {
+	display: none;
+	position: absolute;
+	left: 100%;
+	top: 0;
+	width: 100%;
+}
+.game-slider__item-link:hover .game-slider__item-sublinks {
+	display: grid;
+}

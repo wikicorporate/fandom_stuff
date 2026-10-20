@@ -1,0 +1,190 @@
+/* Общее для проектов */
+:root {
+	/* Рамки */ 
+    --br-12: 12px;
+	--br-14: 14px;
+	--br-16: 16px;
+	--br-50: 50%;
+	/* Тени */
+    --ts-al: 0 0 3px var(--al);
+    --ts-l: 0 0 3px var(--l);
+    /* Подчёркивание */
+    --tooltip: 2px dotted;
+    /* Блюр */
+    --blur-5:  blur(5px);
+    --blur-10: blur(10px);
+    --blur-15: blur(10px);
+    --blur-50: blur(50px);
+    /* Градиенты */
+	--lg: linear-gradient(transparent, rgba(var(--pb--rgb), 0.6) 60%);
+	/* Шрифты */
+	--fallback-1: sans-serif;
+	--fallback-2: serif;
+	--fallback-3: cursive;
+	/* Основное пространство без глобальных элементов */
+	.resizable-container, #fandom-mobile-wrapper, .wds-dropdown, .wds-dropdown__content {
+		--theme-border-color: var(--s);
+	}
+}
+
+/* Специализированные переменные */
+body {
+	/* Цвета */
+	--cm-p: color-mix(in srgb, var(--p), var(--s) 10%);
+	--cm-s: color-mix(in srgb, var(--s), var(--p) 10%);
+	--cC: currentColor;
+	/* Фиксы */
+	--theme-accent-color: var(--p);
+    --theme-accent-color--hover: var(--s);
+    --theme-accent-label-color: var(--s);
+    --theme-border-color: var(--s);
+	/* Рамки */
+	--b: var(--s);
+	--bs-2s: 2px solid var(--s);
+    /* Тени */
+    --ts-s: 0 0 3px var(--s);
+    --ts-h: 2px 2px 0 var(--p), 2px -2px 0 var(--p), -2px 2px 0 var(--p), -2px -2px 0 var(--p), 2px 0px 0 var(--p), 0px 2px 0 var(--p), -2px 0px 0 var(--p), 0px -2px 0 var(--p);
+    /* Градиенты */
+    --template: linear-gradient(90deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), linear-gradient(0deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), var(--cp);
+    --scroll: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    --color-slide: linear-gradient(var(--l) 50%, var(--s) 50%);
+    --color-stop: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, var(--l)), color-stop(0.67, var(--s)));
+    --card: linear-gradient(45deg, transparent 5%, var(--l) 50%, transparent 99%);
+    /* Фильтры */
+    --blur-b: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-b"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-b');
+    --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
+    --drawn-button: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="4"/></filter></svg>#drawn-button');
+    --drawn-button--hover: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button--hover"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8"/></filter></svg>#drawn-button--hover');
+    /* Изображения */
+	--h: var(--b-main);
+	--cp: var(--b-main);
+}
+
+/* Тёмная тема */
+body:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
+	/* Фиксы */
+	--pt: #f8f8f8;
+	--theme-page-text-color: #f8f8f8;
+	--theme-success-color: #24ff6e;
+	--theme-alert-color: #ff8a92;
+}
+
+/* Светлая тема */
+body:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
+	/* Фиксы */
+	--pt: #080808;
+	--theme-page-text-color: #080808;
+	--theme-success-color: #0d431f;
+	--theme-alert-color: #78242e;
+}
+
+/* Properties */
+@property --fill {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0%;
+}
+@property --font-size {
+	syntax: "small | medium | large";
+	inherits: true;
+	initial-value: small;
+}
+
+/* Переменные Фэндома */
+:root {
+	/* bb - body background */
+    --bb: var(--theme-body-background-color);
+    --bb-rgb: var(--theme-body-background-color--rgb);
+    /* bt - body text */
+    --bt: var(--theme-body-text-color);
+    --bt--rgb: var(--theme-body-text-color--rgb);
+    --bt--h: var(--theme-body-text-color--hover);
+    /* pb - page background */
+    --pb: var(--theme-page-background-color);
+    --pb--rgb: var(--theme-page-background-color--rgb);
+    --pb--s: var(--theme-page-background-color--secondary);
+    --pb--s--rgb: var(--theme-page-background-color--secondary--rgb);
+    /* l - link */
+    --l: var(--theme-link-color);
+    --l--rgb: var(--theme-link-color--rgb);
+    --l--h: var(--theme-link-color--hover);
+    --ll: var(--theme-link-label-color);
+    /* ac - accent */
+    --ac: var(--theme-accent-color);
+    --ac--rgb: var(--theme-accent-color--rgb);
+    --ac--h: var(--theme-accent-color--hover);
+    --acl: var(--theme-accent-label-color);
+    /* b - border */
+    --b: var(--theme-border-color);
+    --b--rgb: var(--theme-border-color--rgb);
+    /* al - alert */
+    --al: var(--theme-alert-color);
+    --al--rgb: var(--theme-alert-color--rgb);
+    --al--h: var(--theme-alert-color--hover);
+    --al--s: var(--theme-alert-color--secondary);
+    --all: var(--theme-alert-label);
+    /* w - warning */
+    --w: var(--theme-warning-color);
+    --w--rgb: var(--theme-warning-color--rgb);
+    --w--s: var(--theme-warning-color--secondary);
+    --wl: var(--theme-warning-label);
+    /* su - success */
+    --su: var(--theme-success-color);
+    --su--rgb: var(--theme-success-color--rgb);
+    --su--s: var(--theme-success-color--secondary);
+    --sul: var(--theme-success-label);
+    /* m - message */
+    --m: var(--theme-message-color);
+    --ml: var(--theme-message-label);
+}
+
+/* Position */
+.p-s { position: static; }
+.p-r { position: relative; }
+.p-a { position: absolute; }
+.p-f { position: fixed; }
+.p-st { position: sticky; }
+
+/* Width */
+.w-a { width: auto; }
+.w-0 { width: 0; }
+.w-25 { width: 25%; }
+.w-50 { width: 50%; }
+.w-75 { width: 75%; }
+.w-100 { width: 100%; }
+
+/* Height */
+.h-a { height: auto; }
+.h-0 { height: 0; }
+.h-25 { height: 25%; }
+.h-50 { height: 50%; }
+.h-75 { height: 75%; }
+.h-100 { height: 100%; }
+
+/* Border */
+.b-s { border: var(--bs-2s); }
+.b-0 { border: none; }
+.br-12 { border-radius: var(--br-12); }
+.br-14 { border-radius: var(--br-14); }
+.br-16 { border-radius: var(--br-16); }
+.br-50 { border-radius: var(--br-50); }
+
+/* Text-align */
+.t-a-s { text-align: start; }
+.t-a-e { text-align: end; }
+.t-a-l { text-align: left; }
+.t-a-r { text-align: right; }
+.t-a-c { text-align: center; }
+.t-a-j { text-align: justify; }
+.t-a-j-a { text-align: justify-all; }
+.t-a-m-p { text-align: match-parent; }
+
+/* Vertical-align */
+.v-a-ba { vertical-align: baseline; }
+.v-a-s { vertical-align: sub; }
+.v-a-su { vertical-align: super; }
+.v-a-t-t { vertical-align: text-top; }
+.v-a-t-b { vertical-align: text-bottom; }
+.v-a-m { vertical-align: middle; }
+.v-a-t { vertical-align: top; }
+.v-a-b { vertical-align: bottom; }

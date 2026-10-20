@@ -1,0 +1,158 @@
+/* Видео в рейле */
+.t-video {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 15px;
+    margin: 15px 0 10px;
+    &:has(.t-video__item-link:hover) .t-video__item-title {
+    	-webkit-text-fill-color: transparent;
+    }
+    .t-video__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        z-index: 5;
+        .t-video__item-link {
+            position: relative;
+            width: 3em;
+            aspect-ratio: 1;
+            background-color: var(--cm-p);
+            border-radius: var(--br-50);
+            transition: color 0.5s ease-in-out;
+            &::before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                inset: -3px;
+                background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
+                border-radius: inherit;
+                transition: --fill 0.6s ease-in-out;
+            }
+            &:hover {
+                color: var(--s);
+                --fill: 100%;
+            }
+            > i {
+                width: 100%;
+                height: 100%;
+                display: grid;
+                place-items: center;
+            }
+            &:not(:hover) .t-video__item-tooltip {
+                display: none;
+            }
+            .t-video__item-tooltip {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%) !important;
+                background-color: var(--cm-p);
+                border-radius: var(--br-12);
+                color: var(--pt);
+                padding: 8px 8px 2px;
+                font-size: 14px;
+                animation: 0.85s cubic-bezier(0, 0, 0.1, 1) 0s 1 normal forwards running tt;
+                opacity: 0;
+                .t-gallery {
+                	width: max-content;
+    				height: max-content;
+    				.t-gallery__item img {
+    					max-width: 200px;
+    					max-height: 200px;
+    				}
+                }
+            }
+        }
+    }
+}
+
+/* Новые статьи 
+.new-pages-rail-module :is(.comment, .mw-newpages-time, .mw-newpages-history, .mw-newpages-length,
+.mw-usertoollinks, .mw-newpages-oldtitle),
+.mw-tag-markers {
+	display: none;
+}
+.new-pages-rail-module .mw-userlink {
+	display: block;
+	font-size: 12px;
+}
+.new-pages-rail-module li {
+	font-size: 0;
+	line-height: 1.5 !important;
+	padding: 6px 0;
+}
+.new-pages-rail-module .mw-newpages-pagename {
+	font-size: 14px;
+}
+.new-pages-rail-module div.more {
+	text-align: right;
+	padding-right: 10px;
+}
+.new-pages-rail-module div.more a {
+	font-weight: normal; 
+	font-size: 14px;
+}
+.new-pages-rail-module a[class="mw-userlink"] {
+	display: block;
+} */
+
+/* Доска почёта */
+.userboard {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+}
+.userboard__user {
+    grid-column-end: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.userboard__user img {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    aspect-ratio: auto;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, var(--l)), color-stop(0.67, var(--s)));
+    padding: 2px;
+}
+.userboard__medals {
+    grid-column-start: 2;
+    display: flex;
+    flex-wrap: wrap;
+}
+.userboard__medal {
+    position: relative;
+}
+.userboard__medal a {
+    pointer-events: none;
+}
+.userboard__medal-tooltip {
+    display: none;
+    position: absolute;
+    top: 130px;
+    left: -15px;
+    background-color: var(--p);
+    color: var(--s);
+    border: var(--bs-2s);
+    border-radius: var(--br-12);
+    text-align: center;
+    font-size: 14px;
+    width: 160px;
+    z-index: 1000;
+}
+.userboard__medal-tooltip h3 {
+    margin: 0;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: var(--bs-2s);
+    line-height: 1.5;
+}
+.userboard__medal:hover .userboard__medal-tooltip {
+    display: inline-block;
+    animation: stretch-animation 1s ease-out forwards 0.15s;
+    transition: .3s;
+}

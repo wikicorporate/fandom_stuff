@@ -1,0 +1,962 @@
+/* Сообщения */
+@namespace xl url("http://www.w3.org/1999/xlink");
+
+.resizable-container :is(#articleComments, #MessageWall) [class^="ActionItem_action-item"] {
+	color: var(--s);
+	&:hover {
+		color: var(--l);
+		background-color: transparent;
+	}
+}
+
+/* Цветовая схема */
+:root {
+	color-scheme: dark light;
+}
+body {
+	&.theme-fandomdesktop-dark {
+		color-scheme: dark;	
+	}
+	&.theme-fandomdesktop-light {
+		color-scheme: light;	
+	}
+}
+
+/* Унифицирование hover-эффектов */
+body.skin-fandomdesktop .page a {
+	&:hover, &:focus, &:active {
+		color: var(--s);
+	}
+}
+
+/* Выделение */
+.resizable-container, #community-navigation {
+	&::selection {
+		background-color: var(--cm-p);
+		color: var(--pt);
+	}
+}
+
+/* Общая стилизация */
+.rail-module, .module, .wikia-slideshow-images-wrapper .wikia-slideshow-images, 
+.oo-ui-popupWidget-popup:not([class$="linkSuggest-popup"]),
+:is(#toc, .sticky-toc.toc), .community-page-module.community-page-module-box, 
+#about-achievements, #LeaderboardTable, .blog-listing__post,
+:is(#AdminDashboard, #FounderProgressList) .wds-dropdown__content,
+.content-review__widget,
+.view-filter .view-filter__dropdown {
+	border: none !important;
+    border-radius: var(--br-14) !important;
+    background: var(--template) center / cover no-repeat transparent;
+}
+
+/* Удаление рамок */
+.wds-tabs__wrapper.with-bottom-border,  .page-content h2, .wds-collapsible-panel, 
+#userProfileApp .user-profile-navigation,
+#content :is(.category-page__trending-pages, .category-page__first-char),
+fieldset:not(.oo-ui-fieldsetLayout), 
+#wikiPreview .previewnote, #filetoc li + li::before,
+.wds-modal__actions,  
+.content-review__table :is(td, th),
+.community-page-todo-list-module-header-wrapper,
+#content .message-wall-app .Message__wrapper .Reply, [class^="Reply_body"],
+.CategorySelect.articlePage > .toolbar, .oo-ui-panelLayout-framed {
+	border: none !important;
+}
+
+/* Радиус/рамки */
+.resizable-container :is(img, iframe),
+#content :is(.category-page__trending-page-thumbnail, .category-page__member-thumbnail), 
+.mw-widget-calendarWidget {
+	border: none;
+	border-radius: var(--br-14);
+}
+
+/* Скрытие элементов */
+:is(#content .category-layout-selector__item:last-child, .rich-text-editor__toolbar .rich-text-editor__toolbar__icon-tooltip, .hyperlink-modal, .page-header__action-button, .ve-fd-header__actions > .ve-header-action-item, #p-associated-pages [id], .mw-changeslist-separator:empty)::before,
+.mw-parser-output p:not(:is(.poem, .portable-infobox) p) :is(br),
+.highlight__sticky-container,
+.mw-diff-table-prefix,
+.entity-content.is-large-content::before,
+.rail-module h2.has-icon svg,
+.wds-dropdown-level-nested__content a::before {
+	display: none !important;
+}
+
+/* Прозрачный фон */
+.suggestions a.mw-searchSuggest-link::selection, .sitenotice-wrapper::before,
+:is(.client-js .sortable, .jquery-tablesorter) :is(th, th.headerSort),
+.oo-ui-menuOptionWidget.oo-ui-optionWidget-selected {
+	background-color: transparent;
+}
+div.thumbinner, .mw-destfile-warning {
+    background-color: transparent;
+    border: none;
+}
+
+/* Цвета */
+.wds-modal__modal, .mw-plusminus-null, .autocomment, .autocomment :is(a, a:visited) {
+	color: var(--pt);
+}
+.unpatrolled {
+	color: var(--theme-alert-color);
+}
+
+/* Подчёркивание ссылок */
+a:hover, a:focus, a:active,
+:is(.mw-parser-output, #fandom-mobile-wrapper) :is(a, > a), 
+.cm-mw-pagename {
+    text-decoration: none !important;
+}
+
+/* Страница */
+.main-container {
+	&, .page, .fandom-community-header {
+		background-color: var(--blur);
+	}
+	.page {
+		margin-top: 0;
+    	border-radius: 0;
+    	&.page-is-edit {
+    		margin-top: 12px;
+    	}
+    	:is(.mainpage, .action-edit, .mediawiki) & {
+    		border-radius: 0 0 var(--br-14) var(--br-14);
+    	}
+	}
+	.page__main {
+		background-color: transparent;
+	}
+	.page__main, .page__right-rail {
+		border-radius: 0;
+	}
+}
+
+/* Галереи */
+body:not(.mainpage) {
+    .wikia-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow: overlay;
+        max-height: 440px;
+        text-align: center;
+        .wikia-gallery-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            .video-thumbnail img {
+    			height: 100px !important;
+			}
+            .gallery-image-wrapper, .thumb {
+                height: auto !important;
+                top: 0 !important;
+                border: none;
+            }
+        }
+    }
+}
+
+/* Рейл */
+html:not(.ve-active) .page.has-right-rail {
+     column-gap: 0;
+     margin-bottom: 0;
+     &:has(#rail-tab-overview) {
+         .page__right-rail {
+             .rail-tabs-strip {
+                 width: 40px;
+                 height: 40px;
+                 padding: 5px;
+                 border-radius: 50% 0 0 50%;
+                 position: absolute;
+                 top: 5px;
+                 right: -20px;
+                 margin: 0;
+                 transition: right .3s;
+                 justify-content: center;
+                 align-items: center;
+                 button {
+                     width: 30px;
+                     height: 30px;
+                }
+                 svg.rail-tab__default-icon {
+                     opacity: 0;
+                }
+                 svg.rail-tab__collapse-icon {
+                     opacity: 1;
+                     width: 18px;
+                     height: 18px;
+                     transform: translate(-50%, -50%) rotate(90deg);
+                }
+            }
+             &.is-rail-hidden {
+                 width: 0;
+                 .rail-tabs-strip {
+                     right: 0;
+                     svg {
+                         transform: translate(-50%, -50%) rotate(270deg);
+                    }
+                }
+            }
+        }
+    }
+     .page__right-rail {
+         --right-rail-background-color: transparent;
+         background-color: transparent;
+         position: relative !important;
+         top: 0 !important;
+         z-index: 0;
+         .right-rail-wrapper, .WikiaRail {
+             --right-rail-background-color: transparent;
+             padding: 0;
+             display: flex;
+             & > .rail-tabs-content, .rail-tabs-strip {
+                 backdrop-filter: none;
+                 background-color: inherit;
+            }
+             & > .rail-tabs-content {
+                 padding: 0 18px;
+            }
+             .rail-module, .module, .content-review__widget {
+                 padding: 8px;
+                 margin-top: 18px;
+                 overflow: visible;
+                 h2, .rail-module__header {
+                     --wds-midlight-color: transparent;
+                     position: relative;
+                     margin-bottom: 0;
+                }
+                 .recent-wiki-activity__page-title, .recent-wiki-activity__username, .rail-module__list > li {
+                     overflow: unset;
+                     text-overflow: unset;
+                }
+                 .recent-wiki-activity__page-title {
+                     white-space: unset;
+                }
+            }
+            #rail-tab-panel-overview:not(:has(.content-review__widget)), #WikiaRail.is-ready, .sticky-modules-wrapper, .rail-module, .module, .custom-rail-modules {
+                 position: relative;
+                 display: flex;
+                 flex-direction: column;
+                 top: 0;
+            }
+             #WikiaRail.is-ready {
+                 order: 2;
+            }
+             .AchievementsModule.UserProfileAchievementsModule {
+                 order: 3;
+            }
+             .WikiaLatestEarnedBadgesModule.module.rail-module {
+                 order: 4;
+            }
+             .sticky-modules-wrapper {
+                 order: 5;
+            }
+             .custom-rail-modules-container[data-v-app] {
+                 order: 6;
+                 .social-activity {
+                     order: 0;
+                }
+                 .new-files {
+                     order: 1;
+                }
+                 .popular-pages {
+                     order: 2;
+                }
+            }
+        }
+    }
+}
+.resizable-container .wds-widget-frame {
+	background-color: transparent;
+	padding: 12px 0 0;
+	.wds-widget-frame__header {
+		.wds-widget-frame__title {
+			overflow: visible;
+		}
+	}
+	.wds-widget-frame__content {
+		padding: 0;
+	}
+	:is(.wds-card-horizontal__image-container--hoverable, .wds-card-vertical__image-container--hoverable)::after {
+		content: none;
+	}
+	.wds-text-card {
+		background-color: transparent !important;
+		padding: 4px 9px 15px;
+		.wds-text-card__title {
+			color: var(--l);
+			transition: none;
+		}
+		.wds-text-card__link:hover {
+			&, .wds-text-card__title--link {
+				color: var(--s);
+				text-decoration: none;
+			}
+		}
+	}
+	:is(.card-image, .card-image-horizontal) img {
+		border: none;
+    	border-radius: var(--br-14);
+	}
+	.alice-carousel__arrow svg {
+		fill: var(--cC);
+	}
+}
+.recent-images-module {
+    .wds-widget-frame__header {
+    	position: relative;
+        bottom: 10px;
+    }
+    .wds-widget-frame__content {
+    	padding: 0;
+    }
+    .alice-carousel__stage, .alice-carousel__stage-item, .slider-item, .wds-card-vertical {
+    	width: 100% !important;
+    }
+    .alice-carousel__stage {
+    	transform: none !important;
+	    flex-direction: column;
+	    height: 196px;
+	    overflow: hidden;
+	    gap: 8px;
+	    .alice-carousel__stage-item.__active {
+	    	&, & ~ .alice-carousel__stage-item {
+	    		order: -1;
+	    	}
+	    }
+    }
+    .wds-card-vertical {
+    	flex-direction: row !important;
+    }
+    .card-image {
+    	width: initial;
+    	aspect-ratio: initial;
+    	img {
+    		height: 60px;
+    		width: 60px;
+    	}
+    }
+    .wds-text-card {
+    	&::before {
+    		content: "Добавлено в:";
+    	}
+    	.wds-first-clamp::before {
+    		content: "•\0a";
+    	}
+    	time {
+    		color: var(--pt);
+    	}
+    }
+    .alice-carousel__prev-btn {
+    	top: 12px;
+	    left: initial;
+	    right: 0;
+	    transform: rotate(90deg);
+    }
+    .alice-carousel__next-btn {
+    	bottom: 24px;
+	    top: initial;
+	    transform: rotate(90deg);
+    }
+}
+.page-tools-module {
+    .rail-module__list.is-condensed-list {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+        z-index: 4;
+        li {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 15px;
+            color: var(--l);
+            &::before {
+                color: inherit;
+                font-family: "Font Awesome 7 Free Solid";
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 3em;
+                aspect-ratio: 1;
+                background-color: var(--cm-p);
+                border-radius: var(--br-50);
+                transition: color 0.5s ease-in-out;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                inset: -3px;
+                background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
+                border-radius: var(--br-50);
+                transition: --fill 0.6s ease-in-out;
+            }
+            &:hover {
+                color: var(--s);
+                --fill: 100%;
+                a {
+	                display: inline-block;
+	                animation: tt 1s ease-out forwards;
+	                transition: 0.3s;	
+                }
+            }
+            a {
+                position: absolute;
+                font-family: var(--font);
+                font-size: 14px;
+                font-weight: bold;
+                color: var(--s);
+                background-color: var(--cm-p);
+                border-radius: var(--br-14);
+                padding: 6px;
+                white-space: nowrap;
+                z-index: 900;
+                display: none;
+                transition: 0.3s;
+                bottom: 105%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
+
+/* Инфобоксы */
+.resizable-container .portable-infobox {
+    width: 300px;
+    position: relative;
+    .pi-caption {
+    	color: var(--pt);
+    }
+    .pi-data-label, .pi-data-value {
+    	hyphens: none;
+    }
+    .wds-tabs {
+    	background-color: transparent;
+    	.wds-tabs__tab {
+    		font-family: var(--font);
+    	}
+    }
+}
+.video-thumbnail img {
+	height: 138px;
+	object-fit: cover;
+}
+.gallery-icon-container .icon-container > svg {
+    fill: var(--cC);
+}
+
+/* WikiaBar */
+#WikiaBarWrapper {
+	background-color: var(--p);
+	color: var(--s);
+	.arrow .close-icon {
+		background-color: transparent;
+		color: var(--s);
+		&:hover {
+			color: var(--l);
+		}
+	}
+	.tools {
+		:is(.wds-dropdown__toggle, li) > a {
+			color: var(--s);
+		}
+		& > li {
+			color: var(--s);
+			border: none;
+		}
+	}
+	:is(.tools :is(li, a, .wds-icon), :is(#ca-watch.mw-watchlink, #ca-unwatch.mw-watchlink)):hover {
+		color: var(--l);
+		fill: var(--l);
+	}
+}
+
+/* Края основной страницы */
+.page-content {
+	overflow: visible;
+}
+
+/* Галереи-слайдеры */
+.wikia-slideshow-images-wrapper {
+    .wikia-slideshow-images {
+        li :is(img[data-image-name$="jpeg"], img[data-image-name$="jpg"]) {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+        .wikia-slideshow-overlay {
+            color: var(--pt);
+            background-color: rgba(var(--pb--rgb), 0.6);
+        }
+    }
+    .wikia-slideshow-toolbar {
+    	justify-content: center;
+    }
+}
+
+/* Таблицы */
+.WikiaTable, .article-table, .wikitable, .fandom-table, .mw-datatable, .mw-json, .mw_metadata {
+	border-radius: var(--br-14);
+	border: none;
+	border-collapse: unset;
+	background-color: rgba(var(--pb--rgb), 0.6) !important;
+	td, th {
+		border: none !important;
+		border-radius: var(--br-14);
+		background-color: transparent !important;
+		text-align: center;
+	}
+}
+.mw-json:first-child {
+	background-color: transparent !important;
+}
+.table-wide::before {
+	box-shadow: none;
+}
+
+/* Боксы Фэндома */
+.page-content :is(.cdx-message, .errorbox, .messagebox, .mw-message-box, .successbox, .warningbox) {
+	background-color: var(--p);
+    border-radius: var(--br-14);
+    border: none;
+    padding: 0.3em;
+}
+
+/* Ошибки в документе */
+.oo-ui-windowManager-modal > .oo-ui-dialog > .oo-ui-window-frame {
+	background-color: var(--p);
+	border-radius: var(--br-14) !important;
+}
+.oo-ui-messageDialog-content > .oo-ui-window-foot {
+	outline: none;
+}
+.oo-ui-messageDialog-actions-horizontal .oo-ui-actionWidget {
+	border-right: none;
+}
+
+/* Фикс input */
+body.skin-fandomdesktop #content :is(input, input select):not(input[data-test="editor-title-input"]) {
+	background-color: var(--p);
+	border: none;
+	border-radius: var(--br-14);
+}
+#content #mw-htmlform-actions .oo-ui-tagMultiselectWidget .oo-ui-inputWidget-input {
+	border-bottom: none;
+}
+
+/* Скролл */
+body ::-webkit-scrollbar-track {
+    background-color: transparent !important;
+}
+@-moz-document url-prefix() { 
+	* {
+		scrollbar-color: var(--s) transparent;
+		scrollbar-width: thin;
+	}
+}
+
+/* Комментарии/Стена Обсуждения */
+@media (hover: hover) and (pointer: fine) {
+   :is(.rich-text-editor__toolbar, .rich-text-editor__toolbar.is-expanded) :is(.rich-text-editor__toolbar__icon-controls, .rich-text-editor__toolbar__icon-controls .menu-control, .rich-text-editor__toolbar__icon-wrapper):hover {
+        background-color: transparent;
+		color: var(--l);
+    }
+}
+.rich-text-editor__toolbar.is-expanded .rich-text-editor__toolbar__icon-controls {
+	background-color: transparent !important;
+}
+:is(.rich-text-editor__toolbar, .rich-text-editor__toolbar.is-expanded) .rich-text-editor__toolbar__icon-controls .menu-control {
+	color: var(--pt);
+}
+[class^="EditorForm_editor-form"],
+.rich-text-editor__toolbar__icons-container,
+.rich-text-editor__toolbar__icon-group.has-border-left::before {
+	border: none !important;
+}
+.rich-text-editor__toolbar .rich-text-editor__toolbar__icon-tooltip,
+.hyperlink-modal {
+	background-color: var(--p) !important;
+	color: var(--s) !important;
+	border-radius: var(--br-14) !important;
+	border-color: var(--s) !important;
+	pointer-events: all !important;
+}
+.rich-text-editor__content img {
+	border: none;
+	border-radius: var(--br-14);
+}
+[class^="EntityTopBar_details"] {
+	border-bottom: none !important;
+}
+#MessageWall .PostIndicator__fold,
+[class^="EntityTopBar_fold"] {
+    border-radius: var(--br-14) 0 0 0;
+}
+.wds-floating-button {
+	background-color: var(--p);
+}
+#fandom-web-editor-portal {
+	.user-suggestions.wds-dropdown__content:not(.is-displayed-above-mention) {
+		border-color: var(--s);
+		.wds-list.wds-is-linked li {
+			&:is(:hover, .wds-is-selected) > a:not(.wds-button) {
+				color: var(--s);
+				background-color: transparent;
+			}
+		}
+	}
+	.user-suggestions.wds-dropdown__content,  .user-suggestions-hint {
+		background-color: var(--p);
+		border-radius: var(--br-14);
+	}
+}
+
+/* Аудио */
+audio {
+    width: 350px !important;
+    height: 48px !important;
+    &::-webkit-media-controls-enclosure {
+        background: transparent !important;
+    }
+    &::-webkit-media-controls-panel {
+        display: grid;
+        grid-template-columns: 32px 1fr 1fr 2fr 32px 32px;
+        padding: 0;
+    }
+    &::-webkit-media-controls-timeline {
+        width: calc(100% - 16px);
+        padding-left: 12px;
+    }
+    &::-webkit-media-controls-volume-control-container {
+        justify-content: flex-start;
+    }
+    &::-webkit-media-controls-volume-slider {
+        position: absolute;
+        transform: translate(-11px, -18px);
+    }
+    &::-webkit-media-controls-current-time-display, &::-webkit-media-controls-time-remaining-display {
+    	text-shadow: none !important;
+    }
+}
+
+/* Header */
+.page-header__action-button {
+	font-size: 0;
+	&.has-label {
+		padding-right: 6px;
+		height: 36px;
+		width: 36px;
+	}
+	.button-counter {
+		background-color: var(--p);
+    	color: var(--s);
+	}
+}
+
+/* Кнопки */
+body.skin-fandomdesktop {
+    .main-container .resizable-container, #mw-teleport-target, .lightboxContainer, .EditorModal__content, body [class^="Modal_content"], .EditorForm__actions {
+        :is(a, div)[role="button"]:not(.wikiEditor-ui a, .mw-editfooter-toggler, :is([data-testid="messagewall-reply-action-menu"], [data-testid="article-comments__comment"] .wds-dropdown), [data-test="message"] .wds-dropdown, .mw-rcfilters-ui-tagItemWidget span > a, .oo-ui-popupWidget-popup a, .wds-collapsible-panel__header), button:not(.mw-collapsible-toggle, .category-layout-selector__item), .wds-button, .cdx-button, .categories li a, .oo-ui-buttonElement > input.oo-ui-buttonElement-button, :is(.page-header__languages, .page-header__variants) .wds-dropdown__toggle, .page-header__categories > a, :is(#mw-normal-catlinks, #collapsible-content-languages) a, .page-header__categories-dropdown, input[type="button"], .ace_search :is(.ace_button, .ace_searchbtn), .gallery-icon-container .icon-container, .unified-search-pagination ul .paginator-page, :is(.mw-contributions-user-tools, .UserProfileActivityModeration, .UserProfileActivityNavigation) a, .mw-rcfilters-ui-overlay a {
+            color: var(--s) !important;
+            background-color: var(--cm-p) !important;
+            border-radius: var(--br-14);
+            border: none;
+            border-color: transparent;
+            box-shadow: none;
+            transition: background-color 0.3s linear, color 0.3s linear;
+            &:hover, &:focus, &:active {
+                color: var(--p) !important;
+                background-color: var(--s) !important;
+                text-shadow: none;
+                border-color: transparent;
+            }
+        }
+    }
+}
+[class^="ArticleCommentsSingleThread_toolbar"] {
+	padding: 2px;
+	color: var(--cC) !important;
+}
+[class^="ViewFilter_view-filter"] button,
+.SingleThreadToolbar .wds-button.wds-is-text {
+	padding: 6px !important;
+}
+[class^="ViewFilter_view-filter-toggle"] {
+	padding: 8px;
+}
+.wds-button:hover [class^="ArticleCommentsSingleThread_toolbar-button-back"] {
+	color: inherit;
+}
+[class^="EditorForm_actions"] button {
+	margin: 2px;
+}
+.view-filter .view-filter__toggle.wds-button.wds-is-text {
+	color: inherit;
+	padding: 6px;
+}
+.NotExistingMessage__button {
+	color: inherit;
+	margin-top: 0;
+}
+.wiki-tools .wds-button.wds-is-secondary {
+	margin: 6px 0 0 6px;
+	padding: 6px !important;
+	border-radius: var(--br-14) !important;
+}
+
+/* HR */
+.page-content hr {
+	border: 2px solid var(--l);
+    border-radius: var(--br-14);
+}
+
+/* Навбар */
+#community-navigation {
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    &.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+    .wds-button.wds-is-text {
+        &:hover, &:focus, &:active {
+            background-color: transparent;
+            color: var(--l);
+        }
+        & > svg {
+            fill: var(--cC);
+        }
+    }
+    .community-navigation__fandom-heart,
+    .global-action__item .wds-avatar.wds-avatar--square:hover::after {
+        background-color: transparent;
+    }
+    .global-action__icon:hover {
+        color: var(--l);
+    }
+    :is(.global-navigation__search, .notifications__toggle) svg {
+        fill: var(--cC) !important;
+    }
+    .global-action-notifications .notifications__counter {
+        background-color: var(--cm-p) !important;
+        color: var(--s) !important;
+        &:hover {
+            background-color: var(--cm-s) !important;
+            color: var(--p) !important;
+            transition: all 0.3s linear;
+        }
+    }
+    .wds-avatar.wds-avatar--square {
+        --fandom-secondary-color--hover: transparent !important;
+    }
+    .search-app__wrapper {
+        background-color: transparent !important;
+        .search-app__input {
+            background-color: transparent;
+            border: none !important;
+            border-color: transparent !important;
+            &:hover, &:focus {
+                border: none;
+            }
+            &::placeholder {
+                color: var(--s) !important;
+            }
+        }
+        .search-app__icon-search {
+            fill: var(--s) !important;
+        }
+        .search-app__suggestions-box {
+            margin-top: 8px;
+            background-color: var(--p);
+            border-radius: var(--br-14);
+            border: var(--bs-2s);
+            .divider {
+                background-color: transparent;
+            }
+            .search-app__suggestion:hover {
+                background-color: transparent;
+                text-decoration: none;
+                color: var(--s);
+            }
+            .search-app__suggestion-link {
+                color: var(--l);
+                &:hover, &:focus, &:active {
+                    color: var(--s);
+                }
+            }
+            .search-app__button-remove-option {
+                &:hover {
+                    color: var(--s);
+                }
+                svg {
+                    stroke: var(--cC);
+                    fill: var(--cC);
+                }
+            }
+        }
+    }
+}
+body.skin-fandomdesktop {
+     .fandom-community-header, .fandom-sticky-header {
+         .wds-dropdown__placeholder, a {
+             text-decoration: none;
+             &:hover, &:focus, &:active {
+                 color: var(--l);
+            }
+        }
+    }
+     .fandom-sticky-header .wds-dropdown__placeholder {
+         color: var(--s);
+    }
+     .fandom-community-header {
+         position: relative;
+         border-radius: var(--br-14) var(--br-14) 0 0;
+         padding: 14px;
+         z-index: 5;
+         &, a {
+             color: var(--pt);
+        }
+         .fandom-community-header__top-container, .fandom-community-header__local-navigation {
+             margin-left: 8px;
+        }
+         .fandom-community-header__top-container {
+             margin-top: 4px;
+             .fandom-community-header__community-name {
+                 font-weight: 800;
+            }
+             .page-counter {
+                 margin-right: 14px;
+            }
+        }
+    }
+     .fandom-community-header__local-navigation {
+         container: navbar / inline-size;
+         .navigation-item-icon, .wds-tabs__tab-label .wds-icon:not(.wds-dropdown__toggle-chevron) {
+             display: none;
+        }
+         .first-level-item a {
+             line-height: 1.5;
+        }
+         .explore-menu .wds-dropdown__toggle > a {
+             overflow: visible;
+             > span {
+                 margin-left: 0;
+            }
+        }
+         .wds-dropdown__content .wds-list.wds-is-linked > li > a {
+             > svg {
+                 flex-grow: 0;
+            }
+             > span {
+                 flex-grow: 1;
+            }
+        }
+    }
+}
+@container navbar (width > 400px) {
+    .fandom-community-header__local-navigation .wds-dropdown:nth-child(1) .wds-dropdown__placeholder span {
+        overflow: visible;
+    }
+}
+@media only screen and (max-width: 1600px) {
+    .community-navigation :is(.explore-menu a > span, .fandom-sticky-header__sitename) {
+        display: none;
+    }
+}
+
+/* Backdrop */
+:not(:root):fullscreen::backdrop {
+	background-color: rgba(var(--pb--rgb), .9);
+}
+
+/* Toc */
+#toc, .sticky-toc.toc {
+    li, a, span, .toctogglespan .toctogglelabel {
+    	&, &::before, &::after {
+    		&:hover {
+    			color: var(--s);
+        		background-color: transparent;
+    		}
+    	}
+    }
+    .toctogglecheckbox:focus + .toctitle .toctogglelabel {
+    	text-decoration: none;	
+		outline: auto;
+    }
+}
+.toc {
+	.toctitle {
+		border-bottom: none;
+	}
+	& > ul {
+		overflow: overlay;
+		max-height: 400px;
+		li > a {
+			display: inline;
+	    	&:hover .tocnumber, .tocnumber {
+	    		color: inherit;
+	    	}
+		}
+	}
+}
+.sticky-toc.toc {
+    & > ul {
+        background-image: none;
+        margin: 6px 0 6px;
+        &::before, &::after {
+            background-color: transparent;
+        }
+    }
+    .toctitle .wds-icon {
+    	opacity: 1;
+    }
+}
+
+/* Разметка */
+figcaption, p.caption {
+	text-align: center;
+}
+.thumb.show-info-icon .info-icon {
+	background-color: var(--blur);
+	border-radius: var(--br-14);
+	svg {
+		fill: var(--pt);
+	}
+}
+
+/* Переключатели */
+.wds-toggle__label {
+	--wds-toggle-background-color: var(--p);
+    --wds-toggle-switch-color: var(--s);
+    --wds-toggle-background-color--checked: var(--p);
+    --wds-toggle-switch-color--checked: var(--s);
+}
+
+/* Уведомления */
+.wds-banner-notification {
+	background-color: var(--p);
+    border-radius: var(--br-14);
+	.wds-banner-notification__icon {
+		background-color: transparent;
+		color: var(--pt);
+	}
+	&, .wds-banner-notification__text, .wds-banner-notification__close {
+		border: none;
+		color: var(--pt);
+	}
+	a {
+		color: var(--l);
+		&:hover {
+			color: var(--s);
+		}
+	}
+}

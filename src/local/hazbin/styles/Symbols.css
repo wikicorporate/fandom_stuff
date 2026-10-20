@@ -1,0 +1,136 @@
+/* Навбар */
+.fandom-community-header__local-navigation {
+    .wds-dropdown:nth-child(2) {
+        .wds-tabs__tab-label a::before {
+            content: "\f509";
+        }
+        .wds-dropdown-level-nested {
+            &:nth-child(1) a::before {
+                content: "\f0eb";
+            }
+            &:nth-child(2) a::before {
+                content: "\f53f";
+            }
+            &:nth-child(3) a::before {
+                content: "\f7a6";
+            }
+            &:nth-child(4) a::before {
+                content: "\f590";
+            }
+            &:nth-child(5) a::before {
+                content: "\f554";
+            }
+        }
+    }
+    .wds-dropdown:nth-child(3) {
+        .wds-tabs__tab-label a::before {
+            content: "\f0c0";
+        }
+        .wds-dropdown-level-nested {
+            &:nth-child(1) a::before {
+                content: "\f004";
+            }
+            &:nth-child(2) a::before {
+                content: "\f06d";
+            }
+            &:nth-child(3) a::before {
+                content: "\f1b0";
+            }
+            &:nth-child(4) a::before {
+                content: "\f0e7";
+            }
+        }
+        li:nth-child(5) a::before {
+            content: "\f005";
+        }
+    }
+    .wds-dropdown:nth-child(4) {
+        .wds-tabs__tab-label a::before {
+            content: "\f87c";
+        }
+        .wds-dropdown-level-nested {
+            &:nth-child(1) a::before {
+                content: "\f26c";
+            }
+            &:nth-child(2) a::before {
+                content: "\f518";
+            }
+            &:nth-child(3) a::before {
+                content: "\f79f";
+            }
+            &:nth-child(4) a::before {
+                content: "\f124";
+            }
+            &:nth-child(5) a::before {
+                content: "\f1e2";
+            }
+            &:nth-child(6) a::before {
+                content: "\f001";
+            }
+        }
+    }
+    .wds-dropdown:nth-child(5) {
+        .wds-tabs__tab-label a::before {
+            content: "\f0a1";
+        }
+        li {
+            &:nth-child(1) a::before {
+                content: "\f508";
+            }
+            &:nth-child(2) a::before {
+                content: "\f0e3";
+            }
+            &:nth-child(3) a::before {
+                content: "\f12e";
+            }
+            &:nth-child(4) a::before {
+                content: "\f1ab";
+            }
+            &:nth-child(5) a::before {
+                content: "\f256";
+            }
+            &:nth-child(6) a::before {
+                content: "\f059";
+            }
+        }
+    }
+    .wds-dropdown:nth-child(6) {
+        .wds-tabs__tab-label a::before {
+            content: "\f0f3";
+        }
+        .wds-dropdown-level-nested {
+            &:nth-child(1) .wds-dropdown__placeholder span::before {
+                content: "\f024";
+            }
+            &:nth-child(2) a::before {
+                content: "\f266";
+                font-family: 'Font Awesome 7 Brands' !important;
+            }
+            &:nth-child(3) a::before {
+                content: "\f304";
+            }
+            &:nth-child(4) a::before {
+                content: "\f0f9";
+            }
+            &:nth-child(5) a::before {
+                content: "\f0ad";
+            }
+        }
+    }
+}
+
+/* Табберы */
+.wds-tabs__tab {
+	&[data-hash="Титры"] a::before {
+		content: '\f518';
+	}
+	&[data-hash="Демо-версия"] a::before {
+		content: '\e4f3';
+	}
+	&[data-hash="Клип"] a::before {
+		content: '\f04b';
+	}
+	&[data-hash="Рок-версия"] a::before {
+		content: '\f7a6';
+	}
+}

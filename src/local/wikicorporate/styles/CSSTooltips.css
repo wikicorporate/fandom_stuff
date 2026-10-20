@@ -1,0 +1,91 @@
+/* Основное */
+[data-tips] {
+    --tt-delay: 0ms;
+    --tt-margin: 8px;
+    --tt-x: -50%;
+    --tt-y: -50%;
+    --tt-display: 500ms;
+    --tt-easing: cubic-bezier(0, 0, .2, 1);
+    --tt-show: 150ms;
+    position: relative;
+    &::after {
+    	content: attr(data-tips);
+		position: absolute;
+		display: flex;
+	    background-color: var(--p);
+	    border-radius: var(--br-14);
+	    color: var(--pt);
+	    font: var(--font);
+	    height: max-content;
+	    max-height: 200vh;
+	    max-width: 300px;
+	    opacity: 0;
+	    left: 20px;
+	    overflow: hidden;
+	    overflow-wrap: anywhere;
+	    padding: 4px 8px;
+	    text-align: center;
+	    transition: opacity var(--tt-show) var(--tt-delay) var(--tt-easing),
+	                transform var(--tt-show) var(--tt-delay) var(--tt-easing);
+	    transform: scale(.8) translate(var(--tt-x), var(--tt-y));
+	    transform-origin: top left;
+	    width: max-content;
+	    z-index: 10000;
+    }
+    &:active::after {
+    	transition-delay: var(--tt-display);
+    }
+    &:is(:hover, :focus, :focus-within, :active)::after {
+    	opacity: 1;
+    	transform: scale(1) translate(var(--tt-x), var(--tt-y));
+    }
+    :is(&.top-tip, &[top-tip])::after {
+    	--tt-y: -100%;
+    	top: 0;
+    }
+    :is(&.right-tip, &[right-tip])::after {
+    	--tt-x: 8px;
+	    --tt-y: -50%;
+	    left: 40px;
+	    top: 50%;
+    }
+    :is(&.bottom-tip, &[bottom-tip])::after {
+    	--tt-y: 0;
+    }
+    :is(&.left-tip, &[left-tip])::after {
+    	--tt-x: calc(-100% - 8px);
+	    --tt-y: -50%;
+	    left: 0;
+	    top: 50%;
+    }
+    :is(&.center-tip, &[center-tip])::after {
+    	--tt-x: -30%;
+        --tt-y: -30%;
+        left: 0;
+        top: 0;
+    }
+    :is(&.top-tip.left-tip, &[top-tip][left-tip])::after {
+    	--tt-x: calc(-100% - var(--tt-margin));
+    	--tt-y: calc(-100% - var(--tt-margin));
+    }
+    :is(&.top-tip.right-tip, &[top-tip][right-tip])::after {
+    	--tt-x: var(--tt-margin);
+	    --tt-y: calc(-100% - var(--tt-margin));
+	    left: 40px;
+    }
+    :is(&.bottom-tip.right-tip, &[bottom-tip][right-tip])::after {
+    	--tt-x: var(--tt-margin);
+    	--tt-y: var(--tt-margin);
+    }
+    :is(&.bottom-tip.left-tip, &[bottom-tip][left-tip])::after {
+    	--tt-x: calc(-100% - var(--tt-margin));
+    	--tt-y: var(--tt-margin);
+    }
+}
+
+/* Мобильные устройства */
+@media screen and (pointer: coarse) {
+    [data-tips]::after {
+        transition-delay: var(--tt-display);
+    }
+}

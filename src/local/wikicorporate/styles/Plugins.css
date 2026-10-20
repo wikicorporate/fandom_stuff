@@ -1,0 +1,1330 @@
+/* Кнопка для скролла */
+.scroll-button {
+    position: fixed;
+    display: block;
+    bottom: 60px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    height: 88px;
+    width: 48px;
+    transition: transform .3s;
+    transform: rotate(360deg);
+    &.scroll-button--top {
+        transform: rotate(180deg);
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        border: 3px solid transparent;
+        border-radius: 24px;
+        background-color: var(--s);
+        background-image: var(--color-slide);
+        background-clip: border-box;
+        background-size: 100% 300%;
+        background-position: 0% 90%;
+        mask: var(--scroll);
+        -webkit-mask: var(--scroll);
+        mask-composite: exclude;
+        -webkit-mask-composite: xor;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-family: "Font Awesome 7 Free Solid";
+        font-size: 24px;
+        color: var(--s);
+    }
+    &:hover::before {
+        animation: nudgeButton 3s ease-out infinite, colorSlide 3s linear infinite;
+    }
+    &:hover::after {
+        animation: trackSlide 3s linear infinite;
+    }
+}
+
+/* Примечания */
+.reference {
+    position: relative;
+    .reference-text {
+        position: absolute;
+        top: 0;
+        line-height: 1.5;
+        background-color: var(--p);
+        color: var(--pt);
+        transform: translate(-50%, -100%);
+        width: max-content;
+        font-size: 14px;
+        padding: 8px;
+        max-width: 300px;
+        white-space: break-spaces;
+        border: var(--bs-2s);
+        border-radius: var(--br-12);
+        animation: ref cubic-bezier(0.68, -0.55, 0.27, 1.55) 1000ms forwards;
+        overflow: hidden;
+        z-index: 10000;
+    }
+    &:not(:hover) .reference-text {
+        display: none;
+    }
+}
+
+/* Галереи */
+.t-gallery {
+    position: relative;
+    overflow: hidden;
+    &.wds-collapsible-panel.wds-is-collapsed .t-gallery__wrapper.wds-collapsible-panel__content {
+        display: none;
+    }
+    &.wds-collapsible-panel .wds-collapsible-panel__header {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        background-color: transparent;
+        color: var(--pt);
+        padding: 0;
+        font-weight: bold;
+        font-size: var(--size);
+        cursor: pointer;
+        &[aria-expanded="true"] i {
+            transform: rotate(180deg);
+        }
+        i {
+            position: absolute;
+            top: -36px;
+            transition: transform 0.3s;
+        }
+    }
+    .t-gallery__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        text-align: center;
+        align-items: baseline;
+        .t-gallery__item {
+            display: grid;
+            grid-gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            place-content: center;
+            align-items: center;
+            .t-gallery__title {
+            	justify-self: center;
+                line-height: 1.5;
+                word-break: auto-phrase;
+                max-width: 150px;
+            }
+            img {
+                width: fit-content;
+                height: auto;
+                max-width: 150px;
+                max-height: 150px;
+                &[data-video-name] {
+                    display: inline-flex;
+                    object-fit: cover;
+                    width: revert-layer;
+                    height: 105px;
+                    max-width: 200px;
+                }
+            }
+        }
+    }
+}
+
+/* Индикаторы */
+body.theme-fandomdesktop-dark .page-header__indicators {
+	--unfinished: rgb(115 57 7);
+	--old: rgb(101 11 11);
+	--short: rgb(57 63 131);
+	--noncanon: rgb(76 42 108);
+	--navigation: rgb(42 84 38);
+	--disambig: rgb(13 84 78);
+	--spoiler: rgb(103 18 63);
+	--undefined: rgb(47 59 68);
+	--image: rgb(7 27 70);
+    --video: rgb(90 87 9);
+    --audio: rgb(49 7 70);
+    --animation: rgb(70 7 41);
+    --file: rgb(53 20 74);
+}
+body.theme-fandomdesktop-light .page-header__indicators {
+	--unfinished: rgb(255 139 39);
+	--old: rgb(255 47 47);
+	--short: rgb(122 133 255);
+	--noncanon: rgb(183 106 255);
+	--navigation: rgb(134 255 122);
+	--disambig: rgb(56 255 238);
+	--spoiler: rgb(255 56 162);
+	--undefined: rgb(222 222 222);
+	--image: rgb(75 56 255);
+    --video: rgb(255 247 32);
+    --audio: rgb(181 33 255);
+    --animation: rgb(255 37 154);
+    --file: rgb(102 51 255);
+}
+#page-header:has(.page-header__languages) .mw-indicator {
+	width: calc(100% + 125px);
+}
+.page-header__indicators {
+    &.mw-indicators {
+        margin-top: 10px;
+    }
+    .mw-parser-output {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    .mw-indicator {
+        width: 100%;
+    }
+    .mw-indicator__nameplates, .mw-indicator__icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
+    .mw-indicator__icons {
+        grid-column-start: 2;
+        justify-self: end;
+    }
+    .mw-indicator__nameplate, .mw-indicator__icon {
+        position: relative;
+        cursor: pointer;
+        i {
+        	padding-right: 0.2em;
+        }
+        .mw-indicator__nameplate-tooltip, .mw-indicator__icon-tooltip {
+            display: none;
+        }
+        &:hover > :is(.mw-indicator__nameplate-tooltip, .mw-indicator__icon-tooltip) {
+            display: inline-block;
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            line-height: 1.5;
+            background-color: var(--p);
+            color: var(--pt);
+            width: max-content;
+            font-size: 14px;
+            padding: 8px;
+            max-width: 300px;
+            white-space: break-spaces;
+            border-radius: var(--br-12);
+            border: var(--bs-2s);
+            animation: ref cubic-bezier(0.68, -0.55, 0.27, 1.55) 1000ms forwards;
+            overflow: hidden;
+            z-index: 10000;
+        }
+    }
+    .mw-indicator__icon {
+    	color: var(--pt);
+		border-radius: var(--br-14);
+		background-color: var(--ind);
+		height: fit-content;
+		&:has(i) {
+			padding: 0 0.5em;
+		}
+        a {
+            pointer-events: none;
+            display: block;
+            height: 24px;
+        }
+        img {
+            height: 24px;
+            width: auto;
+        }
+    }
+    .mw-indicator__nameplate, .mw-indicator__icon:has(.fa-xmark) {
+        color: var(--pt);
+        border-radius: var(--br-14);
+        background-color: var(--ind);
+        padding: 0 0.5em;
+    }
+    .mw-indicator__nameplate--unfinished {
+        --ind: var(--unfinished);
+    }
+    .mw-indicator__nameplate--old {
+        --ind: var(--old);
+    }
+    .mw-indicator__nameplate--short {
+        --ind: var(--short);
+    }
+    .mw-indicator__nameplate--noncanon {
+        --ind: var(--noncanon);
+    }
+    .mw-indicator__nameplate--navigation {
+        --ind: var(--navigation);
+    }
+    .mw-indicator__nameplate--disambig {
+        --ind: var(--disambig);
+    }
+    .mw-indicator__nameplate--spoiler {
+        --ind: var(--spoiler);
+    }
+    .mw-indicator__icon--image {
+        --ind: var(--image);
+    }
+    .mw-indicator__icon--video {
+        --ind: var(--video);
+    }
+    .mw-indicator__icon--audio {
+        --ind: var(--audio);
+    }
+    .mw-indicator__icon--animation {
+        --ind: var(--animation);
+    }
+    .mw-indicator__icone--file {
+        --ind: var(--file);
+    }
+    .mw-indicator__nameplate, .mw-indicator__icon {
+    	&:has(.fa-xmark) {
+        	--ind: var(--undefined);
+    	}
+    }
+}
+
+/* Разные скины */
+body.skin-fandomdesktop .t-mobile {
+	display: none;
+}
+
+/* Скрытие подстраниц в статьях с табвью */
+.page__main:has(.t-tabview) .subpages {
+	display: none;
+}
+
+/* Викификатор */
+body.skin-fandomdesktop #content #mw-content-text  #editform .wikiEditor-ui .wikiEditor-ui-toolbar .group .tool[rel="wikificator"] {
+	--icon: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M120 32c-48.6 0-88 39.4-88 88l0 168c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-168c0-48.6-39.4-88-88-88l-16 0zm40 128l-64 0 0-40c0-13.3 10.7-24 24-24l16 0c13.3 0 24 10.7 24 24l0 40zM304 32c-17.7 0-32 14.3-32 32l0 224c0 17.7 14.3 32 32 32l72 0c48.6 0 88-39.4 88-88 0-23.6-9.3-45-24.4-60.8 10.3-14.4 16.4-32.1 16.4-51.2 0-48.6-39.4-88-88-88l-64 0zm64 112l-32 0 0-48 32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24zM336 256l0-48 40 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-40 0zm233 84c11-13.8 8.8-33.9-5-45s-33.9-8.8-45 5l-105.7 132.1-38.7-38.7c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c6.4 6.4 15.3 9.8 24.4 9.3s17.5-4.9 23.2-12L569 340z'/%3E%3C/svg%3E");
+	--size: 20px 20px;
+	--position: center;
+	--repeat: no-repeat;
+	background-image: none !important;
+    background-color: var(--pt);
+    -webkit-mask-image: var(--icon);
+    mask-image: var(--icon);
+    -webkit-mask-size: var(--size);
+    mask-size: var(--size);
+    -webkit-mask-position: var(--position);
+    mask-position: var(--position);
+    -webkit-mask-repeat: var(--repeat);
+    mask-repeat: var(--repeat);
+}
+
+/* Добавление блоков в рейл */
+.railModule {
+     .t-header {
+         padding-bottom: 5px;
+         i {
+         	padding-right: 25px;
+         }
+    }
+     .t-rail {
+         position: relative;
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-evenly;
+         gap: 15px;
+         .t-rail__item {
+             position: relative;
+             z-index: 5;
+             &::after {
+                 content: attr(data-title);
+                 position: absolute;
+                 font-family: var(--font);
+                 font-size: 14px;
+                 font-weight: bold;
+                 color: var(--s);
+                 background-color: var(--cm-p);
+                 border-radius: var(--br-14);
+                 padding: 6px;
+                 white-space: nowrap;
+                 z-index: 900;
+                 display: none;
+                 transition: 0.3s;
+                 bottom: 120%;
+                 left: 50%;
+                 transform: translateX(-50%);
+            }
+             &:hover::after {
+                 display: inline-block;
+                 animation: tt 1s ease-out forwards;
+                 transition: 0.3s;
+            }
+             a, strong {
+                 position: relative;
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 width: 3em;
+                 aspect-ratio: 1;
+                 background-color: var(--cm-p);
+                 border-radius: var(--br-50);
+                 transition: color 0.5s ease-in-out;
+                 &::before {
+                     content: "";
+                     position: absolute;
+                     z-index: -1;
+                     inset: -3px;
+                     background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
+                     border-radius: inherit;
+                     transition: --fill 0.6s ease-in-out;
+                }
+                 &:hover {
+                     color: var(--s);
+                     --fill: 100%;
+                }
+            }
+        }
+    }
+}
+
+/* Социальная активность */
+.social-activity {
+	.social-activity__item {
+		&:last-child {
+			margin-bottom: 0;
+		}
+		.social-activity__meta {
+			font-size: 12px;
+			.social-activity__author, .social-activity__time {
+				color: rgba(var(--right-rail-text-color--rgb), .75);
+			}
+			.social-activity__author:hover {
+				color: var(--s);
+			}
+			.social-activity__time {
+				margin-left: 5px;
+			}
+		}
+	}
+	.social-activity__error {
+		color: var(--al);
+		font-size: 13px;
+	}
+}
+
+/* Новые файлы */
+.new-files {
+	.new-files__stats {
+		display: flex;
+    	justify-content: space-between;
+    	align-items: center;
+    	margin-bottom: 12px;
+		.new-files__count {
+			em {
+				font-weight: bold;
+    			font-size: 16px;
+    			font-style: normal;
+			}
+			span {
+				font-size: 12px;
+    			margin-left: 4px;
+    			opacity: 0.8;
+			}
+		}
+	}
+	.new-files__carousel {
+		display: flex;
+    	align-items: center;
+    	justify-content: space-between;
+    	margin-bottom: 12px;
+		.new-files__control {
+			min-width: 30px;
+            min-height: 30px;
+    		padding: 0;
+		}
+		.new-files__list {
+			padding: 0;
+    		margin: 0 10px;
+    		display: flex;
+    		gap: 5px;
+    		overflow: hidden;
+			.new-files__item--hidden {
+				display: none;
+			}
+			.new-files__image {
+				width: 60px;
+    			height: 60px;
+    			object-fit: cover;
+    			border-radius: var(--br-14);
+			}
+			.new-files__placeholder {
+				width: 50px;
+    			height: 50px;
+    			display: flex;
+    			align-items: center;
+    			justify-content: center;
+    			background-color: rgba(var(--pb--rgb), 0.1);
+    			border-radius: var(--br-14);
+    			font-size: 10px;
+    			color: inherit;
+			}
+		}
+	}
+	.new-files__footer {
+		text-align: center;
+    	margin-top: 5px;
+    	.new-files__link-all {
+    		font-size: 12px;
+			 text-transform: uppercase;
+    		font-weight: bold;
+    	}
+	}
+}
+
+/* Популярные страницы */
+.popular-pages {
+	.popular-pages__list {
+		display: flex;
+    	flex-direction: column;
+   		gap: 12px;
+		.popular-pages__item {
+			margin: 0;
+    		padding: 0;
+			.popular-pages__link {
+				display: flex;
+    			align-items: center;
+    			gap: 10px;
+				.popular-pages__image {
+					width: 60px;
+    				height: 60px;
+    				object-fit: cover;
+    				object-position: center;
+    				flex-shrink: 0;
+    				border-radius: var(--br-50);
+				}
+				.popular-pages__title {
+					font-size: 14px;
+    				font-weight: bold;
+    				line-height: 1.2;
+				}
+			}
+		}
+	}
+}
+
+/* Связанные обсуждения */
+.related-discussions {
+    background-color: var(--blur);
+    border-radius: var(--br-14);
+    margin-block: 10px;
+    padding: 18px;
+    .related-discussions__content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .related-discussions__header {
+            align-items: center;
+            display: flex;
+            gap: 12px;
+            .related-discussions__header-icon-container {
+                background-color: var(--p);
+                border-radius: var(--br-14);
+                color: var(--s);
+                display: grid;
+                height: 36px;
+                width: 36px;
+            }
+            .related-discussions__header-text {
+                font-size: 16px;
+                margin: 0;
+            }
+            .related-discussions__header-link {
+                margin-left: auto;
+            }
+            .related-discussions__header-icon {
+                place-self: center;
+            }
+        }
+        .related-discussions__list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            list-style: none;
+            margin: 8px 0 0 0;
+            padding: 0;
+            .related-discussions-item {
+                list-style: none;
+                .related-discussions-item__content {
+                    background-color: var(--p);
+                    border-radius: var(--br-14);
+                    color: var(--pt);
+                    display: flex;
+                    min-height: 60px;
+                    transition: background-color 0.3s;
+                    &:hover {
+                        background-color: var(--cm-p);
+                    }
+                    .related-discussions-item__avatar-wrapper {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                        width: 60px;
+                        .related-discussions-item__avatar {
+                            align-items: center;
+                            border-radius: var(--br-50);
+                            display: flex;
+                            height: 30px;
+                            justify-content: center;
+                            width: 30px;
+                        }
+                    }
+                    .related-discussions-item__text {
+                        display: flex;
+                        flex: 1;
+                        flex-direction: column;
+                        justify-content: center;
+                        overflow: hidden;
+                        .related-discussions-item__title {
+                            font-weight: bold;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                        .related-discussions-item__author {
+                            line-height: 14px;
+                            .related-discussions-item__author-link {
+                                font-size: 12px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                            .related-discussions-item__no-author {
+                                color: var(--pt);
+                                font-size: 12px;
+                                font-style: italic;
+                            }
+                        }
+                    }
+                    .related-discussions-item__extra {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                        .related-discussions-item__extra-content {
+                            align-items: center;
+                            border-radius: var(--br-14);
+                            display: flex;
+                            height: 40px;
+                            justify-content: center;
+                            margin-inline: 9px;
+                            overflow: hidden;
+                            width: 40px;
+                            &.related-discussions-item__extra-content-attachment {
+                                background-position: center;
+                                background-size: cover;
+                            }
+                            .related-discussions-item__extra-content-icon {
+                                color: var(--ac);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .related-discussions__view-more {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 5px;
+        }
+    }
+}
+
+/* Новостная лента */
+.fan-feed {
+    background-color: var(--blur);
+    border-radius: 0 0 var(--br-14) var(--br-14);
+    padding: 20px 30px;
+    @media screen and (max-width: 500px) {
+        padding: 15px;
+    }
+    .fan-feed__container {
+        margin: 0 auto;
+        .fan-feed__title {
+            color: var(--pt);
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .fan-feed__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            @media screen and (max-width: 1023px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media screen and (max-width: 767px) {
+                grid-template-columns: 1fr;
+            }
+            .fan-feed__card {
+                position: relative;
+                border-radius: var(--br-14, 4px);
+                &.fan-feed__card--image {
+                    background-color: var(--blur);
+                    color: var(--pt);
+                    transition: transform .6s ease;
+                    min-height: 250px; 
+                    display: flex; 
+                    flex-direction: column;
+                    overflow: hidden; 
+                    &:hover {
+                        transform: scale(0.9);
+                    }
+                    .fan-feed__image {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        border-radius: inherit;
+                        object-fit: cover;
+                        object-position: top center;
+                        z-index: 1;
+                    }
+                    .fan-feed__image--square {
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                    .fan-feed__overlay {
+                        position: absolute;
+                        bottom: 0; 
+                        left: 0; 
+                        right: 0;
+                        padding: 40px 15px 15px;
+                        border-radius: inherit;
+                        background-image: var(--lg);
+                        z-index: 10;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        .fan-feed__favicon {
+                            width: 35px;
+                            height: 35px;
+                            border-radius: 0;
+                            object-fit: contain;
+                            padding: 2px;
+                            flex-shrink: 0;
+                        }
+                        .fan-feed__text-wrap {
+                            display: flex;
+                            flex-direction: column;
+                            flex: 1;
+                            overflow: hidden;
+                        }
+                        .fan-feed__card-title {
+                            margin: 0;
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: var(--pt);
+                            line-height: 1.2;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: block;
+                        }
+                        .fan-feed__card-subtitle {
+                            margin: 5px 0 0;
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: var(--pt);
+                        }
+                    }
+                }
+                &.fan-feed__card--special {
+                    background-color: var(--p);
+                    color: var(--pt);
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: var(--br-14);
+                    &:hover {
+                        transform: none !important; 
+                    }
+                    .fan-feed__special-header {
+                        padding: 15px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .fan-feed__header-title-wrap {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            i {
+                                flex-shrink: 0;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    .fan-feed__special-list {
+                        display: flex;
+                        flex-direction: column;
+                        flex: 1;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        .fan-feed__special-item {
+                            display: flex;
+                            align-items: center;
+                            padding: 0 15px;
+                            flex: 1; 
+                            color: var(--pt);
+                            min-height: 75px; 
+                            cursor: pointer;
+                            &.fan-feed__special-item--user {
+                                position: relative;
+                                padding-left: 20px; 
+                                border-radius: var(--br-14);
+                            }
+                            &:hover .fan-feed__item-title {
+                                color: var(--l);
+                            }
+                            .fan-feed__action-icon {
+                                font-size: 22px;
+                                color: var(--pt);
+                                width: 30px;
+                                text-align: center;
+                                margin-right: 15px;
+                                flex-shrink: 0;
+                                transition: transform 0.2s ease, color 0.2s ease;
+                            }
+                            &:hover .fan-feed__action-icon {
+                                transform: scale(1.1);
+                                color: var(--l);
+                            }
+                            .fan-feed__wiki-art-img {
+                                border-radius: var(--br-14);
+                                object-fit: cover;
+                                object-position: center;
+                                margin-right: 15px;
+                                flex-shrink: 0; 
+                                width: 60px;
+                                height: 60px;
+                            }
+                            .fan-feed__item-title {
+                                font-size: 14px;
+                                font-weight: bold;
+                                transition: color 0.2s ease;
+                                color: var(--pt);
+                                text-decoration: none;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: block;
+                            }
+                            .fan-feed__user-stats {
+                                display: flex;
+                                gap: 12px;
+                                margin-left: auto; 
+                            }
+                            .fan-feed__stat {
+                                display: flex;
+                                align-items: center;
+                                gap: 6px;
+                                font-size: 13px;
+                                color: var(--pt);
+                                position: relative;
+                                cursor: help;
+
+                                i {
+                                    font-size: 14px;
+                                    color: var(--l);
+                                }
+                            }
+                            .fan-feed__stat::after {
+                                content: attr(data-tooltip);
+                                position: absolute;
+                                bottom: 130%;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                background-color: var(--cm-p);
+                                color: var(--pt);
+                                padding: 6px 10px;
+                                border-radius: var(--br-14);
+                                font-size: 12px;
+                                white-space: nowrap;
+                                opacity: 0;
+                                visibility: hidden;
+                                transition: all 0.2s ease;
+                                pointer-events: none;
+                                z-index: 100;
+                            }
+                            .fan-feed__stat:hover::after {
+                                opacity: 1;
+                                visibility: visible;
+                                bottom: 110%; 
+                            }
+                        }
+                    }
+                    .fan-feed__empty-msg {
+                        padding: 15px; 
+                        text-align: center; 
+                        color: var(--pt);
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}
+body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-diff) {
+	#custom-fan-feed {
+		display: none;
+	}
+}
+.resizable-container:has(.fan-feed) .page {
+	border-radius: 0;
+}
+
+/* Переключатель темы */
+ .theme-toggler {
+     --toggler-transition: all 1s ease;
+     font-size: 5.5px;
+     width: 20em;
+     height: 7em;
+     box-shadow: 0.075em 0.075em 0.225em 0.1em rgba(var(--ac--rgb), .3);
+     position: relative;
+     overflow: hidden;
+     isolation: isolate;
+     border-radius: 12em;
+     cursor: pointer;
+     align-self: center;
+     margin-right: 15px;
+     flex-shrink: 0;
+     &::before {
+         content: '';
+         width: 100%;
+         height: 100%;
+         background-color: transparent;
+         box-shadow: inset 0.15em 0.15em 0.5em 0.05em rgba(var(--pb--rgb), .9);
+         position: absolute;
+         z-index: 1;
+         border-radius: 12em;
+    }
+     .theme-toggler__switch {
+         width: 100%;
+         height: 100%;
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index: 1;
+         &.theme-toggler__switch--dark {
+             body.theme-fandomdesktop-dark & {
+                 display: none;
+            }
+        }
+         &.theme-toggler__switch--light {
+             body.theme-fandomdesktop-light & {
+                 display: none;
+            }
+        }
+         .theme-toggler__control {
+             display: block;
+             width: 100%;
+             height: 100%;
+        }
+    }
+     .theme-toggler__visuals {
+         width: 100%;
+         height: 100%;
+         background-color: var(--cm-p);
+         position: relative;
+         isolation: isolate;
+         transition: var(--toggler-transition);
+         .theme-toggler__satellite {
+             --shadow: inset 0.1em 0.1em 0.15em var(--s), -0.1em -0.1em 0.15em var(--s), inset -0.1em -0.1em 0.15em var(--cm-s), 0.1em 0.1em 0.15em var(--cm-p), 0.075em 0.075em 0.5em 0.2em var(--cm-p);
+             width: 6em;
+             height: 6em;
+             position: absolute;
+             top: 7.5%;
+             left: 5%;
+             border-radius: var(--br-50);
+             isolation: isolate;
+             z-index: 1;
+             transition: var(--toggler-transition);
+             body.theme-fandomdesktop-dark & {
+                 left: 65%;
+            }
+             body.theme-fandomdesktop-light & {
+                 left: 5%;
+            }
+             &::before {
+                 content: '';
+                 width: 100%;
+                 height: 100%;
+                 background-color: transparent;
+                 box-shadow: var(--shadow);
+                 position: absolute;
+                 top: 0;
+                 left: 0;
+                 border-radius: var(--br-50);
+                 z-index: 2;
+            }
+             .theme-toggler__sun {
+                 width: 100%;
+                 height: 100%;
+                 background-color: var(--cm-s);
+                 position: relative;
+                 overflow: hidden;
+                 z-index: 1;
+                 border-radius: var(--br-50);
+                 .theme-toggler__moon {
+                     width: 100%;
+                     height: 100%;
+                     background-color: var(--cm-s);
+                     box-shadow: var(--shadow);
+                     position: absolute;
+                     top: 0;
+                     left: 100%;
+                     transform: rotate(60deg);
+                     border-radius: var(--br-50);
+                     transition: var(--toggler-transition);
+                     body.theme-fandomdesktop-dark & {
+                         left: 0%;
+                         transform: rotate(0deg);
+                    }
+                     body.theme-fandomdesktop-light & {
+                         left: 100%;
+                         transform: rotate(60deg);
+                    }
+                     .theme-toggler__crater {
+                         width: 18%;
+                         height: 18%;
+                         background-color: var(--cm-p);
+                         position: absolute;
+                         border-radius: var(--br-50);
+                         &.theme-toggler__crater--1 {
+                             top: 20%;
+                             left: 45%;
+                        }
+                         &.theme-toggler__crater--2 {
+                             top: 50%;
+                             left: 25%;
+                             transform: scale(2);
+                        }
+                         &.theme-toggler__crater--3 {
+                             top: 60%;
+                             left: 62%;
+                             transform: scale(1.2);
+                        }
+                    }
+                }
+            }
+             .theme-toggler__rays {
+                 width: 100%;
+                 height: 100%;
+                 position: absolute;
+                 top: 0;
+                 left: 0;
+                 transform: scale(1);
+                 transition: var(--toggler-transition);
+                 body.theme-fandomdesktop-dark & {
+                     transform: scale(0.85);
+                }
+                 body.theme-fandomdesktop-light & {
+                     transform: scale(1);
+                }
+                 .theme-toggler__ray {
+                     width: 100%;
+                     height: 100%;
+                     background-color: var(--pt);
+                     opacity: .1;
+                     backdrop-filter: blur(0.0075em);
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     border-radius: var(--br-50);
+                     &.theme-toggler__ray--1 {
+                         transform: scale(2);
+                    }
+                     &.theme-toggler__ray--2 {
+                         transform: scale(2.9);
+                    }
+                     &.theme-toggler__ray--3 {
+                         transform: scale(3.8);
+                    }
+                }
+            }
+        }
+         .theme-toggler__clouds {
+             width: 100%;
+             height: 100%;
+             position: absolute;
+             top: 0;
+             left: 0;
+             isolation: isolate;
+             transition: var(--toggler-transition);
+             body.theme-fandomdesktop-dark & {
+                 top: 100%;
+            }
+             body.theme-fandomdesktop-light & {
+                 top: 0;
+            }
+             .theme-toggler__cloud-group {
+                 width: 100%;
+                 height: 100%;
+                 position: absolute;
+                 bottom: -15%;
+                 right: -10%;
+                 &.theme-toggler__cloud-group--1 {
+                     z-index: 1;
+                }
+                 &.theme-toggler__cloud-group--2 {
+                     bottom: 0%;
+                     right: -6%;
+                     transform: rotate(-5deg);
+                     .theme-toggler__cloud {
+                         background-color: var(--cm-s);
+                         opacity: .85
+                    }
+                     .theme-toggler__cloud--2 {
+                         bottom: -18%;
+                         left: 15%;
+                    }
+                     .theme-toggler__cloud--3 {
+                         bottom: -7.5%;
+                         left: 29%;
+                    }
+                     .theme-toggler__cloud--5 {
+                         bottom: -1%;
+                    }
+                     .theme-toggler__cloud--6 {
+                         bottom: 4%;
+                    }
+                }
+                 .theme-toggler__cloud {
+                     width: 3.25em;
+                     height: 3.25em;
+                     background-color: var(--s);
+                     position: absolute;
+                     bottom: -24%;
+                     transform: scale(1);
+                     border-radius: var(--br-50);
+                     &.theme-toggler__cloud--2 {
+                         bottom: -20%;
+                         left: 14%;
+                         transform: scale(1.3);
+                    }
+                     &.theme-toggler__cloud--3 {
+                         bottom: -15%;
+                         left: 27.5%;
+                         transform: scale(1.3);
+                    }
+                     &.theme-toggler__cloud--4 {
+                         bottom: -12%;
+                         left: 40%;
+                         transform: scale(0.9);
+                    }
+                     &.theme-toggler__cloud--5 {
+                         bottom: -7.5%;
+                         left: 52.5%;
+                         transform: scale(1.1);
+                    }
+                     &.theme-toggler__cloud--6 {
+                         bottom: 0%;
+                         left: 67.5%;
+                         transform: scale(1.3);
+                    }
+                     &.theme-toggler__cloud--7 {
+                         bottom: 25%;
+                         left: 80%;
+                         transform: scale(1.55);
+                    }
+                }
+            }
+        }
+         .theme-toggler__stars {
+             width: 70%;
+             height: 100%;
+             position: absolute;
+             top: -100%;
+             transition: var(--toggler-transition);
+             body.theme-fandomdesktop-dark & {
+                 top: 0%;
+            }
+             body.theme-fandomdesktop-light & {
+                 top: -100%;
+            }
+             .theme-toggler__star {
+                 --polygon: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%);
+                 width: 1.25em;
+                 height: 1.25em;
+                 background-color: var(--cm-s);
+                 -webkit-clip-path: var(--polygon);
+                 clip-path: var(--polygon);
+                 position: absolute;
+                 &.theme-toggler__star--1 {
+                     top: 12%;
+                     left: 25%;
+                }
+                 &.theme-toggler__star--2 {
+                     top: 30%;
+                     left: 10%;
+                     transform: scale(0.4);
+                }
+                 &.theme-toggler__star--3 {
+                     top: 35%;
+                     left: 60%;
+                     transform: scale(0.3);
+                }
+                 &.theme-toggler__star--4 {
+                     top: 25%;
+                     left: 77.5%;
+                     transform: scale(1.1);
+                }
+                 &.theme-toggler__star--5 {
+                     top: 45%;
+                     left: 27.5%;
+                     transform: scale(0.3);
+                }
+                 &.theme-toggler__star--6 {
+                     top: 50%;
+                     left: 58.5%;
+                     transform: scale(0.2);
+                }
+                 &.theme-toggler__star--7 {
+                     top: 55%;
+                     left: 77.5%;
+                     transform: scale(0.3);
+                }
+                 &.theme-toggler__star--8 {
+                     top: 65%;
+                     left: 18%;
+                     transform: scale(0.2);
+                }
+                 &.theme-toggler__star--9 {
+                     top: 72.5%;
+                     left: 15%;
+                     transform: scale(0.2);
+                }
+                 &.theme-toggler__star--10 {
+                     top: 80%;
+                     left: 30%;
+                     transform: scale(0.24);
+                }
+                 &.theme-toggler__star--11 {
+                     top: 75%;
+                     left: 62.5%;
+                     transform: scale(0.5);
+                }
+            }
+        }
+    }
+}
+
+/* Теги и иконки */
+#userProfileApp .hide-default-tags .user-identity-header__tag:not(.custom-profile-tag) {
+     display: none;
+}
+#userProfileApp .user-identity-header__tag.custom-profile-tag.has-tooltip {
+     cursor: help;
+     position: relative;
+     height: fit-content;
+     display: flex;
+     justify-content: center;
+     .custom-profile-tooltip {
+     	position: absolute;
+		opacity: 0;
+    	visibility: hidden;
+    	transition: opacity .3s ease, transform .3s ease;
+    	transform: translateX(-50%) translateY(5px);
+		bottom: 100%;
+   		left: 50%;
+    	margin-bottom: 2px;
+        font-size: 12px;
+        font-family: var(--font);
+        bottom: 30px;
+        width: max-content;
+        background-color: var(--cm-p);
+        border-radius: var(--br-12);
+        padding: 5px 8px;
+        z-index: 100;
+    }
+    &:hover .custom-profile-tooltip {
+        opacity: 1;
+    	visibility: visible;
+    	transform: translateX(-50%) translateY(0);
+    }
+}
+.custom-inline-icon {
+     font-size: 0.95em;
+}
+ .custom-inline-text {
+    font-size: 0.85em;
+    font-weight: bold;
+    font-family: var(--font);
+    margin-left: 2px;
+    background-color: var(--cm-p);
+    color: var(--s);
+    border-radius: var(--br-14);
+    padding: 4px 6px;
+}
+
+/* Предпросмотр статей */
+.custom-page-preview {
+    position: absolute;
+    z-index: 999999;
+    background-color: var(--p);
+    border-radius: var(--br-14);
+    display: flex;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    .cpp-content {
+        padding: 16px;
+    }
+    .cpp-extract {
+        margin: 0;
+        font-size: 14px;
+        color: var(--pt);
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    &.layout-vertical {
+        flex-direction: row;
+        width: 360px;
+        .cpp-content {
+            flex: 1;
+        }
+        .cpp-image {
+            width: 120px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center top;
+        }
+    }
+    &.layout-horizontal {
+        flex-direction: column;
+        width: 320px;
+        .cpp-image {
+            width: 100%;
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+    &.no-image {
+        width: 320px;
+    }
+}

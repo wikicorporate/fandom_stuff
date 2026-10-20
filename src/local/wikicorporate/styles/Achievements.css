@@ -1,0 +1,184 @@
+/* Тултипы и модули */
+:is(.WikiaRail, .right-rail-wrapper) .UserProfileAchievementsModule {
+	.badges-icons {
+		display: grid;
+	    grid-template-columns: repeat(3, 1fr);
+	    justify-items: center;
+	}
+}
+.tippy-box {
+	&, &::before, &::after {
+		display: none;
+	}
+}
+.UserProfileAchievementsModule, .WikiaLatestEarnedBadgesModule, .LeaderboardTable {
+    overflow: visible;
+    .badges li, .badge {
+        &:hover .profile-hover {
+        	position: absolute;
+        	background-color: var(--p);
+		    color: var(--s);
+		    border-radius: var(--br-14);
+		    border: var(--bs-2s);
+            display: flex;
+            gap: 0.5em;
+            padding: 6px 8px 2px;
+            z-index: 1;
+            left: -300px;
+            top: 0;
+            width: fit-content;
+			max-width: 300px;
+            animation: 0.85s cubic-bezier(0, 0, 0.1, 1) 0s 1 normal forwards running tt;
+            opacity: 0;
+            transition: 0.3s;
+            img {
+            	display: none;
+            }
+            .profile-hover-text {
+            	position: relative;
+		    	width: fit-content;
+				max-width: 350px;
+				.badge-name {
+					position: relative;
+					font-family: var(--font);
+					text-align: center;
+				}
+				p {
+					line-height: 18px !important;
+		    		padding: 6px 0 2px;
+		    		width: fit-content;
+		            max-width: 350px;
+				}
+				strong {
+					display: inline;
+					font-family: var(--font);
+				}
+            }
+        }
+        img {
+        	filter: brightness(0) invert(1) var(--f-sticky);
+        }
+    }
+}
+.UserProfileAchievementsModule {
+	.tally {
+		width: initial !important;
+		em {
+			margin-right: 0.2em;
+		}
+	}
+}
+:is(.UserProfileAchievementsModule:has(.title-challeneges), .WikiaLatestEarnedBadgesModule, .LeaderboardTable) .profile-hover {
+	left: -310px !important;
+}
+.WikiaLatestEarnedBadgesModule ul {
+    padding-top: 10px;
+    li {
+        border: none;
+        .badge-icon-earnable {
+            margin-top: 6px;
+        }
+        .badge-text {
+            p {
+                line-height: 18px;
+                padding: 6px 0 2px;
+            }
+            strong::before {
+            	content: "Достижение: \0a";
+            	font-weight: normal;
+            }
+        }
+    }
+}
+.mw-special-Leaderboard #LeaderboardTable .badges .profile-hover {
+	h3 {
+		margin: auto;
+	}
+	p {
+		font-size: 14px;
+		margin: 0;
+	}
+}
+.title-challeneges {
+	display: inline;
+	position: relative;
+	font-size: 16px;
+}
+
+/* Список лидеров */
+#about-achievements {
+    padding: 10px;
+    a:hover, a:active {
+        color: var(--s);
+    }
+    & > span {
+    	&.open::after {
+    		border-color: var(--pt) transparent transparent;
+    	}
+    	&.hide::after {
+    		border-color: transparent transparent var(--pt);
+    	}
+    }
+    ul {
+        li {
+			color: var(--s);
+			font-family: var(--font);
+			text-shadow: var(--ts-h);
+        }
+        span {
+        	width: 70px;
+		    padding-top: 23px;
+		    height: 45px;
+		    margin-left: 7px;
+		    box-sizing: content-box;
+		    background-color: var(--blur) !important;
+			border-radius: var(--br-50);
+        }
+    }
+}
+#LeaderboardTable {
+	background-attachment: fixed;
+	&, td, th {
+		text-align: center;
+	}
+	tr {
+		border-bottom: none;
+	}
+	th {
+		padding: 10px 0 7px 5px;
+	    font-weight: bold;
+	    text-transform: uppercase;
+	    font-size: 14px;
+	}
+	td.user, td.badge {
+		position: relative;
+		text-align: left;
+	}
+	.rank span {
+	    text-align: center;
+	    border-radius: var(--br-50);
+	    color: var(--s);
+	    background-color: var(--cm-p);
+	    border: none;
+	    margin-left: 15px;
+	    width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    padding: 3px 5px 2px 0;
+	    box-sizing: content-box;
+	}
+	.user {
+		white-space: nowrap;
+		.wds-avatar {
+			bottom: 5px;
+			right: 5px;
+		}
+	}
+	.tally {
+		display: flex;
+		flex-direction: column;
+	    font-size: 15px;
+	    line-height: 1.3em;
+	    padding-left: 2px;
+	}
+}

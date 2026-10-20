@@ -1,0 +1,114 @@
+/* Импорт CSS страниц: GlobalFixes.css, Blocks.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, Achievements.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Blocks.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:Achievements.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
+
+/* Импорт CSS страниц: Mainpage.css, Templates.css, Symbols.css, Custom.css, Fixes.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mainpage.css|MediaWiki:Templates.css|MediaWiki:Symbols.css|MediaWiki:Custom.css|MediaWiki:Fixes.css";
+
+/* Импорт шрифтов */
+@font-face {
+    font-family: "Segoe Print";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru")
+    format("woff2");
+}
+
+:root {
+    /* Шрифты */
+    --font: Segoe Print, serif;
+    --size: 1.4rem;
+}
+
+/* Тёмная тема */
+body.theme-fandomdesktop-dark {
+	/* Цвета */
+    --p: #261233;
+    --s: #FAB6EF;
+    /* Блюр */
+    --blur: rgb(14 4 16 / 70%);
+	/* Фильтры */
+	--f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#color');
+	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.98039 0 0 0 0 0 0.71373 0 0 0 0 0 0.93725 0 0 0 0 0 1 0"/></filter></svg>#color');
+	--f-main: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.98039 0 0 0 0 0 0.71373 0 0 0 0 0 0.93725 0 0 0 0 0 1 0"/></filter></svg>#color');
+	/* Изображения */
+	--h: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/37/Mp-header-dark.png/revision/latest?cb=20240127190841&format=original&path-prefix=ru);
+	--cp: url(https://static.wikia.nocookie.net/hazbinhotel/images/9/9e/HB-S2E2-1.jpg/revision/latest?cb=20231026155201&format=original&path-prefix=ru);
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/0/08/Site-background-dark/revision/latest?cb=20260316190157&format=original&path-prefix=ru);
+}
+
+/* Светлая тема */
+body.theme-fandomdesktop-light {
+	/* Цвета */
+    --p: #CCF6FC;
+    --s: #1F323D;
+    /* Блюр */
+	--blur: rgb(170 215 245 / 70%);
+	/* Фильтры */
+	--f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter></svg>#color');
+	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.12157 0 0 0 0 0 0.19608 0 0 0 0 0 0.23922 0 0 0 0 0 1 0"/></filter></svg>#color');
+	--f-main: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.12157 0 0 0 0 0 0.19608 0 0 0 0 0 0.23922 0 0 0 0 0 1 0"/></filter></svg>#color');
+	/* Изображения */
+	--h: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/69/Mp-header-light.png/revision/latest?cb=20240108102231&format=original&path-prefix=ru);
+	--cp: url(https://static.wikia.nocookie.net/hazbinhotel/images/8/8a/Cherub_Towne_HD.png/revision/latest?cb=20210315213237);
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/b/b5/Site-background-light/revision/latest?cb=20230226194135&format=original&path-prefix=ru);
+}
+
+/* Костыли для FF */
+@-moz-document url-prefix() {
+    :root:has(.theme-fandomdesktop-dark) {
+    	--p: #261233;
+    	--s: #FAB6EF;
+    }
+    :root:has(.theme-fandomdesktop-light) {
+    	--p: #CCF6FC;
+    	--s: #1F323D;
+    }
+}
+
+/* Отдельное оформление для страниц Адского Босса */
+body:is(.ns-0, .ns-6).theme-fandomdesktop-dark:has(.page-header__categories a[title^="Категория"][title$="Адского Босса"]) {
+	--p: #2F0808;
+	--s: #DAC04D;
+	--l: #EBBEFF;
+	--blur: rgb(30 5 5 / 70%);
+	--l--rgb: var(--theme-link-color--rgb);
+	--pb--rgb: var(--theme-page-background-color--rgb);
+	--lg: linear-gradient(transparent, rgba(var(--pb--rgb), 0.6) 60%);
+	--theme-link-color: var(--l);
+	--theme-link-color--rgb: 235, 190, 255;
+    --theme-link-color--hover: #EAE0EE;
+    --theme-page-background-color--rgb: 30, 5, 5;
+	--theme-body-background-image-full: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest?cb=20221014220857);
+	--theme-body-background-image-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest/scale-to-width-down/1280?cb=20221014220857);
+    --theme-body-background-image-large-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest/scale-to-width-down/1500?cb=20221014220857);
+	--cp: url(https://static.wikia.nocookie.net/hazbinhotel/images/c/c4/StolasBedroom.jpg/revision/latest?cb=20221014221828);
+	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.8549 0 0 0 0 0 0.75294 0 0 0 0 0 0.30196 0 0 0 0 0 1 0"/></filter></svg>#color');
+}
+body:is(.ns-0, .ns-6).theme-fandomdesktop-light:has(.page-header__categories a[title^="Категория"][title$="Адского Босса"]) {
+	--p: #E4DEDD;
+	--s: #2C2D2F;
+	--l: #561717;
+	--blur: rgb(197 194 194 / 80%);
+	--l--rgb: var(--theme-link-color--rgb);
+	--pb--rgb: var(--theme-page-background-color--rgb);
+	--lg: linear-gradient(transparent, rgba(var(--pb--rgb), 0.6) 60%);
+	--theme-link-color: var(--l);
+	--theme-link-color--rgb: 86, 23, 23;
+    --theme-link-color--hover: #7D2727;
+    --theme-page-background-color--rgb: 197, 194, 194; 
+	--theme-body-background-image-full: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest?cb=20230622172455&format=original&path-prefix=ru);
+	--theme-body-background-image-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest/scale-to-width-down/1280?cb=20230622172455&format=original&path-prefix=ru);
+    --theme-body-background-image-large-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest/scale-to-width-down/1500?cb=20230622172455&format=original&path-prefix=ru);
+	--cp: var(--theme-body-background-image-full);
+	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.24314 0 0 0 0 0 0.03922 0 0 0 0 0 0.12941 0 0 0 0 0 1 0"/></filter></svg>#color');
+}
+
+/* Костыли для отдельного оформления */
+@-moz-document url-prefix() {
+    :root:is(.ns-0, .ns-6).theme-fandomdesktop-dark:has(.page-header__categories a[title^="Категория"][title$="Адского Босса"]) {
+    	--p: #261233;
+    	--s: #FAB6EF;
+    }
+    :root:is(.ns-0, .ns-6).theme-fandomdesktop-light:has(.page-header__categories a[title^="Категория"][title$="Адского Босса"]) {
+    	--p: #CCF6FC;
+    	--s: #2C2D2F;
+    }
+}

@@ -1,0 +1,184 @@
+/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:Mobile.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
+
+/* Импорт шрифтов */
+@font-face {
+    font-family: "Segoe Print";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru")
+    format("woff2");
+}
+
+/* Цвета и переменные */
+:root {
+	/* Шрифты */
+	--font: 'Segoe Print', serif;
+}
+
+/* Тёмная тема */
+body.theme-fandommobile-dark {
+	/* Цвета */
+    --p: #261233;
+    --s: #FAB6EF;
+    /* Блюр */
+    --blur: rgb(14 4 16 / 70%);
+	/* Изображения */
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/0/08/Site-background-dark/revision/latest?cb=20260316190157&format=original&path-prefix=ru);
+}
+
+/* Светлая тема */
+body.theme-fandommobile-light {
+	/* Цвета */
+    --p: #CCF6FC;
+    --s: #1F323D;
+    /* Блюр */
+	--blur: rgb(170 215 245 / 70%);
+	/* Изображения */
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/b/b5/Site-background-light/revision/latest?cb=20230226194135&format=original&path-prefix=ru);
+}
+
+/* Костыли */
+:root:has(.theme-fandommobile-dark) {
+   	--p: #261233;
+    --s: #FAB6EF;
+}
+:root:has(.theme-fandommobile-light) {
+    --p: #CCF6FC;
+    --s: #1F323D;
+}
+
+/* Отдельное оформление для страниц Адского Босса */
+body:is(.ns-0, .ns-6).theme-fandommobile-dark:has([data-testid="article-footer-categories"] a[title^="Категория"][title$="Адского Босса"]) {
+	--p: #2F0808;
+	--s: #DAC04D;
+	--l: #EBBEFF;
+	--blur: rgb(30 5 5 / 70%);
+	--pb--rgb: var(--theme-page-background-color--rgb);
+	--theme-link-color: var(--l);
+	--theme-link-color--rgb: 235, 190, 255;
+    --theme-link-color--hover: #EAE0EE;
+    --theme-page-background-color--rgb: 30, 5, 5;
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest?cb=20221014220857);
+}
+body:is(.ns-0, .ns-6).theme-fandommobile-light:has([data-testid="article-footer-categories"] a[title^="Категория"][title$="Адского Босса"]) {
+	--p: #E4DEDD;
+	--s: #2C2D2F;
+	--l: #561717;
+	--blur: rgb(197 194 194 / 80%);
+	--pb--rgb: var(--theme-page-background-color--rgb);
+	--theme-link-color: var(--l);
+	--theme-link-color--rgb: 86, 23, 23;
+    --theme-link-color--hover: #7D2727;
+    --theme-page-background-color--rgb: 197, 194, 194; 
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest?cb=20230622172455&format=original&path-prefix=ru);
+}
+
+/* Костыли для отдельного оформления */
+:root:is(.ns-0, .ns-6):has(.theme-fandommobile-dark):has([data-testid="article-footer-categories"] a[title^="Категория"][title$="Адского Босса"]) {
+   	--p: #2F0808;
+    --s: #DAC04D;
+}
+:root:is(.ns-0, .ns-6):has(.theme-fandommobile-light):has([data-testid="article-footer-categories"] a[title^="Категория"][title$="Адского Босса"]) {
+    --p: #E4DEDD;
+    --s: #2C2D2F;
+}
+
+/* Навбар */
+.mobile-community-bar__menu-item {
+    a[data-path="root:2"] span::before {
+        content: "\f509";
+    }
+    a[data-path="root:2:0"] span::before {
+        content: "\f0eb";
+    }
+    a[data-path="root:2:1"] span::before {
+        content: "\f53f";
+    }
+    a[data-path="root:2:2"] span::before {
+        content: "\f7a6";
+    }
+    a[data-path="root:2:3"] span::before {
+        content: "\f590";
+    }
+    a[data-path="root:2:4"] span::before {
+        content: "\f554";
+    }
+    a[data-path="root:3"] span::before {
+        content: "\f0c0";
+    }
+    a[data-path="root:3:0"] span::before {
+        content: "\f004";
+    }
+    a[data-path="root:3:1"] span::before {
+        content: "\f06d";
+    }
+    a[data-path="root:3:2"] span::before {
+        content: "\f1b0";
+    }
+    a[data-path="root:3:3"] span::before {
+        content: "\f0e7";
+    }
+    &[data-path="root:3"] li:nth-child(5) a span::before {
+        content: "\f005";
+    }
+    a[data-path="root:4"] span::before {
+        content: "\f87c";
+    }
+    a[data-path="root:4:0"] span::before {
+        content: "\f26c";
+    }
+    a[data-path="root:4:1"] span::before {
+        content: "\f518";
+    }
+    a[data-path="root:4:2"] span::before {
+        content: "\f79f";
+    }
+    a[data-path="root:4:3"] span::before {
+        content: "\f124";
+    }
+    a[data-path="root:4:4"] span::before {
+        content: "\f1e2";
+    }
+    a[data-path="root:4:5"] span::before {
+        content: "\f001";
+    }
+    a[data-path="root:5"] span::before {
+        content: "\f0a1";
+    }
+    &[data-path="root:5"] li:nth-child(1) a span::before {
+        content: "\f508";
+    }
+    &[data-path="root:5"] li:nth-child(2) a span::before {
+        content: "\f0e3";
+    }
+    &[data-path="root:5"] li:nth-child(3) a span::before {
+        content: "\f12e";
+    }
+    &[data-path="root:5"] li:nth-child(4) a span::before {
+        content: "\f1ab";
+    }
+    &[data-path="root:5"] li:nth-child(5) a span::before {
+        content: "\f256";
+    }
+    &[data-path="root:5"] li:nth-child(6) a span::before {
+        content: "\f059";
+    }
+    a[data-path="root:6"] span::before {
+        content: "\f0f3";
+    }
+    a[data-path="root:6:0"] span::before {
+        content: "\f024";
+    }
+    a[data-path="root:6:1"] span::before {
+        content: "\f266";
+        font-family: 'Font Awesome 7 Brands' !important;
+    }
+    a[data-path="root:6:2"] span::before {
+        content: "\f304";
+    }
+    a[data-path="root:6:3"] span::before {
+        content: "\f0f9";
+    }
+    a[data-path="root:6:4"] span::before {
+        content: "\f0ad";
+    }
+}

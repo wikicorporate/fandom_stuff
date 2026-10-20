@@ -1,0 +1,271 @@
+/* Скроллбар */
+::-webkit-scrollbar {
+    opacity: 0;
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--s);
+    border-radius: 0;
+    border: none;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--p);
+}
+::-webkit-scrollbar-button {
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+/* Навбар */
+:is(.fandom-community-header :is(a, .wds-dropdown__toggle-chevron), .page-counter__value, .page-counter__label, .wiki-tools .wds-button.wds-is-secondary):hover {
+	color: var(--l);
+}
+.fandom-sticky-header {
+	background-color: var(--p);
+	color: var(--s);
+	padding: 0;
+	border: none !important;
+	:is(.wds-button, a) {
+		color: var(--s);
+	}
+	&::before, &::after {
+		content: "";
+		display: block;
+		width: 100%;
+		position: absolute;
+		height: 2px;
+		left: 0;
+		background-color: var(--t);
+		pointer-events: none;
+	}
+	&::before {
+		top: 0;
+	}
+	&::after {
+		bottom: 0;
+	}
+	.wiki-tools .wds-button.wds-is-secondary {
+		--wds-secondary-button-label-color: var(--s);
+	    --wds-secondary-button-label-color--hover: var(--rl);
+	}
+	.fandom-sticky-header__sitename {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		padding: 0 12px;
+		color: var(--s) !important;
+		transition: all 0.15s ease-in-out !important;
+		&:hover {
+			background-color: var(--t);
+			color: var(--s) !important;
+		}
+	}
+	.fandom-community-header__local-navigation {
+		margin: 0 !important;
+		height: 100%;
+		.wds-tabs {
+			grid-column-gap: 0 !important;
+			height: 100%;	
+		}
+		.wds-dropdown {
+			height: 100%;
+			padding: 0 12px;
+			transition: all 0.15s ease-in-out !important;
+			.wds-dropdown__toggle {
+				height: 100%;
+			}
+			[data-tracking="custom-level-1"] {
+				height: 100%;
+				display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    transition: all 0.15s ease-in-out !important;
+			    color: var(--s) !important;
+			}
+			&:hover {
+				background-color: var(--t);
+				[data-tracking="custom-level-1"], .wds-dropdown__toggle-chevron {
+					color: var(--s) !important;
+				}
+			}
+		}
+	}
+	.fandom-sticky-header__sitename, .fandom-community-header__local-navigation .wds-dropdown {
+		&::before, &::after {
+			content: "";
+			display: block;
+			width: 100%;
+			position: absolute;
+			height: 2px;
+			left: 0;
+			z-index: 1;
+			animation: none !important;
+			background-color: transparent;
+			transition: all 0.15s ease-in-out !important;
+		}
+		&:hover::before, &:hover::after {
+			background-color: var(--s);
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+	}
+}
+
+/* Выпадающие меню */
+.wds-dropdown {
+     &::before, &::after {
+         border: 0 !important;
+         margin: 0 !important;
+    }
+     .wds-dropdown__content, .wds-dropdown-level-nested__content {
+         border: 0 !important;
+         border-radius: 0 !important;
+         background-color: var(--p) !important;
+         padding: 6px !important;
+    }
+     .wds-dropdown-level-nested__content {
+         top: -8px !important;
+         margin-left: 2px;
+         z-index: -1;
+    }
+     .wds-dropdown__content {
+         &::before, &::after {
+             border: none !important;
+        }
+         .wds-list {
+             counter-reset: list;
+             display: flex;
+             flex-direction: column;
+             overflow-y: visible !important;
+             background-image: none;
+             gap: 6px;
+             &::before, &::after {
+                 display: none !important;
+            }
+             li {
+                 position: relative;
+                 border: var(--bs-2s);
+                 margin: 0 !important;
+                 padding: 0 !important;
+                 &::before {
+                     content: "// 00" counter(list);
+                     color: var(--s);
+                     font-size: 8px;
+                     counter-increment: list;
+                     background-color: var(--p);
+                     top: -8px;
+                     left: 0;
+                     right: 0;
+                     margin: auto;
+                     width: fit-content;
+                     padding: 0 2px;
+                     position: absolute;
+                     transition: all 0.15s ease-in-out !important;
+                }
+                 &::after {
+                     content: "";
+                     width: calc(100% + 6px);
+                     height: 8px;
+                     background-color: var(--p);
+                     position: absolute;
+                     left: -3px;
+                     top: 0;
+                     bottom: 0;
+                     margin: auto;
+                }
+                 &:hover {
+                     border: var(--bs-2rl);
+                     transition: all 0.15s ease-in-out !important;
+                     &::before {
+                         color: var(--rl);
+                    }
+                     & > a, button, .wds-dropdown__placeholder {
+                         background-color: var(--rl) !important;
+                         box-shadow: 0 0 16px var(--rl);
+                         color: var(--p) !important;
+                         text-shadow: none !important;
+                         transition: all 0.15s ease-in-out !important;
+                    }
+                }
+            }
+             :is(a, button, .wds-dropdown__placeholder) {
+                 margin: 2px;
+                 padding: 16px;
+                 position: relative;
+                 z-index: 1;
+                 text-align: center;
+                 color: var(--s) !important;
+                 background-color: var(--t);
+                 border-radius: 0 !important;
+                 transition: all 0.15s ease-in-out !important;
+            }
+        }
+    }
+}
+.fandom-community-header .wds-dropdown__toggle-chevron,
+.wds-dropdown-chevron {
+	fill: currentColor !important;
+	transition: all 0s !important;
+}
+.wiki-tools .wds-dropdown .wiki-tool-in-dropdown a {
+	width: 100%;
+	height: 37px;
+	justify-content: center;
+}
+
+/* Инструменты в правой и левой колонке */
+body.skin-fandomdesktop .main-container .resizable-container .page {
+	.page-side-tool {
+		--cm-p: var(--p);
+		background-color: var(--p) !important;
+		color: var(--s) !important;
+		font-weight: bold;
+		border: var(--bs-2s) !important;
+		border-radius: 0 !important;
+		position: relative;
+		transition: all 0.15s ease-in-out !important;
+		svg {
+			position: relative;
+			z-index: 1;
+		}
+	}
+	.toc-small-icon {
+		fill: var(--s) !important;
+	}
+	.page-side-tool {
+		svg {
+			transition: all 0.15s ease-in-out !important;
+		}
+		&:hover, &:focus, &:active {
+			--s: var(--p);
+			background-color: var(--p) !important;
+			border: var(--bs-2rl) !important;
+			color: var(--rl) !important;
+			svg {
+				color: var(--rl);
+				fill: var(--rl) !important;
+				filter: drop-shadow(0 0 16px var(--rl));
+			}
+		}
+		&::after {
+			content: "";
+		    width: calc(100% + 4px);
+		    height: 6px;
+		    background-color: var(--p);
+		    position: absolute;
+		    left: -2px;
+		    top: 0;
+		    bottom: 0;
+    		margin: auto;
+		}
+	}
+}

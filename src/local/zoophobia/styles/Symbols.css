@@ -1,0 +1,96 @@
+/* Навбар */
+.fandom-community-header__local-navigation {
+    .wds-dropdown:nth-child(2) {
+        .wds-tabs__tab-label a::before {
+            content: "\f509";
+        }
+        li:nth-child(1) a::before {
+            content: "\f53f";
+        }
+        li:nth-child(2) a::before {
+            content: "\f7a6";
+        }
+    }
+    .wds-dropdown:nth-child(3) {
+        .wds-tabs__tab-label a::before {
+            content: "\f0c0";
+        }
+        li:nth-child(1) a::before {
+            content: "\f004";
+        }
+        li:nth-child(2) a::before {
+            content: "\f54c";
+        }
+        li:nth-child(3) a::before {
+            content: "\f5d2";
+        }
+        li:nth-child(4) a::before {
+            content: "\f005";
+        }
+    }
+    .wds-dropdown:nth-child(4) {
+        .wds-tabs__tab-label a::before {
+            content: "\f87c";
+        }
+        .wds-dropdown-level-nested:nth-child(1) a::before {
+            content: "\f518";
+        }
+        li:nth-child(2) a::before {
+            content: "\f124";
+        }
+        .wds-dropdown-level-nested:nth-child(3) a::before {
+            content: "\f001";
+        }
+        li:nth-child(4) a::before {
+            content: "\f04b";
+        }
+    }
+    .wds-dropdown:nth-child(5) {
+        .wds-tabs__tab-label a::before {
+            content: "\f0a1";
+        }
+        li {
+            &:nth-child(1) a::before {
+                content: "\f508";
+            }
+            &:nth-child(2) a::before {
+                content: "\f0e3";
+            }
+            &:nth-child(3) a::before {
+                content: "\f12e";
+            }
+            &:nth-child(4) a::before {
+                content: "\f1ab";
+            }
+            &:nth-child(5) a::before {
+                content: "\f256";
+            }
+            &:nth-child(6) a::before {
+                content: "\f059";
+            }
+        }
+    }
+    .wds-dropdown:nth-child(6) {
+        .wds-tabs__tab-label a::before {
+            content: "\f0f3";
+        }
+        .wds-dropdown-level-nested {
+            &:nth-child(1) .wds-dropdown__placeholder span::before {
+                content: "\f024";
+            }
+            &:nth-child(2) a::before {
+                content: "\f266";
+                font-family: 'Font Awesome 7 Brands' !important;
+            }
+            &:nth-child(3) a::before {
+                content: "\f304";
+            }
+            &:nth-child(4) a::before {
+                content: "\f0f9";
+            }
+            &:nth-child(5) a::before {
+                content: "\f0ad";
+            }
+        }
+    }
+}

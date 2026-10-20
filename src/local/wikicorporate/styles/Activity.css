@@ -1,0 +1,493 @@
+.theme-fandomdesktop-dark:is(.mw-special-Recentchanges, .mw-special-SocialActivity, .CrossWikiActivity) {
+	--edit: #52c12a;
+    --new: #00bfff;
+	--main: #feaf09;
+    --file: #ff8c00;
+	--upload: #4169e1;
+	--templates: #941347;
+    --mediawiki: #8270ff;
+    --category: #b76801;
+    --user: #9943ff;
+    --blog: #BDB76B;
+    --block: #dc143c;
+    --move: #bcbc25;
+    --protect: #b2d401;
+    --rights: #a52a2a;
+    --delete: #b30000;
+    --json: #ff31e8;
+	--comment-create: #cd5c5c;
+	--comment-update: #32cd32;
+	--comment-create-reply: #ff4500;
+	--comment-update-reply: #6a5acd;
+	--message-create: #00fa9a;
+	--message-update: #ff69b4;
+	--message-create-reply: #da70d6;
+	--message-update-reply: #9932cc;
+    --post-create: #ffd700;
+	--post-update: #1e90ff;
+	--post-create-reply: #20b2aa;
+	--post-update-reply: #a0522d;
+	--comment-delete: #b30000;
+	--message-delete: #ffb6c1;
+	--post-delete: #5d76cb;
+	--comment-reply-delete: #afdafc;
+	--message-reply-delete: #00a550;
+	--post-reply-delete: #c51d34;
+	--comment-undelete: #ffa500;
+	--message-undelete: #6495ed;
+	--post-undelete: #3caa3c;
+	--comment-lock: #6a5acd;
+	--message-lock: #87a96b;
+	--post-lock: #9932cc;
+	--comment-unlock: #7442c8;
+	--message-unlock: #c8a2c8;
+	--post-unlock: #00a550;
+}
+.theme-fandomdesktop-light:is(.mw-special-Recentchanges, .mw-special-SocialActivity, .CrossWikiActivity) {
+	--edit: #155110;
+    --new: #1b6279;
+    --main: #6c5118;
+    --file: #805016;
+    --upload: #1f3063;
+    --templates: #58102d;
+    --mediawiki: #261f58;
+    --category: #512e00;
+    --user: #3c166a;
+    --blog: #48462a;
+    --block: #65091b;
+    --move: #5e5e13;
+    --protect: #536300;
+    --rights: #4f1212;
+    --delete: #580202;
+    --json: #67155e;
+    --comment-create: #5e2b2b;
+    --comment-update: #1b6c1b;
+    --comment-create-reply: #6c1f02;
+    --comment-update-reply: #352d6a;
+    --message-create: #037549;
+    --message-update: #5c2942;
+    --message-create-reply: #5a3058;
+    --message-update-reply: #4a1b61;
+    --post-create: #705f02;
+    --post-update: #0d3d6c;
+    --post-create-reply: #09534f;
+    --post-update-reply: #61321c;
+    --comment-delete: #6a0606;
+    --message-delete: #8f6b70;
+    --post-delete: #364372;
+    --comment-reply-delete: #4a5c6a;
+    --message-reply-delete: #054f29;
+    --post-reply-delete: #650d19;
+    --comment-undelete: #614004;
+    --message-undelete: #344b75;
+    --post-undelete: #1d4d1d;
+    --comment-lock: #312a5c;
+    --message-lock: #39482d;
+    --post-lock: #551f70;
+    --comment-unlock: #392063;
+    --message-unlock: #583d58;
+    --post-unlock: #046a35;
+}
+
+/* Настройки */
+.social-activity-feed li, :is(li, table).mw-changeslist-line {
+    padding: 1em;
+	margin: 1em;
+	border-radius: var(--br-14);
+	background-color: var(--p);
+} 
+
+/* Иконки */
+:is(.mw-special-Recentchanges, .mw-special-SocialActivity) :is(tr, .activity-icon)::before {
+	font-family: 'Font Awesome 7 Free Solid';
+	font-weight: bold;
+	color: var(--auto);
+}
+:is(li, table).mw-changeslist-line {
+     &.mw-changeslist-edit {
+         tr::before {
+             content: '\f044';
+        }
+         &:has(.newpage) tr::before {
+             content: '\f65e';
+        }
+    }
+    &.mw-changeslist-ns-10 tr::before {
+         content: '\f085';
+    }
+    &.mw-changeslist-ns-14 tr::before {
+         content: '\f02c';
+    }
+    &.mw-changeslist-ns-8 tr::before {
+         content: '\f121';
+    }
+    &.mw-changeslist-ns-6 tr::before {
+         content: '\f03e';
+    }
+    &.mw-changeslist-ns-4 tr::before {
+         content: '\f024';
+    }
+    &.mw-changeslist-ns-2 tr::before {
+         content: '\f007';
+    }
+    &.mw-changeslist-ns-500 tr::before {
+         content: '\f27a';
+    }
+    &.mw-changeslist-log-rights tr::before {
+         content: '\f507';
+    }
+    &.mw-changeslist-log-delete tr::before {
+         content: '\f1f8';
+    }
+    &.mw-changeslist-log-protect tr::before {
+         content: '\f132';
+    }
+    &.mw-changeslist-log-move tr::before {
+         content: '\f0c5';
+    }
+    &.mw-changeslist-log-upload tr::before {
+         content: '\f302';
+    }
+    &.mw-changeslist-log-contentmodel tr::before {
+         content: '\f5b7';
+    }
+    &.mw-changeslist-log-block tr::before {
+         content: '\f502';
+    }
+    tr:has(td.mw-enhanced-rc-nested)::before, .mw-changeslist-line-prefix {
+         display: none !important;
+    }
+}
+
+/* Цвета */
+:is(li, table).mw-changeslist-line {
+	&.mw-changeslist-edit {
+		--auto: var(--edit);
+	}
+	&.mw-changeslist-ns-6 {
+		--auto: var(--file);
+	}
+	&.mw-changeslist-ns-4 {
+		--auto: var(--main);
+	}
+	&.mw-changeslist-log-upload {
+		--auto: var(--upload);
+	}
+	&.mw-changeslist-ns-8 {
+		--auto: var(--mediawiki);
+	}
+	&.mw-changeslist-log-move {
+		--auto: var(--move);
+	}
+	&.mw-changeslist-log-delete[data-mw-logaction^="delete"], &.mw-changeslist-log-delete {
+		--auto: var(--delete);
+	}
+	&.mw-changeslist-ns-10 {
+		--auto: var(--templates);
+	}
+	&.mw-changeslist-ns-14 {
+		--auto: var(--category);
+	}
+	&.mw-changeslist-ns-2 {
+		--auto: var(--user);
+	}
+	&.mw-changeslist-log-block {
+		--auto: var(--block);
+	}
+	&.mw-changeslist-ns-500 {
+		--auto: var(--blog);
+	}
+	&.mw-changeslist-log-protect {
+		--auto: var(--protect);
+	}
+	&.mw-changeslist-edit:has(.newpage) {
+		--auto: var(--new);
+	}
+	&.mw-changeslist-log-rights {
+		--auto: var(--rights);
+	}
+	&.mw-changeslist-log-contentmodel {
+		--auto: var(--json);
+	}
+}
+
+/* Стрелки */
+.mw-enhancedchanges-arrow, .mw-enhancedchanges-checkbox + * .mw-enhancedchanges-arrow {
+	position: relative;
+	margin-right: 15px;
+	left: 10px;
+	bottom: 10px;
+    width: 25px;
+	height: 100%;
+	background-color: transparent;
+	mask-image: none;
+	outline: none !important;
+}
+.mw-enhancedchanges-arrow::before {
+	content: '\f105';
+	font-family: 'Font Awesome 7 Free Solid';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .3s;
+	transform: rotate(90deg);
+}
+.mw-enhancedchanges-checkbox:not(:checked) + * .mw-enhancedchanges-arrow {
+    transform: none !important;
+    &::before {
+    	transform: rotate(0);
+    }
+}
+
+/* Фиксы Свежих правок */
+.ooui-theme-fandomooui {
+    .mw-changeslist-legend, .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend {
+        border: none;
+        border-radius: var(--br-14);
+        background-color: var(--p);
+    }
+    .mw-rcfilters-container .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle, .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected, .mw-rcfilters-ui-itemMenuOptionWidget:is(:hover, :focus, :active) {
+        border: none;
+        background-color: transparent !important;
+    }
+    .mw-rcfilters-container .mw-rcfilters-ui-filterTagMultiselectWidget .mw-rcfilters-ui-filterTagMultiselectWidget-views-select-widget, #wikia-mediawiki-recentchangestext, .mw-rcfilters-ui-itemMenuOptionWidget {
+        border: none !important;
+    }
+    .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle {
+        & + .mw-rcfilters-ui-table, &.mw-rcfilters-ui-filterTagMultiselectWidget-emphasize {
+            background-color: transparent;
+        }
+        .mw-rcfilters-ui-filterTagMultiselectWidget-hideshowButton .oo-ui-buttonElement-button > .oo-ui-labelElement-label {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+    .mw-rcfilters-ui-filterMenuHeaderWidget-header {
+    	border-bottom-color: transparent;
+    	border-radius: var(--br-14);
+    }
+    .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget .oo-ui-buttonElement-button {
+    	margin: 0.2em;
+    }
+    .mw-rcfilters-ui-tagItemWidget-popup-content {
+    	color: var(--pt);
+    }
+}
+
+/* Индикатор */
+.mw-rcfilters-ui-changesListWrapperWidget-previousChangesIndicator {
+    border: none;
+}
+
+/* Заголовки */
+:is(.mw-special-Recentchanges, .mw-special-SocialActivity) h4 {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Соц. активность */
+.social-activity-list {
+    .activity-icon {
+        color: var(--auto);
+        svg {
+            display: none;
+        }
+    }
+    .activity-data svg {
+		fill: var(--auto);
+	}
+}
+[data-activity-type='create'] {
+    &[data-content-type='comment'] .activity-icon::before {
+        content: '\f4ad';
+    }
+    &[data-content-type='comment-reply'] .activity-icon::before {
+        content: '\f086';
+    }
+    &[data-content-type='message'] .activity-icon::before {
+        content: '\f0e0';
+    }
+    &[data-content-type='message-reply'] .activity-icon::before {
+        content: '\f3e5';
+    }
+    &[data-content-type='post'] .activity-icon::before {
+        content: '\f27a';
+    }
+    &[data-content-type='post-reply'] .activity-icon::before {
+        content: '\f122';
+    }
+}
+[data-activity-type='update'] {
+    &[data-content-type='comment'] .activity-icon::before {
+        content: '\f0ea';
+    }
+    &[data-content-type='comment-reply'] .activity-icon::before {
+        content: '\f5c3';
+    }
+    &[data-content-type='message'] .activity-icon::before {
+        content: '\f70e';
+    }
+    &[data-content-type='message-reply'] .activity-icon::before {
+        content: '\f653';
+    }
+    &[data-content-type='post'] .activity-icon::before {
+        content: '\f1ea';
+    }
+    &[data-content-type='post-reply'] .activity-icon::before {
+        content: '\f7cd';
+    }
+}
+[data-activity-type='delete'] {
+    &[data-content-type='comment'] .activity-icon::before {
+        content: '\f2ed';
+    }
+    &[data-content-type='comment-reply'] .activity-icon::before {
+        content: '\f780';
+    }
+    &[data-content-type='message'] .activity-icon::before {
+        content: '\f12d';
+    }
+    &[data-content-type='message-reply'] .activity-icon::before {
+        content: '\f4b3';
+    }
+    &[data-content-type='post'] .activity-icon::before {
+        content: '\f05e';
+    }
+    &[data-content-type='post-reply'] .activity-icon::before {
+        content: '\f7b9';
+    }
+}
+[data-activity-type='undelete'] {
+    &[data-content-type='comment'] .activity-icon::before {
+        content: '\f82a';
+    }
+    &[data-content-type='message'] .activity-icon::before {
+        content: '\f1bb';
+    }
+    &[data-content-type='post'] .activity-icon::before {
+        content: '\f6e8';
+    }
+}
+[data-activity-type='lock'] {
+    &[data-content-type='comment'] .activity-icon::before {
+        content: '\f023';
+    }
+    &[data-content-type='message'] .activity-icon::before {
+        content: '\e4f8';
+    }
+    &[data-content-type='post'] .activity-icon::before {
+        content: '\f017';
+    }
+}
+[data-activity-type='unlock'] {
+    &[data-content-type='comment'] .activity-icon::before {
+        content: '\f3c1';
+    }
+    &[data-content-type='message'] .activity-icon::before {
+        content: '\f09c';
+    }
+    &[data-content-type='post'] .activity-icon::before {
+        content: '\f084';
+    }
+}
+.social-activity-feed {
+	[data-activity-type='create'] {
+		&[data-content-type='comment'] {
+			--auto: var(--comment-create);
+		}
+		&[data-content-type='comment-reply'] {
+			--auto: var(--comment-create-reply);
+		}
+		&[data-content-type='message'] {
+			--auto: var(--message-create);
+		}
+		&[data-content-type='message-reply'] {
+			--auto: var(--message-create-reply);
+		}
+		&[data-content-type='post'] {
+			--auto: var(--post-create);
+		}
+		&[data-content-type='post-reply'] {
+			--auto: var(--post-create-reply);
+		}
+	}
+	[data-activity-type='update'] {
+		&[data-content-type='comment'] {
+			--auto: var(--comment-update);
+		}
+		&[data-content-type='comment-reply'] {
+			--auto: var(--comment-update-reply);
+		}
+		&[data-content-type='message'] {
+			--auto: var(--message-update);
+		}
+		&[data-content-type='message-reply'] {
+			--auto: var(--message-update-reply);
+		}
+		&[data-content-type='post'] {
+			--auto: var(--post-update);
+		}
+		&[data-content-type='post-reply'] {
+			--auto: var(--post-update-reply);
+		}
+	}
+	[data-activity-type='delete'] {
+		&[data-content-type='comment'] {
+			--auto: var(--comment-delete);
+		}
+		&[data-content-type='comment-reply'] {
+			--auto: var(--comment-reply-delete);
+		}
+		&[data-content-type='message'] {
+			--auto: var(--message-delete);
+		}
+		&[data-content-type='message-reply'] {
+			--auto: var(--message-reply-delete);
+		}
+		&[data-content-type='post'] {
+			--auto: var(--post-delete);
+		}
+		&[data-content-type='post-reply'] {
+			--auto: var(--post-reply-delete);
+		}
+	}
+	[data-activity-type='undelete'] {
+		&[data-content-type='comment'] {
+			--auto: var(--comment-undelete);
+		}
+		&[data-content-type='message'] {
+			--auto: var(--message-undelete);
+		}
+		&[data-content-type='post'] {
+			--auto: var(--post-undelete);
+		}
+	}
+	[data-activity-type='lock'] {
+		&[data-content-type='comment'] {
+			--auto: var(--comment-lock);
+		}
+		&[data-content-type='message'] {
+			--auto: var(--message-lock);
+		}
+		&[data-content-type='post'] {
+			--auto: var(--post-lock);
+		}
+	}
+	[data-activity-type='unlock'] {
+		&[data-content-type='comment'] {
+			--auto: var(--comment-unlock);
+		}
+		&[data-content-type='message'] {
+			--auto: var(--message-unlock);
+		}
+		&[data-content-type='post'] {
+			--auto: var(--post-unlock);
+		}
+	}
+}
+.social-activity-filters__popup-header {
+	border: none;
+	.wds-button.wds-is-text {
+		padding: 8px;
+	}
+}

@@ -1,0 +1,130 @@
+/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:Mobile.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
+
+/* Импорт шрифтов */
+@font-face {
+    font-family: "Segoe Print";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru")
+    format("woff2");
+}
+
+/* Цвета и переменные */
+:root {
+	/* Шрифты */
+	--font: 'Segoe Print', serif;
+}
+
+/* Тёмная тема */
+body.theme-fandommobile-dark {
+	/* Цвета */
+    --p: #273256;
+    --s: #96D7EC;
+    /* Блюр */
+    --blur: rgb(1 9 33 / 70%);
+	/* Изображения */
+	--b-main: url(https://static.wikia.nocookie.net/zoophobia/images/0/08/Site-background-dark/revision/latest?cb=20221003213307&format=original&path-prefix=ru);
+}
+
+/* Светлая тема */
+body.theme-fandommobile-light {
+	/* Цвета */
+    --p: #FCFAC4;
+    --s: #2C6949;
+    /* Блюр */
+	--blur: rgb(252 250 196 / 70%);
+	/* Изображения */
+	--b-main: url(https://static.wikia.nocookie.net/zoophobia/images/b/b5/Site-background-light/revision/latest?cb=20221003213329&format=original&path-prefix=ru);
+}
+
+/* Костыли */
+:root:has(.theme-fandommobile-dark) {
+   	--p: #273256;
+    --s: #96D7EC;
+}
+:root:has(.theme-fandommobile-light) {
+    --p: #FCFAC4;
+    --s: #2C6949;
+}
+
+/* Навбар */
+.mobile-community-bar__menu-item {
+    a[data-path="root:2"] span::before {
+        content: "\f509";
+    }
+    &[data-path="root:2"] li:nth-child(1) a span::before {
+        content: "\f53f";
+    }
+    &[data-path="root:2"] li:nth-child(2) a span::before {
+        content: "\f7a6";
+    }
+    a[data-path="root:3"] span::before {
+        content: "\f0c0";
+    }
+    &[data-path="root:3"] li:nth-child(1) a span::before {
+        content: "\f004";
+    }
+    &[data-path="root:3"] li:nth-child(2) a span::before {
+        content: "\f54c";
+    }
+    &[data-path="root:3"] li:nth-child(3) a span::before {
+        content: "\f5d2";
+    }
+    &[data-path="root:3"] li:nth-child(4) a span::before {
+        content: "\f005";
+    }
+    a[data-path="root:4"] span::before {
+        content: "\f87c";
+    }
+    a[data-path="root:4:0"] span::before {
+        content: "\f518";
+    }
+    &[data-path="root:4"] li:nth-child(2) a span::before {
+        content: "\f124";
+    }
+    a[data-path="root:4:2"] span::before {
+        content: "\f001";
+    }
+    &[data-path="root:4"] li:nth-child(4) a span::before {
+        content: "\f04b";
+    }
+    a[data-path="root:5"] span::before {
+        content: "\f0a1";
+    }
+    &[data-path="root:5"] li:nth-child(1) a span::before {
+        content: "\f508";
+    }
+    &[data-path="root:5"] li:nth-child(2) a span::before {
+        content: "\f0e3";
+    }
+    &[data-path="root:5"] li:nth-child(3) a span::before {
+        content: "\f12e";
+    }
+    &[data-path="root:5"] li:nth-child(4) a span::before {
+        content: "\f1ab";
+    }
+    &[data-path="root:5"] li:nth-child(5) a span::before {
+        content: "\f256";
+    }
+    &[data-path="root:5"] li:nth-child(6) a span::before {
+        content: "\f059";
+    }
+    a[data-path="root:6"] span::before {
+        content: "\f0f3";
+    }
+    a[data-path="root:6:0"] span::before {
+        content: "\f024";
+    }
+    a[data-path="root:6:1"] span::before {
+        content: "\f266";
+        font-family: 'Font Awesome 7 Brands' !important;
+    }
+    a[data-path="root:6:2"] span::before {
+        content: "\f304";
+    }
+    a[data-path="root:6:3"] span::before {
+        content: "\f0f9";
+    }
+    a[data-path="root:6:4"] span::before {
+        content: "\f0ad";
+    }
+}

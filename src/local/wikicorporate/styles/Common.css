@@ -1,0 +1,57 @@
+/* Импорт CSS страниц: GlobalFixes.css, Fixes.css, Special.css, Mainpage.css, Blocks.css, Templates.css, Effects.css, Symbols.css, Highlight.css, Users.css, Custom.css, Editor.css, Activity.css, Tooltips.css, Plugins.css, Achievements.css, FontAwesome.css  */
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:GlobalFixes.css|MediaWiki:Fixes.css|MediaWiki:Special.css|MediaWiki:Mainpage.css|MediaWiki:Blocks.css|MediaWiki:Templates.css|MediaWiki:Effects.css|MediaWiki:Icons.css|MediaWiki:Symbols.css|MediaWiki:Highlight.css|MediaWiki:Users.css|MediaWiki:Custom.css|MediaWiki:Editor.css|MediaWiki:Activity.css|MediaWiki:Tooltips.css|MediaWiki:Plugins.css|MediaWiki:Achievements.css|MediaWiki:FontAwesome.css|MediaWiki:CrossWikiActivity.css";
+
+/* Импорт CSS страниц: Atomic.css, 3DSlider.css, CircularMenu.css, GameSlider.css, 3DRadialMenu.css, BannerButtons.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Atomic.css|MediaWiki:CircularMenu.css|MediaWiki:GameSlider.css";
+
+/* Тёмная тема */
+body.theme-fandomdesktop-dark {
+	/* Цвета */
+    --p: #261233;
+    --s: #FAB6EF;
+    --t: #ffffff;
+    /* Заглавная */
+    --ds-006: drop-shadow(0px 0px 6px var(--l));
+    --ds-0012: drop-shadow(0px 0px 12px var(--l));
+    /* Блюр */
+    --blur: rgb(14 4 16 / 70%);
+    --h-blur: brightness(1.4) blur(5px);
+	--c-blur: brightness(1.1) blur(5px);
+	--ff-blur: brightness(1.2) blur(15px);
+    /* Профиль */
+	--profile: #F6C5FF;
+	/* Изображения */
+	--cp: url(https://static.wikia.nocookie.net/hazbinhotel/images/9/9e/HB-S2E2-1.jpg/revision/latest?cb=20231026155201&format=original&path-prefix=ru);
+	--lbt: url(https://static.wikia.nocookie.net/hazbinhotel/images/7/75/Hbse1ep6-bg.png/revision/latest?cb=20210823230433);
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/9/9a/Site-background-dark.png/revision/latest?cb=20240127190835&format=original&path-prefix=ru) 0 / cover fixed;
+}
+
+/* Костыли для FF */
+@-moz-document url-prefix() {
+    :root:has(.theme-fandomdesktop-light) {
+    	--p: #CCF6FC;
+    	--s: #1F323D;
+    }
+}
+
+/* Светлая тема */
+body.theme-fandomdesktop-light {
+	/* Цвета */
+    --p: #CCF6FC;
+    --s: #1F323D;
+    --t: #000000;
+    /* Заглавная */
+    --ds-006: drop-shadow(0px 0px 6px var(--l));
+    --ds-0012: drop-shadow(0px 0px 12px var(--l));
+    /* Блюр */
+	--blur: rgb(145 194 227 / 65%);
+	--h-blur: brightness(1.5) blur(5px);
+	--c-blur: brightness(0.8) blur(5px);
+	--ff-blur: brightness(1.2) blur(15px);
+    /* Профиль */
+	--profile: #171E6C;
+	/* Изображения */
+	--cp: url(https://static.wikia.nocookie.net/hazbinhotel/images/8/8a/Cherub_Towne_HD.png/revision/latest?cb=20210315213237);
+	--lbt: url(https://static.wikia.nocookie.net/hazbinhotel/images/5/51/Bg-hb-ep4-cherub6.png/revision/latest?cb=20210316001152);
+	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/b/b5/Site-background-light/revision/latest?cb=20230226194135&format=original&path-prefix=ru) 0 / cover fixed;
+}

@@ -1,0 +1,64 @@
+/* Заглавная */
+.mainPage-Module {
+    box-shadow: 0 0 6px 3px #691599;
+    letter-spacing: .1px;
+    margin: 16px 4px;
+}
+.mainPage-Content {
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.mainPage-Title {
+    margin: 0;
+    position: relative;
+    letter-spacing: 1.05px;
+    vertical-align: middle;
+    color: white;
+    font-family: 'Andy', sans-serif;
+    padding: 8px 16px 2px;
+    border: none;
+    background: -moz-linear-gradient(45deg,  rgba(86,23,122,1) 0%, rgba(154,31,136,1) 25%, rgba(154,31,136,1) 60%, rgba(92,25,121,1) 65%, rgba(30,17,105,0.5) 70%, rgba(30,17,105,0) 75%);
+    background: -webkit-linear-gradient(45deg,  rgba(86,23,122,1) 0%,rgba(154,31,136,1) 25%,rgba(154,31,136,1) 60%,rgba(92,25,121,1) 65%,rgba(30,17,105,0.5) 70%,rgba(30,17,105,0) 75%);
+    background: linear-gradient(45deg,  rgba(86,23,122,1) 0%,rgba(154,31,136,1) 25%,rgba(154,31,136,1) 60%,rgba(92,25,121,1) 65%,rgba(30,17,105,0.5) 70%,rgba(30,17,105,0) 75%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#541778', endColorstr='#002c0703',GradientType=1 );
+}
+
+/* Наводка - Кнопки c прозрачностью */ 
+.button-alpha {
+    opacity: 1;
+    transition: 0.3s;
+}
+.button-alpha:hover {
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+/* Кнопки с увеличением размера и белой тенью */
+.button-size-shadow-w {
+    transition: 0.3s ease;
+}
+.button-size-shadow-w:hover {
+    transition: 0.3s ease-out;
+    position: relative;
+    z-index: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Наводка - Фильтр сепии */
+.to_sep > img {
+    transition: ease-in-out 0.2s;
+}
+.to_sep > img:hover {
+    filter: sepia(100%);
+}
+
+/* Наводка - Фильтр тени (под ссылкой) */
+.to_shad > a > img {
+    transition: ease-in-out 0.2s;
+}
+.to_shad > a > img:hover {
+    filter: drop-shadow(0px 0px 5px #ffd609);
+}

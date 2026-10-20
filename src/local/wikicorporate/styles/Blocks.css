@@ -1,0 +1,103 @@
+/* Скроллбар */
+::-webkit-scrollbar {
+    opacity: 0;
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--s);
+    border-radius: 9999px;
+    border: none;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--p);
+}
+::-webkit-scrollbar-button {
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+/* Навбар */
+:is(.fandom-community-header :is(a, .wds-dropdown__toggle-chevron), .page-counter__value, .page-counter__label, .wiki-tools .wds-button.wds-is-secondary):hover {
+	color: var(--l);
+}
+.fandom-sticky-header {
+    background-color: var(--p);
+    color: var(--s);
+    :is(.wds-button, a, .wds-dropdown__toggle-chevron) {
+        color: var(--s);
+        &:hover, &:focus, &:active {
+            color: var(--l);
+        }
+    }
+    .wiki-tools .wds-button.wds-is-secondary {
+        --wds-secondary-button-label-color: var(--s);
+    }
+}
+.fandom-community-header__local-navigation {
+    .wds-dropdown__content .wds-list.wds-is-linked > li > :is(a, .wds-dropdown__placeholder) {
+        & > svg:not(.navigation-item-icon) {
+            fill: var(--cC);
+        }
+        & > span {
+            overflow: unset;
+        }
+    }
+}
+
+/* Выпадающие меню */
+.wds-dropdown {
+    .wds-dropdown__content {
+        background-color: var(--p);
+        border-radius: var(--br-14);
+        .wds-list.wds-is-linked {
+	        .wds-dropdown-level-nested .wds-dropdown-level-nested__content {
+	        	background-color: var(--p);
+				border-radius: var(--br-14);
+	        }
+	        &::before, &::after {
+	        	background-color: transparent;
+	        }
+	        & > li {
+	        	& > :is(a, .wds-dropdown__placeholder) {
+	        		color: var(--s);
+	        		&:hover {
+	        			color: var(--l) !important;
+	        		}
+	        	}
+	        	&:hover > a {
+	        		color: var(--l) !important;
+	        	}
+	        }
+        }
+        .wds-list {
+        	&.wds-is-linked > :is(li.wds-is-selected, li:hover) > :is(a, .wds-dropdown__placeholder), &::before, &::after {
+        		background-color: transparent !important;
+        		color: var(--s);
+        	}
+        	&, &.wds-is-linked {
+        		background-image: none !important;
+        	}
+        }
+    }
+    &.wds-is-active, &:hover {
+    	&::before, &::after {
+    		display: none !important;
+    	}
+    }
+}
+
+/* Инструменты в правой и левой колонке */
+.is-rail-hidden .right-rail-toggle, .right-rail-toggle, .page-side-tool, .page-side-tool[id="ca-edit-side-tool"][data-wds-tooltip-position="right"] {
+	color: var(--s);
+	background-color: var(--cm-p);
+	border-radius: var(--br-50) !important;
+	border: none;
+	&:hover {
+		color: var(--p);
+		background-color: var(--s);
+		transition: all .3s linear;
+	}
+}

@@ -1,0 +1,335 @@
+/* Импорт CSS страниц: GlobalFixes.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, Achievements.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:Achievements.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
+
+/* Импорт CSS страниц: Fixes.css, Mainpage.css, Blocks.css, Templates.css, Symbols.css*/
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Fixes.css|MediaWiki:Mainpage.css|MediaWiki:Blocks.css|MediaWiki:Templates.css|MediaWiki:Symbols.css";
+
+/* Шрифты */
+@font-face {
+    font-family: "ANMDS WTC";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f3/ANMDS_WTC.woff2/revision/latest?cb=20240817184539&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "ANRoboto";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/60/ANRoboto_0_Font.woff2/revision/latest?cb=20240816231447&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "ArianLT";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/0/0e/ArianLT-Bold.woff2/revision/latest?cb=20240816231449&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Artianniub5bd";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/1/1d/Artianniub5bd.woff2/revision/latest?cb=20240816231453&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Artianniugbbd 231";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/3/3d/Artianniugbbd_231.woff2/revision/latest?cb=20240816231455&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Arxinyib5ul";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/5/5f/Arxinyib5ul.woff2/revision/latest?cb=20240816231458&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Arxinyigbul";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/3/32/Arxinyigbul.woff2/revision/latest?cb=20240816231504&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Ascender Uni 210";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/e/ea/Ascender_Uni_210.woff2/revision/latest?cb=20240817184615&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "AvenirArabic-Book";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/a/a3/AvenirArabic-Book.woff2/revision/latest?cb=20240816231518&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "AvenirArabic-Heavy";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/9/90/AvenirArabic-Heavy.woff2/revision/latest?cb=20240816231519&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "CCBrianBollandCyrillic";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/65/CCBrianBollandCyrillic.woff2/revision/latest?cb=20240816231520&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Decima 20Pro";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/8/86/Decima_20Pro.woff2/revision/latest?cb=20240816231522&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Decima 20Pro Bold";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/0/0c/Decima_20Pro_Bold.woff2/revision/latest?cb=20240816231523&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Decima 20Pro Bold Italic";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/7/7c/Decima_20Pro_Bold_Italic.woff2/revision/latest?cb=20240816231524&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Decima 20Pro Italic";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/7/7c/Decima_20Pro_Italic.woff2/revision/latest?cb=20240816231525&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Decima Mono Cyr Reg";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/d/df/Decima_Mono_Cyr_Reg.woff2/revision/latest?cb=20240816231526&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Erbaum-Medium";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/0/09/Erbaum-Medium.woff2/revision/latest?cb=20240816231527&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Erbaum-Regular";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/b/be/Erbaum-Regular.woff2/revision/latest?cb=20240816231528&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "FBHanGothicDB";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/1/1f/FBHanGothicDB.woff2/revision/latest?cb=20240816231529&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "FBKidStory";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/b/bd/FBKidStory.woff2/revision/latest?cb=20240816231531&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Jpchw00u";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/4/41/Jpchw00u.woff2/revision/latest?cb=20240816231534&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Jppop04b";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/b/b2/Jppop04b.woff2/revision/latest?cb=20240816231537&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "KlaptCyrillic-Medium";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/7/76/KlaptCyrillic-Medium.woff2/revision/latest?cb=20240816232806&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "MYingHeiHK-W4";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/d/db/MYingHeiHK-W4.woff2/revision/latest?cb=20240816232814&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "MYingHeiHK-W7";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f1/MYingHeiHK-W7.woff2/revision/latest?cb=20240816232822&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "MYingHeiPRC-W4";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/d/d1/MYingHeiPRC-W4.woff2/revision/latest?cb=20240816231549&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "MYingHeiPRC-W7";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/68/MYingHeiPRC-W7.woff2/revision/latest?cb=20240816231556&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "NeueFrutigerWorld-Book";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f6/NeueFrutigerWorld-Book.woff2/revision/latest?cb=20240816231558&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "NeueFrutigerWorld-Thin";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/0/03/NeueFrutigerWorld-Thin.woff2/revision/latest?cb=20240816231559&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "OT Basma Regular";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/67/OT_Basma_Regular.woff2/revision/latest?cb=20240816231600&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "PragmataPro Mono R";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/c/c1/PragmataPro_Mono_R_liga_0826.woff2/revision/latest?cb=20240816232912&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "RogueIcons";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/4/4f/RogueIcons.woff2/revision/latest?cb=20240816232913&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "SeolSans-Bold";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/2/2f/SeolSans-Bold.woff2/revision/latest?cb=20240816231605&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "SeolSans-Book";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f2/SeolSans-Book.woff2/revision/latest?cb=20240816233016&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "SIE-UDShinGoCOeizPr6N-Hea";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/9/96/SIE-UDShinGoCOeizPr6N-Hea.woff2/revision/latest?cb=20240816233028&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "SIE-UDShinGoCOeizPr6N-Med";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/d/d6/SIE-UDShinGoCOeizPr6N-Med.woff2/revision/latest?cb=20240816233036&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "SirichanaLT-Regular";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/2/2b/SirichanaLT-Regular.woff2/revision/latest?cb=20240816233037&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "TmpDreamworld-Regular";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/a/a8/TmpDreamworld-Regular.woff2/revision/latest?cb=20240816233038&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Tmppragmatapro mono";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/fd/Tmppragmatapro_mono_r_0829.woff2/revision/latest?cb=20240816231617&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "UtSaHaGummLTThai";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f2/UtSaHaGummLTThai.woff2/revision/latest?cb=20240816231619&format=original&path-prefix=ru")
+    format("woff2");
+}
+body {
+	--bs-2t: 2px solid var(--t);
+	--bs-2rl: 2px solid var(--rl);
+	/* 
+	--font: 'ANMDS WTC', var(--fallback-1);
+	--font: 'ANRoboto', var(--fallback-1);
+	--font: 'ArianLT', var(--fallback-1);
+	--font: 'Artianniub5bd', var(--fallback-3);
+	--font: 'Artianniugbbd 231', var(--fallback-3);
+	--font: 'Arxinyib5ul', var(--fallback-1);
+	--font: 'Arxinyigbul', var(--fallback-1);
+	--font: 'Ascender Uni 210', var(--fallback-3);
+	--font: 'AvenirArabic-Book', var(--fallback-1);
+	--font: 'AvenirArabic-Heavy', var(--fallback-1);
+	--font: 'CCBrianBollandCyrillic', var(--fallback-3);
+	--font: 'Decima 20Pro', var(--fallback-1);
+	--font: 'Decima 20Pro Bold', var(--fallback-1);
+	--font: 'Decima 20Pro Bold Italic', var(--fallback-1);
+	--font: 'Decima 20Pro Italic', var(--fallback-1);
+	--font: 'Decima Mono Cyr Reg', var(--fallback-1);
+	--font: 'Erbaum-Medium', var(--fallback-1);
+	--font: 'Erbaum-Regular', var(--fallback-1);
+	--font: 'FBHanGothicDB', var(--fallback-1);
+	--font: 'FBKidStory', var(--fallback-3);
+	--font: 'Jpchw00u', var(--fallback-1);
+	--font: 'Jppop04b', var(--fallback-3);
+	--font: 'KlaptCyrillic-Medium', var(--fallback-1);
+	--font: 'MYingHeiHK-W4', var(--fallback-1);
+	--font: 'MYingHeiHK-W7', var(--fallback-1);
+	--font: 'MYingHeiPRC-W4', var(--fallback-1);
+	--font: 'MYingHeiPRC-W7', var(--fallback-1);
+	--font: 'NeueFrutigerWorld-Book', var(--fallback-1);
+	--font: 'NeueFrutigerWorld-Thin', var(--fallback-1);
+	--font: 'OT Basma Regular', var(--fallback-3);
+	--font: 'PragmataPro Mono R', var(--fallback-1);
+	--font: 'RogueIcons', var(--fallback-1);
+	--font: 'SeolSans-Bold', var(--fallback-1);
+	--font: 'SeolSans-Book', var(--fallback-1);
+	--font: 'SIE-UDShinGoCOeizPr6N-Hea', var(--fallback-1);
+	--font: 'SIE-UDShinGoCOeizPr6N-Med', var(--fallback-1);
+	--font: 'SirichanaLT-Regular', var(--fallback-1);
+	--font: 'TmpDreamworld-Regular', var(--fallback-3);
+	--font: 'Tmppragmatapro mono', var(--fallback-1);
+	--font: 'UtSaHaGummLTThai', var(--fallback-1);
+*/
+}
+
+:root {
+    /* Цвета */
+    --returnal: #47BE9D;
+    --enemy: #8EA1FE;
+    --boss: #EEC3C2;
+    --malignant: #D4A2FB;
+    --consumable: #E3B87A;
+    --resource: #cdb58f;
+    --artefact: #D9E5FF;
+    --scout-log: #E0FDF8;
+    --text--message: #f9b24b;
+    --text--danger: #fb6161;
+    --text--response: #ffee95;
+    /* SVG-фильтры */
+    --f-returnal: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.27843 0 0 0 0 0 0.7451 0 0 0 0 0 0.61569 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-enemy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.55686 0 0 0 0 0 0.63137 0 0 0 0 0 0.99608 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-boss: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.93333 0 0 0 0 0 0.76471 0 0 0 0 0 0.76078 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-malignant: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.83137 0 0 0 0 0 0.63529 0 0 0 0 0 0.98431 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-consumable: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.8902 0 0 0 0 0 0.72157 0 0 0 0 0 0.47843 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-resource: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.88235 0 0 0 0 0 0.80784 0 0 0 0 0 0.6902 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-artefact: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.85098 0 0 0 0 0 0.89804 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-scout: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.87843 0 0 0 0 0 0.99216 0 0 0 0 0 0.97255 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    /* Градиенты */
+    --rg: radial-gradient(rgb(183 183 183 / 30%), transparent 75%);
+    --distortion: repeating-linear-gradient(transparent 4px, #00000080 8px);
+    /* Шрифты */
+    --font: 'ANMDS WTC', var(--fallback-1);
+	--size: 1.5rem;
+	/* Фоны */
+	--tooltip-b: url(https://static.wikia.nocookie.net/returnal5614/images/2/26/Background.png/revision/latest?cb=20240819125456&format=original&path-prefix=ru);
+}
+
+/* Тёмная тема */
+body.theme-fandomdesktop-dark {
+	/* Цвета */
+	--p: #061A19;
+	--s: #47BE9D;
+	--t: #12372C;
+	--rl: #E1CEB0;
+    --text--main: #47BE9D;
+    /* Блюр */
+	--blur: rgb(16 37 25 / 70%);
+	/* SVG-фильтры */
+	--animation: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.41342 0 0 0 0 0 0.87005 0 0 0 0 0 0.73492 0 0 0 0 0 1 0"/></filter></svg>#color');
+	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.27843 0 0 0 0 0 0.7451 0 0 0 0 0 0.61569 0 0 0 0 0 1 0"/></filter></svg>#color');
+	/* Градиенты */
+	--rlg: repeating-linear-gradient(transparent, transparent 19px, #ffffff80 20px), repeating-linear-gradient(90deg, transparent, transparent 19px, #ffffff80 20px);
+	/* Изображения */
+	--b-main: url(https://static.wikia.nocookie.net/returnal5614/images/0/08/Site-background-dark/revision/latest?cb=20230217151056&format=original&path-prefix=ru);
+}
+
+/* Светлая тема */
+body.theme-fandomdesktop-light {
+	/* Цвета */
+    --p: #FDCECE;
+    --s: #201B03;
+    --t: #FFC498;
+    --rl: #63140b;
+    --text--main: #1B1B18;
+    /* Блюр */
+	--blur: rgb(244 179 179 / 70%);
+	/* SVG-фильтры */
+	--animation: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.97647 0 0 0 0 0 0.59216 0 0 0 0 0 0.59216 0 0 0 0 0 1 0"/></filter></svg>#color');
+	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.12549 0 0 0 0 0 0.10588 0 0 0 0 0 0.01176 0 0 0 0 0 1 0"/></filter></svg>#color');
+	/* Градиенты */
+	--rlg: repeating-linear-gradient(transparent, transparent 19px, #00000080 20px), repeating-linear-gradient(90deg, transparent, transparent 19px, #00000080 20px);
+	/* Изображения */
+	--b-main: url(https://static.wikia.nocookie.net/returnal5614/images/b/b5/Site-background-light/revision/latest?cb=20231128100332&format=original&path-prefix=ru);
+}
+
+/* Костыли для FF */
+@-moz-document url-prefix() {
+    :root:has(.theme-fandomdesktop-dark) {
+    	--p: #541FC7;
+		--s: #1D29B1;
+    }
+    :root:has(.theme-fandomdesktop-light) {
+    	--p: #FDCECE;
+    	--s: #201B03;
+    }
+}

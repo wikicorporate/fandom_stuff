@@ -1,0 +1,764 @@
+/*!
+ * Font Awesome Free 7.3.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ * Copyright 2025 Fonticons, Inc.
+ */
+.fa, .fa-brands, .fa-classic, .fa-regular, .fa-solid, .fab, .far, .fas {
+    --_fa-family: var(--fa-family, var(--fa-style-family, "Font Awesome 7 Free Solid"));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: var(--fa-display, inline-block);
+    font-family: var(--_fa-family);
+    font-feature-settings: normal;
+    font-style: normal;
+    font-synthesis: none;
+    font-variant: normal;
+    font-weight: var(--fa-style, 900);
+    line-height: 1;
+    text-align: center;
+    text-rendering: auto;
+    width: var(--fa-width, 1.25em);
+}
+.fa-brands {
+	font-family: 'Font Awesome 7 Brands' !important;
+}
+.fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands, .fa-classic, .fa {
+	&::before {
+		content: var(--fa);
+    	content: var(--fa) / "";
+	}
+}
+:host, :root {
+    --fa-font-regular: normal 400 1em/1 var(--fa-family-classic);
+}
+.far {
+    --fa-family: var(--fa-family-classic);
+}
+.fa-regular, .far {
+    --fa-style: 400;
+}
+:host, :root {
+    --fa-family-classic: "Font Awesome 7 Free Solid";
+    --fa-font-solid: normal 900 1em/1 var(--fa-family-classic);
+    --fa-style-family-classic: var(--fa-family-classic);
+}
+.fas {
+    --fa-style: 900;
+}
+.fa-classic, .fas {
+    --fa-family: var(--fa-family-classic);
+}
+.fa-solid {
+    --fa-style: 900;
+}
+@font-face {
+    font-family: "Font Awesome 7 Free";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/e/e4/Font_Awesome_7_Free-Regular-400.woff2/revision/latest?cb=20260725101923&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Font Awesome 7 Free Solid";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/0/00/Font_Awesome_7_Free-Solid-900.woff2/revision/latest?cb=20260725101945&format=original&path-prefix=ru")
+    format("woff2");
+}
+@font-face {
+    font-family: "Font Awesome 7 Brands";
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/b/b6/Font_Awesome_7_Brands-Regular-400.woff2/revision/latest?cb=20260725101933&format=original&path-prefix=ru")
+    format("woff2");
+}
+.fa-image {
+    --fa: "\f03e";
+}
+.fa-screwdriver-wrench, .fa-tools {
+    --fa: "\f7d9";
+}
+.fa-chain, .fa-link {
+    --fa: "\f0c1";
+}
+.fa-highlighter {
+    --fa: "\f591";
+}
+.fa-pen-nib {
+    --fa: "\f5ad";
+}
+.fa-book {
+    --fa: "\f02d";
+}
+.fa-ban-smoking, .fa-smoking-ban {
+    --fa: "\f54d";
+}
+.fa-balance-scale, .fa-scale-balanced {
+    --fa: "\f24e";
+}
+.fa-unlock {
+    --fa: "\f09c";
+}
+.fa-user-graduate {
+    --fa: "\f501";
+}
+.fa-cloud-arrow-up, .fa-cloud-upload {
+    --fa: "\f0ee";
+}
+.fa-certificate {
+    --fa: "\f0a3";
+}
+.fa-print {
+    --fa: "\f02f";
+}
+.fa-anchor {
+    --fa: "\f13d";
+}
+.fa-circle-info, .fa-info-circle {
+    --fa: "\f05a";
+}
+.fa-toggle-on {
+    --fa: "\f205";
+}
+.fa-toggle-off {
+    --fa: "\f204";
+}
+.fa-paint-brush, .fa-paintbrush {
+    --fa: "\f1fc";
+}
+.fa-gears {
+	--fa: "\f085";
+}
+.fa-graduation-cap {
+	--fa: "\f19d";
+}
+.fa-css3 {
+	--fa: "\f13c";
+}
+.fa-css3-alt {
+	--fa: "\f38b";
+}
+.fa-js {
+	--fa: "\f3b8";
+}
+.fa-square-js {
+	--fa: "\f3b9";
+}
+.fa-node-js {
+	--fa: "\f3d3";
+}
+.fa-react {
+	--fa: "\f41b";
+}
+.fa-vuejs {
+	--fa: "\f41f";
+}
+.fa-terminal {
+	--fa: "\f120";
+}
+.fa-medal {
+    --fa: "\f5a2";
+}
+.fa-crown {
+    --fa: "\f521";
+}
+.fa-award {
+    --fa: "\f559";
+}
+.fa-pen {
+    --fa: "\f304";
+}
+.fa-pencil, .fa-pencil-alt {
+    --fa: "\f303";
+}
+.fa-marker {
+    --fa: "\f5a1";
+}
+.fa-pen-fancy {
+    --fa: "\f5ac";
+}
+.fa-keyboard {
+    --fa: "\f11c";
+}
+.fa-spell-check {
+    --fa: "\f891";
+}
+.fa-pen-ruler, .fa-pencil-ruler {
+    --fa: "\f5ae";
+}
+.fa-images {
+    --fa: "\f302";
+}
+.fa-id-badge {
+    --fa: "\f2c1";
+}
+.fa-film {
+    --fa: "\f008";
+}
+.fa-photo-film, .fa-photo-video {
+    --fa: "\f87c";
+}
+.fa-camera {
+    --fa: "\f030";
+}
+.fa-camera-retro {
+    --fa: "\f083";
+}
+.fa-heart-music-camera-bolt, .fa-icons {
+    --fa: "\f86d";
+}
+.fa-list, .fa-list-squares {
+    --fa: "\f03a";
+}
+.fa-layer-group {
+    --fa: "\f5fd";
+}
+.fa-tag {
+    --fa: "\f02b";
+}
+.fa-tags {
+    --fa: "\f02c";
+}
+.fa-user-tag {
+    --fa: "\f507";
+}
+.fa-instagram {
+    --fa: "\f16d";
+}
+.fa-comment-alt, .fa-message {
+    --fa: "\f27a";
+}
+.fa-comment {
+    --fa: "\f075";
+}
+.fa-comment-dots, .fa-commenting {
+    --fa: "\f4ad";
+}
+.fa-chess-pawn {
+    --fa: "\f443";
+}
+.fa-chess-bishop {
+    --fa: "\f43a";
+}
+.fa-chess-knight {
+    --fa: "\f441";
+}
+.fa-chess-rook {
+    --fa: "\f447";
+}
+.fa-chess-queen {
+    --fa: "\f445";
+}
+.fa-chess-king {
+    --fa: "\f43f";
+}
+.fa-chess-board {
+    --fa: "\f43c";
+}
+.fa-newspaper {
+    --fa: "\f1ea";
+}
+.fa-drivers-license, .fa-id-card {
+    --fa: "\f2c2";
+}
+.fa-envelope {
+    --fa: "\f0e0";
+}
+.fa-cat {
+    --fa: "\f6be";
+}
+.fa-mug-hot {
+    --fa: "\f7b6";
+}
+.fa-clover {
+    --fa: "\e139";
+}
+.fa-user {
+    --fa: "\f007";
+}
+.fa-bookmark {
+    --fa: "\f02e";
+}
+.fa-comments {
+    --fa: "\f086";
+}
+.fa-comment-dollar {
+    --fa: "\f651";
+}
+.fa-web-awesome {
+    --fa: "\e682";
+}
+.fa-cog, .fa-gear {
+    --fa: "\f013";
+}
+.fa-wrench {
+    --fa: "\f0ad";
+}
+.fa-discord {
+    --fa: "\f392";
+}
+.fa-clock-rotate-left, .fa-history {
+    --fa: "\f1da";
+}
+.fa-robot {
+    --fa: "\f544";
+}
+.fa-ranking-star {
+    --fa: "\e561";
+}
+.fa-user-edit, .fa-user-pen {
+    --fa: "\f4ff";
+}
+.fa-star-half-alt, .fa-star-half-stroke {
+    --fa: "\f5c0";
+}
+.fa-hourglass, .fa-hourglass-empty {
+    --fa: "\f254";
+}
+.fa-trophy {
+    --fa: "\f091";
+}
+.fa-star {
+    --fa: "\f005";
+}
+.fa-envelope-open-text {
+    --fa: "\f658";
+}
+.fa-file {
+    --fa: "\f15b";
+}
+.fa-exclamation-triangle, .fa-triangle-exclamation, .fa-warning {
+    --fa: "\f071";
+}
+.fa-pen-alt, .fa-pen-clip {
+    --fa: "\f305";
+}
+.fa-globe {
+    --fa: "\f0ac";
+}
+.fa-edit, .fa-pen-to-square {
+    --fa: "\f044";
+}
+.fa-clock, .fa-clock-four {
+    --fa: "\f017";
+}
+.fa-broom {
+    --fa: "\f51a";
+}
+.fa-lock {
+    --fa: "\f023";
+}
+.fa-trash-alt, .fa-trash-can {
+    --fa: "\f2ed";
+}
+.fa-trash-can-arrow-up, .fa-trash-restore-alt {
+    --fa: "\f82a";
+}
+.fa-comment-medical {
+    --fa: "\f7f5";
+}
+.fa-mobile-alt, .fa-mobile-screen-button {
+    --fa: "\f3cd";
+}
+.fa-thumbs-up {
+    --fa: "\f164";
+}
+.fa-thumbs-down {
+    --fa: "\f165";
+}
+.fa-css3 {
+    --fa: "\f13c";
+}
+.fa-redo-alt, .fa-rotate-forward, .fa-rotate-right {
+    --fa: "\f2f9";
+}
+.fa-address-card, .fa-contact-card, .fa-vcard {
+    --fa: "\f2bb";
+}
+.fa-code {
+    --fa: "\f121";
+}
+.fa-laptop-code {
+    --fa: "\f5fc";
+}
+.fa-scroll {
+    --fa: "\f70e";
+}
+.fa-sun {
+    --fa: "\f185";
+}
+.fa-moon {
+    --fa: "\f186";
+}
+.fa-calendar-plus {
+    --fa: "\f271";
+}
+.fa-upload {
+    --fa: "\f093";
+}
+.fa-magic, .fa-wand-magic {
+    --fa: "\f0d0";
+}
+.fa-chart-pie, .fa-pie-chart {
+    --fa: "\f200";
+}
+.fa-hashtag {
+    --fa: "\#";
+}
+.fa-language {
+    --fa: "\f1ab";
+}
+.fa-file-clipboard, .fa-paste {
+    --fa: "\f0ea";
+}
+.fa-mountain {
+    --fa: "\f6fc";
+}
+.fa-blog {
+    --fa: "\f781";
+}
+.fa-male, .fa-person {
+    --fa: "\f183";
+}
+.fa-route {
+    --fa: "\f4d7";
+}
+.fa-folder-tree {
+    --fa: "\f802";
+}
+.fa-camera-rotate {
+    --fa: "\e0d8";
+}
+.fa-play {
+    --fa: "\f04b";
+}
+.fa-wikipedia-w {
+    --fa: "\f266";
+}
+.fa-flask {
+    --fa: "\f0c3";
+}
+.fa-home, .fa-home-alt, .fa-home-lg-alt, .fa-house {
+    --fa: "\f015";
+}
+.fa-list-check, .fa-tasks {
+    --fa: "\f0ae";
+}
+.fa-book-open-reader, .fa-book-reader {
+    --fa: "\f5da";
+}
+.fa-map {
+    --fa: "\f279";
+}
+.fa-random, .fa-shuffle {
+    --fa: "\f074";
+}
+.fa-video, .fa-video-camera {
+    --fa: "\f03d";
+}
+.fa-eye {
+    --fa: "\f06e";
+}
+.fa-eye-slash {
+    --fa: "\f070";
+}
+.fa-users {
+    --fa: "\f0c0";
+}
+.fa-user-tie {
+    --fa: "\f508";
+}
+.fa-floppy-disk, .fa-save {
+    --fa: "\f0c7";
+}
+.fa-swatchbook {
+    --fa: "\f5c3";
+}
+.fa-bank, .fa-building-columns, .fa-institution, .fa-museum, .fa-university {
+    --fa: "\f19c";
+}
+.fa-dailymotion {
+    --fa: "\e052";
+}
+.fa-deviantart {
+    --fa: "\f1bd";
+}
+.fa-facebook-f {
+    --fa: "\f39e";
+}
+.fa-github {
+    --fa: "\f09b";
+}
+.fa-google {
+    --fa: "\f1a0";
+}
+.fa-imdb {
+    --fa: "\f2d8";
+}
+.fa-apple {
+    --fa: "\f179";
+}
+.fa-patreon {
+    --fa: "\f3d9";
+}
+.fa-reddit {
+    --fa: "\f1a1";
+}
+.fa-soundcloud {
+    --fa: "\f1be";
+}
+.fa-spotify {
+    --fa: "\f1bc";
+}
+.fa-telegram, .fa-telegram-plane {
+    --fa: "\f2c6";
+}
+.fa-tiktok {
+    --fa: "\e07b";
+}
+.fa-tumblr {
+    --fa: "\f173";
+}
+.fa-twitch {
+    --fa: "\f1e8";
+}
+.fa-x-twitter {
+    --fa: "\e61b";
+}
+.fa-vimeo-v {
+    --fa: "\f27d";
+}
+.fa-vk {
+    --fa: "\f189";
+}
+.fa-youtube {
+    --fa: "\f167";
+}
+.fa-steam {
+    --fa: "\f1b6";
+}
+.fa-twitter {
+	--fa: "\f099";
+}
+.fa-x-twitter {
+	--fa: "\e61b";
+}
+.fa-heart-broken, .fa-heart-crack {
+    --fa: "\f7a9";
+}
+.fa-quote-left {
+	--fa: "\f10d";
+}
+.fa-quote-right {
+    --fa: "\f10e";
+}
+.fa-paint-roller {
+    --fa: "\f5aa";
+}
+.fa-compass-drafting, .fa-drafting-compass {
+    --fa: "\f568";
+}
+.fa-bag-shopping {
+	--fa: "\f290";
+}
+.fa-1 {
+	--fa: "\31";
+}
+.fa-2 {
+	--fa: "\32";
+}
+.fa-youtube-shorts {
+	--fa: "\e8bc";
+}
+.fa-location-arrow {
+    --fa: "\f124";
+}
+.fa-calendar-days {
+    --fa: "\f073";
+}
+.fa-guitar {
+    --fa: "\f7a6";
+}
+.fa-music {
+    --fa: "\f001";
+}
+.fa-city {
+    --fa: "\f64f";
+}
+.fa-apple-whole {
+    --fa: "\f5d1";
+}
+.fa-fire {
+    --fa: "\f06d";
+}
+.fa-wand-sparkles {
+    --fa: "\f72b";
+}
+.fa-pizza-slice {
+    --fa: "\f818";
+}
+.fa-droplet {
+    --fa: "\f043";
+}
+.fa-hotel {
+    --fa: "\f594";
+}
+.fa-gamepad {
+    --fa: "\f11b";
+}
+.fa-hill-rockslide {
+    --fa: "\e508";
+}
+.fa-bolt {
+    --fa: "\f0e7";
+}
+.fa-hourglass-end {
+    --fa: "\f253";
+}
+.fa-book-open {
+    --fa: "\f518";
+}
+.fa-skull {
+    --fa: "\f54c";
+}
+.fa-compass {
+    --fa: "\f14e";
+}
+.fa-question {
+    --fa: "\?";
+}
+.fa-rotate {
+    --fa: "\f2f1";
+}
+.fa-headphones {
+    --fa: "\f025";
+}
+.fa-xmark {
+	--fa: "\f00d";
+}
+.fa-phoenix-framework {
+	--fa: "\f3dc";
+}
+.fa-dice {
+	--fa: "\f522";
+}
+.fa-tree {
+	--fa: "\f1bb";
+}
+.fa-face-grin-tears {
+	--fa: "\f588";
+}
+.fa-chevron-down {
+    --fa: "\f078";
+}
+.fa-person-digging {
+	--fa: "\f85e"
+}
+.fa-angles-left {
+	--fa: "\f100";
+}
+.fa-angles-right {
+	--fa: "\f101";
+}
+.fa-envelopes-bulk {
+	--fa: "\f674";
+}
+.fa-folder-open {
+	--fa: "\f07c";
+}
+.fa-handshake-angle {
+	--fa: "\f4c4";
+}
+.fa-envelope-open-text {
+	--fa: "\f658";
+}
+.fa-copy {
+	--fa: "\f0c5";
+}
+.fa-square-poll-vertical {
+	--fa: "\f681";
+}
+.fa-up-right-from-square {
+	--fa: "\f35d";
+}
+.fa-spinner {
+	--fa: "\f110";
+}
+.fa-code-compare {
+	--fa: "\e13a";
+}
+.fa-chevron-right {
+	--fa: "\f054";
+}
+.fa-file-lines {
+	--fa: "\f15c";
+}
+.fa-reply {
+	--fa: "\f3e5";
+}
+.fa-reply-all {
+	--fa: "\f122";
+}
+.fa-eraser {
+	--fa: "\f12d";
+}
+.fa-calendar-xmark {
+	--fa: "\f273";
+}
+.fa-square-minus {
+	--fa: "\f146";
+}
+.fa-ban {
+	--fa: "\f05e";
+}
+.fa-trash {
+	--fa: "\f1f8";
+}
+.fa-trash-can-arrow-up {
+	--fa: "\f82a";
+}
+.fa-recycle {
+	--fa: "\f1b8";
+}
+.fa-trash-arrow-up {
+	--fa: "\f829";
+}
+.fa-user-lock {
+	--fa: "\f502";
+}
+.fa-key {
+	--fa: "\f084";
+}
+.fa-lock-open {
+	--fa: "\f3c1";
+}
+.fa-shield-halved {
+	--fa: "\f3ed";
+}
+.fa-user-shield {
+	--fa: "\f505";
+}
+.fa-file-code {
+	--fa: "\f1c9";
+}
+.fa-clipboard-list {
+	--fa: "\f46d";
+}
+.fa-folder-plus {
+	--fa: "\f65e";
+}
+.fa-flag {
+	--fa: "\f024";
+}
+.fa-location-dot {
+	--fa: "\f3c5";
+}
+.fa-rotate-left {
+	--fa: "\f2ea";
+}
+.fa-list-ul {
+	--fa: "\f0ca";
+}
+.fa-user-slash {
+	--fa: "\f506";
+}
+.fa-check {
+	--fa: "\f00c";
+}
+.fa-check-double {
+	--fa: "\f560";
+}

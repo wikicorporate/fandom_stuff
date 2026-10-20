@@ -1,0 +1,467 @@
+/* Базовые стили ленты */
+.cwa-rc {
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 14px;
+}
+
+.cwa-rc__header {
+    margin-bottom: 20px;
+}
+
+.cwa-rc__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+
+    /* Нативный нестинг для дочерних тегов */
+    h2 {
+        margin: 0;
+        font-size: 18px;
+    }
+}
+
+/* Вкладки */
+.cwa-rc__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.cwa-rc__tab {
+    cursor: pointer;
+    padding: 8px 12px;
+    color: var(--pt);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    opacity: .5;
+    transition: all 400ms;
+	&::before {
+		content: " ";
+		position: absolute;
+		width: calc(100% - 6px);
+		height: calc(100% - 6px);
+		top: 0;
+		left: 0;
+		z-index: -2;
+		background-color: var(--cm-p);
+		border-radius: var(--br-14);
+		filter: var(--blur-b);
+	}
+	&:hover, &.cwa-rc__tab--active {
+		opacity: .9;
+    	&::before {
+    		filter: var(--blur-p);
+			translate: 0.05em 0.1em;
+    	}
+    }
+    .cwa-rc__badge {
+		background-color: var(--p);
+		color: var(--pt);
+		padding: 2px 6px;
+    	border-radius: var(--br-12);
+    	font-size: 12px;
+    }
+}
+
+/* Списки и группы */
+.cwa-rc__list, .cwa-rc__sublist {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.cwa-rc__group-container {
+    background-color: var(--p);
+    border-radius: var(--br-14);
+}
+.cwa-rc__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    margin: 10px;
+    &[data-type="edit"] { .cwa-rc__type-icon { color: var(--edit); } }
+    &[data-type="new"] { .cwa-rc__type-icon { color: var(--new); } }
+    &[data-ns="2"] { .cwa-rc__type-icon { color: var(--user); } }
+    &[data-ns="4"] { .cwa-rc__type-icon { color: var(--main); } }
+    &[data-ns="6"] { .cwa-rc__type-icon { color: var(--file); } }
+    &[data-ns="8"] { .cwa-rc__type-icon { color: var(--mediawiki); } }
+    &[data-ns="828"] { .cwa-rc__type-icon { color: var(--mediawiki); } }
+    &[data-ns="10"] { .cwa-rc__type-icon { color: var(--templates); } }
+    &[data-ns="14"] { .cwa-rc__type-icon { color: var(--category); } }
+    &[data-ns="500"] { .cwa-rc__type-icon { color: var(--blog); } }
+    &[data-logtype="upload"] { .cwa-rc__type-icon { color: var(--upload); } }
+    &[data-logtype="move"] { .cwa-rc__type-icon { color: var(--move); } }
+    &[data-logtype="delete"] { .cwa-rc__type-icon { color: var(--delete); } }
+    &[data-logtype="block"] { .cwa-rc__type-icon { color: var(--block); } }
+    &[data-logtype="protect"] { .cwa-rc__type-icon { color: var(--protect); } }
+    &[data-logtype="rights"] { .cwa-rc__type-icon { color: var(--rights); } }
+    &[data-logtype="contentmodel"] { .cwa-rc__type-icon { color: var(--json); } }
+
+    /* Цвета для Социальной активности (у них своя логика атрибутов, можно оставить внизу) */
+    &[data-activity-type='create'] {
+        &[data-content-type='comment'] { .cwa-rc__type-icon { color: var(--comment-create); } }
+        &[data-content-type='comment-reply'] { .cwa-rc__type-icon { color: var(--comment-create-reply); } }
+        &[data-content-type='message'] { .cwa-rc__type-icon { color: var(--message-create); } }
+        &[data-content-type='message-reply'] { .cwa-rc__type-icon { color: var(--message-create-reply); } }
+        &[data-content-type='post'] { .cwa-rc__type-icon { color: var(--post-create); } }
+        &[data-content-type='post-reply'] { .cwa-rc__type-icon { color: var(--post-create-reply); } }
+    }
+}
+
+/* Специфика группировки */
+.cwa-rc__item--group-header {
+    cursor: pointer;
+}
+
+.cwa-rc__item--sub {
+    padding-left: 40px;
+
+    /* Выстраиваем блоки meta и details в одну строку */
+    .cwa-rc__main-info {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    /* Убираем нижний отступ, чтобы текст был на одной линии */
+    .cwa-rc__meta {
+        margin-bottom: 0;
+    }
+}
+.cwa-rc__toggle-icon {
+    width: 14px;
+    text-align: center;
+    color: var(--theme-page-text-color-secondary);
+    transition: transform 0.2s ease; /* Добавляем плавность */
+}
+
+/* Выносим BEM-модификатор в полноценный класс */
+.cwa-rc__toggle-icon--expanded {
+    transform: rotate(90deg); /* Поворачиваем стрелку вниз */
+}
+
+.cwa-rc__group-count {
+    font-size: 12px;
+    color: var(--pt);
+    background-color: var(--blur);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+/* Иконки и текст */
+.cwa-rc__favicon {
+    width: 20px;
+    height: 20px;
+    border-radius: 0 !important;
+}
+
+.cwa-rc__main-info {
+    flex-grow: 1;
+}
+
+.cwa-rc__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Увеличено с 8px для большего "воздуха" */
+    margin-bottom: 2px;
+}
+
+.cwa-rc__time {
+    color: var(--theme-page-text-color-secondary);
+    font-size: 12px;
+    font-family: monospace;
+}
+
+.cwa-rc__type-icon {
+    color: var(--theme-page-text-color-secondary);
+    font-size: 13px;
+    width: 16px;
+    text-align: center;
+}
+
+.cwa-rc__page-title {
+    font-weight: bold;
+    text-decoration: none !important;
+
+    &:hover {
+        text-decoration: underline !important;
+    }
+}
+
+.cwa-rc__flags {
+    font-weight: bold;
+}
+
+/* BEM-суффиксы раскрыты, так как нативный & не клеит строки */
+.cwa-rc__size--large-plus { color: var(--theme-success-color);; font-weight: bold; }
+.cwa-rc__size--plus { color: var(--theme-success-color);; }
+.cwa-rc__size--large-minus { color: var(--theme-alert-color); font-weight: bold; }
+.cwa-rc__size--minus { color: var(--theme-alert-color); }
+.cwa-rc__size--zero { color: var(--pt); }
+
+.cwa-rc__details {
+    font-size: 13px;
+    color: var(--theme-page-text-color-secondary);
+}
+
+/* --- Обертка пользователя и его кнопки --- */
+.cwa-rc__user-wrap {
+    display: inline-flex;
+    align-items: center;
+}
+
+.cwa-rc__user {
+    font-weight: bold;
+    color: var(--theme-link-color);
+    margin-right: 6px;
+    text-decoration: none !important;
+}
+
+.cwa-rc__user-actions {
+    display: inline-flex;
+    gap: 6px;
+    margin-right: 6px;
+}
+/* ------------------------------------------- */
+
+.cwa-rc__summary {
+    font-style: italic;
+}
+
+/* Кнопки действий */
+.cwa-rc__actions {
+    display: flex;
+    gap: 10px;
+}
+
+.cwa-rc__action-btn {
+    background: none;
+    color: var(--theme-page-text-color-secondary);
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none !important;
+    padding: 4px;
+
+    &:hover {
+        color: var(--theme-link-color);
+    }
+}
+
+.cwa-rc__action-btn--warn:hover {
+    color: #e67e22;
+}
+
+.cwa-rc__action-btn--danger {
+    color: var(--theme-alert-color, #e74c3c);
+
+    &:hover {
+        color: #c0392b;
+    }
+}
+
+.cwa-rc__loader, 
+.cwa-rc__empty {
+    text-align: center;
+    padding: 40px;
+    color: var(--theme-page-text-color-secondary);
+}
+
+/* Блок с ошибками загрузки (Битая ссылка 404) */
+.cwa-rc__error-box {
+    background: rgba(255, 0, 0, 0.1);
+    color: var(--theme-page-text-color);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+
+    strong {
+        color: var(--theme-alert-color, #e74c3c);
+        font-size: 15px;
+    }
+
+    ul {
+        margin: 8px 0 0 20px;
+        padding: 0;
+        font-family: monospace;
+    }
+}
+
+/* Стили меток правок (Новая, Малая, Бот) */
+.cwa-rc__flag-abbr {
+    cursor: help;
+    font-weight: bold;
+}
+
+/* Заголовки с датами */
+.cwa-rc__date-header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--theme-page-text-color);
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+}
+
+/* Текст действия социальной активности */
+.cwa-rc__action-text {
+    color: var(--theme-page-text-color-secondary);
+    margin-left: 4px;
+    font-size: 13px;
+}
+
+/* Иконка в сгруппированных действиях */
+.cwa-rc__sub-icon {
+    /* Удален margin-right, так как теперь используется gap: 12px у родителя */
+}
+
+/* Модальное окно (Native Vue) */
+.cwa-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(var(--pb--rgb), .85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cwa-modal {
+    background-color: var(--theme-page-background-color);
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.cwa-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+
+    h3 {
+        margin: 0;
+        font-size: 18px;
+        color: var(--theme-page-text-color);
+    }
+}
+
+.cwa-modal__close {
+    background: none;
+    font-size: 20px;
+    color: var(--theme-page-text-color-secondary);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--theme-page-text-color);
+    }
+}
+
+/* --- ДОБАВЛЕННЫЙ ФИКС СКРОЛЛА И ШИРИНЫ --- */
+.cwa-modal__body {
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: auto;
+    flex: 1;
+    min-height: 0;
+    color: var(--theme-page-text-color);
+}
+
+.cwa-modal__content {
+    table.diff {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+/* ------------------------------------------- */
+
+/* Добавлено из инлайн-стилей */
+.cwa-remote-container {
+    background: var(--theme-page-background-color);
+    color: var(--theme-page-text-color);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.cwa-modal__loader {
+    text-align: center;
+    padding: 40px;
+    font-size: 16px;
+    color: var(--theme-page-text-color-secondary);
+}
+
+/* Модальное окно: Предпросмотр файлов */
+.cwa-modal__img-wrap {
+    text-align: center;
+}
+
+.cwa-modal__img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+/* Модальное окно: Плашка удаленной страницы */
+.cwa-modal__alert {
+    background-color: rgba(var(--al--rgb), .2);
+    color: var(--pt);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: var(--br-14);
+    font-weight: bold;
+}
+
+.cwa-modal__pre-wrap {
+    padding: 10px;
+    white-space: pre-wrap;
+}
+
+/* Метка неотпатрулированной правки */
+.cwa-rc__unpatrolled {
+    color: var(--theme-alert-color, #e74c3c);
+    font-weight: bold;
+    font-size: 16px;
+    cursor: help;
+    margin-right: 4px;
+}
+
+/* Ховер для кнопки патрулирования (галочка) */
+.cwa-rc__action-btn--success {
+    color: var(--theme-page-text-color-secondary);
+}
+
+.cwa-rc__action-btn--success:hover {
+    color: var(--theme-success-color, #2ecc71);
+}
+
+/* Контейнер кнопок в заголовке */
+.cwa-rc__title-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Отступ для иконок внутри кнопок заголовка */
+.cwa-rc__btn-icon {
+    margin-right: 6px;
+}
+
+/* Фиксы */
+body.CrossWikiActivity .page__right-rail {
+    display: none;
+}

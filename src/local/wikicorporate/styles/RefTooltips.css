@@ -1,0 +1,24 @@
+.reference {
+    position: relative;
+    .reference-text {
+        position: absolute;
+        top: 0;
+        line-height: 1.5;
+        background-color: var(--p);
+        color: var(--pt);
+        transform: translate(-50%, -100%);
+        width: max-content;
+        font-size: 14px;
+        padding: 8px;
+        max-width: 300px;
+        white-space: break-spaces;
+        border: var(--bs-2s);
+        border-radius: var(--br-12);
+        animation: ref cubic-bezier(0.68, -0.55, 0.27, 1.55) 1000ms forwards;
+        overflow: hidden;
+        z-index: 10000;
+    }
+    &:not(:hover) .reference-text {
+        display: none;
+    }
+}

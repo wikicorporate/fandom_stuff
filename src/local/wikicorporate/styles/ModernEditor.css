@@ -1,0 +1,43 @@
+:is(body.action-edit, body.action-submit) .article-with-rail #WikiaRailWrapper {
+    display: none;
+}
+.client-js #editform {
+	&::before, &::after {
+		display: none;
+	}
+}
+@media only screen and (min-width: 992px) {
+    #editform {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:
+            "editor options"
+            "editor templates"
+            "edittools templates"
+            "report report";
+        wikiEditor-ui {
+            grid-area: editor;
+        }
+        .editOptions {
+            grid-area: options;
+        }
+        .templatesUsed {
+            grid-area: templates;
+        }
+        .limitreport {
+            grid-area: report;
+        }
+        .mw-editTools {
+            grid-area: edittools;
+        }
+    }
+}
+#editform {
+	.templatesUsed .mw-editfooter-list {
+		height: 200px;
+		overflow-y: auto;
+	}
+	&.mw-editform .editButtons span {
+		margin: 0.2em;
+	}
+}
