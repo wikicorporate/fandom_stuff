@@ -1,0 +1,7 @@
+# Включаем учёт шаблонов Wikitext в статистике языков GitHub
+*.wikitext linguist-detectable=true
+
+# Указываем языки для кастомных реестров без расширений в папке mediawiki/
+src/local/wikicorporate/mediawiki/Custom-DoodleRules linguist-language=CSS linguist-detectable=true
+src/local/wikicorporate/mediawiki/Custom-PugTemplates linguist-language=Pug linguist-detectable=true
+src/local/wikicorporate/mediawiki/Custom-HamlTemplates linguist-language=Haml linguist-detectable=true
