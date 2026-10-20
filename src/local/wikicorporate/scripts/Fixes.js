@@ -78,7 +78,7 @@
     }
 })();
 
-/* 2. Исправление достижений (чтение из MediaWiki:Custom-AchievementDescriptions.json с фоллбэком) */
+/* 2. Исправление достижений (чтение напрямую из MediaWiki:Custom-AchievementDescriptions.json) */
 (() => {
     'use strict';
     const namespace = mw.config.get('wgNamespaceNumber');
@@ -111,29 +111,19 @@
     };
 
     const loadDescriptions = () => {
-        const params = 'action=query&prop=revisions&titles=MediaWiki:Custom-AchievementDescriptions.json|Module:AchievementDescriptions&rvprop=content&rvslots=main&formatversion=2&format=json&origin=*';
+        const params = 'action=query&prop=revisions&titles=MediaWiki:Custom-AchievementDescriptions.json&rvprop=content&rvslots=main&formatversion=2&format=json&origin=*';
         return fetch(`${CENTRAL_API}?${params}`)
             .then(res => res.json())
             .then(data => {
-                const pages = (data.query && data.query.pages) || [];
-                const jsonPage = pages.find(p => p.title.indexOf('.json') !== -1 && !p.missing);
-                const luaPage = pages.find(p => p.title.indexOf('Module:') !== -1 && !p.missing);
-
-                if (jsonPage && jsonPage.revisions && jsonPage.revisions[0]) {
-                    const parsed = JSON.parse(jsonPage.revisions[0].slots.main.content);
+                const page = data.query && data.query.pages && data.query.pages[0];
+                if (page && !page.missing && page.revisions && page.revisions[0]) {
+                    const parsed = JSON.parse(page.revisions[0].slots.main.content);
                     Object.keys(parsed).forEach(k => {
                         missingDescriptions[k.toLowerCase()] = mw.html.escape(String(parsed[k]));
                     });
-                } else if (luaPage && luaPage.revisions && luaPage.revisions[0]) {
-                    const content = luaPage.revisions[0].slots.main.content;
-                    const regex = /\[\s*['"]([^'"]+)['"]\s*\]\s*=\s*['"]([^'"]+)['"]/g;
-                    let match;
-                    while ((match = regex.exec(content)) !== null) {
-                        missingDescriptions[match[1].toLowerCase()] = mw.html.escape(match[2]);
-                    }
                 }
             })
-            .catch(e => console.warn('[Achievements] Ошибка загрузки описаний:', e));
+            .catch(e => console.warn('[Achievements] Ошибка загрузки Custom-AchievementDescriptions.json:', e));
     };
 
     const fixTooltip = (tooltipNode) => {
@@ -280,7 +270,7 @@
     });
 })();
 
-/* 4. Исправление локализации интерфейса (чтение из MediaWiki:Custom-UILocalization.json без парсера Wikitext) */
+/* 4. Исправление локализации интерфейса (чтение напрямую из MediaWiki:Custom-UILocalization.json) */
 (() => {
     'use strict';
     if (window.isUILocalizationLoaded) return;
