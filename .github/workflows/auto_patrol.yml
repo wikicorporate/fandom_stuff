@@ -1,0 +1,65 @@
+name: Auto-Patrol Edits and Files
+
+on:
+  schedule:
+    - cron: '15 */6 * * *' # Автозапуск каждые 6 часов
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Режим патрулирования'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - trusted_only
+      project:
+        description: 'Только конкретный проект (например: Hazbin Hotel или hazbin; пусто = все вики)'
+        required: false
+        default: ''
+        type: string
+      limit:
+        description: 'Лимит действий на одну вики за запуск'
+        required: false
+        default: '500'
+        type: string
+
+concurrency:
+  group: fandom-auto-patrol
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  patrol:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install mwclient requests
+
+      - name: Run Auto-Patrol Script (Personal Account)
+        env:
+          FANDOM_USERNAME: ${{ secrets.FANDOM_USERNAME }}
+          FANDOM_PASSWORD: ${{ secrets.FANDOM_PASSWORD }}
+          INPUT_MODE: ${{ inputs.mode }}
+          INPUT_PROJECT: ${{ inputs.project }}
+          INPUT_LIMIT: ${{ inputs.limit }}
+        run: |
+          ARGS=("--mode" "${INPUT_MODE:-all}")
+          if [ -n "$INPUT_PROJECT" ]; then
+            ARGS+=("--project" "$INPUT_PROJECT")
+          fi
+          if [ -n "$INPUT_LIMIT" ]; then
+            ARGS+=("--limit" "$INPUT_LIMIT")
+          fi
+          python src/scripts/bots/auto_patrol.py "${ARGS[@]}"
