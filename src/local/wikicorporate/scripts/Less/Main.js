@@ -1,4 +1,4 @@
-/* Less Preprocessor Adapter (ES2024) */
+/* Less Preprocessor Adapter — Direct MediaWiki:Custom-*.less (ES2026) */
 (() => {
     'use strict';
 
@@ -6,9 +6,9 @@
     window.isLessAdapterLoaded = true;
 
     const CONFIG = {
-        localPage: 'Модуль:Less',
+        localPage: 'MediaWiki:Custom-Local.less',
         centralApiUrl: 'https://wikicorporate.fandom.com/ru/api.php',
-        centralPage: 'Модуль:GlobalLess',
+        centralPage: 'MediaWiki:Custom-Global.less',
         cdnUrl: 'https://cdnjs.cloudflare.com/ajax/libs/less.js/4.2.0/less.min.js',
         styleId: 'fandom-compiled-less',
         cacheKey: 'fandom_custom_less_css',
@@ -80,11 +80,9 @@
             if (!response.ok) return '';
 
             const data = await response.json();
-            const rawContent = data.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content;
-            if (!rawContent) return '';
-
-            const match = rawContent.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
-            return match ? match[2] : '';
+            const page = data.query?.pages?.[0];
+            if (!page || page.missing) return '';
+            return page.revisions?.[0]?.slots?.main?.content ?? '';
         } catch {
             return '';
         }
