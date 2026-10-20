@@ -1,4 +1,4 @@
-/* TWind (Tailwind-in-JS) Runtime Adapter (ES2026) */
+/* TWind (Tailwind-in-JS) Runtime Adapter — Direct MediaWiki:Custom-*.json (ES2026) */
 (async () => {
     'use strict';
 
@@ -7,9 +7,7 @@
 
     const CONFIG = {
         localJsonPage: 'MediaWiki:Custom-TwindLocal.json',
-        localFallbackLua: 'Модуль:Twind/LocalConfig',
         centralJsonPage: 'MediaWiki:Custom-TwindGlobal.json',
-        centralFallbackLua: 'Модуль:Twind/GlobalConfig',
         centralApiUrl: 'https://wikicorporate.fandom.com/ru/api.php',
         cacheKey: 'fandom_twind_config',
         cacheTimeKey: 'fandom_twind_time',
@@ -51,12 +49,12 @@
         } catch {}
     };
 
-    const fetchSource = async (jsonTitle, luaTitle, apiUrl = mw.util.wikiScript('api')) => {
+    const fetchSource = async (jsonTitle, apiUrl = mw.util.wikiScript('api')) => {
         try {
             const params = new URLSearchParams({
                 action: 'query',
                 prop: 'revisions',
-                titles: `${jsonTitle}|${luaTitle}`,
+                titles: jsonTitle,
                 rvprop: 'content',
                 rvslots: 'main',
                 format: 'json',
@@ -66,19 +64,10 @@
             const response = await fetch(`${apiUrl}?${params.toString()}`);
             if (!response.ok) return {};
             const data = await response.json();
-            const pages = data.query?.pages ?? [];
-
-            const jsonPage = pages.find(p => p.title.endsWith('.json') && !p.missing);
-            if (jsonPage?.revisions?.[0]?.slots?.main?.content) {
-                return JSON.parse(jsonPage.revisions[0].slots.main.content);
-            }
-
-            const luaPage = pages.find(p => !p.title.endsWith('.json') && !p.missing);
-            const rawLua = luaPage?.revisions?.[0]?.slots?.main?.content;
-            if (rawLua) {
-                const match = rawLua.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
-                return match ? JSON.parse(match[2]) : {};
-            }
+            const page = data.query?.pages?.[0];
+            if (!page || page.missing) return {};
+            const raw = page.revisions?.[0]?.slots?.main?.content;
+            return raw ? JSON.parse(raw) : {};
         } catch (error) {
             console.warn(`[Twind] Ошибка загрузки конфига ${jsonTitle}:`, error);
         }
@@ -118,8 +107,8 @@
 
             if (!finalConfig) {
                 const [globalConfig, localConfig] = await Promise.all([
-                    fetchSource(CONFIG.centralJsonPage, CONFIG.centralFallbackLua, CONFIG.centralApiUrl),
-                    fetchSource(CONFIG.localJsonPage, CONFIG.localFallbackLua)
+                    fetchSource(CONFIG.centralJsonPage, CONFIG.centralApiUrl),
+                    fetchSource(CONFIG.localJsonPage)
                 ]);
 
                 finalConfig = mergeConfigs(globalConfig, localConfig);
@@ -169,6 +158,6 @@
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initTwind);
     } else {
-        initTwind();
+        initMasterCSS();
     }
 })();
