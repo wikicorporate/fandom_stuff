@@ -1595,6 +1595,15 @@
         "pt-br": "Grimório de Stolas",
         "tr": "Stolas'ın Büyü Kitabı"
     },
+    "Грязная птичка": {
+        "cs": "Dirty Bird",
+        "en": "Dirty Bird",
+        "es": "Dirty Bird",
+        "fr": "Dirty Bird",
+        "hu": "Dirty Bird",
+        "ja": "Dirty Bird",
+        "pt-br": "Dirty Bird"
+    },
     "Грязные исцеления": {
         "en": "Dirty Healings",
         "es": "Dirty Healings",
@@ -5030,7 +5039,7 @@
         "cs": "Richard Horvitz",
         "en": "Richard Horvitz",
         "es": "Richard Horvitz",
-        "fr": "Richard Steven Horvitz",
+        "fr": "Richard Horvitz",
         "ja": "リチャード・ホーヴィッツ",
         "pl": "Richard Horvitz"
     },
