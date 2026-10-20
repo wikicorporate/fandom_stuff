@@ -1,22 +1,12 @@
 local p = {}
 
-local JSON_SOURCES = {
-    'MediaWiki:Custom-Интервики.json',
-    'Интервики.json',
-    'Interwiki.json'
-}
-
-local function load_interwiki_db()
-    for _, source in ipairs(JSON_SOURCES) do
-        local ok, data = pcall(mw.loadJsonData, source)
-        if ok and type(data) == 'table' then
-            return data
-        end
-    end
-    return nil
-end
+local ok, db = pcall(mw.loadJsonData, 'MediaWiki:Custom-Интервики.json')
 
 function p.e(frame)
+    if not ok or type(db) ~= 'table' then
+        return ''
+    end
+
     local args = frame.args
     local page = args[1]
     if not page or mw.text.trim(page) == '' then
@@ -33,11 +23,6 @@ function p.e(frame)
         return ''
     end
 
-    local db = load_interwiki_db()
-    if not db then
-        return ''
-    end
-
     local links = db[page]
     if type(links) ~= 'table' then
         return ''
@@ -45,12 +30,10 @@ function p.e(frame)
 
     local is_main_page = (page == 'Заглавная страница')
 
-    -- Сортируем языковые префиксы по алфавиту для стабильного вывода
     local langs = {}
     for lang, target in pairs(links) do
         if type(lang) == 'string' and type(target) == 'string' then
             local clean_target = mw.text.trim(target)
-            -- Для Заглавной страницы пустая строка "" генерирует валидный [[lang:]] на корень вики
             if clean_target ~= '' or is_main_page then
                 table.insert(langs, lang)
             end
