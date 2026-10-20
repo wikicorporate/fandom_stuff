@@ -1,4 +1,4 @@
-/* SCSS Preprocessor Adapter (ES2024) */
+/* SCSS Preprocessor Adapter — Direct MediaWiki:Custom-*.scss (ES2026) */
 (() => {
     'use strict';
 
@@ -6,9 +6,9 @@
     window.isScssAdapterLoaded = true;
 
     const CONFIG = {
-        localPage: 'Модуль:SCSS',
+        localPage: 'MediaWiki:Custom-Local.scss',
         centralApiUrl: 'https://wikicorporate.fandom.com/ru/api.php',
-        centralPage: 'Модуль:GlobalSCSS',
+        centralPage: 'MediaWiki:Custom-Global.scss',
         cdnUrl: 'https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.sync.min.js',
         styleId: 'fandom-compiled-scss',
         cacheKey: 'fandom_custom_scss_css',
@@ -76,11 +76,9 @@
             if (!response.ok) return '';
 
             const data = await response.json();
-            const rawContent = data.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content;
-            if (!rawContent) return '';
-
-            const match = rawContent.match(/\[(=*)\[\s*([\s\S]*?)\s*\]\1\]/);
-            return match ? match[2] : '';
+            const page = data.query?.pages?.[0];
+            if (!page || page.missing) return '';
+            return page.revisions?.[0]?.slots?.main?.content ?? '';
         } catch {
             return '';
         }
