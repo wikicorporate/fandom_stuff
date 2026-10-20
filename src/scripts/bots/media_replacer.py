@@ -6,7 +6,44 @@ from typing import Callable, Dict, List, Pattern, Tuple
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from utils.wiki_client import connect_site, get_credentials, load_projects, safe_save
 
-# Полный список правил замены: (компилированный паттерн, имя сервиса, количество аргументов)
+# Карта старых коротких алиасов из блока обратной совместимости Модуль:Медиа/Данные
+LEGACY_MEDIA_ALIASES: Dict[str, str] = {
+    "V": "YOUTUBE",
+    "P": "YOUTUBE-PLAYLIST",
+    "C": "YOUTUBE-CHANNEL",
+    "T": "TWITTER",
+    "X": "TWITTER",
+    "F": "FACEBOOK",
+    "I": "INSTAGRAM",
+    "S": "SPOTIFY",
+    "AM": "APPLE-MUSIC",
+    "APPLEMUSIC": "APPLE-MUSIC",
+    "W": "WEB-ARCHIVE",
+    "WV": "WEB-ARCHIVE-VIDEO",
+    "GD": "G-DOCS",
+    "GOOGLEDOCS": "G-DOCS",
+    "GDT": "G-TABLES",
+    "GOOGLEDOCSTABLE": "G-TABLES",
+    "PTRN": "PATREON",
+    "IB": "IMDB",
+    "TR": "TUMBLR",
+    "TUMBLER": "TUMBLR",
+    "TT": "TIKTOK",
+    "YM": "YT-MUSIC",
+    "BS": "BLUESKY",
+    "DART": "DEVIANTART",
+    "SCLOUD": "SOUNDCLOUD",
+    "TG": "TELEGRAM",
+    "STEAMCOM": "STEAM-COMMUNITY",
+    "STEAMSTORE": "STEAM-STORE",
+}
+
+# Регулярное выражение для поиска старых вызовов {{Медиа|АЛИАС|...}}
+LEGACY_TEMPLATE_RE = re.compile(
+    r"(\{\{\s*[Мм]едиа\s*\|\s*)([a-zA-Z\-]+)(\s*(?:\||\}\}))"
+)
+
+# Полный список правил замены сырых внешних ссылок: (паттерн, имя сервиса, количество аргументов)
 RAW_RULES: List[Tuple[str, str, int]] = [
     # === YOUTUBE ===
     (
@@ -90,12 +127,18 @@ PROTECTED_TAG_RE = re.compile(
 def _make_replacer(service: str, arg_count: int) -> Callable[[re.Match[str]], str]:
     def _repl(match: re.Match[str]) -> str:
         params = [match.group(i).strip() for i in range(1, arg_count)]
-        # Экранируем пайпы в видимом тексте ссылки, чтобы не разбивать параметры шаблона
         label = match.group(arg_count).strip().replace("|", "{{!}}")
         joined = "|".join(params + [label])
         return f"{{{{Медиа|{service}|{joined}}}}}"
 
     return _repl
+
+
+def _upgrade_legacy_alias(match: re.Match[str]) -> str:
+    prefix, raw_key, suffix = match.group(1), match.group(2), match.group(3)
+    upper_key = raw_key.upper()
+    canonical = LEGACY_MEDIA_ALIASES.get(upper_key, upper_key)
+    return f"{prefix}{canonical}{suffix}"
 
 
 def replace_media_links(text: str) -> str:
@@ -111,8 +154,12 @@ def replace_media_links(text: str) -> str:
 
     working = PROTECTED_TAG_RE.sub(_mask, text)
 
+    # 1. Заменяем сырые внешние ссылки на {{Медиа|...}}
     for pattern, service, arg_count in COMPILED_RULES:
         working = pattern.sub(_make_replacer(service, arg_count), working)
+
+    # 2. Заменяем старые короткие алиасы в {{Медиа|V|...}} на полные названия сервисов
+    working = LEGACY_TEMPLATE_RE.sub(_upgrade_legacy_alias, working)
 
     for key, original in reversed(list(protected.items())):
         working = working.replace(key, original)
@@ -132,7 +179,7 @@ def main() -> None:
         if not config.get("all_pages"):
             continue
 
-        print(f"\n[=== Запуск сканирования медиа-ссылок для: {project_name} ===]")
+        print(f"\n[=== Запуск сканирования медиа-ссылок и алиасов для: {project_name} ===]")
         site = connect_site(
             config["domain"],
             path=config.get("path", "/ru/"),
@@ -152,11 +199,11 @@ def main() -> None:
 
             new_text = replace_media_links(original_text)
             if original_text != new_text:
-                print(f"[!] Форматирую ссылки в статье: {title}")
+                print(f"[!] Обновлены медиа-ссылки в статье: {title}")
                 safe_save(
                     page,
                     new_text,
-                    summary="Стандартизация внешних ссылок",
+                    summary="Стандартизация внешних ссылок и параметров шаблона Медиа",
                     bot=True,
                     minor=True,
                     sleep_after=4.0,
