@@ -9,25 +9,11 @@ const AppMethodsApi = {
 
         async fetchConfig() {
             try {
-                let parsed = null;
                 const rawUrl = `${mw.util.wikiScript()}?title=MediaWiki:Custom-CrossWikiActivity.json&action=raw&ctype=application/json`;
-                const rawRes = await fetch(rawUrl).catch(() => null);
+                const rawRes = await fetch(rawUrl);
+                if (!rawRes.ok) return;
 
-                if (rawRes?.ok) {
-                    parsed = await rawRes.json();
-                } else {
-                    const api = new mw.Api();
-                    const res = await api.get({
-                        action: 'expandtemplates',
-                        text: '{{#invoke:CrossWikiActivity|toJSON}}',
-                        prop: 'wikitext',
-                        formatversion: 2,
-                        _: Date.now()
-                    });
-                    const rawText = res?.expandtemplates?.wikitext?.trim();
-                    if (rawText) parsed = JSON.parse(rawText);
-                }
-
+                const parsed = await rawRes.json();
                 if (parsed) {
                     this.wikis = Array.isArray(parsed.wikis) ? parsed.wikis : [];
                     if (parsed.settings && typeof parsed.settings === 'object') {
@@ -35,7 +21,7 @@ const AppMethodsApi = {
                     }
                 }
             } catch (e) {
-                console.error('[CWA] Ошибка загрузки конфига:', e);
+                console.error('[CWA] Ошибка загрузки MediaWiki:Custom-CrossWikiActivity.json:', e);
             }
         },
 
