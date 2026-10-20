@@ -99,37 +99,7 @@ local data = {
     ['WIKTIONARY'] = {
         [2] = { pattern = "[[Wiktionary:$1:$2|$2]]" },
         [3] = { pattern = "[[Wiktionary:$1:$2|$3]]" }
-    },
-
-    -- Блок обратной совместимости (короткие алиасы)
-    ['V'] = 'YOUTUBE',
-    ['P'] = 'YOUTUBE-PLAYLIST',
-    ['C'] = 'YOUTUBE-CHANNEL',
-    ['T'] = 'TWITTER',
-    ['X'] = 'TWITTER',
-    ['F'] = 'FACEBOOK',
-    ['I'] = 'INSTAGRAM',
-    ['S'] = 'SPOTIFY',
-    ['AM'] = 'APPLE-MUSIC',
-    ['APPLEMUSIC'] = 'APPLE-MUSIC',
-    ['W'] = 'WEB-ARCHIVE',
-    ['WV'] = 'WEB-ARCHIVE-VIDEO',
-    ['GD'] = 'G-DOCS',
-    ['GOOGLEDOCS'] = 'G-DOCS',
-    ['GDT'] = 'G-TABLES',
-    ['GOOGLEDOCSTABLE'] = 'G-TABLES',
-    ['PTRN'] = 'PATREON',
-    ['IB'] = 'IMDB',
-    ['TR'] = 'TUMBLR',
-    ['TUMBLER'] = 'TUMBLR',
-    ['TT'] = 'TIKTOK',
-    ['YM'] = 'YT-MUSIC',
-    ['BS'] = 'BLUESKY',
-    ['DART'] = 'DEVIANTART',
-    ['SCLOUD'] = 'SOUNDCLOUD',
-    ['TG'] = 'TELEGRAM',
-    ['STEAMCOM'] = 'STEAM-COMMUNITY',
-    ['STEAMSTORE'] = 'STEAM-STORE'
+    }
 }
 
 return data
