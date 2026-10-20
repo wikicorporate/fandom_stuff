@@ -1,4 +1,4 @@
-/* Fandom Loader: Howler.js with JSON & Lua Fallback Config (ES2026) */
+/* Fandom Loader: Howler.js with Direct JSON Config (ES2026) */
 (() => {
     'use strict';
     if (window.FandomHowlerLoaded) return;
@@ -11,7 +11,7 @@
     const CENTRAL_WIKI_API = 'https://wikicorporate.fandom.com/ru/api.php';
     const ALLOWED_EVENTS = new Set(['click', 'mouseenter', 'mouseleave', 'focus', 'pointerdown']);
 
-    const fetchJsonOrLuaConfig = async (apiUrl, jsonPage, fallbackModule) => {
+    const fetchJsonConfig = async (apiUrl, jsonPage) => {
         try {
             const params = new URLSearchParams({
                 action: 'query',
@@ -24,29 +24,11 @@
                 origin: '*'
             });
             const res = await fetch(`${apiUrl}?${params.toString()}`);
-            if (res.ok) {
-                const data = await res.json();
-                const page = data.query?.pages?.[0];
-                if (page && !page.missing && page.revisions?.[0]?.slots?.main?.content) {
-                    return JSON.parse(page.revisions[0].slots.main.content);
-                }
-            }
-        } catch {}
-
-        try {
-            const params = new URLSearchParams({
-                action: 'expandtemplates',
-                text: `{{#invoke:${fallbackModule}|toJSON}}`,
-                prop: 'wikitext',
-                format: 'json',
-                formatversion: '2',
-                origin: '*'
-            });
-            const res = await fetch(`${apiUrl}?${params.toString()}`);
-            if (res.ok) {
-                const data = await res.json();
-                const raw = data?.expandtemplates?.wikitext?.trim();
-                if (raw && !raw.startsWith('<')) return JSON.parse(raw);
+            if (!res.ok) return {};
+            const data = await res.json();
+            const page = data.query?.pages?.[0];
+            if (page && !page.missing && page.revisions?.[0]?.slots?.main?.content) {
+                return JSON.parse(page.revisions[0].slots.main.content);
             }
         } catch {}
         return {};
@@ -59,8 +41,8 @@
             const localApiUrl = mw.util.wikiScript('api');
 
             const [centralConfig, localConfig] = await Promise.all([
-                fetchJsonOrLuaConfig(CENTRAL_WIKI_API, 'MediaWiki:Custom-HowlerGlobal.json', 'HowlerGlobal'),
-                fetchJsonOrLuaConfig(localApiUrl, 'MediaWiki:Custom-HowlerLocal.json', 'HowlerLocal')
+                fetchJsonConfig(CENTRAL_WIKI_API, 'MediaWiki:Custom-HowlerGlobal.json'),
+                fetchJsonConfig(localApiUrl, 'MediaWiki:Custom-HowlerLocal.json')
             ]);
 
             const mergedConfig = { ...centralConfig, ...localConfig };
