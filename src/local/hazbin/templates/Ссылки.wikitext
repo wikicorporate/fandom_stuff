@@ -1,0 +1,12 @@
+<div class="mp-socials">
+	<div class="mp-socials__item">[[File:TMP_Youtube.png|link=https://www.youtube.com/user/SpindleHorse]]</div>
+	<div class="mp-socials__item">[[File:TMP_Twitter.png|link=https://twitter.com/HazbinHotel]]</div>
+	<div class="mp-socials__item">[[File:TMP_V2.png|link=https://hazbinhotel.com]]</div>
+	<div class="mp-socials__item">[[File:TMP_V.png|link=https://twitter.com/SpindleHorse]]</div>
+	<div class="mp-socials__item">[[File:TMP_Patreon.png|link=https://www.patreon.com/VivienneMedrano]]</div>
+	<div class="mp-socials__item">[[File:TMP_Amino.png|link=https://aminoapps.com/c/HazbinHotelOffi]]</div>
+	<div class="mp-socials__item">[[File:TMP_Tumblr.png|link=https://vivziepop.tumblr.com]]</div>
+	<div class="mp-socials__item">[[File:TMP_V3.png|link=https://sharkrobot.com/collections/hazbin-hotel]]</div>
+</div>
+
+<noinclude>[[Категория:Дизайн]]</noinclude>

@@ -1,0 +1,114 @@
+{|class="t-navbox mw-collapsible mw-collapsed"
+!colspan="3"| '''[[:Категория:Персоны|Персоны]]'''
+|-
+!Мультсериал
+![[Отель Хазбин]]
+
+![[Адский Босс]]
+|-
+
+!Создатели
+|[[Вивьен Медрано]] • [[Bento Box Entertainment]] • [[SpindleHorse Toons]]
+
+|[[Вивьен Медрано]] • [[SpindleHorse Toons]]
+|-
+
+!Сценаристы
+|[[Адам Нейлан]] • [[Вивьен Медрано]] • [[Дэйв Кэпдевиль]] <sup>(пилотный эпизод)</sup>
+|[[Адам Нейлан]] • [[Брэндон Роджерс]] • [[Вивьен Медрано]]
+|-
+
+!Актёры озвучивания основных персонажей
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания основных персонажей
+|category = Актёры озвучивания Отеля Хазбин
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания основных персонажей
+|category = Актёры озвучивания Адского Босса 
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+|-
+
+!Актёры озвучивания второстепенных персонажей
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания второстепенных персонажей
+|category = Актёры озвучивания Отеля Хазбин
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания второстепенных персонажей
+|category = Актёры озвучивания Адского Босса 
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+|-
+
+!Актёры озвучивания эпизодических персонажей
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания эпизодических персонажей
+|category = Актёры озвучивания Отеля Хазбин
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания эпизодических персонажей
+|category = Актёры озвучивания Адского Босса 
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+|-
+
+!Актёры озвучивания незначительных персонажей
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания незначительных персонажей
+|category = Актёры озвучивания Отеля Хазбин
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+
+|{{LuaDpl|{{#dpl:
+|category = Актёры озвучивания незначительных персонажей
+|category = Актёры озвучивания Адского Босса 
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}|PERSONAS}}
+|-
+
+!Композиторы
+|colspan="3"|[[Кеша Себерт]] <sup>([[Сладкая вата]])</sup> • [[Пэрри Грипп]] • [[Сэм Хафт]] • [[Gooseworx]] • [[The Living Tombstone]]
+|-
+
+!Художники
+|colspan="3"|[[Майкл Джеймс Руокко]] <sup>(пилотный эпизод)</sup> • [[Мэгпай Рэйвэн]] <sup>(пилотный эпизод, комиксы)</sup> • [[Сесилия Гонсалвес]] • [[Скай Хенвуд]] • [[Сэм Миллер]] • [[Эшли Николс]] <sup>(пилотный эпизод)</sup> • [[Faustisse]] <sup>(пилотный эпизод, комиксы)</sup>
+|-
+
+!Дополнительные
+|colspan="3"|[[Келлен Гофф]] • [[Кеннеди Филипс]] • [[Сет Аткинсон]] • [[HuniCast]]
+|-
+|}
+
+<noinclude>[[Категория:Шаблоны/Навбоксы]]</noinclude>

@@ -1,0 +1,18 @@
+<includeonly>{{#if: {{{1}}}|
+<div class="reflist-scroll"><div class="reflist references-small" {{#if: {{{colwidth|}}}| style="-moz-column-width:{{{colwidth}}}; -webkit-column-width:{{{colwidth}}}; column-width:{{{colwidth}}};" 
+| {{#if: {{{1|}}}| style="-moz-column-count:{{{1}}}; -webkit-column-count:{{{1}}}; column-count:{{{1}}} }};" |}}>
+{{#tag:references||group={{{group|}}}}}</div></div>
+|}}</includeonly>
+<noinclude>
+
+== Использование ==
+Используйте этот шаблон для создания списка ссылок в конце статьи <ref>Я есть ссылка</ref>
+
+Используйте <code>{{Примечания|...}}</code> где вы можете использовать <code><nowiki><references/></nowiki></code>.
+
+=== Пример ===
+<code><nowiki>{{Примечания}}</nowiki></code>
+
+{{Примечания}}
+
+[[Категория:Шаблоны/Примечания]]</noinclude>

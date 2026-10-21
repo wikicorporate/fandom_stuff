@@ -1,0 +1,92 @@
+__NOTOC__
+<div class="mainPage-Module">
+<h1 class="mainPage-Title">Добро пожаловать на OneShot Вики!</h1>
+<div class="mainPage-Content">
+{| class="mainPage-NavigationTable"
+|colspan="2"|<h3 class="mainPage-Title">[[:Категория:Персонажи|Персонажи]]<span class="mainPage-TitleImage">{{pic|OS-S-Item_Red-16.png|Персонажи|:Категория:Персонажи|}}</span></h3>
+{|
+|<ul class="mainPage-List">
+<li>[[:Категория:Основные персонажи|Главные]]</li>
+<ul class="mainPage-List" style="margin-left: 1em; font-size: 12px;">
+<li>[[Нико]]</li>
+<li>[[Игрок]]</li>
+<li>[[Автор]]</li>
+<li>[[Мировая Машина|Сущность]]</li>
+|<ul class="mainPage-List">
+<li>[[:Категория:Персонажи Пустошей|Пустошей]]</li>
+<ul class="mainPage-List" style="margin-left: 1em; font-size: 12px;">
+<li>[[Сильвер]]</li>
+<li>[[Профетбот]]</li>
+<li>[[Роубот №310]]</li>
+<li>[[Прототип]]</li>
+|<ul class="mainPage-List">
+<li>[[:Категория:Персонажи Глена|Глена]]</li>
+<ul class="mainPage-List" style="margin-left: 1em; font-size: 12px;">
+<li>[[Алула]]</li>
+<li>[[Каламус]]</li>
+<li>[[Мэгпай]]</li>
+<li>[[Седрик]]</li>
+|<ul class="mainPage-List">
+<li>[[:Категория:Персонажи Пристанища|Пристанища]]</li>
+<ul class="mainPage-List" style="margin-left: 1em; font-size: 12px;">
+<li>[[Фонарщик]]</li>
+<li>[[Рю]]</li>
+<li>[[Кип Сильверпоинт|Кип]]</li>
+<li>[[Джордж]]</li>
+|}
+|colspan="2"|<h3 class="mainPage-Title">[[:Категория:Геймплей|Игра]]<span class="mainPage-TitleImage">{{pic|OS-S-Item_Start-6.png|Мир игры|:Категория:Геймплей|}}</span></h3>
+{|
+|<ul class="mainPage-List">
+<li>[[OneShot]]</li>
+<li>[[Обновление «Солнцестояние»|«Солнцестояние»]]</li>
+<li>[[Концовки]]</li>
+<li>[[Саундтреки]]</li>
+<li>[[:Категория:Диалоги|Диалоги]]</li>
+|}
+|<h3 class="mainPage-Title">Дополнительное<span class="mainPage-TitleImage"></span></h3>
+<ul class="mainPage-List">
+<li>[https://www.oneshot-game.com/ Официальный сайт]</li>
+<li>[https://rpgmaker.net/games/6560/ Оригинал 2014 года]</li>
+<li>[https://store.steampowered.com/app/420530/OneShot/ Ремейк 2016 года]</li>
+<li>[http://oneshotgame.tumblr.com/ Tumblr]</li>
+<li>[https://www.facebook.com/oneshotreboot Facebook]</li>
+<li>[https://www.fangamer.com/collections/oneshot Официальный товар]</li>
+</ul>
+|-
+|<h3 class="mainPage-Title">[[:Категория:Локации|Локации]]<span class="mainPage-TitleImage"></span></h3>
+<ul class="mainPage-List">
+<li>[[Разрушенный дом]]</li>
+<li>[[Пустоши]]</li>
+<li>[[Глен]]</li>
+<li>[[Пристанище]]</li>
+<li>[[Башня]]</li>
+</ul>
+|<h3 class="mainPage-Title">[[:Категория:Геймплей|Мир игры]]<span class="mainPage-TitleImage">
+</span></h3>
+<ul class="mainPage-List">
+<li>[[Миры]]</li>
+<li>[[Жители]]</li>
+<li>[[Фосфор]]</li>
+<li>[[История]]</li>
+<li>[[Робототехника]]</li>
+</ul>
+|<h3 class="mainPage-Title">[[:Категория:Геймплей|Геймплей]]<span class="mainPage-TitleImage">
+</span></h3>
+<li>[[Записи]]</li>
+<li>[[Сны Нико]]</li>
+<li>[[Предметы]]</li>
+<li>[[Солнце]]</li>
+<li>[[Частицы]]</li>
+</ul>
+|}
+
+<div class="mainPage-Module">
+<h1 class="mainPage-Title">Информация <span style="font-size: 12px; vertical-align: middle;">• [[Справка:Содержание|Справка]]</span></h1>
+<div class="mainPage-Content">
+'''OneShot''' — это игра в жанре «Головоломка» и «Приключение» с видом сверху, выпущенная в Steam в 2016 году и изданная Degica. Разработана на движке [https://www.rpgmakerweb.com/products/programs/rpg-maker-xp RPG Maker XP]. В игре Вы, будучи в роли [[Игрок|Бога]], должны помочь рёбенку по имени [[Нико]], которая оказалась в неизвестном ей мире без солнца. Вам нужно добраться до [[Башня|Башни]], где Нико вернёт солнце в [[Миры#Основной Мир|Мир]]. По ходу игры не раз будет ломаться четвёртая стена, а иногда игра даже сможет взаимодействовать с Вашим компьютером. Подробнее обо всём, что связано с этой игрой, Вы сможете узнать на этой вики.
+
+На данный момент на этой Вики [[Служебная:Allpages|{{NUMBEROFARTICLES}}]] {{plural:{{NUMBEROFARTICLES}}|статья|статьи|статей}} и [[Служебная:NewImages|{{NUMBEROFFILES}}]] {{plural:{{NUMBEROFFILES}}|изображение|изображения|изображений}}.
+
+Также советуем обратить внимание вики на английском языке - [https://oneshot.fandom.com/wiki/OneShot_Wiki OneShot Wiki] и на китайском - [https://oneshot.fandom.com/zh/wiki/OneShot%E4%B8%AD%E6%96%87Wiki OneShot 中文 Wiki].
+</div>
+</div>

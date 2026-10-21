@@ -1,0 +1,84 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="caption-Изображение"/>
+  </image>
+  <group collapse="open">
+    <header>Общая информация</header>
+    <data source="Имя">
+      <label>Имя</label>
+    </data>
+    <data source="Роль">
+      <label>Роль</label>
+    </data>
+    <data source="Прозвища">
+      <label>Прозвища</label>
+    </data>
+  </group>
+  <group collapse="open">
+    <header>Биологические данные</header>
+    <data source="Пол">
+      <label>Пол</label>
+    </data>
+    <data source="Вид">
+      <label>Вид</label>
+    </data>
+  </group>
+  <group collapse="open">
+    <header>Взаимоотношения</header>
+    <data source="Связанные персонажи">
+      <label>Связанные персонажи</label>
+    </data>
+    <data source="Упоминание">
+      <label>Упоминание</label>
+    </data>
+  </group>
+  <group collapse="open">
+    <header>Геймплей</header>
+    <data source="Нахождение">
+      <label>Нахождение</label>
+    </data>
+    <data source="Появление">
+      <label>Появление</label>
+    </data>
+    <data source="Саундтреки">
+      <label>Саундтреки</label>
+    </data>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Персонаж
+|Название = Неизвестно
+|Изображение = 
+|Имя = Неизвестно
+|Роль = Неизвестно
+|Прозвища = Неизвестно
+|Пол = Неизвестно
+|Вид = Неизвестно
+|Связанные персонажи = Неизвестно
+|Упоминание = Неизвестно
+|Нахождение = Неизвестно
+|Появление = Неизвестно
+|Саундтреки = Неизвестно
+}}
+Пример использования:<pre>
+{{Персонаж
+|Название = Неизвестно
+|Изображение = 
+|Имя = Неизвестно
+|Роль = Неизвестно
+|Прозвища = Неизвестно
+|Пол = Неизвестно
+|Вид = Неизвестно
+|Связанные персонажи = Неизвестно
+|Упоминание = Неизвестно
+|Нахождение = Неизвестно
+|Появление = Неизвестно
+|Саундтреки = Неизвестно
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

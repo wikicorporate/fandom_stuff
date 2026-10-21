@@ -1,0 +1,1 @@
+<div class = "button-alpha" style = "display:inline-block; overflow: hidden; border-radius: 5px">[[Файл:{{{1|OS-S-Niko-7.png}}}|link={{{2|Нико}}}]]</div>

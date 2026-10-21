@@ -1,0 +1,50 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+  </image>
+  <group>
+   <header>Общая информация</header>
+  <data source="Прозвища">
+    <label>Прозвища</label>
+  </data>
+  <data source="Семья">
+    <label>Семья</label>
+  </data>
+  </group>
+  <group>
+    <header>Биологические данные</header>
+      <data source="Пол">
+        <label>Пол</label>
+      </data>
+        <data source="Вид">
+        <label>Вид</label>
+      </data>
+      <data source="Цвет глаз">
+        <label>Цвет глаз</label>
+      </data>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Персонаж
+|Изображение = Пример
+|Прозвища = Пример
+|Семья = Пример
+|Пол = Пример
+|Вид = Пример
+|Цвет глаз = Пример
+}}
+Пример использования:<pre>
+{{Персонаж
+|Изображение = Пример
+|Прозвища = Пример
+|Семья = Пример
+|Пол = Пример
+|Вид = Пример
+|Цвет глаз = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

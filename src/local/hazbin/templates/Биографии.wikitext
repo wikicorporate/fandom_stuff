@@ -1,0 +1,26 @@
+{|class="t-navbox mw-collapsible mw-collapsed"
+!colspan="2"| '''[[:Категория:Биографии|Биографии]]'''
+|-
+![[Отель Хазбин]]
+
+![[Адский Босс]]
+|-
+
+|{{LuaDpl|{{#dpl:
+|category=Биографии Отеля Хазбин
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+
+|{{LuaDpl|{{#dpl:
+|category=Биографии Адского Босса
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|}
+
+<noinclude>[[Категория:Шаблоны/Навбоксы]]</noinclude>

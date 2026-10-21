@@ -1,0 +1,26 @@
+<table class = "game-border" align = "center" cols = "1" style = "text-align: center; margin: 15px; background: rgba(22,11,24,.8); font-size:19px; font-family:Terminus; color: #EDEDED;">
+ <tr>
+    <td class = "span-headline">Люди-кошки
+ <tr>
+    <td> {{Кнопка|OS-S-Niko-7.png|Нико}}
+  <tr>
+    <td class = "span-headline">Роботы
+  <tr>
+    <td>  {{Кнопка|OS-S-Prophet-1.png|Профетбот}} {{Кнопка|OS-S-Proto-1.png|Прототип}} {{Кнопка|OS-S-Rowbot-1.png|Роубот №310}} {{Кнопка|OS-S-Silver-1.png|Сильвер}} {{Кнопка|OS-S-Blue-2.png|Стражи|Страж в Пустошах}} {{Кнопка|OS-S-Green-7.png|Стражи|Страж в Глене}} {{Кнопка|OS-S-Red-4.png|Стражи|Страж в Пристанище}} {{Кнопка|OS-S-Kelvin-4.png|Кельвин}} {{Кнопка|OS-S-Bookbot-1.png|Библиобот}}
+  <tr>
+     <td class = "span-headline">Люди-птицы
+  <tr>
+    <td>{{Кнопка|OS-S-Alula-7.png|Алула}} {{Кнопка|OS-S-Calamus-7.png|Каламус}} {{Кнопка|OS-S-Magpie-8.png|Мэгпай}}
+  <tr>
+     <td class = "span-headline">Люди
+  <tr>
+    <td>{{Кнопка|OS-S-Shepherd-1.png|Пастушка}} {{Кнопка|OS-S-Cedric-9.png|Седрик}} {{Кнопка|OS-S-Plight-1.png|Фонарщик}} {{Кнопка|OS-S-Ling-1.png|Линг}} {{Кнопка|OS-S-Kip-1.png|Кип Сильверпоинт}} {{Кнопка|OS-S-Player-1.png|Игрок}} {{Кнопка|OS-S-Author_light.png|Автор}}
+<tr>
+     <td class = "span-headline">Люди-предметы
+  <tr>
+    <td>{{Кнопка|OS-A-George-16.gif|Джордж}} {{Кнопка|OS-S-Mason.png|Мэйсон}} {{Кнопка|OS-S-Watcher.png|Наблюдатель}}
+<tr>
+     <td class = "span-headline">Необычные существа
+  <tr>
+    <td>{{Кнопка|OS-S-Maize-7.png|Мейз}} {{Кнопка|OS-S-Rue-7.png|Рю}} {{Кнопка|OS-S-En-23.png|Мировая Машина}} 
+</table>

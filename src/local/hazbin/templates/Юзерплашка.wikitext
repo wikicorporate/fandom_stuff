@@ -1,0 +1,8 @@
+<includeonly><div class="userpic><div class="userpic__body">
+{|class="userpic__details"
+|class="userpic__details-image"|{{#switch:{{{Изображение|}}}||Изображение|Изображение=|[[Файл:{{{Изображение|}}}|100px|link=]]}}
+|class="userpic__details-text"|''Этот участник {{{Текст|}}}''
+|}</div></div></includeonly><noinclude>
+{{Юзерплашка|Текст = 5354354354|Изображение = example.png}}
+[[Категория:Шаблоны/Плашки]]
+</noinclude>

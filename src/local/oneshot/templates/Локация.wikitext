@@ -1,0 +1,74 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+  </image>
+  <group>
+   <header>Общая информация</header>
+  <data source="Описание">
+    <label>Описание</label>
+  </data>
+  <data source="Жители">
+    <label>Жители</label>
+  </data>
+   <data source="Персонажи">
+    <label>Персонажи</label>
+  </data>
+  <data source="Подлокации">
+    <label>Подлокации</label>
+  </data>
+   <data source="Фосфор">
+    <label>Фосфор</label>
+  </data>
+    <header>Хронология</header>
+  <group layout="horizontal">
+	 <data source="Предыдущая локация"><label>Предыдущая локация</label></data>
+	 <data source="Следующая локация"><label>Следующая локация</label></data>
+	</group>
+	<group collapse="closed">
+    <header>Саундтреки</header>
+    <data source="Общие">
+      <label>Общие</label>
+    </data>
+    <data source="Уникальные">
+      <label>Уникальные</label>
+    </data>
+    <data source="Путь Солнцестояния">
+      <label>Путь Солнцестояния</label>
+    </data>
+  </group>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Локация
+|Изображение = 
+|Описание = Пример
+|Жители = Пример
+|Персонажи = Пример
+|Подлокации = Пример
+|Фосфор = Пример
+|Предыдущая локация = Пример
+|Следующая локация = Пример
+|Общие = Пример
+|Уникальные = Пример
+|Путь Солнцестояния = Пример
+}}
+Пример использования:<pre>
+{{Локация
+|Изображение = 
+|Описание = Пример
+|Жители = Пример
+|Персонажи = Пример
+|Подлокации = Пример
+|Фосфор = Пример
+|Предыдущая локация = Пример
+|Следующая локация = Пример
+|Общие = Пример
+|Уникальные = Пример
+|Путь Солнцестояния = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

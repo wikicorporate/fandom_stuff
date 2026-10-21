@@ -1,0 +1,65 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group collapse="open">
+   <header>Общая информация</header>
+  <data source="Тип">
+    <label>Тип</label>
+  </data>
+  <data source="Дата">
+    <label>Дата</label>
+  </data>
+  <data source="Локация">
+    <label>Локация</label>
+  </data>
+  <data source="Первое упоминание">
+    <label>Первое упоминание</label>
+  </data>
+  <data source="Ведущие">
+    <label>Ведущие</label>
+  </data>
+  </group>
+    <group collapse="open">
+  <header>Значение</header>
+  <data source="Цель">
+    <label>Цель</label>
+  </data>
+  <data source="Участники">
+    <label>Участники</label>
+  </data>
+  <data source="Статус">
+    <label>Статус</label>
+  </data>
+  </group>
+</infobox></includeonly>
+<noinclude>
+{{Событие
+|Изображение = 1000.png
+|Тип = Неизвестно
+|Дата = Неизвестно
+|Локация = Неизвестно
+|Первое упоминание = Неизвестно
+|Ведущие = Неизвестно
+|Цель = Неизвестно
+|Участники = Неизвестно
+|Статус = Неизвестно
+}}
+Пример использования:<pre>
+{{Событие
+|Изображение = 1000.png
+|Тип = Неизвестно
+|Дата = Неизвестно
+|Локация = Неизвестно
+|Первое упоминание = Неизвестно
+|Ведущие = Неизвестно
+|Цель = Неизвестно
+|Участники = Неизвестно
+|Статус = Неизвестно
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

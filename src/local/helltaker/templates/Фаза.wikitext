@@ -1,0 +1,55 @@
+<includeonly>
+<infobox theme="helltaker">
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group>
+    <header source="Информация">Информация</header>
+    <data source="Номер">
+      <label>Номер</label>
+    </data>
+    <data source="Воля">
+      <label>Воля</label>
+    </data>
+    <data source="Преграды">
+      <label>Преграды</label>
+    </data>
+      <header>Хронология</header>
+  <group layout="horizontal">
+	    <data source="Предыдущая фаза"><label>Предыдущая фаза</label></data>
+	    <data source="Следующая фаза"><label>Следующая фаза</label></data>
+	</group>
+	<header>Прохождение</header>
+	<image source="Видео"/>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Фаза
+|Название = Пример
+|Изображение = Пример
+|Номер = Пример
+|Воля = Пример
+|Преграды = Пример
+|Предыдущая фаза = Пример
+|Следующая фаза = Пример
+|Видео = Пример
+}}
+Пример использования:
+<pre>
+{{Фаза
+|Название = Пример
+|Изображение = Пример
+|Номер = Пример
+|Воля = Пример
+|Преграды = Пример
+|Предыдущая фаза = Пример
+|Следующая фаза = Пример
+|Видео = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

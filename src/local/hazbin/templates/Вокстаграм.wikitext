@@ -1,0 +1,49 @@
+<includeonly><infobox>
+  <title source="Название">
+    <format>[https://www.instagram.com/{{{Название}}} @{{{Название}}}]</format>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <data source="Владелец">
+    <label>Владелец</label>
+  </data>
+  <data source="Статус">
+    <label>Статус</label>
+  </data>
+  <data source="О себе">
+    <label>О себе</label>
+  </data>
+  <group>
+    <header>Перевод</header>
+      <data source="Статус 2">
+        <label>Статус</label>
+      </data>
+      <data source="О себе 2">
+        <label>О себе</label>
+      </data>
+  </group>
+</infobox></includeonly>
+<noinclude>
+{{Вокстаграм
+|Название = beautymarkbabe666
+|Изображение = Millie Insta.jpg
+|Статус = Millie
+|О себе = <nowiki>Assassin @ I.M.P | Love killin' people~♡ | @simply_moxxie 💞💕❤</nowiki>
+|Статус 2 = Милли
+|О себе 2 = <nowiki>Ассасин @ I.M.P | Люблю убивать людей~♡ | @simply_moxxie 💞💕❤</nowiki>
+|Владелец = [[Милли]]
+}}
+<pre>
+{{Вокстаграм
+|Название = beautymarkbabe666
+|Изображение = Millie Insta.jpg
+|Владелец = [[Милли]]
+|Статус = Millie
+|О себе = <nowiki>Assassin @ I.M.P | Love killin' people~♡ | @simply_moxxie 💞💕❤</nowiki>
+|Статус 2 = Милли
+|О себе 2 = <nowiki>Ассасин @ I.M.P | Люблю убивать людей~♡ | @simply_moxxie 💞💕❤</nowiki>
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

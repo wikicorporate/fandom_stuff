@@ -1,0 +1,64 @@
+<div class="mp-characters">
+<div class="mp-characters__info-bg"></div>
+<div class="mp-characters__character">[[Файл:Хеллтейкер.gif|link=Хеллтейкер]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">'''Хеллтейкер''' {{En|Helltaker}} — протагонист игры, которым управляет игрок. Крепкий, мускулистый мужчина, который любит играть в пошаговые стратегии и есть блины с шоколадом.</div>
+<div class="mp-characters__image">[[Файл:Хеллтейкер.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Пандемоника.gif|link=Пандемоника]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">'''Пандемоника''' {{En|Pandemonica}} — первый демон, которого встречает игрок. Невысокий бледнокожий сотрудник службы поддержки Ада, готовый сломать вам пальцы, если вы не сварите ей чашку хорошего кофе.</div>
+<div class="mp-characters__image">[[Файл:Пандемоника.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Модеус.gif|link=Модеус]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">'''Модеус''' {{En|Modeus}} — второй демон, которого встречает игрок. Низкая бледнокожая демонесса, помешанная на сексе. Считает обычную романтику «самой извращённой вещью, которую она когда-либо видела».</div>
+<div class="mp-characters__image">[[Файл:Модеус.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Цербер.gif|link=Цербер]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">4</div>
+<div class="mp-characters__image">[[Файл:Цербер.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Малина.gif|link=Малина]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">5</div>
+<div class="mp-characters__image">[[Файл:Малина.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Здрада.gif|link=Здрада]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">6</div>
+<div class="mp-characters__image">[[Файл:Здрада.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Азазель.gif|link=Азазель]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">7</div>
+<div class="mp-characters__image">[[Файл:Азазель.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Джастис.gif|link=Джастис]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">8</div>
+<div class="mp-characters__image">[[Файл:Джастис.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Люцифер.gif|link=Люцифер]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">9</div>
+<div class="mp-characters__image">[[Файл:Люцифер.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Джаджмент.gif|link=Джаджмент]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">10</div>
+<div class="mp-characters__image">[[Файл:Джаджмент.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Вельзевул.gif|link=Вельзевул]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">11</div>
+<div class="mp-characters__image">[[Файл:Вельзевул.png]]</div>
+</div>
+<div class="mp-characters__character">[[Файл:Субъект 67.gif|link=Субъект 67]]</div>
+<div class="mp-characters__info">
+<div class="mp-characters__description">12</div>
+<div class="mp-characters__image">[[Файл:Субъект 67.png]]</div>
+</div>
+</div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

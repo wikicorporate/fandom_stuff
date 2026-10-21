@@ -1,0 +1,25 @@
+<includeonly><div class="t-tabview">
+<div class="t-tabview__item" data-title="Статья">[[{{ROOTPAGENAME}}|<i class="fa-solid fa-newspaper"></i>]]</div>
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Транскрипт}}|<div class="t-tabview__item" data-title="Транскрипт">[[{{ROOTPAGENAME}}/Транскрипт|<i class="fa-solid fa-print"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Биография}}|<div class="t-tabview__item" data-title="Биография">[[{{ROOTPAGENAME}}/Биография|<i class="fa-solid fa-scroll"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Взаимоотношения}}|<div class="t-tabview__item" data-title="Взаимоотношения">[[{{ROOTPAGENAME}}/Взаимоотношения|<i class="fa-solid fa-heart-crack"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Цитаты}}|<div class="t-tabview__item" data-title="Цитаты">[[{{ROOTPAGENAME}}/Цитаты|<i class="fa-solid fa-quote-right"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея}}|<div class="t-tabview__item" data-title="Галерея">[[{{ROOTPAGENAME}}/Галерея|<i class="fa-solid fa-camera"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Первый сезон Отеля Хазбин}}|<div class="t-tabview__item" data-title="Первый сезон">[[{{ROOTPAGENAME}}/Галерея/Первый сезон Отеля Хазбин|<i class="fa-solid fa-1"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Второй сезон Отеля Хазбин}}|<div class="t-tabview__item" data-title="Второй сезон">[[{{ROOTPAGENAME}}/Галерея/Второй сезон Отеля Хазбин|<i class="fa-solid fa-2"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Первый сезон Адского Босса}}|<div class="t-tabview__item" data-title="Первый сезон">[[{{ROOTPAGENAME}}/Галерея/Первый сезон Адского Босса|<i class="fa-solid fa-1"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Второй сезон Адского Босса}}|<div class="t-tabview__item" data-title="Второй сезон">[[{{ROOTPAGENAME}}/Галерея/Второй сезон Адского Босса|<i class="fa-solid fa-2"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Короткометражные эпизоды Адского Босса}}|<div class="t-tabview__item" data-title="Короткометражные эпизоды">[[{{ROOTPAGENAME}}/Галерея/Короткометражные эпизоды Адского Босса|<i class="fa-brands fa-youtube-shorts"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Официальное_творчество}}|<div class="t-tabview__item" data-title="Официальное творчество">[[{{ROOTPAGENAME}}/Галерея/Официальное_творчество|<i class="fa-solid fa-paint-roller"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Дизайн}}|<div class="t-tabview__item" data-title="Дизайн">[[{{ROOTPAGENAME}}/Галерея/Дизайн|<i class="fa-solid fa-compass-drafting"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея/Мерчендайз}}|<div class="t-tabview__item" data-title="Мерчендайз">[[{{ROOTPAGENAME}}/Галерея/Мерчендайз|<i class="fa-solid fa-bag-shopping"></i>]]</div>}}
+</div></includeonly>
+<noinclude>
+{{Табвью}}
+<pre>
+Использование:
+
+{{Табвью}}
+</pre>
+[[Категория:Шаблоны/Вкладки]]
+</noinclude>

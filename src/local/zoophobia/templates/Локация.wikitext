@@ -1,0 +1,44 @@
+<includeonly><infobox theme="zoophobia">
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+ <group collapse="open">
+   <header>Общая информация</header>
+  <data source="Тип">
+    <label>Тип</label>
+  </data>
+  <data source="Расположение">
+    <label>Расположение</label>
+  </data>
+  <data source="Жители">
+    <label>Жители</label>
+    </data>
+  <data source="Работники">
+    <label>Работники</label>
+    </data> 
+    </group>
+</infobox></includeonly>
+<noinclude>
+{{Локация
+|Изображение = Файл:Пример.png
+|Подпись = Пример
+|Тип = Пример
+|Расположение = Пример
+|Жители = Пример
+|Работники = Пример
+}}
+Пример использования:<pre>
+{{Локация
+|Изображение = Файл:Пример.png
+|Подпись = Пример
+|Тип = Пример
+|Расположение = Пример
+|Жители = Пример
+|Работники = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

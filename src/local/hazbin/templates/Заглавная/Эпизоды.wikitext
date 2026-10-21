@@ -1,0 +1,18 @@
+<div class="mp-videos">
+<div class="mp-videos__title">Новые эпизоды</div>
+<div class="mp-videos__content">
+<div class="mp-videos__item">
+<div class="mp-videos__card" data-name="Отель Хазбин"><i class="fa-solid fa-apple-whole"></i></div>
+{{Галерея|
+Hazbin Hotel (excluding Angel Dust and Alastor).png|Последний звонокLINK|1500px|
+}}
+</div>
+<div class="mp-videos__item">
+<div class="mp-videos__card" data-name="Адский Босс"><i class="fa-solid fa-fire"></i></div>
+{{Галерея|
+HS13.jpg|Миссия: рецензия на книгуLINK|1500px|
+}}
+</div>
+</div>
+</div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

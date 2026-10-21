@@ -1,0 +1,24 @@
+<div class="mp-header">
+<div class="mp-header__text">
+Добро пожаловать на Hazbin Hotel Вики! Здесь предоставлена актуальная и точная информация по мультсериалам «Отель Хазбин» и «Адский Босс», являющихся частью вселенной «Хелавёрс», а также созданы комфортные условия для редактирования.
+</div>
+
+<div class="mp-social">
+<div class="mp-social__button">[https://discord.gg/hhwiki <i class="fa-brands fa-discord"></i>]</div>
+<div class="mp-social__button">[https://vk.com/hazbin_hotel <i class="fa-brands fa-vk"></i>]</div>
+</div>
+
+<div class="mp-buttons">
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-photo-film"></i> [[:Категория:Сериалы|Сериалы]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-brands fa-youtube"></i> [[:Категория:Эпизоды|Эпизоды]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-user"></i> [[:Категория:Персонажи|Персонажи]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-location-arrow"></i> [[:Категория:Локации|Локации]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-icons"></i> [[:Категория:Предметы|Предметы]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-calendar-days"></i> [[:Категория:События|События]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-users"></i> [[:Категория:Персоны|Персоны]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-guitar"></i> [[:Категория:Песни|Песни]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-music"></i> [[:Категория:Треки|Треки]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-city"></i> [[:Категория:Организации|Организации]]</div></div>
+</div>
+</div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

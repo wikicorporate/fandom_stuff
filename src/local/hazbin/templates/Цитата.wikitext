@@ -1,0 +1,17 @@
+<div class="t-quote">
+<i class="fa-solid fa-angles-left"></i>
+<div class="t-quote__text">
+<div class="t-quote__title" {{#if:{{{3|}}}|title="Source:&nbsp;{{{3}}}"|}}>''{{{1}}}''</div>
+<div class="t-quote__source">&#8213; {{{2}}}{{#if:{{{3|}}}|<sup class="noprint">[[{{{3|}}}|[src]]]</sup>}}</div>
+</div>
+<i class="fa-solid fa-angles-right"></i>
+</div>
+<noinclude>
+
+== Использование ==
+<pre>
+{{Цитата
+|Содержимое цитаты
+|Автор
+}}
+</pre>[[Категория:Шаблоны/Основные]]</noinclude>

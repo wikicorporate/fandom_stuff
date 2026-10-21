@@ -1,0 +1,33 @@
+<includeonly><infobox theme="returnal">
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+  	<caption source="Подпись"/>
+  </image>
+  <header>Общая информация</header>
+  <data source="Получение">
+    <label>Получение</label>
+  </data>
+  <data source="Тип">
+    <label>Тип</label>
+  </data>
+</infobox>
+</includeonly>
+<noinclude>
+{{Достижение
+|Название = Пример
+|Изображение = Badge-welcome.png
+|Получение = Пример
+|Тип = Пример
+}}
+Пример использования:<pre>
+{{Достижение
+|Название = Пример
+|Изображение = Badge-welcome.png
+|Получение = Пример
+|Тип = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

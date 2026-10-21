@@ -1,0 +1,36 @@
+<includeonly>
+    <div class="game-slider">
+        <div class="game-slider__list">
+            <div class="game-slider__item">[[Файл:Site-background-dark]]
+                <div class="game-slider__item-content">
+                    <div class="game-slider__item-image">[[Файл:Site-background-dark]]</div>
+                    <div class="game-slider__item-title">ЗАГОЛОВОК</div>
+                    <div class="game-slider__item-links">
+                        <div class="game-slider__item-link">[[Тестовая страница №1]]
+                            <div class="game-slider__item-sublinks">
+                                <div class="game-slider__item-link">[[Тестовая страница №1]]</div>
+                                <div class="game-slider__item-link">[[Тестовая страница №1]]</div>
+                                <div class="game-slider__item-link">[[Тестовая страница №1]]</div>
+                                <div class="game-slider__item-link">[[Тестовая страница №1]]</div>
+                            </div>
+                        </div>
+                        <div class="game-slider__item-link">[[213]]</div>
+                        <div class="game-slider__item-link">[[234]]</div>
+                        <div class="game-slider__item-link">[[312]]</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-slider__item">[[Файл:Site-background-light]]</div>
+            <div class="game-slider__item">[[Файл:Site-background-dark]]</div>
+            <div class="game-slider__item">[[Файл:Site-background-light]]</div>
+            <div class="game-slider__item">[[Файл:Site-background-dark]]</div>
+            <div class="game-slider__item">[[Файл:Site-background-light]]</div>
+            <div class="game-slider__item">[[Файл:Site-background-dark]]</div>
+            <div class="game-slider__item">[[Файл:Site-background-light]]</div>
+        </div>
+    </div>
+</includeonly>
+<noinclude>
+{{GameSlider}}
+[[Категория:Шаблоны/Данные]]
+</noinclude>

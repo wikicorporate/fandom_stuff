@@ -1,0 +1,13 @@
+{|class="u-box" style="font-size: 100%; margin: 0 auto 10px auto; border-collapse: collapse"
+|-
+|style="width: 10px; padding: 2px 0px 2px 0.25em; text-align: center"|<div style="position:relative;top:12px">[[Файл:Nav button key.png|80px|right|link=]]</div>
+|align="center"|<span style="font-size:14px">
+'''Эта страница — кандидат на удаление.'''
+
+Если вы не согласны, пожалуйста, поясните на странице обсуждения в [[Обсуждение категории:Кандидаты на удаление]], почему страницу не следует удалять. Или же сделайте страницу лучше и удалите шаблон <nowiki>{{удалить}}</nowiki>.
+
+Не забудьте проверить [[Special:Whatlinkshere/{{NAMESPACE}}:{{PAGENAME}}|ссылки сюда]] и  [{{SERVER}}{{localurl:{{NAMESPACE}}:{{PAGENAME}}|action=history}} историю страницы] перед удалением.
+</div><br/>
+<includeonly>
+[[Категория:Кандидаты на удаление]]
+</includeonly><noinclude></noinclude>

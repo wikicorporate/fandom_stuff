@@ -1,0 +1,53 @@
+<includeonly><infobox theme="hazbinhotel">
+  <title source="Альбом">
+  <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group collapse="open">
+     <header>Общая информация</header>
+  <data source="Название">
+    <label>Название</label>
+  </data>
+<data source="Композитор">
+<label>Композитор</label>
+</data>
+<data source="Композиторы">
+<label>Композиторы</label>
+</data>
+<data source="Дата выхода">
+<label>Дата выхода</label>
+</data>
+<data source="Длительность">
+<label>Длительность</label>
+</data>
+<data source="Лейбл">
+<label>Лейбл</label>
+</data>
+</group>
+</infobox></includeonly>
+<noinclude>
+{{Альбом
+|Изображение = Пример
+|Подпись = Пример
+|Название = Пример
+|Композитор = Пример
+|Композиторы = Пример
+|Дата выхода = Пример
+|Альбом = Пример
+|Длительность = Пример
+|Лейбл = Пример
+}}
+Пример использования:<pre>
+{{Альбом
+|Изображение = Пример
+|Подпись = Пример
+|Название = Пример
+|Композитор = Пример
+|Композиторы = Пример
+|Дата выхода = Пример
+|Длительность = Пример
+|Лейбл = Пример
+}}
+</pre>

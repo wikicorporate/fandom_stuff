@@ -1,0 +1,3 @@
+<div class="mp-link mp-link--vk">
+[[Файл:Logo.jpg|link=https://vk.com/hazbin_hotel]]
+</div>

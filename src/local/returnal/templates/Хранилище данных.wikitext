@@ -1,0 +1,175 @@
+<includeonly>
+<infobox theme="returnal">
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+ <image source="image">
+	<caption source="caption-image"/>
+</image>
+<panel>
+	<section>
+		<label>{{{image-label|Изображение}}}</label>
+		<image source="Изображение">
+			<caption source="Изображение подпись"/>
+			<default>{{#if:{{{Именование|}}}|{{{Именование|}}}|{{PAGENAME}}}}.png</default>
+		</image>
+	</section>
+	<section>
+		<label>Анимация</label>
+		<data source="Анимация">
+		<default>[[File:{{#invoke:Databank|getData|{{#if:{{{Именование|}}}|{{{Именование|}}}|{{PAGENAME}}}}|Animation}}{{!}}x266px]]</default> </data>
+	</section>
+	<section>
+		<label>3D</label>
+		<data source="3D">
+		<default>{{#if:{{#invoke:Databank|getData|{{#if:{{{Именование|}}}|{{{Именование|}}}|{{PAGENAME}}}}|Animation}}|<div class="pseudo-3d-viewport">[[File:{{#invoke:Databank|getData|{{#if:{{{Именование|}}}|{{{Именование|}}}|{{PAGENAME}}}}|Animation}}{{!}}x266px|link=]]</div>|}}</default>
+		</data>
+	</section>
+		<section>
+		<label>{{{image-label|Иконка}}}</label>
+		<image source="Иконка">
+			<caption source="Иконка подпись"/>
+			<default>{{#invoke:Databank|getData|{{#if:{{{Именование|}}}|{{{Именование|}}}|{{PAGENAME}}}}|Icon}}</default>
+		</image>
+	</section>
+</panel>
+	<header>Общая информация</header>
+  <data source="Биом">
+    <label>Биом</label>
+  </data>
+  <data source="[[Оболит]]ы">
+    <label>Оболиты</label>
+  </data>
+  <data source="[[Эфир]]">
+    <label>Эфир</label>
+  </data>
+  <data source="Выпадает">
+    <label>Выпадает</label>
+  </data>
+  <data source="Уровень">
+    <label>Уровень <sup>([[Башня Сизифа|?]])</sup></label>
+  </data>
+   <group layout="horizontal">
+    <data source="Слабые места">
+      <label>Слабые места</label>
+    </data>
+    <data source="Множитель урона">
+      <label>Множитель урона</label>
+      <format>{{{Множитель урона}}}x урон</format>
+    </data>
+  </group>
+  <data source="HP">
+    <label>HP</label>
+  </data>
+  <group layout="horizontal">
+    <header>HP</header>
+    <data source="Общее HP">
+      <label>Общее HP</label>
+    </data>
+    <data source="HP в Башне">
+      <label>HP в Башне</label>
+      <format>{{{HP в Башне}}} + {{{HP в Башне+}}}/уровень<sup>([[Башня Сизифа|?]])</sup></format>
+    </data>
+  </group>
+  <header>Данные Хранилища</header>
+  <data source="ID">
+    <label>ID</label>
+    <default>{{#invoke:Databank|getData|{{#if:{{{Именование|}}}|{{{Именование|}}}|{{PAGENAME}}}}|ID}}</default>
+  </data>
+  <data source="Классификация">
+    <label>Классификация</label>
+  </data>
+  <data source="Материалы">
+    <label>Материалы</label>
+  </data>
+  <data source="Основное назначение">
+    <label>Основное назначение</label>
+  </data>
+  <data source="Именование">
+    <label>Именование</label>
+    <default>{{PAGENAME}}</default>
+  </data>
+    <data source="Состояние">
+    <label>Состояние</label>
+  </data>
+  <data source="Тип">
+    <label>Тип</label>
+    <default>{{#invoke:Databank|getData|{{#if:{{{Именование|}}}|{{{Именование|}}}|{{PAGENAME}}}}|Type}}</default>
+  </data>
+  <data source="Фактор риска">
+    <label>Фактор риска</label>
+  </data>
+  <data source="Виды">
+    <label>Виды</label>
+  </data>
+  <data source="Связанные записи">
+    <label>Связанные записи</label>
+  </data>
+    <header>Хронология в Хранилище</header>
+  <group layout="horizontal">
+	    <data source="Предыдущая запись"><label>Предыдущая запись</label></data>
+	    <data source="Следующая запись"><label>Следующая запись</label></data>
+	</group>
+  <group>
+  <header>Аудио</header>
+ <data source="Аудио">
+<format>{{{Аудио}}}</format>
+</data>
+</group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Хранилище данных
+|Название = Пример
+|Изображение = Зараженный разведчик.png
+|Биом = Пример
+|Оболиты = Пример
+|Эфир = Пример
+|Выпадает = Пример
+|Уровень = Пример
+|Слабые места = Пример
+|Множитель урона = Пример
+|HP = Пример
+|Общее HP = Пример
+|HP в Башне = Пример
+|Классификация = Пример
+|Материалы = Пример
+|Основное назначение = Пример
+|Именование = Зараженный разведчик
+|Состояние = Пример
+|Фактор риска = Пример
+|Виды = Пример
+|Связанные записи = Пример
+|Предыдущая запись = Пример
+|Следующая запись = Пример
+|Аудио = [[Файл:АСТ-АБ-001.ogg]]
+}}
+Пример использования:<pre>
+{{Хранилище данных
+|Название = Пример
+|Изображение = Зараженный разведчик.png
+|Биом = Пример
+|Оболиты = Пример
+|Эфир = Пример
+|Выпадает = Пример
+|Уровень = Пример
+|Слабые места = Пример
+|Множитель урона = Пример
+|HP = Пример
+|Общее HP = Пример
+|HP в Башне = Пример
+|Классификация = Пример
+|Материалы = Пример
+|Основное назначение = Пример
+|Именование = Зараженный разведчик
+|Состояние = Пример
+|Фактор риска = Пример
+|Виды = Пример
+|Связанные записи = Пример
+|Предыдущая запись = Пример
+|Следующая запись = Пример
+|Аудио = [[Файл:АСТ-АБ-001.ogg]]
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

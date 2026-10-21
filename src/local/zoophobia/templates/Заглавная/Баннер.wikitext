@@ -1,0 +1,21 @@
+<div class="mp-header">
+<div class="mp-header__text">
+Добро пожаловать на Зоофобия Вики! Здесь предоставлена актуальная и точная информация по комиксу Зоофобия, а также созданы комфортные условия для редактирования.
+</div>
+
+<div class="mp-social">
+<div class="mp-social__button">[https://discord.gg/hhwiki <i class="fa-brands fa-discord"></i>]</div>
+<div class="mp-social__button">[https://vk.com/zoophobia <i class="fa-brands fa-vk"></i>]</div>
+<div class="mp-social__button">[https://vivziepop.tumblr.com/ <i class="fa-brands fa-tumblr"></i>]</div>
+<div class="mp-social__button">[https://twitter.com/VivziePop <i class="fa-brands fa-x-twitter"></i>]</div>
+<div class="mp-social__button">[https://www.youtube.com/@SpindleHorse <i class="fa-brands fa-youtube"></i>]</div>
+</div>
+
+<div class="mp-buttons">
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-user"></i> [[:Категория:Персонажи|Персонажи]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-location-arrow"></i> [[:Категория:Локации|Локации]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-users"></i> [[:Категория:Персоны|Персоны]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-guitar"></i> [[:Категория:Музыка|Музыка]]</div></div>
+</div>
+</div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

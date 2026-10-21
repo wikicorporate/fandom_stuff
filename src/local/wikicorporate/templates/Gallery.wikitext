@@ -1,0 +1,16 @@
+<includeonly>{{#ifeq: {{{Open|}}}|True|<div class="t-gallery"><div class="t-gallery__wrapper">{{#invoke:Gallery|e2}}</div></div>|<div class="t-gallery wds-collapsible-panel wds-is-collapsed"><div class="wds-collapsible-panel__header" aria-expanded="false"><i class="fa-solid fa-chevron-down"></i></div><div class="t-gallery__wrapper wds-collapsible-panel__content">{{#invoke:Gallery|e2}}</div></div>}}</includeonly>
+<noinclude>[[Категория:Шаблоны/Дизайн]]
+{{Индикаторы}}
+
+== Заголовок ==
+{{Галерея|Open = True|
+Omniknight_Purification_abilityicon_dota2_gameasset.png|20px|link:Аластор|Purification
+Omniknight_Repel_abilityicon_dota2_gameasset.png|Repel
+Omniknight_Degen_Aura_abilityicon_dota2_gameasset.png|40px|Degen Aura
+Omniknight_Guardian_Angel_abilityicon_dota2_gameasset.png|Guardian Angel
+}}
+
+{{Галерея|
+Omniknight_Purification_abilityicon_dota2_gameasset.png|20px|Purificationf
+}}
+</noinclude>

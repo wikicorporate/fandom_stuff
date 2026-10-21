@@ -1,0 +1,24 @@
+<div class="mp-header">
+<div class="mp-header__text">
+Добро пожаловать на Helltaker Вики! Здесь предоставлена актуальная и точная информация по игре Helltaker, а также созданы комфортные условия для редактирования
+</div>
+
+<div class="mp-social">
+<div class="mp-social__button">[https://discord.gg/hhwiki <i class="fa-brands fa-discord"></i>]</div>
+<div class="mp-social__button">[https://store.steampowered.com/app/1289310/Helltaker/ <i class="fa-brands fa-steam"></i>]</div>
+</div>
+
+<div class="mp-buttons">
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-book"></i> [[Подсказки]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-hill-rockslide"></i> [[Препятствия]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-bolt"></i> [[Воля]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-music"></i> [[Саундтреки]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-hourglass-end"></i> [[Концовки]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-book-open"></i> [[:Категория:Комиксы|Комиксы]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-trophy"></i> [[Достижения]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-gamepad"></i> [[:Категория:Главы|Главы]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-user"></i> [[:Категория:Персонажи|Персонажи]]</div></div>
+<div class="mp-buttons__button"><div class="mp-button__content"><i class="fa-solid fa-skull"></i> [[Helltaker|Игра]]</div></div>
+</div>
+</div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

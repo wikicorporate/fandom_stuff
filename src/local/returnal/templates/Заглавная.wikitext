@@ -1,0 +1,185 @@
+<div class="mp-databank">
+    <ul class="mp-databank__list">
+        <li class="mp-databank__item">
+            <span class="mp-databank__item-name">Враги</span>
+            <ul class="mp-databank__sublist mp-databank__sublist--tiles">
+                <li class="mp-databank__item">
+                    <span class="mp-databank__item-name">💀</span>
+                    <div class="mp-databank__content">
+                        <div class="mp-databank__summary">
+                            <div class="mp-databank__image">
+                                {{Databank|A|Зараженный разведчик|Зараженный разведчик|Animation}}
+                            </div>
+                            <ul class="mp-databank__details">
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mp-databank__description">
+                            <div class="mp-databank__heading">
+                                <div class="mp-databank__subtitle">// ACT-A0-001</div>
+                                <div class="mp-databank__title">Керберон</div>
+                            </div>
+                            <div class="mp-databank__info">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                            </div>
+                            <div class="mp-databank__link">[[Зараженный разведчик|Исследовать далее]]</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mp-databank__item">
+                    <span class="mp-databank__item-name">💀</span>
+                    <div class="mp-databank__content">
+                        <div class="mp-databank__summary">
+                            <div class="mp-databank__image">
+                                {{Databank|A|Зараженный разведчик|Зараженный разведчик|Animation}}
+                            </div>
+                            <ul class="mp-databank__details">
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mp-databank__description">
+                            <div class="mp-databank__heading">
+                                <div class="mp-databank__subtitle">// ACT-A0-001</div>
+                                <div class="mp-databank__title">Керберон</div>
+                            </div>
+                            <div class="mp-databank__info">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                            </div>
+                            <div class="mp-databank__link">[[Зараженный разведчик|Исследовать далее]]</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mp-databank__item">
+                    <span class="mp-databank__item-name">💀</span>
+                    <div class="mp-databank__content">
+                        <div class="mp-databank__summary">
+                            <div class="mp-databank__image">
+                                {{Databank|A|Зараженный разведчик|Зараженный разведчик|Animation}}
+                            </div>
+                            <ul class="mp-databank__details">
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mp-databank__description">
+                            <div class="mp-databank__heading">
+                                <div class="mp-databank__subtitle">// ACT-A0-001</div>
+                                <div class="mp-databank__title">Керберон</div>
+                            </div>
+                            <div class="mp-databank__info">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                            </div>
+                            <div class="mp-databank__link">[[Зараженный разведчик|Исследовать далее]]</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="mp-databank__item">
+            <span class="mp-databank__item-name">Ресурсы</span>
+            <ul class="mp-databank__sublist mp-databank__sublist--list">
+                <li class="mp-databank__item">
+                    <span class="mp-databank__item-name">ACT-A0-001</span>
+                    <div class="mp-databank__content">
+                        <div class="mp-databank__summary">
+                            <div class="mp-databank__image">
+                                {{Databank|A|Зараженный разведчик|Зараженный разведчик|Animation}}
+                            </div>
+                            <ul class="mp-databank__details">
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mp-databank__description">
+                            <div class="mp-databank__heading">
+                                <div class="mp-databank__subtitle">// ACT-A0-001</div>
+                                <div class="mp-databank__title">Керберон</div>
+                            </div>
+                            <div class="mp-databank__info">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                            </div>
+                            <div class="mp-databank__link">[[Зараженный разведчик|Исследовать далее]]</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="mp-databank__item">
+                    <span class="mp-databank__item-name">ACT-A0-001</span>
+                    <div class="mp-databank__content">
+                        <div class="mp-databank__summary">
+                            <div class="mp-databank__image">
+                                {{Databank|A|Зараженный разведчик|Зараженный разведчик|Animation}}
+                            </div>
+                            <ul class="mp-databank__details">
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                                <li class="mp-databank__details-item">
+                                    <div class="mp-databank__details-label">Убито</div>
+                                    <div class="mp-databank__details-value">99999</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mp-databank__description">
+                            <div class="mp-databank__heading">
+                                <div class="mp-databank__subtitle">// ACT-A0-001</div>
+                                <div class="mp-databank__title">Керберон</div>
+                            </div>
+                            <div class="mp-databank__info">
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                            </div>
+                            <div class="mp-databank__link">[[Зараженный разведчик|Исследовать далее]]</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

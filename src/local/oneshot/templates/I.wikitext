@@ -1,0 +1,13 @@
+<table>
+    <tr>
+        <td style = "vertical-align: baseline;">
+{{{1}}}
+        </td>
+        <td style = "vertical-align: baseline;">
+{{{2}}}
+        </td>
+        <td>
+{{{3}}}
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,1 @@
+<includeonly>{{#invoke:Список|e|{{{1|}}}}}</includeonly><noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

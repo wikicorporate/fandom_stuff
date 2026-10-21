@@ -1,0 +1,165 @@
+<div class="mp-cards">
+    <div class="mp-cards__caption">Отель Хазбин</div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Чарли (иконка).png]]</div>
+            <div class="mp-cards__title">Чарли Морнингстар</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Чарли Морнингстар.png|link=Чарли Морнингстар]]</div>
+            <div class="mp-cards__description">Принцесса Ада, владелица «Отеля Хазбин» и главная героиня мультсериала.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Энджел (иконка).png]]</div>
+            <div class="mp-cards__title">Энджел Даст</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Энджел Даст.png|link=Энджел Даст]]</div>
+            <div class="mp-cards__description">Первый постоялец «Отеля Хазбин», звезда фильмов для взрослых, демон-грешник.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Аластор (иконка).png]]</div>
+            <div class="mp-cards__title">Аластор</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Аластор.png|link=Аластор]]</div>
+            <div class="mp-cards__description">Один из главных героев мультсериала «Отель Хазбин», демон-повелитель в Аду.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Вегги (иконка).png]]</div>
+            <div class="mp-cards__title">Вегги</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Вегги.png|link=Вегги]]</div>
+            <div class="mp-cards__description">Менеджер Отеля Хазбин и девушка Чарли Морнингстар.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Хаск (иконка).png]]</div>
+            <div class="mp-cards__title">Хаск</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Хаск.png|link=Хаск]]</div>
+            <div class="mp-cards__description">Бармен на стойке регистрации «Отеля Хазбин» и покерный игрок.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Ниффти (иконка).png]]</div>
+            <div class="mp-cards__title">Ниффти</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Ниффти.png|link=Ниффти]]</div>
+            <div class="mp-cards__description">Персонаж «Отеля Хазбин», горничная и повар.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Пентиус (иконка).png]]</div>
+            <div class="mp-cards__title">Сэр Пентиус</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Сэр Пентиус.png|link=Сэр Пентиус]]</div>
+            <div class="mp-cards__description">Персонаж сериала «Отель Хазбин», змееподобный демон-изобретатель.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Черри (иконка).png]]</div>
+            <div class="mp-cards__title">Черри Бомб</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Черри Бомб.png|link=Черри Бомб]]</div>
+            <div class="mp-cards__description">Демон-грешник, второстепенный персонаж «Отеля Хазбин».</div>
+        </div>
+    </div>
+        <div class="mp-cards__caption">Адский Босс</div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Блиц (иконка).png]]</div>
+            <div class="mp-cards__title">Блиц</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Блиц.png|link=Блиц]]</div>
+            <div class="mp-cards__description">Главный герой «Адского Босса», основатель компании И.М.П.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Мокси (иконка).png]]</div>
+            <div class="mp-cards__title">Мокси</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Мокси.png|link=Мокси]]</div>
+            <div class="mp-cards__description">Один из главных героев «Адского Босса», специалист по оружию в И.М.П.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Милли (иконка).png]]</div>
+            <div class="mp-cards__title">Милли</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Милли.png|link=Милли]]</div>
+            <div class="mp-cards__description">Одна из главных героев «Адского Босса», громила в И.М.П.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Луна (иконка).png]]</div>
+            <div class="mp-cards__title">Луна</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Луна.png|link=Луна]]</div>
+            <div class="mp-cards__description">Одна из главных героев «Адского Босса», секретарша в И.М.П.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Столас (иконка).png]]</div>
+            <div class="mp-cards__title">Столас</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Столас.png|link=Столас]]</div>
+            <div class="mp-cards__description">Один из главных героев «Адского Босса», демон Гоэтии.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Веросика (иконка).png]]</div>
+            <div class="mp-cards__title">Веросика Мейдей</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Веросика Мейдей.png|link=Веросика Мейдей]]</div>
+            <div class="mp-cards__description">Второстепенный персонаж «Адского Босса», поп-певица.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Страйкер (иконка).png]]</div>
+            <div class="mp-cards__title">Страйкер</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Страйкер.png|link=Страйкер]]</div>
+            <div class="mp-cards__description">Второстепенный персонаж «Адского Босса», наёмный убийца.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Физзаролли (иконка).png]]</div>
+            <div class="mp-cards__title">Физзаролли</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Физзаролли.png|link=Физзаролли]]</div>
+            <div class="mp-cards__description">Второстепенный персонаж «Адского Босса», артист и конферансье.</div>
+        </div>
+    </div>
+</div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

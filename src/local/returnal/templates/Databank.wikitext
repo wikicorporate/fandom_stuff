@@ -1,0 +1,1 @@
+<includeonly>{{#invoke:Databank|e|{{{1|}}}|{{{2|}}}|{{{3|}}}|{{{4|}}}|Type = {{{Type|}}}|Desctype = {{{Desctype|}}}|Link = {{{Link|}}}}}</includeonly><noinclude>[[Категория:Шаблоны/Данные]]</noinclude>

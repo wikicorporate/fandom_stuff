@@ -1,0 +1,2 @@
+<includeonly>:''{{#invoke:Hatnote|main}}''</includeonly>
+<noinclude>{{Doc|:Шаблон:Hatnote/doc}}</noinclude>

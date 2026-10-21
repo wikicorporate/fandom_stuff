@@ -1,0 +1,32 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+  </image>
+  <group collapse="open">
+   <header>Общая информация</header>
+  <data source="Название">
+    <label>Название</label>
+  </data>
+  <data source="Расположение">
+    <label>Расположение</label>
+  </data>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Вид
+|Изображение = Неизвестно
+|Название = Неизвестно
+|Расположение = Неизвестно
+}}
+Пример использования:<pre>
+{{Вид
+|Изображение = Неизвестно
+|Название = Неизвестно
+|Расположение = Неизвестно
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

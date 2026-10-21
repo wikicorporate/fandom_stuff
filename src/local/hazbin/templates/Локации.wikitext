@@ -1,0 +1,114 @@
+{|class="t-navbox mw-collapsible mw-collapsed"
+!colspan="3"|'''[[:Категория:Локации|Локации]]'''
+|-
+
+!Миры
+!colspan="2"|[[Ад]] • [[Земля]] • [[Рай]]
+|-
+!Локация/Мультсериал
+
+![[Отель Хазбин]]
+
+![[Адский Босс]]
+|-
+
+|[[Круг Гордыни]]
+|{{LuaDpl|{{#dpl:
+|category = Локации Отеля Хазбин
+|category = Локации Круга Гордыни
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+
+|{{LuaDpl|{{#dpl:
+|category = Локации Адского Босса
+|category = Локации Круга Гордыни
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+![[Круг Гнева]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Круга Гнева
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+![[Круг Чревоугодия]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Круга Чревоугодия
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+![[Круг Жадности]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Круга Жадности
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+![[Круг Похоти]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Круга Похоти
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+|Круг Зависти
+!colspan="2"|
+|-
+
+![[Круг Лени]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Круга Лени
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+![[Рай]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Рая
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+![[Земля]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Адского Босса
+|category = Локации Земли
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
+|-
+
+!Другие локации
+!colspan="2"|[[Лифт]] • [[Мир Лу Лу]] • [[Стильный Оккультизм]]
+|-
+|}
+<noinclude>[[Категория:Шаблоны/Навбоксы]]</noinclude>

@@ -1,0 +1,63 @@
+<includeonly><infobox>
+  <title source="Разработчик">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+ <group>
+    <header>Общая информация</header>
+    <data source="Имя">
+      <label>Имя</label>
+    </data>
+    <data source="Никнейм">
+      <label>Никнейм</label>
+    </data>
+    </group>
+    <group>
+    <header>Биологические данные</header>
+    <data source="Возраст">
+      <label>Возраст</label>
+    </data>
+    <data source="Пол">
+      <label>Пол</label>
+      </data>
+      </group>
+    <group>
+    <header>Профессиональная деятельность</header>  
+      <data source="Роль">
+      <label>Роль</label>
+      </data>
+      <data source="Ссылки">
+      <label>Ссылки</label>
+      </data>
+    </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Разработчик
+|Название = Пример
+|Изображение = 
+|Подпись = Пример
+|Имя = Пример
+|Никнейм = Пример
+|Возраст = Пример
+|Пол = Пример
+|Роль = Пример
+|Ссылки = Пример
+}}
+Пример использования:<pre>
+{{Разработчик
+|Название = Пример
+|Изображение = 
+|Подпись = Пример
+|Имя = Пример
+|Никнейм = Пример
+|Возраст = Пример
+|Пол = Пример
+|Роль = Пример
+|Ссылки = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

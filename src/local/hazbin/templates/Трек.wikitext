@@ -1,0 +1,66 @@
+<includeonly><infobox>
+  <title source="Трек">
+  <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group collapse="open">
+     <header>Общая информация</header>
+  <data source="Название">
+    <label>Название</label>
+  </data>
+<data source="Композитор">
+<label>Композитор</label>
+</data>
+<data source="Композиторы">
+<label>Композиторы</label>
+</data>
+<data source="Альбом">
+<label>Альбом</label>
+</data>
+<data source="Длительность">
+<label>Длительность</label>
+</data>
+</group>
+<group collapse="open">
+<header>Видео</header>
+   <image source="Видео"/>
+   </group>
+   <group collapse="open">
+  <header>Аудио</header>
+  </group>
+  <group collapse="open">
+  <header>Аудио</header>
+ <data source="Аудио">
+<format>{{{Аудио}}}</format>
+</data>
+</group>
+</infobox></includeonly>
+<noinclude>
+{{Трек
+|Изображение = 
+|Подпись = Пример
+|Название = Пример
+|Композитор = Пример
+|Композиторы = Пример
+|Альбом = Пример
+|Длительность = Пример
+|Видео = I'm Always Chasing Rainbows
+|Аудио = [[Файл:Inthearmsofanangel.mp3]]
+}}
+Пример использования:<pre>
+{{Трек
+|Изображение = 
+|Подпись = Пример
+|Название = Пример
+|Композитор = Пример
+|Композиторы = Пример
+|Альбом = Пример
+|Длительность = Пример
+|Видео = I'm Always Chasing Rainbows
+|Аудио = [[Файл:Inthearmsofanangel.mp3]]
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

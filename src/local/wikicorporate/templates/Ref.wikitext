@@ -1,0 +1,18 @@
+<includeonly>{{#if: {{{1|}}}|{{#invoke: Примечание|main|{{{1|}}}|{{{Name|}}}|{{{Group|}}}}}|{{#invoke: Примечание|main2|{{{Name|}}}|{{{Group|}}}}}}}</includeonly><noinclude>
+Текст для теста {{Ref|Тест №1 [https://vk.com/hazbin_hotel со ссылкой]}}
+{{Ref|Тест №1 [https://vk.com/hazbin_hotel со ссылкой]}}{{Ref|Тест №1 [https://vk.com/hazbin_hotel со ссылкой]}}{{Ref|Тест №1 [https://vk.com/hazbin_hotel со ссылкой]}}{{Ref|Тест №1 [https://vk.com/hazbin_hotel со ссылкой]}}
+----
+
+
+
+----
+{{Ref|Тест №3|Group=Iran}}
+{{Ref|Тест №4|Group=Iran|Name=Раньше2}}
+
+
+
+<ref group="Iran" name="Раньше2"/>
+
+<references/>
+<references group="Iran"/>
+</noinclude>

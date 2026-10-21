@@ -1,0 +1,1 @@
+<includeonly>{{#invoke:Text|e|{{{1|}}}}}</includeonly><noinclude>[[Категория:Шаблоны/Данные]]</noinclude>

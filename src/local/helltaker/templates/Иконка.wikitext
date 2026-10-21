@@ -1,0 +1,1 @@
+<div class = "t-icon">[[File:{{{1}}}.png]]</div><noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

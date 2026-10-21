@@ -1,0 +1,60 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+  </image>
+  <group>
+  	<header>Общая информация</header>
+  <data source="Разработчики">
+    <label>Разработчики</label>
+  </data>
+  <data source="Издатель">
+    <label>Издатель</label>
+  </data>
+  <data source="Дата выпуска">
+    <label>Дата выпуска</label>
+  </data>
+  <data source="Жанр">
+    <label>Жанр</label>
+  </data>
+  <group>
+  	<header>Технические данные</header>
+  	<data source="Платформы">
+    <label>Платформы</label>
+  </data>
+  <data source="Движок">
+    <label>Движок</label>
+  </data>
+  <data source="Режим игры">
+    <label>Режим игры</label>
+  </data>
+  </group>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Игра
+|Изображение = 
+|Разработчики = Пример
+|Издатель = Пример
+|Дата выпуска = Пример
+|Жанр = Пример
+|Платформы = Пример
+|Движок = Пример
+|Режим игры = Пример
+}}
+Пример использования:<pre>
+{{Игра
+|Изображение = 
+|Разработчики = Пример
+|Издатель = Пример
+|Дата выпуска = Пример
+|Жанр = Пример
+|Платформы = Пример
+|Движок = Пример
+|Режим игры = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

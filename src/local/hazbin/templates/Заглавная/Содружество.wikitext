@@ -1,0 +1,12 @@
+<div class="mp-community">
+<div class="mp-community__title">Партнёры</div>
+<div class="mp-community__content">
+<div class="mp-community__item"><div class="mp-community__card" data-name="ФНаФ Фанон"><i class="fa-solid fa-star"></i></div>[[Файл:FFan-wordmark.png|link=w:c:ru.fnaffanon|ФНаФ Фанон]]</div>
+<div class="mp-community__item"><div class="mp-community__card" data-name="Дом совы вики"><i class="fa-solid fa-wand-sparkles"></i></div>[[Файл:The Owl House.png|link=w:c:ru.theowlhouse|Дом совы вики]]</div> 
+<div class="mp-community__item"><div class="mp-community__card" data-name="Энциклопедия FNaF"><i class="fa-solid fa-pizza-slice"></i></div>[[Файл:FNaF_Encyclopedia.png|link=w:c:ru.five-nights-at-freddys|Энциклопедия FNaF]]</div>  
+<div class="mp-community__item"><div class="mp-community__card" data-name="Чернильная Энциклопедия"><i class="fa-solid fa-droplet"></i></div>[[Файл:BatIM.png|link=w:c:ru.bendy-and-the-ink-machine|Чернильная Энциклопедия]]</div>       
+<div class="mp-community__item"><div class="mp-community__card" data-name="Hazbin Hotel Wiki"><i class="fa-solid fa-hotel"></i></div>[[Файл:ENHHWIKI.webp|link=w:c:hazbinhotel|Hazbin Hotel Wiki]]</div>
+<div class="mp-community__item"><div class="mp-community__card" data-name="Энциклопедия Забытых игр"><i class="fa-solid fa-gamepad"></i></div>[[Файл:FGE-wordmark.png|link=https://forgotten-games.fandom.com/ru|Энциклопедия Забытых игр]]</div>
+</div>
+</div>       		
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

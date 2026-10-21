@@ -1,0 +1,66 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group collapse="open">
+  <header>Общая информация</header>
+  <data source="Сериал">
+    <label>Сериал</label>
+  </data>
+  <data source="Сезон">
+    <label>Сезон</label>
+  </data>
+  <data source="Серия">
+    <label>Серия</label>
+  </data>
+  <data source="Дата выхода">
+    <label>Дата выхода</label>
+  </data>
+  <data source="Сценарист">
+    <label>Сценарист</label>
+  </data>
+  <data source="Директор">
+    <label>Директор</label>
+  </data>
+  <header>Хронология</header>
+  <group layout="horizontal">
+	    <data source="Предыдущая серия"><label>Предыдущая серия</label></data>
+	    <data source="Следующая серия"><label>Следующая серия</label></data>
+	</group>
+  <image source="Видео"/>
+  </group>
+</infobox></includeonly>
+<noinclude>
+{{Эпизод
+|Название = Spring Broken
+|Изображение = Spring Broken logo.jpg
+|Сериал = Адский Босс
+|Сезон = [[Адский Босс/Первый сезон|1]]
+|Серия = 3
+|Дата выхода = 31 января 2021
+|Предыдущая серия = [[Лу Лу Ленд]]
+|Следующая серия = TBA
+|Сценарист = Сценарист
+|Директор = Директор
+|Видео = Spring Broken
+}}
+Пример использования:<pre>
+{{Эпизод
+|Название = Spring Broken
+|Изображение = Spring Broken logo.jpg
+|Сериал = Адский Босс
+|Сезон = [[Адский Босс/Первый сезон|1]]
+|Серия = 3
+|Дата выхода = 31 января 2021
+|Предыдущая серия = [[Лу Лу Ленд]]
+|Следующая серия = TBA
+|Сценарист = Сценарист
+|Директор = Директор
+|Видео = Spring Broken
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

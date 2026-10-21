@@ -1,0 +1,2 @@
+<span class="plainlinks" style="font-size:11px; vertical-align:super">[{{{1|}}} ''<nowiki>[</nowiki>источник?<nowiki>]</nowiki>'']</span>
+<noinclude>[[Категория:Шаблоны/Основные]]</noinclude>

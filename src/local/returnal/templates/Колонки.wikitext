@@ -1,0 +1,10 @@
+<includeonly><div class = "t-column">{{{1|}}}</div></includeonly><noinclude>[[Категория:Шаблоны/Дизайн]]
+
+== Тест ==
+{{Колонки|
+* 1
+* 2
+* 3
+* 4
+}}
+</noinclude>

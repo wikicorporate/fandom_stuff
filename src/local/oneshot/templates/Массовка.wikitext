@@ -1,0 +1,42 @@
+<includeonly><infobox>
+  <title source="Массовка">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+ <group>
+    <header>Общая информация</header>
+    <data source="Вид">
+      <label>Вид</label>
+    </data>
+    <data source="Появление">
+      <label>Появление</label>
+    </data>
+    <data source="Полезность">
+      <label>Полезность</label>
+    </data>
+    </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Массовка
+|Название = Пример
+|Изображение = 
+|Подпись = Пример
+|Вид = Пример
+|Появление = Пример
+|Полезность = Пример
+}}
+Пример использования:<pre>
+{{Массовка
+|Название = Пример
+|Изображение = 
+|Подпись = Пример
+|Вид = Пример
+|Появление = Пример
+|Полезность = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

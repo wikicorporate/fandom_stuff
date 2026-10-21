@@ -1,0 +1,38 @@
+<table class="t-staff mw-collapsible mw-collapsed mw-made-collapsible">
+<tr>
+<th class="t-staff__caption" colspan="2"><b>Персонал</b></th>
+</tr>
+<tr>
+<td class="t-staff__role">Бюрократы</td>
+<td class="t-staff__users">[[{{ns:2}}:Swit4er|Swit4er]] • [[{{ns:2}}:Voidan Dether|Voidan Dether]]</td>
+</tr>
+<tr>
+<td class="t-staff__role">Администраторы</td>
+<td class="t-staff__users">[[{{ns:2}}:Hwjeei|Hwjeei]]</td>
+</tr>
+<tr>
+<td class="t-staff__role">Модераторы контента</td>
+<td class="t-staff__users"></td>
+</tr>
+<tr>
+<td class="t-staff__role">Модераторы сообщества</td>
+<td class="t-staff__users">[[{{ns:2}}:Diger 1111|Diger 1111]]</td>
+</tr>
+<tr>
+<td class="t-staff__role">Администраторы Discord</td>
+<td class="t-staff__users">[[{{ns:2}}:KykS911|KykS911]] • [[{{ns:2}}:Haruko4711|Haruko4711]] • [[{{ns:2}}:Lubitel obnimashek|Lubitel obnimashek]]</td>
+</tr>
+<tr>
+<td class="t-staff__role">Модераторы Discord</td>
+<td class="t-staff__users"> [[{{ns:2}}:Kostinger|Kostinger]]</td>
+</tr>
+<tr>
+<td class="t-staff__role">Откатчики</td>
+<td class="t-staff__users">[[{{ns:2}}:Fleshka5856|Fleshka5856]]</td>
+</tr>
+<tr>
+<td class="t-staff__role">Боты</td>
+<td class="t-staff__users">[[{{ns:2}}:Сырослав 3000|Сырослав 3000]]</td>
+</tr>
+</table>
+<noinclude>[[Категория:Шаблоны/Навбоксы]]</noinclude>

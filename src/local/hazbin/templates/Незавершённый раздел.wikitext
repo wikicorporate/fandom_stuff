@@ -1,0 +1,5 @@
+{|class="t-notice"
+|-
+|<i class="fa-solid fa-person-digging"></i>
+|Это '''незавершённый раздел.'''<br>Он содержит неполную информацию.<br> Вы можете помочь '''{{SITENAME}}''', [{{SERVER}}{{localurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} дополнив его].
+|}<noinclude>[[Категория:Шаблоны/Плашки]]</noinclude>

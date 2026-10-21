@@ -1,0 +1,1 @@
+{{#ifeq: {{{1|---}}}|---||&#124;<font color="gray">''&lt;{{{1}}}&gt;''</font>}}<noinclude>[[Категория:Шаблоны/Разное]]</noinclude>

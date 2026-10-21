@@ -1,0 +1,67 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+ <group collapse="open">
+   <header>Общая информация</header>
+  <data source="Тип">
+    <label>Тип</label>
+  </data>
+  <data source="Первое появление">
+    <label>Первое появление</label>
+  </data>
+  <data source="Расположение">
+    <label>Расположение</label>
+  </data>
+   <data source="Создатель">
+    <label>Создатель</label>
+  </data>
+  <data source="Владелец">
+    <label>Владелец</label>
+  </data>
+  <data source="Владельцы">
+    <label>Владельцы</label>
+  </data>
+  <data source="Жители">
+    <label>Жители</label>
+    </data>
+  <data source="Работники">
+    <label>Работники</label>
+    </data>
+  <data source="Статус">
+    <label>Статус</label>
+    </data>  
+    </group>
+</infobox></includeonly>
+<noinclude>
+{{Локация
+|Изображение = 
+|Подпись = Пример
+|Тип = Пример
+|Первое появление = Пример
+|Расположение = Пример
+|Владелец = Пример
+|Владельцы = Пример
+|Жители = Пример
+|Работники = Пример
+|Статус = Пример
+}}
+Пример использования:<pre>
+{{Локация
+|Изображение = 
+|Подпись = Пример
+|Тип = Пример
+|Первое появление = Пример
+|Расположение = Пример
+|Владелец = Пример
+|Владельцы = Пример
+|Жители = Пример
+|Работники = Пример
+|Статус = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

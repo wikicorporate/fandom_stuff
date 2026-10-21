@@ -1,0 +1,58 @@
+<includeonly><infobox theme="zoophobia">
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group collapse="open">
+  	<header>Общая информация</header>
+  <data source="Дата рождения">
+    <label>Дата рождения</label>
+  </data>
+  <data source="Пол">
+    <label>Пол</label>
+  </data>
+  <data source="Место жительства">
+    <label>Место жительства</label>
+  </data>
+  <data source="Ник">
+    <label>Ник</label>
+  </data>
+  <data source="Ники">
+    <label>Ники</label>
+  </data>
+  <data source="Должность">
+    <label>Должность</label>
+  </data>
+  <data source="Должности">
+    <label>Должности</label>
+  </data>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Персона
+|Название = Персона
+|Изображение = Пример.png
+|Подпись = Описание изображения
+|Дата рождения = 1 января 2000 (17 лет)
+|Пол = Пример
+|Место жительства = Пример
+|Ник = Пример
+|Должность = Пример
+}}
+Пример использования:<pre>
+{{Персона
+|Название = Пример
+|Изображение = Пример.png
+|Подпись = Описание изображения
+|Дата рождения = 1 января 2000 (17 лет)
+|Пол = Пример
+|Место жительства = Пример
+|Ник = Пример
+|Должность = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

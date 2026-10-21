@@ -1,0 +1,63 @@
+<includeonly><infobox>
+  <title source="Предмет">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+    <group collapse="open">
+     <header>Общая информация</header>
+  <data source="Тип">
+    <label>Тип</label>
+  </data>
+  <data source="Происхождение">
+    <label>Происхождение</label>
+  </data>
+  </group>
+    <group collapse="open">
+ <header>Применение</header>
+  <data source="Функции">
+    <label>Функции</label>
+  </data>
+  <data source="Пользователи">
+    <label>Пользователи</label>
+  </data>
+  </group>
+    <group collapse="open">
+  <header>Другое</header>
+  <data source="Статус">
+    <label>Статус</label>
+  </data>
+  <data source="Первое появление">
+    <label>Первое появление</label>
+  </data>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Предмет
+|Название = Души (валюта)
+|Изображение = Адская валюта.png
+|Подпись = Неизвестно
+|Тип = Валюта
+|Происхождение = Неизвестно
+|Функции = Адская валюта
+|Пользователи = Демоны
+|Статус = Активный
+|Первое появление = [[Лу Лу Ленд]]
+}}
+Пример использования:<pre>
+{{Предмет
+|Название = Души (валюта)
+|Изображение = Адская валюта.png
+|Подпись = Неизвестно
+|Тип = Валюта
+|Происхождение = Неизвестно
+|Функции = Адская валюта
+|Пользователи = Демоны
+|Статус = Активный
+|Первое появление = [[Лу Лу Ленд]]
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

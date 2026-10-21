@@ -1,0 +1,66 @@
+<includeonly><infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group collapse="open">
+  <header>Общая информация</header>
+  <data source="Сериал">
+    <label>Сериал</label>
+  </data>
+  <data source="Сезон">
+    <label>Сезон</label>
+  </data>
+  <data source="Серия">
+    <label>Серия</label>
+  </data>
+  <data source="Дата выхода">
+    <label>Дата выхода</label>
+  </data>
+  <data source="Сценарист">
+    <label>Сценарист</label>
+  </data>
+  <data source="Директор">
+    <label>Директор</label>
+  </data>
+  <header>Хронология серий</header>
+  <group layout="horizontal">
+	    <data source="Предыдущая серия"><label>Предыдущая серия</label></data>
+	    <data source="Следующая серия"><label>Следующая серия</label></data>
+	</group>
+  <image source="Видео"/>
+  </group>
+</infobox></includeonly>
+<noinclude>
+{{Эпизод
+|Название = Пример
+|Изображение = Пример
+|Сериал = Пример
+|Сезон = Пример
+|Серия = Пример
+|Дата выхода = Пример
+|Предыдущая серия = Пример
+|Следующая серия = Пример
+|Сценарист = Пример
+|Директор = Пример
+|Видео = Пример
+}}
+Пример использования:<pre>
+{{Эпизод
+|Название = Пример
+|Изображение = Пример
+|Сериал = Пример
+|Сезон = Пример
+|Серия = Пример
+|Дата выхода = Пример
+|Предыдущая серия = Пример
+|Следующая серия = Пример
+|Сценарист = Пример
+|Директор = Пример
+|Видео = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

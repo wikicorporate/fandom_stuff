@@ -1,0 +1,59 @@
+<includeonly>
+<infobox>
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="Подпись"/>
+  </image>
+  <group>
+  <header>Авторы</header>
+  <data source="Иллюстрации">
+    <label>Иллюстрации</label>
+  </data>
+  <data source="Прорисовка">
+    <label>Прорисовка</label>
+  </data>
+  <data source="Фоны">
+    <label>Фоны</label>
+  </data>
+  <data source="Раскраска">
+    <label>Раскраска</label>
+  </data>
+  <data source="Редактор">
+    <label>Редактор</label>
+  </data>
+  <data source="Дата">
+    <label>Дата выхода</label>
+  </data>
+  </group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Комикс
+|Название = Пример
+|Изображение = Dirty Healings.png
+|Подпись = Пример
+|Иллюстрации = Пример
+|Прорисовка = Пример
+|Фоны = Пример
+|Раскраска = Пример
+|Редактор = Пример
+|Дата = Пример
+}}
+Пример использования: 
+<pre>
+{{Комикс
+|Название = Пример
+|Изображение = Dirty Healings.png
+|Подпись = Пример
+|Иллюстрации=Пример
+|Прорисовка = Пример
+|Фоны = Пример
+|Раскраска = Пример
+|Редактор = Пример
+|Дата = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

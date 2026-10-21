@@ -1,0 +1,12 @@
+<includeonly><div class="t-tabview">
+<div class="t-tabview__item" data-title="Статья">[[{{BASEPAGENAME}}|<i class="fa-solid fa-newspaper"></i>]]</div>
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Диалоги}}|<div class="t-tabview__item" data-title="Диалоги">[[{{ROOTPAGENAME}}/Диалоги|<i class="fa-solid fa-comments"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея}}|<div class="t-tabview__item" data-title="Галерея">[[{{ROOTPAGENAME}}/Галерея|<i class="fa-solid fa-camera"></i>]]</div>}}
+</div></includeonly>
+<noinclude>
+{{Табвью}}
+<pre>
+Использование:
+{{Табвью}}
+</pre>
+[[Категория:Шаблоны/Вкладки]]

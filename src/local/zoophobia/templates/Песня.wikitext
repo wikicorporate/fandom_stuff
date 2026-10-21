@@ -1,0 +1,76 @@
+<includeonly><infobox theme="zoophobia">
+  <title source="Название">
+    <default>{{PAGENAME}}</default>
+  </title>
+  <image source="Изображение">
+    <caption source="caption1"/>
+  </image>
+  <group collapse="open">
+  <header>Общая информация</header>
+  <data source="Композитор">
+    <label>Композитор</label>
+  </data>
+  <data source="Композиторы">
+    <label>Композиторы</label>
+  </data>
+  <data source="Вокал">
+    <label>Вокал</label>
+    </data>
+    </group>
+    <group collapse="open">
+  <header>Информация о песне</header>
+  <data source="Альбом">
+    <label>Альбом</label>
+    </data>
+  <data source="Длительность">
+    <label>Длительность</label>
+    </data>
+    <data source="Аранжировка">
+    <label>Аранжировка</label>
+    </data>
+    </group>
+    <group collapse="open">
+  <header>Видео</header>
+   <image source="Видео"/>
+   </group>
+   <group collapse="open">
+  <header>Аудио</header>
+  </group>
+  <group collapse="open">
+  <header>Аудио</header>
+ <data source="Аудио">
+<format>{{{Аудио}}}</format>
+</data>
+</group>
+</infobox>
+</includeonly>
+<noinclude>
+{{Песня
+|Название = Пример
+|Изображение = Пример
+|Композитор = Пример
+|Композиторы = Пример
+|Вокал = Пример
+|Альбом = Пример
+|Длительность = Пример
+|Аранжировка = Пример
+|Видео = Пример
+|Аудио = Пример
+}}
+<noinclude>
+Пример использования:<pre>
+{{Песня
+|Название = Пример
+|Изображение = Пример
+|Композитор = Пример
+|Композиторы = Пример
+|Вокал = Пример
+|Альбом = Пример
+|Длительность = Пример
+|Аранжировка = Пример
+|Видео = Пример
+|Аудио = Пример
+}}
+</pre>
+[[Категория:Шаблоны/Инфобоксы]]
+</noinclude>

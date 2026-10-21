@@ -1,0 +1,16 @@
+<includeonly><div class="t-tabview">
+<div class="t-tabview__item" data-title="Статья">[[{{ROOTPAGENAME}}|<i class="fa-solid fa-newspaper"></i>]]</div>
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Биография}}|<div class="t-tabview__item" data-title="Биография">[[{{ROOTPAGENAME}}/Биография|<i class="fa-solid fa-scroll"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Взаимоотношения}}|<div class="t-tabview__item" data-title="Взаимоотношения">[[{{ROOTPAGENAME}}/Взаимоотношения|<i class="fa-solid fa-heart-crack"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Цитаты}}|<div class="t-tabview__item" data-title="Цитаты">[[{{ROOTPAGENAME}}/Цитаты|<i class="fa-solid fa-quote-right"></i>]]</div>}}
+{{#if:{{PROTECTIONEXPIRY:edit|{{ROOTPAGENAME}}/Галерея}}|<div class="t-tabview__item" data-title="Галерея">[[{{ROOTPAGENAME}}/Галерея|<i class="fa-solid fa-camera"></i>]]</div>}}
+</div></includeonly>
+<noinclude>
+{{Табвью}}
+<pre>
+Использование:
+
+{{Табвью}}
+</pre>
+[[Категория:Шаблоны/Данные]]
+</noinclude>

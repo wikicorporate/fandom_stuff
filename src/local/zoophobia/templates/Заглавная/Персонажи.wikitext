@@ -1,0 +1,83 @@
+<div class="mp-cards">
+    <div class="mp-cards__caption">Персонажи</div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Кэмерон Уолден (иконка).png]]</div>
+            <div class="mp-cards__title">Кэмерон Уолден</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Кэмерон Уолден.png|link=Кэмерон Уолден]]</div>
+            <div class="mp-cards__description">Молодая женщина с ужасным страхом животных и главная героиня комикса.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Захария (иконка).png]]</div>
+            <div class="mp-cards__title">Захария</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Захария.png|link=Захария]]</div>
+            <div class="mp-cards__description">Заместитель директора в Академии Зоо Феникс.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Фэбиан (иконка).png]]</div>
+            <div class="mp-cards__title">Фэбиан</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Фэбиан.png|link=Фэбиан]]</div>
+            <div class="mp-cards__description">Учитель в Академии Зоо Феникс.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Кейла (иконка).png]]</div>
+            <div class="mp-cards__title">Кейла</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Кейла.png|link=Кейла]]</div>
+            <div class="mp-cards__description">Член основной пятёрки и девушка Зиллиона Мартинеса.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Зиллион (иконка).png]]</div>
+            <div class="mp-cards__title">Зиллион</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Зиллион.png|link=Зиллион]]</div>
+            <div class="mp-cards__description">Член основной пятёрки и парень Кейлы Крайстлинг.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Ванекса Пирс (иконка).png]]</div>
+            <div class="mp-cards__title">Ванекса Пирс</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Ванекса Пирс.png|link=Ванекса Пирс]]</div>
+            <div class="mp-cards__description">Член основной пятёрки и один из главных персонажей Зоофобии.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Дэмиан (иконка).png]]</div>
+            <div class="mp-cards__title">Дэмиан</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Дэмиан.png|link=Дэмиан]]</div>
+            <div class="mp-cards__description">Сын Люцифера и Нариссы и один из главных персонажей Зоофобии.</div>
+        </div>
+    </div>
+    <div class="mp-cards__item">
+        <div class="mp-cards__preview">
+            <div class="mp-cards__icon">[[Файл:Спам О'Брайен (иконка).png]]</div>
+            <div class="mp-cards__title">Спам О'Брайен</div>
+        </div>
+        <div class="mp-cards__info">
+            <div class="mp-cards__image">[[Файл:Спам О'Брайен.png|link=Спам О'Брайен]]</div>
+            <div class="mp-cards__description">Член основной пятёрки и один из главных персонажей Зоофобии.</div>
+        </div>
+    </div>
+<noinclude>[[Категория:Шаблоны/Дизайн]]</noinclude>

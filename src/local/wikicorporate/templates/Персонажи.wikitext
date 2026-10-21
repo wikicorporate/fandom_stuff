@@ -1,0 +1,36 @@
+{|class="t-navbox mw-collapsible mw-collapsed"
+!colspan="3"| '''Персонажи'''
+|-
+!Мамлакат
+!Эрон
+!Хитой
+|-
+!Киши
+|<dpl>
+category = Эрон
+category = Киши
+format =,• [[%PAGE%]] ,,
+</dpl>
+
+|<dpl>
+category = Хитой
+category = Киши
+format =,• [[%PAGE%]] ,,
+</dpl>
+|-
+
+!Аниме фурри харом
+|<dpl>
+category = Эрон
+category = Харом
+format =,• [[%PAGE%]] ,,
+</dpl>
+
+|<dpl>
+category = Хитой
+category = Харом
+format =,• [[%PAGE%]] ,,
+</dpl>
+|}
+
+<noinclude>[[Категория:Шаблоны/Навбоксы]]</noinclude>
