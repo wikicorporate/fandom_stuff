@@ -4,146 +4,78 @@
 /* Импорт шрифтов */
 @font-face {
     font-family: "NanumMyeongjo";
-    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/e/ed/NanumMyeongjo-Regular.woff2/revision/latest?cb=20240719202613&format=original&path-prefix=ru")
-    format("woff2");
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/e/ed/NanumMyeongjo-Regular.woff2/revision/latest?cb=20240719202613&format=original&path-prefix=ru") format("woff2");
 }
 
 /* Цвета и переменные */
 :root {
-	/* Шрифты */
-	--font: 'NanumMyeongjo', serif;
+    --font: 'NanumMyeongjo', serif;
+
+    &:has(.theme-fandommobile-dark) {
+        --p: #06041e;
+        --s: #FFB6B6;
+    }
+
+    &:has(.theme-fandommobile-light) {
+        --p: #8FDCFF;
+        --s: #041630;
+    }
 }
 
 /* Тёмная тема */
 body.theme-fandommobile-dark {
-	/* Цвета */
     --p: #06041e;
     --s: #FFB6B6;
-    /* Блюр */
-	--blur: rgb(26 10 10 / 70%);
-	/* Изображения */
-	--b-main: url(https://static.wikia.nocookie.net/helltaker/images/0/08/Site-background-dark/revision/latest?cb=20231207174218&format=original&path-prefix=ru);
+    --blur: rgb(26 10 10 / 70%);
+    --b-main: url(https://static.wikia.nocookie.net/helltaker/images/0/08/Site-background-dark/revision/latest?cb=20231207174218&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandommobile-light {
-	/* Цвета */
     --p: #8FDCFF;
     --s: #041630;
-    /* Блюр */
-	--blur: rgb(169 193 255 / 70%);
-	/* Изображения */
-	--b-main: url(https://static.wikia.nocookie.net/helltaker/images/b/b5/Site-background-light/revision/latest?cb=20231207174159&format=original&path-prefix=ru);
-}
-
-/* Костыли */
-:root:has(.theme-fandommobile-dark) {
-   	--p: #FFB6B6;
-    --s: #FF9191;
-}
-:root:has(.theme-fandommobile-light) {
-    --p: #8FDCFF;
-    --s: #041630;
+    --blur: rgb(169 193 255 / 70%);
+    --b-main: url(https://static.wikia.nocookie.net/helltaker/images/b/b5/Site-background-light/revision/latest?cb=20231207174159&format=original&path-prefix=ru);
 }
 
 /* Навбар */
 .mobile-community-bar__menu-item {
-    a[data-path="root:2"] span::before {
-        content: "\f11b";
-    }
-    &[data-path="root:2"] li:nth-child(1) a span::before {
-        content: "\f54c";
-    }
-    &[data-path="root:2"] li:nth-child(2) a span::before {
-        content: "\f004";
-    }
-    &[data-path="root:2"] li:nth-child(3) a span::before {
-        content: "\f5a2";
-    }
-    &[data-path="root:2"] li:nth-child(4) a span::before {
-        content: "\f025";
-    }
-    &[data-path="root:2"] li:nth-child(5) a span::before {
-        content: "\f253";
-    }
-    &[data-path="root:2"] li:nth-child(6) a span::before {
-        content: "\f518";
-    }
-    a[data-path="root:3"] span::before {
-        content: "\f0c0";
-    }
-    &[data-path="root:3"] li:nth-child(1) a span::before {
-        content: "\f530";
-    }
-    &[data-path="root:3"] li:nth-child(2) a span::before {
-        content: "\f72f";
-    }
-    &[data-path="root:3"] li:nth-child(3) a span::before {
-        content: "\f522";
-    }
-    &[data-path="root:3"] li:nth-child(4) a span::before {
-        content: "\f445";
-    }
-    &[data-path="root:3"] li:nth-child(5) a span::before {
-        content: "\f183";
-    }
-    &[data-path="root:3"] li:nth-child(6) a span::before {
-        content: "\f443";
-    }
-    a[data-path="root:4"] span::before {
-        content: "\f085";
-    }
-    &[data-path="root:4"] li:nth-child(1) a span::before {
-        content: "\f468";
-    }
-    &[data-path="root:4"] li:nth-child(2) a span::before {
-        content: "\e0b7";
-    }
-    &[data-path="root:4"] li:nth-child(3) a span::before {
-        content: "\f02d";
-    }
-    &[data-path="root:4"] li:nth-child(4) a span::before {
-        content: "\e508";
-    }
-    &[data-path="root:4"] li:nth-child(5) a span::before {
-        content: "\f02e";
-    }
-    &[data-path="root:4"] li:nth-child(6) a span::before {
-        content: "\f328";
-    }
-    a[data-path="root:5"] span::before {
-        content: "\f0a1";
-    }
+    a[data-path="root:2"] span::before { content: "\f11b"; }
+    &[data-path="root:2"] li:nth-child(1) a span::before { content: "\f54c"; }
+    &[data-path="root:2"] li:nth-child(2) a span::before { content: "\f004"; }
+    &[data-path="root:2"] li:nth-child(3) a span::before { content: "\f5a2"; }
+    &[data-path="root:2"] li:nth-child(4) a span::before { content: "\f025"; }
+    &[data-path="root:2"] li:nth-child(5) a span::before { content: "\f253"; }
+    &[data-path="root:2"] li:nth-child(6) a span::before { content: "\f518"; }
+    a[data-path="root:3"] span::before { content: "\f0c0"; }
+    &[data-path="root:3"] li:nth-child(1) a span::before { content: "\f530"; }
+    &[data-path="root:3"] li:nth-child(2) a span::before { content: "\f72f"; }
+    &[data-path="root:3"] li:nth-child(3) a span::before { content: "\f522"; }
+    &[data-path="root:3"] li:nth-child(4) a span::before { content: "\f445"; }
+    &[data-path="root:3"] li:nth-child(5) a span::before { content: "\f183"; }
+    &[data-path="root:3"] li:nth-child(6) a span::before { content: "\f443"; }
+    a[data-path="root:4"] span::before { content: "\f085"; }
+    &[data-path="root:4"] li:nth-child(1) a span::before { content: "\f468"; }
+    &[data-path="root:4"] li:nth-child(2) a span::before { content: "\e0b7"; }
+    &[data-path="root:4"] li:nth-child(3) a span::before { content: "\f02d"; }
+    &[data-path="root:4"] li:nth-child(4) a span::before { content: "\e508"; }
+    &[data-path="root:4"] li:nth-child(5) a span::before { content: "\f02e"; }
+    &[data-path="root:4"] li:nth-child(6) a span::before { content: "\f328"; }
+    a[data-path="root:5"] span::before { content: "\f0a1"; }
     &[data-path="root:5"] li:nth-child(1) a span::before {
         content: "\f508";
         font-family: "FontAwesome" !important;
     }
-    &[data-path="root:5"] li:nth-child(2) a span::before {
-        content: "\f0e3";
-    }
-    &[data-path="root:5"] li:nth-child(3) a span::before {
-        content: "\f256";
-    }
-    &[data-path="root:5"] li:nth-child(4) a span::before {
-        content: "\f059";
-    }
-    a[data-path="root:6"] span::before {
-        content: "\f0f3";
-    }
-    &[data-path="root:6"] li:nth-child(1) a span::before {
-        content: "\f024";
-    }
+    &[data-path="root:5"] li:nth-child(2) a span::before { content: "\f0e3"; }
+    &[data-path="root:5"] li:nth-child(3) a span::before { content: "\f256"; }
+    &[data-path="root:5"] li:nth-child(4) a span::before { content: "\f059"; }
+    a[data-path="root:6"] span::before { content: "\f0f3"; }
+    &[data-path="root:6"] li:nth-child(1) a span::before { content: "\f024"; }
     &[data-path="root:6"] li:nth-child(2) a span::before {
         content: "\f266";
         font-family: 'Font Awesome 7 Brands' !important;
     }
-    &[data-path="root:6"] li:nth-child(3) a span::before {
-        content: "\f304";
-    }
-    &[data-path="root:6"] li:nth-child(4) a span::before {
-        content: "\f0f9";
-    }
-    &[data-path="root:6"] li:nth-child(5) a span::before {
-        content: "\f0ad";
-    }
+    &[data-path="root:6"] li:nth-child(3) a span::before { content: "\f304"; }
+    &[data-path="root:6"] li:nth-child(4) a span::before { content: "\f0f9"; }
+    &[data-path="root:6"] li:nth-child(5) a span::before { content: "\f0ad"; }
 }
