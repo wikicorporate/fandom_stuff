@@ -178,12 +178,12 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
                     :is(.cdx-button-group, .cdx-toggle-button-group) button {
                         margin: 0 4px 0 2px;
 
-                        &[data-checked="true"][aria-pressed="true"] {
+                        &.cdx-toggle-button--toggled-on {
                             color: var(--cm-p) !important;
                             background-color: var(--s) !important;
                         }
 
-                        &[data-checked="false"][aria-pressed="false"] {
+                        &.cdx-toggle-button--toggled-off {
                             color: var(--s) !important;
                             background-color: var(--cm-p) !important;
                         }
@@ -245,7 +245,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         }
     }
 
-    .cm-tooltip-autocomplete ul li[aria-selected] {
+    .cm-tooltip-autocomplete ul li {
         background-color: transparent;
         color: var(--pt);
 
@@ -274,7 +274,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 }
 
 /* Визуальный редактор */
-.page__main [class^="ve-init"] {
+.page__main :is(.ve-init-target, .ve-init-mw-target, .ve-init-mw-desktopArticleTarget) {
     .oo-ui-toolbar-bar {
         background-color: transparent;
         border: none;
@@ -582,7 +582,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 }
 
-/* Подсветка синтаксиса Wikitext (CodeMirror) */
+/* Переменные палитры викитекста (CodeMirror) */
 :is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) :is(.CodeMirror, .cm-editor) {
     --template: #5c4818;
     --link: #1c4d70;
@@ -611,66 +611,340 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --format: #a7f3d0;
 }
 
+/* Многоуровневая подсветка викитекста на чистых классах */
 :is(.skin-fandomdesktop, .skin-fandommobile) .cm-content .cm-line {
-    span {
-        color: var(--pt) !important;
-    }
+    color: var(--pt) !important;
 
-    [class^="cm-mw-template"] {
-        background-color: var(--template);
-    }
-
-    .cm-mw-link-bracket,
-    .cm-mw-link-pagename,
-    .cm-mw-link-delimiter,
-    .cm-mw-link-text,
-    .cm-mw-link-ground,
-    .cm-mw-extlink,
-    .cm-mw-ext-link-ground {
-        background-color: var(--link);
-    }
-
-    [class^="cm-mw-table"] {
-        background-color: var(--table);
-    }
-
-    [class^="cm-mw-apostrophes"],
-    .cm-strong,
-    .cm-em,
-    .cm-mw-section-header {
-        background-color: var(--font);
-    }
-
+    /* 1. Базовые цвета конструкций */
+    .cm-mw-tag-ref,
+    .cm-mw-tag-gallery,
+    .cm-mw-tag-pre,
     .cm-mw-htmltag-name,
     .cm-mw-htmltag-bracket,
-    [class^="cm-mw-exttag"]:is([class$="bracket"], [class$="name"]),
-    .cm-mw-tag-pre,
-    [class$="ref"],
-    [class$="gallery"] {
-        background-color: var(--tag);
+    .cm-mw-htmltag-attribute,
+    .cm-mw-htmltag-value,
+    .cm-mw-exttag-name,
+    .cm-mw-exttag-bracket,
+    .cm-mw-exttag-attribute,
+    .cm-mw-exttag-value {
+        --hl-base: var(--tag);
     }
 
-    .cm-mw-exttag {
+    .cm-mw-exttag:not(.cm-mw-tag-ref, .cm-mw-tag-gallery, .cm-mw-tag-pre) {
         background-color: transparent;
     }
 
-    .cm-mw-comment {
-        background-color: var(--comment);
+    .cm-mw-table-bracket,
+    .cm-mw-table-delimiter,
+    .cm-mw-table-delimiter2,
+    .cm-mw-table-definition,
+    .cm-mw-table-caption {
+        --hl-base: var(--table);
     }
 
-    .cm-mw-list {
-        background-color: var(--list);
+    .cm-mw-template,
+    .cm-mw-template-name,
+    .cm-mw-template-argument-name,
+    .cm-mw-template-delimiter,
+    .cm-mw-template-bracket,
+    .cm-mw-template-ground,
+    .cm-mw-template2-ground,
+    .cm-mw-template3-ground,
+    .cm-mw-template-ext-ground,
+    .cm-mw-template2-ext-ground,
+    .cm-mw-template3-ext-ground,
+    .cm-mw-template-ext2-ground,
+    .cm-mw-template-ext3-ground,
+    .cm-mw-template2-ext2-ground,
+    .cm-mw-template2-ext3-ground,
+    .cm-mw-template3-ext2-ground,
+    .cm-mw-template3-ext3-ground {
+        --hl-base: var(--template);
     }
 
-    .cm-mw-error {
-        background-color: var(--error);
+    .cm-mw-templatevariable,
+    .cm-mw-templatevariable-name,
+    .cm-mw-templatevariable-bracket,
+    .cm-mw-templatevariable-delimiter {
+        --hl-base: color-mix(in srgb, var(--template) 60%, var(--parser));
+    }
+
+    .cm-mw-parserfunction,
+    .cm-mw-parserfunction-name,
+    .cm-mw-parserfunction-bracket,
+    .cm-mw-parserfunction-delimiter {
+        --hl-base: var(--parser);
+    }
+
+    .cm-mw-link,
+    .cm-mw-link-pagename,
+    .cm-mw-link-bracket,
+    .cm-mw-link-delimiter,
+    .cm-mw-link-text,
+    .cm-mw-link-tosection,
+    .cm-mw-link-ground,
+    .cm-mw-ext-link-ground,
+    .cm-mw-template-link-ground,
+    .cm-mw-template2-link-ground,
+    .cm-mw-template3-link-ground,
+    .cm-mw-template-ext-link-ground,
+    .cm-mw-template2-ext-link-ground,
+    .cm-mw-template3-ext-link-ground,
+    .cm-mw-extlink,
+    .cm-mw-extlink-protocol,
+    .cm-mw-extlink-bracket,
+    .cm-mw-extlink-text,
+    .cm-mw-free-extlink,
+    .cm-mw-free-extlink-protocol {
+        --hl-base: var(--link);
+    }
+
+    .cm-mw-apostrophes,
+    .cm-mw-apostrophes-bold,
+    .cm-mw-apostrophes-italic,
+    .cm-strong,
+    .cm-em,
+    .cm-mw-section-header {
+        --hl-base: var(--font);
+    }
+
+    .cm-mw-list,
+    .cm-mw-indenting,
+    .cm-mw-dt,
+    .cm-mw-dd {
+        --hl-base: var(--list);
     }
 
     .cm-mw-doubleUnderscore,
     .cm-mw-double-underscore,
     .cm-mw-signature,
-    .cm-mw-hr {
-        background-color: var(--underscore);
+    .cm-mw-hr,
+    .cm-mw-mnemonic {
+        --hl-base: var(--underscore);
+    }
+
+    .cm-mw-skipformatting,
+    .cm-mw-tag-nowiki {
+        --hl-base: var(--format);
+    }
+
+    .cm-mw-comment {
+        --hl-base: var(--comment);
+    }
+
+    .cm-mw-error {
+        --hl-base: var(--error);
+    }
+
+    /* 2. Градация ролей 1-го уровня (имена/атрибуты = 86%, скобки/пайпы = 74%) */
+    .cm-mw-template-name,
+    .cm-mw-template-argument-name,
+    .cm-mw-templatevariable-name,
+    .cm-mw-parserfunction-name,
+    .cm-mw-link-pagename,
+    .cm-mw-link-tosection,
+    .cm-mw-htmltag-name,
+    .cm-mw-htmltag-attribute,
+    .cm-mw-exttag-name,
+    .cm-mw-exttag-attribute,
+    .cm-mw-table-definition,
+    .cm-mw-table-caption,
+    .cm-mw-section--2 {
+        --hl-mix: 86%;
+    }
+
+    .cm-mw-template-bracket,
+    .cm-mw-template-delimiter,
+    .cm-mw-templatevariable-bracket,
+    .cm-mw-templatevariable-delimiter,
+    .cm-mw-parserfunction-bracket,
+    .cm-mw-parserfunction-delimiter,
+    .cm-mw-link-bracket,
+    .cm-mw-link-delimiter,
+    .cm-mw-extlink-bracket,
+    .cm-mw-extlink-protocol,
+    .cm-mw-free-extlink-protocol,
+    .cm-mw-htmltag-bracket,
+    .cm-mw-exttag-bracket,
+    .cm-mw-table-bracket,
+    .cm-mw-table-delimiter,
+    .cm-mw-table-delimiter2 {
+        --hl-mix: 74%;
+    }
+
+    /* 3. Вложенность 2-го уровня */
+    .cm-mw-template2-ground,
+    .cm-mw-template-ext-ground,
+    .cm-mw-template-link-ground,
+    .cm-mw-ext-link-ground,
+    .cm-mw-ext2-ground,
+    .cm-mw-section--3 {
+        --hl-mix: 82%;
+
+        &.cm-mw-template-name,
+        &.cm-mw-template-argument-name,
+        &.cm-mw-templatevariable-name,
+        &.cm-mw-parserfunction-name,
+        &.cm-mw-link-pagename,
+        &.cm-mw-link-tosection,
+        &.cm-mw-htmltag-name,
+        &.cm-mw-htmltag-attribute,
+        &.cm-mw-exttag-name,
+        &.cm-mw-exttag-attribute {
+            --hl-mix: 70%;
+        }
+
+        &.cm-mw-template-bracket,
+        &.cm-mw-template-delimiter,
+        &.cm-mw-templatevariable-bracket,
+        &.cm-mw-templatevariable-delimiter,
+        &.cm-mw-parserfunction-bracket,
+        &.cm-mw-parserfunction-delimiter,
+        &.cm-mw-link-bracket,
+        &.cm-mw-link-delimiter,
+        &.cm-mw-extlink-bracket,
+        &.cm-mw-extlink-protocol,
+        &.cm-mw-free-extlink-protocol,
+        &.cm-mw-htmltag-bracket,
+        &.cm-mw-exttag-bracket {
+            --hl-mix: 60%;
+        }
+    }
+
+    /* 4. Вложенность 3-го уровня и глубже */
+    .cm-mw-template3-ground,
+    .cm-mw-template2-ext-ground,
+    .cm-mw-template3-ext-ground,
+    .cm-mw-template-ext2-ground,
+    .cm-mw-template-ext3-ground,
+    .cm-mw-template2-ext2-ground,
+    .cm-mw-template2-ext3-ground,
+    .cm-mw-template3-ext2-ground,
+    .cm-mw-template3-ext3-ground,
+    .cm-mw-template2-link-ground,
+    .cm-mw-template3-link-ground,
+    .cm-mw-template-ext-link-ground,
+    .cm-mw-template2-ext-link-ground,
+    .cm-mw-template3-ext-link-ground,
+    .cm-mw-ext3-ground,
+    .cm-mw-section--4,
+    .cm-mw-section--5,
+    .cm-mw-section--6 {
+        --hl-mix: 66%;
+
+        &.cm-mw-template-name,
+        &.cm-mw-template-argument-name,
+        &.cm-mw-templatevariable-name,
+        &.cm-mw-parserfunction-name,
+        &.cm-mw-link-pagename,
+        &.cm-mw-link-tosection,
+        &.cm-mw-htmltag-name,
+        &.cm-mw-htmltag-attribute,
+        &.cm-mw-exttag-name,
+        &.cm-mw-exttag-attribute {
+            --hl-mix: 56%;
+        }
+
+        &.cm-mw-template-bracket,
+        &.cm-mw-template-delimiter,
+        &.cm-mw-templatevariable-bracket,
+        &.cm-mw-templatevariable-delimiter,
+        &.cm-mw-parserfunction-bracket,
+        &.cm-mw-parserfunction-delimiter,
+        &.cm-mw-link-bracket,
+        &.cm-mw-link-delimiter,
+        &.cm-mw-extlink-bracket,
+        &.cm-mw-extlink-protocol,
+        &.cm-mw-free-extlink-protocol,
+        &.cm-mw-htmltag-bracket,
+        &.cm-mw-exttag-bracket {
+            --hl-mix: 48%;
+        }
+    }
+
+    /* 5. Применение итогового цвета через color-mix */
+    .cm-mw-tag-ref,
+    .cm-mw-tag-gallery,
+    .cm-mw-tag-pre,
+    .cm-mw-tag-nowiki,
+    .cm-mw-htmltag-name,
+    .cm-mw-htmltag-bracket,
+    .cm-mw-htmltag-attribute,
+    .cm-mw-htmltag-value,
+    .cm-mw-exttag-name,
+    .cm-mw-exttag-bracket,
+    .cm-mw-exttag-attribute,
+    .cm-mw-exttag-value,
+    .cm-mw-table-bracket,
+    .cm-mw-table-delimiter,
+    .cm-mw-table-delimiter2,
+    .cm-mw-table-definition,
+    .cm-mw-table-caption,
+    .cm-mw-template,
+    .cm-mw-template-name,
+    .cm-mw-template-argument-name,
+    .cm-mw-template-delimiter,
+    .cm-mw-template-bracket,
+    .cm-mw-template-ground,
+    .cm-mw-template2-ground,
+    .cm-mw-template3-ground,
+    .cm-mw-template-ext-ground,
+    .cm-mw-template2-ext-ground,
+    .cm-mw-template3-ext-ground,
+    .cm-mw-template-ext2-ground,
+    .cm-mw-template-ext3-ground,
+    .cm-mw-template2-ext2-ground,
+    .cm-mw-template2-ext3-ground,
+    .cm-mw-template3-ext2-ground,
+    .cm-mw-template3-ext3-ground,
+    .cm-mw-templatevariable,
+    .cm-mw-templatevariable-name,
+    .cm-mw-templatevariable-bracket,
+    .cm-mw-templatevariable-delimiter,
+    .cm-mw-parserfunction,
+    .cm-mw-parserfunction-name,
+    .cm-mw-parserfunction-bracket,
+    .cm-mw-parserfunction-delimiter,
+    .cm-mw-link,
+    .cm-mw-link-pagename,
+    .cm-mw-link-bracket,
+    .cm-mw-link-delimiter,
+    .cm-mw-link-text,
+    .cm-mw-link-tosection,
+    .cm-mw-link-ground,
+    .cm-mw-ext-link-ground,
+    .cm-mw-template-link-ground,
+    .cm-mw-template2-link-ground,
+    .cm-mw-template3-link-ground,
+    .cm-mw-template-ext-link-ground,
+    .cm-mw-template2-ext-link-ground,
+    .cm-mw-template3-ext-link-ground,
+    .cm-mw-extlink,
+    .cm-mw-extlink-protocol,
+    .cm-mw-extlink-bracket,
+    .cm-mw-extlink-text,
+    .cm-mw-free-extlink,
+    .cm-mw-free-extlink-protocol,
+    .cm-mw-apostrophes,
+    .cm-mw-apostrophes-bold,
+    .cm-mw-apostrophes-italic,
+    .cm-strong,
+    .cm-em,
+    .cm-mw-section-header,
+    .cm-mw-list,
+    .cm-mw-indenting,
+    .cm-mw-dt,
+    .cm-mw-dd,
+    .cm-mw-doubleUnderscore,
+    .cm-mw-double-underscore,
+    .cm-mw-signature,
+    .cm-mw-hr,
+    .cm-mw-mnemonic,
+    .cm-mw-skipformatting,
+    .cm-mw-comment,
+    .cm-mw-error {
+        color: var(--pt) !important;
+        background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--pt)) !important;
     }
 
     .cm-matchingBracket,
@@ -679,16 +953,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         box-shadow: none !important;
         border: none !important;
         font-weight: inherit !important;
-    }
-
-    .cm-mw-parserfunction-bracket,
-    .cm-mw-parserfunction-delimiter,
-    .cm-mw-parserfunction-name {
-        background-color: var(--parser) !important;
-    }
-
-    .cm-mw-skipformatting {
-        background-color: var(--format);
     }
 }
 
@@ -901,15 +1165,15 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .hll { background-color: rgba(var(--w--rgb), 0.2); }
 }
 
-/* Подсветка кастомных реестров 
+/* Подсветка кастомных реестров */
 .cm-editor.cm-custom-syntax-active .cm-content .cm-line span {
     background-color: transparent !important;
 }
 
-::highlight(le-comment) { color: var(--pygments-cm); }
-::highlight(le-atrule) { color: var(--pygments-kt); }
-::highlight(le-prop) { color: var(--pygments-nt); }
-::highlight(le-fn) { color: var(--pygments-nf); }
-::highlight(le-var) { color: var(--pygments-na); }
-::highlight(le-number) { color: var(--pygments-kc); }
-::highlight(le-string) { color: var(--pygments-k); } */
+::highlight(le-comment) { color: var(--pygments-cm, #8b9eb0); }
+::highlight(le-atrule) { color: var(--pygments-kt, #c084fc); }
+::highlight(le-prop) { color: var(--pygments-nt, #58a6ff); }
+::highlight(le-fn) { color: var(--pygments-nf, #2dd4bf); }
+::highlight(le-var) { color: var(--pygments-na, #f472b6); }
+::highlight(le-number) { color: var(--pygments-kc, #f59e0b); }
+::highlight(le-string) { color: var(--pygments-k, #a3be00); }
