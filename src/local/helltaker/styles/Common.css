@@ -7,14 +7,14 @@
 /* Импорт шрифтов */
 @font-face {
     font-family: "NanumMyeongjo";
-    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/e/ed/NanumMyeongjo-Regular.woff2/revision/latest?cb=20240719202613&format=original&path-prefix=ru")
-    format("woff2");
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/e/ed/NanumMyeongjo-Regular.woff2/revision/latest?cb=20240719202613&format=original&path-prefix=ru") format("woff2");
 }
+
 @font-face {
     font-family: "Segoe Print";
-    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru")
-    format("woff2");
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru") format("woff2");
 }
+
 :root {
     /* Шрифты */
     --font: 'NanumMyeongjo', serif;
@@ -27,42 +27,42 @@
 
 /* Тёмная тема */
 body.theme-fandomdesktop-dark {
-	/* Цвета */
+    /* Цвета */
     --p: #06041e;
     --s: #FFB6B6;
     /* Блюр */
-	--blur: rgb(26 10 10 / 70%);
-	/* Фильтры */
-	--f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#color');
-	/* Изображения */
-	--h: url(https://static.wikia.nocookie.net/helltaker/images/a/a3/Background_dark.png/revision/latest?cb=20240517171321&format=original&path-prefix=ru);
-	--cp: var(--h);
-	--b-main: url(https://static.wikia.nocookie.net/helltaker/images/0/08/Site-background-dark/revision/latest?cb=20231207174218&format=original&path-prefix=ru);
+    --blur: rgb(26 10 10 / 70%);
+    /* Фильтры */
+    --f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#color');
+    /* Изображения */
+    --h: url(https://static.wikia.nocookie.net/helltaker/images/a/a3/Background_dark.png/revision/latest?cb=20240517171321&format=original&path-prefix=ru);
+    --cp: var(--h);
+    --b-main: url(https://static.wikia.nocookie.net/helltaker/images/0/08/Site-background-dark/revision/latest?cb=20231207174218&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandomdesktop-light {
-	/* Цвета */
+    /* Цвета */
     --p: #8FDCFF;
     --s: #041630;
     /* Блюр */
-	--blur: rgb(169 193 255 / 70%);
-	/* Фильтры */
-	--f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter></svg>#color');
-	/* Изображения */
-	--h: url(https://static.wikia.nocookie.net/helltaker/images/e/ed/Background_light.png/revision/latest?cb=20240517171353&format=original&path-prefix=ru);
-	--cp: var(--h);
-	--b-main: url(https://static.wikia.nocookie.net/helltaker/images/b/b5/Site-background-light/revision/latest?cb=20231207174159&format=original&path-prefix=ru);
+    --blur: rgb(169 193 255 / 70%);
+    /* Фильтры */
+    --f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter></svg>#color');
+    /* Изображения */
+    --h: url(https://static.wikia.nocookie.net/helltaker/images/e/ed/Background_light.png/revision/latest?cb=20240517171353&format=original&path-prefix=ru);
+    --cp: var(--h);
+    --b-main: url(https://static.wikia.nocookie.net/helltaker/images/b/b5/Site-background-light/revision/latest?cb=20231207174159&format=original&path-prefix=ru);
 }
 
 /* Костыли для FF */
 @-moz-document url-prefix() {
     :root:has(.theme-fandomdesktop-dark) {
-    	--p: #06041e;
-    	--s: #FFB6B6;
+        --p: #06041e;
+        --s: #FFB6B6;
     }
     :root:has(.theme-fandomdesktop-light) {
-    	--p: #8FDCFF;
-    	--s: #041630;
+        --p: #8FDCFF;
+        --s: #041630;
     }
 }
