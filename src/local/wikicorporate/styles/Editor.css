@@ -507,8 +507,8 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 
     .ace_comment {
-        color: var(--pt);
-        opacity: 0.7;
+        color: var(--pygments-cm, var(--pt));
+        opacity: 0.85;
     }
 
     .ace_variable,
@@ -582,33 +582,33 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 }
 
-/* Подсветка синтаксиса */
+/* Подсветка синтаксиса Wikitext (CodeMirror) */
 :is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) :is(.CodeMirror, .cm-editor) {
-    --template: #5e5129;
-    --link: #245477;
-    --table: #58491b;
-    --font: #44466d;
-    --tag: #662946;
-    --comment: #552233;
-    --list: #500e0d;
-    --error: #811616;
-    --underscore: #6426bb;
-    --parser: #601f01;
-    --format: #0f5807;
+    --template: #5c4818;
+    --link: #1c4d70;
+    --table: #204e4a;
+    --font: #3d3b6e;
+    --tag: #68274d;
+    --comment: #344352;
+    --list: #5a2d18;
+    --error: #841c26;
+    --underscore: #552882;
+    --parser: #6b3410;
+    --format: #195232;
 }
 
 :is(.theme-fandomdesktop-light, .theme-fandommobile-light) :is(.CodeMirror, .cm-editor) {
-    --template: #d7c693;
-    --link: #9dc3dd;
-    --table: #d6c698;
-    --font: #b8badb;
-    --tag: #d9a3bd;
-    --comment: #d4a0b2;
-    --list: #d38c8a;
-    --error: #fba3a3;
-    --underscore: #c19ff1;
-    --parser: #ff9c70;
-    --format: #81ff93;
+    --template: #f3dfa2;
+    --link: #b3d9f7;
+    --table: #b2e2d8;
+    --font: #c7c9f2;
+    --tag: #f0b8d4;
+    --comment: #cbd5e1;
+    --list: #f7c5a8;
+    --error: #fca5a5;
+    --underscore: #d8b4fe;
+    --parser: #fdba8c;
+    --format: #a7f3d0;
 }
 
 :is(.skin-fandomdesktop, .skin-fandommobile) .cm-content .cm-line {
@@ -692,146 +692,148 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 }
 
-:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) :is(.mw-highlight, .wikiEditor-ui .ace_content) {
-    --pygments-err: #ff3f54;
-    --pygments-g: #db218a;
-    --pygments-k: #859900;
-    --pygments-n: #6c71c4;
-    --pygments-o: #859900;
-    --pygments-x: #cb4b16;
-    --pygments-p: #268bd2;
-    --pygments-cm: #586e75;
-    --pygments-cp: #dc322f;
-    --pygments-cs: #859900;
-    --pygments-gd: #2aa198;
-    --pygments-ge: #db218a;
-    --pygments-gr: #dc322f;
-    --pygments-gh: #cb4b16;
-    --pygments-gi: #859900;
-    --pygments-go: #db218a;
-    --pygments-gp: #db218a;
-    --pygments-gs: #db218a;
-    --pygments-gu: #cb4b16;
-    --pygments-gt: #db218a;
-    --pygments-kc: #268bd2;
-    --pygments-kd: #2aa198;
-    --pygments-kn: #859900;
-    --pygments-kp: #859900;
-    --pygments-kr: #268bd2;
-    --pygments-kt: #859900;
-    --pygments-ld: #db218a;
-    --pygments-m: #2aa198;
-    --pygments-s: #2aa198;
-    --pygments-na: #db218a;
-    --pygments-nb: #b58900;
-    --pygments-nc: #6c71c4;
-    --pygments-no: #cb4b16;
-    --pygments-nd: #268bd2;
-    --pygments-ni: #cb4b16;
-    --pygments-ne: #cb4b16;
-    --pygments-nf: #2aa198;
-    --pygments-nl: #db218a;
-    --pygments-nn: #db218a;
-    --pygments-nx: #6c71c4;
-    --pygments-py: #db218a;
-    --pygments-nt: #268bd2;
-    --pygments-nv: #268bd2;
-    --pygments-ow: #859900;
-    --pygments-w: #db218a;
-    --pygments-mf: #2aa198;
-    --pygments-mh: #2aa198;
-    --pygments-mi: #2aa198;
-    --pygments-mo: #2aa198;
-    --pygments-sb: #afa53e;
-    --pygments-sc: #2aa198;
-    --pygments-sd: #db218a;
-    --pygments-s2: #cc4646;
-    --pygments-se: #cb4b16;
-    --pygments-sh: #db218a;
-    --pygments-si: #2aa198;
-    --pygments-sx: #2aa198;
-    --pygments-sr: #dc322f;
-    --pygments-s1: #d03737;
-    --pygments-ss: #2aa198;
-    --pygments-bp: #268bd2;
-    --pygments-vc: #268bd2;
-    --pygments-vg: #268bd2;
-    --pygments-vi: #268bd2;
-    --pygments-il: #2aa198;
+/* Подсветка синтаксиса кода (Solarized Dark) */
+:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) :is(.mw-highlight, .wikiEditor-ui, .ace_editor, .cm-editor) {
+    --pygments-err: #ff4d6d;
+    --pygments-g: #ec4899;
+    --pygments-k: #a3be00;
+    --pygments-n: #93a8f4;
+    --pygments-o: #a3be00;
+    --pygments-x: #f97316;
+    --pygments-p: #60a5fa;
+    --pygments-cm: #8b9eb0;
+    --pygments-cp: #f87171;
+    --pygments-cs: #a3be00;
+    --pygments-gd: #2dd4bf;
+    --pygments-ge: #f472b6;
+    --pygments-gr: #f87171;
+    --pygments-gh: #fb923c;
+    --pygments-gi: #a3be00;
+    --pygments-go: #e879f9;
+    --pygments-gp: #f472b6;
+    --pygments-gs: #f472b6;
+    --pygments-gu: #fb923c;
+    --pygments-gt: #ec4899;
+    --pygments-kc: #f59e0b;
+    --pygments-kd: #38bdf8;
+    --pygments-kn: #a3be00;
+    --pygments-kp: #a3be00;
+    --pygments-kr: #60a5fa;
+    --pygments-kt: #c084fc;
+    --pygments-ld: #f472b6;
+    --pygments-m: #34d399;
+    --pygments-s: #fb7185;
+    --pygments-na: #f472b6;
+    --pygments-nb: #eab308;
+    --pygments-nc: #818cf8;
+    --pygments-no: #fb923c;
+    --pygments-nd: #a78bfa;
+    --pygments-ni: #fb923c;
+    --pygments-ne: #f97316;
+    --pygments-nf: #2dd4bf;
+    --pygments-nl: #f472b6;
+    --pygments-nn: #e879f9;
+    --pygments-nx: #93a8f4;
+    --pygments-py: #f472b6;
+    --pygments-nt: #58a6ff;
+    --pygments-nv: #38bdf8;
+    --pygments-ow: #a3be00;
+    --pygments-w: #8b9eb0;
+    --pygments-mf: #34d399;
+    --pygments-mh: #2dd4bf;
+    --pygments-mi: #34d399;
+    --pygments-mo: #34d399;
+    --pygments-sb: #d4b84a;
+    --pygments-sc: #2dd4bf;
+    --pygments-sd: #e879f9;
+    --pygments-s2: #fb7185;
+    --pygments-se: #fb923c;
+    --pygments-sh: #e879f9;
+    --pygments-si: #38bdf8;
+    --pygments-sx: #2dd4bf;
+    --pygments-sr: #f43f5e;
+    --pygments-s1: #f87171;
+    --pygments-ss: #2dd4bf;
+    --pygments-bp: #eab308;
+    --pygments-vc: #38bdf8;
+    --pygments-vg: #58a6ff;
+    --pygments-vi: #38bdf8;
+    --pygments-il: #34d399;
 }
 
-:is(.theme-fandomdesktop-light, .theme-fandommobile-light) :is(.mw-highlight, .wikiEditor-ui .ace_content) {
-    --pygments-err: #9300cf;
-    --pygments-g: #586e75;
-    --pygments-k: #505a0a;
-    --pygments-n: #586e75;
-    --pygments-o: #859900;
-    --pygments-x: #cb4b16;
-    --pygments-p: #231d8c;
-    --pygments-cm: #93a1a1;
-    --pygments-cp: #859900;
-    --pygments-cs: #859900;
-    --pygments-gd: #2aa198;
-    --pygments-ge: #586e75;
-    --pygments-gr: #dc322f;
-    --pygments-gh: #cb4b16;
-    --pygments-gi: #859900;
-    --pygments-go: #586e75;
-    --pygments-gp: #586e75;
-    --pygments-gs: #586e75;
-    --pygments-gu: #cb4b16;
-    --pygments-gt: #586e75;
-    --pygments-kc: #9d3a11;
-    --pygments-kd: #268bd2;
-    --pygments-kn: #859900;
-    --pygments-kp: #859900;
-    --pygments-kr: #268bd2;
-    --pygments-kt: #800200;
-    --pygments-ld: #586e75;
-    --pygments-m: #2aa198;
-    --pygments-s: #2aa198;
-    --pygments-na: #586e75;
-    --pygments-nb: #b58900;
-    --pygments-nc: #145d8f;
-    --pygments-no: #cb4b16;
-    --pygments-nd: #268bd2;
-    --pygments-ni: #cb4b16;
-    --pygments-ne: #cb4b16;
-    --pygments-nf: #1c6aa1;
-    --pygments-nl: #586e75;
-    --pygments-nn: #d28119;
-    --pygments-nx: #586e75;
-    --pygments-py: #586e75;
-    --pygments-nt: #268bd2;
-    --pygments-nv: #268bd2;
-    --pygments-ow: #859900;
-    --pygments-w: #586e75;
-    --pygments-mf: #2aa198;
-    --pygments-mh: #0a635c;
-    --pygments-mi: #2aa198;
-    --pygments-mo: #2aa198;
-    --pygments-sb: #93a1a1;
-    --pygments-sc: #2aa198;
-    --pygments-sd: #586e75;
-    --pygments-s2: #2aa198;
-    --pygments-se: #cb4b16;
-    --pygments-sh: #586e75;
-    --pygments-si: #2aa198;
-    --pygments-sx: #2aa198;
-    --pygments-sr: #dc322f;
-    --pygments-s1: #2aa198;
-    --pygments-ss: #2aa198;
-    --pygments-bp: #268bd2;
-    --pygments-vc: #268bd2;
-    --pygments-vg: #268bd2;
-    --pygments-vi: #268bd2;
-    --pygments-il: #2aa198;
+/* Подсветка синтаксиса кода (Solarized Light) */
+:is(.theme-fandomdesktop-light, .theme-fandommobile-light) :is(.mw-highlight, .wikiEditor-ui, .ace_editor, .cm-editor) {
+    --pygments-err: #dc2626;
+    --pygments-g: #9d174d;
+    --pygments-k: #4d6b00;
+    --pygments-n: #334155;
+    --pygments-o: #4d6b00;
+    --pygments-x: #b45309;
+    --pygments-p: #1e3a8a;
+    --pygments-cm: #52667a;
+    --pygments-cp: #b91c1c;
+    --pygments-cs: #4d6b00;
+    --pygments-gd: #0f766e;
+    --pygments-ge: #86198f;
+    --pygments-gr: #b91c1c;
+    --pygments-gh: #b45309;
+    --pygments-gi: #3f6212;
+    --pygments-go: #64748b;
+    --pygments-gp: #9d174d;
+    --pygments-gs: #1e293b;
+    --pygments-gu: #b45309;
+    --pygments-gt: #9d174d;
+    --pygments-kc: #9c4200;
+    --pygments-kd: #035388;
+    --pygments-kn: #4d6b00;
+    --pygments-kp: #4d6b00;
+    --pygments-kr: #1d4ed8;
+    --pygments-kt: #6b21a8;
+    --pygments-ld: #86198f;
+    --pygments-m: #0d6e66;
+    --pygments-s: #b91c1c;
+    --pygments-na: #9d174d;
+    --pygments-nb: #854d0e;
+    --pygments-nc: #3730a3;
+    --pygments-no: #c2410c;
+    --pygments-nd: #5b21b6;
+    --pygments-ni: #b45309;
+    --pygments-ne: #c2410c;
+    --pygments-nf: #0f766e;
+    --pygments-nl: #9d174d;
+    --pygments-nn: #a16207;
+    --pygments-nx: #2b3a4a;
+    --pygments-py: #9d174d;
+    --pygments-nt: #075985;
+    --pygments-nv: #0369a1;
+    --pygments-ow: #4d6b00;
+    --pygments-w: #64748b;
+    --pygments-mf: #0d6e66;
+    --pygments-mh: #0a5c55;
+    --pygments-mi: #0d6e66;
+    --pygments-mo: #0d6e66;
+    --pygments-sb: #713f12;
+    --pygments-sc: #0f766e;
+    --pygments-sd: #86198f;
+    --pygments-s2: #b91c1c;
+    --pygments-se: #c2410c;
+    --pygments-sh: #86198f;
+    --pygments-si: #0369a1;
+    --pygments-sx: #0f766e;
+    --pygments-sr: #be123c;
+    --pygments-s1: #991b1b;
+    --pygments-ss: #0f766e;
+    --pygments-bp: #854d0e;
+    --pygments-vc: #0369a1;
+    --pygments-vg: #075985;
+    --pygments-vi: #0369a1;
+    --pygments-il: #0d6e66;
 }
 
 .mw-highlight {
     background-color: transparent;
 
-    .c, .c1, .cm { color: var(--pt); opacity: 0.7; }
+    .c, .c1, .cm { color: var(--pygments-cm, var(--pt)); opacity: 0.85; }
     .err { color: var(--pygments-err); }
     .p { color: var(--pygments-p); }
     .py { color: var(--pygments-py); }
@@ -904,10 +906,10 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     background-color: transparent !important;
 }
 
-::highlight(le-comment) { color: #7c8b99; }
-::highlight(le-atrule) { color: #c678dd; }
-::highlight(le-prop) { color: #61afef; }
-::highlight(le-fn) { color: #56b6c2; }
-::highlight(le-var) { color: #e06c75; }
-::highlight(le-number) { color: #d19a66; }
-::highlight(le-string) { color: #98c379; } */
+::highlight(le-comment) { color: var(--pygments-cm); }
+::highlight(le-atrule) { color: var(--pygments-kt); }
+::highlight(le-prop) { color: var(--pygments-nt); }
+::highlight(le-fn) { color: var(--pygments-nf); }
+::highlight(le-var) { color: var(--pygments-na); }
+::highlight(le-number) { color: var(--pygments-kc); }
+::highlight(le-string) { color: var(--pygments-k); } */
