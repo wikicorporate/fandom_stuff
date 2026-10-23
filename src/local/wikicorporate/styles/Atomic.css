@@ -1,98 +1,29 @@
 /* Общее для проектов */
 :root {
-	/* Рамки */ 
+    /* Рамки */
     --br-12: 12px;
-	--br-14: 14px;
-	--br-16: 16px;
-	--br-50: 50%;
-	/* Тени */
+    --br-14: 14px;
+    --br-16: 16px;
+    --br-50: 50%;
+    /* Тени */
     --ts-al: 0 0 3px var(--al);
     --ts-l: 0 0 3px var(--l);
     /* Подчёркивание */
     --tooltip: 2px dotted;
     /* Блюр */
-    --blur-5:  blur(5px);
+    --blur-5: blur(5px);
     --blur-10: blur(10px);
-    --blur-15: blur(10px);
+    --blur-15: blur(15px);
     --blur-50: blur(50px);
     /* Градиенты */
-	--lg: linear-gradient(transparent, rgba(var(--pb--rgb), 0.6) 60%);
-	/* Шрифты */
-	--fallback-1: sans-serif;
-	--fallback-2: serif;
-	--fallback-3: cursive;
-	/* Основное пространство без глобальных элементов */
-	.resizable-container, #fandom-mobile-wrapper, .wds-dropdown, .wds-dropdown__content {
-		--theme-border-color: var(--s);
-	}
-}
+    --lg: linear-gradient(transparent, rgba(var(--pb--rgb), 0.6) 60%);
+    /* Шрифты */
+    --fallback-1: sans-serif;
+    --fallback-2: serif;
+    --fallback-3: cursive;
 
-/* Специализированные переменные */
-body {
-	/* Цвета */
-	--cm-p: color-mix(in srgb, var(--p), var(--s) 10%);
-	--cm-s: color-mix(in srgb, var(--s), var(--p) 10%);
-	--cC: currentColor;
-	/* Фиксы */
-	--theme-accent-color: var(--p);
-    --theme-accent-color--hover: var(--s);
-    --theme-accent-label-color: var(--s);
-    --theme-border-color: var(--s);
-	/* Рамки */
-	--b: var(--s);
-	--bs-2s: 2px solid var(--s);
-    /* Тени */
-    --ts-s: 0 0 3px var(--s);
-    --ts-h: 2px 2px 0 var(--p), 2px -2px 0 var(--p), -2px 2px 0 var(--p), -2px -2px 0 var(--p), 2px 0px 0 var(--p), 0px 2px 0 var(--p), -2px 0px 0 var(--p), 0px -2px 0 var(--p);
-    /* Градиенты */
-    --template: linear-gradient(90deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), linear-gradient(0deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), var(--cp);
-    --scroll: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    --color-slide: linear-gradient(var(--l) 50%, var(--s) 50%);
-    --color-stop: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, var(--l)), color-stop(0.67, var(--s)));
-    --card: linear-gradient(45deg, transparent 5%, var(--l) 50%, transparent 99%);
-    /* Фильтры */
-    --blur-b: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-b"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-b');
-    --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
-    --drawn-button: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="4"/></filter></svg>#drawn-button');
-    --drawn-button--hover: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button--hover"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8"/></filter></svg>#drawn-button--hover');
-    /* Изображения */
-	--h: var(--b-main);
-	--cp: var(--b-main);
-}
-
-/* Тёмная тема */
-body:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
-	/* Фиксы */
-	--pt: #f8f8f8;
-	--theme-page-text-color: #f8f8f8;
-	--theme-success-color: #24ff6e;
-	--theme-alert-color: #ff8a92;
-}
-
-/* Светлая тема */
-body:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
-	/* Фиксы */
-	--pt: #080808;
-	--theme-page-text-color: #080808;
-	--theme-success-color: #0d431f;
-	--theme-alert-color: #78242e;
-}
-
-/* Properties */
-@property --fill {
-    syntax: "<percentage>";
-    inherits: true;
-    initial-value: 0%;
-}
-@property --font-size {
-	syntax: "small | medium | large";
-	inherits: true;
-	initial-value: small;
-}
-
-/* Переменные Фэндома */
-:root {
-	/* bb - body background */
+    /* Переменные Фэндома */
+    /* bb - body background */
     --bb: var(--theme-body-background-color);
     --bb-rgb: var(--theme-body-background-color--rgb);
     /* bt - body text */
@@ -136,6 +67,76 @@ body:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
     /* m - message */
     --m: var(--theme-message-color);
     --ml: var(--theme-message-label);
+
+    /* Основное пространство без глобальных элементов */
+    .resizable-container,
+    #fandom-mobile-wrapper,
+    .wds-dropdown,
+    .wds-dropdown__content {
+        --theme-border-color: var(--s);
+    }
+}
+
+/* Специализированные переменные */
+body {
+    /* Цвета */
+    --cm-p: color-mix(in srgb, var(--p), var(--s) 10%);
+    --cm-s: color-mix(in srgb, var(--s), var(--p) 10%);
+    --cC: currentColor;
+    /* Фиксы */
+    --theme-accent-color: var(--p);
+    --theme-accent-color--hover: var(--s);
+    --theme-accent-label-color: var(--s);
+    --theme-border-color: var(--s);
+    /* Рамки */
+    --b: var(--s);
+    --bs-2s: 2px solid var(--s);
+    /* Тени */
+    --ts-s: 0 0 3px var(--s);
+    --ts-h: 2px 2px 0 var(--p), 2px -2px 0 var(--p), -2px 2px 0 var(--p), -2px -2px 0 var(--p), 2px 0px 0 var(--p), 0px 2px 0 var(--p), -2px 0px 0 var(--p), 0px -2px 0 var(--p);
+    /* Изображения */
+    --h: var(--b-main);
+    --cp: var(--b-main);
+    /* Градиенты */
+    --template: linear-gradient(90deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), linear-gradient(0deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), var(--cp);
+    --scroll: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    --color-slide: linear-gradient(var(--l) 50%, var(--s) 50%);
+    --color-stop: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, var(--l)), color-stop(0.67, var(--s)));
+    --card: linear-gradient(45deg, transparent 5%, var(--l) 50%, transparent 99%);
+    /* Фильтры */
+    --blur-b: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-b"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-b');
+    --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
+    --drawn-button: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="4"/></filter></svg>#drawn-button');
+    --drawn-button--hover: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button--hover"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8"/></filter></svg>#drawn-button--hover');
+
+    /* Тёмная тема */
+    &:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
+        --pt: #f8f8f8;
+        --theme-page-text-color: #f8f8f8;
+        --theme-success-color: #24ff6e;
+        --theme-alert-color: #ff8a92;
+    }
+
+    /* Светлая тема */
+    &:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
+        --pt: #080808;
+        --theme-page-text-color: #080808;
+        --theme-success-color: #0d431f;
+        --theme-alert-color: #78242e;
+    }
+}
+
+/* Properties */
+@property --fill {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0%;
+}
+
+@property --font-size {
+    syntax: "small | medium | large";
+    inherits: true;
+    initial-value: small;
 }
 
 /* Position */
