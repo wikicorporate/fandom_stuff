@@ -7,13 +7,12 @@
 /* Импорт шрифтов */
 @font-face {
     font-family: "Terminus";
-    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/60/TerminusTTF-Bold.woff2/revision/latest?cb=20240719211200&format=original&path-prefix=ru")
-    format("woff2");
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/60/TerminusTTF-Bold.woff2/revision/latest?cb=20240719211200&format=original&path-prefix=ru") format("woff2");
 }
+
 @font-face {
     font-family: "Segoe Print";
-    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru")
-    format("woff2");
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru") format("woff2");
 }
 
 :root {
@@ -27,48 +26,47 @@
     --end: #ed9609;
     --basement: #695632;
     /* Шрифты */
-    --font: Terminus, serif;
-    --backup: Segoe Print, serif;
+    --font: 'Terminus', serif;
+    --backup: 'Segoe Print', serif;
     --size: 1.5rem;
-
 }
 
 /* Тёмная тема */
 body.theme-fandomdesktop-dark {
-	/* Цвета */
+    /* Цвета */
     --p: #201039;
     --s: #AAEEEA;
     /* Блюр */
-	--blur: rgb(22 7 39 / 70%);
-	/* Фильтры */
-	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.66667 0 0 0 0 0 0.93333 0 0 0 0 0 0.91765 0 0 0 0 0 1 0"/></filter></svg>#color');
-	/* Изображения */
-	--gb: url(https://static.wikia.nocookie.net/oneshot/images/5/52/OS-S-GB-1.png/revision/latest?cb=20190503110811&format=original&path-prefix=ru);
-	--b-main: url(https://static.wikia.nocookie.net/oneshot/images/6/6e/OS-S-Dream-37.png/revision/latest?cb=20190522041631&format=original&path-prefix=ru);
+    --blur: rgb(22 7 39 / 70%);
+    /* Фильтры */
+    --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.66667 0 0 0 0 0 0.93333 0 0 0 0 0 0.91765 0 0 0 0 0 1 0"/></filter></svg>#color');
+    /* Изображения */
+    --gb: url(https://static.wikia.nocookie.net/oneshot/images/5/52/OS-S-GB-1.png/revision/latest?cb=20190503110811&format=original&path-prefix=ru);
+    --b-main: url(https://static.wikia.nocookie.net/oneshot/images/6/6e/OS-S-Dream-37.png/revision/latest?cb=20190522041631&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandomdesktop-light {
-	/* Цвета */
+    /* Цвета */
     --p: #51cfff;
     --s: #0C2151;
     /* Блюр */
-	--blur: rgb(154 176 255 / 70%);
-	/* Фильтры */
-	--f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.04706 0 0 0 0 0 0.12941 0 0 0 0 0 0.31765 0 0 0 0 0 1 0"/></filter></svg>#color');
-	/* Изображения */
-	--gb: url(https://static.wikia.nocookie.net/oneshot/images/3/3c/OS-S-GB-2.png/revision/latest?cb=20250104124022&format=original&path-prefix=ru);
-	--b-main: url(https://static.wikia.nocookie.net/oneshot/images/b/bc/OS-S-Dream-36.png/revision/latest?cb=20190522041627&format=original&path-prefix=ru);
+    --blur: rgb(154 176 255 / 70%);
+    /* Фильтры */
+    --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.04706 0 0 0 0 0 0.12941 0 0 0 0 0 0.31765 0 0 0 0 0 1 0"/></filter></svg>#color');
+    /* Изображения */
+    --gb: url(https://static.wikia.nocookie.net/oneshot/images/3/3c/OS-S-GB-2.png/revision/latest?cb=20250104124022&format=original&path-prefix=ru);
+    --b-main: url(https://static.wikia.nocookie.net/oneshot/images/b/bc/OS-S-Dream-36.png/revision/latest?cb=20190522041627&format=original&path-prefix=ru);
 }
 
 /* Костыли для FF */
 @-moz-document url-prefix() {
     :root:has(.theme-fandomdesktop-dark) {
-    	--p: #201039;
-    	--s: #AAEEEA;
+        --p: #201039;
+        --s: #AAEEEA;
     }
     :root:has(.theme-fandomdesktop-light) {
-    	--p: #51cfff;
-    	--s: #0C2151;
+        --p: #51cfff;
+        --s: #0C2151;
     }
 }
