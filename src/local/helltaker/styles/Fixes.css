@@ -1,14 +1,24 @@
 /* Шрифт */
 :where(.mw-changeslist-line-inner-userLink, .activity-module .edit-info, .LeaderboardTable .user, .WikiaLatestEarnedBadgesModule .badge-text, .new-pages-rail-module) a::after {
-	letter-spacing: -1px;
+    letter-spacing: -1px;
 }
 
 /* Профиль */
 body.skin-fandomdesktop #userProfileApp .user-profile-navigation__link {
-	letter-spacing: -2px;
+    letter-spacing: -2px;
 }
 
 /* Фон */
-.rail-module, .module, .wikia-slideshow-images-wrapper .wikia-slideshow-images, :is(#toc,.sticky-toc.toc), .community-page-module.community-page-module-box, #LeaderboardTable, #content .infobox__wrapper [class^="BuilderPreview-module_container"], .blog-listing__post, [class*="popupWidget-popup"]:not([class*="linkSuggest-popup"]), :is(#AdminDashboard, #FounderProgressList) .wds-dropdown__content, .page-content .portable-infobox {
+.rail-module,
+.module,
+.wikia-slideshow-images-wrapper .wikia-slideshow-images,
+:is(#toc, .sticky-toc.toc),
+.community-page-module.community-page-module-box,
+#LeaderboardTable,
+#content .infobox__wrapper [class^="BuilderPreview-module_container"],
+.blog-listing__post,
+[class*="popupWidget-popup"]:not([class*="linkSuggest-popup"]),
+:is(#AdminDashboard, #FounderProgressList) .wds-dropdown__content,
+.page-content .portable-infobox {
     background: var(--template) no-repeat transparent;
 }
