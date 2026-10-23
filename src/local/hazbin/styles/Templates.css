@@ -1,22 +1,27 @@
 /* Навбоксы */
 .t-navbox {
-	background: var(--template) center / cover no-repeat fixed transparent;
+    background: var(--template) center / cover no-repeat fixed transparent;
     border-radius: var(--br-14);
     width: 100%;
     text-align: center;
+
     tr:first-child {
-    	font-family: var(--font);
+        font-family: var(--font);
     }
-    td, th {
-    	padding: 8px;
-    	color: var(--pt);
+
+    td,
+    th {
+        padding: 8px;
+        color: var(--pt);
     }
+
     a {
-    	white-space: break-spaces;
-		transition: all 0.15s;
+        white-space: break-spaces;
+        transition: all 0.15s;
     }
+
     sup {
-    	font-weight: 700;
+        font-weight: 700;
     }
 }
 
@@ -25,38 +30,51 @@
     background: var(--template) center / cover no-repeat fixed transparent;
     border: none;
     border-radius: var(--br-14);
-    .pi-title, .pi-header, .pi-data-label {
+
+    .pi-title,
+    .pi-header,
+    .pi-data-label {
         font-family: var(--font);
         color: var(--pt);
     }
+
     .pi-header {
-    	font-size: 12px;
+        font-size: 12px;
     }
+
     .pi-data {
         position: relative;
         overflow: visible !important;
         border: none;
     }
+
     .pi-collapse .pi-header:first-child::after {
-    	margin-top: -4px;
-	}
-	.pi-secondary-background {
+        margin-top: -4px;
+    }
+
+    .pi-secondary-background {
         background-color: transparent;
+
         & + .pi-secondary-background {
             border-top: none;
         }
     }
+
     .pi-group {
         &:has([data-source="Видео"]) {
             margin: 4px 0 10px;
         }
+
         [data-source="Аудио"] {
             line-height: 1 !important;
         }
+
         .pi-horizontal-group-item {
-            &.pi-data-label, &.pi-data-value {
+            &.pi-data-label,
+            &.pi-data-value {
                 border: 0;
             }
+
             &.pi-data-value {
                 padding: 6px 0;
             }
@@ -66,83 +84,95 @@
 
 /* Плашки */
 .t-notice {
-	width: 100%;
+    width: 100%;
     text-align: center;
     border: var(--bs-2s);
     border-radius: var(--br-12);
     background-color: var(--p);
     color: var(--pt);
-	padding: 8px;
-	margin-bottom: 16px;
-	p {
-		margin: 0 !important;	
-	}
-	i[class^="fa"] {
-		color: var(--s);
-		font-size: 4rem;
-	}
+    padding: 8px;
+    margin-bottom: 16px;
+
+    p {
+        margin: 0 !important;
+    }
+
+    i[class^="fa"] {
+        color: var(--s);
+        font-size: 4rem;
+    }
 }
 
 /* Юзербоксы */
 .userpic {
-	margin-bottom: 5px; 
-	width: 100%;
-	.userpic__body {
-		background-color: rgba(var(--pb--rgb), .7);
-		border-radius: var(--br-14);
-		width: 100%;
-		.userpic__details {
-			width: 100%;
-			.userpic__details-image {
-				width: 50px;
-			}
-			.userpic__details-text {
-				color: var(--pt);
-				margin-right: 10px; 
-				padding-left: 10px; 
-				vertical-align: middle; 
-				width: 160px;
-			}
-		}
-	}
+    margin-bottom: 5px;
+    width: 100%;
+
+    .userpic__body {
+        background-color: rgba(var(--pb--rgb), 0.7);
+        border-radius: var(--br-14);
+        width: 100%;
+
+        .userpic__details {
+            width: 100%;
+
+            .userpic__details-image {
+                width: 50px;
+            }
+
+            .userpic__details-text {
+                color: var(--pt);
+                margin-right: 10px;
+                padding-left: 10px;
+                vertical-align: middle;
+                width: 160px;
+            }
+        }
+    }
 }
 
 /* Персонал */
 .t-staff {
-	width: 100%;
-	padding: 0;
-	border-spacing: 0;
-	border-radius: var(--br-12);
-	background: var(--template) center / cover no-repeat transparent;
-	.t-staff__caption {
-		color: var(--pt);
-		b {
-			font-size: 2.5rem; 
-    		font-family: var(--font);	
-		}
-		span {
-			padding: 21px;
-		}
-		.mw-collapsible-toggle {
-			position: relative;
-			top: 20px;
-		}
-	}
-	tr {
-		.t-staff__role {
-			font-size: 1.4rem;
-		    font-family: var(--font);
-		    font-weight: bold; 
-		    color: inherit;
-		    padding: 0 16px;
-		}
-		.t-staff__users {
-			color: var(--pt);
-			font-size: 1.4rem;
-		    font-family: var(--font);
-		    padding: 0 16px;	
-		}
-	}
+    width: 100%;
+    padding: 0;
+    border-spacing: 0;
+    border-radius: var(--br-12);
+    background: var(--template) center / cover no-repeat transparent;
+
+    .t-staff__caption {
+        color: var(--pt);
+
+        b {
+            font-size: 2.5rem;
+            font-family: var(--font);
+        }
+
+        span {
+            padding: 21px;
+        }
+
+        .mw-collapsible-toggle {
+            position: relative;
+            top: 20px;
+        }
+    }
+
+    tr {
+        .t-staff__role {
+            font-size: 1.4rem;
+            font-family: var(--font);
+            font-weight: bold;
+            color: inherit;
+            padding: 0 16px;
+        }
+
+        .t-staff__users {
+            color: var(--pt);
+            font-size: 1.4rem;
+            font-family: var(--font);
+            padding: 0 16px;
+        }
+    }
 }
 
 /* Табвью */
@@ -156,25 +186,31 @@
     justify-content: center;
     align-items: center;
     width: fit-content;
+
     .t-tabview__item {
         display: flex;
-    	position: relative;
-    	justify-content: center;
-    	text-align: center;
+        position: relative;
+        justify-content: center;
+        text-align: center;
         font-size: 24px;
         font-weight: bold;
         color: var(--s);
         opacity: 0.5;
-        &:hover, &:has(strong) {
+
+        &:hover,
+        &:has(strong) {
             opacity: 1;
         }
+
         a {
-        	color: inherit;
+            color: inherit;
         }
+
         i {
-        	font-size: 24px;
-			font-weight: bold;
+            font-size: 24px;
+            font-weight: bold;
         }
+
         &::after {
             content: attr(data-title);
             position: absolute;
@@ -193,32 +229,36 @@
             left: 50%;
             transform: translateX(-50%);
         }
+
         &:hover::after {
             display: inline-block;
-            animation: tt .5s ease-out forwards;
+            animation: tt 0.5s ease-out forwards;
             transition: 0.3s;
         }
     }
+
     p {
-    	display: none;
+        display: none;
     }
 }
 
 /* Цитата */
 .t-quote {
-	display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-	margin: 8px;
+    margin: 8px;
     padding: 8px;
     border-radius: 45px;
     background-color: var(--p);
+
     i[class^="fa"] {
-    	color: var(--s);
-		font-size: 2.5rem;
+        color: var(--s);
+        font-size: 2.5rem;
     }
+
     .t-quote__text {
-    	padding: 0 16px;
-		text-align: center;
+        padding: 0 16px;
+        text-align: center;
     }
 }
