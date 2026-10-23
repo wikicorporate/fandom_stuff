@@ -944,7 +944,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-comment,
     .cm-mw-error {
         color: var(--pt) !important;
-        background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--pt)) !important;
+        background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--p)) !important;
     }
 
     .cm-matchingBracket,
