@@ -1,11 +1,12 @@
 /* Оформление профиля */
 body.skin-fandomdesktop #userProfileApp {
-	background: var(--template) center / cover no-repeat transparent;
-	border-radius: var(--br-14);
-	height: 450px;
-	width: calc(100% + (36px * 2));
-	margin-inline: -36px;
-	margin-top: -5px;
+    background: var(--template) center / cover no-repeat transparent;
+    border-radius: var(--br-14);
+    height: 450px;
+    width: calc(100% + (36px * 2));
+    margin-inline: -36px;
+    margin-top: -5px;
+
     .user-identity-header__attributes {
         display: flex;
         flex-wrap: wrap;
@@ -13,30 +14,35 @@ body.skin-fandomdesktop #userProfileApp {
         align-items: center;
         font-family: var(--font);
         font-size: var(--size);
+
         .user-identity-header__tag {
-        	margin: 0;
-	        background-color: var(--cm-p);
-	        border-radius: var(--br-12);
-	        font-weight: 700;
-	        line-height: 1.5;
-	        padding: 5px 8px;
-	        color: var(--s);
+            margin: 0;
+            background-color: var(--cm-p);
+            border-radius: var(--br-12);
+            font-weight: 700;
+            line-height: 1.5;
+            padding: 5px 8px;
+            color: var(--s);
         }
     }
+
     ul.user-identity-stats {
         & > li:not(:first-child)::before {
             display: none;
         }
+
         li {
             display: block !important;
             margin: 0 !important;
             width: fit-content;
+
             &:hover a {
                 grid-template-columns: 20px auto 20ch;
                 font-size: 14px;
                 text-shadow: none;
             }
         }
+
         a {
             display: inline-grid;
             grid-auto-flow: column;
@@ -45,23 +51,29 @@ body.skin-fandomdesktop #userProfileApp {
             font-size: 0;
             transition: grid-template-columns 0.5s;
             line-height: 1.4;
+
             &::before {
                 font-size: 18px;
                 line-height: 1;
             }
         }
     }
+
     .user-identity-box {
         padding: 10px 16px 0 35px;
         height: 300px;
+
         .user-identity-box__info {
             position: relative;
-            &::before, &::after {
+
+            &::before,
+            &::after {
                 content: "";
                 position: absolute;
                 top: 70%;
                 left: 70%;
             }
+
             &::before {
                 width: 1em;
                 height: 1em;
@@ -71,9 +83,11 @@ body.skin-fandomdesktop #userProfileApp {
                 border-radius: 15%;
                 transform: translate(0, -1em) rotate(-45deg);
             }
+
             &:hover::before {
                 animation: push 2.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite;
             }
+
             &::after {
                 width: 7.1em;
                 height: 6.1em;
@@ -81,78 +95,116 @@ body.skin-fandomdesktop #userProfileApp {
                 border-left: 0.25em solid var(--l);
                 transform: rotate(45deg);
             }
+
             .user-identity-social__icon-tooltip {
-            	color: var(--s);
-    			background-color: var(--p);
-    			border-radius: var(--br-14);
-    			&::before, &::after {
-    				display: none;
-    			}
+                color: var(--s);
+                background-color: var(--p);
+                border-radius: var(--br-14);
+
+                &::before,
+                &::after {
+                    display: none;
+                }
             }
         }
     }
+
     &:has(.user-profile-editor) .user-profile-navigation {
-    	display: none;
+        display: none;
     }
+
     .user-profile-editor {
-    	border-radius: var(--br-14);
-		background-color: var(--p);
-		.modal-wrapper__header {
-			border: none;
-			margin: 0;
-		}
-		:is(.modal-wrapper__main, .user-profile-editor__form .wds-fieldset) {
-			padding: 0;
-		}
-		.wds-button.wds-is-square {
-			margin-left: 14px;
-		}
+        border-radius: var(--br-14);
+        background-color: var(--p);
+
+        .modal-wrapper__header {
+            border: none;
+            margin: 0;
+        }
+
+        :is(.modal-wrapper__main, .user-profile-editor__form .wds-fieldset) {
+            padding: 0;
+        }
+
+        .wds-button.wds-is-square {
+            margin-left: 14px;
+        }
     }
+
     .user-identity-bio {
         margin-bottom: 5px;
         max-height: 4.5em;
+
         &.overflow::before {
             background: none;
         }
     }
+
     .user-bio-modal {
         border-radius: var(--br-14);
         background-color: var(--p);
+
         .user-bio-modal-content {
             background-image: none;
-            &::before, &::after {
+
+            &::before,
+            &::after {
                 background-color: transparent;
             }
         }
+
         .user-bio-modal-footer {
             border: none;
         }
     }
+
     .user-identity-avatar {
         height: 170px;
         margin-right: 18px;
         position: relative;
         width: 170px;
+
         &::before {
             content: "";
             position: absolute;
             height: 6px;
             width: 6px;
             transform: rotate(45deg);
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
+            inset: 0;
             margin: auto;
             border-radius: var(--br-50);
-            box-shadow: 0 0 0 transparent, 5.79555rem 1.55291rem var(--l), 4.76314rem 2.75rem var(--l), 4.24264rem 4.24264rem var(--l), 2.75rem 4.76314rem var(--l), 1.55291rem 5.79555rem var(--l), 0 5.5rem var(--l),
-                -1.55291rem 5.79555rem var(--l), -2.75rem 4.76314rem var(--l), -4.24264rem 4.24264rem var(--l), -4.76314rem 2.75rem var(--l), -5.79555rem 1.55291rem var(--l), -5.5rem 0 var(--l), -5.79555rem -1.55291rem var(--l),
-                -4.76314rem -2.75rem var(--l), -4.24264rem -4.24264rem var(--l), -2.75rem -4.76314rem var(--l), -1.55291rem -5.79555rem var(--l), 0 -5.5rem var(--l), 1.55291rem -5.79555rem var(--l), 2.75rem -4.76314rem var(--l),
-                4.24264rem -4.24264rem var(--l), 4.76314rem -2.75rem var(--l), 5.79555rem -1.55291rem var(--l), 5.5rem 0 var(--l);
+            box-shadow:
+                0 0 0 transparent,
+                5.79555rem 1.55291rem var(--l),
+                4.76314rem 2.75rem var(--l),
+                4.24264rem 4.24264rem var(--l),
+                2.75rem 4.76314rem var(--l),
+                1.55291rem 5.79555rem var(--l),
+                0 5.5rem var(--l),
+                -1.55291rem 5.79555rem var(--l),
+                -2.75rem 4.76314rem var(--l),
+                -4.24264rem 4.24264rem var(--l),
+                -4.76314rem 2.75rem var(--l),
+                -5.79555rem 1.55291rem var(--l),
+                -5.5rem 0 var(--l),
+                -5.79555rem -1.55291rem var(--l),
+                -4.76314rem -2.75rem var(--l),
+                -4.24264rem -4.24264rem var(--l),
+                -2.75rem -4.76314rem var(--l),
+                -1.55291rem -5.79555rem var(--l),
+                0 -5.5rem var(--l),
+                1.55291rem -5.79555rem var(--l),
+                2.75rem -4.76314rem var(--l),
+                4.24264rem -4.24264rem var(--l),
+                4.76314rem -2.75rem var(--l),
+                5.79555rem -1.55291rem var(--l),
+                5.5rem 0 var(--l);
         }
+
         &:hover::before {
             animation: av-l 1s ease-in-out infinite;
         }
+
         &::after {
             content: "";
             position: absolute;
@@ -163,11 +215,13 @@ body.skin-fandomdesktop #userProfileApp {
             transform: rotate(0deg);
             top: 150%;
             left: 10%;
-            transition: all 0.75s cubic-bezier(0.71, 0, 0.33, 1.56) 0ms;
+            transition: transform 0.75s cubic-bezier(0.71, 0, 0.33, 1.56) 0ms;
         }
+
         &:hover::after {
             animation: loading 2.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite;
         }
+
         .user-identity-avatar__image {
             position: relative;
             left: 10px;
@@ -179,66 +233,78 @@ body.skin-fandomdesktop #userProfileApp {
             padding: 2px;
         }
     }
+
     .user-profile-navigation {
         justify-content: center;
         margin: auto;
         width: fit-content;
         gap: 12px;
+
         .user-profile-navigation__link {
             position: relative;
-			transition: all 400ms;
-			opacity: 0.9;
-			font-weight: bold;
+            transition: opacity 400ms;
+            opacity: 0.9;
+            font-weight: bold;
+
             &.is-active {
                 border: none;
+
                 a {
-                	opacity: 1;
+                    opacity: 1;
                 }
-    		}
-    		a {
-    			color: var(--pt);
-    			opacity: 0.5;
-    			font-family: var(--font);
+            }
+
+            a {
+                color: var(--pt);
+                opacity: 0.5;
+                font-family: var(--font);
                 font-size: 1.1rem;
-    		}
-    		&::before {
-    			content: " ";
-			    position: absolute;
-			    width: calc(100% - 6px);
-			    height: calc(100% - 6px);
-				top: 0;
-				left: 0;
-			    z-index: -2;
-			    background-color: var(--cm-p);
-				border-radius: var(--br-14);
-			    filter: var(--blur-b);
-    		}
-    		&:hover {
-    			&::before {
-    				filter: var(--blur-p);
-				    translate: 0.05em 0.1em;
-    			}
-    			a {
-    				opacity: 1;
-    			}
-    		}
+            }
+
+            &::before {
+                content: " ";
+                position: absolute;
+                width: calc(100% - 6px);
+                height: calc(100% - 6px);
+                top: 0;
+                left: 0;
+                z-index: -2;
+                background-color: var(--cm-p);
+                border-radius: var(--br-14);
+                filter: var(--blur-b);
+            }
+
+            &:hover {
+                &::before {
+                    filter: var(--blur-p);
+                    translate: 0.05em 0.1em;
+                }
+
+                a {
+                    opacity: 1;
+                }
+            }
         }
     }
+
     .user-identity-header__actions :is(a, button) {
         position: relative;
         font-size: 0;
         margin: 8px 0;
     }
+
     .user-identity-header__button .wds-icon {
         margin: 0;
     }
+
     .user-bio-open-modal-button {
         padding: 6px !important;
     }
 }
 
 /* Рамки аватаров */
-.resizable-container, .wds-dialog__curtain {
+.resizable-container,
+.wds-dialog__curtain {
     :is(img, svg).wds-avatar__image {
         background-color: transparent;
         fill: transparent !important;
@@ -246,18 +312,23 @@ body.skin-fandomdesktop #userProfileApp {
         position: relative;
         border: none;
         padding: 2px;
-        transition: all 0.3s;
+        transition: transform 0.3s;
+
         &:hover {
             transform: scale(0.9);
         }
     }
+
     img.wds-avatar__image {
         background-image: var(--color-stop);
     }
+
     .wds-avatar {
-        a:not(:has(span)):has(path[id^="IconAvatar"], svg > use), &[title]:has(svg > use):not(:has(img)) {
+        a:not(:has(span)):has(path[id^="IconAvatar"], svg > use),
+        &[title]:has(svg > use):not(:has(img)) {
             position: relative;
-            transition: all 0.3s;
+            transition: transform 0.3s;
+
             &::before {
                 content: "";
                 position: absolute;
@@ -269,39 +340,49 @@ body.skin-fandomdesktop #userProfileApp {
                 mask-repeat: no-repeat;
                 mask-position: center;
             }
+
             &:hover::before {
                 transform: scale(0.9);
             }
         }
     }
+
     :is(.community-page-module .wds-avatar a, .wds-avatar[title]:has(svg > use))::before {
         width: 35px !important;
         height: 35px !important;
     }
+
     .community-page__contributors-modal-list-item .wds-avatar a::before {
-    	content: none !important;
+        content: none !important;
     }
 }
 
 /* Активность */
 body.skin-fandomdesktop {
-    &.mw-special-Contributions, &.mw-special-UserProfileActivity {
-    	 .mw-contributions-user-tools .mw-changeslist-links {
-    		&::before, &::after, & > span::before {
-    			display: none;
-    		}
-    	}
-    	.mw-changeslist-links span::before {
-    		color: var(--pt);
-    	}
+    &.mw-special-Contributions,
+    &.mw-special-UserProfileActivity {
+        .mw-contributions-user-tools .mw-changeslist-links {
+            &::before,
+            &::after,
+            & > span::before {
+                display: none;
+            }
+        }
+
+        .mw-changeslist-links span::before {
+            color: var(--pt);
+        }
+
         :is(.mw-contributions-list li, .mw-pager-navigation-bar) {
             border-radius: var(--br-14);
             padding: 0.6em;
             background-color: var(--p);
+
             &::marker {
                 font-size: 0;
             }
         }
+
         :is(.mw-contributions-user-tools, .UserProfileActivityModeration__links, .UserProfileActivityNavigation__tabs) a {
             padding: 6px;
             text-transform: capitalize;
@@ -309,16 +390,19 @@ body.skin-fandomdesktop {
             margin: 4px;
         }
     }
+
     &.mw-special-UserProfileActivity {
         .UserProfileActivityNavigation {
             display: flex;
             justify-content: center;
             margin: auto;
             width: fit-content;
+
             .UserProfileActivityNavigation__button > .wds-icon {
                 display: none;
             }
         }
+
         #UserProfileActivityContents .Message {
             background-color: var(--p);
             border-radius: var(--br-14);
@@ -329,62 +413,188 @@ body.skin-fandomdesktop {
     }
 }
 
-/* Комментарии/Стена Обсуждения */
+/* Комментарии и Стена Обсуждения */
 .resizable-container :is(#articleComments, #MessageWall) {
-	position: relative;
-	&::before {
-		content: "Добро пожаловать! Не стесняйтесь задавать вопросы и участвовать в их обсуждении,\0aно не забывайте про правила проекта. Если вы заметите нарушение,\0aто обратитесь к одному из Администраторов. Желаем вам приятного времяпрепровождения на Вики!";
-	    display: block;
-	    background-color: rgba(var(--pb--rgb), .7);
-	    border-radius: var(--br-14);
-	    padding: 10px 20px 15px 130px;
-	    margin: 1em auto;
-	    text-align: center;
-	    box-sizing: border-box;
-	    text-wrap: balance;
-	}
-	&::after {
-		content: '';
-	    position: absolute;
-	    background-color: var(--pt);
-	    top: 4px;
-	    left: 30px;
-	    width: 70px;
-	    height: 70px;
-	    mask-repeat: no-repeat;
-	    mask-position: center;
-	    mask-image: var(--mw-i);
-	    -webkit-mask-image: var(--mw-i);
-	}
-	.Message__wrapper, [class^="Comment_wrapper"] {
-		background-color: var(--blur);
-		border-radius: var(--br-14);
-		border: none;
-	}
-	[class^="Comment_wrapper"] {
-		padding-bottom: 2px;
-	}
-	[class^="InlineEntityFormWrapper_inline-entity-form-wrapper"] {
-		background-color: var(--p);
-		border-radius: var(--br-14);
-		border: none;
-	}
-	[class^="PostIndicator"], [class^="post"], .Message__break, .ViewMoreReplies {
-    	border: none !important;
+    position: relative;
+
+    &::before {
+        content: "Добро пожаловать! Не стесняйтесь задавать вопросы и участвовать в их обсуждении,\0aно не забывайте про правила проекта. Если вы заметите нарушение,\0aто обратитесь к одному из Администраторов. Желаем вам приятного времяпрепровождения на Вики!";
+        display: block;
+        background-color: rgba(var(--pb--rgb), 0.7);
+        border-radius: var(--br-14);
+        padding: 10px 20px 15px 130px;
+        margin: 1em auto;
+        text-align: center;
+        box-sizing: border-box;
+        text-wrap: balance;
     }
+
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: var(--pt);
+        top: 4px;
+        left: 30px;
+        width: 70px;
+        height: 70px;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-image: var(--mw-i);
+        -webkit-mask-image: var(--mw-i);
+    }
+
+    [class^="ActionItem_action-item"] {
+        color: var(--s);
+
+        &:hover {
+            color: var(--l);
+            background-color: transparent;
+        }
+    }
+
+    .Message__wrapper,
+    [class^="Comment_wrapper"] {
+        background-color: var(--blur);
+        border-radius: var(--br-14);
+        border: none;
+    }
+
+    [class^="Comment_wrapper"] {
+        padding-bottom: 2px;
+    }
+
+    [class^="InlineEntityFormWrapper_inline-entity-form-wrapper"] {
+        background-color: var(--p);
+        border-radius: var(--br-14);
+        border: none;
+    }
+
+    [class^="PostIndicator"],
+    [class^="post"],
+    .Message__break,
+    .ViewMoreReplies {
+        border: none !important;
+    }
+
     [class^="Reply_reply"][class$="Z0fka"] {
-    	background-color: rgba(var(--l--rgb), 0.1);
-    	border-radius: var(--br-14);
+        background-color: rgba(var(--l--rgb), 0.1);
+        border-radius: var(--br-14);
     }
+
     [class^="ReplyList_top-border"] {
-    	background-color: transparent;
+        background-color: transparent;
     }
+
     :is(.entity-content, .rich-text-editor__content) pre code {
-    	background-color: rgba(var(--pb--rgb), 0.1);
-	    color: var(--pt);
-	    border-radius: var(--br-14);
+        background-color: rgba(var(--pb--rgb), 0.1);
+        color: var(--pt);
+        border-radius: var(--br-14);
     }
+
     [class^="ViewFilter_view-filter"] .wds-dropdown__content {
-    	background-color: var(--p);
+        background-color: var(--p);
     }
+}
+
+/* Редактор комментариев, ответы и порталы */
+#content .message-wall-app .Message__wrapper .Reply,
+[class^="Reply_body"],
+[class^="EditorForm_editor-form"],
+.rich-text-editor__toolbar__icons-container,
+.rich-text-editor__toolbar__icon-group.has-border-left::before {
+    border: none !important;
+}
+
+.entity-content.is-large-content::before,
+:is(.rich-text-editor__toolbar .rich-text-editor__toolbar__icon-tooltip, .hyperlink-modal)::before {
+    display: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :is(.rich-text-editor__toolbar, .rich-text-editor__toolbar.is-expanded) :is(.rich-text-editor__toolbar__icon-controls, .rich-text-editor__toolbar__icon-controls .menu-control, .rich-text-editor__toolbar__icon-wrapper):hover {
+        background-color: transparent;
+        color: var(--l);
+    }
+}
+
+.rich-text-editor__toolbar.is-expanded .rich-text-editor__toolbar__icon-controls {
+    background-color: transparent !important;
+}
+
+:is(.rich-text-editor__toolbar, .rich-text-editor__toolbar.is-expanded) .rich-text-editor__toolbar__icon-controls .menu-control {
+    color: var(--pt);
+}
+
+.rich-text-editor__toolbar .rich-text-editor__toolbar__icon-tooltip,
+.hyperlink-modal {
+    background-color: var(--p) !important;
+    color: var(--s) !important;
+    border-radius: var(--br-14) !important;
+    border-color: var(--s) !important;
+    pointer-events: all !important;
+}
+
+.rich-text-editor__content img {
+    border: none;
+    border-radius: var(--br-14);
+}
+
+[class^="EntityTopBar_details"] {
+    border-bottom: none !important;
+}
+
+#MessageWall .PostIndicator__fold,
+[class^="EntityTopBar_fold"] {
+    border-radius: var(--br-14) 0 0 0;
+}
+
+#fandom-web-editor-portal {
+    .user-suggestions.wds-dropdown__content:not(.is-displayed-above-mention) {
+        border-color: var(--s);
+
+        .wds-list.wds-is-linked li {
+            &:is(:hover, .wds-is-selected) > a:not(.wds-button) {
+                color: var(--s);
+                background-color: transparent;
+            }
+        }
+    }
+
+    .user-suggestions.wds-dropdown__content,
+    .user-suggestions-hint {
+        background-color: var(--p);
+        border-radius: var(--br-14);
+    }
+}
+
+[class^="ArticleCommentsSingleThread_toolbar"] {
+    padding: 2px;
+    color: var(--cC) !important;
+}
+
+[class^="ViewFilter_view-filter"] button,
+.SingleThreadToolbar .wds-button.wds-is-text {
+    padding: 6px !important;
+}
+
+[class^="ViewFilter_view-filter-toggle"] {
+    padding: 8px;
+}
+
+.wds-button:hover [class^="ArticleCommentsSingleThread_toolbar-button-back"] {
+    color: inherit;
+}
+
+[class^="EditorForm_actions"] button {
+    margin: 2px;
+}
+
+.view-filter .view-filter__toggle.wds-button.wds-is-text {
+    color: inherit;
+    padding: 6px;
+}
+
+.NotExistingMessage__button {
+    color: inherit;
+    margin-top: 0;
 }
