@@ -3,58 +3,78 @@
     background: var(--template) center / cover no-repeat fixed transparent;
     border: none;
     border-radius: var(--br-14);
-    .pi-title, .pi-header, .pi-data-label {
+
+    .pi-title,
+    .pi-header,
+    .pi-data-label {
         font-family: var(--font);
         color: var(--pt);
     }
-    .pi-title, .pi-header {
+
+    .pi-title,
+    .pi-header {
         border-image: var(--gb) 10 / 10px / 5px stretch !important;
     }
+
     .pi-title {
         font-size: 20px;
     }
+
     .pi-header {
         font-size: 18px;
         margin: 10px 0 14px;
+
         &:first-child {
             position: relative;
             z-index: 1;
         }
     }
+
     .pi-data-label {
         font-size: 16px;
     }
+
     .pi-data {
         position: relative;
         overflow: visible !important;
         border: none;
     }
+
     .pi-collapse .pi-header:first-child::after {
         margin-top: -4px;
     }
+
     .pi-secondary-background {
         background-color: transparent;
+
         & + .pi-secondary-background {
             border-top: none;
         }
     }
+
     .pi-group {
         &:has([data-source="Видео"]) {
             margin: 4px 0 10px;
         }
+
         .mw-collapsible-toggle {
             position: sticky;
         }
+
         .mw-collapsible-content {
             padding-top: 2em;
         }
+
         [data-source="Аудио"] {
             line-height: 1 !important;
         }
+
         .pi-horizontal-group-item {
-            &.pi-data-label, &.pi-data-value {
+            &.pi-data-label,
+            &.pi-data-value {
                 border: 0;
             }
+
             &.pi-data-value {
                 padding: 6px 0;
             }
@@ -73,25 +93,31 @@
     justify-content: center;
     align-items: center;
     width: fit-content;
+
     .t-tabview__item {
         display: flex;
-    	position: relative;
-    	justify-content: center;
-    	text-align: center;
+        position: relative;
+        justify-content: center;
+        text-align: center;
         font-size: 24px;
         font-weight: bold;
         color: var(--s);
         opacity: 0.5;
-        &:hover, &:has(strong) {
+
+        &:hover,
+        &:has(strong) {
             opacity: 1;
         }
+
         a {
-        	color: inherit;
+            color: inherit;
         }
+
         i {
-        	font-size: 24px;
-			font-weight: bold;
+            font-size: 24px;
+            font-weight: bold;
         }
+
         &::after {
             content: attr(data-title);
             position: absolute;
@@ -110,96 +136,89 @@
             left: 50%;
             transform: translateX(-50%);
         }
+
         &:hover::after {
             display: inline-block;
-            animation: tt .5s ease-out forwards;
+            animation: tt 0.5s ease-out forwards;
             transition: 0.3s;
         }
     }
+
     p {
-    	display: none;
+        display: none;
     }
 }
 
 /* Цитата */
 .t-quote {
-	display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-	margin: 8px;
+    margin: 8px;
     padding: 8px;
     border-radius: 45px;
     background-color: var(--p);
+
     i[class^="fa"] {
-    	color: var(--s);
-		font-size: 2.5rem;
+        color: var(--s);
+        font-size: 2.5rem;
     }
+
     .t-quote__text {
-    	padding: 0 16px;
-		text-align: center;
+        padding: 0 16px;
+        text-align: center;
     }
 }
+
 .t-quote__game {
-	display: flex;
+    display: flex;
     justify-content: space-between;
-	margin: 15px; 
-	padding: 5px; 
-	background-color: var(--p); 
+    margin: 15px;
+    padding: 5px;
+    background-color: var(--p);
     border-image: var(--gb) 10 / 10px / 5px stretch;
+
     .t-quote__game-description {
-		font-size: 19px;
-		font-family: var(--font);
-		color: var(--s);
+        font-size: 19px;
+        font-family: var(--font);
+        color: var(--s);
     }
+
     .t-quote__game-image {
-    	justify-self: end;
+        justify-self: end;
     }
 }
 
 /* Скролл */
 .t-scroll {
-	height: auto;
+    height: auto;
     max-height: 400px;
     overflow: auto;
 }
 
 /* Подсказка */
 .t-prompt {
-	--p-2a: 2px dotted var(--auto);
-	cursor: help;
-	color: var(--auto);
-	border-bottom: var(--p-2a);
-	span[title="В Пустошах"] {
-		--auto: var(--barrens);
-	}
-	span[title="В Глене"] {
-		--auto: var(--glen);
-	}
-	span[title="В Пристанище"] {
-		--auto: var(--refuge);
-	}
-	span[title="Только в пути Солнцестояния"] {
-		--auto: var(--slt);
-	}
-	span[title="В Башне"] {
-		--auto: var(--tower);
-	}
-	span[title="В обновлении Солнцестояние"] {
-		--auto: var(--calamity);
-	}
-	span[title="Концовка Возвращение Солнца"] {
-		--auto: var(--end);
-	}
-	span[title="В Разрушенном доме"] {
-		--auto: var(--basement);
-	}
+    --p-2a: 2px dotted var(--auto);
+    cursor: help;
+    color: var(--auto);
+    border-bottom: var(--p-2a);
+
+    span[title="В Пустошах"] { --auto: var(--barrens); }
+    span[title="В Глене"] { --auto: var(--glen); }
+    span[title="В Пристанище"] { --auto: var(--refuge); }
+    span[title="Только в пути Солнцестояния"] { --auto: var(--slt); }
+    span[title="В Башне"] { --auto: var(--tower); }
+    span[title="В обновлении Солнцестояние"] { --auto: var(--calamity); }
+    span[title="Концовка Возвращение Солнца"] { --auto: var(--end); }
+    span[title="В Разрушенном доме"] { --auto: var(--basement); }
 }
 
 /* Иконка */
 .t-icon {
-	display: inline-block;
-	image img {
-		width: 32px;
-    	height: auto;
-	}
+    display: inline-block;
+
+    .image img {
+        width: 32px;
+        height: auto;
+    }
 }
