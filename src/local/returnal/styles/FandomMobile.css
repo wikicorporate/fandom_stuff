@@ -4,44 +4,36 @@
 /* Шрифты */
 @font-face {
     font-family: "ANMDS WTC";
-    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f3/ANMDS_WTC.woff2/revision/latest?cb=20240817184539&format=original&path-prefix=ru")
-    format("woff2");
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f3/ANMDS_WTC.woff2/revision/latest?cb=20240817184539&format=original&path-prefix=ru") format("woff2");
 }
 
 /* Цвета и переменные */
 :root {
-	/* Шрифты */
-	--font: 'ANMDS WTC', var(--fallback-1);
+    --font: 'ANMDS WTC', var(--fallback-1);
+
+    &:has(.theme-fandommobile-dark) {
+        --p: #061A19;
+        --s: #47BE9D;
+    }
+
+    &:has(.theme-fandommobile-light) {
+        --p: #FDCECE;
+        --s: #201B03;
+    }
 }
 
 /* Тёмная тема */
 body.theme-fandommobile-dark {
-	/* Цвета */
-	--p: #061A19;
-	--s: #47BE9D;
-    /* Блюр */
-	--blur: rgb(16 37 25 / 70%);
-	/* Изображения */
-	--b-main: url(https://static.wikia.nocookie.net/returnal5614/images/0/08/Site-background-dark/revision/latest?cb=20230217151056&format=original&path-prefix=ru);
+    --p: #061A19;
+    --s: #47BE9D;
+    --blur: rgb(16 37 25 / 70%);
+    --b-main: url(https://static.wikia.nocookie.net/returnal5614/images/0/08/Site-background-dark/revision/latest?cb=20230217151056&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandommobile-light {
-	/* Цвета */
     --p: #FDCECE;
     --s: #201B03;
-    /* Блюр */
-	--blur: rgb(249 151 151 / 70%);
-	/* Изображения */
-	--b-main: url(https://static.wikia.nocookie.net/returnal5614/images/b/b5/Site-background-light/revision/latest?cb=20231128100332&format=original&path-prefix=ru);
-}
-
-/* Костыли */
-:root:has(.theme-fandommobile-dark) {
-   	--p: #061A19;
-	--s: #47BE9D;
-}
-:root:has(.theme-fandommobile-light) {
-    --p: #FDCECE;
-    --s: #201B03;
+    --blur: rgb(249 151 151 / 70%);
+    --b-main: url(https://static.wikia.nocookie.net/returnal5614/images/b/b5/Site-background-light/revision/latest?cb=20231128100332&format=original&path-prefix=ru);
 }
