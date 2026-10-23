@@ -2,212 +2,274 @@
 body.skin-fandomdesktop #content #mw-content-text #editform {
     .wikiEditor-ui {
         .wikiEditor-ui-toolbar {
-            &, .sections .section {
+            &,
+            .sections .section {
                 border: none;
                 background-color: transparent;
                 box-shadow: none;
             }
+
             .group {
                 border: none;
+
                 .tool {
-                	background-color: transparent;
-                	&:hover, &:focus, &:active {
-                		color: var(--l);
-                	}
-                	.label::after {
-                		background-color: var(--cC);
-                	}
-                	.menu .options {
-                		background-color: var(--p);
-						box-shadow: none;
-						border-radius: var(--br-14);
-						.option:hover {
-							background-color: transparent;
-							color: var(--l);
-						}
-                	}
-               }
-           }
-           .booklet {
-           		.index {
-           			.current {
-           				background-color: transparent;
-						color: var(--s);
-						font-weight: bold;
-           			}
-           			div:hover {
-           				background-color: transparent;
-						color: var(--s);
-           			}
-           		}
-           		.pages {
-           			background-color: transparent;
-           			.page {
-           				&::before, &::after {
-           					content: none;
-           				}
-           				&.page-table table {
-           					border-collapse: separate;
-	           			}
-	           		}
-	           	}
-	        }
+                    background-color: transparent;
+
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: var(--l);
+                    }
+
+                    .label::after {
+                        background-color: var(--cC);
+                    }
+
+                    .menu .options {
+                        background-color: var(--p);
+                        box-shadow: none;
+                        border-radius: var(--br-14);
+
+                        .option:hover {
+                            background-color: transparent;
+                            color: var(--l);
+                        }
+                    }
+                }
+            }
+
+            .booklet {
+                .index {
+                    .current {
+                        background-color: transparent;
+                        color: var(--s);
+                        font-weight: bold;
+                    }
+
+                    div:hover {
+                        background-color: transparent;
+                        color: var(--s);
+                    }
+                }
+
+                .pages {
+                    background-color: transparent;
+
+                    .page {
+                        &::before,
+                        &::after {
+                            content: none;
+                        }
+
+                        &.page-table table {
+                            border-collapse: separate;
+                        }
+                    }
+                }
+            }
+
             .tabs span.tab a {
                 &:hover {
                     color: var(--l);
                 }
+
                 &.current {
-                    &, &:visited {
+                    &,
+                    &:visited {
                         color: var(--l);
                         background-color: transparent;
                     }
                 }
+
                 &::before {
                     background-color: var(--cC);
                 }
             }
+
             #msupload-select:hover {
-            	background-color: var(--l);
+                background-color: var(--l);
             }
         }
+
         #msupload-div {
             border: none;
             background-color: transparent;
+
             a {
-            	color: var(--l);
-            	&:hover {
-            		color: var(--s);
-            	}
+                color: var(--l);
+
+                &:hover {
+                    color: var(--s);
+                }
             }
+
             #msupload-dropzone {
                 border: none;
             }
+
             #msupload-list .file {
                 background-color: transparent;
+
                 .file-load canvas {
                     border-radius: var(--br-14);
                 }
+
                 .file-size {
                     color: var(--pt);
                 }
             }
+
             #msupload-bottom {
                 border: none;
+
                 a:hover {
                     color: var(--l);
                 }
             }
         }
+
         div.cm-editor {
-        	.cm-line {
-        		line-height: 1.5;
-        	}
-        	.cm-gutters {
-        		border: none;
-            	background-color: transparent;
-            	.cm-lineNumbers {
-            		color: var(--pt);
-            		.cm-gutterElement:hover {
-            			color: var(--l);
-            		}
-            	}
-        	}
-        	.cm-panels {
-        		background-color: var(--blur);
-    			border-radius: var(--br-14);
-    			border: none;
-    			.cm-mw-panel {
-    				border: none;
-    				.cdx-text-input > input {
-    					background-color: var(--p);
-					    border: none;
-					    border-radius: var(--br-14);
-					    &::placeholder {
-					    	color: var(--pt);
-					    }
-    				}
-    				.cm-mw-find-results {
-    					color: var(--pt);
-    				}
-    				.cdx-button, .cdx-toggle-button {
-    					& > span {
-    						background-color: var(--cC);	
-    					}
-    				}
-    				:is(.cdx-button-group, .cdx-toggle-button-group) button {
-    					margin: 0 4px 0 2px;
-    					&[data-checked="true"][aria-pressed="true"] {
-    						color: var(--cm-p) !important;
-    						background-color: var(--s) !important;
-    					}
-    					&[data-checked="false"][aria-pressed="false"] {
-    						color: var(--s) !important;
-    						background-color: var(--cm-p) !important;
-    					}
-    				}
-    			}
-        	}
+            .cm-line {
+                line-height: 1.5;
+            }
+
+            .cm-gutters {
+                border: none;
+                background-color: transparent;
+
+                .cm-lineNumbers {
+                    color: var(--pt);
+
+                    .cm-gutterElement:hover {
+                        color: var(--l);
+                    }
+                }
+            }
+
+            .cm-panels {
+                background-color: var(--blur);
+                border-radius: var(--br-14);
+                border: none;
+
+                .cm-mw-panel {
+                    border: none;
+
+                    .cdx-text-input > input {
+                        background-color: var(--p);
+                        border: none;
+                        border-radius: var(--br-14);
+
+                        &::placeholder {
+                            color: var(--pt);
+                        }
+                    }
+
+                    .cm-mw-find-results {
+                        color: var(--pt);
+                    }
+
+                    .cdx-button,
+                    .cdx-toggle-button {
+                        & > span {
+                            background-color: var(--cC);
+                        }
+                    }
+
+                    :is(.cdx-button-group, .cdx-toggle-button-group) button {
+                        margin: 0 4px 0 2px;
+
+                        &[data-checked="true"][aria-pressed="true"] {
+                            color: var(--cm-p) !important;
+                            background-color: var(--s) !important;
+                        }
+
+                        &[data-checked="false"][aria-pressed="false"] {
+                            color: var(--s) !important;
+                            background-color: var(--cm-p) !important;
+                        }
+                    }
+                }
+            }
         }
+
         .wikiEditor-ui-bottom .wikiEditor-ui-text .wikiEditor-ui-linkSuggest {
             .oo-ui-popupWidget-popup {
                 background-color: var(--p);
                 border-radius: var(--br-14);
+
                 .wikiEditor-ui-linkSuggest-suggestion {
-                    &.oo-ui-optionWidget-highlighted, &:hover {
+                    &.oo-ui-optionWidget-highlighted,
+                    &:hover {
                         background-color: transparent;
                     }
                 }
             }
+
             .oo-ui-popupWidget-anchor {
-                &::before, &::after {
+                &::before,
+                &::after {
                     display: none;
                 }
             }
         }
+
         .wikiEditor-ui-view.wikiEditor-ui-view-wikitext {
             border: none;
         }
-        .codeEditor-status, .ext-WikiEditor-ResizingDragBar {
-        	background-color: transparent;
-        	border: none;
-        	.codeEditor-status-message {
-        		border: none;
-        	}
+
+        .codeEditor-status,
+        .ext-WikiEditor-ResizingDragBar {
+            background-color: transparent;
+            border: none;
+
+            .codeEditor-status-message {
+                border: none;
+            }
         }
     }
+
     div.cm-editor {
-	    .cm-foldPlaceholder, .cm-tooltip {
-		    border-radius: var(--br-14);
-			background-color: var(--p);
-			color: var(--s);
-			font-size: 18px;
-			font-weight: bold;
-			padding: 0 3px;
-    	}
-		.cm-selectionBackground, .cm-line span::selection {
-			background-color: var(--cm-p) !important;
-		}
-	}
-	.cm-tooltip-autocomplete ul li[aria-selected] {
-		background-color: transparent;
-		color: var(--pt);
-		&:hover {
-			color: var(--l);
-		}
-		.cm-completionMatchedText {
-			text-decoration: none;
-		}
+        .cm-foldPlaceholder,
+        .cm-tooltip {
+            border-radius: var(--br-14);
+            background-color: var(--p);
+            color: var(--s);
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0 3px;
+        }
+
+        .cm-selectionBackground,
+        .cm-line span::selection {
+            background-color: var(--cm-p) !important;
+        }
     }
+
+    .cm-tooltip-autocomplete ul li[aria-selected] {
+        background-color: transparent;
+        color: var(--pt);
+
+        &:hover {
+            color: var(--l);
+        }
+
+        .cm-completionMatchedText {
+            text-decoration: none;
+        }
+    }
+
     .editOptions {
         border: none;
         background-color: transparent;
     }
-    .mw-scribunto-message, #mw-scribunto-input {
-    	color: var(--pt);
-		border: none;
-		border-radius: var(--br-14);
-		background-color: var(--blur);
-		padding: 6px;
+
+    .mw-scribunto-message,
+    #mw-scribunto-input {
+        color: var(--pt);
+        border: none;
+        border-radius: var(--br-14);
+        background-color: var(--blur);
+        padding: 6px;
     }
 }
 
@@ -216,57 +278,74 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .oo-ui-toolbar-bar {
         background-color: transparent;
         border: none;
+
         .oo-ui-toolGroup {
             border: none;
         }
+
         .oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle {
-            &, &:hover {
+            &,
+            &:hover {
                 color: var(--pt);
                 background-color: transparent;
             }
         }
+
         :is(.oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle, .oo-ui-tool .oo-ui-tool-link):is(:hover, :focus) {
             color: var(--l);
             background-color: transparent;
         }
-		.oo-ui-popupToolGroup-tools {
-			background-color: var(--p);
-			border-radius: var(--br-14);
-			box-shadow: none;
-			.oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active .oo-ui-tool-link {
-				background-color: transparent;
-			}
-		}
+
+        .oo-ui-popupToolGroup-tools {
+            background-color: var(--p);
+            border-radius: var(--br-14);
+            box-shadow: none;
+
+            .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active .oo-ui-tool-link {
+                background-color: transparent;
+            }
+        }
     }
 }
+
 .ooui-theme-fandomooui {
-		.ve-ce-focusableNode-highlight, .ve-ui-summaryPanel, .ve-ui-summaryPanel-copyrightWarningFooter {
+    .ve-ce-focusableNode-highlight,
+    .ve-ui-summaryPanel,
+    .ve-ui-summaryPanel-copyrightWarningFooter {
         background-color: transparent;
         box-shadow: none;
     }
-	.ve-ui-summaryPanel::before {
-		border: none;
-	}
+
+    .ve-ui-summaryPanel::before {
+        border: none;
+    }
 }
+
 .ve-fd-header :is(#ve-ui-localNavSwitchButtonWidget-button, #ve-ui-modeSwitchPopupButtonWidget-button, #ve-ui-pageActionsPopupButtonWidget-button) {
-     &:hover, &:focus {
-         background-color: transparent;
-         color: var(--s);
+    &:hover,
+    &:focus {
+        background-color: transparent;
+        color: var(--s);
     }
-     .oo-ui-icon-more {
-         background-color: var(--cC);
+
+    .oo-ui-icon-more {
+        background-color: var(--cC);
     }
 }
+
 :is(.ve-ui-modeSwitchPopupButtonWidget, .ve-ui-pageActionsPopupButtonWidget) :is(.oo-ui-buttonWidget, :is(.ve-ui-pageActionsPopupButtonWidget-popup, .ve-ui-modeSwitchPopupButtonWidget-popup, .ve-ui-pageToolsPopupTool-popup) .oo-ui-buttonWidget):hover {
-	background-color: transparent;
+    background-color: transparent;
 }
+
 .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor {
-	&::before, &::after {
-		display: none;
-	}
+    &::before,
+    &::after {
+        display: none;
+    }
 }
+
 .oo-ui-popupWidget-body.oo-ui-clippableElement-clippable {
-	width: max-content !important;
+    width: max-content !important;
 }
 
 /* Панель быстрой вставки */
@@ -277,28 +356,33 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     overflow-y: hidden;
     height: 58px;
     width: 100%;
+
     .edittools-title {
-    	text-align: center;
-	    padding: 5px;
-	    margin: 7px;
-	    font-weight: bold;
+        text-align: center;
+        padding: 5px;
+        margin: 7px;
+        font-weight: bold;
     }
+
     a {
-    	border-radius: var(--br-14);
-	    padding: 10px;
-	    line-height: 1;
+        border-radius: var(--br-14);
+        padding: 10px;
+        line-height: 1;
     }
+
     th {
-    	border-radius: var(--br-14);
-	    padding-right: 10px;
-	    background-color: var(--p);
+        border-radius: var(--br-14);
+        padding-right: 10px;
+        background-color: var(--p);
     }
+
     td {
-    	border-radius: var(--br-14);
-    	background-color: var(--p);
+        border-radius: var(--br-14);
+        background-color: var(--p);
     }
+
     .mw-charinsert-item {
-    	text-align: left;
+        text-align: left;
     }
 }
 
@@ -307,143 +391,195 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     background-color: transparent;
     border: none;
 }
+
 .mw-content-ltr {
     &:is(.mw-highlight-lines, .content .mw-highlight-lines) pre {
         box-shadow: none;
     }
 }
+
 .mw-highlight :is(.hll a, span).linenos {
     color: var(--pt);
+
     &:hover {
         color: var(--l);
     }
 }
 
 /* Редактор кода */
-.ace-tm, .ace-twilight, .ace_editor, .wikiEditor-ui {
-    &, .ace_gutter {
+.ace-tm,
+.ace-twilight,
+.ace_editor,
+.wikiEditor-ui {
+    &,
+    .ace_gutter {
         background-color: transparent;
         color: var(--pt);
     }
+
     .ace_gutter-cell {
-    	color: var(--pt);
-    	&:hover {
-    		color: var(--l);
-    	}
+        color: var(--pt);
+
+        &:hover {
+            color: var(--l);
+        }
     }
+
     .ace_gutter-active-line {
-    	background-color: rgba(var(--su--rgb), 0.2);
+        background-color: rgba(var(--su--rgb), 0.2);
     }
+
     .ace_tooltip {
-    	background-color: var(--p);
-	    border: var(--bs-2s);
-	    border-radius: var(--br-14);
-	    box-shadow: none;
-	    color: var(--pt);
-	    pointer-events: all;	
+        background-color: var(--p);
+        border: var(--bs-2s);
+        border-radius: var(--br-14);
+        box-shadow: none;
+        color: var(--pt);
+        pointer-events: all;
     }
+
     .ace_cursor {
-    	color: var(--pt);
-    	animation: none !important;
+        color: var(--pt);
+        animation: none !important;
     }
-    .cm-focused > .cm-scroller > .cm-cursorLayer, .cm-cursorLayer {
-		animation: none !important;
-	}
-	.ace_search {
-		background-color: var(--blur);
-		border: none;
-		border-radius: var(--br-14);
-		.ace_search_field {
-			background-color: var(--p);
-			color: var(--pt);
-			border: none;
-			border-radius: var(--br-14);
-			&::-webkit-input-placeholder {
-				color: var(--pt);
-				opacity: .7;
-			}
-		}
-		.ace_search_form.ace_nomatch {
-			outline: 1px solid var(--al);
-			border-radius: var(--br-14);
-		}
-		:is(.ace_searchbtn.prev, .ace_searchbtn.next)::after {
-			border-color: var(--cC);
-		}
-		.ace_searchbtn_close {
-			background: none;
-			background-color: var(--pt);
-			mask: var(--x);
-			-webkit-mask: var(--x);
-			mask-position: center;
-			mask-size: 100%;
-			mask-repeat: no-repeat;
-			&:hover {
-				background-color: var(--s);
-			}
-		}
-		.ace_search_counter {
-			color: var(--pt);
-		}
-		.ace_button {
-			opacity: 1;
-		}
-	}
-	.ace_indent-guide, .ace_print-margin {
-		background: none;
-	}
-	.ace_line .ace_fold  {
-		background-color: var(--p);
-	}
-	.ace_comment {
-		color: var(--pt);
-		opacity: .7;
-	}
-	.ace_variable, .ace_identifier, .ace_meta.ace_tag {
-		color: var(--pygments-nc);
-	}
-	.ace_paren {
-		color: var(--pygments-p);
-	}
-	.ace_line, .ace_constant {
-		color: var(--pygments-nt);
-	}
-	:is(.ace_keyword, .ace_support, .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open)) {
-		color: var(--pygments-k);
-	}
-	.ace_list, .ace_markup.ace_list, .ace_storage, .ace_quasi, .ace_string.ace_start, .ace_string.ace_end {
-		color: var(--pygments-kd);
-	}
-	.ace_punctuation {
-		color: var(--pygments-nn);
-	}
-	.ace_support.ace_constant {
-		color: var(--pygments-kc);
-	}
-	.ace_support.ace_function, .ace_text.ace_xml {
-		color: var(--pygments-mh);
-	}
-	.ace_string {
-		color: var(--pygments-s1);
-	}
-	.ace_variable.ace_language {
-		color: var(--pygments-cp);
-	}
-	.ace_marker-layer, .cm-editor {
-		.ace_active-line, .cm-activeLine {
-			background-color: rgba(var(--su--rgb), 0.2);
-		}
-		.ace_selected-word {
-			border: none;
-			background-color: rgba(var(--pb--rgb), 0.5);
-		}
-		.ace_selection {
-			background-color: rgba(var(--al--rgb), 0.2);
-		}
-		.ace_bracket {
-			border: 1px solid rgba(var(--w--rgb), 0.7);
-		}
-	}
+
+    .cm-focused > .cm-scroller > .cm-cursorLayer,
+    .cm-cursorLayer {
+        animation: none !important;
+    }
+
+    .ace_search {
+        background-color: var(--blur);
+        border: none;
+        border-radius: var(--br-14);
+
+        .ace_search_field {
+            background-color: var(--p);
+            color: var(--pt);
+            border: none;
+            border-radius: var(--br-14);
+
+            &::-webkit-input-placeholder {
+                color: var(--pt);
+                opacity: 0.7;
+            }
+        }
+
+        .ace_search_form.ace_nomatch {
+            outline: 1px solid var(--al);
+            border-radius: var(--br-14);
+        }
+
+        :is(.ace_searchbtn.prev, .ace_searchbtn.next)::after {
+            border-color: var(--cC);
+        }
+
+        .ace_searchbtn_close {
+            background: none;
+            background-color: var(--pt);
+            mask: var(--x);
+            -webkit-mask: var(--x);
+            mask-position: center;
+            mask-size: 100%;
+            mask-repeat: no-repeat;
+
+            &:hover {
+                background-color: var(--s);
+            }
+        }
+
+        .ace_search_counter {
+            color: var(--pt);
+        }
+
+        .ace_button {
+            opacity: 1;
+        }
+    }
+
+    .ace_indent-guide,
+    .ace_print-margin {
+        background: none;
+    }
+
+    .ace_line .ace_fold {
+        background-color: var(--p);
+    }
+
+    .ace_comment {
+        color: var(--pt);
+        opacity: 0.7;
+    }
+
+    .ace_variable,
+    .ace_identifier,
+    .ace_meta.ace_tag {
+        color: var(--pygments-nc);
+    }
+
+    .ace_paren {
+        color: var(--pygments-p);
+    }
+
+    .ace_line,
+    .ace_constant {
+        color: var(--pygments-nt);
+    }
+
+    :is(.ace_keyword, .ace_support, .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open)) {
+        color: var(--pygments-k);
+    }
+
+    .ace_list,
+    .ace_markup.ace_list,
+    .ace_storage,
+    .ace_quasi,
+    .ace_string.ace_start,
+    .ace_string.ace_end {
+        color: var(--pygments-kd);
+    }
+
+    .ace_punctuation {
+        color: var(--pygments-nn);
+    }
+
+    .ace_support.ace_constant {
+        color: var(--pygments-kc);
+    }
+
+    .ace_support.ace_function,
+    .ace_text.ace_xml {
+        color: var(--pygments-mh);
+    }
+
+    .ace_string {
+        color: var(--pygments-s1);
+    }
+
+    .ace_variable.ace_language {
+        color: var(--pygments-cp);
+    }
+
+    .ace_marker-layer,
+    .cm-editor {
+        .ace_active-line,
+        .cm-activeLine {
+            background-color: rgba(var(--su--rgb), 0.2);
+        }
+
+        .ace_selected-word {
+            border: none;
+            background-color: rgba(var(--pb--rgb), 0.5);
+        }
+
+        .ace_selection {
+            background-color: rgba(var(--al--rgb), 0.2);
+        }
+
+        .ace_bracket {
+            border: 1px solid rgba(var(--w--rgb), 0.7);
+        }
+    }
 }
 
 /* Подсветка синтаксиса */
@@ -460,6 +596,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --parser: #601f01;
     --format: #0f5807;
 }
+
 :is(.theme-fandomdesktop-light, .theme-fandommobile-light) :is(.CodeMirror, .cm-editor) {
     --template: #d7c693;
     --link: #9dc3dd;
@@ -473,386 +610,304 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --parser: #ff9c70;
     --format: #81ff93;
 }
+
 :is(.skin-fandomdesktop, .skin-fandommobile) .cm-content .cm-line {
-	span {
-		color: var(--pt) !important;
-	}
+    span {
+        color: var(--pt) !important;
+    }
+
     [class^="cm-mw-template"] {
         background-color: var(--template);
     }
-    .cm-mw-link-bracket, .cm-mw-link-pagename, .cm-mw-link-delimiter, .cm-mw-link-text, .cm-mw-link-ground, .cm-mw-extlink, .cm-mw-ext-link-ground {
+
+    .cm-mw-link-bracket,
+    .cm-mw-link-pagename,
+    .cm-mw-link-delimiter,
+    .cm-mw-link-text,
+    .cm-mw-link-ground,
+    .cm-mw-extlink,
+    .cm-mw-ext-link-ground {
         background-color: var(--link);
     }
+
     [class^="cm-mw-table"] {
         background-color: var(--table);
     }
-    [class^="cm-mw-apostrophes"], .cm-strong, .cm-em, .cm-mw-section-header {
+
+    [class^="cm-mw-apostrophes"],
+    .cm-strong,
+    .cm-em,
+    .cm-mw-section-header {
         background-color: var(--font);
     }
-    .cm-mw-htmltag-name, .cm-mw-htmltag-bracket, [class^="cm-mw-exttag"]:is([class$="bracket"], [class$="name"]), .cm-mw-tag-pre, [class$="ref"], [class$="gallery"] {
+
+    .cm-mw-htmltag-name,
+    .cm-mw-htmltag-bracket,
+    [class^="cm-mw-exttag"]:is([class$="bracket"], [class$="name"]),
+    .cm-mw-tag-pre,
+    [class$="ref"],
+    [class$="gallery"] {
         background-color: var(--tag);
     }
+
     .cm-mw-exttag {
-    	background-color: transparent;
+        background-color: transparent;
     }
+
     .cm-mw-comment {
         background-color: var(--comment);
     }
+
     .cm-mw-list {
         background-color: var(--list);
     }
+
     .cm-mw-error {
         background-color: var(--error);
     }
-    .cm-mw-doubleUnderscore, .cm-mw-double-underscore, .cm-mw-signature, .cm-mw-hr {
+
+    .cm-mw-doubleUnderscore,
+    .cm-mw-double-underscore,
+    .cm-mw-signature,
+    .cm-mw-hr {
         background-color: var(--underscore);
     }
-    .cm-matchingBracket, .cm-mw-matchingbracket {
+
+    .cm-matchingBracket,
+    .cm-mw-matchingbracket {
         background-color: var(--p) !important;
         box-shadow: none !important;
         border: none !important;
         font-weight: inherit !important;
     }
-    .cm-mw-parserfunction-bracket, .cm-mw-parserfunction-delimiter, .cm-mw-parserfunction-name {
-    	background-color: var(--parser) !important;
+
+    .cm-mw-parserfunction-bracket,
+    .cm-mw-parserfunction-delimiter,
+    .cm-mw-parserfunction-name {
+        background-color: var(--parser) !important;
     }
+
     .cm-mw-skipformatting {
-    	background-color: var(--format);
+        background-color: var(--format);
     }
 }
+
 :is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) :is(.mw-highlight, .wikiEditor-ui .ace_content) {
-	--pygments-err: #ff3f54;
-	--pygments-g: #db218a;
-	--pygments-k: #859900;
-	--pygments-n: #6c71c4;
-	--pygments-o: #859900;
-	--pygments-x: #cb4b16;
-	--pygments-p: #268bd2;
-	--pygments-cm: #586e75;
-	--pygments-cp: #dc322f;
-	--pygments-cs: #859900;
-	--pygments-gd: #2aa198;
-	--pygments-ge: #db218a;
-	--pygments-gr: #dc322f;
-	--pygments-gh: #cb4b16;
-	--pygments-gi: #859900;
-	--pygments-go: #db218a;
-	--pygments-gp: #db218a;
-	--pygments-gs: #db218a;
-	--pygments-gu: #cb4b16;
-	--pygments-gt: #db218a;
-	--pygments-kc: #268bd2;
-	--pygments-kd: #2aa198;
-	--pygments-kn: #859900;
-	--pygments-kp: #859900;
-	--pygments-kr: #268bd2;
-	--pygments-kt: #859900;
-	--pygments-ld: #db218a;
-	--pygments-m: #2aa198;
-	--pygments-s: #2aa198;
-	--pygments-na: #db218a;
-	--pygments-nb: #b58900;
-	--pygments-nc: #6c71c4;
-	--pygments-no: #cb4b16;
-	--pygments-nd: #268bd2;
-	--pygments-ni: #cb4b16;
-	--pygments-ne: #cb4b16;
-	--pygments-nf: #2aa198;
-	--pygments-nl: #db218a;
-	--pygments-nn: #db218a;
-	--pygments-nx: #6c71c4;
-	--pygments-py: #db218a;
-	--pygments-nt: #268bd2;
-	--pygments-nv: #268bd2;
-	--pygments-ow: #859900;
-	--pygments-w: #db218a;
-	--pygments-mf: #2aa198;
-	--pygments-mh: #2aa198;
-	--pygments-mi: #2aa198;
-	--pygments-mo: #2aa198;
-	--pygments-sb: #afa53e;
-	--pygments-sc: #2aa198;
-	--pygments-sd: #db218a;
-	--pygments-s2: #cc4646;
-	--pygments-se: #cb4b16;
-	--pygments-sh: #db218a;
-	--pygments-si: #2aa198;
-	--pygments-sx: #2aa198;
-	--pygments-sr: #dc322f;
-	--pygments-s1: #d03737;
-	--pygments-ss: #2aa198;
-	--pygments-bp: #268bd2;
-	--pygments-vc: #268bd2;
-	--pygments-vg: #268bd2;
-	--pygments-vi: #268bd2;
-	--pygments-il: #2aa198;
+    --pygments-err: #ff3f54;
+    --pygments-g: #db218a;
+    --pygments-k: #859900;
+    --pygments-n: #6c71c4;
+    --pygments-o: #859900;
+    --pygments-x: #cb4b16;
+    --pygments-p: #268bd2;
+    --pygments-cm: #586e75;
+    --pygments-cp: #dc322f;
+    --pygments-cs: #859900;
+    --pygments-gd: #2aa198;
+    --pygments-ge: #db218a;
+    --pygments-gr: #dc322f;
+    --pygments-gh: #cb4b16;
+    --pygments-gi: #859900;
+    --pygments-go: #db218a;
+    --pygments-gp: #db218a;
+    --pygments-gs: #db218a;
+    --pygments-gu: #cb4b16;
+    --pygments-gt: #db218a;
+    --pygments-kc: #268bd2;
+    --pygments-kd: #2aa198;
+    --pygments-kn: #859900;
+    --pygments-kp: #859900;
+    --pygments-kr: #268bd2;
+    --pygments-kt: #859900;
+    --pygments-ld: #db218a;
+    --pygments-m: #2aa198;
+    --pygments-s: #2aa198;
+    --pygments-na: #db218a;
+    --pygments-nb: #b58900;
+    --pygments-nc: #6c71c4;
+    --pygments-no: #cb4b16;
+    --pygments-nd: #268bd2;
+    --pygments-ni: #cb4b16;
+    --pygments-ne: #cb4b16;
+    --pygments-nf: #2aa198;
+    --pygments-nl: #db218a;
+    --pygments-nn: #db218a;
+    --pygments-nx: #6c71c4;
+    --pygments-py: #db218a;
+    --pygments-nt: #268bd2;
+    --pygments-nv: #268bd2;
+    --pygments-ow: #859900;
+    --pygments-w: #db218a;
+    --pygments-mf: #2aa198;
+    --pygments-mh: #2aa198;
+    --pygments-mi: #2aa198;
+    --pygments-mo: #2aa198;
+    --pygments-sb: #afa53e;
+    --pygments-sc: #2aa198;
+    --pygments-sd: #db218a;
+    --pygments-s2: #cc4646;
+    --pygments-se: #cb4b16;
+    --pygments-sh: #db218a;
+    --pygments-si: #2aa198;
+    --pygments-sx: #2aa198;
+    --pygments-sr: #dc322f;
+    --pygments-s1: #d03737;
+    --pygments-ss: #2aa198;
+    --pygments-bp: #268bd2;
+    --pygments-vc: #268bd2;
+    --pygments-vg: #268bd2;
+    --pygments-vi: #268bd2;
+    --pygments-il: #2aa198;
 }
+
 :is(.theme-fandomdesktop-light, .theme-fandommobile-light) :is(.mw-highlight, .wikiEditor-ui .ace_content) {
-	--pygments-err: #9300cf;
-	--pygments-g: #586e75;
-	--pygments-k: #505a0a;
-	--pygments-n: #586e75;
-	--pygments-o: #859900;
-	--pygments-x: #cb4b16;
-	--pygments-p: #231d8c;
-	--pygments-cm: #93a1a1;
-	--pygments-cp: #859900;
-	--pygments-cs: #859900;
-	--pygments-gd: #2aa198;
-	--pygments-ge: #586e75;
-	--pygments-gr: #dc322f;
-	--pygments-gh: #cb4b16;
-	--pygments-gi: #859900;
-	--pygments-go: #586e75;
-	--pygments-gp: #586e75;
-	--pygments-gs: #586e75;
-	--pygments-gu: #cb4b16;
-	--pygments-gt: #586e75;
-	--pygments-kc: #9d3a11;
-	--pygments-kd: #268bd2;
-	--pygments-kn: #859900;
-	--pygments-kp: #859900;
-	--pygments-kr: #268bd2;
-	--pygments-kt: #800200;
-	--pygments-ld: #586e75;
-	--pygments-m: #2aa198;
-	--pygments-s: #2aa198;
-	--pygments-na: #586e75;
-	--pygments-nb: #B58900;
-	--pygments-nc: #145d8f;
-	--pygments-no: #cb4b16;
-	--pygments-nd: #268bd2;
-	--pygments-ni: #cb4b16;
-	--pygments-ne: #cb4b16;
-	--pygments-nf: #1c6aa1;
-	--pygments-nl: #586e75;
-	--pygments-nn: #d28119;
-	--pygments-nx: #586e75;
-	--pygments-py: #586e75;
-	--pygments-nt: #268bd2;
-	--pygments-nv: #268bd2;
-	--pygments-ow: #859900;
-	--pygments-w: #586e75;
-	--pygments-mf: #2aa198;
-	--pygments-mh: #0a635c;
-	--pygments-mi: #2aa198;
-	--pygments-mo: #2aa198;
-	--pygments-sb: #93a1a1;
-	--pygments-sc: #2aa198;
-	--pygments-sd: #586e75;
-	--pygments-s2: #2aa198;
-	--pygments-se: #cb4b16;
-	--pygments-sh: #586e75;
-	--pygments-si: #2aa198;
-	--pygments-sx: #2aa198;
-	--pygments-sr: #dc322f;
-	--pygments-s1: #2aa198;
-	--pygments-ss: #2aa198;
-	--pygments-bp: #268bd2;
-	--pygments-vc: #268bd2;
-	--pygments-vg: #268bd2;
-	--pygments-vi: #268bd2;
-	--pygments-il: #2aa198;	
-}  
-.mw-highlight {
-	background-color: transparent;
-	.c, .c1, .cm {
-		color: var(--pt);
-		opacity: .7;
-	}
-	.err {
-		color: var(--pygments-err);
-	}
-	.p {
-		color: var(--pygments-p);
-	}
-	.py {
-		color: var(--pygments-py);
-	}
-	.nx {
-		color: var(--pygments-nx);
-	}
-	.n {
-		color: var(--pygments-n);
-	}
-	.g {
-		color: var(--pygments-g);
-	}
-	.k {
-		color: var(--pygments-k);
-	}
-	.o {
-		color: var(--pygments-o);
-	}
-	.x {
-		color: var(--pygments-x);
-	}
-	.cp {
-		color: var(--pygments-cp);
-	}
-	.cs {
-		color: var(--pygments-cs);
-	}
-	.gd {
-		color: var(--pygments-gd);
-	}
-	.ge {
-		color: var(--pygments-ge);
-	}
-	.gr {
-		color: var(--pygments-gr);
-	}
-	.gh {
-		color: var(--pygments-gh);
-	}
-	.gi {
-		color: var(--pygments-gi);
-	}
-	.go {
-		color: var(--pygments-go);
-	}
-	.gp {
-		color: var(--pygments-gp);
-	}
-	.gs {
-		color: var(--pygments-gs);
-	}
-	.gu {
-		color: var(--pygments-gu);
-	}
-	.gt {
-		color: var(--pygments-gt);
-	}
-	.kc {
-		color: var(--pygments-kc);
-	}
-	.kd {
-		color: var(--pygments-kd);
-	}
-	.kn {
-		color: var(--pygments-kn);
-	}
-	.kp {
-		color: var(--pygments-kp);
-	}
-	.kr {
-		color: var(--pygments-kr);
-	}
-	.kt {
-		color: var(--pygments-kt);
-	}
-	.ld {
-		color: var(--pygments-ld);
-	}
-	.m {
-		color: var(--pygments-m);
-	}
-	.s {
-		color: var(--pygments-s);
-	}
-	.na {
-		color: var(--pygments-na);
-	}
-	.nb {
-		color: var(--pygments-nb);
-	}
-	.nc {
-		color: var(--pygments-nc);
-	}
-	.no {
-		color: var(--pygments-no);
-	}
-	.nd {
-		color: var(--pygments-nd);
-	}
-	.ni {
-		color: var(--pygments-ni);
-	}
-	.ne {
-		color: var(--pygments-ne);
-	}
-	.nf {
-		color: var(--pygments-nf);
-	}
-	.nl {
-		color: var(--pygments-nl);
-	}
-	.nn {
-		color: var(--pygments-nn);
-	}
-	.nt {
-		color: var(--pygments-nt);
-	}
-	.nv {
-		color: var(--pygments-nv);
-	}
-	.ow {
-		color: var(--pygments-ow);
-	}
-	.w {
-		color: var(--pygments-w);
-	}
-	.mf {
-		color: var(--pygments-mf);
-	}
-	.mh {
-		color: var(--pygments-mh);
-	}
-	.mi {
-		color: var(--pygments-mi);
-	}
-	.mo {
-		color: var(--pygments-mo);
-	}
-	.sb {
-		color: var(--pygments-sb);
-	}
-	.sc {
-		color: var(--pygments-sc);
-	}
-	.sd {
-		color: var(--pygments-sd);
-	}
-	.s2 {
-		color: var(--pygments-s2);
-	}
-	.se {
-		color: var(--pygments-se);
-	}
-	.sh {
-		color: var(--pygments-sh);
-	}
-	.si {
-		color: var(--pygments-si);
-	}
-	.sx {
-		color: var(--pygments-sx);
-	}
-	.sr {
-		color: var(--pygments-sr);
-	}
-	.s1 {
-		color: var(--pygments-s1);
-	}
-	.ss {
-		color: var(--pygments-ss);
-	}
-	.bp {
-		color: var(--pygments-bp);
-	}
-	.vc {
-		color: var(--pygments-vc);
-	}
-	.vg {
-		color: var(--pygments-vg);
-	}
-	.vi {
-		color: var(--pygments-vi);
-	}
-	.il {
-		color: var(--pygments-il);
-	}
-	.hll {
-		background-color: rgba(var(--w--rgb), 0.2);
-	}
+    --pygments-err: #9300cf;
+    --pygments-g: #586e75;
+    --pygments-k: #505a0a;
+    --pygments-n: #586e75;
+    --pygments-o: #859900;
+    --pygments-x: #cb4b16;
+    --pygments-p: #231d8c;
+    --pygments-cm: #93a1a1;
+    --pygments-cp: #859900;
+    --pygments-cs: #859900;
+    --pygments-gd: #2aa198;
+    --pygments-ge: #586e75;
+    --pygments-gr: #dc322f;
+    --pygments-gh: #cb4b16;
+    --pygments-gi: #859900;
+    --pygments-go: #586e75;
+    --pygments-gp: #586e75;
+    --pygments-gs: #586e75;
+    --pygments-gu: #cb4b16;
+    --pygments-gt: #586e75;
+    --pygments-kc: #9d3a11;
+    --pygments-kd: #268bd2;
+    --pygments-kn: #859900;
+    --pygments-kp: #859900;
+    --pygments-kr: #268bd2;
+    --pygments-kt: #800200;
+    --pygments-ld: #586e75;
+    --pygments-m: #2aa198;
+    --pygments-s: #2aa198;
+    --pygments-na: #586e75;
+    --pygments-nb: #b58900;
+    --pygments-nc: #145d8f;
+    --pygments-no: #cb4b16;
+    --pygments-nd: #268bd2;
+    --pygments-ni: #cb4b16;
+    --pygments-ne: #cb4b16;
+    --pygments-nf: #1c6aa1;
+    --pygments-nl: #586e75;
+    --pygments-nn: #d28119;
+    --pygments-nx: #586e75;
+    --pygments-py: #586e75;
+    --pygments-nt: #268bd2;
+    --pygments-nv: #268bd2;
+    --pygments-ow: #859900;
+    --pygments-w: #586e75;
+    --pygments-mf: #2aa198;
+    --pygments-mh: #0a635c;
+    --pygments-mi: #2aa198;
+    --pygments-mo: #2aa198;
+    --pygments-sb: #93a1a1;
+    --pygments-sc: #2aa198;
+    --pygments-sd: #586e75;
+    --pygments-s2: #2aa198;
+    --pygments-se: #cb4b16;
+    --pygments-sh: #586e75;
+    --pygments-si: #2aa198;
+    --pygments-sx: #2aa198;
+    --pygments-sr: #dc322f;
+    --pygments-s1: #2aa198;
+    --pygments-ss: #2aa198;
+    --pygments-bp: #268bd2;
+    --pygments-vc: #268bd2;
+    --pygments-vg: #268bd2;
+    --pygments-vi: #268bd2;
+    --pygments-il: #2aa198;
 }
+
+.mw-highlight {
+    background-color: transparent;
+
+    .c, .c1, .cm { color: var(--pt); opacity: 0.7; }
+    .err { color: var(--pygments-err); }
+    .p { color: var(--pygments-p); }
+    .py { color: var(--pygments-py); }
+    .nx { color: var(--pygments-nx); }
+    .n { color: var(--pygments-n); }
+    .g { color: var(--pygments-g); }
+    .k { color: var(--pygments-k); }
+    .o { color: var(--pygments-o); }
+    .x { color: var(--pygments-x); }
+    .cp { color: var(--pygments-cp); }
+    .cs { color: var(--pygments-cs); }
+    .gd { color: var(--pygments-gd); }
+    .ge { color: var(--pygments-ge); }
+    .gr { color: var(--pygments-gr); }
+    .gh { color: var(--pygments-gh); }
+    .gi { color: var(--pygments-gi); }
+    .go { color: var(--pygments-go); }
+    .gp { color: var(--pygments-gp); }
+    .gs { color: var(--pygments-gs); }
+    .gu { color: var(--pygments-gu); }
+    .gt { color: var(--pygments-gt); }
+    .kc { color: var(--pygments-kc); }
+    .kd { color: var(--pygments-kd); }
+    .kn { color: var(--pygments-kn); }
+    .kp { color: var(--pygments-kp); }
+    .kr { color: var(--pygments-kr); }
+    .kt { color: var(--pygments-kt); }
+    .ld { color: var(--pygments-ld); }
+    .m { color: var(--pygments-m); }
+    .s { color: var(--pygments-s); }
+    .na { color: var(--pygments-na); }
+    .nb { color: var(--pygments-nb); }
+    .nc { color: var(--pygments-nc); }
+    .no { color: var(--pygments-no); }
+    .nd { color: var(--pygments-nd); }
+    .ni { color: var(--pygments-ni); }
+    .ne { color: var(--pygments-ne); }
+    .nf { color: var(--pygments-nf); }
+    .nl { color: var(--pygments-nl); }
+    .nn { color: var(--pygments-nn); }
+    .nt { color: var(--pygments-nt); }
+    .nv { color: var(--pygments-nv); }
+    .ow { color: var(--pygments-ow); }
+    .w { color: var(--pygments-w); }
+    .mf { color: var(--pygments-mf); }
+    .mh { color: var(--pygments-mh); }
+    .mi { color: var(--pygments-mi); }
+    .mo { color: var(--pygments-mo); }
+    .sb { color: var(--pygments-sb); }
+    .sc { color: var(--pygments-sc); }
+    .sd { color: var(--pygments-sd); }
+    .s2 { color: var(--pygments-s2); }
+    .se { color: var(--pygments-se); }
+    .sh { color: var(--pygments-sh); }
+    .si { color: var(--pygments-si); }
+    .sx { color: var(--pygments-sx); }
+    .sr { color: var(--pygments-sr); }
+    .s1 { color: var(--pygments-s1); }
+    .ss { color: var(--pygments-ss); }
+    .bp { color: var(--pygments-bp); }
+    .vc { color: var(--pygments-vc); }
+    .vg { color: var(--pygments-vg); }
+    .vi { color: var(--pygments-vi); }
+    .il { color: var(--pygments-il); }
+    .hll { background-color: rgba(var(--w--rgb), 0.2); }
+}
+
+/* Подсветка кастомных реестров 
+.cm-editor.cm-custom-syntax-active .cm-content .cm-line span {
+    background-color: transparent !important;
+}
+
+::highlight(le-comment) { color: #7c8b99; }
+::highlight(le-atrule) { color: #c678dd; }
+::highlight(le-prop) { color: #61afef; }
+::highlight(le-fn) { color: #56b6c2; }
+::highlight(le-var) { color: #e06c75; }
+::highlight(le-number) { color: #d19a66; }
+::highlight(le-string) { color: #98c379; } */
