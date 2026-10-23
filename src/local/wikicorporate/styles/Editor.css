@@ -507,7 +507,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 
     .ace_comment {
-        color: var(--pygments-cm, var(--pt));
+        color: var(--pt);
         opacity: 0.85;
     }
 
