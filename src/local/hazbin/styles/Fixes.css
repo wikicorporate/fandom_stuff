@@ -2,6 +2,7 @@
 .fandom-community-header__image {
     filter: var(--f-header);
 }
+
 .fandom-sticky-header__logo {
-	filter: var(--f-sticky);
+    filter: var(--f-sticky);
 }
