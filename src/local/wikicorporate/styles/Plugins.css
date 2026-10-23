@@ -80,6 +80,132 @@
     }
 }
 
+.reflist-container {
+    .reflist-section {
+        margin-bottom: 1em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:not(:has(li)) {
+            display: none !important;
+        }
+
+        &.reflist-notes-section .mw-references-wrap:not(:has(li)) {
+            display: none !important;
+        }
+    }
+
+    .reflist-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-bottom: 0.5em;
+    }
+
+    .reflist.references-small {
+        max-height: 200px;
+        overflow-y: auto;
+        border-radius: var(--br-14);
+        padding: 10px;
+        background-color: var(--p);
+    }
+}
+
+/* Табберы */
+.page-content {
+    :is(.tabber, .wds-tabber):has(.t-gallery) .wds-tabs__wrapper {
+        margin-bottom: 10px;
+    }
+
+    .wds-tabs__wrapper {
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        margin: auto;
+
+        .wds-tabs {
+            overflow: visible;
+        }
+
+        &.right-arrow-visible {
+            .wds-tabs {
+                -webkit-mask-image: none;
+            }
+
+            [class^="wds-tabs__arrow"] {
+                display: none;
+            }
+        }
+    }
+
+    ul.wds-tabs {
+        --wds-tab-color: var(--s);
+        --wds-tab-color--active: var(--s);
+        --wds-tab-color--hover: var(--s);
+        --wds-tab-border-color: var(--s);
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: fit-content;
+        background-color: var(--p);
+        border-radius: var(--br-14);
+
+        .wds-tabs__tab {
+            position: relative;
+            color: var(--s);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+
+            &.wds-is-current {
+                box-shadow: none;
+                opacity: 1;
+            }
+
+            &:hover {
+                opacity: 1;
+                color: var(--s);
+            }
+        }
+    }
+
+    .wds-tabber {
+        overflow: visible;
+    }
+
+    .wds-tabs__tab-label {
+        font-weight: bold;
+
+        &:not(.portable-infobox .wds-tabs__tab-label) {
+            letter-spacing: 0;
+        }
+    }
+}
+
+.community-page__contributors-modal {
+    .wds-tabs {
+        overflow: visible;
+        justify-content: center;
+        margin: 0;
+
+        .wds-tabs__tab {
+            color: var(--s);
+            opacity: 0.5;
+
+            &.wds-is-current {
+                opacity: 1;
+                box-shadow: none;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 /* Галереи */
 .t-gallery {
     position: relative;
@@ -364,7 +490,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
                 white-space: nowrap;
                 z-index: 900;
                 display: none;
-                transition: 0.3s;
+                transition: opacity 0.3s;
                 bottom: 120%;
                 left: 50%;
                 transform: translateX(-50%);
@@ -373,7 +499,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
             &:hover::after {
                 display: inline-block;
                 animation: tt 1s ease-out forwards;
-                transition: 0.3s;
             }
 
             a,
@@ -554,6 +679,8 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
 
 /* Связанные обсуждения */
 .related-discussions {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 250px;
     background-color: var(--blur);
     border-radius: var(--br-14);
     margin-block: 10px;
@@ -702,6 +829,8 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
 
 /* Новостная лента */
 .fan-feed {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 320px;
     background-color: var(--blur);
     border-radius: 0 0 var(--br-14) var(--br-14);
     padding: 20px 30px;
@@ -948,7 +1077,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
                                     white-space: nowrap;
                                     opacity: 0;
                                     visibility: hidden;
-                                    transition: all 0.2s ease;
+                                    transition: opacity 0.2s ease, bottom 0.2s ease, visibility 0.2s ease;
                                     pointer-events: none;
                                     z-index: 100;
                                 }
@@ -989,7 +1118,7 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
 
 /* Переключатель темы */
 .theme-toggler {
-    --toggler-transition: all 1s ease;
+    --toggler-transition: transform 1s ease, top 1s ease, left 1s ease, background-color 1s ease;
     font-size: 5.5px;
     width: 20em;
     height: 7em;
