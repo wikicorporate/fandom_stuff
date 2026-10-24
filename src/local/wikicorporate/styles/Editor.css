@@ -1097,7 +1097,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 .mw-highlight {
     background-color: transparent;
 
-    .c, .c1, .cm { color: var(--pygments-cm, var(--pt)); opacity: 0.85; }
+    .c, .c1, .cm { color: var(--pt); opacity: 0.85; }
     .err { color: var(--pygments-err); }
     .p { color: var(--pygments-p); }
     .py { color: var(--pygments-py); }
@@ -1170,10 +1170,10 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     background-color: transparent !important;
 }
 
-::highlight(le-comment) { color: var(--pygments-cm, #8b9eb0); }
-::highlight(le-atrule) { color: var(--pygments-kt, #c084fc); }
-::highlight(le-prop) { color: var(--pygments-nt, #58a6ff); }
-::highlight(le-fn) { color: var(--pygments-nf, #2dd4bf); }
-::highlight(le-var) { color: var(--pygments-na, #f472b6); }
-::highlight(le-number) { color: var(--pygments-kc, #f59e0b); }
-::highlight(le-string) { color: var(--pygments-k, #a3be00); }
+::highlight(le-comment) { color: var(--pygments-cm); }
+::highlight(le-atrule) { color: var(--pygments-kt); }
+::highlight(le-prop) { color: var(--pygments-nt); }
+::highlight(le-fn) { color: var(--pygments-nf); }
+::highlight(le-var) { color: var(--pygments-na); }
+::highlight(le-number) { color: var(--pygments-kc); }
+::highlight(le-string) { color: var(--pygments-k); }
