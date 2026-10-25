@@ -134,7 +134,7 @@
                 -webkit-mask-image: none;
             }
 
-            [class^="wds-tabs__arrow"] {
+            .wds-tabs__arrow-left, .wds-tabs__arrow-right {
                 display: none;
             }
         }
