@@ -17,7 +17,7 @@ body.skin-fandomdesktop #userProfileApp .user-profile-navigation__link {
 #LeaderboardTable,
 #content .infobox__wrapper [class^="BuilderPreview-module_container"],
 .blog-listing__post,
-[class*="popupWidget-popup"]:not([class*="linkSuggest-popup"]),
+.oo-ui-popupWidget-popup:not(.wikiEditor-ui-linkSuggest-popup),
 :is(#AdminDashboard, #FounderProgressList) .wds-dropdown__content,
 .page-content .portable-infobox {
     background: var(--template) no-repeat transparent;
