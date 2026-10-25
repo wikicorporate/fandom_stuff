@@ -125,7 +125,7 @@
     to { left: -4800%; }
 }
 
-body:not(:has(a[title^="Категория"][title$="Достижения"])) .portable-infobox :is([data-source="Изображение"], [data-source="Иконка"], [data-source="Анимация"], [data-source="3D"]) {
+body:not(.page-header__categories:has(a[title^="Категория"][title$="Достижения"])) .portable-infobox :is([data-source="Изображение"], [data-source="Иконка"], [data-source="Анимация"], [data-source="3D"]) {
     position: relative;
     background-image: var(--rlg);
     filter: var(--animation);
