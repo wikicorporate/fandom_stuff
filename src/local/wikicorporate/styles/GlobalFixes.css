@@ -37,7 +37,7 @@ body.skin-fandomdesktop .page a {
 .rail-module,
 .module,
 .wikia-slideshow-images-wrapper .wikia-slideshow-images,
-.oo-ui-popupWidget-popup:not([class$="linkSuggest-popup"]),
+.oo-ui-popupWidget-popup:not(.wikiEditor-ui-linkSuggest-popup),
 :is(#toc, .sticky-toc.toc),
 .community-page-module.community-page-module-box,
 #about-achievements,
