@@ -1,0 +1,131 @@
+{
+    "tags": {
+        "founder": {
+            "icon": "fa-solid fa-web-awesome",
+            "tooltip": "Основатель",
+            "class": "custom-tag-founder"
+        },
+        "bureaucrat": {
+            "icon": "fa-solid fa-code",
+            "tooltip": "Бюрократ",
+            "class": "custom-tag-bureaucrat"
+        },
+        "admin": {
+            "icon": "fa-solid fa-gear",
+            "tooltip": "Администратор",
+            "class": "custom-tag-admin"
+        },
+        "content_mod": {
+            "icon": "fa-solid fa-pen",
+            "tooltip": "Модератор контента",
+            "class": "custom-tag-content-mod"
+        },
+        "community_mod": {
+            "icon": "fa-solid fa-comment-dots",
+            "tooltip": "Модератор сообщества",
+            "class": "custom-tag-community-mod"
+        },
+        "discord_admin": {
+            "icon": "fa-brands fa-discord",
+            "tooltip": "Администратор Discord",
+            "class": "custom-tag-discord-admin"
+        },
+        "discord_mod": {
+            "icon": "fa-brands fa-discord",
+            "tooltip": "Модератор Discord",
+            "class": "custom-tag-discord-mod"
+        },
+        "rollback": {
+            "icon": "fa-solid fa-clock-rotate-left",
+            "tooltip": "Откатчик",
+            "class": "custom-tag-rollback"
+        },
+        "bot": {
+            "icon": "fa-solid fa-robot",
+            "tooltip": "Бот",
+            "class": "custom-tag-bot"
+        },
+        "technician": {
+            "icon": "fa-solid fa-wrench",
+            "tooltip": "Техник",
+            "class": "custom-tag-technician"
+        },
+        "translator": {
+            "icon": "fa-solid fa-language",
+            "tooltip": "Переводчик",
+            "class": "custom-tag-translator"
+        }
+    },
+    "users": {
+        "Voidan Dether": {
+            "hideDefault": true,
+            "tags": [
+                "founder",
+                "bureaucrat",
+                "admin"
+            ],
+            "mainTag": "founder"
+        },
+        "Swit4er": {
+            "hideDefault": true,
+            "tags": [
+                "bureaucrat",
+                "admin",
+                "translator"
+            ],
+            "mainTag": "bureaucrat"
+        },
+        "Hwjeei": {
+            "hideDefault": true,
+            "tags": [
+                "admin",
+                "technician"
+            ],
+            "mainTag": "admin"
+        },
+        "Diger 1111": {
+            "hideDefault": true,
+            "tags": [
+                "community_mod"
+            ]
+        },
+        "KykS911": {
+            "hideDefault": false,
+            "tags": [
+                "discord_admin"
+            ]
+        },
+        "Haruko4711": {
+            "hideDefault": false,
+            "tags": [
+                "discord_admin"
+            ]
+        },
+        "Lubitel obnimashek": {
+            "hideDefault": false,
+            "tags": [
+                "discord_admin"
+            ]
+        },
+        "Kostinger": {
+            "hideDefault": false,
+            "tags": [
+                "discord_mod"
+            ]
+        },
+        "Fleshka5856": {
+            "hideDefault": false,
+            "tags": [
+                "rollback"
+            ]
+        },
+        "Сырослав 3000": {
+            "hideDefault": true,
+            "tags": [
+                "content_mod",
+                "bot"
+            ],
+            "mainTag": "bot"
+        }
+    }
+}
