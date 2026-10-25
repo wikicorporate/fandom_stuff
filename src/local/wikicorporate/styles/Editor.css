@@ -1258,5 +1258,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 ::highlight(le-prop) { color: var(--pygments-nt); }
 ::highlight(le-fn) { color: var(--pygments-nf); }
 ::highlight(le-var) { color: var(--pygments-na); }
-::highlight(le-number) { color: var(--pygments-kc); }
-::highlight(le-string) { color: var(--pygments-k); }
+::highlight(le-number) { color: var(--pygments-m); }
+::highlight(le-string) { color: var(--pygments-s1); }
+::highlight(le-keyword) { color: var(--pygments-kc); }
