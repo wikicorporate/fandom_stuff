@@ -406,7 +406,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 }
 
-/* Редактор кода */
+/* Редактор кода (Ace Editor + иерархия токенов на color-mix) */
 .ace-tm,
 .ace-twilight,
 .ace_editor,
@@ -502,62 +502,189 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         background: none;
     }
 
-    .ace_line .ace_fold {
-        background-color: var(--p);
-    }
-
-    .ace_comment {
+    .ace_line {
         color: var(--pt);
-        opacity: 0.85;
+
+        .ace_fold {
+            background-color: var(--p);
+            color: var(--s);
+            border-color: var(--s);
+        }
     }
 
+    /* 1. Комментарии и докстринги */
+    .ace_comment {
+        color: var(--pygments-cm);
+        font-style: italic;
+
+        &.ace_doc {
+            color: color-mix(in srgb, var(--pygments-cm) 75%, var(--pt));
+
+            &.ace_tag {
+                color: var(--pygments-kt);
+                font-weight: bold;
+            }
+        }
+    }
+
+    /* 2. Ключевые слова, директивы и операторы */
+    .ace_keyword,
+    .ace_meta,
+    .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open) {
+        color: var(--pygments-k);
+
+        &.ace_operator {
+            color: color-mix(in srgb, var(--pygments-k) 75%, var(--pygments-p));
+        }
+
+        /* Единицы измерения CSS (px, rem, em, %, vh, s) как оттенок от цвета числа */
+        &.ace_other.ace_unit {
+            color: color-mix(in srgb, var(--pygments-m) 70%, var(--pt));
+        }
+    }
+
+    /* 3. Типы хранилища (const, let, local, function, async) и CSS-свойства */
+    .ace_storage,
+    .ace_list,
+    .ace_markup.ace_list {
+        color: var(--pygments-kd);
+
+        &.ace_modifier {
+            color: color-mix(in srgb, var(--pygments-kd) 75%, var(--pygments-kt));
+        }
+    }
+
+    .ace_support {
+        color: var(--pygments-k);
+
+        /* CSS-свойства (background-color, display, grid) и ключи типов */
+        &.ace_type {
+            color: var(--pygments-nt);
+        }
+
+        /* Стандартные значения CSS (flex, none, transparent, solid) и встроенные объекты */
+        &.ace_constant {
+            color: var(--pygments-kc);
+        }
+
+        /* Встроенные функции (calc, var, color-mix, ipairs, pairs, querySelector) */
+        &.ace_function {
+            color: var(--pygments-nf);
+
+            &.ace_dom {
+                color: color-mix(in srgb, var(--pygments-nf) 75%, var(--pygments-nt));
+            }
+        }
+
+        /* Встроенные классы (MutationObserver, Promise, Map, Set) */
+        &.ace_class {
+            color: var(--pygments-kt);
+        }
+    }
+
+    /* 4. Сущности: объявления функций, HTML-теги, CSS-селекторы и атрибуты */
+    .ace_entity {
+        color: var(--pygments-nc);
+
+        &.ace_name.ace_function {
+            color: var(--pygments-nf);
+            font-weight: bold;
+        }
+
+        &.ace_name.ace_tag {
+            color: var(--pygments-nt);
+        }
+
+        &.ace_other.ace_attribute-name {
+            color: var(--pygments-na);
+        }
+    }
+
+    /* 5. Переменные, параметры и языковые указатели (this, self, super) */
     .ace_variable,
     .ace_identifier,
     .ace_meta.ace_tag {
         color: var(--pygments-nc);
+
+        &.ace_parameter {
+            color: color-mix(in srgb, var(--pygments-nc) 70%, var(--pygments-kc));
+            font-style: italic;
+        }
+
+        &.ace_language {
+            color: var(--pygments-cp);
+        }
     }
 
-    .ace_paren {
-        color: var(--pygments-p);
-    }
-
-    .ace_line,
+    /* 6. Константы, числа, HEX-цвета и булевы литералы (true, false, nil, null, !important) */
     .ace_constant {
         color: var(--pygments-nt);
+
+        &.ace_numeric {
+            color: var(--pygments-m);
+        }
+
+        &.ace_language {
+            color: var(--pygments-kc);
+            font-weight: bold;
+        }
+
+        &.ace_character,
+        &.ace_other {
+            color: var(--pygments-se);
+        }
     }
 
-    :is(.ace_keyword, .ace_support, .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open)) {
-        color: var(--pygments-k);
+    /* 7. Строки, шаблонные литералы и регулярные выражения */
+    .ace_string {
+        color: var(--pygments-s1);
+
+        &.ace_start,
+        &.ace_end {
+            color: color-mix(in srgb, var(--pygments-s1) 70%, var(--pt));
+        }
+
+        &.ace_quasi {
+            color: color-mix(in srgb, var(--pygments-s1) 82%, var(--pygments-kd));
+        }
+
+        &.ace_regexp {
+            color: var(--pygments-sr);
+        }
     }
 
-    .ace_list,
-    .ace_markup.ace_list,
-    .ace_storage,
-    .ace_quasi,
-    .ace_string.ace_start,
-    .ace_string.ace_end {
+    .ace_quasi {
         color: var(--pygments-kd);
+
+        &.ace_paren {
+            color: var(--pygments-x);
+        }
     }
 
-    .ace_punctuation {
-        color: var(--pygments-nn);
+    .ace_regexp {
+        color: var(--pygments-sr);
     }
 
-    .ace_support.ace_constant {
-        color: var(--pygments-kc);
-    }
-
-    .ace_support.ace_function,
     .ace_text.ace_xml {
         color: var(--pygments-mh);
     }
 
-    .ace_string {
-        color: var(--pygments-s1);
+    /* 8. Скобки и пунктуация */
+    .ace_paren {
+        color: var(--pygments-p);
     }
 
-    .ace_variable.ace_language {
-        color: var(--pygments-cp);
+    .ace_punctuation {
+        color: var(--pygments-nn);
+
+        &.ace_operator {
+            color: color-mix(in srgb, var(--pygments-nn) 70%, var(--pygments-k));
+        }
+    }
+
+    .ace_invalid {
+        background-color: rgba(var(--al--rgb), 0.25);
+        color: var(--pygments-err);
     }
 
     .ace_marker-layer,
@@ -736,7 +863,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         --hl-base: var(--error);
     }
 
-    /* 2. Градация ролей 1-го уровня (имена/атрибуты = 86%, скобки/пайпы = 74%) */
+    /* 2. Градация ролей 1-го уровня */
     .cm-mw-template-name,
     .cm-mw-template-argument-name,
     .cm-mw-templatevariable-name,
@@ -944,7 +1071,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-comment,
     .cm-mw-error {
         color: var(--pt) !important;
-        background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--p)) !important;
+        background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--pt)) !important;
     }
 
     .cm-matchingBracket,
