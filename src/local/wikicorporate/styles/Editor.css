@@ -406,7 +406,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 }
 
-/* Редактор кода (Ace Editor + иерархия токенов на color-mix) */
+/* Редактор кода */
 .ace-tm,
 .ace-twilight,
 .ace_editor,
@@ -502,121 +502,12 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         background: none;
     }
 
-    .ace_line {
-        color: var(--pt);
-
-        .ace_fold {
-            background-color: var(--p);
-            color: var(--s);
-            border-color: var(--s);
-        }
+    .ace_line .ace_fold {
+        background-color: var(--p);
     }
 
-    /* 1. Комментарии и докстринги */
-    .ace_comment {
-        color: var(--pygments-cm);
-        font-style: italic;
-
-        &.ace_doc {
-            color: color-mix(in srgb, var(--pygments-cm) 75%, var(--pt));
-
-            &.ace_tag {
-                color: var(--pygments-kt);
-                font-weight: bold;
-            }
-        }
-    }
-
-    /* 2. Ключевые слова, директивы и операторы */
-    .ace_keyword,
-    .ace_meta,
-    .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open) {
-        color: var(--pygments-k);
-
-        &.ace_operator {
-            color: color-mix(in srgb, var(--pygments-k) 75%, var(--pygments-p));
-        }
-
-        /* Единицы измерения CSS (px, rem, em, %, vh, s) как оттенок от цвета числа */
-        &.ace_other.ace_unit {
-            color: color-mix(in srgb, var(--pygments-m) 70%, var(--pt));
-        }
-    }
-
-    /* 3. Типы хранилища (const, let, local, function, async) и CSS-свойства */
-    .ace_storage,
-    .ace_list,
-    .ace_markup.ace_list {
-        color: var(--pygments-kd);
-
-        &.ace_modifier {
-            color: color-mix(in srgb, var(--pygments-kd) 75%, var(--pygments-kt));
-        }
-    }
-
-    .ace_support {
-        color: var(--pygments-k);
-
-        /* CSS-свойства (background-color, display, grid) и ключи типов */
-        &.ace_type {
-            color: var(--pygments-nt);
-        }
-
-        /* Стандартные значения CSS (flex, none, transparent, solid) и встроенные объекты */
-        &.ace_constant {
-            color: var(--pygments-kc);
-        }
-
-        /* Встроенные функции (calc, var, color-mix, ipairs, pairs, querySelector) */
-        &.ace_function {
-            color: var(--pygments-nf);
-
-            &.ace_dom {
-                color: color-mix(in srgb, var(--pygments-nf) 75%, var(--pygments-nt));
-            }
-        }
-
-        /* Встроенные классы (MutationObserver, Promise, Map, Set) */
-        &.ace_class {
-            color: var(--pygments-kt);
-        }
-    }
-
-    /* 4. Сущности: объявления функций, HTML-теги, CSS-селекторы и атрибуты */
-    .ace_entity {
-        color: var(--pygments-nc);
-
-        &.ace_name.ace_function {
-            color: var(--pygments-nf);
-            font-weight: bold;
-        }
-
-        &.ace_name.ace_tag {
-            color: var(--pygments-nt);
-        }
-
-        &.ace_other.ace_attribute-name {
-            color: var(--pygments-na);
-        }
-    }
-
-    /* 5. Переменные, параметры и языковые указатели (this, self, super) */
-    .ace_variable,
-    .ace_identifier,
-    .ace_meta.ace_tag {
-        color: var(--pygments-nc);
-
-        &.ace_parameter {
-            color: color-mix(in srgb, var(--pygments-nc) 70%, var(--pygments-kc));
-            font-style: italic;
-        }
-
-        &.ace_language {
-            color: var(--pygments-cp);
-        }
-    }
-
-    /* 6. Константы, числа, HEX-цвета и булевы литералы (true, false, nil, null, !important) */
+    /* Базовый цвет строки (для #text узлов) и констант */
+    .ace_line,
     .ace_constant {
         color: var(--pygments-nt);
 
@@ -626,60 +517,125 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 
         &.ace_language {
             color: var(--pygments-kc);
-            font-weight: bold;
         }
 
         &.ace_character,
         &.ace_other {
-            color: var(--pygments-se);
+            color: color-mix(in srgb, var(--pygments-nt) 72%, var(--pygments-s1));
         }
     }
 
-    /* 7. Строки, шаблонные литералы и регулярные выражения */
+    /* Комментарии */
+    .ace_comment {
+        color: var(--pt);
+        opacity: 0.7;
+
+        &.ace_doc {
+            color: color-mix(in srgb, var(--pygments-cm) 80%, var(--pt));
+            opacity: 0.9;
+        }
+    }
+
+    /* Селекторы, переменные, идентификаторы и сущности */
+    .ace_variable,
+    .ace_identifier,
+    .ace_entity,
+    .ace_meta.ace_tag {
+        color: var(--pygments-nc);
+
+        &.ace_parameter {
+            color: color-mix(in srgb, var(--pygments-nc) 72%, var(--pt));
+        }
+
+        &.ace_language {
+            color: var(--pygments-cp);
+        }
+
+        &.ace_name.ace_function {
+            color: var(--pygments-nf);
+        }
+
+        &.ace_other.ace_attribute-name {
+            color: var(--pygments-na);
+        }
+    }
+
+    /* Скобки */
+    .ace_paren {
+        color: var(--pygments-p);
+    }
+
+    /* Ключевые слова, CSS-свойства и директивы */
+    :is(.ace_keyword, .ace_support, .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open)) {
+        color: var(--pygments-k);
+
+        &.ace_type {
+            color: color-mix(in srgb, var(--pygments-k) 82%, var(--pt));
+        }
+
+        &.ace_operator {
+            color: color-mix(in srgb, var(--pygments-k) 75%, var(--pygments-p));
+        }
+
+        &.ace_other.ace_unit {
+            color: color-mix(in srgb, var(--pygments-m) 72%, var(--pt));
+        }
+    }
+
+    /* Хранилища (const, let, local, function), списки и шаблонные вставки */
+    .ace_list,
+    .ace_markup.ace_list,
+    .ace_storage,
+    .ace_quasi,
+    .ace_string.ace_start,
+    .ace_string.ace_end {
+        color: var(--pygments-kd);
+
+        &.ace_modifier {
+            color: color-mix(in srgb, var(--pygments-kd) 75%, var(--pt));
+        }
+    }
+
+    /* Пунктуация */
+    .ace_punctuation {
+        color: var(--pygments-nn);
+
+        &.ace_operator {
+            color: color-mix(in srgb, var(--pygments-nn) 75%, var(--pt));
+        }
+    }
+
+    /* Значения свойств (transparent, none, solid, flex) */
+    .ace_support.ace_constant {
+        color: var(--pygments-kc);
+    }
+
+    /* Встроенные классы */
+    .ace_support.ace_class {
+        color: var(--pygments-kt);
+    }
+
+    /* Встроенные функции (var, calc, rgb) и XML-текст */
+    .ace_support.ace_function,
+    .ace_text.ace_xml {
+        color: var(--pygments-mh);
+
+        &.ace_dom {
+            color: color-mix(in srgb, var(--pygments-mh) 75%, var(--pt));
+        }
+    }
+
+    /* Строки и регулярные выражения */
     .ace_string {
         color: var(--pygments-s1);
-
-        &.ace_start,
-        &.ace_end {
-            color: color-mix(in srgb, var(--pygments-s1) 70%, var(--pt));
-        }
-
-        &.ace_quasi {
-            color: color-mix(in srgb, var(--pygments-s1) 82%, var(--pygments-kd));
-        }
 
         &.ace_regexp {
             color: var(--pygments-sr);
         }
     }
 
-    .ace_quasi {
-        color: var(--pygments-kd);
-
-        &.ace_paren {
-            color: var(--pygments-x);
-        }
-    }
-
     .ace_regexp {
         color: var(--pygments-sr);
-    }
-
-    .ace_text.ace_xml {
-        color: var(--pygments-mh);
-    }
-
-    /* 8. Скобки и пунктуация */
-    .ace_paren {
-        color: var(--pygments-p);
-    }
-
-    .ace_punctuation {
-        color: var(--pygments-nn);
-
-        &.ace_operator {
-            color: color-mix(in srgb, var(--pygments-nn) 70%, var(--pygments-k));
-        }
     }
 
     .ace_invalid {
@@ -1088,10 +1044,10 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --pygments-err: #ff4d6d;
     --pygments-g: #ec4899;
     --pygments-k: #a3be00;
-    --pygments-n: #93a8f4;
+    --pygments-n: #a78bfa;
     --pygments-o: #a3be00;
     --pygments-x: #f97316;
-    --pygments-p: #60a5fa;
+    --pygments-p: #38bdf8;
     --pygments-cm: #8b9eb0;
     --pygments-cp: #f87171;
     --pygments-cs: #a3be00;
@@ -1106,7 +1062,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --pygments-gu: #fb923c;
     --pygments-gt: #ec4899;
     --pygments-kc: #f59e0b;
-    --pygments-kd: #38bdf8;
+    --pygments-kd: #2dd4bf;
     --pygments-kn: #a3be00;
     --pygments-kp: #a3be00;
     --pygments-kr: #60a5fa;
@@ -1116,22 +1072,22 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --pygments-s: #fb7185;
     --pygments-na: #f472b6;
     --pygments-nb: #eab308;
-    --pygments-nc: #818cf8;
+    --pygments-nc: #b48ef7;
     --pygments-no: #fb923c;
-    --pygments-nd: #a78bfa;
+    --pygments-nd: #c084fc;
     --pygments-ni: #fb923c;
     --pygments-ne: #f97316;
-    --pygments-nf: #2dd4bf;
+    --pygments-nf: #22d3ee;
     --pygments-nl: #f472b6;
     --pygments-nn: #e879f9;
-    --pygments-nx: #93a8f4;
+    --pygments-nx: #a78bfa;
     --pygments-py: #f472b6;
     --pygments-nt: #58a6ff;
     --pygments-nv: #38bdf8;
     --pygments-ow: #a3be00;
     --pygments-w: #8b9eb0;
     --pygments-mf: #34d399;
-    --pygments-mh: #2dd4bf;
+    --pygments-mh: #22d3ee;
     --pygments-mi: #34d399;
     --pygments-mo: #34d399;
     --pygments-sb: #d4b84a;
@@ -1140,7 +1096,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --pygments-s2: #fb7185;
     --pygments-se: #fb923c;
     --pygments-sh: #e879f9;
-    --pygments-si: #38bdf8;
+    --pygments-si: #2dd4bf;
     --pygments-sx: #2dd4bf;
     --pygments-sr: #f43f5e;
     --pygments-s1: #f87171;
@@ -1157,10 +1113,10 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --pygments-err: #dc2626;
     --pygments-g: #9d174d;
     --pygments-k: #4d6b00;
-    --pygments-n: #334155;
+    --pygments-n: #5b21b6;
     --pygments-o: #4d6b00;
     --pygments-x: #b45309;
-    --pygments-p: #1e3a8a;
+    --pygments-p: #0284c7;
     --pygments-cm: #52667a;
     --pygments-cp: #b91c1c;
     --pygments-cs: #4d6b00;
@@ -1174,51 +1130,51 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --pygments-gs: #1e293b;
     --pygments-gu: #b45309;
     --pygments-gt: #9d174d;
-    --pygments-kc: #9c4200;
-    --pygments-kd: #035388;
+    --pygments-kc: #b45309;
+    --pygments-kd: #0f766e;
     --pygments-kn: #4d6b00;
     --pygments-kp: #4d6b00;
     --pygments-kr: #1d4ed8;
-    --pygments-kt: #6b21a8;
+    --pygments-kt: #7e22ce;
     --pygments-ld: #86198f;
-    --pygments-m: #0d6e66;
+    --pygments-m: #0d9488;
     --pygments-s: #b91c1c;
     --pygments-na: #9d174d;
     --pygments-nb: #854d0e;
-    --pygments-nc: #3730a3;
+    --pygments-nc: #6d28d9;
     --pygments-no: #c2410c;
-    --pygments-nd: #5b21b6;
+    --pygments-nd: #7e22ce;
     --pygments-ni: #b45309;
     --pygments-ne: #c2410c;
-    --pygments-nf: #0f766e;
+    --pygments-nf: #0891b2;
     --pygments-nl: #9d174d;
-    --pygments-nn: #a16207;
-    --pygments-nx: #2b3a4a;
+    --pygments-nn: #be185d;
+    --pygments-nx: #5b21b6;
     --pygments-py: #9d174d;
-    --pygments-nt: #075985;
-    --pygments-nv: #0369a1;
+    --pygments-nt: #1d4ed8;
+    --pygments-nv: #0284c7;
     --pygments-ow: #4d6b00;
     --pygments-w: #64748b;
-    --pygments-mf: #0d6e66;
-    --pygments-mh: #0a5c55;
-    --pygments-mi: #0d6e66;
-    --pygments-mo: #0d6e66;
+    --pygments-mf: #0d9488;
+    --pygments-mh: #0891b2;
+    --pygments-mi: #0d9488;
+    --pygments-mo: #0d9488;
     --pygments-sb: #713f12;
     --pygments-sc: #0f766e;
     --pygments-sd: #86198f;
     --pygments-s2: #b91c1c;
     --pygments-se: #c2410c;
     --pygments-sh: #86198f;
-    --pygments-si: #0369a1;
+    --pygments-si: #0f766e;
     --pygments-sx: #0f766e;
     --pygments-sr: #be123c;
-    --pygments-s1: #991b1b;
+    --pygments-s1: #b91c1c;
     --pygments-ss: #0f766e;
     --pygments-bp: #854d0e;
-    --pygments-vc: #0369a1;
-    --pygments-vg: #075985;
-    --pygments-vi: #0369a1;
-    --pygments-il: #0d6e66;
+    --pygments-vc: #0284c7;
+    --pygments-vg: #1d4ed8;
+    --pygments-vi: #0284c7;
+    --pygments-il: #0d9488;
 }
 
 .mw-highlight {
