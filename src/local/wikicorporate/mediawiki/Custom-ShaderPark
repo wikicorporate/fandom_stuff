@@ -1,0 +1,8 @@
+/* @scene: orb */
+rotateY(time * 0.4);
+metal(0.7);
+shine(0.8);
+const n = noise(getSpace() * 3.0 + time * 0.5);
+color(vec3(0.28, 0.75, 0.62) + n * 0.25);
+displace(n * 0.08);
+sphere(0.55);
