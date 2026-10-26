@@ -531,7 +531,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 }
 /* Единые палитры CodeMirror и Solarized через light-dark() */
-:is(.CodeMirror, .cm-editor) {
+:is(.skin-fandomdesktop, .skin-fandommobile) :is(.CodeMirror, .mw-highlight, .wikiEditor-ui, .ace_editor, .cm-editor) {
     --template: light-dark(#f3dfa2, #5c4818);
     --link: light-dark(#b3d9f7, #1c4d70);
     --table: light-dark(#b2e2d8, #204e4a);
@@ -543,8 +543,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --underscore: light-dark(#d8b4fe, #552882);
     --parser: light-dark(#fdba8c, #6b3410);
     --format: light-dark(#a7f3d0, #195232);
-}
-body {
     --pygments-err: light-dark(#dc2626, #ff4d6d);
     --pygments-g: light-dark(#9d174d, #ec4899);
     --pygments-k: light-dark(#4d6b00, #a3be00);
