@@ -142,60 +142,6 @@ body {
     inherits: true;
     initial-value: small;
 }
-/* Общие UI-примитивы (кнопки с искажением, круги conic-gradient и мини-тултипы) */
-:is(.cwa-rc__tab, #userProfileApp .user-profile-navigation__link, .mp-buttons__button) {
-    &::before {
-        content: " ";
-        position: absolute;
-        width: calc(100% - 6px);
-        height: calc(100% - 6px);
-        top: 0;
-        left: 0;
-        background-color: var(--cm-p);
-        border-radius: var(--br-14);
-        filter: var(--blur-b);
-    }
-    &:is(:hover, :focus, :active, .cwa-rc__tab--active)::before {
-        filter: var(--blur-p);
-        translate: 0.05em 0.1em;
-    }
-}
-:is(.railModule .t-rail .t-rail__item :is(a, strong), .t-video .t-video__item .t-video__item-link) {
-    position: relative;
-    width: 3em;
-    aspect-ratio: 1;
-    background-color: var(--cm-p);
-    border-radius: var(--br-50);
-    transition: color 0.5s ease-in-out;
-    &::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        inset: -3px;
-        background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
-        border-radius: inherit;
-        transition: --fill 0.6s ease-in-out;
-    }
-    &:hover {
-        color: var(--s);
-        --fill: 100%;
-    }
-}
-:is(.page-tools-module .rail-module__list.is-condensed-list li a, .railModule .t-rail .t-rail__item::after, .t-tabview .t-tabview__item::after) {
-    position: absolute;
-    font-family: var(--font);
-    font-weight: bold;
-    color: var(--s);
-    background-color: var(--cm-p);
-    border-radius: var(--br-14);
-    padding: 6px;
-    white-space: nowrap;
-    z-index: 900;
-    display: none;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: opacity 0.3s;
-}
 /* Position */
 .p-s { position: static; }
 .p-r { position: relative; }
