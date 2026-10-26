@@ -432,7 +432,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         color: var(--pt);
         opacity: 0.7;
         &.ace_doc {
-            color: color-mix(in srgb, var(--pygments-cm) 80%, var(--pt));
+            color: color-mix(in srgb, var(--pygments-cm) 80%, var(--p));
             opacity: 0.9;
         }
     }
@@ -442,7 +442,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .ace_meta.ace_tag {
         color: var(--pygments-nc);
         &.ace_parameter {
-            color: color-mix(in srgb, var(--pygments-nc) 72%, var(--pt));
+            color: color-mix(in srgb, var(--pygments-nc) 72%, var(--p));
         }
         &.ace_language {
             color: var(--pygments-cp);
@@ -460,13 +460,13 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     :is(.ace_keyword, .ace_support, .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open)) {
         color: var(--pygments-k);
         &.ace_type {
-            color: color-mix(in srgb, var(--pygments-k) 82%, var(--pt));
+            color: color-mix(in srgb, var(--pygments-k) 82%, var(--p));
         }
         &.ace_operator {
             color: color-mix(in srgb, var(--pygments-k) 75%, var(--pygments-p));
         }
         &.ace_other.ace_unit {
-            color: color-mix(in srgb, var(--pygments-m) 72%, var(--pt));
+            color: color-mix(in srgb, var(--pygments-m) 72%, var(--p));
         }
     }
     .ace_list,
@@ -477,13 +477,13 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .ace_string.ace_end {
         color: var(--pygments-kd);
         &.ace_modifier {
-            color: color-mix(in srgb, var(--pygments-kd) 75%, var(--pt));
+            color: color-mix(in srgb, var(--pygments-kd) 75%, var(--p));
         }
     }
     .ace_punctuation {
         color: var(--pygments-nn);
         &.ace_operator {
-            color: color-mix(in srgb, var(--pygments-nn) 75%, var(--pt));
+            color: color-mix(in srgb, var(--pygments-nn) 75%, var(--p));
         }
     }
     .ace_support.ace_constant {
@@ -496,7 +496,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .ace_text.ace_xml {
         color: var(--pygments-mh);
         &.ace_dom {
-            color: color-mix(in srgb, var(--pygments-mh) 75%, var(--pt));
+            color: color-mix(in srgb, var(--pygments-mh) 75%, var(--p));
         }
     }
     .ace_string {
@@ -915,7 +915,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-comment,
     .cm-mw-error {
         color: var(--pt) !important;
-        background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--pt)) !important;
+        background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--p)) !important;
     }
     .cm-matchingBracket,
     .cm-mw-matchingbracket {
