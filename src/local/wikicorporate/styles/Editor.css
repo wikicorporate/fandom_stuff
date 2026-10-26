@@ -222,6 +222,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         padding: 6px;
     }
 }
+
 /* Визуальный редактор */
 .page__main :is(.ve-init-target, .ve-init-mw-target, .ve-init-mw-desktopArticleTarget) {
     .oo-ui-toolbar-bar {
@@ -332,6 +333,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         color: var(--l);
     }
 }
+
 /* Редактор кода */
 .ace-tm,
 .ace-twilight,
@@ -530,7 +532,8 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         }
     }
 }
-/* Единые палитры CodeMirror и Solarized через light-dark() */
+
+/* Цвета */
 :is(.skin-fandomdesktop, .skin-fandommobile) :is(.CodeMirror, .mw-highlight, .wikiEditor-ui, .ace_editor, .cm-editor) {
     --template: light-dark(#f3dfa2, #5c4818);
     --link: light-dark(#b3d9f7, #1c4d70);
@@ -609,7 +612,8 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --pygments-vi: light-dark(#0284c7, #38bdf8);
     --pygments-il: light-dark(#0d9488, #34d399);
 }
-/* Многоуровневая подсветка викитекста на чистых классах */
+
+/* Подсветка викитекста */
 :is(.skin-fandomdesktop, .skin-fandommobile) .cm-content .cm-line {
     color: var(--pt) !important;
     .cm-mw-tag-ref,
@@ -994,6 +998,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .il { color: var(--pygments-il); }
     .hll { background-color: rgba(var(--w--rgb), 0.2); }
 }
+
 /* Подсветка кастомных реестров */
 .cm-editor.cm-custom-syntax-active .cm-content .cm-line span {
     background-color: transparent !important;
