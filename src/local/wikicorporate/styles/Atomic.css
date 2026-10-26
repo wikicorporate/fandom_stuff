@@ -1,5 +1,6 @@
 /* Общее для проектов */
 :root {
+    color-scheme: dark light;
     /* Рамки */
     --br-12: 12px;
     --br-14: 14px;
@@ -21,7 +22,6 @@
     --fallback-1: sans-serif;
     --fallback-2: serif;
     --fallback-3: cursive;
-
     /* Переменные Фэндома */
     /* bb - body background */
     --bb: var(--theme-body-background-color);
@@ -67,7 +67,6 @@
     /* m - message */
     --m: var(--theme-message-color);
     --ml: var(--theme-message-label);
-
     /* Основное пространство без глобальных элементов */
     .resizable-container,
     #fandom-mobile-wrapper,
@@ -76,13 +75,36 @@
         --theme-border-color: var(--s);
     }
 }
-
-/* Специализированные переменные */
+/* Специализированные переменные и адаптивные токены light-dark() */
 body {
-    /* Цвета */
+    &:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
+        color-scheme: dark;
+    }
+    &:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
+        color-scheme: light;
+    }
+    /* Цвета и текст (светлая / тёмная тема) */
+    --pt: light-dark(#080808, #f8f8f8);
+    --theme-page-text-color: var(--pt);
+    --theme-success-color: light-dark(#0d431f, #24ff6e);
+    --theme-alert-color: light-dark(#78242e, #ff8a92);
     --cm-p: color-mix(in srgb, var(--p), var(--s) 10%);
     --cm-s: color-mix(in srgb, var(--s), var(--p) 10%);
     --cC: currentColor;
+    /* Единая палитра индикаторов (для десктопа и мобильной версии) */
+    --unfinished: light-dark(rgb(255 139 39), rgb(115 57 7));
+    --old: light-dark(rgb(255 47 47), rgb(101 11 11));
+    --short: light-dark(rgb(122 133 255), rgb(57 63 131));
+    --noncanon: light-dark(rgb(183 106 255), rgb(76 42 108));
+    --navigation: light-dark(rgb(134 255 122), rgb(42 84 38));
+    --disambig: light-dark(rgb(56 255 238), rgb(13 84 78));
+    --spoiler: light-dark(rgb(255 56 162), rgb(103 18 63));
+    --undefined: light-dark(rgb(222 222 222), rgb(47 59 68));
+    --image: light-dark(rgb(75 56 255), rgb(7 27 70));
+    --video: light-dark(rgb(255 247 32), rgb(90 87 9));
+    --audio: light-dark(rgb(181 33 255), rgb(49 7 70));
+    --animation: light-dark(rgb(255 37 154), rgb(70 7 41));
+    --file: light-dark(rgb(102 51 255), rgb(53 20 74));
     /* Фиксы */
     --theme-accent-color: var(--p);
     --theme-accent-color--hover: var(--s);
@@ -108,44 +130,78 @@ body {
     --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
     --drawn-button: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="4"/></filter></svg>#drawn-button');
     --drawn-button--hover: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button--hover"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8"/></filter></svg>#drawn-button--hover');
-
-    /* Тёмная тема */
-    &:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
-        --pt: #f8f8f8;
-        --theme-page-text-color: #f8f8f8;
-        --theme-success-color: #24ff6e;
-        --theme-alert-color: #ff8a92;
-    }
-
-    /* Светлая тема */
-    &:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
-        --pt: #080808;
-        --theme-page-text-color: #080808;
-        --theme-success-color: #0d431f;
-        --theme-alert-color: #78242e;
-    }
 }
-
 /* Properties */
 @property --fill {
     syntax: "<percentage>";
     inherits: true;
     initial-value: 0%;
 }
-
 @property --font-size {
     syntax: "small | medium | large";
     inherits: true;
     initial-value: small;
 }
-
+/* Общие UI-примитивы (кнопки с искажением, круги conic-gradient и мини-тултипы) */
+:is(.cwa-rc__tab, #userProfileApp .user-profile-navigation__link, .mp-buttons__button) {
+    &::before {
+        content: " ";
+        position: absolute;
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+        top: 0;
+        left: 0;
+        background-color: var(--cm-p);
+        border-radius: var(--br-14);
+        filter: var(--blur-b);
+    }
+    &:is(:hover, :focus, :active, .cwa-rc__tab--active)::before {
+        filter: var(--blur-p);
+        translate: 0.05em 0.1em;
+    }
+}
+:is(.railModule .t-rail .t-rail__item :is(a, strong), .t-video .t-video__item .t-video__item-link) {
+    position: relative;
+    width: 3em;
+    aspect-ratio: 1;
+    background-color: var(--cm-p);
+    border-radius: var(--br-50);
+    transition: color 0.5s ease-in-out;
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: -3px;
+        background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
+        border-radius: inherit;
+        transition: --fill 0.6s ease-in-out;
+    }
+    &:hover {
+        color: var(--s);
+        --fill: 100%;
+    }
+}
+:is(.page-tools-module .rail-module__list.is-condensed-list li a, .railModule .t-rail .t-rail__item::after, .t-tabview .t-tabview__item::after) {
+    position: absolute;
+    font-family: var(--font);
+    font-weight: bold;
+    color: var(--s);
+    background-color: var(--cm-p);
+    border-radius: var(--br-14);
+    padding: 6px;
+    white-space: nowrap;
+    z-index: 900;
+    display: none;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s;
+}
 /* Position */
 .p-s { position: static; }
 .p-r { position: relative; }
 .p-a { position: absolute; }
 .p-f { position: fixed; }
 .p-st { position: sticky; }
-
 /* Width */
 .w-a { width: auto; }
 .w-0 { width: 0; }
@@ -153,7 +209,6 @@ body {
 .w-50 { width: 50%; }
 .w-75 { width: 75%; }
 .w-100 { width: 100%; }
-
 /* Height */
 .h-a { height: auto; }
 .h-0 { height: 0; }
@@ -161,7 +216,6 @@ body {
 .h-50 { height: 50%; }
 .h-75 { height: 75%; }
 .h-100 { height: 100%; }
-
 /* Border */
 .b-s { border: var(--bs-2s); }
 .b-0 { border: none; }
@@ -169,7 +223,6 @@ body {
 .br-14 { border-radius: var(--br-14); }
 .br-16 { border-radius: var(--br-16); }
 .br-50 { border-radius: var(--br-50); }
-
 /* Text-align */
 .t-a-s { text-align: start; }
 .t-a-e { text-align: end; }
@@ -179,7 +232,6 @@ body {
 .t-a-j { text-align: justify; }
 .t-a-j-a { text-align: justify-all; }
 .t-a-m-p { text-align: match-parent; }
-
 /* Vertical-align */
 .v-a-ba { vertical-align: baseline; }
 .v-a-s { vertical-align: sub; }
