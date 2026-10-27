@@ -868,6 +868,7 @@
         "cs": "Bryce Pinkham",
         "en": "Bryce Pinkham",
         "es": "Bryce Pinkham",
+        "fr": "Bryce Pinkham",
         "ja": "ブライス・ピンカム"
     },
     "Брок Бейкер": {
@@ -1427,6 +1428,7 @@
         "it": "VOX DEI",
         "ja": "VOX DEI",
         "pt-br": "VOX DEI",
+        "th": "VOX DEI",
         "tr": "VOX DEI"
     },
     "ГЛАС НАРОДА": {
@@ -1437,6 +1439,7 @@
         "it": "VOX POPULI",
         "ja": "VOX POPULI",
         "pt-br": "VOX POPULI",
+        "th": "VOX POPULI",
         "tr": "VOX POPULI"
     },
     "Габриэль Браун": {
@@ -1540,6 +1543,7 @@
         "ja": "Gravity",
         "pl": "Gravity",
         "pt-br": "Gravity",
+        "th": "Gravity",
         "tr": "Gücüyle"
     },
     "Грей Делайл": {
@@ -1911,6 +1915,7 @@
         "it": "Vivrò",
         "ja": "Live To Live",
         "pt-br": "Live To Live",
+        "th": "Live To Live",
         "tr": "Yaşamak İçin Yaşa"
     },
     "Жонглировать круто": {
@@ -2125,6 +2130,7 @@
         "it": "Perdono",
         "ja": "Sera's Confession",
         "pt-br": "Sera's Confession",
+        "th": "Sera's Confession",
         "tr": "Sera'nın İtirafı"
     },
     "Истребление": {
@@ -2160,6 +2166,7 @@
         "ja": "Once We Get Up There",
         "pl": "Gdy Już Tam Dotrzemy",
         "pt-br": "Once We Get Up There",
+        "th": "Once We Get Up There",
         "tr": "Çıktığımızda"
     },
     "Как ты": {
@@ -2171,6 +2178,7 @@
         "it": "Sei come nessun altro",
         "ja": "Like You",
         "pt-br": "Like You",
+        "th": "Like You",
         "tr": "Sen Herkesten Farklısın"
     },
     "Кармайн Индастриз": {
@@ -2428,6 +2436,7 @@
         "it": "Quando Penso Al Mio Futuro",
         "ja": "When I Think About The Future",
         "pt-br": "When I Think About The Future",
+        "th": "When I Think About The Future",
         "tr": "Geleceğe Baktığımda"
     },
     "Когда я увижу его": {
@@ -2851,6 +2860,7 @@
         "it": "Il resto è niente",
         "ja": "Easy",
         "pt-br": "Easy",
+        "th": "Easy",
         "tr": "Kolay"
     },
     "Лесли Родригес Критцер": {
@@ -3133,6 +3143,7 @@
         "it": "Nella bottiglia",
         "ja": "Love In A Bottle",
         "pt-br": "Love In A Bottle",
+        "th": "Love In A Bottle",
         "tr": "Bir Şişede Aşk"
     },
     "Любой ценой": {
@@ -3977,6 +3988,7 @@
         "ja": "Don't You Forget",
         "pl": "Don't You Forget",
         "pt-br": "Don't You Forget",
+        "th": "Don't You Forget",
         "tr": "Hatırlatayım"
     },
     "Не забывай (реприза)": {
@@ -3987,6 +3999,7 @@
         "it": "Ti scordi che (Ripresa)",
         "ja": "Don't You Forget (Reprise)",
         "pt-br": "Don't You Forget (Reprise)",
+        "th": "Don't You Forget (Reprise)",
         "tr": "Hatırlatayım (Tekrar)"
     },
     "Незадачливые туристы": {
@@ -4906,6 +4919,7 @@
         "it": "Perfidi",
         "ja": "Bad With Us",
         "pt-br": "Bad With Us",
+        "th": "Bad With Us",
         "tr": "Yaramazlık Yap Bizle"
     },
     "Профессиональная сучка": {
@@ -4963,6 +4977,7 @@
         "it": "Livido (Una canzone d'amore)",
         "ja": "Piss (A Love Song)",
         "pt-br": "Piss (A Love Song)",
+        "th": "Piss (A Love Song)",
         "tr": "Pis (Bir Aşk Şarkısı)"
     },
     "Раззл и Даззл": {
@@ -5207,6 +5222,7 @@
         "it": "La tua redenzione",
         "ja": "Speedrun To Redemption",
         "pt-br": "Speedrun To Redemption",
+        "th": "Speedrun To Redemption",
         "tr": "Kefaret İçin Hızlı Koşu"
     },
     "Салли Мэй": {
@@ -5548,7 +5564,8 @@
         "it": "Stolas Canta",
         "ja": "Stolas Sings",
         "pl": "Stolas Sings",
-        "pt-br": "Stolas Sings"
+        "pt-br": "Stolas Sings",
+        "th": "Stolas Sings"
     },
     "Столас/Биография": {
         "en": "Stolas/History",
@@ -5971,6 +5988,7 @@
         "ja": "Clean It Up!",
         "pl": "Sprzątam go!",
         "pt-br": "Clean It Up!",
+        "th": "Clean It Up!",
         "tr": "Temizlik"
     },
     "Убийственная семейка": {
@@ -6106,6 +6124,7 @@
         "it": "È Per Noi",
         "ja": "Hear My Hope",
         "pt-br": "Hear My Hope",
+        "th": "Hear My Hope",
         "tr": "Umudum"
     },
     "Фабрика большого Оззи": {
@@ -7012,6 +7031,7 @@
         "it": "Grande",
         "ja": "Brighter",
         "pt-br": "Brighter",
+        "th": "Brighter",
         "tr": "Parla"
     }
 }
