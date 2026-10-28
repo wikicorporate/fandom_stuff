@@ -38,7 +38,8 @@
     "SpindleHorse Toons": {
         "en": "SpindleHorse Toons",
         "es": "SpindleHorse Toons",
-        "fr": "SpindleHorse Toons"
+        "fr": "SpindleHorse Toons",
+        "ja": "SpindleHorse Toons"
     },
     "The Living Tombstone": {
         "en": "The Living Tombstone",
@@ -1462,6 +1463,7 @@
     },
     "Гимпи Гимпи": {
         "cs": "Kopřivák morušovitý",
+        "de": "Gimpie Gimpie",
         "en": "Gimpy Gimpy",
         "es": "Gimpy Gimpy",
         "fr": "Gimpy Gimpy",
@@ -1802,7 +1804,8 @@
         "es": "Til The Day We Die",
         "fr": "Til The Day We Die",
         "ja": "Til The Day We Die",
-        "pt-br": "Til The Day We Die"
+        "pt-br": "Til The Day We Die",
+        "th": "Til The Day We Die"
     },
     "Добро пожаловать в Рай": {
         "cs": "Vítejte v nebi",
@@ -4728,6 +4731,7 @@
     },
     "Плохая репутация": {
         "cs": "Špatná pověst",
+        "de": "Schlechter Ruf",
         "en": "Bad Reputation",
         "es": "Bad Reputation",
         "fr": "Mauvaise Réputation",
@@ -6897,7 +6901,8 @@
         "es": "I Like It",
         "fr": "I Like It",
         "ja": "I Like It",
-        "pt-br": "I Like It"
+        "pt-br": "I Like It",
+        "th": "I Like It"
     },
     "Этого малыша зовут Хаск": {
         "en": "This Little Darling Is Husk",
