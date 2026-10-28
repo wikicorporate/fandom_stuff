@@ -285,6 +285,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 .oo-ui-popupWidget-body.oo-ui-clippableElement-clippable {
     width: max-content !important;
 }
+
 /* Панель быстрой вставки */
 .edittools {
     margin-top: 5px !important;
@@ -317,6 +318,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         text-align: left;
     }
 }
+
 /* Pre */
 .page-content pre {
     background-color: transparent;
