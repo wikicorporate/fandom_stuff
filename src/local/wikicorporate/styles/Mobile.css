@@ -1,26 +1,8 @@
-/* Цвета и переменные */
-body {
-    --cp: var(--b-main);
-
-    &.theme-fandommobile-dark {
-        color-scheme: dark;
-    }
-
-    &.theme-fandommobile-light {
-        color-scheme: light;
-    }
-}
-
 /* Подчёркивание ссылок */
 a:is(:hover, :focus, :active),
 :is(.mw-parser-output, #fandom-mobile-wrapper) * a,
 .cm-mw-pagename {
     text-decoration: none !important;
-}
-
-/* Цветовая схема */
-:root {
-    color-scheme: dark light;
 }
 
 /* Скроллбар */
@@ -363,7 +345,7 @@ body #fandom-mobile-wrapper a:is(:hover, :focus, :active) {
         font-size: 0;
 
         &::after {
-            content: 'История сообщения';
+            content: "История сообщения";
             font-size: 14px;
         }
     }
@@ -649,7 +631,7 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
 
         &:hover::after {
             display: inline-block;
-            animation: ballongContent 1s ease-out forwards;
+            animation: tt 0.5s ease-out forwards;
             transition: 0.3s;
         }
     }
@@ -674,7 +656,7 @@ blockquote {
         text-transform: none;
 
         &::before {
-            content: '—\0a';
+            content: "—\0a";
         }
     }
 }
@@ -732,7 +714,7 @@ blockquote {
     border-radius: var(--br-14);
 }
 
-/* Примечания */
+/* Примечания и анимации */
 .reflist.references-small {
     max-height: 200px;
     overflow-y: auto;
@@ -743,6 +725,11 @@ blockquote {
 
 .page-content:has(.references-small) dt {
     text-align: center;
+}
+
+@keyframes tt {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @keyframes ref {
@@ -827,38 +814,6 @@ blockquote {
 }
 
 /* Индикаторы */
-body.theme-fandommobile-dark .mw-indicator__modern {
-    --unfinished: rgb(115 57 7);
-    --old: rgb(101 11 11);
-    --short: rgb(57 63 131);
-    --noncanon: rgb(76 42 108);
-    --navigation: rgb(42 84 38);
-    --disambig: rgb(13 84 78);
-    --spoiler: rgb(103 18 63);
-    --undefined: rgb(47 59 68);
-    --image: rgb(7 27 70);
-    --video: rgb(90 87 9);
-    --audio: rgb(49 7 70);
-    --animation: rgb(70 7 41);
-    --file: rgb(53 20 74);
-}
-
-body.theme-fandommobile-light .mw-indicator__modern {
-    --unfinished: rgb(255 139 39);
-    --old: rgb(255 47 47);
-    --short: rgb(122 133 255);
-    --noncanon: rgb(183 106 255);
-    --navigation: rgb(134 255 122);
-    --disambig: rgb(56 255 238);
-    --spoiler: rgb(255 56 162);
-    --undefined: rgb(222 222 222);
-    --image: rgb(75 56 255);
-    --video: rgb(255 247 32);
-    --audio: rgb(181 33 255);
-    --animation: rgb(255 37 154);
-    --file: rgb(102 51 255);
-}
-
 #page-header:has(.page-header__languages) .mw-indicator {
     width: calc(100% + 130px);
 }
@@ -948,27 +903,27 @@ body.theme-fandommobile-light .mw-indicator__modern {
         padding-right: 0.2em;
     }
 
-    [class$="--unfinished"] { --ind: var(--unfinished); }
-    [class$="--old"] { --ind: var(--old); }
-    [class$="--short"] { --ind: var(--short); }
-    [class$="--noncanon"] { --ind: var(--noncanon); }
-    [class$="--navigation"] { --ind: var(--navigation); }
-    [class$="--disambig"] { --ind: var(--disambig); }
-    [class$="--spoiler"] { --ind: var(--spoiler); }
-    [class$="--image"] { --ind: var(--image); }
-    [class$="--video"] { --ind: var(--video); }
-    [class$="--audio"] { --ind: var(--audio); }
-    [class$="--animation"] { --ind: var(--animation); }
-    [class$="--file"] { --ind: var(--file); }
+    [class$="--unfinished"] { --ind: var(--ind-unfinished); }
+    [class$="--old"] { --ind: var(--ind-old); }
+    [class$="--short"] { --ind: var(--ind-short); }
+    [class$="--noncanon"] { --ind: var(--ind-noncanon); }
+    [class$="--navigation"] { --ind: var(--ind-navigation); }
+    [class$="--disambig"] { --ind: var(--ind-disambig); }
+    [class$="--spoiler"] { --ind: var(--ind-spoiler); }
+    [class$="--image"] { --ind: var(--ind-image); }
+    [class$="--video"] { --ind: var(--ind-video); }
+    [class$="--audio"] { --ind: var(--ind-audio); }
+    [class$="--animation"] { --ind: var(--ind-animation); }
+    [class$="--file"] { --ind: var(--ind-file); }
 
     [class^="mw-indicator"]:has(i[class*="fa-xmark"]) {
-        --ind: var(--undefined);
+        --ind: var(--ind-undefined);
     }
 }
 
 /* Иконки */
 :is(.mobile-community-bar__menu-item a span, :is([data-testid="article-footer-categories"], .article-footer-languages) li a)::before {
-    font-family: 'Font Awesome 7 Free Solid';
+    font-family: "Font Awesome 7 Free Solid";
     font-weight: bold;
     padding-right: 0.4em;
 }
@@ -977,7 +932,7 @@ body.theme-fandommobile-light .mw-indicator__modern {
     display: none;
 }
 
-/* Навбар */
+/* Навбар (иконки) */
 .mobile-community-bar__menu-item {
     a[data-path="root:0"] span::before { content: "\f0c3"; }
     a[data-tracking-label="explore-main-page"] span::before { content: "\f015"; }
@@ -1004,11 +959,11 @@ body.theme-fandommobile-light .mw-indicator__modern {
     }
 }
 
-/* Категории и языки */
+/* Категории и языки (иконки) */
 [data-testid="article-footer-categories"] li a::before {
-    content: '\23';
+    content: "\23";
 }
 
 .article-footer-languages li a::before {
-    content: '\f0ac';
+    content: "\f0ac";
 }
