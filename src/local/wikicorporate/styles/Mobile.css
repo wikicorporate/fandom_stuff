@@ -830,26 +830,33 @@ blockquote {
         grid-template-columns: auto auto;
     }
 
-    :is([class*="nameplates"], [class*="icons"]) {
+    .mw-indicator__nameplates,
+    .mw-indicator__icons {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5em;
     }
 
-    [class*="icons"] {
+    .mw-indicator__icons {
         grid-column-start: 2;
         justify-self: end;
     }
 
-    :is([class*="nameplate"], [class*="icon"]) {
+    .mw-indicator__nameplate,
+    .mw-indicator__icon {
         position: relative;
         cursor: pointer;
 
-        [class*="tooltip"] {
+        i {
+            padding-right: 0.2em;
+        }
+
+        .mw-indicator__nameplate-tooltip,
+        .mw-indicator__icon-tooltip {
             display: none;
         }
 
-        &:hover > [class*="tooltip"] {
+        &:hover > :is(.mw-indicator__nameplate-tooltip, .mw-indicator__icon-tooltip) {
             display: inline-block;
             position: absolute;
             top: 24px;
@@ -867,15 +874,19 @@ blockquote {
             overflow: hidden;
             z-index: 10000;
         }
+
+        &:has(.fa-xmark) {
+            --ind: var(--ind-undefined);
+        }
     }
 
-    [class*="icon"] {
+    .mw-indicator__icon {
         color: var(--pt);
         border-radius: var(--br-14);
         background-color: var(--ind);
         height: fit-content;
 
-        &:has(i[class*="fa"]) {
+        &:has(i) {
             padding: 0 0.5em;
         }
 
@@ -891,34 +902,26 @@ blockquote {
         }
     }
 
-    [class*="nameplate--"],
-    [class*="icon"]:has(i[class*="fa-xmark"]) {
+    .mw-indicator__nameplate,
+    .mw-indicator__icon:has(.fa-xmark) {
         color: var(--pt);
         border-radius: var(--br-14);
         background-color: var(--ind);
         padding: 0 0.5em;
     }
 
-    [class^="mw-indicator"] i[class^="fa"] {
-        padding-right: 0.2em;
-    }
-
-    [class$="--unfinished"] { --ind: var(--ind-unfinished); }
-    [class$="--old"] { --ind: var(--ind-old); }
-    [class$="--short"] { --ind: var(--ind-short); }
-    [class$="--noncanon"] { --ind: var(--ind-noncanon); }
-    [class$="--navigation"] { --ind: var(--ind-navigation); }
-    [class$="--disambig"] { --ind: var(--ind-disambig); }
-    [class$="--spoiler"] { --ind: var(--ind-spoiler); }
-    [class$="--image"] { --ind: var(--ind-image); }
-    [class$="--video"] { --ind: var(--ind-video); }
-    [class$="--audio"] { --ind: var(--ind-audio); }
-    [class$="--animation"] { --ind: var(--ind-animation); }
-    [class$="--file"] { --ind: var(--ind-file); }
-
-    [class^="mw-indicator"]:has(i[class*="fa-xmark"]) {
-        --ind: var(--ind-undefined);
-    }
+    .mw-indicator__nameplate--unfinished { --ind: var(--ind-unfinished); }
+    .mw-indicator__nameplate--old { --ind: var(--ind-old); }
+    .mw-indicator__nameplate--short { --ind: var(--ind-short); }
+    .mw-indicator__nameplate--noncanon { --ind: var(--ind-noncanon); }
+    .mw-indicator__nameplate--navigation { --ind: var(--ind-navigation); }
+    .mw-indicator__nameplate--disambig { --ind: var(--ind-disambig); }
+    .mw-indicator__nameplate--spoiler { --ind: var(--ind-spoiler); }
+    .mw-indicator__icon--image { --ind: var(--ind-image); }
+    .mw-indicator__icon--video { --ind: var(--ind-video); }
+    .mw-indicator__icon--audio { --ind: var(--ind-audio); }
+    .mw-indicator__icon--animation { --ind: var(--ind-animation); }
+    .mw-indicator__icon--file { --ind: var(--ind-file); }
 }
 
 /* Иконки */
@@ -932,7 +935,7 @@ blockquote {
     display: none;
 }
 
-/* Навбар (иконки) */
+/* Навбар */
 .mobile-community-bar__menu-item {
     a[data-path="root:0"] span::before { content: "\f0c3"; }
     a[data-tracking-label="explore-main-page"] span::before { content: "\f015"; }
@@ -959,7 +962,7 @@ blockquote {
     }
 }
 
-/* Категории и языки (иконки) */
+/* Категории и языки */
 [data-testid="article-footer-categories"] li a::before {
     content: "\23";
 }
