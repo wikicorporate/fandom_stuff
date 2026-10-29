@@ -8,7 +8,6 @@
     /* Цвета */
     --p: light-dark(#CCF6FC, #261233);
     --s: light-dark(#1F323D, #FAB6EF);
-    --t: light-dark(#000000, #ffffff);
     /* Блюр */
     --blur: light-dark(rgb(145 194 227 / 65%), rgb(14 4 16 / 70%));
     --ff-blur: brightness(1.2) blur(15px);
