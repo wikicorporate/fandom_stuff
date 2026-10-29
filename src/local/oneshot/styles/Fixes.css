@@ -18,21 +18,21 @@
     letter-spacing: 1.05px;
     vertical-align: middle;
     color: white;
-    font-family: 'Andy', sans-serif;
+    font-family: "Andy", sans-serif;
     padding: 8px 16px 2px;
     border: none;
     background: linear-gradient(
         45deg,
-        rgba(86, 23, 122, 1) 0%,
-        rgba(154, 31, 136, 1) 25%,
-        rgba(154, 31, 136, 1) 60%,
-        rgba(92, 25, 121, 1) 65%,
-        rgba(30, 17, 105, 0.5) 70%,
-        rgba(30, 17, 105, 0) 75%
+        rgb(86 23 122) 0%,
+        rgb(154 31 136) 25%,
+        rgb(154 31 136) 60%,
+        rgb(92 25 121) 65%,
+        rgb(30 17 105 / 50%) 70%,
+        rgb(30 17 105 / 0%) 75%
     );
 }
 
-/* Наводка - Кнопки c прозрачностью */
+/* Наводка - Кнопки с прозрачностью */
 .button-alpha {
     opacity: 1;
     transition: 0.3s;
@@ -51,7 +51,7 @@
         position: relative;
         z-index: 1;
         transform: scale(1.1);
-        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 10px 0 rgb(255 255 255 / 60%);
     }
 }
 
@@ -69,6 +69,6 @@
     transition: ease-in-out 0.2s;
 
     &:hover {
-        filter: drop-shadow(0px 0px 5px #ffd609);
+        filter: drop-shadow(0 0 5px #ffd609);
     }
 }
