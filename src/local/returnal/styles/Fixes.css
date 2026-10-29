@@ -1,13 +1,13 @@
 /* Шрифты */
 #userProfileApp .user-identity-header__tag::after {
-    --font: 'SIE-UDShinGoCOeizPr6N-Med', var(--fallback-1);
+    --font: "SIE-UDShinGoCOeizPr6N-Med", var(--fallback-1);
 }
 
 .profile-hover {
-    --font: 'SeolSans-Book', var(--fallback-1);
+    --font: "SeolSans-Book", var(--fallback-1);
 }
 
 .community-page-header :is(.community-page-header-welcome-message, .community-page-subheader-welcome-message),
 .community-page-cards-module-header {
-    --font: 'SeolSans-Bold', var(--fallback-1);
+    --font: "SeolSans-Bold", var(--fallback-1);
 }
