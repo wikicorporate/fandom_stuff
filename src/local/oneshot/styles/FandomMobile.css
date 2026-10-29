@@ -1,4 +1,4 @@
-/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome */
+/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome.css */
 @import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:Mobile.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
 
 /* Импорт шрифтов */
@@ -9,32 +9,19 @@
 
 /* Цвета и переменные */
 :root {
-    --font: 'Terminus', serif;
-
-    &:has(.theme-fandommobile-dark) {
-        --p: #201039;
-        --s: #AAEEEA;
-    }
-
-    &:has(.theme-fandommobile-light) {
-        --p: #51cfff;
-        --s: #0C2151;
-    }
+    --font: "Terminus", serif;
+    --p: light-dark(#51cfff, #201039);
+    --s: light-dark(#0C2151, #AAEEEA);
+    --blur: light-dark(rgb(154 176 255 / 70%), rgb(22 7 39 / 70%));
 }
 
 /* Тёмная тема */
 body.theme-fandommobile-dark {
-    --p: #201039;
-    --s: #AAEEEA;
-    --blur: rgb(22 7 39 / 70%);
     --b-main: url(https://static.wikia.nocookie.net/oneshot/images/6/6e/OS-S-Dream-37.png/revision/latest?cb=20190522041631&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandommobile-light {
-    --p: #51cfff;
-    --s: #0C2151;
-    --blur: rgb(154 176 255 / 70%);
     --b-main: url(https://static.wikia.nocookie.net/oneshot/images/b/bc/OS-S-Dream-36.png/revision/latest?cb=20190522041627&format=original&path-prefix=ru);
 }
 
@@ -63,10 +50,7 @@ body.theme-fandommobile-light {
     &[data-path="root:4"] li:nth-child(5) a span::before { content: "\f1ad"; }
     &[data-path="root:4"] li:nth-child(6) a span::before { content: "\f0ac"; }
     a[data-path="root:5"] span::before { content: "\f0a1"; }
-    &[data-path="root:5"] li:nth-child(1) a span::before {
-        content: "\f508";
-        font-family: "FontAwesome" !important;
-    }
+    &[data-path="root:5"] li:nth-child(1) a span::before { content: "\f508"; }
     &[data-path="root:5"] li:nth-child(2) a span::before { content: "\f0e3"; }
     &[data-path="root:5"] li:nth-child(3) a span::before { content: "\f256"; }
     &[data-path="root:5"] li:nth-child(4) a span::before { content: "\f059"; }
@@ -74,7 +58,7 @@ body.theme-fandommobile-light {
     &[data-path="root:6"] li:nth-child(1) a span::before { content: "\f024"; }
     &[data-path="root:6"] li:nth-child(2) a span::before {
         content: "\f266";
-        font-family: 'Font Awesome 7 Brands' !important;
+        font-family: "Font Awesome 7 Brands" !important;
     }
     &[data-path="root:6"] li:nth-child(3) a span::before { content: "\f304"; }
     &[data-path="root:6"] li:nth-child(4) a span::before { content: "\f0f9"; }
