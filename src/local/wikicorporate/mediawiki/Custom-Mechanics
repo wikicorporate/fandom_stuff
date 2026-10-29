@@ -1,0 +1,35 @@
+/* Пружинный отскок карточек и медалей */
+@spring-hover .mp-cards__item, .userboard__medals img {
+    scale: 1.05;
+    lift: -4px;
+    duration: 420ms;
+    bounce: 1.45;
+}
+
+/* Магнитное притяжение кнопок Заглавной страницы */
+@magnetic .mp-buttons__button {
+    strength: 0.25;
+    duration: 250ms;
+}
+
+/* 3D-наклон и блик для карточек фан-ленты и кастомных панелей */
+@3d-card .fan-feed__card, .wiki-3d-card {
+    max-angle: 8deg;
+    perspective: 900px;
+    glare: color-mix(in srgb, var(--s) 20%, transparent);
+}
+
+/* Мягкий микро-звук при переключении вкладок табберов */
+@sfx .wds-tabs__tab, .t-tabview__item, .cwa-rc__tab {
+    click-freq: 580;
+    duration: 30ms;
+    waveform: sine;
+    volume: 0.03;
+}
+
+/* Дешифровка терминального текста по классу .wiki-decrypt */
+@decrypt .wiki-decrypt {
+    speed: 25ms;
+    trigger: view;
+    charset: "▓▒░█01X#%&";
+}
