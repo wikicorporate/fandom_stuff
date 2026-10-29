@@ -1,52 +1,33 @@
 /* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome.css */
-@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mobile.css|MediaWiki:Editor.css|MediaWiki:Atomic.css|FontAwesome.css";
-
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mobile.css|MediaWiki:Editor.css|MediaWiki:Atomic.css|MediaWiki:FontAwesome.css";
 
 /* Импорт шрифтов */
 @font-face {
     font-family: "Segoe Print";
-    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru")
-    format("woff2");
+    src: url("https://static.wikia.nocookie.net/wiki-corporate/images/6/69/Segoeprint.woff2/revision/latest?cb=20240719204638&format=original&path-prefix=ru") format("woff2");
 }
 
 /* Цвета и переменные */
 :root {
-	/* Шрифты */
-	--font: 'Segoe Print', serif;
-	/* Логотип */
-	--logo: url(https://static.wikia.nocookie.net/hazbinhotel/images/e/e6/Site-logo.png/revision/latest?cb=20221222221042&path-prefix=ru);
+    /* Шрифты */
+    --font: 'Segoe Print', serif;
+    /* Цвета */
+    --p: light-dark(#CCF6FC, #261233);
+    --s: light-dark(#1F323D, #FAB6EF);
+    /* Блюр */
+    --blur: light-dark(rgb(145 194 227 / 65%), rgb(14 4 16 / 70%));
+    /* Логотип */
+    --logo: url(https://static.wikia.nocookie.net/hazbinhotel/images/e/e6/Site-logo.png/revision/latest?cb=20221222221042&path-prefix=ru);
 }
 
 /* Тёмная тема */
 body.theme-fandommobile-dark {
-	/* Цвета */
-    --p: #261233;
-    --s: #FAB6EF;
-    /* Блюр */
-    --blur: rgb(14 4 16 / 70%);
-	/* Изображения */
-	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/0/08/Site-background-dark/revision/latest?cb=20211104200644&format=original&path-prefix=ru);
-}
-
-/* Костыли */
-:root:has(.theme-fandommobile-dark) {
-   	--p: #261233;
-    --s: #FAB6EF;
+    /* Изображения */
+    --b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/0/08/Site-background-dark/revision/latest?cb=20211104200644&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandommobile-light {
-	/* Цвета */
-    --p: #CCF6FC;
-    --s: #1F323D;
-    /* Блюр */
-	--blur: rgb(145 194 227 / 65%);
-	/* Изображения */
-	--b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/b/b5/Site-background-light/revision/latest?cb=20230226194135&format=original&path-prefix=ru);
-}
-
-/* Костыли */
-:root:has(.theme-fandommobile-light) {
-    --p: #CCF6FC;
-    --s: #1F323D;
+    /* Изображения */
+    --b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/b/b5/Site-background-light/revision/latest?cb=20230226194135&format=original&path-prefix=ru);
 }
