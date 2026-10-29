@@ -10,19 +10,21 @@
     .pi-title,
     .pi-header,
     .pi-data-label {
-        --font: 'SeolSans-Bold', var(--fallback-1);
+        --font: "SeolSans-Bold", var(--fallback-1);
         font-family: var(--font);
     }
 
-    .pi-title {
+    .pi-title,
+    .pi-header {
         color: inherit;
         text-align: left;
+    }
+
+    .pi-title {
         border-bottom: var(--bs-2s) !important;
     }
 
     .pi-header {
-        color: inherit;
-        text-align: left;
         border-top: var(--bs-2t) !important;
         border-bottom: var(--bs-2t) !important;
     }
@@ -36,7 +38,7 @@
             padding: 0;
 
             &::after {
-                content: 'Потяните, чтобы повернуть изображение';
+                content: "Потяните, чтобы повернуть изображение";
                 position: absolute;
                 bottom: 0;
                 right: 0;
@@ -115,7 +117,7 @@
         }
 
         .wds-tabs__tab {
-            --font: 'SeolSans-Bold', var(--fallback-1);
+            --font: "SeolSans-Bold", var(--fallback-1);
         }
     }
 }
@@ -125,13 +127,13 @@
     to { left: -4800%; }
 }
 
-body:not(.page-header__categories:has(a[title^="Категория"][title$="Достижения"])) .portable-infobox :is([data-source="Изображение"], [data-source="Иконка"], [data-source="Анимация"], [data-source="3D"]) {
+body:not(:has(.page-header__categories a[title^="Категория"][title$="Достижения"])) .portable-infobox :is([data-source="Изображение"], [data-source="Иконка"], [data-source="Анимация"], [data-source="3D"]) {
     position: relative;
     background-image: var(--rlg);
     filter: var(--animation);
 
     &::before {
-        content: '';
+        content: "";
         position: absolute;
         height: 1px;
         width: 100%;
@@ -155,7 +157,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
 
         &::before,
         &::after {
-            content: '';
+            content: "";
             position: absolute;
             width: 100%;
         }
@@ -267,7 +269,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
             cursor: help;
 
             &::after {
-                content: '';
+                content: "";
                 position: absolute;
                 width: 80%;
                 height: 100%;
@@ -282,7 +284,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
         position: absolute;
         z-index: 1000;
         display: grid;
-        grid-template-columns: 90px 630px;
+        grid-template-columns: 90px minmax(260px, min(630px, 65vw));
         grid-auto-rows: min-content;
         gap: 8px;
         animation: tt-open 0.3s;
@@ -293,18 +295,15 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
         }
     }
 
-    .tt__cluster {
-        border: var(--bs-2s);
-    }
-
     .tt__cluster,
     .tt__article,
     .tt__action {
         position: relative;
         background-color: rgb(var(--pb--rgb), 0.7);
+        border: var(--bs-2s);
 
         &::before {
-            content: '';
+            content: "";
             position: absolute;
             background-image: var(--tooltip-b);
             width: 100%;
@@ -335,7 +334,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
     }
 
     .tt__id {
-        --font: 'Decima Mono Cyr Reg', var(--fallback-1);
+        --font: "Decima Mono Cyr Reg", var(--fallback-1);
         font-size: 0.7em;
         padding: 0.5em;
         white-space: nowrap;
@@ -347,20 +346,18 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
     .tt__action {
         grid-column: 2 / 3;
         grid-row: 3 / 4;
-        border: var(--bs-2s);
         padding: 0.5em;
     }
 
     .tt__article {
         grid-column: 2 / 3;
         grid-row: 1 / 3;
-        border: var(--bs-2s);
         display: flex;
         flex-direction: column;
     }
 
     .tt__type {
-        --font: 'Tmppragmatapro mono', var(--fallback-1);
+        --font: "Tmppragmatapro mono", var(--fallback-1);
         order: 0;
         margin-bottom: -1rem;
         padding: 0.5em;
@@ -369,7 +366,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
     }
 
     .tt__name {
-        --font: 'Erbaum-Regular', var(--fallback-1);
+        --font: "Erbaum-Regular", var(--fallback-1);
         order: 1;
         font-weight: 700;
         text-transform: uppercase;
@@ -386,7 +383,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
         filter: var(--animation);
 
         &::before {
-            content: '';
+            content: "";
             position: absolute;
             height: 1px;
             width: 100%;
@@ -416,7 +413,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
             overflow: hidden;
 
             &::before {
-                content: '';
+                content: "";
                 position: absolute;
                 height: 5px;
                 width: 100%;
@@ -434,7 +431,7 @@ body:not(.page-header__categories:has(a[title^="Категория"][title$="Д�
     }
 
     .tt__desc {
-        --font: 'Decima 20Pro', var(--fallback-1);
+        --font: "Decima 20Pro", var(--fallback-1);
         order: 3;
         border-top: var(--bs-2s);
         padding: 0.5em;
