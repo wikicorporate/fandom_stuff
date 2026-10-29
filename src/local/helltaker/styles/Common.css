@@ -1,5 +1,5 @@
-/* Импорт CSS страниц: GlobalFixes.css, Blocks.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, FontAwesome */
-@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Blocks.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
+/* Импорт CSS страниц: GlobalFixes.css, Blocks.css, GlobalTemplates.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Blocks.css|u:ru.wikicorporate:MediaWiki:GlobalTemplates.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
 
 /* Импорт CSS страниц: Mainpage.css, Templates.css, Symbols.css, Fixes.css */
 @import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mainpage.css|MediaWiki:Templates.css|MediaWiki:Symbols.css|MediaWiki:Fixes.css";
@@ -17,9 +17,14 @@
 
 :root {
     /* Шрифты */
-    --font: 'NanumMyeongjo', serif;
-    --backup: 'Segoe Print', serif;
+    --font: "NanumMyeongjo", serif;
+    --backup: "Segoe Print", serif;
     --size: 1.5rem;
+    /* Цвета */
+    --p: light-dark(#8FDCFF, #06041e);
+    --s: light-dark(#041630, #FFB6B6);
+    /* Блюр */
+    --blur: light-dark(rgb(169 193 255 / 70%), rgb(26 10 10 / 70%));
     /* Изображения */
     --i-b: url(https://static.wikia.nocookie.net/helltaker/images/2/2c/Infobox_border.png/revision/latest?cb=20240719171833&format=original&path-prefix=ru);
     --m-b: url(https://static.wikia.nocookie.net/helltaker/images/5/57/Main_border.png/revision/latest?cb=20240814122422&format=original&path-prefix=ru);
@@ -27,11 +32,6 @@
 
 /* Тёмная тема */
 body.theme-fandomdesktop-dark {
-    /* Цвета */
-    --p: #06041e;
-    --s: #FFB6B6;
-    /* Блюр */
-    --blur: rgb(26 10 10 / 70%);
     /* Фильтры */
     --f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#color');
     /* Изображения */
@@ -42,27 +42,10 @@ body.theme-fandomdesktop-dark {
 
 /* Светлая тема */
 body.theme-fandomdesktop-light {
-    /* Цвета */
-    --p: #8FDCFF;
-    --s: #041630;
-    /* Блюр */
-    --blur: rgb(169 193 255 / 70%);
     /* Фильтры */
     --f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter></svg>#color');
     /* Изображения */
     --h: url(https://static.wikia.nocookie.net/helltaker/images/e/ed/Background_light.png/revision/latest?cb=20240517171353&format=original&path-prefix=ru);
     --cp: var(--h);
     --b-main: url(https://static.wikia.nocookie.net/helltaker/images/b/b5/Site-background-light/revision/latest?cb=20231207174159&format=original&path-prefix=ru);
-}
-
-/* Костыли для FF */
-@-moz-document url-prefix() {
-    :root:has(.theme-fandomdesktop-dark) {
-        --p: #06041e;
-        --s: #FFB6B6;
-    }
-    :root:has(.theme-fandomdesktop-light) {
-        --p: #8FDCFF;
-        --s: #041630;
-    }
 }
