@@ -1,8 +1,8 @@
-/* Импорт CSS страниц: GlobalFixes.css, Blocks.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, Achievements.css, FontAwesome.css */
-@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Blocks.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:Achievements.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
+/* Импорт CSS страниц: GlobalFixes.css, Blocks.css, GlobalTemplates.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, Achievements.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Blocks.css|u:ru.wikicorporate:MediaWiki:GlobalTemplates.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:Achievements.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
 
-/* Импорт CSS страниц: Mainpage.css, Templates.css, Symbols.css */
-@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mainpage.css|MediaWiki:Templates.css|MediaWiki:Symbols.css";
+/* Импорт CSS страниц: Mainpage.css, Symbols.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mainpage.css|MediaWiki:Symbols.css";
 
 /* Импорт шрифтов */
 @font-face {
@@ -12,20 +12,21 @@
 
 :root {
     /* Шрифты */
-    --font: 'Segoe Print', serif;
+    --font: "Segoe Print", serif;
     --size: 1.4rem;
+    /* Цвета */
+    --p: light-dark(#FCFAC4, #273256);
+    --s: light-dark(#2C6949, #96D7EC);
+    /* Блюр */
+    --blur: light-dark(rgb(252 250 196 / 70%), rgb(1 9 33 / 70%));
+    /* Фильтры */
+    --f-main: var(--f-sticky);
 }
 
 /* Тёмная тема */
 body.theme-fandomdesktop-dark {
-    /* Цвета */
-    --p: #273256;
-    --s: #96D7EC;
-    /* Блюр */
-    --blur: rgb(1 9 33 / 70%);
     /* Фильтры */
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.58824 0 0 0 0 0 0.84314 0 0 0 0 0 0.92549 0 0 0 0 0 1 0"/></filter></svg>#color');
-    --f-main: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.58824 0 0 0 0 0 0.84314 0 0 0 0 0 0.92549 0 0 0 0 0 1 0"/></filter></svg>#color');
     /* Изображения */
     --h: url(https://static.wikia.nocookie.net/zoophobia/images/a/ae/MP-header-dark.png/revision/latest?cb=20240105164250&format=original&path-prefix=ru);
     --cp: url(https://static.wikia.nocookie.net/zoophobia/images/7/7e/Zp_banner.jpg/revision/latest?cb=20181104055812);
@@ -34,28 +35,10 @@ body.theme-fandomdesktop-dark {
 
 /* Светлая тема */
 body.theme-fandomdesktop-light {
-    /* Цвета */
-    --p: #FCFAC4;
-    --s: #2C6949;
-    /* Блюр */
-    --blur: rgb(252 250 196 / 70%);
     /* Фильтры */
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.17255 0 0 0 0 0 0.41176 0 0 0 0 0 0.28627 0 0 0 0 0 1 0"/></filter></svg>#color');
-    --f-main: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.17255 0 0 0 0 0 0.41176 0 0 0 0 0 0.28627 0 0 0 0 0 1 0"/></filter></svg>#color');
     /* Изображения */
     --h: url(https://static.wikia.nocookie.net/zoophobia/images/e/eb/MP-header-light.png/revision/latest?cb=20240105185310&format=original&path-prefix=ru);
     --cp: url(https://static.wikia.nocookie.net/zoophobia/images/7/73/Zp_banner2.jpg/revision/latest?cb=20181104055841);
     --b-main: url(https://static.wikia.nocookie.net/zoophobia/images/b/b5/Site-background-light/revision/latest?cb=20221003213329&format=original&path-prefix=ru);
-}
-
-/* Костыли для FF */
-@-moz-document url-prefix() {
-    :root:has(.theme-fandomdesktop-dark) {
-        --p: #273256;
-        --s: #96D7EC;
-    }
-    :root:has(.theme-fandomdesktop-light) {
-        --p: #FCFAC4;
-        --s: #2C6949;
-    }
 }
