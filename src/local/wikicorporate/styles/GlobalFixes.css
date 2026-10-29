@@ -1,27 +1,6 @@
-@namespace xl url("http://www.w3.org/1999/xlink");
-
-/* Цветовая схема */
-:root {
-    color-scheme: dark light;
-}
-
-body {
-    &.theme-fandomdesktop-dark {
-        color-scheme: dark;
-    }
-
-    &.theme-fandomdesktop-light {
-        color-scheme: light;
-    }
-}
-
 /* Унифицирование hover-эффектов */
-body.skin-fandomdesktop .page a {
-    &:hover,
-    &:focus,
-    &:active {
-        color: var(--s);
-    }
+body.skin-fandomdesktop .page a:is(:hover, :focus, :active) {
+    color: var(--s);
 }
 
 /* Выделение */
@@ -68,7 +47,7 @@ fieldset:not(.oo-ui-fieldsetLayout),
     border: none !important;
 }
 
-/* Радиус/рамки */
+/* Радиус и рамки */
 .resizable-container :is(img, iframe),
 #content :is(.category-page__trending-page-thumbnail, .category-page__member-thumbnail),
 .mw-widget-calendarWidget {
@@ -113,9 +92,7 @@ div.thumbinner,
 }
 
 /* Подчёркивание ссылок */
-a:hover,
-a:focus,
-a:active,
+a:is(:hover, :focus, :active),
 :is(.mw-parser-output, #fandom-mobile-wrapper) :is(a, > a),
 .cm-mw-pagename {
     text-decoration: none !important;
@@ -153,30 +130,28 @@ a:active,
 }
 
 /* Галереи */
-body:not(.mainpage) {
-    .wikia-gallery {
+body:not(.mainpage) .wikia-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: overlay;
+    max-height: 440px;
+    text-align: center;
+
+    .wikia-gallery-item {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        overflow: overlay;
-        max-height: 440px;
-        text-align: center;
+        align-items: center;
 
-        .wikia-gallery-item {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
+        .video-thumbnail img {
+            height: 100px !important;
+        }
 
-            .video-thumbnail img {
-                height: 100px !important;
-            }
-
-            .gallery-image-wrapper,
-            .thumb {
-                height: auto !important;
-                top: 0 !important;
-                border: none;
-            }
+        .gallery-image-wrapper,
+        .thumb {
+            height: auto !important;
+            top: 0 !important;
+            border: none;
         }
     }
 }
@@ -186,47 +161,45 @@ html:not(.ve-active) .page.has-right-rail {
     column-gap: 0;
     margin-bottom: 0;
 
-    &:has(#rail-tab-overview) {
-        .page__right-rail {
-            .rail-tabs-strip {
-                width: 40px;
-                height: 40px;
-                padding: 5px;
-                border-radius: 50% 0 0 50%;
-                position: absolute;
-                top: 5px;
-                right: -20px;
-                margin: 0;
-                transition: right 0.3s;
-                justify-content: center;
-                align-items: center;
+    &:has(#rail-tab-overview) .page__right-rail {
+        .rail-tabs-strip {
+            width: 40px;
+            height: 40px;
+            padding: 5px;
+            border-radius: 50% 0 0 50%;
+            position: absolute;
+            top: 5px;
+            right: -20px;
+            margin: 0;
+            transition: right 0.3s;
+            justify-content: center;
+            align-items: center;
 
-                button {
-                    width: 30px;
-                    height: 30px;
-                }
-
-                svg.rail-tab__default-icon {
-                    opacity: 0;
-                }
-
-                svg.rail-tab__collapse-icon {
-                    opacity: 1;
-                    width: 18px;
-                    height: 18px;
-                    transform: translate(-50%, -50%) rotate(90deg);
-                }
+            button {
+                width: 30px;
+                height: 30px;
             }
 
-            &.is-rail-hidden {
-                width: 0;
+            svg.rail-tab__default-icon {
+                opacity: 0;
+            }
 
-                .rail-tabs-strip {
-                    right: 0;
+            svg.rail-tab__collapse-icon {
+                opacity: 1;
+                width: 18px;
+                height: 18px;
+                transform: translate(-50%, -50%) rotate(90deg);
+            }
+        }
 
-                    svg {
-                        transform: translate(-50%, -50%) rotate(270deg);
-                    }
+        &.is-rail-hidden {
+            width: 0;
+
+            .rail-tabs-strip {
+                right: 0;
+
+                svg {
+                    transform: translate(-50%, -50%) rotate(270deg);
                 }
             }
         }
@@ -312,17 +285,9 @@ html:not(.ve-active) .page.has-right-rail {
             .custom-rail-modules-container[data-v-app] {
                 order: 6;
 
-                .social-activity {
-                    order: 0;
-                }
-
-                .new-files {
-                    order: 1;
-                }
-
-                .popular-pages {
-                    order: 2;
-                }
+                .social-activity { order: 0; }
+                .new-files { order: 1; }
+                .popular-pages { order: 2; }
             }
         }
     }
@@ -446,76 +411,74 @@ html:not(.ve-active) .page.has-right-rail {
     }
 }
 
-.page-tools-module {
-    .rail-module__list.is-condensed-list {
+.page-tools-module .rail-module__list.is-condensed-list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    z-index: 4;
+
+    li {
         position: relative;
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 10px;
-        z-index: 4;
+        justify-content: space-evenly;
+        gap: 15px;
+        color: var(--l);
 
-        li {
-            position: relative;
+        &::before {
+            color: inherit;
+            font-family: "Font Awesome 7 Free Solid";
+            font-weight: bold;
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            gap: 15px;
-            color: var(--l);
+            justify-content: center;
+            align-items: center;
+            width: 3em;
+            aspect-ratio: 1;
+            background-color: var(--cm-p);
+            border-radius: var(--br-50);
+            transition: color 0.5s ease-in-out;
+        }
 
-            &::before {
-                color: inherit;
-                font-family: "Font Awesome 7 Free Solid";
-                font-weight: bold;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 3em;
-                aspect-ratio: 1;
-                background-color: var(--cm-p);
-                border-radius: var(--br-50);
-                transition: color 0.5s ease-in-out;
-            }
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: -3px;
+            background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
+            border-radius: var(--br-50);
+            transition: --fill 0.6s ease-in-out;
+        }
 
-            &::after {
-                content: "";
-                position: absolute;
-                z-index: -1;
-                inset: -3px;
-                background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
-                border-radius: var(--br-50);
-                transition: --fill 0.6s ease-in-out;
-            }
-
-            &:hover {
-                color: var(--s);
-                --fill: 100%;
-
-                a {
-                    display: inline-block;
-                    animation: tt 1s ease-out forwards;
-                    transition: opacity 0.3s;
-                }
-            }
+        &:hover {
+            color: var(--s);
+            --fill: 100%;
 
             a {
-                position: absolute;
-                font-family: var(--font);
-                font-size: 14px;
-                font-weight: bold;
-                color: var(--s);
-                background-color: var(--cm-p);
-                border-radius: var(--br-14);
-                padding: 6px;
-                white-space: nowrap;
-                z-index: 900;
-                display: none;
+                display: inline-block;
+                animation: tt 1s ease-out forwards;
                 transition: opacity 0.3s;
-                bottom: 105%;
-                left: 50%;
-                transform: translateX(-50%);
             }
+        }
+
+        a {
+            position: absolute;
+            font-family: var(--font);
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--s);
+            background-color: var(--cm-p);
+            border-radius: var(--br-14);
+            padding: 6px;
+            white-space: nowrap;
+            z-index: 900;
+            display: none;
+            transition: opacity 0.3s;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 }
@@ -766,9 +729,7 @@ body.skin-fandomdesktop {
             box-shadow: none;
             transition: background-color 0.3s linear, color 0.3s linear;
 
-            &:hover,
-            &:focus,
-            &:active {
+            &:is(:hover, :focus, :active) {
                 color: var(--p) !important;
                 background-color: var(--s) !important;
                 text-shadow: none;
@@ -889,14 +850,12 @@ body.skin-fandomdesktop {
     }
 }
 
-.page-footer__languages {
-    .wds-collapsible-panel__content {
-        gap: 4px;
-        margin-left: 0;
+.page-footer__languages .wds-collapsible-panel__content {
+    gap: 4px;
+    margin-left: 0;
 
-        a {
-            border: none;
-        }
+    a {
+        border: none;
     }
 }
 
@@ -918,9 +877,7 @@ body.skin-fandomdesktop {
     }
 
     .wds-button.wds-is-text {
-        &:hover,
-        &:focus,
-        &:active {
+        &:is(:hover, :focus, :active) {
             background-color: transparent;
             color: var(--l);
         }
@@ -966,8 +923,7 @@ body.skin-fandomdesktop {
             border: none !important;
             border-color: transparent !important;
 
-            &:hover,
-            &:focus {
+            &:is(:hover, :focus) {
                 border: none;
             }
 
@@ -999,9 +955,7 @@ body.skin-fandomdesktop {
             .search-app__suggestion-link {
                 color: var(--l);
 
-                &:hover,
-                &:focus,
-                &:active {
+                &:is(:hover, :focus, :active) {
                     color: var(--s);
                 }
             }
@@ -1027,9 +981,7 @@ body.skin-fandomdesktop {
         a {
             text-decoration: none;
 
-            &:hover,
-            &:focus,
-            &:active {
+            &:is(:hover, :focus, :active) {
                 color: var(--l);
             }
         }
