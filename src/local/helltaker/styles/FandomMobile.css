@@ -1,4 +1,4 @@
-/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome */
+/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome.css */
 @import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:Mobile.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
 
 /* Импорт шрифтов */
@@ -9,32 +9,19 @@
 
 /* Цвета и переменные */
 :root {
-    --font: 'NanumMyeongjo', serif;
-
-    &:has(.theme-fandommobile-dark) {
-        --p: #06041e;
-        --s: #FFB6B6;
-    }
-
-    &:has(.theme-fandommobile-light) {
-        --p: #8FDCFF;
-        --s: #041630;
-    }
+    --font: "NanumMyeongjo", serif;
+    --p: light-dark(#8FDCFF, #06041e);
+    --s: light-dark(#041630, #FFB6B6);
+    --blur: light-dark(rgb(169 193 255 / 70%), rgb(26 10 10 / 70%));
 }
 
 /* Тёмная тема */
 body.theme-fandommobile-dark {
-    --p: #06041e;
-    --s: #FFB6B6;
-    --blur: rgb(26 10 10 / 70%);
     --b-main: url(https://static.wikia.nocookie.net/helltaker/images/0/08/Site-background-dark/revision/latest?cb=20231207174218&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandommobile-light {
-    --p: #8FDCFF;
-    --s: #041630;
-    --blur: rgb(169 193 255 / 70%);
     --b-main: url(https://static.wikia.nocookie.net/helltaker/images/b/b5/Site-background-light/revision/latest?cb=20231207174159&format=original&path-prefix=ru);
 }
 
@@ -62,10 +49,7 @@ body.theme-fandommobile-light {
     &[data-path="root:4"] li:nth-child(5) a span::before { content: "\f02e"; }
     &[data-path="root:4"] li:nth-child(6) a span::before { content: "\f328"; }
     a[data-path="root:5"] span::before { content: "\f0a1"; }
-    &[data-path="root:5"] li:nth-child(1) a span::before {
-        content: "\f508";
-        font-family: "FontAwesome" !important;
-    }
+    &[data-path="root:5"] li:nth-child(1) a span::before { content: "\f508"; }
     &[data-path="root:5"] li:nth-child(2) a span::before { content: "\f0e3"; }
     &[data-path="root:5"] li:nth-child(3) a span::before { content: "\f256"; }
     &[data-path="root:5"] li:nth-child(4) a span::before { content: "\f059"; }
@@ -73,7 +57,7 @@ body.theme-fandommobile-light {
     &[data-path="root:6"] li:nth-child(1) a span::before { content: "\f024"; }
     &[data-path="root:6"] li:nth-child(2) a span::before {
         content: "\f266";
-        font-family: 'Font Awesome 7 Brands' !important;
+        font-family: "Font Awesome 7 Brands" !important;
     }
     &[data-path="root:6"] li:nth-child(3) a span::before { content: "\f304"; }
     &[data-path="root:6"] li:nth-child(4) a span::before { content: "\f0f9"; }
