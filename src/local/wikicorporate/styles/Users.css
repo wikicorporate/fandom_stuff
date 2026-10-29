@@ -46,7 +46,7 @@ body.skin-fandomdesktop #userProfileApp {
         a {
             display: inline-grid;
             grid-auto-flow: column;
-            grid-template-columns: 20px 0px 0px;
+            grid-template-columns: 20px 0 0;
             overflow: hidden;
             font-size: 0;
             transition: grid-template-columns 0.5s;
@@ -113,10 +113,13 @@ body.skin-fandomdesktop #userProfileApp {
         display: none;
     }
 
-    .user-profile-editor {
+    .user-profile-editor,
+    .user-bio-modal {
         border-radius: var(--br-14);
         background-color: var(--p);
+    }
 
+    .user-profile-editor {
         .modal-wrapper__header {
             border: none;
             margin: 0;
@@ -141,9 +144,6 @@ body.skin-fandomdesktop #userProfileApp {
     }
 
     .user-bio-modal {
-        border-radius: var(--br-14);
-        background-color: var(--p);
-
         .user-bio-modal-content {
             background-image: none;
 
@@ -430,7 +430,7 @@ body.skin-fandomdesktop {
     }
 
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         background-color: var(--pt);
         top: 4px;
@@ -552,11 +552,9 @@ body.skin-fandomdesktop {
     .user-suggestions.wds-dropdown__content:not(.is-displayed-above-mention) {
         border-color: var(--s);
 
-        .wds-list.wds-is-linked li {
-            &:is(:hover, .wds-is-selected) > a:not(.wds-button) {
-                color: var(--s);
-                background-color: transparent;
-            }
+        .wds-list.wds-is-linked li:is(:hover, .wds-is-selected) > a:not(.wds-button) {
+            color: var(--s);
+            background-color: transparent;
         }
     }
 
