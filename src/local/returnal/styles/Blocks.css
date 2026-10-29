@@ -133,9 +133,11 @@
             transition: all 0.15s ease-in-out !important;
         }
 
-        &:hover::before,
-        &:hover::after {
-            background-color: var(--s);
+        &:hover {
+            &::before,
+            &::after {
+                background-color: var(--s);
+            }
         }
 
         &::before {
@@ -290,9 +292,7 @@ body.skin-fandomdesktop .main-container .resizable-container .page {
             transition: all 0.15s ease-in-out !important;
         }
 
-        &:hover,
-        &:focus,
-        &:active {
+        &:is(:hover, :focus, :active) {
             --s: var(--p);
             background-color: var(--p) !important;
             border: var(--bs-2rl) !important;
