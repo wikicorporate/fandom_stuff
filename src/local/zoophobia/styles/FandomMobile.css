@@ -9,32 +9,19 @@
 
 /* Цвета и переменные */
 :root {
-    --font: 'Segoe Print', serif;
-
-    &:has(.theme-fandommobile-dark) {
-        --p: #273256;
-        --s: #96D7EC;
-    }
-
-    &:has(.theme-fandommobile-light) {
-        --p: #FCFAC4;
-        --s: #2C6949;
-    }
+    --font: "Segoe Print", serif;
+    --p: light-dark(#FCFAC4, #273256);
+    --s: light-dark(#2C6949, #96D7EC);
+    --blur: light-dark(rgb(252 250 196 / 70%), rgb(1 9 33 / 70%));
 }
 
 /* Тёмная тема */
 body.theme-fandommobile-dark {
-    --p: #273256;
-    --s: #96D7EC;
-    --blur: rgb(1 9 33 / 70%);
     --b-main: url(https://static.wikia.nocookie.net/zoophobia/images/0/08/Site-background-dark/revision/latest?cb=20221003213307&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandommobile-light {
-    --p: #FCFAC4;
-    --s: #2C6949;
-    --blur: rgb(252 250 196 / 70%);
     --b-main: url(https://static.wikia.nocookie.net/zoophobia/images/b/b5/Site-background-light/revision/latest?cb=20221003213329&format=original&path-prefix=ru);
 }
 
@@ -64,7 +51,7 @@ body.theme-fandommobile-light {
     a[data-path="root:6:0"] span::before { content: "\f024"; }
     a[data-path="root:6:1"] span::before {
         content: "\f266";
-        font-family: 'Font Awesome 7 Brands' !important;
+        font-family: "Font Awesome 7 Brands" !important;
     }
     a[data-path="root:6:2"] span::before { content: "\f304"; }
     a[data-path="root:6:3"] span::before { content: "\f0f9"; }
