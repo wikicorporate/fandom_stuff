@@ -1,0 +1,875 @@
+/* Контейнерное ядро статьи (ПК и FandomMobile) */
+:is(.mw-parser-output, .article-content) {
+    container: article / inline-size;
+}
+/* 1. Универсальный инфобокс (.t-infobox) без JS на Anchor Positioning */
+.t-infobox {
+    --ib-p: var(--p);
+    --ib-s: var(--s);
+    float: right;
+    clear: right;
+    width: min(100%, 315px);
+    margin: 0 0 18px 20px;
+    padding: 10px;
+    background: var(--template), var(--ib-p);
+    color: var(--pt);
+    border: 2px solid var(--ib-s);
+    border-radius: var(--br-16);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+    .t-infobox__title {
+        font-family: var(--font);
+        font-size: 1.4em;
+        font-weight: bold;
+        text-align: center;
+        color: var(--ib-s);
+        background-color: color-mix(in oklch, var(--ib-p) 88%, var(--ib-s));
+        border-radius: var(--br-12);
+        padding: 8px 10px;
+        line-height: 1.2;
+    }
+    .t-infobox__subtitle {
+        text-align: center;
+        font-size: 0.9em;
+        opacity: 0.85;
+        margin-top: -4px;
+    }
+    .t-infobox__media {
+        position: relative;
+        anchor-scope: --ib-tab;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+        text-align: center;
+        &.has-tabs::before {
+            content: "";
+            position: absolute;
+            position-anchor: --ib-tab;
+            top: anchor(top);
+            left: anchor(left);
+            width: anchor-size(width);
+            height: anchor-size(height);
+            background-color: color-mix(in oklch, var(--ib-p) 85%, var(--ib-s));
+            border: 1px solid var(--ib-s);
+            border-radius: var(--br-12);
+            box-sizing: border-box;
+            z-index: 0;
+            pointer-events: none;
+            transition:
+                top 0.25s ease,
+                left 0.25s cubic-bezier(0.34, 1.4, 0.64, 1),
+                width 0.25s ease,
+                height 0.25s ease;
+        }
+        &:not(:focus-within) {
+            .t-infobox__tab:first-of-type {
+                anchor-name: --ib-tab;
+                color: var(--ib-s);
+            }
+            .t-infobox__panel:first-of-type {
+                display: block;
+            }
+        }
+    }
+    .t-infobox__tab {
+        order: 1;
+        position: relative;
+        z-index: 1;
+        padding: 4px 10px;
+        font-family: var(--font);
+        font-size: 0.85em;
+        font-weight: bold;
+        color: var(--pt);
+        background-color: color-mix(in srgb, var(--ib-p) 55%, transparent);
+        border: 1px solid transparent;
+        border-radius: var(--br-12);
+        cursor: pointer;
+        user-select: none;
+        outline: none;
+        transition: color 0.2s ease;
+        &:hover {
+            color: var(--ib-s);
+        }
+        &:focus,
+        &:has(+ .t-infobox__panel:focus-within) {
+            anchor-name: --ib-tab;
+            color: var(--ib-s);
+        }
+        &:focus + .t-infobox__panel {
+            display: block;
+        }
+    }
+    @supports not (anchor-name: --ib-tab) {
+        .t-infobox__media:not(:focus-within) .t-infobox__tab:first-of-type,
+        .t-infobox__tab:focus,
+        .t-infobox__tab:has(+ .t-infobox__panel:focus-within) {
+            background-color: color-mix(in oklch, var(--ib-p) 85%, var(--ib-s));
+            border-color: var(--ib-s);
+        }
+    }
+    .t-infobox__panel {
+        order: 2;
+        width: 100%;
+        display: none;
+        outline: none;
+        &:focus-within {
+            display: block;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--br-12);
+            display: block;
+            margin: 4px auto 0;
+        }
+    }
+    .t-infobox__caption {
+        order: 3;
+        width: 100%;
+        font-size: 0.85em;
+        opacity: 0.85;
+        padding: 2px 4px 0;
+    }
+    .t-infobox__group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        &:not(.is-collapsed):has(> .t-infobox__section:focus),
+        &.is-collapsed:not(:focus-within) {
+            .t-infobox__section::after {
+                transform: rotate(-90deg);
+            }
+            .t-infobox__body {
+                grid-template-rows: 0fr;
+                opacity: 0;
+                margin-top: -6px;
+            }
+        }
+    }
+    .t-infobox__section {
+        position: relative;
+        font-family: var(--font);
+        font-size: 1.1em;
+        font-weight: bold;
+        text-align: center;
+        color: var(--ib-s);
+        background-color: color-mix(in oklch, var(--ib-p) 88%, var(--ib-s));
+        border-radius: var(--br-12);
+        padding: 6px 28px;
+        user-select: none;
+        outline: none;
+        &:focus {
+            pointer-events: none;
+        }
+        &::after {
+            content: "\f107";
+            font-family: "Font Awesome 7 Free Solid";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            translate: 0 -50%;
+            transition: transform 0.25s ease;
+        }
+    }
+    .t-infobox__body {
+        cursor: auto;
+        display: grid;
+        grid-template-rows: 1fr;
+        opacity: 1;
+        transition: grid-template-rows 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+    }
+    .t-infobox__body-inner {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .t-infobox__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+        gap: 6px;
+    }
+    .t-infobox__cell {
+        background-color: color-mix(in srgb, var(--ib-p) 65%, transparent);
+        border-radius: var(--br-12);
+        padding: 6px 8px;
+        text-align: center;
+    }
+    .t-infobox__cell-label {
+        font-size: 0.8em;
+        font-weight: bold;
+        color: var(--ib-s);
+        margin-bottom: 2px;
+    }
+    .t-infobox__cell-value {
+        font-size: 0.9em;
+    }
+    .t-infobox__row {
+        display: grid;
+        grid-template-columns: minmax(90px, 38%) 1fr;
+        gap: 8px;
+        align-items: baseline;
+        padding: 6px 10px;
+        background-color: color-mix(in srgb, var(--ib-p) 65%, transparent);
+        border-radius: var(--br-12);
+        font-size: 0.92em;
+        &.t-infobox__row--full {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+    }
+    .t-infobox__label {
+        font-weight: bold;
+        color: var(--ib-s);
+    }
+    .t-infobox__value {
+        word-break: break-word;
+        ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+    }
+}
+@container article (max-width: 620px) {
+    .t-infobox {
+        float: none;
+        clear: both;
+        width: min(100%, 360px);
+        margin: 0 auto 16px;
+    }
+}
+/* 2. Сворачиваемый блок (.t-collapse) для ПК и мобилок */
+.t-collapse {
+    background: var(--template), var(--p);
+    border: var(--bs-2s);
+    border-radius: var(--br-14);
+    padding: 8px;
+    margin: 8px 0;
+    cursor: pointer;
+    &:not(.is-collapsed):is(.is-open, :has(> .t-collapse__header:focus)),
+    &.is-collapsed:not(.is-open, :focus-within) {
+        .t-collapse__header::after {
+            transform: rotate(-90deg);
+        }
+        .t-collapse__body {
+            grid-template-rows: 0fr;
+            opacity: 0;
+        }
+    }
+    .t-collapse__header {
+        position: relative;
+        font-family: var(--font);
+        font-size: 1.1em;
+        font-weight: bold;
+        text-align: center;
+        color: var(--s);
+        background-color: var(--cm-p);
+        border-radius: var(--br-12);
+        padding: 8px 32px;
+        user-select: none;
+        outline: none;
+        &:focus {
+            pointer-events: none;
+        }
+        &::after {
+            content: "\f107";
+            font-family: "Font Awesome 7 Free Solid";
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            translate: 0 -50%;
+            transition: transform 0.25s ease;
+        }
+    }
+    .t-collapse__body {
+        cursor: auto;
+        display: grid;
+        grid-template-rows: 1fr;
+        opacity: 1;
+        transition: grid-template-rows 0.32s ease, opacity 0.25s ease;
+    }
+    .t-collapse__inner {
+        overflow: hidden;
+        padding-top: 8px;
+    }
+}
+/* 3. Универсальная адаптивная таблица (.t-table) */
+.t-table-wrap {
+    width: 100%;
+    margin: 14px 0;
+    &.t-table-wrap--scroll {
+        overflow-x: auto;
+        border-radius: var(--br-14);
+        scrollbar-width: thin;
+        scrollbar-color: var(--s) transparent;
+        .t-table td:first-child,
+        .t-table th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            background-color: var(--p);
+        }
+    }
+}
+.t-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--template), var(--p);
+    color: var(--pt);
+    border: var(--bs-2s);
+    border-radius: var(--br-14);
+    overflow: hidden;
+    .t-table__caption {
+        font-family: var(--font);
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--s);
+        padding: 8px 12px;
+    }
+    th {
+        font-family: var(--font);
+        font-weight: bold;
+        color: var(--s);
+        background-color: var(--cm-p);
+        padding: 10px 12px;
+        text-align: left;
+        border-bottom: 2px solid var(--s);
+    }
+    td {
+        padding: 8px 12px;
+        border-bottom: 1px solid color-mix(in srgb, var(--s) 25%, transparent);
+        vertical-align: middle;
+    }
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+    tbody tr:hover td {
+        background-color: color-mix(in srgb, var(--cm-p) 50%, transparent);
+    }
+}
+@container article (max-width: 580px) {
+    .t-table-wrap--cards .t-table {
+        border: none;
+        background: transparent;
+        thead {
+            display: none;
+        }
+        tbody {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        tr {
+            display: flex;
+            flex-direction: column;
+            background: var(--template), var(--p);
+            border: var(--bs-2s);
+            border-radius: var(--br-14);
+            padding: 6px 10px;
+        }
+        td {
+            display: grid;
+            grid-template-columns: minmax(100px, 40%) 1fr;
+            gap: 8px;
+            padding: 6px 4px;
+            &::before {
+                content: attr(data-label);
+                font-family: var(--font);
+                font-weight: bold;
+                color: var(--s);
+            }
+        }
+    }
+}
+/* 4. Единый подвал категорий и интервики (.t-footer) */
+body:has(.t-footer) :is(#articleCategories, .page-footer__languages) {
+    display: none !important;
+}
+.t-footer {
+    margin-top: 28px;
+    padding: 14px 16px;
+    background: var(--template), var(--p);
+    border: var(--bs-2s);
+    border-radius: var(--br-16);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .t-footer__section {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .t-footer__label {
+        font-family: var(--font);
+        font-size: 1.05em;
+        font-weight: bold;
+        color: var(--s);
+    }
+    .t-footer__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .t-footer__pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 12px;
+        background-color: var(--cm-p);
+        border: 1px solid color-mix(in srgb, var(--s) 40%, transparent);
+        border-radius: 99px;
+        font-size: 0.9em;
+        transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+        &:hover {
+            background-color: var(--s);
+            border-color: var(--s);
+            transform: translateY(-1px);
+            a {
+                color: var(--p) !important;
+                text-decoration: none;
+            }
+            .t-footer__lang-code {
+                background-color: var(--p);
+                color: var(--s);
+            }
+        }
+        a {
+            color: var(--pt);
+            font-weight: 600;
+            text-decoration: none;
+        }
+    }
+    .t-footer__lang-code {
+        font-family: monospace;
+        font-size: 0.78em;
+        font-weight: bold;
+        padding: 1px 5px;
+        border-radius: 6px;
+        background-color: var(--p);
+        color: var(--s);
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+}
+/* 5. Кастомный аудиоплеер (.t-audio-player) */
+.t-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 340px;
+    padding: 6px 10px;
+    margin: 4px auto;
+    background-color: var(--cm-p);
+    color: var(--pt);
+    border: var(--bs-2s);
+    border-radius: var(--br-14);
+    box-sizing: border-box;
+    user-select: none;
+    transition: box-shadow 0.25s ease;
+    &.is-inline {
+        display: inline-flex;
+        width: auto;
+        min-width: 210px;
+        vertical-align: middle;
+        margin: 2px 4px;
+    }
+    &.is-playing {
+        box-shadow: 0 0 12px color-mix(in srgb, var(--s) 45%, transparent);
+    }
+    .t-ap__play {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        background-color: var(--p);
+        color: var(--s);
+        border: 1px solid var(--s);
+        border-radius: var(--br-50);
+        cursor: pointer;
+        font-size: 13px;
+        transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+        &:hover {
+            background-color: var(--s);
+            color: var(--p);
+            transform: scale(1.06);
+        }
+    }
+    .t-ap__main {
+        flex: 1;
+        min-width: 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .t-ap__title {
+        font-family: var(--font);
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--s);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .t-ap__track {
+        position: relative;
+        height: 20px;
+        background-color: var(--p);
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .t-ap__visualizer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+    .t-ap__progress {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0%;
+        background-color: color-mix(in srgb, var(--l) 45%, transparent);
+        border-right: 2px solid var(--s);
+        pointer-events: none;
+        transition: width 0.1s linear;
+    }
+    .t-ap__meta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+    }
+    .t-ap__time {
+        font-family: monospace;
+        font-size: 11px;
+        opacity: 0.85;
+        white-space: nowrap;
+    }
+    .t-ap__fx {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        padding: 2px 5px;
+        font-size: 13px;
+        cursor: pointer;
+        opacity: 0.55;
+        transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        &:hover {
+            opacity: 1;
+        }
+        &.is-active {
+            opacity: 1;
+            background-color: var(--p);
+            border-color: var(--s);
+        }
+    }
+}
+/* 6. Светящаяся кнопка (.wiki-glow-btn) и система модальных окон (20 эффектов) */
+.wiki-glow-btn {
+    --glow: var(--s);
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    padding: 10px 22px;
+    background-color: var(--p);
+    color: var(--pt);
+    font-family: var(--font);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border: 1px solid color-mix(in srgb, var(--pt) 30%, transparent);
+    border-radius: 100px;
+    cursor: pointer;
+    user-select: none;
+    overflow: visible;
+    isolation: isolate;
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.15s ease;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 45%;
+        height: 55%;
+        border-radius: var(--br-50);
+        background-color: var(--glow);
+        filter: blur(18px);
+        opacity: 0.55;
+        z-index: -1;
+        transition: width 0.4s ease, height 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+    }
+    &:hover {
+        background-color: color-mix(in srgb, var(--glow) 80%, var(--p));
+        border-color: color-mix(in srgb, var(--pt) 65%, transparent);
+        box-shadow:
+            0 0 36px 8px color-mix(in srgb, var(--glow) 65%, transparent),
+            0 0 70px 18px color-mix(in srgb, var(--glow) 35%, transparent),
+            inset 0 0 18px color-mix(in srgb, var(--pt) 30%, transparent);
+        &::before {
+            width: 90%;
+            height: 90%;
+            filter: blur(14px);
+            opacity: 0.85;
+        }
+    }
+    &:active {
+        transform: scale(0.97);
+    }
+    &[data-color="link"] { --glow: var(--l); }
+    &[data-color="alert"] { --glow: var(--al); }
+    &[data-color="success"] { --glow: var(--su); }
+}
+.wiki-modal-source {
+    display: none !important;
+}
+.wiki-modal-overlay {
+    --m-from: scale(0.85);
+    --m-origin: center center;
+    --m-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --m-dur: 0.75s;
+    --m-filter: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: var(--blur-5);
+    perspective: 900px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    .wiki-modal-box {
+        position: relative;
+        width: min(92%, 540px);
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: clamp(20px, 4vw, 36px);
+        background: var(--template), var(--p);
+        color: var(--pt);
+        border: var(--bs-2s);
+        border-radius: var(--br-16);
+        box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55);
+        text-align: center;
+        transform-origin: var(--m-origin);
+        transform: var(--m-from);
+        filter: var(--m-filter);
+        opacity: 0;
+        transition: transform var(--m-dur) var(--m-ease), filter var(--m-dur) ease, opacity 0.5s ease;
+        scrollbar-width: thin;
+        scrollbar-color: var(--s) transparent;
+    }
+    .wiki-modal-title {
+        font-family: var(--font);
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        color: var(--s);
+        margin: 0 0 12px;
+        line-height: 1.25;
+    }
+    .wiki-modal-body {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+    .wiki-modal-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 28px;
+        font-family: var(--font);
+        font-size: 1rem;
+        font-weight: bold;
+        color: var(--s);
+        background-color: var(--cm-p);
+        border: var(--bs-2s);
+        border-radius: 40px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        &:hover {
+            background-color: var(--s);
+            color: var(--p);
+            transform: scale(1.04);
+        }
+    }
+    &[data-effect="swing"] {
+        --m-origin: top center;
+        --m-from: rotateX(-100deg);
+        --m-ease: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    &[data-effect="swing-bottom"] {
+        --m-origin: bottom center;
+        --m-from: rotateX(100deg);
+        --m-ease: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    &[data-effect="roll-left"] {
+        --m-from: translateX(-120%) rotate(-720deg);
+        --m-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --m-dur: 0.95s;
+    }
+    &[data-effect="roll-right"] {
+        --m-from: translateX(120%) rotate(720deg);
+        --m-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --m-dur: 0.95s;
+    }
+    &[data-effect="skew"] {
+        --m-from: skewX(40deg) scale(0.5);
+    }
+    &[data-effect="slide-rotate"] {
+        --m-from: translateY(100%) rotate(15deg);
+    }
+    &[data-effect="flip-xy"] {
+        --m-from: rotateX(90deg) rotateY(90deg);
+        --m-dur: 0.85s;
+    }
+    &[data-effect="zoom-corner"] {
+        --m-origin: top left;
+        --m-from: scale(0) translate(-100%, -100%);
+    }
+    &[data-effect="rotate-down-left"] {
+        --m-origin: left bottom;
+        --m-from: rotate(-90deg) translateY(100%);
+    }
+    &[data-effect="rotate-down-right"] {
+        --m-origin: right bottom;
+        --m-from: rotate(90deg) translateY(100%);
+    }
+    &[data-effect="light-speed"] {
+        --m-from: translateX(100%) skewX(-30deg);
+        --m-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    &[data-effect="fade-scale-rotate"] {
+        --m-from: scale(0.3) rotate(-180deg);
+        --m-dur: 0.95s;
+    }
+    &[data-effect="blur"] {
+        --m-from: scale(1.2);
+        --m-filter: blur(20px);
+        --m-ease: ease;
+    }
+    &[data-effect="unfold-vertical"] {
+        --m-origin: top center;
+        --m-from: scaleY(0);
+    }
+    &[data-effect="unfold-horizontal"] {
+        --m-origin: left center;
+        --m-from: scaleX(0);
+    }
+    &.is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        .wiki-modal-box {
+            transform: none;
+            filter: blur(0);
+            opacity: 1;
+        }
+        &[data-effect="rubber"] .wiki-modal-box {
+            animation: wm-rubberBand 0.9s ease forwards;
+        }
+        &[data-effect="heartbeat"] .wiki-modal-box {
+            animation: wm-heartbeat 1s ease forwards;
+        }
+        &[data-effect="jello"] .wiki-modal-box {
+            animation: wm-jello 1s ease forwards;
+        }
+        &[data-effect="bounce-down"] .wiki-modal-box {
+            animation: wm-bounceInDown 0.9s ease forwards;
+        }
+        &[data-effect="bounce-up"] .wiki-modal-box {
+            animation: wm-bounceInUp 0.9s ease forwards;
+        }
+    }
+}
+@keyframes wm-rubberBand {
+    0% { transform: scale(1); }
+    30% { transform: scaleX(1.25) scaleY(0.75); }
+    40% { transform: scaleX(0.75) scaleY(1.25); }
+    50% { transform: scaleX(1.15) scaleY(0.85); }
+    65% { transform: scaleX(0.95) scaleY(1.05); }
+    75% { transform: scaleX(1.05) scaleY(0.95); }
+    100% { transform: scale(1); }
+}
+@keyframes wm-heartbeat {
+    0%, 28%, 70%, 100% { transform: scale(1); }
+    14%, 42% { transform: scale(1.15); }
+}
+@keyframes wm-jello {
+    0%, 100% { transform: skewX(0deg) skewY(0deg); }
+    15% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+    30% { transform: skewX(6.25deg) skewY(6.25deg); }
+    45% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+    60% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+    75% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+}
+@keyframes wm-bounceInDown {
+    0% { transform: translateY(-300px); opacity: 0; }
+    60% { transform: translateY(25px); opacity: 1; }
+    75% { transform: translateY(-10px); opacity: 1; }
+    90% { transform: translateY(5px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes wm-bounceInUp {
+    0% { transform: translateY(300px); opacity: 0; }
+    60% { transform: translateY(-25px); opacity: 1; }
+    75% { transform: translateY(10px); opacity: 1; }
+    90% { transform: translateY(-5px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+/* 7. Контейнеры для GSS, SwissGL, ShaderPark, Pts, Atropos и Splitting.js */
+:is(.gss-wrapper, .swissgl-wrapper, .sp-wrapper, .pts-wrapper) {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--br-14);
+}
+.wiki-atropos {
+    display: inline-block;
+    border-radius: var(--br-14);
+    .atropos-inner {
+        border-radius: inherit;
+    }
+}
+.wiki-split {
+    display: inline-block;
+    .char {
+        display: inline-block;
+    }
+    &[data-effect="wave"] .char {
+        animation: split-wave 1.6s ease-in-out infinite;
+        animation-delay: calc(var(--char-index, 0) * 0.05s);
+    }
+    &[data-effect="typewriter"] .char {
+        opacity: 0;
+        animation: split-typewriter 0.05s steps(1) forwards;
+        animation-delay: calc(var(--char-index, 0) * 0.04s);
+    }
+    &[data-effect="glitch"] .char {
+        animation: split-glitch 2.5s infinite;
+        animation-delay: calc(var(--char-index, 0) * 0.07s);
+    }
+}
+@keyframes split-typewriter {
+    to { opacity: 1; }
+}
+@keyframes split-wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-0.22em); color: var(--s); }
+}
+@keyframes split-glitch {
+    0%, 92%, 100% { transform: translate(0, 0); opacity: 1; }
+    94% { transform: translate(-2px, 1px) skewX(8deg); color: var(--l); }
+    96% { transform: translate(2px, -1px) skewX(-8deg); color: var(--s); }
+    98% { opacity: 0.4; }
+}
