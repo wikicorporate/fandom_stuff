@@ -88,10 +88,7 @@
             margin-bottom: 0;
         }
 
-        &:not(:has(li)) {
-            display: none !important;
-        }
-
+        &:not(:has(li)),
         &.reflist-notes-section .mw-references-wrap:not(:has(li)) {
             display: none !important;
         }
@@ -134,7 +131,8 @@
                 -webkit-mask-image: none;
             }
 
-            .wds-tabs__arrow-left, .wds-tabs__arrow-right {
+            .wds-tabs__arrow-left,
+            .wds-tabs__arrow-right {
                 display: none;
             }
         }
@@ -278,38 +276,6 @@
 }
 
 /* Индикаторы */
-body.theme-fandomdesktop-dark .page-header__indicators {
-    --unfinished: rgb(115 57 7);
-    --old: rgb(101 11 11);
-    --short: rgb(57 63 131);
-    --noncanon: rgb(76 42 108);
-    --navigation: rgb(42 84 38);
-    --disambig: rgb(13 84 78);
-    --spoiler: rgb(103 18 63);
-    --undefined: rgb(47 59 68);
-    --image: rgb(7 27 70);
-    --video: rgb(90 87 9);
-    --audio: rgb(49 7 70);
-    --animation: rgb(70 7 41);
-    --file: rgb(53 20 74);
-}
-
-body.theme-fandomdesktop-light .page-header__indicators {
-    --unfinished: rgb(255 139 39);
-    --old: rgb(255 47 47);
-    --short: rgb(122 133 255);
-    --noncanon: rgb(183 106 255);
-    --navigation: rgb(134 255 122);
-    --disambig: rgb(56 255 238);
-    --spoiler: rgb(255 56 162);
-    --undefined: rgb(222 222 222);
-    --image: rgb(75 56 255);
-    --video: rgb(255 247 32);
-    --audio: rgb(181 33 255);
-    --animation: rgb(255 37 154);
-    --file: rgb(102 51 255);
-}
-
 #page-header:has(.page-header__languages) .mw-indicator {
     width: calc(100% + 125px);
 }
@@ -374,6 +340,10 @@ body.theme-fandomdesktop-light .page-header__indicators {
             overflow: hidden;
             z-index: 10000;
         }
+
+        &:has(.fa-xmark) {
+            --ind: var(--ind-undefined);
+        }
     }
 
     .mw-indicator__icon {
@@ -406,25 +376,18 @@ body.theme-fandomdesktop-light .page-header__indicators {
         padding: 0 0.5em;
     }
 
-    .mw-indicator__nameplate--unfinished { --ind: var(--unfinished); }
-    .mw-indicator__nameplate--old { --ind: var(--old); }
-    .mw-indicator__nameplate--short { --ind: var(--short); }
-    .mw-indicator__nameplate--noncanon { --ind: var(--noncanon); }
-    .mw-indicator__nameplate--navigation { --ind: var(--navigation); }
-    .mw-indicator__nameplate--disambig { --ind: var(--disambig); }
-    .mw-indicator__nameplate--spoiler { --ind: var(--spoiler); }
-    .mw-indicator__icon--image { --ind: var(--image); }
-    .mw-indicator__icon--video { --ind: var(--video); }
-    .mw-indicator__icon--audio { --ind: var(--audio); }
-    .mw-indicator__icon--animation { --ind: var(--animation); }
-    .mw-indicator__icon--file { --ind: var(--file); }
-
-    .mw-indicator__nameplate,
-    .mw-indicator__icon {
-        &:has(.fa-xmark) {
-            --ind: var(--undefined);
-        }
-    }
+    [class$="--unfinished"] { --ind: var(--ind-unfinished); }
+    [class$="--old"] { --ind: var(--ind-old); }
+    [class$="--short"] { --ind: var(--ind-short); }
+    [class$="--noncanon"] { --ind: var(--ind-noncanon); }
+    [class$="--navigation"] { --ind: var(--ind-navigation); }
+    [class$="--disambig"] { --ind: var(--ind-disambig); }
+    [class$="--spoiler"] { --ind: var(--ind-spoiler); }
+    [class$="--image"] { --ind: var(--ind-image); }
+    [class$="--video"] { --ind: var(--ind-video); }
+    [class$="--audio"] { --ind: var(--ind-audio); }
+    [class$="--animation"] { --ind: var(--ind-animation); }
+    [class$="--file"] { --ind: var(--ind-file); }
 }
 
 /* Разные скины */
@@ -1106,10 +1069,8 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
     }
 }
 
-body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-diff) {
-    #custom-fan-feed {
-        display: none;
-    }
+body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-diff) #custom-fan-feed {
+    display: none;
 }
 
 .resizable-container:has(.fan-feed) .page {
@@ -1133,7 +1094,7 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
     flex-shrink: 0;
 
     &::before {
-        content: '';
+        content: "";
         width: 100%;
         height: 100%;
         background-color: transparent;
@@ -1194,12 +1155,8 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
                 left: 65%;
             }
 
-            body.theme-fandomdesktop-light & {
-                left: 5%;
-            }
-
             &::before {
-                content: '';
+                content: "";
                 width: 100%;
                 height: 100%;
                 background-color: transparent;
@@ -1237,11 +1194,6 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
                         transform: rotate(0deg);
                     }
 
-                    body.theme-fandomdesktop-light & {
-                        left: 100%;
-                        transform: rotate(60deg);
-                    }
-
                     .theme-toggler__crater {
                         width: 18%;
                         height: 18%;
@@ -1267,10 +1219,6 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
 
                 body.theme-fandomdesktop-dark & {
                     transform: scale(0.85);
-                }
-
-                body.theme-fandomdesktop-light & {
-                    transform: scale(1);
                 }
 
                 .theme-toggler__ray {
@@ -1302,10 +1250,6 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
 
             body.theme-fandomdesktop-dark & {
                 top: 100%;
-            }
-
-            body.theme-fandomdesktop-light & {
-                top: 0;
             }
 
             .theme-toggler__cloud-group {
@@ -1363,10 +1307,6 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
 
             body.theme-fandomdesktop-dark & {
                 top: 0%;
-            }
-
-            body.theme-fandomdesktop-light & {
-                top: -100%;
             }
 
             .theme-toggler__star {
