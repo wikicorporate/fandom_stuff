@@ -93,8 +93,7 @@
             position: relative;
             width: 150px;
             height: 150px;
-            border-radius: 50%;
-            aspect-ratio: auto;
+            border-radius: var(--br-50);
             background-image: var(--color-stop);
             padding: 2px;
         }
