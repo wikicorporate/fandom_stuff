@@ -1,6 +1,15 @@
 /* Общее для проектов */
 :root {
     color-scheme: dark light;
+
+    &:has(body:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark)) {
+        color-scheme: dark;
+    }
+
+    &:has(body:is(.theme-fandomdesktop-light, .theme-fandommobile-light)) {
+        color-scheme: light;
+    }
+
     /* Рамки */
     --br-12: 12px;
     --br-14: 14px;
@@ -67,6 +76,7 @@
     /* m - message */
     --m: var(--theme-message-color);
     --ml: var(--theme-message-label);
+
     /* Основное пространство без глобальных элементов */
     .resizable-container,
     #fandom-mobile-wrapper,
@@ -75,15 +85,18 @@
         --theme-border-color: var(--s);
     }
 }
+
 /* Специализированные переменные и адаптивные токены light-dark() */
 body {
     &:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
         color-scheme: dark;
     }
+
     &:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
         color-scheme: light;
     }
-    /* Цвета и текст (светлая / тёмная тема) */
+
+    /* Цвета и текст */
     --pt: light-dark(#080808, #f8f8f8);
     --theme-page-text-color: var(--pt);
     --theme-success-color: light-dark(#0d431f, #24ff6e);
@@ -91,20 +104,20 @@ body {
     --cm-p: color-mix(in srgb, var(--p), var(--s) 10%);
     --cm-s: color-mix(in srgb, var(--s), var(--p) 10%);
     --cC: currentColor;
-    /* Единая палитра индикаторов (для десктопа и мобильной версии) */
-    --unfinished: light-dark(rgb(255 139 39), rgb(115 57 7));
-    --old: light-dark(rgb(255 47 47), rgb(101 11 11));
-    --short: light-dark(rgb(122 133 255), rgb(57 63 131));
-    --noncanon: light-dark(rgb(183 106 255), rgb(76 42 108));
-    --navigation: light-dark(rgb(134 255 122), rgb(42 84 38));
-    --disambig: light-dark(rgb(56 255 238), rgb(13 84 78));
-    --spoiler: light-dark(rgb(255 56 162), rgb(103 18 63));
-    --undefined: light-dark(rgb(222 222 222), rgb(47 59 68));
-    --image: light-dark(rgb(75 56 255), rgb(7 27 70));
-    --video: light-dark(rgb(255 247 32), rgb(90 87 9));
-    --audio: light-dark(rgb(181 33 255), rgb(49 7 70));
-    --animation: light-dark(rgb(255 37 154), rgb(70 7 41));
-    --file: light-dark(rgb(102 51 255), rgb(53 20 74));
+    /* Индикаторы */
+    --ind-unfinished: light-dark(rgb(255 139 39), rgb(115 57 7));
+    --ind-old: light-dark(rgb(255 47 47), rgb(101 11 11));
+    --ind-short: light-dark(rgb(122 133 255), rgb(57 63 131));
+    --ind-noncanon: light-dark(rgb(183 106 255), rgb(76 42 108));
+    --ind-navigation: light-dark(rgb(134 255 122), rgb(42 84 38));
+    --ind-disambig: light-dark(rgb(56 255 238), rgb(13 84 78));
+    --ind-spoiler: light-dark(rgb(255 56 162), rgb(103 18 63));
+    --ind-undefined: light-dark(rgb(222 222 222), rgb(47 59 68));
+    --ind-image: light-dark(rgb(75 56 255), rgb(7 27 70));
+    --ind-video: light-dark(rgb(255 247 32), rgb(90 87 9));
+    --ind-audio: light-dark(rgb(181 33 255), rgb(49 7 70));
+    --ind-animation: light-dark(rgb(255 37 154), rgb(70 7 41));
+    --ind-file: light-dark(rgb(102 51 255), rgb(53 20 74));
     /* Фиксы */
     --theme-accent-color: var(--p);
     --theme-accent-color--hover: var(--s);
@@ -115,7 +128,7 @@ body {
     --bs-2s: 2px solid var(--s);
     /* Тени */
     --ts-s: 0 0 3px var(--s);
-    --ts-h: 2px 2px 0 var(--p), 2px -2px 0 var(--p), -2px 2px 0 var(--p), -2px -2px 0 var(--p), 2px 0px 0 var(--p), 0px 2px 0 var(--p), -2px 0px 0 var(--p), 0px -2px 0 var(--p);
+    --ts-h: 2px 2px 0 var(--p), 2px -2px 0 var(--p), -2px 2px 0 var(--p), -2px -2px 0 var(--p), 2px 0 0 var(--p), 0 2px 0 var(--p), -2px 0 0 var(--p), 0 -2px 0 var(--p);
     /* Изображения */
     --h: var(--b-main);
     --cp: var(--b-main);
@@ -123,31 +136,35 @@ body {
     --template: linear-gradient(90deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), linear-gradient(0deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), var(--cp);
     --scroll: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     --color-slide: linear-gradient(var(--l) 50%, var(--s) 50%);
-    --color-stop: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, var(--l)), color-stop(0.67, var(--s)));
+    --color-stop: linear-gradient(to top, var(--l) 33%, var(--s) 67%);
     --card: linear-gradient(45deg, transparent 5%, var(--l) 50%, transparent 99%);
     /* Фильтры */
-    --blur-b: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-b"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-b');
-    --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
-    --drawn-button: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="4"/></filter></svg>#drawn-button');
-    --drawn-button--hover: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button--hover"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/> <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8"/></filter></svg>#drawn-button--hover');
+    --blur-b: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-b"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-b');
+    --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
+    --drawn-button: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="4"/></filter></svg>#drawn-button');
+    --drawn-button--hover: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drawn-button--hover"><feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="8"/></filter></svg>#drawn-button--hover');
 }
+
 /* Properties */
 @property --fill {
     syntax: "<percentage>";
     inherits: true;
     initial-value: 0%;
 }
+
 @property --font-size {
     syntax: "small | medium | large";
     inherits: true;
     initial-value: small;
 }
+
 /* Position */
 .p-s { position: static; }
 .p-r { position: relative; }
 .p-a { position: absolute; }
 .p-f { position: fixed; }
 .p-st { position: sticky; }
+
 /* Width */
 .w-a { width: auto; }
 .w-0 { width: 0; }
@@ -155,6 +172,7 @@ body {
 .w-50 { width: 50%; }
 .w-75 { width: 75%; }
 .w-100 { width: 100%; }
+
 /* Height */
 .h-a { height: auto; }
 .h-0 { height: 0; }
@@ -162,6 +180,7 @@ body {
 .h-50 { height: 50%; }
 .h-75 { height: 75%; }
 .h-100 { height: 100%; }
+
 /* Border */
 .b-s { border: var(--bs-2s); }
 .b-0 { border: none; }
@@ -169,6 +188,7 @@ body {
 .br-14 { border-radius: var(--br-14); }
 .br-16 { border-radius: var(--br-16); }
 .br-50 { border-radius: var(--br-50); }
+
 /* Text-align */
 .t-a-s { text-align: start; }
 .t-a-e { text-align: end; }
@@ -178,6 +198,7 @@ body {
 .t-a-j { text-align: justify; }
 .t-a-j-a { text-align: justify-all; }
 .t-a-m-p { text-align: match-parent; }
+
 /* Vertical-align */
 .v-a-ba { vertical-align: baseline; }
 .v-a-s { vertical-align: sub; }
