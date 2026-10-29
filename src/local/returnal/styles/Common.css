@@ -166,13 +166,13 @@
     src: url("https://static.wikia.nocookie.net/wiki-corporate/images/f/f2/UtSaHaGummLTThai.woff2/revision/latest?cb=20240816231619&format=original&path-prefix=ru") format("woff2");
 }
 
-body {
-    --bs-2t: 2px solid var(--t);
-    --bs-2rl: 2px solid var(--rl);
-}
-
 :root {
     /* Цвета */
+    --p: light-dark(#FDCECE, #061A19);
+    --s: light-dark(#201B03, #47BE9D);
+    --t: light-dark(#FFC498, #12372C);
+    --rl: light-dark(#63140b, #E1CEB0);
+    --text--main: light-dark(#1B1B18, #47BE9D);
     --returnal: #47BE9D;
     --enemy: #8EA1FE;
     --boss: #EEC3C2;
@@ -184,6 +184,11 @@ body {
     --text--message: #f9b24b;
     --text--danger: #fb6161;
     --text--response: #ffee95;
+    /* Рамки */
+    --bs-2t: 2px solid var(--t);
+    --bs-2rl: 2px solid var(--rl);
+    /* Блюр */
+    --blur: light-dark(rgb(244 179 179 / 70%), rgb(16 37 25 / 70%));
     /* SVG-фильтры */
     --f-returnal: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.27843 0 0 0 0 0 0.7451 0 0 0 0 0 0.61569 0 0 0 0 0 1 0"/></filter></svg>#icon');
     --f-enemy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.55686 0 0 0 0 0 0.63137 0 0 0 0 0 0.99608 0 0 0 0 0 1 0"/></filter></svg>#icon');
@@ -197,8 +202,9 @@ body {
     /* Градиенты */
     --rg: radial-gradient(rgb(183 183 183 / 30%), transparent 75%);
     --distortion: repeating-linear-gradient(transparent 4px, #00000080 8px);
+    --rlg: repeating-linear-gradient(transparent, transparent 19px, light-dark(#00000080, #ffffff80) 20px), repeating-linear-gradient(90deg, transparent, transparent 19px, light-dark(#00000080, #ffffff80) 20px);
     /* Шрифты */
-    --font: 'ANMDS WTC', var(--fallback-1);
+    --font: "ANMDS WTC", var(--fallback-1);
     --size: 1.5rem;
     /* Фоны */
     --tooltip-b: url(https://static.wikia.nocookie.net/returnal5614/images/2/26/Background.png/revision/latest?cb=20240819125456&format=original&path-prefix=ru);
@@ -206,50 +212,18 @@ body {
 
 /* Тёмная тема */
 body.theme-fandomdesktop-dark {
-    /* Цвета */
-    --p: #061A19;
-    --s: #47BE9D;
-    --t: #12372C;
-    --rl: #E1CEB0;
-    --text--main: #47BE9D;
-    /* Блюр */
-    --blur: rgb(16 37 25 / 70%);
     /* SVG-фильтры */
     --animation: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.41342 0 0 0 0 0 0.87005 0 0 0 0 0 0.73492 0 0 0 0 0 1 0"/></filter></svg>#color');
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.27843 0 0 0 0 0 0.7451 0 0 0 0 0 0.61569 0 0 0 0 0 1 0"/></filter></svg>#color');
-    /* Градиенты */
-    --rlg: repeating-linear-gradient(transparent, transparent 19px, #ffffff80 20px), repeating-linear-gradient(90deg, transparent, transparent 19px, #ffffff80 20px);
     /* Изображения */
     --b-main: url(https://static.wikia.nocookie.net/returnal5614/images/0/08/Site-background-dark/revision/latest?cb=20230217151056&format=original&path-prefix=ru);
 }
 
 /* Светлая тема */
 body.theme-fandomdesktop-light {
-    /* Цвета */
-    --p: #FDCECE;
-    --s: #201B03;
-    --t: #FFC498;
-    --rl: #63140b;
-    --text--main: #1B1B18;
-    /* Блюр */
-    --blur: rgb(244 179 179 / 70%);
     /* SVG-фильтры */
     --animation: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.97647 0 0 0 0 0 0.59216 0 0 0 0 0 0.59216 0 0 0 0 0 1 0"/></filter></svg>#color');
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.12549 0 0 0 0 0 0.10588 0 0 0 0 0 0.01176 0 0 0 0 0 1 0"/></filter></svg>#color');
-    /* Градиенты */
-    --rlg: repeating-linear-gradient(transparent, transparent 19px, #00000080 20px), repeating-linear-gradient(90deg, transparent, transparent 19px, #00000080 20px);
     /* Изображения */
     --b-main: url(https://static.wikia.nocookie.net/returnal5614/images/b/b5/Site-background-light/revision/latest?cb=20231128100332&format=original&path-prefix=ru);
-}
-
-/* Костыли для FF */
-@-moz-document url-prefix() {
-    :root:has(.theme-fandomdesktop-dark) {
-        --p: #061A19;
-        --s: #47BE9D;
-    }
-    :root:has(.theme-fandomdesktop-light) {
-        --p: #FDCECE;
-        --s: #201B03;
-    }
 }
