@@ -6,6 +6,11 @@
         background-color: transparent !important;
     }
 
+    .unified-search__input {
+        border: 0;
+        margin: 0;
+    }
+
     .unified-search__input__query {
         background-color: var(--cm-p) !important;
         border-radius: var(--br-14);
@@ -20,11 +25,6 @@
         hr {
             border-color: transparent;
         }
-    }
-
-    .unified-search__input {
-        border: 0;
-        margin: 0;
     }
 
     .unified-search__input__wrapper__inner {
@@ -311,9 +311,7 @@ body .lightboxContainer {
         a {
             color: var(--l);
 
-            &:hover,
-            &:focus,
-            &:active {
+            &:is(:hover, :focus, :active) {
                 color: var(--s);
             }
         }
@@ -398,7 +396,8 @@ body .lightboxContainer {
                     margin-top: 50px;
                     padding: 0;
 
-                    .more-links {
+                    .more-links,
+                    .email {
                         flex: 1;
                         padding: 0 !important;
                         width: auto !important;
@@ -406,9 +405,6 @@ body .lightboxContainer {
 
                     .email {
                         border: none !important;
-                        flex: 1;
-                        padding: 0 !important;
-                        width: auto !important;
                     }
 
                     div h2 {
@@ -828,12 +824,8 @@ td.diff-marker[data-marker="+"],
 
 /* Кабинет администратора */
 .mw-special-AdminDashboard {
-    #AdminDashboardTabs .link {
-        &:hover,
-        &:focus,
-        &:active {
-            color: var(--s);
-        }
+    #AdminDashboardTabs .link:is(:hover, :focus, :active) {
+        color: var(--s);
     }
 
     #AdminDashboard,
