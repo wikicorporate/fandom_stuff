@@ -1,0 +1,8 @@
+<div class="t-collapse {{#if:{{{Свёрнуто|}}}|is-collapsed}}">
+    <div class="t-collapse__header" tabindex="0">{{{1|{{{заголовок|Скрытый блок}}}}}}</div>
+    <div class="t-collapse__body">
+        <div class="t-collapse__inner">
+{{{2|{{{содержимое|}}}}}}
+        </div>
+    </div>
+</div>
