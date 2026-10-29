@@ -112,71 +112,23 @@
     padding: 10px;
     margin: 10px;
 
-    &[data-type="edit"] .cwa-rc__type-icon { color: var(--edit); }
-    &[data-type="new"] .cwa-rc__type-icon { color: var(--new); }
-    &[data-ns="2"] .cwa-rc__type-icon { color: var(--user); }
-    &[data-ns="4"] .cwa-rc__type-icon { color: var(--main); }
-    &[data-ns="6"] .cwa-rc__type-icon { color: var(--file); }
-    &[data-ns="8"] .cwa-rc__type-icon,
-    &[data-ns="828"] .cwa-rc__type-icon { color: var(--mediawiki); }
-    &[data-ns="10"] .cwa-rc__type-icon { color: var(--templates); }
-    &[data-ns="14"] .cwa-rc__type-icon { color: var(--category); }
-    &[data-ns="500"] .cwa-rc__type-icon { color: var(--blog); }
-    &[data-logtype="upload"] .cwa-rc__type-icon { color: var(--upload); }
-    &[data-logtype="move"] .cwa-rc__type-icon { color: var(--move); }
-    &[data-logtype="delete"] .cwa-rc__type-icon { color: var(--delete); }
-    &[data-logtype="block"] .cwa-rc__type-icon { color: var(--block); }
-    &[data-logtype="protect"] .cwa-rc__type-icon { color: var(--protect); }
-    &[data-logtype="rights"] .cwa-rc__type-icon { color: var(--rights); }
-    &[data-logtype="contentmodel"] .cwa-rc__type-icon { color: var(--json); }
-
-    /* Цвета социальной активности */
-    &[data-activity-type='create'] {
-        &[data-content-type='comment'] .cwa-rc__type-icon { color: var(--comment-create); }
-        &[data-content-type='comment-reply'] .cwa-rc__type-icon { color: var(--comment-create-reply); }
-        &[data-content-type='message'] .cwa-rc__type-icon { color: var(--message-create); }
-        &[data-content-type='message-reply'] .cwa-rc__type-icon { color: var(--message-create-reply); }
-        &[data-content-type='post'] .cwa-rc__type-icon { color: var(--post-create); }
-        &[data-content-type='post-reply'] .cwa-rc__type-icon { color: var(--post-create-reply); }
-        &[data-content-type='blog'] .cwa-rc__type-icon { color: var(--blog); }
-        &[data-content-type='blog-reply'] .cwa-rc__type-icon { color: var(--comment-create-reply); }
-    }
-
-    &[data-activity-type='update'] {
-        &[data-content-type='comment'] .cwa-rc__type-icon { color: var(--comment-update); }
-        &[data-content-type='comment-reply'] .cwa-rc__type-icon { color: var(--comment-update-reply); }
-        &[data-content-type='message'] .cwa-rc__type-icon { color: var(--message-update); }
-        &[data-content-type='message-reply'] .cwa-rc__type-icon { color: var(--message-update-reply); }
-        &[data-content-type='post'] .cwa-rc__type-icon { color: var(--post-update); }
-        &[data-content-type='post-reply'] .cwa-rc__type-icon { color: var(--post-update-reply); }
-    }
-
-    &[data-activity-type='delete'] {
-        &[data-content-type='comment'] .cwa-rc__type-icon { color: var(--comment-delete); }
-        &[data-content-type='comment-reply'] .cwa-rc__type-icon { color: var(--comment-reply-delete); }
-        &[data-content-type='message'] .cwa-rc__type-icon { color: var(--message-delete); }
-        &[data-content-type='message-reply'] .cwa-rc__type-icon { color: var(--message-reply-delete); }
-        &[data-content-type='post'] .cwa-rc__type-icon { color: var(--post-delete); }
-        &[data-content-type='post-reply'] .cwa-rc__type-icon { color: var(--post-reply-delete); }
-    }
-
-    &[data-activity-type='undelete'] {
-        &[data-content-type='comment'] .cwa-rc__type-icon { color: var(--comment-undelete); }
-        &[data-content-type='message'] .cwa-rc__type-icon { color: var(--message-undelete); }
-        &[data-content-type='post'] .cwa-rc__type-icon { color: var(--post-undelete); }
-    }
-
-    &[data-activity-type='lock'] {
-        &[data-content-type='comment'] .cwa-rc__type-icon { color: var(--comment-lock); }
-        &[data-content-type='message'] .cwa-rc__type-icon { color: var(--message-lock); }
-        &[data-content-type='post'] .cwa-rc__type-icon { color: var(--post-lock); }
-    }
-
-    &[data-activity-type='unlock'] {
-        &[data-content-type='comment'] .cwa-rc__type-icon { color: var(--comment-unlock); }
-        &[data-content-type='message'] .cwa-rc__type-icon { color: var(--message-unlock); }
-        &[data-content-type='post'] .cwa-rc__type-icon { color: var(--post-unlock); }
-    }
+    &[data-type="edit"] { --auto: var(--edit); }
+    &[data-type="new"] { --auto: var(--new); }
+    &[data-ns="2"] { --auto: var(--user); }
+    &[data-ns="4"] { --auto: var(--main); }
+    &[data-ns="6"] { --auto: var(--file); }
+    &[data-ns="8"],
+    &[data-ns="828"] { --auto: var(--mediawiki); }
+    &[data-ns="10"] { --auto: var(--templates); }
+    &[data-ns="14"] { --auto: var(--category); }
+    &[data-ns="500"] { --auto: var(--blog); }
+    &[data-logtype="upload"] { --auto: var(--upload); }
+    &[data-logtype="move"] { --auto: var(--move); }
+    &[data-logtype="delete"] { --auto: var(--delete); }
+    &[data-logtype="block"] { --auto: var(--block); }
+    &[data-logtype="protect"] { --auto: var(--protect); }
+    &[data-logtype="rights"] { --auto: var(--rights); }
+    &[data-logtype="contentmodel"] { --auto: var(--json); }
 }
 
 .cwa-rc__item--group-header {
@@ -243,7 +195,7 @@
 }
 
 .cwa-rc__type-icon {
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--auto, var(--theme-page-text-color--secondary, var(--pt)));
     font-size: 13px;
     width: 16px;
     text-align: center;
@@ -434,11 +386,9 @@
     color: var(--theme-page-text-color);
 }
 
-.cwa-modal__content {
-    table.diff {
-        width: 100%;
-        max-width: 100%;
-    }
+.cwa-modal__content table.diff {
+    width: 100%;
+    max-width: 100%;
 }
 
 .cwa-remote-container {
