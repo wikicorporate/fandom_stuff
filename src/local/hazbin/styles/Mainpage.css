@@ -153,20 +153,32 @@
     }
 }
 
+/* Заголовки секций Заглавной */
+.mp-cards__caption,
+.mp-videos__title,
+.mp-community__title {
+    padding: 16px;
+    font-family: var(--font);
+    font-size: 2.5em;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.mp-videos__title,
+.mp-community__title {
+    min-width: 40%;
+    margin: auto;
+}
+
 /* Персонажи */
 .mp-cards {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
     gap: 1rem;
 
     .mp-cards__caption {
-        grid-column: 1 / 5;
-        padding: 16px;
-        font-family: var(--font);
-        font-size: 2.5em;
-        line-height: 1.25;
-        text-align: center;
+        grid-column: 1 / -1;
     }
 
     .mp-cards__item {
@@ -246,66 +258,68 @@
     }
 }
 
-/* Эпизоды */
-.mp-videos {
-    .mp-videos__title {
-        text-align: center;
-        min-width: 40%;
-        margin: auto;
-        padding: 16px;
-        font-family: var(--font);
-        font-size: 2.5em;
-        line-height: 1.25;
+/* Общие карточки Эпизодов и Содружества */
+.mp-videos__item,
+.mp-community__item {
+    position: relative;
+    padding: 1px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        background-image: var(--card);
+        border-radius: var(--br-16);
+        inset: 0;
     }
 
+    &:hover :is(.mp-videos__card, .mp-community__card) {
+        color: transparent;
+        background-color: transparent;
+        pointer-events: none;
+    }
+
+    .mp-videos__card,
+    .mp-community__card {
+        position: absolute;
+        z-index: 1;
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        display: grid;
+        place-items: center;
+        color: var(--s);
+        background-color: var(--p);
+        border-radius: var(--br-16);
+        margin: -2px;
+        transition: all 400ms;
+
+        &::after {
+            content: attr(data-name);
+            font-family: var(--font);
+            font-size: 0.33em;
+            position: absolute;
+            bottom: 10%;
+        }
+    }
+}
+
+/* Эпизоды */
+.mp-videos {
     .mp-videos__content {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
         gap: 1rem;
     }
 
     .mp-videos__item {
-        position: relative;
-        padding: 1px;
         width: 100%;
         height: 100%;
 
         &::before {
-            content: "";
-            position: absolute;
-            background-image: var(--card);
-            border-radius: var(--br-16);
-            inset: 0;
             z-index: 0;
         }
 
-        &:hover .mp-videos__card {
-            color: transparent;
-            background-color: transparent;
-            pointer-events: none;
-        }
-
         .mp-videos__card {
-            position: absolute;
-            z-index: 1;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            display: grid;
-            place-items: center;
             font-size: 6em;
-            color: var(--s);
-            background-color: var(--p);
-            border-radius: var(--br-16);
-            margin: -2px;
-            transition: all 400ms;
-
-            &::after {
-                content: attr(data-name);
-                font-family: var(--font);
-                font-size: 0.33em;
-                position: absolute;
-                bottom: 10%;
-            }
         }
 
         .t-gallery .t-gallery__item {
@@ -332,27 +346,19 @@
 .mp-community {
     position: relative;
 
-    .mp-community__title {
-        text-align: center;
-        min-width: 40%;
-        margin: auto;
-        padding: 16px;
-        font-family: var(--font);
-        font-size: 2.5em;
-        line-height: 1.25;
-    }
-
     .mp-community__content {
         position: relative;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
         gap: 1rem;
         z-index: 0;
 
         .mp-community__item {
-            position: relative;
-            padding: 1px;
             min-height: 8em;
+
+            &::before {
+                z-index: -1;
+            }
 
             a {
                 width: 100%;
@@ -369,42 +375,8 @@
                 object-fit: contain;
             }
 
-            &::before {
-                content: "";
-                position: absolute;
-                background-image: var(--card);
-                border-radius: var(--br-16);
-                inset: 0;
-                z-index: -1;
-            }
-
-            &:hover .mp-community__card {
-                color: transparent;
-                background-color: transparent;
-                pointer-events: none;
-            }
-
             .mp-community__card {
-                position: absolute;
-                z-index: 1;
-                width: calc(100% + 4px);
-                height: calc(100% + 4px);
-                display: grid;
-                place-items: center;
                 font-size: 3em;
-                color: var(--s);
-                background-color: var(--p);
-                border-radius: var(--br-16);
-                margin: -2px;
-                transition: all 400ms;
-
-                &::after {
-                    content: attr(data-name);
-                    font-family: var(--font);
-                    font-size: 0.33em;
-                    position: absolute;
-                    bottom: 10%;
-                }
             }
         }
     }
