@@ -1,9 +1,0 @@
-<h2 class="t-header"><i class="fa-brands fa-vk"></i>Группа сообщества</h2>
-<div class="t-group">
-<div style="position: relative; margin: 6px 0px 0px 0px;">
-[https://vk.com/hazbin_hotel <div class="t-group__img"></div>]</div>
-<div style="font-size: 14px; line-height: 24px; text-align:left; margin: 5px 0px 0px 0px;">
-• Красивые арты от множества художников <br>
-• Уникальные и смешные мемы <br>
-• Свежие новости и обновления <br>
-</div></div><noinclude>[[Категория:Дизайн]]</noinclude>
