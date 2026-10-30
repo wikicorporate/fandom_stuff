@@ -5,42 +5,6 @@ a:is(:hover, :focus, :active),
     text-decoration: none !important;
 }
 
-/* Скроллбар */
-::-webkit-scrollbar {
-    opacity: 0;
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--s);
-    border-radius: 9999px;
-    border: none;
-}
-
-::-webkit-scrollbar-track {
-    background-color: var(--p);
-}
-
-::-webkit-scrollbar-button {
-    display: none;
-}
-
-::-webkit-scrollbar-corner {
-    background-color: transparent;
-}
-
-body *::-webkit-scrollbar-track {
-    background-color: transparent !important;
-}
-
-@-moz-document url-prefix() {
-    * {
-        scrollbar-color: var(--s) transparent;
-        scrollbar-width: thin;
-    }
-}
-
 /* Унифицирование hover-эффектов */
 body #fandom-mobile-wrapper a:is(:hover, :focus, :active) {
     color: var(--s);
@@ -202,6 +166,7 @@ body #fandom-mobile-wrapper a:is(:hover, :focus, :active) {
     font-family: var(--font);
     font-weight: bold;
     text-align: center;
+    text-wrap: balance;
 }
 
 /* Фон */
@@ -537,11 +502,11 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
 }
 
 .diff-deletedline .diffchange {
-    background-color: rgb(var(--al--rgb), 0.3) !important;
+    background-color: rgb(from var(--al) r g b / 30%) !important;
 }
 
 .diff-addedline .diffchange {
-    background-color: rgb(var(--su--rgb), 0.3) !important;
+    background-color: rgb(from var(--su) r g b / 30%) !important;
 }
 
 /* Категории и языки */
@@ -594,6 +559,7 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
         font-weight: bold;
         color: var(--s);
         opacity: 0.5;
+        transition: opacity 0.3s;
 
         &:hover,
         &:has(strong) {
@@ -623,16 +589,25 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
             white-space: nowrap;
             z-index: 900;
             display: none;
-            transition: 0.3s;
+            opacity: 0;
             bottom: 110%;
             left: 50%;
-            transform: translateX(-50%);
+            translate: -50% 4px;
+            transition:
+                opacity 0.25s ease-out,
+                translate 0.25s ease-out,
+                display 0.25s allow-discrete;
         }
 
         &:hover::after {
             display: inline-block;
-            animation: tt 0.5s ease-out forwards;
-            transition: 0.3s;
+            opacity: 1;
+            translate: -50% 0;
+
+            @starting-style {
+                opacity: 0;
+                translate: -50% 4px;
+            }
         }
     }
 
@@ -646,6 +621,7 @@ blockquote {
     background-color: var(--p);
     border-radius: var(--br-14);
     text-align: center;
+    text-wrap: pretty;
 
     &::before {
         content: none;
@@ -714,10 +690,11 @@ blockquote {
     border-radius: var(--br-14);
 }
 
-/* Примечания и анимации */
+/* Примечания */
 .reflist.references-small {
     max-height: 200px;
     overflow-y: auto;
+    scrollbar-gutter: stable;
     border-radius: var(--br-14);
     padding: 10px;
     background-color: var(--p);
@@ -725,11 +702,6 @@ blockquote {
 
 .page-content:has(.references-small) dt {
     text-align: center;
-}
-
-@keyframes tt {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
 }
 
 @keyframes ref {
@@ -868,6 +840,7 @@ blockquote {
             padding: 8px;
             max-width: 300px;
             white-space: break-spaces;
+            text-wrap: pretty;
             border-radius: var(--br-12);
             border: var(--bs-2s);
             animation: ref cubic-bezier(0.68, -0.55, 0.27, 1.55) 1000ms forwards;
@@ -956,6 +929,16 @@ blockquote {
     a[data-tracking-label="special-pages"] span::before { content: "\f552"; }
     a[data-tracking="mobile-theme-switch-light"] span::before { content: "\f185"; }
     a[data-tracking="mobile-theme-switch-dark"] span::before { content: "\f186"; }
+    a[data-path="root:5"] span::before { content: "\f0a1"; }
+    a[data-path="root:6"] span::before { content: "\f0f3"; }
+    :is(a[data-path="root:6:0"], &[data-path="root:6"] li:nth-child(1) a) span::before { content: "\f024"; }
+    :is(a[data-path="root:6:1"], &[data-path="root:6"] li:nth-child(2) a) span::before {
+        content: "\f266";
+        font-family: "Font Awesome 7 Brands" !important;
+    }
+    :is(a[data-path="root:6:2"], &[data-path="root:6"] li:nth-child(3) a) span::before { content: "\f304"; }
+    :is(a[data-path="root:6:3"], &[data-path="root:6"] li:nth-child(4) a) span::before { content: "\f0f9"; }
+    :is(a[data-path="root:6:4"], &[data-path="root:6"] li:nth-child(5) a) span::before { content: "\f0ad"; }
 
     a[class*="wiki-tools__theme-switch"][class*="is-new"] span:last-child::before {
         content: "\f674" !important;
