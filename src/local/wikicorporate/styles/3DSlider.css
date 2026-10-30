@@ -1,3 +1,4 @@
+/* 3D-слайдер */
 .slider {
     height: 35vw;
     position: relative;
@@ -5,6 +6,7 @@
     transform-style: preserve-3d;
     display: flex;
     align-items: center;
+
     .slider__slide {
         margin: auto;
         height: 50%;
@@ -18,26 +20,24 @@
         justify-content: center;
         align-items: center;
         aspect-ratio: 5 / 3;
-        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 4px 0 rgb(0 0 0 / 50%);
         animation: slider3d 20s linear infinite;
         animation-delay: calc(sibling-index() * -4s);
         overflow: hidden;
-        &:nth-of-type(1) { animation-delay: -4s; }
-        &:nth-of-type(2) { animation-delay: -8s; }
-        &:nth-of-type(3) { animation-delay: -12s; }
-        &:nth-of-type(4) { animation-delay: -16s; }
-        &:nth-of-type(5) { animation-delay: -20s; }
+
         a {
             flex-grow: 1;
             display: block;
             height: 100%;
         }
+
         img {
             height: 100%;
             width: 100%;
             object-fit: cover;
         }
     }
+
     .slider__slide-caption {
         position: absolute;
         color: var(--pt);
@@ -50,10 +50,10 @@
         pointer-events: none;
     }
 }
+
 @keyframes slider3d {
-    0% { transform: translate3d(0%, 0, -200px); }
+    0%, 100% { transform: translate3d(0%, 0, -200px); }
     25% { transform: translate3d(-20%, 0, -200px); }
     50% { transform: translate3d(0%, 0, 0); }
     75% { transform: translate3d(20%, 0, -200px); }
-    100% { transform: translate3d(0%, 0, -200px); }
 }
