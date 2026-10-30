@@ -52,16 +52,13 @@ body:is(.ns-0, .ns-6):has(.page-header__categories a[title^="Категория"
     --s: light-dark(#2C2D2F, #DAC04D);
     --l: light-dark(#561717, #EBBEFF);
     --blur: light-dark(rgb(197 194 194 / 80%), rgb(30 5 5 / 70%));
+    --pb: light-dark(#c5c2c2, #1e0505);
     --theme-link-color: var(--l);
     --theme-link-color--hover: light-dark(#7D2727, #EAE0EE);
-    --l--rgb: var(--theme-link-color--rgb);
-    --pb--rgb: var(--theme-page-background-color--rgb);
-    --lg: linear-gradient(transparent, rgba(var(--pb--rgb), 0.6) 60%);
+    --lg: linear-gradient(transparent, rgb(from var(--pb) r g b / 60%) 60%);
 }
 
 body:is(.ns-0, .ns-6).theme-fandomdesktop-dark:has(.page-header__categories a[title^="Категория"][title$="Адского Босса"]) {
-    --theme-link-color--rgb: 235, 190, 255;
-    --theme-page-background-color--rgb: 30, 5, 5;
     --theme-body-background-image-full: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest?cb=20221014220857);
     --theme-body-background-image-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest/scale-to-width-down/1280?cb=20221014220857);
     --theme-body-background-image-large-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest/scale-to-width-down/1500?cb=20221014220857);
@@ -70,8 +67,6 @@ body:is(.ns-0, .ns-6).theme-fandomdesktop-dark:has(.page-header__categories a[ti
 }
 
 body:is(.ns-0, .ns-6).theme-fandomdesktop-light:has(.page-header__categories a[title^="Категория"][title$="Адского Босса"]) {
-    --theme-link-color--rgb: 86, 23, 23;
-    --theme-page-background-color--rgb: 197, 194, 194;
     --theme-body-background-image-full: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest?cb=20230622172455&format=original&path-prefix=ru);
     --theme-body-background-image-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest/scale-to-width-down/1280?cb=20230622172455&format=original&path-prefix=ru);
     --theme-body-background-image-large-desktop: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest/scale-to-width-down/1500?cb=20230622172455&format=original&path-prefix=ru);
