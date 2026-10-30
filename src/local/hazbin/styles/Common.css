@@ -19,8 +19,6 @@
     --s: light-dark(#1F323D, #FAB6EF);
     /* Блюр */
     --blur: light-dark(rgb(170 215 245 / 70%), rgb(14 4 16 / 70%));
-    /* Фильтры */
-    --f-main: var(--f-sticky);
 }
 
 /* Тёмная тема */
@@ -28,6 +26,7 @@ body.theme-fandomdesktop-dark {
     /* Фильтры */
     --f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#color');
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.98039 0 0 0 0 0 0.71373 0 0 0 0 0 0.93725 0 0 0 0 0 1 0"/></filter></svg>#color');
+    --f-main: var(--f-sticky);
     /* Изображения */
     --h: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/37/Mp-header-dark.png/revision/latest?cb=20240127190841&format=original&path-prefix=ru);
     --cp: url(https://static.wikia.nocookie.net/hazbinhotel/images/9/9e/HB-S2E2-1.jpg/revision/latest?cb=20231026155201&format=original&path-prefix=ru);
@@ -39,6 +38,7 @@ body.theme-fandomdesktop-light {
     /* Фильтры */
     --f-header: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter></svg>#color');
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.12157 0 0 0 0 0 0.19608 0 0 0 0 0 0.23922 0 0 0 0 0 1 0"/></filter></svg>#color');
+    --f-main: var(--f-sticky);
     /* Изображения */
     --h: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/69/Mp-header-light.png/revision/latest?cb=20240108102231&format=original&path-prefix=ru);
     --cp: url(https://static.wikia.nocookie.net/hazbinhotel/images/8/8a/Cherub_Towne_HD.png/revision/latest?cb=20210315213237);
