@@ -11,12 +11,11 @@
         color-scheme: light;
     }
 
-    /* Рамки и геометрия */
+    /* Рамки */
     --br-12: 12px;
     --br-14: 14px;
     --br-16: 16px;
     --br-50: 50%;
-    --page-bleed: -36px;
     /* Тени */
     --ts-al: 0 0 3px var(--al);
     --ts-l: 0 0 3px var(--l);
@@ -33,35 +32,52 @@
     --fallback-1: sans-serif;
     --fallback-2: serif;
     --fallback-3: cursive;
-
-    /* Короткие алиасы переменных Фэндома */
+    /* Переменные Фэндома */
+    /* bb - body background */
     --bb: var(--theme-body-background-color);
+    /* bt - body text */
     --bt: var(--theme-body-text-color);
     --bt--h: var(--theme-body-text-color--hover);
+    /* pb - page background */
     --pb: var(--theme-page-background-color);
     --pb--s: var(--theme-page-background-color--secondary);
+    /* l - link */
     --l: var(--theme-link-color);
     --l--h: var(--theme-link-color--hover);
     --ll: var(--theme-link-label-color);
+    /* ac - accent */
     --ac: var(--theme-accent-color);
     --ac--h: var(--theme-accent-color--hover);
     --acl: var(--theme-accent-label-color);
+    /* b - border */
     --b: var(--theme-border-color);
+    /* al - alert */
     --al: var(--theme-alert-color);
     --al--h: var(--theme-alert-color--hover);
     --al--s: var(--theme-alert-color--secondary);
     --all: var(--theme-alert-label);
+    /* w - warning */
     --w: var(--theme-warning-color);
     --w--s: var(--theme-warning-color--secondary);
     --wl: var(--theme-warning-label);
+    /* su - success */
     --su: var(--theme-success-color);
     --su--s: var(--theme-success-color--secondary);
     --sul: var(--theme-success-label);
+    /* m - message */
     --m: var(--theme-message-color);
     --ml: var(--theme-message-label);
+
+    /* Основное пространство без глобальных элементов */
+    .resizable-container,
+    #fandom-mobile-wrapper,
+    .wds-dropdown,
+    .wds-dropdown__content {
+        --theme-border-color: var(--s);
+    }
 }
 
-/* Перехват системных переменных Fandom, WDS, PortableInfobox и Codex */
+/* Специализированные переменные и адаптивные токены light-dark() */
 body {
     &:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
         color-scheme: dark;
@@ -71,70 +87,14 @@ body {
         color-scheme: light;
     }
 
-    /* Базовые цвета и производные поверхности */
+    /* Цвета и текст */
     --pt: light-dark(#080808, #f8f8f8);
+    --theme-page-text-color: var(--pt);
+    --theme-success-color: light-dark(#0d431f, #24ff6e);
+    --theme-alert-color: light-dark(#78242e, #ff8a92);
     --cm-p: color-mix(in srgb, var(--p), var(--s) 10%);
     --cm-s: color-mix(in srgb, var(--s), var(--p) 10%);
     --cC: currentColor;
-
-    /* 1. Переопределение глобальных переменных ThemeDesigner */
-    --theme-page-text-color: var(--pt);
-    --theme-page-text-color--hover: var(--s);
-    --theme-link-color--hover: var(--s);
-    --theme-accent-color: var(--p);
-    --theme-accent-color--hover: var(--s);
-    --theme-accent-label-color: var(--s);
-    --theme-border-color: var(--s);
-    --theme-success-color: light-dark(#0d431f, #24ff6e);
-    --theme-alert-color: light-dark(#78242e, #ff8a92);
-
-    /* 2. Шапка сообщества, липкий навбар и правый рейл */
-    --theme-community-header-color: var(--pt);
-    --theme-community-header-color--hover: var(--l);
-    --theme-sticky-nav-background-color: var(--p);
-    --theme-sticky-nav-text-color: var(--s);
-    --theme-sticky-nav-text-color--hover: var(--l);
-    --right-rail-background-color: transparent;
-    --right-rail-text-color: var(--pt);
-    --right-rail-link-color: var(--l);
-
-    /* 3. Переменные компонентов WDS (кнопки, выпадающие меню, табы, тогглы) */
-    --wds-midlight-color: transparent;
-    --wds-primary-button-background-color: var(--cm-p);
-    --wds-primary-button-background-color--hover: var(--s);
-    --wds-primary-button-label-color: var(--s);
-    --wds-secondary-button-label-color: var(--s);
-    --wds-secondary-button-label-color--hover: var(--l);
-    --wds-secondary-button-border-color: transparent;
-    --wds-text-button-label-color: var(--s);
-    --wds-text-button-label-color--hover: var(--l);
-    --wds-dropdown-background-color: var(--p);
-    --wds-dropdown-border-color: transparent;
-    --wds-dropdown-text-color: var(--s);
-    --wds-dropdown-linked-item-color: var(--l);
-    --wds-dropdown-linked-item-background-color: transparent;
-    --wds-tab-color: var(--s);
-    --wds-tab-color--active: var(--s);
-    --wds-tab-color--hover: var(--s);
-    --wds-tab-border-color: var(--s);
-    --wds-toggle-background-color: var(--p);
-    --wds-toggle-switch-color: var(--s);
-    --wds-toggle-background-color--checked: var(--p);
-    --wds-toggle-switch-color--checked: var(--s);
-
-    /* 4. Переменные инфобоксов (PortableInfobox) */
-    --pi-background: transparent;
-    --pi-secondary-background: transparent;
-    --pi-secondary-background--label: var(--pt);
-    --pi-border-color: transparent;
-
-    /* 5. Переменные дизайн-системы Codex (MediaWiki 1.43+) */
-    --background-color-base: var(--p);
-    --background-color-interactive: var(--cm-p);
-    --color-base: var(--pt);
-    --border-color-base: transparent;
-    --border-radius-base: var(--br-14);
-
     /* Индикаторы */
     --ind-unfinished: light-dark(rgb(255 139 39), rgb(115 57 7));
     --ind-old: light-dark(rgb(255 47 47), rgb(101 11 11));
@@ -149,22 +109,26 @@ body {
     --ind-audio: light-dark(rgb(181 33 255), rgb(49 7 70));
     --ind-animation: light-dark(rgb(255 37 154), rgb(70 7 41));
     --ind-file: light-dark(rgb(102 51 255), rgb(53 20 74));
-
-    /* Рамки и тени */
+    /* Фиксы */
+    --theme-accent-color: var(--p);
+    --theme-accent-color--hover: var(--s);
+    --theme-accent-label-color: var(--s);
+    --theme-border-color: var(--s);
+    /* Рамки */
     --b: var(--s);
     --bs-2s: 2px solid var(--s);
+    /* Тени */
     --ts-s: 0 0 3px var(--s);
     --ts-h: 2px 2px 0 var(--p), 2px -2px 0 var(--p), -2px 2px 0 var(--p), -2px -2px 0 var(--p), 2px 0 0 var(--p), 0 2px 0 var(--p), -2px 0 0 var(--p), 0 -2px 0 var(--p);
-
-    /* Изображения и градиенты */
+    /* Изображения */
     --h: var(--b-main);
     --cp: var(--b-main);
+    /* Градиенты */
     --template: linear-gradient(90deg, var(--blur) 0%, rgb(from var(--pb) r g b / 60%) 100%), linear-gradient(0deg, var(--blur) 0%, rgb(from var(--pb) r g b / 60%) 100%), var(--cp);
     --scroll: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     --color-slide: linear-gradient(var(--l) 50%, var(--s) 50%);
     --color-stop: linear-gradient(to top, var(--l) 33%, var(--s) 67%);
     --card: linear-gradient(45deg, transparent 5%, var(--l) 50%, transparent 99%);
-
     /* Фильтры */
     --blur-b: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-b"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-b');
     --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
