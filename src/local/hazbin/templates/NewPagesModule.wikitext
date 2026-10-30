@@ -1,6 +1,0 @@
-<h2><i class="fa-solid fa-folder-plus"></i>Новые статьи</h2>
-<div class="new-pages-rail-module">
-{{Служебная:NewPages/5}}
-<div class="more">'''[[Служебная:NewPages|{{MediaWiki:Oasis-more}}]]'''</div>
-</div><noinclude>
-[[Категория:Дизайн]]</noinclude>
