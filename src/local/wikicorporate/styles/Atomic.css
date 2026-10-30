@@ -142,6 +142,11 @@ body {
     inherits: true;
     initial-value: 0%;
 }
+@property --font-size {
+    syntax: "small | medium | large";
+    inherits: true;
+    initial-value: small;
+}
 
 /* Position */
 .p-s { position: static; }
