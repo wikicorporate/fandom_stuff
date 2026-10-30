@@ -28,12 +28,14 @@
 /* Инфобоксы */
 .page-content .portable-infobox {
     background: var(--template) center / cover no-repeat fixed transparent;
+    border: none;
     border-radius: var(--br-14);
 
     .pi-title,
     .pi-header,
     .pi-data-label {
         font-family: var(--font);
+        color: var(--pt);
     }
 
     .pi-title,
@@ -48,10 +50,19 @@
     .pi-data {
         position: relative;
         overflow: visible !important;
+        border: none;
     }
 
     .pi-collapse .pi-header:first-child::after {
         margin-top: -4px;
+    }
+
+    .pi-secondary-background {
+        background-color: transparent;
+
+        & + .pi-secondary-background {
+            border-top: none;
+        }
     }
 
     .pi-group {
@@ -71,8 +82,15 @@
             line-height: 1 !important;
         }
 
-        .pi-horizontal-group-item.pi-data-value {
-            padding: 6px 0;
+        .pi-horizontal-group-item {
+            &.pi-data-label,
+            &.pi-data-value {
+                border: 0;
+            }
+
+            &.pi-data-value {
+                padding: 6px 0;
+            }
         }
     }
 }
