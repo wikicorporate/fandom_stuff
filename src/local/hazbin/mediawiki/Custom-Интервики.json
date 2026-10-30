@@ -1408,7 +1408,8 @@
         "es": "Chaz Time",
         "fr": "Chaz Time",
         "ja": "チャズ・タイム",
-        "pt-br": "Chaz Time"
+        "pt-br": "Chaz Time",
+        "th": "Chaz Time"
     },
     "Всеобщий цирк бесов": {
         "en": "All-Imp Circus"
@@ -2664,6 +2665,9 @@
         "ja": "強欲の領域",
         "pl": "Krąg Chciwości",
         "tr": "Açgözlülük Katı"
+    },
+    "Круг Зависти": {
+        "en": "Envy Ring"
     },
     "Круг Лени": {
         "en": "Sloth Ring",
@@ -5147,7 +5151,7 @@
         "en": "Robo Fizz/Gallery/Official Artwork"
     },
     "Робо Физз/Цитаты": {
-        "en": "Robo Fizz/Quotes",
+        "en": "Robo Fizz (first model)/Quotes",
         "es": "Fizzarolli Robot/Frases",
         "fr": "Robo Fizz/Citations"
     },
