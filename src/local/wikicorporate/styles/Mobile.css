@@ -41,6 +41,11 @@ body *::-webkit-scrollbar-track {
     }
 }
 
+/* Унифицирование hover-эффектов */
+body #fandom-mobile-wrapper a:is(:hover, :focus, :active) {
+    color: var(--s);
+}
+
 /* Выделение */
 #fandom-mobile-wrapper ::selection {
     background-color: var(--cm-p);
@@ -123,6 +128,8 @@ body *::-webkit-scrollbar-track {
     }
 
     .wds-dropdown__content {
+        background-color: var(--p);
+        color: var(--s);
         border-radius: var(--br-14);
 
         .wds-list {
@@ -131,6 +138,17 @@ body *::-webkit-scrollbar-track {
             &::before,
             &::after {
                 background-color: transparent !important;
+            }
+
+            &.wds-is-linked {
+                & > li > a:not(.wds-button) {
+                    color: var(--s);
+                }
+
+                & > li:is(.wds-is-selected, :hover) > a:not(.wds-button) {
+                    background-color: transparent;
+                    color: var(--l);
+                }
             }
         }
     }
@@ -170,6 +188,11 @@ body *::-webkit-scrollbar-track {
 .wds-midlight,
 .wiki-page-header__title {
     background-image: none;
+}
+
+.wiki-page-header__title,
+.skin-fandommobile .pi-header {
+    --wds-midlight-color: transparent !important;
 }
 
 .skin-fandommobile:not(.fandommobile-fandom-theme):is(.ns-0, .ns-6) .article-content :is(h1, h2, h3, h4, h5, h6),
@@ -424,8 +447,26 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
     margin-bottom: 4px;
 }
 
+.skin-fandommobile:not(.fandommobile-fandom-theme) {
+    .portable-infobox {
+        border: none;
+    }
+
+    .pi-group:not(:first-child) {
+        border: none !important;
+        margin: 0;
+    }
+
+    .pi-horizontal-group .pi-horizontal-group-item:not(:last-child) {
+        border-right: none !important;
+    }
+}
+
 .pi-header-wrapper,
 .pi-data {
+    background-color: transparent;
+    border: none !important;
+    color: var(--pt);
     font-weight: bold;
 }
 
