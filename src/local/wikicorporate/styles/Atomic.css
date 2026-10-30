@@ -1,6 +1,9 @@
 /* Общее для проектов */
 :root {
     color-scheme: dark light;
+    interpolate-size: allow-keywords;
+    scrollbar-width: thin;
+    scrollbar-color: var(--s) transparent;
 
     &:has(body:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark)) {
         color-scheme: dark;
@@ -26,7 +29,7 @@
     --blur-15: blur(15px);
     --blur-50: blur(50px);
     /* Градиенты */
-    --lg: linear-gradient(transparent, rgba(var(--pb--rgb), 0.6) 60%);
+    --lg: linear-gradient(transparent, rgb(from var(--pb) r g b / 60%) 60%);
     /* Шрифты */
     --fallback-1: sans-serif;
     --fallback-2: serif;
@@ -34,43 +37,33 @@
     /* Переменные Фэндома */
     /* bb - body background */
     --bb: var(--theme-body-background-color);
-    --bb-rgb: var(--theme-body-background-color--rgb);
     /* bt - body text */
     --bt: var(--theme-body-text-color);
-    --bt--rgb: var(--theme-body-text-color--rgb);
     --bt--h: var(--theme-body-text-color--hover);
     /* pb - page background */
     --pb: var(--theme-page-background-color);
-    --pb--rgb: var(--theme-page-background-color--rgb);
     --pb--s: var(--theme-page-background-color--secondary);
-    --pb--s--rgb: var(--theme-page-background-color--secondary--rgb);
     /* l - link */
     --l: var(--theme-link-color);
-    --l--rgb: var(--theme-link-color--rgb);
     --l--h: var(--theme-link-color--hover);
     --ll: var(--theme-link-label-color);
     /* ac - accent */
     --ac: var(--theme-accent-color);
-    --ac--rgb: var(--theme-accent-color--rgb);
     --ac--h: var(--theme-accent-color--hover);
     --acl: var(--theme-accent-label-color);
     /* b - border */
     --b: var(--theme-border-color);
-    --b--rgb: var(--theme-border-color--rgb);
     /* al - alert */
     --al: var(--theme-alert-color);
-    --al--rgb: var(--theme-alert-color--rgb);
     --al--h: var(--theme-alert-color--hover);
     --al--s: var(--theme-alert-color--secondary);
     --all: var(--theme-alert-label);
     /* w - warning */
     --w: var(--theme-warning-color);
-    --w--rgb: var(--theme-warning-color--rgb);
     --w--s: var(--theme-warning-color--secondary);
     --wl: var(--theme-warning-label);
     /* su - success */
     --su: var(--theme-success-color);
-    --su--rgb: var(--theme-success-color--rgb);
     --su--s: var(--theme-success-color--secondary);
     --sul: var(--theme-success-label);
     /* m - message */
@@ -133,7 +126,7 @@ body {
     --h: var(--b-main);
     --cp: var(--b-main);
     /* Градиенты */
-    --template: linear-gradient(90deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), linear-gradient(0deg, var(--blur) 0%, rgba(var(--pb--rgb), 0.6) 100%), var(--cp);
+    --template: linear-gradient(90deg, var(--blur) 0%, rgb(from var(--pb) r g b / 60%) 100%), linear-gradient(0deg, var(--blur) 0%, rgb(from var(--pb) r g b / 60%) 100%), var(--cp);
     --scroll: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     --color-slide: linear-gradient(var(--l) 50%, var(--s) 50%);
     --color-stop: linear-gradient(to top, var(--l) 33%, var(--s) 67%);
@@ -150,12 +143,6 @@ body {
     syntax: "<percentage>";
     inherits: true;
     initial-value: 0%;
-}
-
-@property --font-size {
-    syntax: "small | medium | large";
-    inherits: true;
-    initial-value: small;
 }
 
 /* Position */
