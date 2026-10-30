@@ -49,18 +49,8 @@ body.theme-fandommobile-light {
     &[data-path="root:4"] li:nth-child(4) a span::before { content: "\f64f"; }
     &[data-path="root:4"] li:nth-child(5) a span::before { content: "\f1ad"; }
     &[data-path="root:4"] li:nth-child(6) a span::before { content: "\f0ac"; }
-    a[data-path="root:5"] span::before { content: "\f0a1"; }
     &[data-path="root:5"] li:nth-child(1) a span::before { content: "\f508"; }
     &[data-path="root:5"] li:nth-child(2) a span::before { content: "\f0e3"; }
     &[data-path="root:5"] li:nth-child(3) a span::before { content: "\f256"; }
     &[data-path="root:5"] li:nth-child(4) a span::before { content: "\f059"; }
-    a[data-path="root:6"] span::before { content: "\f0f3"; }
-    &[data-path="root:6"] li:nth-child(1) a span::before { content: "\f024"; }
-    &[data-path="root:6"] li:nth-child(2) a span::before {
-        content: "\f266";
-        font-family: "Font Awesome 7 Brands" !important;
-    }
-    &[data-path="root:6"] li:nth-child(3) a span::before { content: "\f304"; }
-    &[data-path="root:6"] li:nth-child(4) a span::before { content: "\f0f9"; }
-    &[data-path="root:6"] li:nth-child(5) a span::before { content: "\f0ad"; }
 }
