@@ -93,7 +93,7 @@ div.thumbinner,
 
 /* Подчёркивание ссылок */
 a:is(:hover, :focus, :active),
-:is(.mw-parser-output, #fandom-mobile-wrapper) :is(a, > a),
+:is(.mw-parser-output, #fandom-mobile-wrapper) a,
 .cm-mw-pagename {
     text-decoration: none !important;
 }
@@ -714,7 +714,7 @@ body.skin-fandomdesktop {
     #mw-teleport-target,
     .lightboxContainer,
     .EditorModal__content,
-    body [class^="Modal_content"],
+    [class^="Modal_content"],
     .EditorForm__actions {
         .wds-button,
         .cdx-button,
