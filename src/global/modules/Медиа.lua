@@ -4,7 +4,7 @@ local tabli = mw.loadData('Модуль:Медиа/Данные')
 
 function p.decodeString(str)
     if str and str ~= "" then
-        return mw.uri.decode(str, "WIKI")
+        return mw.uri.decode(str, "PATH")
     end
     return ""
 end
