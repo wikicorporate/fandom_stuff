@@ -30,6 +30,7 @@
         content: attr(data-text);
         position: absolute;
         display: none;
+        opacity: 0;
         font-family: var(--font);
         font-size: 12px;
         text-transform: none;
@@ -41,13 +42,21 @@
         bottom: 110%;
         white-space: nowrap;
         z-index: 900;
-        transform: translateX(-50px);
-        transition: 0.3s;
+        translate: -50px 4px;
+        transition:
+            opacity 0.25s ease-out,
+            translate 0.25s ease-out,
+            display 0.25s allow-discrete;
     }
 
     &:hover::after {
         display: inline-block;
-        animation: tt 1s ease-out forwards;
-        transition: 0.3s;
+        opacity: 1;
+        translate: -50px 0;
+
+        @starting-style {
+            opacity: 0;
+            translate: -50px 4px;
+        }
     }
 }
