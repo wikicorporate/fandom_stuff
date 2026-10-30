@@ -16,7 +16,7 @@
         background-color: var(--p);
         border-radius: var(--br-14);
         color: var(--pt);
-        font: var(--font);
+        font-family: var(--font);
         height: max-content;
         max-height: 200vh;
         max-width: 300px;
