@@ -1,3 +1,28 @@
+/* Скроллбар */
+::-webkit-scrollbar {
+    opacity: 0;
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--s);
+    border-radius: 9999px;
+    border: none;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--p);
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
 /* Навбар */
 :is(.fandom-community-header :is(a, .wds-dropdown__toggle-chevron), .page-counter__value, .page-counter__label, .wiki-tools .wds-button.wds-is-secondary):hover {
     color: var(--l);
@@ -13,10 +38,6 @@
         &:is(:hover, :focus, :active) {
             color: var(--l);
         }
-    }
-
-    .wiki-tools .wds-button.wds-is-secondary {
-        --wds-secondary-button-label-color: var(--s);
     }
 }
 
