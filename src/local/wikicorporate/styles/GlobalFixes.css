@@ -1,3 +1,8 @@
+/* Унифицирование hover-эффектов */
+body.skin-fandomdesktop .page a:is(:hover, :focus, :active) {
+    color: var(--s);
+}
+
 /* Выделение */
 .resizable-container,
 #community-navigation {
@@ -203,6 +208,7 @@ html:not(.ve-active) .page.has-right-rail {
     }
 
     .page__right-rail {
+        --right-rail-background-color: transparent;
         background-color: transparent;
         position: relative !important;
         top: 0 !important;
@@ -210,6 +216,7 @@ html:not(.ve-active) .page.has-right-rail {
 
         .right-rail-wrapper,
         .WikiaRail {
+            --right-rail-background-color: transparent;
             padding: 0;
             display: flex;
 
@@ -232,6 +239,7 @@ html:not(.ve-active) .page.has-right-rail {
 
                 h2,
                 .rail-module__header {
+                    --wds-midlight-color: transparent;
                     position: relative;
                     margin-bottom: 0;
                 }
@@ -978,11 +986,32 @@ body.skin-fandomdesktop {
 }
 
 body.skin-fandomdesktop {
+    .fandom-community-header,
+    .fandom-sticky-header {
+        .wds-dropdown__placeholder,
+        a {
+            text-decoration: none;
+
+            &:is(:hover, :focus, :active) {
+                color: var(--l);
+            }
+        }
+    }
+
+    .fandom-sticky-header .wds-dropdown__placeholder {
+        color: var(--s);
+    }
+
     .fandom-community-header {
         position: relative;
         border-radius: var(--br-14) var(--br-14) 0 0;
         padding: 14px;
         z-index: 5;
+
+        &,
+        a {
+            color: var(--pt);
+        }
 
         .fandom-community-header__top-container,
         .fandom-community-header__local-navigation {
@@ -1125,6 +1154,14 @@ p.caption {
     svg {
         fill: var(--pt);
     }
+}
+
+/* Переключатели */
+.wds-toggle__label {
+    --wds-toggle-background-color: var(--p);
+    --wds-toggle-switch-color: var(--s);
+    --wds-toggle-background-color--checked: var(--p);
+    --wds-toggle-switch-color--checked: var(--s);
 }
 
 /* Уведомления */
