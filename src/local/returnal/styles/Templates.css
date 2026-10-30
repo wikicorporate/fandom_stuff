@@ -18,6 +18,7 @@
     .pi-header {
         color: inherit;
         text-align: left;
+        text-wrap: balance;
     }
 
     .pi-title {
@@ -44,7 +45,7 @@
                 right: 0;
                 margin: 0.5em;
                 color: var(--pt);
-                background-color: rgba(var(--pb--rgb), 0.6);
+                background-color: rgb(from var(--pb) r g b / 60%);
                 padding: 0.2em 0.4em;
                 border-radius: 0.2em;
                 pointer-events: none;
@@ -299,7 +300,7 @@ body:not(:has(.page-header__categories a[title^="Категория"][title$="Д
     .tt__article,
     .tt__action {
         position: relative;
-        background-color: rgb(var(--pb--rgb), 0.7);
+        background-color: rgb(from var(--pb) r g b / 70%);
         border: var(--bs-2s);
 
         &::before {
@@ -371,6 +372,7 @@ body:not(:has(.page-header__categories a[title^="Категория"][title$="Д
         font-weight: 700;
         text-transform: uppercase;
         padding: 0.5em;
+        text-wrap: balance;
     }
 
     .tt__animation {
@@ -435,13 +437,14 @@ body:not(:has(.page-header__categories a[title^="Категория"][title$="Д
         order: 3;
         border-top: var(--bs-2s);
         padding: 0.5em;
+        text-wrap: pretty;
     }
 }
 
 body.ns-0:not(.mainpage) .tt__body .tt__content .tt__article .tt__desc {
     padding: 2px 6px;
     overflow: hidden;
-    background-color: rgba(var(--pb--rgb), 0.6);
+    background-color: rgb(from var(--pb) r g b / 60%);
     border-radius: var(--br-14);
 }
 
