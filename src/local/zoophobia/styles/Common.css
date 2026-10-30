@@ -19,14 +19,13 @@
     --s: light-dark(#2C6949, #96D7EC);
     /* Блюр */
     --blur: light-dark(rgb(252 250 196 / 70%), rgb(1 9 33 / 70%));
-    /* Фильтры */
-    --f-main: var(--f-sticky);
 }
 
 /* Тёмная тема */
 body.theme-fandomdesktop-dark {
     /* Фильтры */
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.58824 0 0 0 0 0 0.84314 0 0 0 0 0 0.92549 0 0 0 0 0 1 0"/></filter></svg>#color');
+    --f-main: var(--f-sticky);
     /* Изображения */
     --h: url(https://static.wikia.nocookie.net/zoophobia/images/a/ae/MP-header-dark.png/revision/latest?cb=20240105164250&format=original&path-prefix=ru);
     --cp: url(https://static.wikia.nocookie.net/zoophobia/images/7/7e/Zp_banner.jpg/revision/latest?cb=20181104055812);
@@ -37,6 +36,7 @@ body.theme-fandomdesktop-dark {
 body.theme-fandomdesktop-light {
     /* Фильтры */
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.17255 0 0 0 0 0 0.41176 0 0 0 0 0 0.28627 0 0 0 0 0 1 0"/></filter></svg>#color');
+    --f-main: var(--f-sticky);
     /* Изображения */
     --h: url(https://static.wikia.nocookie.net/zoophobia/images/e/eb/MP-header-light.png/revision/latest?cb=20240105185310&format=original&path-prefix=ru);
     --cp: url(https://static.wikia.nocookie.net/zoophobia/images/7/73/Zp_banner2.jpg/revision/latest?cb=20181104055841);
