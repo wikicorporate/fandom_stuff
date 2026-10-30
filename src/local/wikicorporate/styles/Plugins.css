@@ -68,6 +68,7 @@
         padding: 8px;
         max-width: 300px;
         white-space: break-spaces;
+        text-wrap: pretty;
         border: var(--bs-2s);
         border-radius: var(--br-12);
         animation: ref cubic-bezier(0.68, -0.55, 0.27, 1.55) 1000ms forwards;
@@ -104,6 +105,7 @@
     .reflist.references-small {
         max-height: 200px;
         overflow-y: auto;
+        scrollbar-gutter: stable;
         border-radius: var(--br-14);
         padding: 10px;
         background-color: var(--p);
@@ -334,6 +336,7 @@
             padding: 8px;
             max-width: 300px;
             white-space: break-spaces;
+            text-wrap: pretty;
             border-radius: var(--br-12);
             border: var(--bs-2s);
             animation: ref cubic-bezier(0.68, -0.55, 0.27, 1.55) 1000ms forwards;
@@ -453,15 +456,25 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
                 white-space: nowrap;
                 z-index: 900;
                 display: none;
-                transition: opacity 0.3s;
+                opacity: 0;
                 bottom: 120%;
                 left: 50%;
-                transform: translateX(-50%);
+                translate: -50% 4px;
+                transition:
+                    opacity 0.25s ease-out,
+                    translate 0.25s ease-out,
+                    display 0.25s allow-discrete;
             }
 
             &:hover::after {
                 display: inline-block;
-                animation: tt 1s ease-out forwards;
+                opacity: 1;
+                translate: -50% 0;
+
+                @starting-style {
+                    opacity: 0;
+                    translate: -50% 4px;
+                }
             }
 
             a,
@@ -507,7 +520,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
 
             .social-activity__author,
             .social-activity__time {
-                color: rgba(var(--right-rail-text-color--rgb), 0.75);
+                color: rgb(from var(--pt) r g b / 75%);
             }
 
             .social-activity__author:hover {
@@ -585,7 +598,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: rgba(var(--pb--rgb), 0.1);
+                background-color: rgb(from var(--pb) r g b / 10%);
                 border-radius: var(--br-14);
                 font-size: 10px;
                 color: inherit;
@@ -606,35 +619,33 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
 }
 
 /* Популярные страницы */
-.popular-pages {
-    .popular-pages__list {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+.popular-pages .popular-pages__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
-        .popular-pages__item {
-            margin: 0;
-            padding: 0;
+    .popular-pages__item {
+        margin: 0;
+        padding: 0;
 
-            .popular-pages__link {
-                display: flex;
-                align-items: center;
-                gap: 10px;
+        .popular-pages__link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-                .popular-pages__image {
-                    width: 60px;
-                    height: 60px;
-                    object-fit: cover;
-                    object-position: center;
-                    flex-shrink: 0;
-                    border-radius: var(--br-50);
-                }
+            .popular-pages__image {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                object-position: center;
+                flex-shrink: 0;
+                border-radius: var(--br-50);
+            }
 
-                .popular-pages__title {
-                    font-size: 14px;
-                    font-weight: bold;
-                    line-height: 1.2;
-                }
+            .popular-pages__title {
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 1.2;
             }
         }
     }
@@ -798,7 +809,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
     border-radius: 0 0 var(--br-14) var(--br-14);
     padding: 20px 30px;
 
-    @media screen and (max-width: 500px) {
+    @container page-main (width < 500px) {
         padding: 15px;
     }
 
@@ -819,11 +830,11 @@ body.skin-fandomdesktop #content #mw-content-text #editform .wikiEditor-ui .wiki
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
 
-            @media screen and (max-width: 1023px) {
+            @container page-main (width < 920px) {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            @media screen and (max-width: 767px) {
+            @container page-main (width < 620px) {
                 grid-template-columns: 1fr;
             }
 
@@ -1083,7 +1094,7 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
     font-size: 5.5px;
     width: 20em;
     height: 7em;
-    box-shadow: 0.075em 0.075em 0.225em 0.1em rgba(var(--ac--rgb), 0.3);
+    box-shadow: 0.075em 0.075em 0.225em 0.1em rgb(from var(--ac) r g b / 30%);
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -1098,7 +1109,7 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
         width: 100%;
         height: 100%;
         background-color: transparent;
-        box-shadow: inset 0.15em 0.15em 0.5em 0.05em rgba(var(--pb--rgb), 0.9);
+        box-shadow: inset 0.15em 0.15em 0.5em 0.05em rgb(from var(--pb) r g b / 90%);
         position: absolute;
         z-index: 1;
         border-radius: 12em;
@@ -1416,6 +1427,7 @@ body.skin-fandomdesktop:is(.mainpage, .action-edit, .action-submit, .mw-article-
         font-size: 14px;
         color: var(--pt);
         line-height: 1.5;
+        text-wrap: pretty;
         display: -webkit-box;
         -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
