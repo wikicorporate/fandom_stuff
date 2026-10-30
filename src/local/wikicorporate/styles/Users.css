@@ -420,7 +420,7 @@ body.skin-fandomdesktop {
     &::before {
         content: "Добро пожаловать! Не стесняйтесь задавать вопросы и участвовать в их обсуждении,\0aно не забывайте про правила проекта. Если вы заметите нарушение,\0aто обратитесь к одному из Администраторов. Желаем вам приятного времяпрепровождения на Вики!";
         display: block;
-        background-color: rgba(var(--pb--rgb), 0.7);
+        background-color: rgb(from var(--pb) r g b / 70%);
         border-radius: var(--br-14);
         padding: 10px 20px 15px 130px;
         margin: 1em auto;
@@ -477,7 +477,7 @@ body.skin-fandomdesktop {
     }
 
     [class^="Reply_reply"][class$="Z0fka"] {
-        background-color: rgba(var(--l--rgb), 0.1);
+        background-color: rgb(from var(--l) r g b / 10%);
         border-radius: var(--br-14);
     }
 
@@ -486,7 +486,7 @@ body.skin-fandomdesktop {
     }
 
     :is(.entity-content, .rich-text-editor__content) pre code {
-        background-color: rgba(var(--pb--rgb), 0.1);
+        background-color: rgb(from var(--pb) r g b / 10%);
         color: var(--pt);
         border-radius: var(--br-14);
     }
