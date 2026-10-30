@@ -1,7 +1,0 @@
-<span class="has-icon rail-h2">Инструменты</span>
-<div class="tools">
-<div class="tools__item tools__item--js">[[Участник:{{REVISIONUSER}}/common.js|Личный JS]] ([[w:Special:MyPage/global.js|Глобальный JS]])<div>
-<div class="tools__item tools__item--css">[[Участник:{{REVISIONUSER}}/common.css|Личный CSS]] ([[w:Special:MyPage/global.css|Глобальный CSS]])</div>
-<div class="tools__item tools__item--test tools__js-test">Перейти в тестовый режим</div>
-<div class="tools__item tools__item--cache tools__js-cache">Сброс кэша</div>
-</div>
