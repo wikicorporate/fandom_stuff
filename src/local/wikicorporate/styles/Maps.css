@@ -2,122 +2,154 @@
 .interactive-maps-container {
     border: none;
     border-radius: var(--br-14);
+
     .interactive-maps {
-        .interactive-maps__map, [class^="Map-module_interactiveMap"] {
+        .interactive-maps__map,
+        [class^="Map-module_interactiveMap"] {
             background-color: transparent;
             border-radius: var(--br-14);
         }
-        [class^="Map-module_interactiveMap"] .interactive-maps__edit-control, button.map-fullscreen-control {
+
+        [class^="Map-module_interactiveMap"] .interactive-maps__edit-control,
+        button.map-fullscreen-control {
             background-color: var(--p);
             border-radius: var(--br-14);
+
             &:hover {
                 box-shadow: none;
             }
         }
+
         button.map-fullscreen-control {
-        	transition: background-color 0.3s linear, color 0.3s linear;
-        	&:hover, &:focus, &:active {
-        		color: var(--p);
-				background-color: var(--s);
-				span {
-					color: var(--cC);
-				}
-        	}
+            transition: background-color 0.3s linear, color 0.3s linear;
+
+            &:is(:hover, :focus, :active) {
+                color: var(--p);
+                background-color: var(--s);
+
+                span {
+                    color: var(--cC);
+                }
+            }
         }
+
         [class^="Map-module_interactiveMap"] {
-            .interactive-maps__edit-control {
-                a {
-                    color: var(--s);
-        		}
+            .interactive-maps__edit-control a {
+                color: var(--s);
             }
+
             .leaflet-bar.leaflet-control-zoom {
-            	border-radius: var(--br-14);
-            	.leaflet-control-zoom-in, .leaflet-control-zoom-out {
-            		background-color: var(--p);
-					color: var(--s);
-					&:hover, &:focus, &:active {
-						color: var(--p);
-				        background-color: var(--s);
-				        transition: background-color 0.3s linear, color 0.3s linear;
-					}
-            	}
-            	[class^="ZoomControl-module_zoomMinus"] {
-            		background-color: var(--cC);
-            	}
-            	.leaflet-control-zoom-in {
-            		border-top-left-radius: var(--br-14);
-    				border-top-right-radius: var(--br-14);
-    				&::after {
-    					content: none;
-    				}
-            	}
-            	.leaflet-control-zoom-out {
-            		border-bottom-left-radius: var(--br-14);
-    				border-bottom-right-radius: var(--br-14);
-            	}
+                border-radius: var(--br-14);
+
+                .leaflet-control-zoom-in,
+                .leaflet-control-zoom-out {
+                    background-color: var(--p);
+                    color: var(--s);
+
+                    &:is(:hover, :focus, :active) {
+                        color: var(--p);
+                        background-color: var(--s);
+                        transition: background-color 0.3s linear, color 0.3s linear;
+                    }
+                }
+
+                [class^="ZoomControl-module_zoomMinus"] {
+                    background-color: var(--cC);
+                }
+
+                .leaflet-control-zoom-in {
+                    border-top-left-radius: var(--br-14);
+                    border-top-right-radius: var(--br-14);
+
+                    &::after {
+                        content: none;
+                    }
+                }
+
+                .leaflet-control-zoom-out {
+                    border-bottom-left-radius: var(--br-14);
+                    border-bottom-right-radius: var(--br-14);
+                }
             }
+
             .leaflet-tooltip {
-            	&::before, &::after {
-            		content: none;
-            	}
+                &::before,
+                &::after {
+                    content: none;
+                }
             }
-            .leaflet-tooltip, [class^="MarkerTooltip-module_tooltip"] {
-            	background-color: var(--p);
-				color: var(--s);
-				border-radius: var(--br-14);
-				font-family: var(--font);
-				font-weight: bold;
-				opacity: 0;
-				transition: opacity .3s;
-				pointer-events: all;
-				user-select: all;
+
+            .leaflet-tooltip,
+            [class^="MarkerTooltip-module_tooltip"] {
+                background-color: var(--p);
+                color: var(--s);
+                border-radius: var(--br-14);
+                font-family: var(--font);
+                font-weight: bold;
+                opacity: 0;
+                transition: opacity 0.3s;
+                pointer-events: all;
+                user-select: all;
             }
+
             .leaflet-popup-tip {
-            	border: none;
+                border: none;
             }
+
             .leaflet-popup-content-wrapper {
-            	background-color: var(--p);
-				color: var(--s);
-				border-radius: var(--br-14);
+                background-color: var(--p);
+                color: var(--s);
+                border-radius: var(--br-14);
             }
+
             [data-testid="interactive-maps-marker-popup-link"] .wds-icon {
-            	fill: var(--l);
+                fill: var(--l);
             }
+
             [class^="MarkerPopupActions-module"] > li {
-            	color: var(--l);
-            	&:hover, &:active, &:visited {
-            		color: var(--s);
-            		background-color: transparent;
-            	}
+                color: var(--l);
+
+                &:is(:hover, :active, :visited) {
+                    color: var(--s);
+                    background-color: transparent;
+                }
             }
         }
+
         .interactive-maps__filters-dropdown-button {
-        	background-color: var(--p);
-			color: var(--s);
-			border: none;
-			&:hover, &:focus, &:active {
-				color: var(--p);
-				background-color: var(--s);
-				transition: background-color 0.3s linear, color 0.3s linear;
-			}
+            background-color: var(--p);
+            color: var(--s);
+            border: none;
+
+            &:is(:hover, :focus, :active) {
+                color: var(--p);
+                background-color: var(--s);
+                transition: background-color 0.3s linear, color 0.3s linear;
+            }
         }
+
         .interactive-maps__options-dropdown {
-        	.wds-dropdown__toggle > button, .wds-dropdown__content .wds-list a {
-        		box-shadow: none;
-        	}
-        	.wds-dropdown__content .wds-list a[data-option="go-to-map-page"] {
-        		font-size: 0;
-        		&::after {
-        			content: 'Перейти на страницу карты';
-					font-size: 14px;
-        		}
-        		&:hover::after {
-        			color: var(--l);
-        		}
-        		svg {
-        			margin-right: -5px;
-        		}
-        	}
+            .wds-dropdown__toggle > button,
+            .wds-dropdown__content .wds-list a {
+                box-shadow: none;
+            }
+
+            .wds-dropdown__content .wds-list a[data-option="go-to-map-page"] {
+                font-size: 0;
+
+                &::after {
+                    content: "Перейти на страницу карты";
+                    font-size: 14px;
+                }
+
+                &:hover::after {
+                    color: var(--l);
+                }
+
+                svg {
+                    margin-right: -5px;
+                }
+            }
         }
     }
 }
