@@ -1,8 +1,8 @@
-/* Импорт CSS страниц: GlobalFixes.css, Blocks.css, GlobalTemplates.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, Achievements.css, FontAwesome.css */
-@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Blocks.css|u:ru.wikicorporate:MediaWiki:GlobalTemplates.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:Achievements.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
+/* Импорт CSS страниц: GlobalFixes.css, Blocks.css, GlobalTemplates.css, GlobalMainpage.css, Users.css, Editor.css, Activity.css, Special.css, Effects.css, Icons.css, Atomic.css, Tooltips.css, Plugins.css, Achievements.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:GlobalFixes.css|u:ru.wikicorporate:MediaWiki:Blocks.css|u:ru.wikicorporate:MediaWiki:GlobalTemplates.css|u:ru.wikicorporate:MediaWiki:GlobalMainpage.css|u:ru.wikicorporate:MediaWiki:Users.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Activity.css|u:ru.wikicorporate:MediaWiki:Special.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Icons.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Plugins.css|u:ru.wikicorporate:MediaWiki:Achievements.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
 
-/* Импорт CSS страниц: Mainpage.css, Symbols.css */
-@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mainpage.css|MediaWiki:Symbols.css";
+/* Импорт CSS страниц: Symbols.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Symbols.css";
 
 /* Импорт шрифтов */
 @font-face {
