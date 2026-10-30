@@ -12,7 +12,7 @@
 ![[Адский Босс]]
 |-
 
-|[[Круг Гордыни]]
+![[Круг Гордыни]]
 |{{LuaDpl|{{#dpl:
 |category = Локации Отеля Хазбин
 |category = Локации Круга Гордыни
@@ -72,8 +72,14 @@
 }}}}
 |-
 
-|Круг Зависти
-!colspan="2"|
+![[Круг Зависти]]
+!colspan="2"|{{LuaDpl|{{#dpl:
+|category = Локации Круга Зависти
+|mode = inline
+|inlinetext = &nbsp; &bull; &nbsp;
+|ordermethod = title
+|skipthispage = no
+}}}}
 |-
 
 ![[Круг Лени]]
