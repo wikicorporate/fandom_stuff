@@ -47,31 +47,12 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    position: relative;
     opacity: 0.5;
     transition: all 400ms;
-
-    &::before {
-        content: " ";
-        position: absolute;
-        width: calc(100% - 6px);
-        height: calc(100% - 6px);
-        top: 0;
-        left: 0;
-        z-index: -2;
-        background-color: var(--cm-p);
-        border-radius: var(--br-14);
-        filter: var(--blur-b);
-    }
 
     &:hover,
     &.cwa-rc__tab--active {
         opacity: 0.9;
-
-        &::before {
-            filter: var(--blur-p);
-            translate: 0.05em 0.1em;
-        }
     }
 
     .cwa-rc__badge {
