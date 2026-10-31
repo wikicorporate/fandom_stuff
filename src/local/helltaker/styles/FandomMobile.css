@@ -1,6 +1,5 @@
-/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome.css */
-@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:Mobile.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
-
+/* Импорт CSS страниц: Mobile.css, GlobalTemplates.css, Effects.css, Tooltips.css, Editor.css, Atomic.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=u:ru.wikicorporate:MediaWiki:Mobile.css|u:ru.wikicorporate:MediaWiki:GlobalTemplates.css|u:ru.wikicorporate:MediaWiki:Effects.css|u:ru.wikicorporate:MediaWiki:Tooltips.css|u:ru.wikicorporate:MediaWiki:Editor.css|u:ru.wikicorporate:MediaWiki:Atomic.css|u:ru.wikicorporate:MediaWiki:FontAwesome.css";
 /* Импорт шрифтов */
 @font-face {
     font-family: "NanumMyeongjo";
