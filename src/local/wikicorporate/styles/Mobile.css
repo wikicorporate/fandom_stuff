@@ -11,29 +11,23 @@ a:is(:hover, :focus, :active),
     width: 8px;
     height: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color: var(--s);
     border-radius: 9999px;
     border: none;
 }
-
 ::-webkit-scrollbar-track {
     background-color: var(--p);
 }
-
 ::-webkit-scrollbar-button {
     display: none;
 }
-
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
-
 body *::-webkit-scrollbar-track {
     background-color: transparent !important;
 }
-
 @-moz-document url-prefix() {
     * {
         scrollbar-color: var(--s) transparent;
@@ -50,64 +44,51 @@ body *::-webkit-scrollbar-track {
 /* Навбар */
 .mobile-global-navigation__wrapper .mobile-global-navigation {
     background-color: transparent;
-
     :is([class$="__left"], [class$="__right"]) {
         background-color: var(--p);
     }
-
     .mobile-global-navigation__community-bar-wrapper {
         background-color: var(--p);
         height: 54px;
-
         .mobile-global-navigation__logomark {
             background-color: var(--p);
         }
-
         .mobile-global-navigation__button {
             color: var(--s);
         }
     }
 }
-
 .mobile-community-bar {
     background-color: var(--p);
     color: var(--s);
     border-radius: 0 0 var(--br-12) var(--br-12);
-
     .mobile-global-navigation__community-bar-separator {
         height: 0;
         margin: 0;
         width: 0;
     }
-
     .mobile-community-bar__discussions,
     .mobile-community-bar__navigation .wds-dropdown__toggle {
         color: var(--s);
-
-        &:is(:hover, :focus, :active) {
+        &:hover, &:focus, &:active {
             color: var(--l);
         }
     }
-
     .mobile-community-bar__navigation .wds-dropdown__content {
         border-radius: var(--br-14);
     }
-
     .mobile-community-bar__new-badge {
         background-color: transparent;
         color: var(--s);
         border: none;
     }
-
     .mobile-community-bar__sitename a {
         color: var(--s);
         text-transform: none;
-
-        &:is(:hover, :focus, :active) {
+        &:hover, &:focus, &:active) {
             color: var(--l);
         }
     }
-
     .mobile-community-bar__theme-indicator svg {
         fill: var(--l);
     }
@@ -121,20 +102,14 @@ body *::-webkit-scrollbar-track {
     --wds-dropdown-linked-item-color: var(--l);
     --wds-dropdown-linked-item-background-color: transparent;
     --wds-dropdown-scrollable-shadow-color: transparent;
-
-    &::before,
-    &::after {
+    &::before, &::after {
         display: none !important;
     }
-
     .wds-dropdown__content {
         border-radius: var(--br-14);
-
         .wds-list {
             background-image: none !important;
-
-            &::before,
-            &::after {
+            &::before, &::after {
                 background-color: transparent !important;
             }
         }
@@ -146,23 +121,17 @@ body *::-webkit-scrollbar-track {
     .toctitle {
         border: none;
     }
-
     &.ready {
         background-color: var(--p);
         border-radius: var(--br-14);
     }
-
     ul {
         background-image: none;
-
-        &::before,
-        &::after {
+        &::before, &::after {
             background-color: transparent;
         }
-
         li a:hover {
             background-color: transparent;
-
             .tocnumber {
                 color: inherit;
             }
@@ -171,17 +140,12 @@ body *::-webkit-scrollbar-track {
 }
 
 /* Заголовки */
-.article-footer .article-information-header h2,
-.wds-midlight,
-.wiki-page-header__title {
+.article-footer .article-information-header h2, .wds-midlight, .wiki-page-header__title {
     background-image: none;
 }
-
-.wiki-page-header__title,
-.skin-fandommobile .pi-header {
+.wiki-page-header__title, .skin-fandommobile .pi-header {
     --wds-midlight-color: transparent !important;
 }
-
 .skin-fandommobile:not(.fandommobile-fandom-theme):is(.ns-0, .ns-6) .article-content :is(h1, h2, h3, h4, h5, h6),
 .wiki-page-header__title,
 .skin-fandommobile .article-content dt,
@@ -196,9 +160,7 @@ body *::-webkit-scrollbar-track {
 #fandom-mobile-wrapper {
     max-width: 800px;
     margin: 0 auto;
-
-    &::before,
-    &::after {
+    &::before, &::after {
         content: "";
         position: fixed;
         top: 0;
@@ -207,13 +169,11 @@ body *::-webkit-scrollbar-track {
         height: 100vh;
         z-index: -1;
     }
-
     &::before {
         background-image: var(--b-main);
         background-position: 50% !important;
         background-size: cover !important;
     }
-
     &::after {
         max-width: 2500px;
         margin: 0 auto;
@@ -236,54 +196,44 @@ body *::-webkit-scrollbar-track {
 /* Футер */
 .article-footer {
     background-image: none;
-
     .article-footer-item {
         border: none !important;
     }
 }
-
 .recirculation-prefooter {
     .recirculation-prefooter__wiki-articles {
         background-color: var(--blur);
         border: none;
         border-radius: var(--br-14);
-
         .recirculation-prefooter__wiki-articles-header {
             background-color: transparent;
             color: var(--pt);
         }
-
         .recirculation-prefooter__wiki-article-circle {
             background-color: var(--cm-p);
             color: var(--s);
         }
     }
-
     .recirculation-prefooter__list {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 6px;
-
         .recirculation-prefooter__item {
             border-radius: var(--br-14);
             height: auto;
             max-width: 190px;
             transition: all linear 0.3s;
-
-            &:is(:hover, :focus, :active) {
+            &:hover, &:focus, &:active {
                 transform: scale(0.9);
             }
-
             .recirculation-prefooter__item-anchor.has-thumbnail {
                 background-image: var(--lg);
-
                 .recirculation-prefooter__title {
                     color: var(--pt);
                     padding: 0 2px;
                     text-align: center;
                 }
-
                 .recirculation-prefooter__subtitle {
                     display: none;
                 }
@@ -304,7 +254,6 @@ body *::-webkit-scrollbar-track {
     background-color: var(--p) !important;
     border: var(--bs-2s) !important;
 }
-
 .wds-checkbox {
     --wds-checkbox-label-color: var(--s);
 }
@@ -315,34 +264,27 @@ body *::-webkit-scrollbar-track {
     border-radius: var(--br-14) !important;
     background-color: var(--blur) !important;
 }
-
 [class^="ReplyList_top-border"] {
     background-color: transparent !important;
 }
-
 [class^="ActionItem_action-item"] {
     color: var(--s) !important;
     font-weight: bold;
-
     &:hover {
         background-color: transparent !important;
         text-shadow: var(--ts-s);
     }
-
     &:first-child {
         font-size: 0;
-
         &::after {
             content: "История сообщения";
             font-size: 14px;
         }
     }
 }
-
 [class^="Reply_body"] {
     border: none !important;
     position: relative;
-
     &::before {
         content: "";
         position: absolute;
@@ -355,23 +297,19 @@ body *::-webkit-scrollbar-track {
         box-shadow: 0 0 4px var(--l);
     }
 }
-
 .entity-content .read-more,
 [class^="ReplyList_view-all-replies"],
 [class^="LoadMoreButton_load-more"] {
     background-color: var(--p) !important;
     color: var(--s) !important;
     border-radius: var(--br-14) !important;
-
     &:hover {
         text-shadow: var(--ts-s);
     }
 }
-
 [class^="ReplyList_view-all-replies"] {
     border-bottom: none !important;
 }
-
 [class^="LoadMoreButton_load-more"] {
     border: none !important;
 }
@@ -380,104 +318,82 @@ body *::-webkit-scrollbar-track {
 .pi-image-collection {
     background-color: transparent !important;
     border-radius: var(--br-14);
-
     .pi-item {
         height: 220px;
     }
-
     .pi-hero-title-wrapper {
         display: block !important;
         color: var(--pt) !important;
         text-align: center;
     }
 }
-
 .pi-image-collection__images-wrapper {
     margin-bottom: 4px;
 }
-
 .pi {
     background: var(--template) center / cover no-repeat transparent;
     border-radius: var(--br-14);
     margin: 0;
     padding-bottom: 0;
-
     h3.pi-data-label {
         padding-left: 1em;
         text-align: left !important;
     }
 }
-
 .pi-header {
     border-bottom: 1px solid var(--pt) !important;
     border-image: linear-gradient(90deg, #0000, var(--pt), #0000) 1;
 }
-
-.pi-header,
-.pi-data-label {
+.pi-header, .pi-data-label {
     text-transform: none;
 }
-
 .pi-group {
     margin: 0;
     padding: 0;
 }
-
-.pi-horizontal-group,
-caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
+.pi-horizontal-group, caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
     background-color: var(--p);
     border-radius: var(--br-14);
 }
-
 caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
     margin-bottom: 4px;
 }
-
 .skin-fandommobile:not(.fandommobile-fandom-theme) {
     .portable-infobox {
         border: none;
     }
-
     .pi-group:not(:first-child) {
         border: none !important;
         margin: 0;
     }
-
     .pi-horizontal-group .pi-horizontal-group-item:not(:last-child) {
         border-right: none !important;
     }
 }
-
-.pi-header-wrapper,
-.pi-data {
+.pi-header-wrapper, .pi-data {
     background-color: transparent;
     border: none !important;
     color: var(--pt);
     font-weight: bold;
 }
-
 .pi-data-value a {
     font-weight: bold;
 }
-
 .pi-expand-button {
     background-color: var(--p);
     color: var(--s);
     margin-top: 0.2em;
     border: var(--bs-2s);
     border-radius: var(--br-14);
-
     &:hover {
         text-shadow: var(--ts-s);
     }
 }
-
 .pi-hero-caption {
     display: block !important;
     color: var(--pt) !important;
     text-align: center;
 }
-
 .mw-parser-output .portable-infobox section {
     margin-bottom: 0;
 }
@@ -488,22 +404,18 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
     border-radius: var(--br-14);
     width: 100%;
     background: var(--template) center / cover no-repeat transparent;
-
     table {
         background-color: transparent;
         border-radius: var(--br-14);
         word-break: break-word;
-
-        :is(tr, th, td) {
+        tr, th, td {
             border: none !important;
         }
-
-        :is(td, th) {
+        td, th {
             background-color: transparent !important;
             padding: 8px;
             color: var(--pt);
         }
-
         th {
             text-align: center !important;
         }
@@ -515,18 +427,15 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
     background-color: var(--blur) !important;
     border-top-color: transparent !important;
     border-radius: var(--br-14) !important;
-
     .mw-mf-undo {
         background-color: var(--p) !important;
         border-radius: var(--br-14) !important;
         color: var(--s) !important;
     }
 }
-
 .diff-deletedline .diffchange {
     background-color: rgb(from var(--al) r g b / 30%) !important;
 }
-
 .diff-addedline .diffchange {
     background-color: rgb(from var(--su) r g b / 30%) !important;
 }
@@ -536,12 +445,10 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-
     li {
         &::after {
             content: none !important;
         }
-
         a {
             display: inline-block;
             background-color: var(--p);
@@ -560,16 +467,13 @@ caption.pi-secondary-font.pi-secondary-background.pi-item-spacing {
 .wds-is-hidden:has(.t-tabview) {
     display: revert !important;
 }
-
 .t-tabview .t-tabview__item i {
     padding: 0.2em;
 }
-
 .t-gallery {
     &.wds-collapsible-panel.wds-is-collapsed .t-gallery__wrapper.wds-collapsible-panel__content {
         display: flex;
     }
-
     &.wds-collapsible-panel .wds-collapsible-panel__header i {
         display: none;
     }
@@ -581,15 +485,12 @@ blockquote {
     border-radius: var(--br-14);
     text-align: center;
     text-wrap: pretty;
-
     &::before {
         content: none;
     }
-
     cite {
         color: var(--pt);
         text-transform: none;
-
         &::before {
             content: "—\0a";
         }
@@ -600,12 +501,10 @@ blockquote {
 .mobile-main-page .collapsible-section {
     display: none;
 }
-
 .mobile-gallery-navigational .mobile-gallery__image-caption-gradient {
     background-image: var(--lg);
     border-radius: var(--br-14);
 }
-
 .fandom-stats-container {
     border-top: none;
 }
@@ -626,7 +525,6 @@ blockquote {
         border-radius: var(--br-14);
         color: var(--s) !important;
     }
-
     &.oo-ui-widget-enabled select:is(:hover, :focus, :active) {
         border-color: var(--s);
         text-shadow: var(--ts-s);
@@ -637,12 +535,10 @@ blockquote {
 .skin-fandommobile table :is(th, td) {
     word-break: auto-phrase;
 }
-
 #content img {
     border: none;
     border-radius: var(--br-14);
 }
-
 .page-content:has(.references-small) dt {
     text-align: center;
 }
@@ -653,7 +549,6 @@ blockquote {
     font-weight: bold;
     padding-right: 0.4em;
 }
-
 .mobile-community-bar__item-content svg {
     display: none;
 }
@@ -699,7 +594,6 @@ blockquote {
 [data-testid="article-footer-categories"] li a::before {
     content: "\23";
 }
-
 .article-footer-languages li a::before {
     content: "\f0ac";
 }
