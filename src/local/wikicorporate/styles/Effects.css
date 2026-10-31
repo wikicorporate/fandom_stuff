@@ -1,3 +1,72 @@
+/* Шапки разделов  */
+.mp-header,
+body.skin-fandomdesktop #userProfileApp,
+body.mw-special-Community .community-page-header {
+    margin-inline: var(--page-bleed, -36px);
+    border-radius: var(--br-14);
+}
+
+body.skin-fandomdesktop #userProfileApp,
+body.mw-special-Community .community-page-header {
+    height: 450px;
+    width: calc(100% - (var(--page-bleed, -36px) * 2));
+}
+
+/* Круглые кнопки с коническим заполнением */
+.page-tools-module .rail-module__list.is-condensed-list li::before,
+.railModule .t-rail .t-rail__item :is(a, strong),
+.t-video .t-video__item .t-video__item-link {
+    width: 3em;
+    aspect-ratio: 1;
+    background-color: var(--cm-p);
+    border-radius: var(--br-50);
+    transition: color 0.5s ease-in-out;
+}
+
+.page-tools-module .rail-module__list.is-condensed-list li::after,
+.railModule .t-rail .t-rail__item :is(a, strong)::before,
+.t-video .t-video__item .t-video__item-link::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -3px;
+    background-image: conic-gradient(var(--s) var(--fill), transparent var(--fill));
+    border-radius: var(--br-50);
+    transition: --fill 0.6s ease-in-out;
+}
+
+.page-tools-module .rail-module__list.is-condensed-list li:hover,
+.railModule .t-rail .t-rail__item :is(a, strong):hover,
+.t-video .t-video__item .t-video__item-link:hover {
+    color: var(--s);
+    --fill: 100%;
+}
+
+/* Кнопки и вкладки с фильтром */
+.mp-header .mp-buttons .mp-buttons__button,
+body.skin-fandomdesktop #userProfileApp .user-profile-navigation .user-profile-navigation__link,
+.cwa-rc__tab {
+    position: relative;
+
+    &::before {
+        content: " ";
+        position: absolute;
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+        top: 0;
+        left: 0;
+        z-index: -2;
+        background-color: var(--cm-p);
+        border-radius: var(--br-14);
+        filter: var(--blur-b);
+    }
+
+    &:is(:hover, :focus, :active, .cwa-rc__tab--active)::before {
+        filter: var(--blur-p);
+        translate: 0.05em 0.1em;
+    }
+}
+
 /* Кнопка Править */
 .page-content h2,
 .CommunityPageContainer .community-page-todo-list-module .community-page-todo-list-module-header-wrapper {
