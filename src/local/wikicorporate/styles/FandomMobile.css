@@ -1,5 +1,5 @@
-/* Импорт CSS страниц: Mobile.css, Editor.css, Atomic.css, FontAwesome.css */
-@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mobile.css|MediaWiki:Editor.css|MediaWiki:Atomic.css|MediaWiki:FontAwesome.css";
+/* Импорт CSS страниц: Mobile.css, GlobalTemplates.css, Effects.css, Tooltips.css, Editor.css, Atomic.css, FontAwesome.css */
+@import "/ru/load.php?mode=articles&only=styles&articles=MediaWiki:Mobile.css|MediaWiki:GlobalTemplates.css|MediaWiki:Effects.css|MediaWiki:Tooltips.css|MediaWiki:Editor.css|MediaWiki:Atomic.css|MediaWiki:FontAwesome.css";
 
 /* Импорт шрифтов */
 @font-face {
