@@ -1,6 +1,5 @@
 .reference {
     position: relative;
-
     .reference-text {
         position: absolute;
         top: 0;
@@ -19,7 +18,6 @@
         overflow: hidden;
         z-index: 10000;
     }
-
     &:not(:hover) .reference-text {
         display: none;
     }
