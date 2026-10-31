@@ -1,7 +1,6 @@
 /* Общее для проектов */
 :root {
     color-scheme: dark light;
-    interpolate-size: allow-keywords;
 
     &:has(body:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark)) {
         color-scheme: dark;
