@@ -235,9 +235,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     }
 }
 .ooui-theme-fandomooui {
-    .ve-ce-focusableNode-highlight,
-    .ve-ui-summaryPanel,
-    .ve-ui-summaryPanel-copyrightWarningFooter {
+    .ve-ce-focusableNode-highlight, .ve-ui-summaryPanel, .ve-ui-summaryPanel-copyrightWarningFooter {
         background-color: transparent;
         box-shadow: none;
     }
@@ -431,12 +429,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
             color: color-mix(in srgb, var(--pygments-m) 72%, var(--p));
         }
     }
-    .ace_list,
-    .ace_markup.ace_list,
-    .ace_storage,
-    .ace_quasi,
-    .ace_string.ace_start,
-    .ace_string.ace_end {
+    .ace_list, .ace_markup.ace_list, .ace_storage, .ace_quasi, .ace_string.ace_start, .ace_string.ace_end {
         color: var(--pygments-kd);
         &.ace_modifier {
             color: color-mix(in srgb, var(--pygments-kd) 75%, var(--p));
@@ -454,8 +447,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .ace_support.ace_class {
         color: var(--pygments-kt);
     }
-    .ace_support.ace_function,
-    .ace_text.ace_xml {
+    .ace_support.ace_function, .ace_text.ace_xml {
         color: var(--pygments-mh);
         &.ace_dom {
             color: color-mix(in srgb, var(--pygments-mh) 75%, var(--p));
