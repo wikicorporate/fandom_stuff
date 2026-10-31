@@ -173,32 +173,22 @@
     --t: light-dark(#FFC498, #12372C);
     --rl: light-dark(#63140b, #E1CEB0);
     --text--main: light-dark(#1B1B18, #47BE9D);
-    --returnal: #47BE9D;
-    --enemy: #8EA1FE;
-    --boss: #EEC3C2;
-    --malignant: #D4A2FB;
-    --consumable: #E3B87A;
-    --resource: #cdb58f;
-    --artefact: #D9E5FF;
-    --scout-log: #E0FDF8;
-    --text--message: #f9b24b;
-    --text--danger: #fb6161;
-    --text--response: #ffee95;
+    --returnal: light-dark(#0d6b52, #47BE9D);
+    --enemy: light-dark(#2842b8, #8EA1FE);
+    --boss: light-dark(#8f1d21, #EEC3C2);
+    --malignant: light-dark(#6b21a8, #D4A2FB);
+    --consumable: light-dark(#854d0e, #E3B87A);
+    --resource: light-dark(#5c4522, #cdb58f);
+    --artefact: light-dark(#1e40af, #D9E5FF);
+    --scout-log: light-dark(#0f5e59, #E0FDF8);
+    --text--message: light-dark(#9a4a00, #f9b24b);
+    --text--danger: light-dark(#b91c1c, #fb6161);
+    --text--response: light-dark(#785600, #ffee95);
     /* Рамки */
     --bs-2t: 2px solid var(--t);
     --bs-2rl: 2px solid var(--rl);
     /* Блюр */
     --blur: light-dark(rgb(244 179 179 / 70%), rgb(16 37 25 / 70%));
-    /* SVG-фильтры */
-    --f-returnal: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.27843 0 0 0 0 0 0.7451 0 0 0 0 0 0.61569 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-enemy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.55686 0 0 0 0 0 0.63137 0 0 0 0 0 0.99608 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-boss: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.93333 0 0 0 0 0 0.76471 0 0 0 0 0 0.76078 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-malignant: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.83137 0 0 0 0 0 0.63529 0 0 0 0 0 0.98431 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-consumable: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.8902 0 0 0 0 0 0.72157 0 0 0 0 0 0.47843 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-resource: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.88235 0 0 0 0 0 0.80784 0 0 0 0 0 0.6902 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-artefact: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.85098 0 0 0 0 0 0.89804 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-scout: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.87843 0 0 0 0 0 0.99216 0 0 0 0 0 0.97255 0 0 0 0 0 1 0"/></filter></svg>#icon');
-    --f-scout-log: var(--f-scout);
     /* Градиенты */
     --rg: radial-gradient(rgb(183 183 183 / 30%), transparent 75%);
     --distortion: repeating-linear-gradient(transparent 4px, #00000080 8px);
@@ -213,6 +203,15 @@
 /* Тёмная тема */
 body.theme-fandomdesktop-dark {
     /* SVG-фильтры */
+    --f-returnal: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.27843 0 0 0 0 0 0.7451 0 0 0 0 0 0.61569 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-enemy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.55686 0 0 0 0 0 0.63137 0 0 0 0 0 0.99608 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-boss: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.93333 0 0 0 0 0 0.76471 0 0 0 0 0 0.76078 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-malignant: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.83137 0 0 0 0 0 0.63529 0 0 0 0 0 0.98431 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-consumable: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.8902 0 0 0 0 0 0.72157 0 0 0 0 0 0.47843 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-resource: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.88235 0 0 0 0 0 0.80784 0 0 0 0 0 0.6902 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-artefact: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.85098 0 0 0 0 0 0.89804 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-scout: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.87843 0 0 0 0 0 0.99216 0 0 0 0 0 0.97255 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-scout-log: var(--f-scout);
     --animation: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.41342 0 0 0 0 0 0.87005 0 0 0 0 0 0.73492 0 0 0 0 0 1 0"/></filter></svg>#color');
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.27843 0 0 0 0 0 0.7451 0 0 0 0 0 0.61569 0 0 0 0 0 1 0"/></filter></svg>#color');
     /* Изображения */
@@ -222,6 +221,15 @@ body.theme-fandomdesktop-dark {
 /* Светлая тема */
 body.theme-fandomdesktop-light {
     /* SVG-фильтры */
+    --f-returnal: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.05098 0 0 0 0 0 0.41961 0 0 0 0 0 0.32157 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-enemy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.15686 0 0 0 0 0 0.25882 0 0 0 0 0 0.72157 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-boss: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.56078 0 0 0 0 0 0.11373 0 0 0 0 0 0.12941 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-malignant: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.41961 0 0 0 0 0 0.12941 0 0 0 0 0 0.65882 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-consumable: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.52157 0 0 0 0 0 0.30196 0 0 0 0 0 0.0549 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-resource: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.36078 0 0 0 0 0 0.27059 0 0 0 0 0 0.13333 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-artefact: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.11765 0 0 0 0 0 0.25098 0 0 0 0 0 0.68627 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-scout: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="icon"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.05882 0 0 0 0 0 0.36863 0 0 0 0 0 0.34902 0 0 0 0 0 1 0"/></filter></svg>#icon');
+    --f-scout-log: var(--f-scout);
     --animation: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.97647 0 0 0 0 0 0.59216 0 0 0 0 0 0.59216 0 0 0 0 0 1 0"/></filter></svg>#color');
     --f-sticky: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="color"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.12549 0 0 0 0 0 0.10588 0 0 0 0 0 0.01176 0 0 0 0 0 1 0"/></filter></svg>#color');
     /* Изображения */
