@@ -29,19 +29,12 @@
 }
 
 .fandom-sticky-header {
-    background-color: var(--p);
-    color: var(--s);
-
     :is(.wds-button, a, .wds-dropdown__toggle-chevron) {
         color: var(--s);
 
         &:is(:hover, :focus, :active) {
             color: var(--l);
         }
-    }
-
-    .wiki-tools .wds-button.wds-is-secondary {
-        --wds-secondary-button-label-color: var(--s);
     }
 }
 
@@ -57,6 +50,13 @@
 
 /* Выпадающие меню */
 .wds-dropdown {
+    --wds-dropdown-background-color: var(--p);
+    --wds-dropdown-border-color: var(--s);
+    --wds-dropdown-text-color: var(--s);
+    --wds-dropdown-linked-item-color: var(--l);
+    --wds-dropdown-linked-item-background-color: transparent;
+    --wds-dropdown-scrollable-shadow-color: transparent;
+
     .wds-dropdown__content {
         background-color: var(--p);
         border-radius: var(--br-14);
@@ -65,11 +65,6 @@
             .wds-dropdown-level-nested .wds-dropdown-level-nested__content {
                 background-color: var(--p);
                 border-radius: var(--br-14);
-            }
-
-            &::before,
-            &::after {
-                background-color: transparent;
             }
 
             & > li {
