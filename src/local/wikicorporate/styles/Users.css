@@ -1,10 +1,6 @@
 /* Оформление профиля */
 body.skin-fandomdesktop #userProfileApp {
     background: var(--template) center / cover no-repeat transparent;
-    border-radius: var(--br-14);
-    height: 450px;
-    width: calc(100% + (36px * 2));
-    margin-inline: -36px;
     margin-top: -5px;
 
     .user-identity-header__attributes {
@@ -241,7 +237,6 @@ body.skin-fandomdesktop #userProfileApp {
         gap: 12px;
 
         .user-profile-navigation__link {
-            position: relative;
             transition: opacity 400ms;
             opacity: 0.9;
             font-weight: bold;
@@ -261,28 +256,8 @@ body.skin-fandomdesktop #userProfileApp {
                 font-size: 1.1rem;
             }
 
-            &::before {
-                content: " ";
-                position: absolute;
-                width: calc(100% - 6px);
-                height: calc(100% - 6px);
-                top: 0;
-                left: 0;
-                z-index: -2;
-                background-color: var(--cm-p);
-                border-radius: var(--br-14);
-                filter: var(--blur-b);
-            }
-
-            &:hover {
-                &::before {
-                    filter: var(--blur-p);
-                    translate: 0.05em 0.1em;
-                }
-
-                a {
-                    opacity: 1;
-                }
+            &:hover a {
+                opacity: 1;
             }
         }
     }
