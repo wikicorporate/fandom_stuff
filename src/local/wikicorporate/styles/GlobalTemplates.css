@@ -4,22 +4,17 @@
     border-radius: var(--br-14);
     width: 100%;
     text-align: center;
-
     tr:first-child {
         font-family: var(--font);
     }
-
-    td,
-    th {
+    td, th {
         padding: 8px;
         color: var(--pt);
     }
-
     a {
         white-space: break-spaces;
         transition: all 0.15s;
     }
-
     sup {
         font-weight: 700;
     }
@@ -34,60 +29,44 @@
     background: var(--template) center / cover no-repeat fixed transparent;
     border: none;
     border-radius: var(--br-14);
-
-    .pi-title,
-    .pi-header,
-    .pi-data-label {
+    .pi-title, .pi-header, .pi-data-label {
         font-family: var(--font);
         color: var(--pt);
     }
-
-    .pi-title,
-    .pi-header {
+    .pi-title, .pi-header {
         text-wrap: balance;
     }
-
     .pi-header {
         font-size: 12px;
     }
-
     .pi-data {
         position: relative;
         overflow: visible !important;
         border: none;
     }
-
     .pi-collapse .pi-header:first-child::after {
         margin-top: -4px;
     }
-
     .pi-secondary-background + .pi-secondary-background {
         border-top: none;
     }
-
     .pi-group {
         &:has([data-source="Видео"]) {
             margin: 4px 0 10px;
         }
-
         .mw-collapsible-toggle {
             position: sticky;
         }
-
         .mw-collapsible-content {
             padding-top: 2em;
         }
-
         [data-source="Аудио"] {
             line-height: 1 !important;
         }
-
         .pi-horizontal-group-item {
-            &.pi-data-label,
-            &.pi-data-value {
+            &.pi-data-label, &.pi-data-value {
                 border: 0;
             }
-
             &.pi-data-value {
                 padding: 6px 0;
             }
@@ -106,12 +85,10 @@
     padding: 8px;
     margin-bottom: 16px;
     text-wrap: pretty;
-
     p {
         margin: 0 !important;
     }
-
-    i[class^="fa"] {
+    i {
         color: var(--s);
         font-size: 4rem;
     }
@@ -121,19 +98,15 @@
 .userpic {
     margin-bottom: 5px;
     width: 100%;
-
     .userpic__body {
         background-color: rgb(from var(--pb) r g b / 70%);
         border-radius: var(--br-14);
         width: 100%;
-
         .userpic__details {
             width: 100%;
-
             .userpic__details-image {
                 width: 50px;
             }
-
             .userpic__details-text {
                 color: var(--pt);
                 margin-right: 10px;
@@ -152,25 +125,20 @@
     border-spacing: 0;
     border-radius: var(--br-12);
     background: var(--template) center / cover no-repeat transparent;
-
     .t-staff__caption {
         color: var(--pt);
-
         b {
             font-size: 2.5rem;
             font-family: var(--font);
         }
-
         span {
             padding: 21px;
         }
-
         .mw-collapsible-toggle {
             position: relative;
             top: 20px;
         }
     }
-
     tr {
         .t-staff__role {
             font-size: 1.4rem;
@@ -180,7 +148,6 @@
             padding: 0 16px;
             width: 50%;
         }
-
         .t-staff__users {
             color: var(--pt);
             font-size: 1.4rem;
@@ -201,7 +168,6 @@
     justify-content: center;
     align-items: center;
     width: fit-content;
-
     .t-tabview__item {
         display: flex;
         position: relative;
@@ -212,28 +178,22 @@
         color: var(--s);
         opacity: 0.5;
         transition: opacity 0.3s;
-
-        &:hover,
-        &:has(strong) {
+        &:hover, &:has(strong) {
             opacity: 1;
         }
-
         a {
             color: inherit;
         }
-
         i {
             font-size: 24px;
             font-weight: bold;
         }
-
         &::after {
             content: attr(data-title);
             font-size: 16px;
             bottom: 110%;
         }
     }
-
     p {
         display: none;
     }
@@ -248,12 +208,10 @@
     padding: 8px;
     border-radius: 45px;
     background-color: var(--p);
-
-    i[class^="fa"] {
+    i {
         color: var(--s);
         font-size: 2.5rem;
     }
-
     .t-quote__text {
         padding: 0 16px;
         text-align: center;
@@ -264,7 +222,6 @@
 /* Иконка */
 .t-icon {
     display: inline-block;
-
     .image img {
         width: 32px;
         height: auto;
@@ -298,11 +255,9 @@
 .t-gallery {
     position: relative;
     overflow: hidden;
-
     &.wds-collapsible-panel.wds-is-collapsed .t-gallery__wrapper.wds-collapsible-panel__content {
         display: none;
     }
-
     &.wds-collapsible-panel .wds-collapsible-panel__header {
         position: relative;
         display: flex;
@@ -313,18 +268,15 @@
         font-weight: bold;
         font-size: var(--size);
         cursor: pointer;
-
         &[aria-expanded="true"] i {
             transform: rotate(180deg);
         }
-
         i {
             position: absolute;
             top: -36px;
             transition: transform 0.3s;
         }
     }
-
     .t-gallery__wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -332,21 +284,18 @@
         justify-content: center;
         text-align: center;
         align-items: baseline;
-
         .t-gallery__item {
             display: grid;
             grid-gap: 12px;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             place-content: center;
             align-items: center;
-
             .t-gallery__title {
                 justify-self: center;
                 line-height: 1.5;
                 word-break: auto-phrase;
                 max-width: 150px;
             }
-
             img {
                 width: fit-content;
                 height: auto;
@@ -365,53 +314,39 @@
     }
 }
 
-/* Индикаторы (Desktop + Mobile) */
+/* Индикаторы */
 #page-header:has(.page-header__languages) .mw-indicator {
     width: calc(100% + 125px);
 }
-
-.page-header__indicators,
-.mw-indicator__modern {
+.page-header__indicators, .mw-indicator__modern {
     &.mw-indicators {
         margin-top: 10px;
     }
-
-    .mw-parser-output,
-    .mw-indicators {
+    .mw-parser-output, .mw-indicators {
         display: grid;
         grid-template-columns: auto auto;
     }
-
     .mw-indicator {
         width: 100%;
     }
-
-    .mw-indicator__nameplates,
-    .mw-indicator__icons {
+    .mw-indicator__nameplates, .mw-indicator__icons {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5em;
     }
-
     .mw-indicator__icons {
         grid-column-start: 2;
         justify-self: end;
     }
-
-    .mw-indicator__nameplate,
-    .mw-indicator__icon {
+    .mw-indicator__nameplate, .mw-indicator__icon {
         position: relative;
         cursor: pointer;
-
         i {
             padding-right: 0.2em;
         }
-
-        .mw-indicator__nameplate-tooltip,
-        .mw-indicator__icon-tooltip {
+        .mw-indicator__nameplate-tooltip, .mw-indicator__icon-tooltip {
             display: none;
         }
-
         &:hover > :is(.mw-indicator__nameplate-tooltip, .mw-indicator__icon-tooltip) {
             display: inline-block;
             position: absolute;
@@ -433,42 +368,34 @@
             overflow: hidden;
             z-index: 10000;
         }
-
         &:has(.fa-xmark) {
             --ind: var(--ind-undefined);
         }
     }
-
     .mw-indicator__icon {
         color: var(--pt);
         border-radius: var(--br-14);
         background-color: var(--ind);
         height: fit-content;
-
         &:has(i) {
             padding: 0 0.5em;
         }
-
         a {
             pointer-events: none;
             display: block;
             height: 24px;
         }
-
         img {
             height: 24px;
             width: auto;
         }
     }
-
-    .mw-indicator__nameplate,
-    .mw-indicator__icon:has(.fa-xmark) {
+    .mw-indicator__nameplate, .mw-indicator__icon:has(.fa-xmark) {
         color: var(--pt);
         border-radius: var(--br-14);
         background-color: var(--ind);
         padding: 0 0.5em;
     }
-
     .mw-indicator__nameplate--unfinished { --ind: var(--ind-unfinished); }
     .mw-indicator__nameplate--old { --ind: var(--ind-old); }
     .mw-indicator__nameplate--short { --ind: var(--ind-short); }
