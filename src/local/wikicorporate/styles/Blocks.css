@@ -4,21 +4,17 @@
     width: 8px;
     height: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color: var(--s);
     border-radius: 9999px;
     border: none;
 }
-
 ::-webkit-scrollbar-track {
     background-color: var(--p);
 }
-
 ::-webkit-scrollbar-button {
     display: none;
 }
-
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
@@ -27,22 +23,18 @@
 :is(.fandom-community-header :is(a, .wds-dropdown__toggle-chevron), .page-counter__value, .page-counter__label, .wiki-tools .wds-button.wds-is-secondary):hover {
     color: var(--l);
 }
-
 .fandom-sticky-header {
     :is(.wds-button, a, .wds-dropdown__toggle-chevron) {
         color: var(--s);
-
-        &:is(:hover, :focus, :active) {
+        &:hover, &:focus, &:active {
             color: var(--l);
         }
     }
 }
-
 .fandom-community-header__local-navigation .wds-dropdown__content .wds-list.wds-is-linked > li > :is(a, .wds-dropdown__placeholder) {
     & > svg:not(.navigation-item-icon) {
         fill: var(--cC);
     }
-
     & > span {
         overflow: unset;
     }
@@ -56,50 +48,39 @@
     --wds-dropdown-linked-item-color: var(--l);
     --wds-dropdown-linked-item-background-color: transparent;
     --wds-dropdown-scrollable-shadow-color: transparent;
-
     .wds-dropdown__content {
         background-color: var(--p);
         border-radius: var(--br-14);
-
         .wds-list.wds-is-linked {
             .wds-dropdown-level-nested .wds-dropdown-level-nested__content {
                 background-color: var(--p);
                 border-radius: var(--br-14);
             }
-
             & > li {
                 & > :is(a, .wds-dropdown__placeholder) {
                     color: var(--s);
-
                     &:hover {
                         color: var(--l) !important;
                     }
                 }
-
                 &:hover > a {
                     color: var(--l) !important;
                 }
             }
         }
-
         .wds-list {
             &.wds-is-linked > :is(li.wds-is-selected, li:hover) > :is(a, .wds-dropdown__placeholder),
-            &::before,
-            &::after {
+            &::before, &::after {
                 background-color: transparent !important;
                 color: var(--s);
             }
-
-            &,
-            &.wds-is-linked {
+            &, &.wds-is-linked {
                 background-image: none !important;
             }
         }
     }
-
     &:is(.wds-is-active, :hover) {
-        &::before,
-        &::after {
+        &::before, &::after {
             display: none !important;
         }
     }
@@ -114,7 +95,6 @@
     background-color: var(--cm-p);
     border-radius: var(--br-50) !important;
     border: none;
-
     &:hover {
         color: var(--p);
         background-color: var(--s);
