@@ -663,7 +663,7 @@ body.skin-fandomdesktop {
     #mw-teleport-target,
     .lightboxContainer,
     .EditorModal__content,
-    body [class^="Modal_content"],
+    [class^="Modal_content"],
     .EditorForm__actions {
         .wds-button,
         .cdx-button,
