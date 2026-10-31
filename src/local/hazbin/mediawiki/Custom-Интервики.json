@@ -603,6 +603,18 @@
         "en": "Asmodeus/Quotes",
         "ja": "アスモデウス/セリフ"
     },
+    "Аукцион": {
+        "cs": "Aukce",
+        "en": "The Auction",
+        "es": "The Auction",
+        "fr": "The Auction",
+        "hu": "Aukció",
+        "it": "L'Asta",
+        "ja": "オークション",
+        "pl": "Aukcja",
+        "th": "งานประมูล",
+        "tr": "Açık Artırma"
+    },
     "Бакстер": {
         "de": "Baxter",
         "en": "Baxter",
@@ -1284,6 +1296,20 @@
         "es": "Consejero Jimmy/Relaciones",
         "fr": "Conseiller Jimmy/Relations"
     },
+    "Возвращение в Лу Лу Ленд": {
+        "cs": "Návrat do Loo Loo Landu",
+        "de": "Rückkehr nach Loo Loo Land",
+        "en": "Return to Loo Loo Land",
+        "es": "Return to Loo Loo Land",
+        "fr": "Return to Loo Loo Land",
+        "hu": "Visszatérés Loo Loo Földre",
+        "it": "Ritorno a Loo Loo Land",
+        "ja": "ルールー･ランド・リターンズ",
+        "pl": "Powrót do Loo Loo Landu",
+        "pt-br": "Return to Loo Loo Land",
+        "th": "กลับสู่ลูลูแลนด์แดนหรรษา",
+        "tr": "Loo Loo Land'e Dönüş"
+    },
     "Вокс": {
         "cs": "Vox",
         "de": "Vox",
@@ -1621,6 +1647,20 @@
         "es": "Dirty Healings",
         "fr": "Dirty Healings",
         "it": "Dirty Healings"
+    },
+    "ДА/НЕТ": {
+        "cs": "ANO/NE",
+        "de": "Ja/Nein",
+        "en": "YES/NO",
+        "es": "YES/NO",
+        "fr": "YES/NO",
+        "hu": "Igen Vagy Nem?",
+        "it": "Famiglie e Famiglie",
+        "ja": "イエス／ノー",
+        "pl": "TAK∕NIE",
+        "pt-br": "YES/NO",
+        "th": "ใช่/ไม่",
+        "tr": "EVET/HAYIR"
     },
     "Даррен Крис": {
         "en": "Darren Criss",
@@ -5695,6 +5735,18 @@
         "en": "Stamper",
         "es": "Stamper"
     },
+    "Суд ошибок": {
+        "cs": "Soud plný omylů",
+        "en": "A Trial of Errors",
+        "es": "A Trial of Errors",
+        "fr": "A Trial of Errors",
+        "hu": "Kínos Tárgyalás",
+        "it": "Processo Agli Errori",
+        "ja": "修羅場な裁判",
+        "pl": "Osąd Błędów",
+        "th": "ศาลล่ม",
+        "tr": "Hatalar Duruşması"
+    },
     "Суккубы": {
         "en": "Succubi",
         "es": "Súcubos",
@@ -6588,6 +6640,19 @@
     },
     "Чезвик Турман/Цитаты": {
         "en": "Chazwick Thurman/Quotes"
+    },
+    "Черепаший эмодзи": {
+        "cs": "Emoji želvy",
+        "de": "Schildkröten-Emoji",
+        "en": "Turtle Emoji",
+        "es": "Turtle Emoji",
+        "fr": "Turtle Emoji",
+        "hu": "Teknősös Emodzsi",
+        "it": "Emoji Della Tartaruga",
+        "ja": "カメの絵文字",
+        "pl": "Emotka Żółwia",
+        "th": "อีโมจิรูปเต่า",
+        "tr": "Kaplumbağa Emojisi"
     },
     "Черри Бомб": {
         "de": "Cherri Bomb",
