@@ -5,7 +5,6 @@ body.mw-special-Community .community-page-header {
     margin-inline: var(--page-bleed, -36px);
     border-radius: var(--br-14);
 }
-
 body.skin-fandomdesktop #userProfileApp,
 body.mw-special-Community .community-page-header {
     height: 450px;
@@ -22,7 +21,6 @@ body.mw-special-Community .community-page-header {
     border-radius: var(--br-50);
     transition: color 0.5s ease-in-out;
 }
-
 .page-tools-module .rail-module__list.is-condensed-list li::after,
 .railModule .t-rail .t-rail__item :is(a, strong)::before,
 .t-video .t-video__item .t-video__item-link::before {
@@ -34,7 +32,6 @@ body.mw-special-Community .community-page-header {
     border-radius: var(--br-50);
     transition: --fill 0.6s ease-in-out;
 }
-
 .page-tools-module .rail-module__list.is-condensed-list li:hover,
 .railModule .t-rail .t-rail__item :is(a, strong):hover,
 .t-video .t-video__item .t-video__item-link:hover {
@@ -47,7 +44,6 @@ body.mw-special-Community .community-page-header {
 body.skin-fandomdesktop #userProfileApp .user-profile-navigation .user-profile-navigation__link,
 .cwa-rc__tab {
     position: relative;
-
     &::before {
         content: " ";
         position: absolute;
@@ -60,7 +56,6 @@ body.skin-fandomdesktop #userProfileApp .user-profile-navigation .user-profile-n
         border-radius: var(--br-14);
         filter: var(--blur-b);
     }
-
     &:is(:hover, :focus, :active, .cwa-rc__tab--active)::before {
         filter: var(--blur-p);
         translate: 0.05em 0.1em;
@@ -72,31 +67,26 @@ body.skin-fandomdesktop #userProfileApp .user-profile-navigation .user-profile-n
 .CommunityPageContainer .community-page-todo-list-module .community-page-todo-list-module-header-wrapper {
     overflow: unset;
 }
-
 .page-header__title {
     font-family: var(--font);
     font-weight: bold;
     text-wrap: balance;
 }
-
 body:is(.ns-0.mw-editable, .ns-2.mw-editable, .ns-6) .page-content :is(h2, h3, h4, h5, h6):not(:is(.toc, .portable-infobox) :is(h2, h3, h4, h5, h6)) {
     font-family: var(--font);
     font-size: var(--size);
     font-weight: bold;
     text-align: center;
     text-wrap: balance;
-
     &:hover .mw-editsection {
         display: initial;
         margin-top: 0;
         transform: none;
         animation: pencil-shake 3s infinite both ease-in-out;
-
         &::before {
             animation: pencil-draw 3s infinite both ease-in-out;
         }
     }
-
     .mw-editsection {
         display: none;
         position: absolute;
@@ -108,7 +98,6 @@ body:is(.ns-0.mw-editable, .ns-2.mw-editable, .ns-6) .page-content :is(h2, h3, h
         border-top: 10px solid var(--l);
         transform-origin: 50% 100%;
         margin-top: 8px;
-
         &::before {
             content: "";
             position: absolute;
@@ -117,7 +106,6 @@ body:is(.ns-0.mw-editable, .ns-2.mw-editable, .ns-6) .page-content :is(h2, h3, h
             top: calc(100% + 10px);
             background: var(--l);
         }
-
         &::after {
             content: "";
             position: absolute;
@@ -132,7 +120,6 @@ body:is(.ns-0.mw-editable, .ns-2.mw-editable, .ns-6) .page-content :is(h2, h3, h
         }
     }
 }
-
 :is(.mw-editsection, .community-page-todo-list-module-edit) use,
 a[data-tracking="community-page-todo-list-module-edit"] {
     display: none !important;
