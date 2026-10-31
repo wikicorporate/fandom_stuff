@@ -154,7 +154,7 @@
 
 /* Добавить Видео */
 .wds-dialog__wrapper {
-    background-color: var(--p);
+    --wds-dialog-background-color: var(--p);
     border-radius: var(--br-14);
 }
 
@@ -193,12 +193,8 @@ body.mw-special-Community {
 
     .community-page-header {
         background-color: transparent;
-        border-radius: var(--br-14);
-        height: 450px;
-        margin-inline: -36px;
         margin-top: -24px;
         overflow-y: hidden;
-        width: calc(100% + (36px * 2));
 
         &::before {
             background-size: cover;
@@ -666,17 +662,9 @@ body .lightboxContainer {
 
 /* Кнопка "Просмотреть" */
 .wds-checkbox {
-    label {
-        color: var(--s);
-    }
-
-    input[type="checkbox"]:checked + label::after {
-        background-color: var(--s);
-    }
-
-    input[type="checkbox"]:checked:hover:not(:disabled) + label::after {
-        background-color: var(--l);
-    }
+    --wds-checkbox-label-color: var(--s);
+    --wds-checkbox-check-color: var(--s);
+    --wds-checkbox-check-color--hover: var(--l);
 }
 
 /* Страница изображения */
