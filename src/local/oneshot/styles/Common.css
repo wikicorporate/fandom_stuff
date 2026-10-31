@@ -19,14 +19,14 @@
     /* Цвета */
     --p: light-dark(#51cfff, #201039);
     --s: light-dark(#0C2151, #AAEEEA);
-    --barrens: #655add;
-    --glen: #40a33d;
-    --refuge: #c95471;
-    --slt: #bda000;
-    --tower: #ab50cc;
-    --calamity: #d63c24;
-    --end: #ed9609;
-    --basement: #695632;
+    --barrens: light-dark(#2e239c, #655add);
+    --glen: light-dark(#146612, #40a33d);
+    --refuge: light-dark(#941b3b, #c95471);
+    --slt: light-dark(#7a5800, #bda000);
+    --tower: light-dark(#6e1d8c, #ab50cc);
+    --calamity: light-dark(#9e1c08, #d63c24);
+    --end: light-dark(#994d00, #ed9609);
+    --basement: light-dark(#543e18, #a88b54);
     /* Блюр */
     --blur: light-dark(rgb(154 176 255 / 70%), rgb(22 7 39 / 70%));
     /* Шрифты */
