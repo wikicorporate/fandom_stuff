@@ -8,7 +8,6 @@
     --tt-easing: cubic-bezier(0, 0, 0.2, 1);
     --tt-show: 150ms;
     position: relative;
-
     &::after {
         content: attr(data-tips);
         position: absolute;
@@ -34,62 +33,51 @@
         width: max-content;
         z-index: 10000;
     }
-
     &:active::after {
         transition-delay: var(--tt-display);
     }
-
     &:is(:hover, :focus, :focus-within, :active)::after {
         opacity: 1;
         transform: scale(1) translate(var(--tt-x), var(--tt-y));
     }
-
     &:is(.top-tip, [top-tip])::after {
         --tt-y: -100%;
         top: 0;
     }
-
     &:is(.right-tip, [right-tip])::after {
         --tt-x: 8px;
         --tt-y: -50%;
         left: 40px;
         top: 50%;
     }
-
     &:is(.bottom-tip, [bottom-tip])::after {
         --tt-y: 0;
     }
-
     &:is(.left-tip, [left-tip])::after {
         --tt-x: calc(-100% - 8px);
         --tt-y: -50%;
         left: 0;
         top: 50%;
     }
-
     &:is(.center-tip, [center-tip])::after {
         --tt-x: -30%;
         --tt-y: -30%;
         left: 0;
         top: 0;
     }
-
     &:is(.top-tip.left-tip, [top-tip][left-tip])::after {
         --tt-x: calc(-100% - var(--tt-margin));
         --tt-y: calc(-100% - var(--tt-margin));
     }
-
     &:is(.top-tip.right-tip, [top-tip][right-tip])::after {
         --tt-x: var(--tt-margin);
         --tt-y: calc(-100% - var(--tt-margin));
         left: 40px;
     }
-
     &:is(.bottom-tip.right-tip, [bottom-tip][right-tip])::after {
         --tt-x: var(--tt-margin);
         --tt-y: var(--tt-margin);
     }
-
     &:is(.bottom-tip.left-tip, [bottom-tip][left-tip])::after {
         --tt-x: calc(-100% - var(--tt-margin));
         --tt-y: var(--tt-margin);
