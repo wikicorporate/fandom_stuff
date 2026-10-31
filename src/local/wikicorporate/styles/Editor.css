@@ -2,32 +2,25 @@
 body.skin-fandomdesktop #content #mw-content-text #editform {
     .wikiEditor-ui {
         .wikiEditor-ui-toolbar {
-            &,
-            .sections .section {
+            &, .sections .section {
                 border: none;
                 background-color: transparent;
                 box-shadow: none;
             }
-
             .group {
                 border: none;
-
                 .tool {
                     background-color: transparent;
-
-                    &:is(:hover, :focus, :active) {
+                    &:hover, &:focus, &:active {
                         color: var(--l);
                     }
-
                     .label::after {
                         background-color: var(--cC);
                     }
-
                     .menu .options {
                         background-color: var(--p);
                         box-shadow: none;
                         border-radius: var(--br-14);
-
                         .option:hover {
                             background-color: transparent;
                             color: var(--l);
@@ -35,7 +28,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
                     }
                 }
             }
-
             .booklet {
                 .index {
                     .current {
@@ -43,80 +35,62 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
                         color: var(--s);
                         font-weight: bold;
                     }
-
                     div:hover {
                         background-color: transparent;
                         color: var(--s);
                     }
                 }
-
                 .pages {
                     background-color: transparent;
-
                     .page {
-                        &::before,
-                        &::after {
+                        &::before, &::after {
                             content: none;
                         }
-
                         &.page-table table {
                             border-collapse: separate;
                         }
                     }
                 }
             }
-
             .tabs span.tab a {
                 &:hover {
                     color: var(--l);
                 }
-
                 &.current {
-                    &,
-                    &:visited {
+                    &, &:visited {
                         color: var(--l);
                         background-color: transparent;
                     }
                 }
-
                 &::before {
                     background-color: var(--cC);
                 }
             }
-
             #msupload-select:hover {
                 background-color: var(--l);
             }
         }
-
         #msupload-div {
             border: none;
             background-color: transparent;
-
             a {
                 color: var(--l);
-
                 &:hover {
                     color: var(--s);
                 }
             }
-
             #msupload-dropzone {
                 border: none;
             }
-
             #msupload-list .file {
                 background-color: transparent;
-
                 .file-load canvas {
                     border-radius: var(--br-14);
                 }
-
                 .file-size {
                     color: var(--pt);
                 }
             }
-
             #msupload-bottom {
                 border: none;
 
@@ -125,59 +99,46 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
                 }
             }
         }
-
         div.cm-editor {
             .cm-line {
                 line-height: 1.5;
             }
-
             .cm-gutters {
                 border: none;
                 background-color: transparent;
-
                 .cm-lineNumbers {
                     color: var(--pt);
-
                     .cm-gutterElement:hover {
                         color: var(--l);
                     }
                 }
             }
-
             .cm-panels {
                 background-color: var(--blur);
                 border-radius: var(--br-14);
                 border: none;
-
                 .cm-mw-panel {
                     border: none;
-
                     .cdx-text-input > input {
                         background-color: var(--p);
                         border: none;
                         border-radius: var(--br-14);
-
                         &::placeholder {
                             color: var(--pt);
                         }
                     }
-
                     .cm-mw-find-results {
                         color: var(--pt);
                     }
-
                     :is(.cdx-button, .cdx-toggle-button) > span {
                         background-color: var(--cC);
                     }
-
                     :is(.cdx-button-group, .cdx-toggle-button-group) button {
                         margin: 0 4px 0 2px;
-
                         &.cdx-toggle-button--toggled-on {
                             color: var(--cm-p) !important;
                             background-color: var(--s) !important;
                         }
-
                         &.cdx-toggle-button--toggled-off {
                             color: var(--s) !important;
                             background-color: var(--cm-p) !important;
@@ -186,43 +147,33 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
                 }
             }
         }
-
         .wikiEditor-ui-bottom .wikiEditor-ui-text .wikiEditor-ui-linkSuggest {
             .oo-ui-popupWidget-popup {
                 background-color: var(--p);
                 border-radius: var(--br-14);
-
                 .wikiEditor-ui-linkSuggest-suggestion:is(.oo-ui-optionWidget-highlighted, :hover) {
                     background-color: transparent;
                 }
             }
-
             .oo-ui-popupWidget-anchor {
-                &::before,
-                &::after {
+                &::before, &::after {
                     display: none;
                 }
             }
         }
-
         .wikiEditor-ui-view.wikiEditor-ui-view-wikitext {
             border: none;
         }
-
-        .codeEditor-status,
-        .ext-WikiEditor-ResizingDragBar {
+        .codeEditor-status, .ext-WikiEditor-ResizingDragBar {
             background-color: transparent;
             border: none;
-
             .codeEditor-status-message {
                 border: none;
             }
         }
     }
-
     div.cm-editor {
-        .cm-foldPlaceholder,
-        .cm-tooltip {
+        .cm-foldPlaceholder, .cm-tooltip {
             border-radius: var(--br-14);
             background-color: var(--p);
             color: var(--s);
@@ -230,33 +181,25 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
             font-weight: bold;
             padding: 0 3px;
         }
-
-        .cm-selectionBackground,
-        .cm-line span::selection {
+        .cm-selectionBackground, .cm-line span::selection {
             background-color: var(--cm-p) !important;
         }
     }
-
     .cm-tooltip-autocomplete ul li {
         background-color: transparent;
         color: var(--pt);
-
         &:hover {
             color: var(--l);
         }
-
         .cm-completionMatchedText {
             text-decoration: none;
         }
     }
-
     .editOptions {
         border: none;
         background-color: transparent;
     }
-
-    .mw-scribunto-message,
-    #mw-scribunto-input {
+    .mw-scribunto-message, #mw-scribunto-input {
         color: var(--pt);
         border: none;
         border-radius: var(--br-14);
@@ -269,35 +212,28 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 .page__main :is(.ve-init-target, .ve-init-mw-target, .ve-init-mw-desktopArticleTarget) .oo-ui-toolbar-bar {
     background-color: transparent;
     border: none;
-
     .oo-ui-toolGroup {
         border: none;
     }
-
     .oo-ui-popupToolGroup-active > .oo-ui-popupToolGroup-handle {
-        &,
-        &:hover {
+        &, &:hover {
             color: var(--pt);
             background-color: transparent;
         }
     }
-
     :is(.oo-ui-popupToolGroup.oo-ui-widget-enabled > .oo-ui-popupToolGroup-handle, .oo-ui-tool .oo-ui-tool-link):is(:hover, :focus) {
         color: var(--l);
         background-color: transparent;
     }
-
     .oo-ui-popupToolGroup-tools {
         background-color: var(--p);
         border-radius: var(--br-14);
         box-shadow: none;
-
         .oo-ui-tool.oo-ui-widget-enabled.oo-ui-tool-active .oo-ui-tool-link {
             background-color: transparent;
         }
     }
 }
-
 .ooui-theme-fandomooui {
     .ve-ce-focusableNode-highlight,
     .ve-ui-summaryPanel,
@@ -305,34 +241,27 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         background-color: transparent;
         box-shadow: none;
     }
-
     .ve-ui-summaryPanel::before {
         border: none;
     }
 }
-
 .ve-fd-header :is(#ve-ui-localNavSwitchButtonWidget-button, #ve-ui-modeSwitchPopupButtonWidget-button, #ve-ui-pageActionsPopupButtonWidget-button) {
-    &:is(:hover, :focus) {
+    &:hover, &:focus {
         background-color: transparent;
         color: var(--s);
     }
-
     .oo-ui-icon-more {
         background-color: var(--cC);
     }
 }
-
 :is(.ve-ui-modeSwitchPopupButtonWidget, .ve-ui-pageActionsPopupButtonWidget) :is(.oo-ui-buttonWidget, :is(.ve-ui-pageActionsPopupButtonWidget-popup, .ve-ui-modeSwitchPopupButtonWidget-popup, .ve-ui-pageToolsPopupTool-popup) .oo-ui-buttonWidget):hover {
     background-color: transparent;
 }
-
 .oo-ui-popupWidget-anchored .oo-ui-popupWidget-anchor {
-    &::before,
-    &::after {
+    &::before, &::after {
         display: none;
     }
 }
-
 .oo-ui-popupWidget-body.oo-ui-clippableElement-clippable {
     width: max-content !important;
 }
@@ -345,30 +274,24 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     overflow-y: hidden;
     height: 58px;
     width: 100%;
-
     .edittools-title {
         text-align: center;
         padding: 5px;
         margin: 7px;
         font-weight: bold;
     }
-
     a {
         border-radius: var(--br-14);
         padding: 10px;
         line-height: 1;
     }
-
-    th,
-    td {
+    th, td {
         border-radius: var(--br-14);
         background-color: var(--p);
     }
-
     th {
         padding-right: 10px;
     }
-
     .mw-charinsert-item {
         text-align: left;
     }
@@ -379,42 +302,31 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     background-color: transparent;
     border: none;
 }
-
 .mw-content-ltr:is(.mw-highlight-lines, .content .mw-highlight-lines) pre {
     box-shadow: none;
 }
-
 .mw-highlight :is(.hll a, span).linenos {
     color: var(--pt);
-
     &:hover {
         color: var(--l);
     }
 }
 
 /* Редактор кода */
-.ace-tm,
-.ace-twilight,
-.ace_editor,
-.wikiEditor-ui {
-    &,
-    .ace_gutter {
+.ace-tm, .ace-twilight, .ace_editor, .wikiEditor-ui {
+    &, .ace_gutter {
         background-color: transparent;
         color: var(--pt);
     }
-
     .ace_gutter-cell {
         color: var(--pt);
-
         &:hover {
             color: var(--l);
         }
     }
-
     .ace_gutter-active-line {
         background-color: rgb(from var(--su) r g b / 20%);
     }
-
     .ace_tooltip {
         background-color: var(--p);
         border: var(--bs-2s);
@@ -423,143 +335,102 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         color: var(--pt);
         pointer-events: all;
     }
-
     .ace_cursor {
         color: var(--pt);
-        animation: none !important;
     }
-
-    .cm-focused > .cm-scroller > .cm-cursorLayer,
-    .cm-cursorLayer {
-        animation: none !important;
-    }
-
     .ace_search {
         background-color: var(--blur);
         border: none;
         border-radius: var(--br-14);
-
         .ace_search_field {
             background-color: var(--p);
             color: var(--pt);
             border: none;
             border-radius: var(--br-14);
-
             &::placeholder {
                 color: var(--pt);
                 opacity: 0.7;
             }
         }
-
         .ace_search_form.ace_nomatch {
             outline: 1px solid var(--al);
             border-radius: var(--br-14);
         }
-
         :is(.ace_searchbtn.prev, .ace_searchbtn.next)::after {
             border-color: var(--cC);
         }
-
         .ace_searchbtn_close {
             background: none;
             background-color: var(--pt);
             mask: var(--x) center / 100% no-repeat;
             -webkit-mask: var(--x) center / 100% no-repeat;
-
             &:hover {
                 background-color: var(--s);
             }
         }
-
         .ace_search_counter {
             color: var(--pt);
         }
-
         .ace_button {
             opacity: 1;
         }
     }
-
-    .ace_indent-guide,
-    .ace_print-margin {
+    .ace_indent-guide, .ace_print-margin {
         background: none;
     }
-
     .ace_line .ace_fold {
         background-color: var(--p);
     }
-
-    .ace_line,
-    .ace_constant {
+    .ace_line, .ace_constant {
         color: var(--pygments-nt);
-
         &.ace_numeric {
             color: var(--pygments-m);
         }
-
         &.ace_language {
             color: var(--pygments-kc);
         }
-
-        &.ace_character,
-        &.ace_other {
+        &.ace_character, &.ace_other {
             color: color-mix(in srgb, var(--pygments-nt) 72%, var(--pygments-s1));
         }
     }
-
     .ace_comment {
         color: var(--pt);
         opacity: 0.7;
-
         &.ace_doc {
             color: color-mix(in srgb, var(--pygments-cm) 80%, var(--p));
             opacity: 0.9;
         }
     }
-
-    .ace_variable,
-    .ace_identifier,
-    .ace_entity,
-    .ace_meta.ace_tag {
+    .ace_variable, .ace_identifier, .ace_entity, .ace_meta.ace_tag {
         color: var(--pygments-nc);
-
         &.ace_parameter {
             color: color-mix(in srgb, var(--pygments-nc) 72%, var(--p));
         }
-
         &.ace_language {
             color: var(--pygments-cp);
         }
-
         &.ace_name.ace_function {
             color: var(--pygments-nf);
         }
-
         &.ace_other.ace_attribute-name {
             color: var(--pygments-na);
         }
     }
-
     .ace_paren {
         color: var(--pygments-p);
     }
-
-    :is(.ace_keyword, .ace_support, .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open)) {
+    .ace_keyword, .ace_support, .ace_meta:is(.ace_tag-open, .ace_tag-close, .ace_end-tag-open) {
         color: var(--pygments-k);
-
         &.ace_type {
             color: color-mix(in srgb, var(--pygments-k) 82%, var(--p));
         }
-
         &.ace_operator {
             color: color-mix(in srgb, var(--pygments-k) 75%, var(--pygments-p));
         }
-
         &.ace_other.ace_unit {
             color: color-mix(in srgb, var(--pygments-m) 72%, var(--p));
         }
     }
-
     .ace_list,
     .ace_markup.ace_list,
     .ace_storage,
@@ -567,70 +438,53 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .ace_string.ace_start,
     .ace_string.ace_end {
         color: var(--pygments-kd);
-
         &.ace_modifier {
             color: color-mix(in srgb, var(--pygments-kd) 75%, var(--p));
         }
     }
-
     .ace_punctuation {
         color: var(--pygments-nn);
-
         &.ace_operator {
             color: color-mix(in srgb, var(--pygments-nn) 75%, var(--p));
         }
     }
-
     .ace_support.ace_constant {
         color: var(--pygments-kc);
     }
-
     .ace_support.ace_class {
         color: var(--pygments-kt);
     }
-
     .ace_support.ace_function,
     .ace_text.ace_xml {
         color: var(--pygments-mh);
-
         &.ace_dom {
             color: color-mix(in srgb, var(--pygments-mh) 75%, var(--p));
         }
     }
-
     .ace_string {
         color: var(--pygments-s1);
-
         &.ace_regexp {
             color: var(--pygments-sr);
         }
     }
-
     .ace_regexp {
         color: var(--pygments-sr);
     }
-
     .ace_invalid {
         background-color: rgb(from var(--al) r g b / 25%);
         color: var(--pygments-err);
     }
-
-    .ace_marker-layer,
-    .cm-editor {
-        .ace_active-line,
-        .cm-activeLine {
+    .ace_marker-layer, .cm-editor {
+        .ace_active-line, .cm-activeLine {
             background-color: rgb(from var(--su) r g b / 20%);
         }
-
         .ace_selected-word {
             border: none;
             background-color: rgb(from var(--pb) r g b / 50%);
         }
-
         .ace_selection {
             background-color: rgb(from var(--al) r g b / 20%);
         }
-
         .ace_bracket {
             border: 1px solid rgb(from var(--w) r g b / 70%);
         }
@@ -720,7 +574,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 /* Подсветка викитекста */
 :is(.skin-fandomdesktop, .skin-fandommobile) .cm-content .cm-line {
     color: var(--pt) !important;
-
     .cm-mw-tag-ref,
     .cm-mw-tag-gallery,
     .cm-mw-tag-pre,
@@ -734,11 +587,9 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-exttag-value {
         --hl-base: var(--tag);
     }
-
     .cm-mw-exttag:not(.cm-mw-tag-ref, .cm-mw-tag-gallery, .cm-mw-tag-pre) {
         background-color: transparent;
     }
-
     .cm-mw-table-bracket,
     .cm-mw-table-delimiter,
     .cm-mw-table-delimiter2,
@@ -746,7 +597,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-table-caption {
         --hl-base: var(--table);
     }
-
     .cm-mw-template,
     .cm-mw-template-name,
     .cm-mw-template-argument-name,
@@ -766,21 +616,18 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-template3-ext3-ground {
         --hl-base: var(--template);
     }
-
     .cm-mw-templatevariable,
     .cm-mw-templatevariable-name,
     .cm-mw-templatevariable-bracket,
     .cm-mw-templatevariable-delimiter {
         --hl-base: color-mix(in srgb, var(--template) 60%, var(--parser));
     }
-
     .cm-mw-parserfunction,
     .cm-mw-parserfunction-name,
     .cm-mw-parserfunction-bracket,
     .cm-mw-parserfunction-delimiter {
         --hl-base: var(--parser);
     }
-
     .cm-mw-link,
     .cm-mw-link-pagename,
     .cm-mw-link-bracket,
@@ -803,7 +650,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-free-extlink-protocol {
         --hl-base: var(--link);
     }
-
     .cm-mw-apostrophes,
     .cm-mw-apostrophes-bold,
     .cm-mw-apostrophes-italic,
@@ -812,14 +658,12 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-section-header {
         --hl-base: var(--font);
     }
-
     .cm-mw-list,
     .cm-mw-indenting,
     .cm-mw-dt,
     .cm-mw-dd {
         --hl-base: var(--list);
     }
-
     .cm-mw-doubleUnderscore,
     .cm-mw-double-underscore,
     .cm-mw-signature,
@@ -827,20 +671,16 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-mnemonic {
         --hl-base: var(--underscore);
     }
-
     .cm-mw-skipformatting,
     .cm-mw-tag-nowiki {
         --hl-base: var(--format);
     }
-
     .cm-mw-comment {
         --hl-base: var(--comment);
     }
-
     .cm-mw-error {
         --hl-base: var(--error);
     }
-
     .cm-mw-template-name,
     .cm-mw-template-argument-name,
     .cm-mw-templatevariable-name,
@@ -856,7 +696,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-section--2 {
         --hl-mix: 86%;
     }
-
     .cm-mw-template-bracket,
     .cm-mw-template-delimiter,
     .cm-mw-templatevariable-bracket,
@@ -875,7 +714,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-table-delimiter2 {
         --hl-mix: 74%;
     }
-
     .cm-mw-template2-ground,
     .cm-mw-template-ext-ground,
     .cm-mw-template-link-ground,
@@ -883,7 +721,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-ext2-ground,
     .cm-mw-section--3 {
         --hl-mix: 82%;
-
         &.cm-mw-template-name,
         &.cm-mw-template-argument-name,
         &.cm-mw-templatevariable-name,
@@ -896,7 +733,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         &.cm-mw-exttag-attribute {
             --hl-mix: 70%;
         }
-
         &.cm-mw-template-bracket,
         &.cm-mw-template-delimiter,
         &.cm-mw-templatevariable-bracket,
@@ -913,7 +749,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
             --hl-mix: 60%;
         }
     }
-
     .cm-mw-template3-ground,
     .cm-mw-template2-ext-ground,
     .cm-mw-template3-ext-ground,
@@ -933,7 +768,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     .cm-mw-section--5,
     .cm-mw-section--6 {
         --hl-mix: 66%;
-
         &.cm-mw-template-name,
         &.cm-mw-template-argument-name,
         &.cm-mw-templatevariable-name,
@@ -946,7 +780,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         &.cm-mw-exttag-attribute {
             --hl-mix: 56%;
         }
-
         &.cm-mw-template-bracket,
         &.cm-mw-template-delimiter,
         &.cm-mw-templatevariable-bracket,
@@ -963,7 +796,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
             --hl-mix: 48%;
         }
     }
-
     .cm-mw-tag-ref,
     .cm-mw-tag-gallery,
     .cm-mw-tag-pre,
@@ -1047,19 +879,15 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         color: var(--pt) !important;
         background-color: color-mix(in srgb, var(--hl-base) var(--hl-mix, 100%), var(--p)) !important;
     }
-
-    .cm-matchingBracket,
-    .cm-mw-matchingbracket {
+    .cm-matchingBracket, .cm-mw-matchingbracket {
         background-color: var(--p) !important;
         box-shadow: none !important;
         border: none !important;
         font-weight: inherit !important;
     }
 }
-
 .mw-highlight {
     background-color: transparent;
-
     .c, .c1, .cm { color: var(--pt); opacity: 0.85; }
     .err { color: var(--pygments-err); }
     .p { color: var(--pygments-p); }
@@ -1132,7 +960,6 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 .cm-editor.cm-custom-syntax-active .cm-content .cm-line span {
     background-color: transparent !important;
 }
-
 ::highlight(le-comment) { color: var(--pygments-cm); }
 ::highlight(le-atrule) { color: var(--pygments-kt); }
 ::highlight(le-prop) { color: var(--pygments-nt); }
