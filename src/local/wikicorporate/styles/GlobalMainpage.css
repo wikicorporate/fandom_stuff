@@ -32,12 +32,10 @@
     justify-content: center;
     height: 600px;
     margin-top: -120px;
-    margin-inline: -36px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-image: var(--lg), var(--h);
-    border-radius: var(--br-14);
 
     .mp-header__text {
         line-height: 1.25;
@@ -45,6 +43,7 @@
         font-family: var(--font);
         font-weight: bold;
         text-align: center;
+        text-wrap: balance;
 
         @container style(--font-size: small) {
             font-size: 0.8rem;
@@ -99,7 +98,7 @@
         justify-content: center;
 
         .mp-buttons__button {
-            position: relative;
+            z-index: 0;
             display: grid;
             grid-gap: 12px;
             place-content: center;
@@ -133,25 +132,26 @@
             a:is(:hover, :focus, :active) {
                 color: var(--pt);
             }
-
-            &::before {
-                content: " ";
-                position: absolute;
-                width: calc(100% - 6px);
-                height: calc(100% - 6px);
-                top: 0;
-                left: 0;
-                background-color: var(--cm-p);
-                border-radius: var(--br-14);
-                filter: var(--blur-b);
-            }
-
-            &:is(:hover, :focus, :active)::before {
-                filter: var(--blur-p);
-                translate: 0.05em 0.1em;
-            }
         }
     }
+}
+
+/* Заголовки секций */
+.mp-cards__caption,
+.mp-videos__title,
+.mp-community__title {
+    padding: 16px;
+    font-family: var(--font);
+    font-size: 2.5em;
+    line-height: 1.25;
+    text-align: center;
+    text-wrap: balance;
+}
+
+.mp-videos__title,
+.mp-community__title {
+    min-width: 40%;
+    margin: auto;
 }
 
 /* Персонажи */
@@ -163,11 +163,6 @@
 
     .mp-cards__caption {
         grid-column: 1 / 5;
-        padding: 16px;
-        font-family: var(--font);
-        font-size: 2.5em;
-        line-height: 1.25;
-        text-align: center;
     }
 
     .mp-cards__item {
@@ -232,6 +227,7 @@
 
             .mp-cards__description {
                 align-content: end;
+                text-wrap: pretty;
             }
         }
 
@@ -247,18 +243,52 @@
     }
 }
 
-/* Эпизоды */
-.mp-videos {
-    .mp-videos__title {
-        text-align: center;
-        min-width: 40%;
-        margin: auto;
-        padding: 16px;
-        font-family: var(--font);
-        font-size: 2.5em;
-        line-height: 1.25;
+/* Карточки Эпизодов и Содружества */
+.mp-videos__item,
+.mp-community__item {
+    position: relative;
+    padding: 1px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        background-image: var(--card);
+        border-radius: var(--br-16);
+        inset: 0;
     }
 
+    &:hover :is(.mp-videos__card, .mp-community__card) {
+        color: transparent;
+        background-color: transparent;
+        pointer-events: none;
+    }
+
+    .mp-videos__card,
+    .mp-community__card {
+        position: absolute;
+        z-index: 1;
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        display: grid;
+        place-items: center;
+        color: var(--s);
+        background-color: var(--p);
+        border-radius: var(--br-16);
+        margin: -2px;
+        transition: all 400ms;
+
+        &::after {
+            content: attr(data-name);
+            font-family: var(--font);
+            font-size: 0.33em;
+            position: absolute;
+            bottom: 10%;
+        }
+    }
+}
+
+/* Эпизоды */
+.mp-videos {
     .mp-videos__content {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -266,47 +296,15 @@
     }
 
     .mp-videos__item {
-        position: relative;
-        padding: 1px;
         width: 100%;
         height: 100%;
 
         &::before {
-            content: "";
-            position: absolute;
-            background-image: var(--card);
-            border-radius: var(--br-16);
-            inset: 0;
             z-index: 0;
         }
 
-        &:hover .mp-videos__card {
-            color: transparent;
-            background-color: transparent;
-            pointer-events: none;
-        }
-
         .mp-videos__card {
-            position: absolute;
-            z-index: 1;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            display: grid;
-            place-items: center;
             font-size: 6em;
-            color: var(--s);
-            background-color: var(--p);
-            border-radius: var(--br-16);
-            margin: -2px;
-            transition: all 400ms;
-
-            &::after {
-                content: attr(data-name);
-                font-family: var(--font);
-                font-size: 0.33em;
-                position: absolute;
-                bottom: 10%;
-            }
         }
 
         .t-gallery .t-gallery__item {
@@ -333,16 +331,6 @@
 .mp-community {
     position: relative;
 
-    .mp-community__title {
-        text-align: center;
-        min-width: 40%;
-        margin: auto;
-        padding: 16px;
-        font-family: var(--font);
-        font-size: 2.5em;
-        line-height: 1.25;
-    }
-
     .mp-community__content {
         position: relative;
         display: grid;
@@ -351,9 +339,11 @@
         z-index: 0;
 
         .mp-community__item {
-            position: relative;
-            padding: 1px;
             min-height: 8em;
+
+            &::before {
+                z-index: -1;
+            }
 
             a {
                 width: 100%;
@@ -370,42 +360,8 @@
                 object-fit: contain;
             }
 
-            &::before {
-                content: "";
-                position: absolute;
-                background-image: var(--card);
-                border-radius: var(--br-16);
-                inset: 0;
-                z-index: -1;
-            }
-
-            &:hover .mp-community__card {
-                color: transparent;
-                background-color: transparent;
-                pointer-events: none;
-            }
-
             .mp-community__card {
-                position: absolute;
-                z-index: 1;
-                width: calc(100% + 4px);
-                height: calc(100% + 4px);
-                display: grid;
-                place-items: center;
                 font-size: 3em;
-                color: var(--s);
-                background-color: var(--p);
-                border-radius: var(--br-16);
-                margin: -2px;
-                transition: all 400ms;
-
-                &::after {
-                    content: attr(data-name);
-                    font-family: var(--font);
-                    font-size: 0.33em;
-                    position: absolute;
-                    bottom: 10%;
-                }
             }
         }
     }
