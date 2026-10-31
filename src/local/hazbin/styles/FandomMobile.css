@@ -38,10 +38,14 @@ body:is(.ns-0, .ns-6):has([data-testid="article-footer-categories"] a[title^="К
 }
 
 body:is(.ns-0, .ns-6).theme-fandommobile-dark:has([data-testid="article-footer-categories"] a[title^="Категория"][title$="Адского Босса"]) {
+    --theme-link-color--rgb: 235, 190, 255;
+    --theme-page-background-color--rgb: 30, 5, 5;
     --b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/3/36/RedTreeBackground.png/revision/latest?cb=20221014220857);
 }
 
 body:is(.ns-0, .ns-6).theme-fandommobile-light:has([data-testid="article-footer-categories"] a[title^="Категория"][title$="Адского Босса"]) {
+    --theme-link-color--rgb: 86, 23, 23;
+    --theme-page-background-color--rgb: 197, 194, 194;
     --b-main: url(https://static.wikia.nocookie.net/hazbinhotel/images/6/6d/HB-S1E2-4-stolas%27s_mansion.jpg/revision/latest?cb=20230622172455&format=original&path-prefix=ru);
 }
 
