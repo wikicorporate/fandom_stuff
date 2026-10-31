@@ -1,11 +1,9 @@
 /* Общее для проектов */
 :root {
     color-scheme: dark light;
-
     &:has(body:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark)) {
         color-scheme: dark;
     }
-
     &:has(body:is(.theme-fandomdesktop-light, .theme-fandommobile-light)) {
         color-scheme: light;
     }
@@ -42,32 +40,26 @@
     --al--h: var(--theme-alert-color--hover);
     --w: var(--theme-warning-color);
     --su: var(--theme-success-color);
-
     /* Основное пространство без глобальных элементов */
-    .resizable-container,
-    #fandom-mobile-wrapper,
-    .wds-dropdown,
-    .wds-dropdown__content {
+    .resizable-container, #fandom-mobile-wrapper,
+    .wds-dropdown, .wds-dropdown__content {
         --theme-border-color: var(--s);
     }
 }
 
-/* Специализированные переменные и адаптивные токены light-dark() */
+/* Специализированные переменные */
 body {
     &:is(.theme-fandomdesktop-dark, .theme-fandommobile-dark) {
         color-scheme: dark;
     }
-
     &:is(.theme-fandomdesktop-light, .theme-fandommobile-light) {
         color-scheme: light;
     }
-
     /* Цвета и текст */
     --pt: light-dark(#080808, #f8f8f8);
     --cm-p: color-mix(in srgb, var(--p), var(--s) 10%);
     --cm-s: color-mix(in srgb, var(--s), var(--p) 10%);
     --cC: currentColor;
-
     /* Глобальные переменные Фэндома */
     --theme-page-text-color: var(--pt);
     --theme-page-text-color--hover: var(--s);
@@ -86,7 +78,6 @@ body {
     --theme-sticky-nav-text-color--hover: var(--l);
     --theme-success-color: light-dark(#0d431f, #24ff6e);
     --theme-alert-color: light-dark(#78242e, #ff8a92);
-
     /* Индикаторы */
     --ind-unfinished: light-dark(rgb(255 139 39), rgb(115 57 7));
     --ind-old: light-dark(rgb(255 47 47), rgb(101 11 11));
@@ -101,12 +92,10 @@ body {
     --ind-audio: light-dark(rgb(181 33 255), rgb(49 7 70));
     --ind-animation: light-dark(rgb(255 37 154), rgb(70 7 41));
     --ind-file: light-dark(rgb(102 51 255), rgb(53 20 74));
-
     /* Рамки и тени */
     --b: var(--s);
     --bs-2s: 2px solid var(--s);
     --ts-h: 2px 2px 0 var(--p), 2px -2px 0 var(--p), -2px 2px 0 var(--p), -2px -2px 0 var(--p), 2px 0 0 var(--p), 0 2px 0 var(--p), -2px 0 0 var(--p), 0 -2px 0 var(--p);
-
     /* Изображения и градиенты */
     --h: var(--b-main);
     --cp: var(--b-main);
@@ -115,7 +104,6 @@ body {
     --color-slide: linear-gradient(var(--l) 50%, var(--s) 50%);
     --color-stop: linear-gradient(to top, var(--l) 33%, var(--s) 67%);
     --card: linear-gradient(45deg, transparent 5%, var(--l) 50%, transparent 99%);
-
     /* Фильтры */
     --blur-b: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-b"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-b');
     --blur-p: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur-p"><feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/><feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#blur-p');
@@ -129,7 +117,6 @@ body {
     inherits: true;
     initial-value: 0%;
 }
-
 @property --font-size {
     syntax: "small | medium | large";
     inherits: true;
