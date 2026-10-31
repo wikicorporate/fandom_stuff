@@ -833,7 +833,7 @@ body.skin-fandomdesktop {
     --fandom-search-options-list: var(--p);
     --fandom-search-option: transparent;
     --fandom-communitybar-search-color: var(--s);
-    --fandom-communitybar-options-list: transparent;
+    --fandom-communitybar-options-list: var(--p);
     --fandom-communitybar-option: transparent;
     top: 0;
     opacity: 0;
