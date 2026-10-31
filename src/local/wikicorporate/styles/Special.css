@@ -1,8 +1,6 @@
 /* Поиск и Близкая по теме Вики */
 :is(.mw-body-content, .page-content, .WikiaPageContentWrapper) .unified-search {
-    .unified-search__input,
-    .unified-search__input__wrapper,
-    .unified-search__input .wds-dropdown {
+    .unified-search__input, .unified-search__input__wrapper, .unified-search__input .wds-dropdown {
         background-color: transparent !important;
     }
     .unified-search__input {
