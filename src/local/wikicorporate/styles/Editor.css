@@ -448,9 +448,9 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
         color: var(--pygments-kt);
     }
     .ace_support.ace_function, .ace_text.ace_xml {
-        color: var(--pygments-mh);
+        color: var(--pygments-nf);
         &.ace_dom {
-            color: color-mix(in srgb, var(--pygments-mh) 75%, var(--p));
+            color: color-mix(in srgb, var(--pygments-nf) 75%, var(--p));
         }
     }
     .ace_string {
@@ -485,6 +485,7 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
 
 /* Цвета */
 :is(.skin-fandomdesktop, .skin-fandommobile) :is(.CodeMirror, .mw-highlight, .wikiEditor-ui, .ace_editor, .cm-editor) {
+    /* Викитекст (фоны) */
     --template: light-dark(#f3dfa2, #5c4818);
     --link: light-dark(#b3d9f7, #1c4d70);
     --table: light-dark(#b2e2d8, #204e4a);
@@ -496,71 +497,91 @@ body.skin-fandomdesktop #content #mw-content-text #editform {
     --underscore: light-dark(#d8b4fe, #552882);
     --parser: light-dark(#fdba8c, #6b3410);
     --format: light-dark(#a7f3d0, #195232);
+
+    /* Ошибки и препроцессор (Алый / Ярко-оранжевый) */
     --pygments-err: light-dark(#dc2626, #ff4d6d);
-    --pygments-g: light-dark(#9d174d, #ec4899);
-    --pygments-k: light-dark(#4d6b00, #a3be00);
-    --pygments-n: light-dark(#5b21b6, #a78bfa);
-    --pygments-o: light-dark(#4d6b00, #a3be00);
-    --pygments-x: light-dark(#b45309, #f97316);
-    --pygments-p: light-dark(#0284c7, #38bdf8);
+    --pygments-gr: light-dark(#dc2626, #ff4d6d);
+    --pygments-gt: light-dark(#be123c, #f43f5e);
+    --pygments-cp: light-dark(#ea580c, #f97316);
+    --pygments-ne: light-dark(#ea580c, #f97316);
+    --pygments-x: light-dark(#ea580c, #f97316);
+
+    /* Пунктуация и комментарии (Серебристо-сланцевый) */
+    --pygments-p: light-dark(#475569, #94a3b8);
     --pygments-cm: light-dark(#52667a, #8b9eb0);
-    --pygments-cp: light-dark(#b91c1c, #f87171);
-    --pygments-cs: light-dark(#4d6b00, #a3be00);
-    --pygments-gd: light-dark(#0f766e, #2dd4bf);
-    --pygments-ge: light-dark(#86198f, #f472b6);
-    --pygments-gr: light-dark(#b91c1c, #f87171);
-    --pygments-gh: light-dark(#b45309, #fb923c);
-    --pygments-gi: light-dark(#3f6212, #a3be00);
-    --pygments-go: light-dark(#64748b, #e879f9);
-    --pygments-gp: light-dark(#9d174d, #f472b6);
-    --pygments-gs: light-dark(#1e293b, #f472b6);
-    --pygments-gu: light-dark(#b45309, #fb923c);
-    --pygments-gt: light-dark(#9d174d, #ec4899);
-    --pygments-kc: light-dark(#b45309, #f59e0b);
-    --pygments-kd: light-dark(#0f766e, #2dd4bf);
-    --pygments-kn: light-dark(#4d6b00, #a3be00);
-    --pygments-kp: light-dark(#4d6b00, #a3be00);
-    --pygments-kr: light-dark(#1d4ed8, #60a5fa);
-    --pygments-kt: light-dark(#7e22ce, #c084fc);
-    --pygments-ld: light-dark(#86198f, #f472b6);
-    --pygments-m: light-dark(#0d9488, #34d399);
-    --pygments-s: light-dark(#b91c1c, #fb7185);
-    --pygments-na: light-dark(#9d174d, #f472b6);
-    --pygments-nb: light-dark(#854d0e, #eab308);
-    --pygments-nc: light-dark(#6d28d9, #b48ef7);
-    --pygments-no: light-dark(#c2410c, #fb923c);
-    --pygments-nd: light-dark(#7e22ce, #c084fc);
-    --pygments-ni: light-dark(#b45309, #fb923c);
-    --pygments-ne: light-dark(#c2410c, #f97316);
-    --pygments-nf: light-dark(#0891b2, #22d3ee);
-    --pygments-nl: light-dark(#9d174d, #f472b6);
-    --pygments-nn: light-dark(#be185d, #e879f9);
-    --pygments-nx: light-dark(#5b21b6, #a78bfa);
-    --pygments-py: light-dark(#9d174d, #f472b6);
-    --pygments-nt: light-dark(#1d4ed8, #58a6ff);
-    --pygments-nv: light-dark(#0284c7, #38bdf8);
-    --pygments-ow: light-dark(#4d6b00, #a3be00);
     --pygments-w: light-dark(#64748b, #8b9eb0);
-    --pygments-mf: light-dark(#0d9488, #34d399);
-    --pygments-mh: light-dark(#0891b2, #22d3ee);
-    --pygments-mi: light-dark(#0d9488, #34d399);
-    --pygments-mo: light-dark(#0d9488, #34d399);
-    --pygments-sb: light-dark(#713f12, #d4b84a);
-    --pygments-sc: light-dark(#0f766e, #2dd4bf);
-    --pygments-sd: light-dark(#86198f, #e879f9);
+
+    /* Ключевые слова и операторы (Лаймовый / Бирюзовый) */
+    --pygments-k: light-dark(#3f6212, #a3e635);
+    --pygments-kn: light-dark(#3f6212, #a3e635);
+    --pygments-kp: light-dark(#3f6212, #a3e635);
+    --pygments-o: light-dark(#3f6212, #a3e635);
+    --pygments-ow: light-dark(#3f6212, #a3e635);
+    --pygments-cs: light-dark(#3f6212, #a3e635);
+    --pygments-gi: light-dark(#3f6212, #a3e635);
+    --pygments-kd: light-dark(#0f766e, #2dd4bf);
+    --pygments-gd: light-dark(#0f766e, #2dd4bf);
+
+    /* Константы и встроенные объекты (Мандариновый / Жёлтая охра) */
+    --pygments-kc: light-dark(#c2410c, #fb923c);
+    --pygments-no: light-dark(#c2410c, #fb923c);
+    --pygments-ni: light-dark(#c2410c, #fb923c);
+    --pygments-gh: light-dark(#c2410c, #fb923c);
+    --pygments-gu: light-dark(#c2410c, #fb923c);
+    --pygments-nb: light-dark(#854d0e, #facc15);
+    --pygments-bp: light-dark(#854d0e, #facc15);
+
+    /* Функции и методы (Янтарно-золотой) */
+    --pygments-nf: light-dark(#b45309, #fbbf24);
+
+    /* Переменные и CSS Custom Properties (Аква-циан) */
+    --pygments-nv: light-dark(#0e7490, #22d3ee);
+    --pygments-vc: light-dark(#0e7490, #22d3ee);
+    --pygments-vg: light-dark(#0e7490, #22d3ee);
+    --pygments-vi: light-dark(#0e7490, #22d3ee);
+
+    /* Теги и CSS-свойства (Васильково-синий) */
+    --pygments-nt: light-dark(#1d4ed8, #60a5fa);
+    --pygments-kr: light-dark(#1d4ed8, #60a5fa);
+
+    /* Классы, идентификаторы, псевдоклассы и атрибуты (Индиго / Лаванда / Розовый / Фуксия) */
+    --pygments-n: light-dark(#4338ca, #818cf8);
+    --pygments-nx: light-dark(#4338ca, #818cf8);
+    --pygments-nc: light-dark(#6d28d9, #a78bfa);
+    --pygments-nd: light-dark(#be185d, #f472b6);
+    --pygments-kt: light-dark(#be185d, #f472b6);
+    --pygments-g: light-dark(#be185d, #f472b6);
+    --pygments-ge: light-dark(#be185d, #f472b6);
+    --pygments-gp: light-dark(#be185d, #f472b6);
+    --pygments-gs: light-dark(#1e293b, #f472b6);
+    --pygments-ld: light-dark(#be185d, #f472b6);
+    --pygments-na: light-dark(#9333ea, #e879f9);
+    --pygments-nl: light-dark(#9333ea, #e879f9);
+    --pygments-py: light-dark(#9333ea, #e879f9);
+    --pygments-nn: light-dark(#9333ea, #e879f9);
+    --pygments-go: light-dark(#64748b, #e879f9);
+
+    /* Числа и HEX-значения (Изумрудно-мятный) */
+    --pygments-m: light-dark(#047857, #34d399);
+    --pygments-mf: light-dark(#047857, #34d399);
+    --pygments-mh: light-dark(#047857, #34d399);
+    --pygments-mi: light-dark(#047857, #34d399);
+    --pygments-mo: light-dark(#047857, #34d399);
+    --pygments-il: light-dark(#047857, #34d399);
+
+    /* Строки и регулярные выражения (Кораллово-розовый / Персиковый / Малиновый) */
+    --pygments-s: light-dark(#b91c1c, #fb7185);
+    --pygments-s1: light-dark(#b91c1c, #fb7185);
     --pygments-s2: light-dark(#b91c1c, #fb7185);
-    --pygments-se: light-dark(#c2410c, #fb923c);
-    --pygments-sh: light-dark(#86198f, #e879f9);
-    --pygments-si: light-dark(#0f766e, #2dd4bf);
+    --pygments-sb: light-dark(#9a3412, #fdba74);
+    --pygments-sc: light-dark(#9a3412, #fdba74);
+    --pygments-sd: light-dark(#9333ea, #e879f9);
+    --pygments-se: light-dark(#9a3412, #fdba74);
+    --pygments-sh: light-dark(#b91c1c, #fb7185);
+    --pygments-si: light-dark(#9a3412, #fdba74);
     --pygments-sx: light-dark(#0f766e, #2dd4bf);
     --pygments-sr: light-dark(#be123c, #f43f5e);
-    --pygments-s1: light-dark(#b91c1c, #f87171);
     --pygments-ss: light-dark(#0f766e, #2dd4bf);
-    --pygments-bp: light-dark(#854d0e, #eab308);
-    --pygments-vc: light-dark(#0284c7, #38bdf8);
-    --pygments-vg: light-dark(#1d4ed8, #58a6ff);
-    --pygments-vi: light-dark(#0284c7, #38bdf8);
-    --pygments-il: light-dark(#0d9488, #34d399);
 }
 
 /* Подсветка викитекста */
