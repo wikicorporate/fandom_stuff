@@ -4,20 +4,16 @@
         position: relative;
         z-index: 1;
     }
-
-    .page-header__title,
-    .mp-header__text {
+    .page-header__title, .mp-header__text {
         color: var(--s);
         text-shadow: var(--ts-h);
     }
 }
-
 @media (min-width: 900px) {
     body {
         --font-size: medium;
     }
 }
-
 @media (min-width: 1100px) {
     body {
         --font-size: large;
@@ -36,7 +32,6 @@
     background-size: cover;
     background-position: center;
     background-image: var(--lg), var(--h);
-
     .mp-header__text {
         line-height: 1.25;
         padding: 10px 15% 0;
@@ -44,7 +39,6 @@
         font-weight: bold;
         text-align: center;
         text-wrap: balance;
-
         @container style(--font-size: small) {
             font-size: 0.8rem;
         }
@@ -55,7 +49,6 @@
             font-size: 1.5rem;
         }
     }
-
     .mp-social {
         position: absolute;
         display: flex;
@@ -65,11 +58,9 @@
         gap: 12px;
         top: 60px;
         left: var(--mp-social-left, 240px);
-
         .mp-social__button {
             position: relative;
             z-index: 2;
-
             a {
                 position: relative;
                 display: flex;
@@ -79,24 +70,20 @@
                 color: var(--s);
                 text-shadow: var(--ts-h);
                 transition: transform 0.3s;
-
                 i {
                     font-size: 2rem;
                 }
-
-                &:is(:hover, :focus, :active) {
+                &:hover, &:focus, &:active {
                     transform: scale(0.9);
                 }
             }
         }
     }
-
     .mp-buttons {
         display: flex;
         flex-wrap: wrap;
         gap: 15px;
         justify-content: center;
-
         .mp-buttons__button {
             z-index: 0;
             display: grid;
@@ -111,7 +98,6 @@
             max-width: var(--mp-btn-max-width, 200px);
             text-align: center;
             transition: all 400ms;
-
             .mp-button__content {
                 position: relative;
                 display: flex;
@@ -122,14 +108,11 @@
                 justify-content: center;
                 color: var(--pt);
                 letter-spacing: var(--mp-btn-letter-spacing, normal);
-
                 i {
                     max-height: var(--mp-btn-icon-size, 18px);
                 }
             }
-
-            a,
-            a:is(:hover, :focus, :active) {
+            a, a:is(:hover, :focus, :active) {
                 color: var(--pt);
             }
         }
@@ -137,9 +120,7 @@
 }
 
 /* Заголовки секций */
-.mp-cards__caption,
-.mp-videos__title,
-.mp-community__title {
+.mp-cards__caption, .mp-videos__title, .mp-community__title {
     padding: 16px;
     font-family: var(--font);
     font-size: 2.5em;
@@ -147,9 +128,7 @@
     text-align: center;
     text-wrap: balance;
 }
-
-.mp-videos__title,
-.mp-community__title {
+.mp-videos__title, .mp-community__title {
     min-width: 40%;
     margin: auto;
 }
@@ -160,15 +139,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-
     .mp-cards__caption {
         grid-column: 1 / 5;
     }
-
     .mp-cards__item {
         display: grid;
         justify-content: center;
-
         &::before {
             content: "";
             grid-column: 1;
@@ -178,41 +154,33 @@
             inset: 0;
             margin: -1px;
         }
-
         &:not(:hover) {
             &::before {
                 opacity: 0;
             }
-
             .mp-cards__info {
                 order: -1;
                 opacity: 0;
                 transition: all 400ms;
             }
         }
-
         &:hover .mp-cards__preview {
             opacity: 0;
             pointer-events: none;
         }
-
-        .mp-cards__preview,
-        .mp-cards__info {
+        .mp-cards__preview, .mp-cards__info {
             grid-column: 1;
             grid-row: 1;
             background-color: var(--p);
             border-radius: var(--br-16);
             padding: var(--br-16);
         }
-
         .mp-cards__preview {
             align-content: center;
             transition: all 400ms;
-
             .mp-cards__icon img {
                 filter: var(--f-main);
             }
-
             .mp-cards__title {
                 text-align: center;
                 font-family: var(--font);
@@ -220,21 +188,17 @@
                 color: var(--s);
             }
         }
-
         .mp-cards__info {
             display: grid;
             align-content: space-between;
-
             .mp-cards__description {
                 align-content: end;
                 text-wrap: pretty;
             }
         }
-
-        :is(.mp-cards__icon, .mp-cards__image) {
+        .mp-cards__icon, .mp-cards__image {
             display: flex;
             justify-content: center;
-
             img {
                 max-width: 100%;
                 height: auto;
@@ -244,11 +208,9 @@
 }
 
 /* Карточки Эпизодов и Содружества */
-.mp-videos__item,
-.mp-community__item {
+.mp-videos__item, .mp-community__item {
     position: relative;
     padding: 1px;
-
     &::before {
         content: "";
         position: absolute;
@@ -256,15 +218,12 @@
         border-radius: var(--br-16);
         inset: 0;
     }
-
     &:hover :is(.mp-videos__card, .mp-community__card) {
         color: transparent;
         background-color: transparent;
         pointer-events: none;
     }
-
-    .mp-videos__card,
-    .mp-community__card {
+    .mp-videos__card, .mp-community__card {
         position: absolute;
         z-index: 1;
         width: calc(100% + 4px);
@@ -276,7 +235,6 @@
         border-radius: var(--br-16);
         margin: -2px;
         transition: all 400ms;
-
         &::after {
             content: attr(data-name);
             font-family: var(--font);
@@ -294,28 +252,21 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-
     .mp-videos__item {
         width: 100%;
         height: 100%;
-
         &::before {
             z-index: 0;
         }
-
         .mp-videos__card {
             font-size: 6em;
         }
-
         .t-gallery .t-gallery__item {
             grid-gap: 0;
-
-            &,
-            a {
+            &, a {
                 display: flex;
                 width: 100%;
                 height: 100%;
-
                 img {
                     width: 100%;
                     height: 100%;
@@ -330,21 +281,17 @@
 /* Содружество */
 .mp-community {
     position: relative;
-
     .mp-community__content {
         position: relative;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
         z-index: 0;
-
         .mp-community__item {
             min-height: 8em;
-
             &::before {
                 z-index: -1;
             }
-
             a {
                 width: 100%;
                 height: 100%;
@@ -353,13 +300,11 @@
                 background-color: var(--p);
                 border-radius: var(--br-16);
             }
-
             img {
                 width: 100%;
                 max-height: 8em;
                 object-fit: contain;
             }
-
             .mp-community__card {
                 font-size: 3em;
             }
