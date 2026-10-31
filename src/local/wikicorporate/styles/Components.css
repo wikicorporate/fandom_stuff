@@ -1,8 +1,9 @@
-/* Контейнерное ядро статьи (ПК и FandomMobile) */
+/* Основное пространство статьи */
 :is(.mw-parser-output, .article-content) {
     container: article / inline-size;
 }
-/* 1. Универсальный инфобокс (.t-infobox) без JS на Anchor Positioning */
+
+/* Инфобоксы */
 .t-infobox {
     --ib-p: var(--p);
     --ib-s: var(--s);
@@ -93,8 +94,7 @@
         &:hover {
             color: var(--ib-s);
         }
-        &:focus,
-        &:has(+ .t-infobox__panel:focus-within) {
+        &:focus, &:has(+ .t-infobox__panel:focus-within) {
             anchor-name: --ib-tab;
             color: var(--ib-s);
         }
@@ -242,7 +242,8 @@
         margin: 0 auto 16px;
     }
 }
-/* 2. Сворачиваемый блок (.t-collapse) для ПК и мобилок */
+
+/* Сворачиваемый блок  */
 .t-collapse {
     background: var(--template), var(--p);
     border: var(--bs-2s);
@@ -297,7 +298,8 @@
         padding-top: 8px;
     }
 }
-/* 3. Универсальная адаптивная таблица (.t-table) */
+
+/* 3. Адаптивная таблица */
 .t-table-wrap {
     width: 100%;
     margin: 14px 0;
@@ -306,8 +308,7 @@
         border-radius: var(--br-14);
         scrollbar-width: thin;
         scrollbar-color: var(--s) transparent;
-        .t-table td:first-child,
-        .t-table th:first-child {
+        .t-table :is(td, th):first-child{
             position: sticky;
             left: 0;
             z-index: 1;
@@ -386,7 +387,8 @@
         }
     }
 }
-/* 4. Единый подвал категорий и интервики (.t-footer) */
+
+/* Футер категорий и интервики */
 body:has(.t-footer) :is(#articleCategories, .page-footer__languages) {
     display: none !important;
 }
@@ -455,7 +457,8 @@ body:has(.t-footer) :is(#articleCategories, .page-footer__languages) {
         transition: background-color 0.2s ease, color 0.2s ease;
     }
 }
-/* 5. Кастомный аудиоплеер (.t-audio-player) */
+
+/* Кастомный аудиоплеер */
 .t-audio-player {
     display: flex;
     align-items: center;
@@ -574,7 +577,8 @@ body:has(.t-footer) :is(#articleCategories, .page-footer__languages) {
         }
     }
 }
-/* 6. Светящаяся кнопка (.wiki-glow-btn) и система модальных окон (20 эффектов) */
+
+/* Светящаяся кнопка и система модальных окон (20 эффектов) */
 .wiki-glow-btn {
     --glow: var(--s);
     position: relative;
