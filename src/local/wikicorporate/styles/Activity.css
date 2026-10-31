@@ -1,7 +1,5 @@
 /* Цвета тем (light-dark) */
-.mw-special-Recentchanges,
-.mw-special-SocialActivity,
-.CrossWikiActivity {
+.mw-special-Recentchanges, .mw-special-SocialActivity, .CrossWikiActivity {
     --edit: light-dark(#155110, #52c12a);
     --new: light-dark(#1b6279, #00bfff);
     --main: light-dark(#6c5118, #feaf09);
@@ -67,13 +65,11 @@
     &.mw-changeslist-edit {
         --auto: var(--edit);
         tr::before { content: "\f044"; }
-
         &:has(.newpage) {
             --auto: var(--new);
             tr::before { content: "\f65e"; }
         }
     }
-
     &.mw-changeslist-ns-2 { --auto: var(--user); tr::before { content: "\f007"; } }
     &.mw-changeslist-ns-4 { --auto: var(--main); tr::before { content: "\f024"; } }
     &.mw-changeslist-ns-6 { --auto: var(--file); tr::before { content: "\f03e"; } }
@@ -89,7 +85,6 @@
     &.mw-changeslist-log-protect { --auto: var(--protect); tr::before { content: "\f132"; } }
     &.mw-changeslist-log-rights { --auto: var(--rights); tr::before { content: "\f507"; } }
     &.mw-changeslist-log-contentmodel { --auto: var(--json); tr::before { content: "\f5b7"; } }
-
     tr:has(td.mw-enhanced-rc-nested)::before,
     .mw-changeslist-line-prefix {
         display: none !important;
@@ -97,8 +92,7 @@
 }
 
 /* Стрелки */
-.mw-enhancedchanges-arrow,
-.mw-enhancedchanges-checkbox + * .mw-enhancedchanges-arrow {
+.mw-enhancedchanges-arrow, .mw-enhancedchanges-checkbox + * .mw-enhancedchanges-arrow {
     position: relative;
     margin-right: 15px;
     left: 10px;
@@ -109,7 +103,6 @@
     mask-image: none;
     outline: none !important;
 }
-
 .mw-enhancedchanges-arrow::before {
     content: "\f105";
     font-family: "Font Awesome 7 Free Solid";
@@ -119,10 +112,8 @@
     transition: transform 0.3s;
     transform: rotate(90deg);
 }
-
 .mw-enhancedchanges-checkbox:not(:checked) + * .mw-enhancedchanges-arrow {
     transform: none !important;
-
     &::before {
         transform: rotate(0);
     }
@@ -130,47 +121,37 @@
 
 /* Фиксы Свежих правок */
 .ooui-theme-fandomooui {
-    .mw-changeslist-legend,
-    .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend {
+    .mw-changeslist-legend, .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend {
         border: none;
         border-radius: var(--br-14);
         background-color: var(--p);
     }
-
     .mw-rcfilters-container .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle,
     .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected,
     .mw-rcfilters-ui-itemMenuOptionWidget:is(:hover, :focus, :active) {
         border: none;
         background-color: transparent !important;
     }
-
     .mw-rcfilters-container .mw-rcfilters-ui-filterTagMultiselectWidget .mw-rcfilters-ui-filterTagMultiselectWidget-views-select-widget,
-    #wikia-mediawiki-recentchangestext,
-    .mw-rcfilters-ui-itemMenuOptionWidget {
+    #wikia-mediawiki-recentchangestext, .mw-rcfilters-ui-itemMenuOptionWidget {
         border: none !important;
     }
-
     .mw-rcfilters-ui-filterTagMultiselectWidget.oo-ui-widget-enabled .oo-ui-tagMultiselectWidget-handle {
-        & + .mw-rcfilters-ui-table,
-        &.mw-rcfilters-ui-filterTagMultiselectWidget-emphasize {
+        & + .mw-rcfilters-ui-table, &.mw-rcfilters-ui-filterTagMultiselectWidget-emphasize {
             background-color: transparent;
         }
-
         .mw-rcfilters-ui-filterTagMultiselectWidget-hideshowButton .oo-ui-buttonElement-button > .oo-ui-labelElement-label {
             color: inherit;
             text-decoration: none;
         }
     }
-
     .mw-rcfilters-ui-filterMenuHeaderWidget-header {
         border-bottom-color: transparent;
         border-radius: var(--br-14);
     }
-
     .oo-ui-buttonSelectWidget .oo-ui-buttonOptionWidget .oo-ui-buttonElement-button {
         margin: 0.2em;
     }
-
     .mw-rcfilters-ui-tagItemWidget-popup-content {
         color: var(--pt);
     }
@@ -191,17 +172,14 @@
 .social-activity-list {
     .activity-icon {
         color: var(--auto);
-
         svg {
             display: none;
         }
     }
-
     .activity-data svg {
         fill: var(--auto);
     }
 }
-
 [data-activity-type="create"] {
     &[data-content-type="comment"] { --auto: var(--comment-create); .activity-icon::before { content: "\f4ad"; } }
     &[data-content-type="comment-reply"] { --auto: var(--comment-create-reply); .activity-icon::before { content: "\f086"; } }
@@ -212,7 +190,6 @@
     &[data-content-type="blog"] { --auto: var(--blog); }
     &[data-content-type="blog-reply"] { --auto: var(--comment-create-reply); }
 }
-
 [data-activity-type="update"] {
     &[data-content-type="comment"] { --auto: var(--comment-update); .activity-icon::before { content: "\f0ea"; } }
     &[data-content-type="comment-reply"] { --auto: var(--comment-update-reply); .activity-icon::before { content: "\f5c3"; } }
@@ -221,7 +198,6 @@
     &[data-content-type="post"] { --auto: var(--post-update); .activity-icon::before { content: "\f1ea"; } }
     &[data-content-type="post-reply"] { --auto: var(--post-update-reply); .activity-icon::before { content: "\f7cd"; } }
 }
-
 [data-activity-type="delete"] {
     &[data-content-type="comment"] { --auto: var(--comment-delete); .activity-icon::before { content: "\f2ed"; } }
     &[data-content-type="comment-reply"] { --auto: var(--comment-reply-delete); .activity-icon::before { content: "\f780"; } }
@@ -230,28 +206,23 @@
     &[data-content-type="post"] { --auto: var(--post-delete); .activity-icon::before { content: "\f05e"; } }
     &[data-content-type="post-reply"] { --auto: var(--post-reply-delete); .activity-icon::before { content: "\f7b9"; } }
 }
-
 [data-activity-type="undelete"] {
     &[data-content-type="comment"] { --auto: var(--comment-undelete); .activity-icon::before { content: "\f82a"; } }
     &[data-content-type="message"] { --auto: var(--message-undelete); .activity-icon::before { content: "\f1bb"; } }
     &[data-content-type="post"] { --auto: var(--post-undelete); .activity-icon::before { content: "\f6e8"; } }
 }
-
 [data-activity-type="lock"] {
     &[data-content-type="comment"] { --auto: var(--comment-lock); .activity-icon::before { content: "\f023"; } }
     &[data-content-type="message"] { --auto: var(--message-lock); .activity-icon::before { content: "\e4f8"; } }
     &[data-content-type="post"] { --auto: var(--post-lock); .activity-icon::before { content: "\f017"; } }
 }
-
 [data-activity-type="unlock"] {
     &[data-content-type="comment"] { --auto: var(--comment-unlock); .activity-icon::before { content: "\f3c1"; } }
     &[data-content-type="message"] { --auto: var(--message-unlock); .activity-icon::before { content: "\f09c"; } }
     &[data-content-type="post"] { --auto: var(--post-unlock); .activity-icon::before { content: "\f084"; } }
 }
-
 .social-activity-filters__popup-header {
     border: none;
-
     .wds-button.wds-is-text {
         padding: 8px;
     }
