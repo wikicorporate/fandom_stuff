@@ -4,28 +4,23 @@
     padding: 16px;
     font-size: 14px;
 }
-
 .cwa-rc__header {
     margin-bottom: 20px;
 }
-
 .cwa-rc__title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
-
     h2 {
         margin: 0;
         font-size: 18px;
     }
 }
-
 .cwa-rc__title-actions {
     display: flex;
     gap: 8px;
 }
-
 .cwa-rc__btn-icon {
     margin-right: 6px;
 }
@@ -38,7 +33,6 @@
     gap: 12px;
     margin-top: 15px;
 }
-
 .cwa-rc__tab {
     cursor: pointer;
     padding: 8px 12px;
@@ -49,12 +43,9 @@
     gap: 8px;
     opacity: 0.5;
     transition: all 400ms;
-
-    &:hover,
-    &.cwa-rc__tab--active {
+    &:hover, &.cwa-rc__tab--active {
         opacity: 0.9;
     }
-
     .cwa-rc__badge {
         background-color: var(--p);
         color: var(--pt);
@@ -65,34 +56,29 @@
 }
 
 /* Списки и группы */
-.cwa-rc__list,
-.cwa-rc__sublist {
+.cwa-rc__list, .cwa-rc__sublist {
     list-style: none !important;
     margin: 0 !important;
     padding: 0 !important;
 }
-
 .cwa-rc__date-header {
     text-align: center;
     font-weight: bold;
     font-size: 15px;
-    color: var(--theme-page-text-color);
+    color: var(--pt);
     margin: 20px 0 10px;
     padding-bottom: 5px;
 }
-
 .cwa-rc__group-container {
     background-color: var(--p);
     border-radius: var(--br-14);
 }
-
 .cwa-rc__item {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 10px;
     margin: 10px;
-
     &[data-type="edit"] { --auto: var(--edit); }
     &[data-type="new"] { --auto: var(--new); }
     &[data-ns="2"] { --auto: var(--user); }
@@ -111,37 +97,30 @@
     &[data-logtype="rights"] { --auto: var(--rights); }
     &[data-logtype="contentmodel"] { --auto: var(--json); }
 }
-
 .cwa-rc__item--group-header {
     cursor: pointer;
 }
-
 .cwa-rc__item--sub {
     padding-left: 40px;
-
     .cwa-rc__main-info {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         gap: 8px;
     }
-
     .cwa-rc__meta {
         margin-bottom: 0;
     }
 }
-
 .cwa-rc__toggle-icon {
     width: 14px;
     text-align: center;
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
     transition: transform 0.2s ease;
 }
-
 .cwa-rc__toggle-icon--expanded {
     transform: rotate(90deg);
 }
-
 .cwa-rc__group-count {
     font-size: 12px;
     color: var(--pt);
@@ -157,92 +136,75 @@
     height: 20px;
     border-radius: 0 !important;
 }
-
 .cwa-rc__main-info {
     flex-grow: 1;
 }
-
 .cwa-rc__meta {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 2px;
 }
-
 .cwa-rc__time {
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
     font-size: 12px;
     font-family: monospace;
 }
-
 .cwa-rc__type-icon {
-    color: var(--auto, var(--theme-page-text-color--secondary, var(--pt)));
+    color: var(--auto);
     font-size: 13px;
     width: 16px;
     text-align: center;
 }
-
 .cwa-rc__page-title {
     font-weight: bold;
     text-decoration: none !important;
-
     &:hover {
         text-decoration: underline !important;
     }
 }
-
 .cwa-rc__action-text {
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
     margin-left: 4px;
     font-size: 13px;
 }
-
-.cwa-rc__flags,
-.cwa-rc__flag-abbr {
+.cwa-rc__flags, .cwa-rc__flag-abbr {
     font-weight: bold;
 }
-
 .cwa-rc__flag-abbr {
     cursor: help;
 }
-
 .cwa-rc__unpatrolled {
-    color: var(--theme-alert-color, #e74c3c);
+    color: var(--al);
     font-weight: bold;
     font-size: 16px;
     cursor: help;
     margin-right: 4px;
 }
-
-.cwa-rc__size--large-plus { color: var(--theme-success-color); font-weight: bold; }
-.cwa-rc__size--plus { color: var(--theme-success-color); }
-.cwa-rc__size--large-minus { color: var(--theme-alert-color); font-weight: bold; }
-.cwa-rc__size--minus { color: var(--theme-alert-color); }
+.cwa-rc__size--large-plus { color: var(--su); font-weight: bold; }
+.cwa-rc__size--plus { color: var(--su); }
+.cwa-rc__size--large-minus { color: var(--al); font-weight: bold; }
+.cwa-rc__size--minus { color: var(--al); }
 .cwa-rc__size--zero { color: var(--pt); }
-
 .cwa-rc__details {
     font-size: 13px;
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
 }
-
 .cwa-rc__user-wrap {
     display: inline-flex;
     align-items: center;
 }
-
 .cwa-rc__user {
     font-weight: bold;
-    color: var(--theme-link-color);
+    color: var(--l);
     margin-right: 6px;
     text-decoration: none !important;
 }
-
 .cwa-rc__user-actions {
     display: inline-flex;
     gap: 6px;
     margin-right: 6px;
 }
-
 .cwa-rc__summary {
     font-style: italic;
 }
@@ -252,59 +214,48 @@
     display: flex;
     gap: 10px;
 }
-
 .cwa-rc__action-btn {
     background: none;
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
     cursor: pointer;
     font-size: 16px;
     text-decoration: none !important;
     padding: 4px;
-
     &:hover {
-        color: var(--theme-link-color);
+        color: var(--l);
     }
 }
-
 .cwa-rc__action-btn--success {
-    color: var(--theme-page-text-color--secondary, var(--pt));
-
+    color: var(--pt);
     &:hover {
-        color: var(--theme-success-color, #2ecc71);
+        color: var(--su);
     }
 }
-
 .cwa-rc__action-btn--warn:hover {
-    color: #e67e22;
+    color: var(--w;
 }
 
 .cwa-rc__action-btn--danger {
-    color: var(--theme-alert-color, #e74c3c);
-
+    color: var(--al);
     &:hover {
-        color: #c0392b;
+        color: var(--l);
     }
 }
-
-.cwa-rc__loader,
-.cwa-rc__empty {
+.cwa-rc__loader, .cwa-rc__empty {
     text-align: center;
     padding: 40px;
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
 }
-
 .cwa-rc__error-box {
     background: rgb(255 0 0 / 10%);
-    color: var(--theme-page-text-color);
+    color: var(--pt);
     padding: 12px 16px;
     border-radius: 6px;
     margin-bottom: 20px;
-
     strong {
-        color: var(--theme-alert-color, #e74c3c);
+        color: var(--al);
         font-size: 15px;
     }
-
     ul {
         margin: 8px 0 0 20px;
         padding: 0;
@@ -323,9 +274,8 @@
     align-items: center;
     padding: 20px;
 }
-
 .cwa-modal {
-    background-color: var(--theme-page-background-color);
+    background-color: var(--pt);
     width: 100%;
     max-width: 900px;
     max-height: 90vh;
@@ -334,69 +284,58 @@
     flex-direction: column;
     box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
 }
-
 .cwa-modal__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-
     h3 {
         margin: 0;
         font-size: 18px;
-        color: var(--theme-page-text-color);
+        color: var(--pt);
     }
 }
-
 .cwa-modal__close {
     background: none;
     font-size: 20px;
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
     cursor: pointer;
-
     &:hover {
-        color: var(--theme-page-text-color);
+        color: var(--pt);
     }
 }
-
 .cwa-modal__body {
     padding: 20px;
     overflow: auto;
     scrollbar-gutter: stable;
     flex: 1;
     min-height: 0;
-    color: var(--theme-page-text-color);
+    color: var(--pt);
 }
-
 .cwa-modal__content table.diff {
     width: 100%;
     max-width: 100%;
 }
-
 .cwa-remote-container {
-    background: var(--theme-page-background-color);
-    color: var(--theme-page-text-color);
+    background-color: var(--p);
+    color: var(--pt);
     padding: 10px;
     border-radius: 6px;
 }
-
 .cwa-modal__loader {
     text-align: center;
     padding: 40px;
     font-size: 16px;
-    color: var(--theme-page-text-color--secondary, var(--pt));
+    color: var(--pt);
 }
-
 .cwa-modal__img-wrap {
     text-align: center;
 }
-
 .cwa-modal__img {
     max-width: 100%;
     max-height: 70vh;
     object-fit: contain;
 }
-
 .cwa-modal__alert {
     background-color: rgb(from var(--al) r g b / 20%);
     color: var(--pt);
@@ -405,7 +344,6 @@
     border-radius: var(--br-14);
     font-weight: bold;
 }
-
 .cwa-modal__pre-wrap {
     padding: 10px;
     white-space: pre-wrap;
