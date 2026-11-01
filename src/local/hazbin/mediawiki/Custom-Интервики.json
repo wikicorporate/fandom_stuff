@@ -605,6 +605,7 @@
     },
     "Аукцион": {
         "cs": "Aukce",
+        "de": "Die Auktion",
         "en": "The Auction",
         "es": "The Auction",
         "fr": "The Auction",
@@ -612,8 +613,20 @@
         "it": "L'Asta",
         "ja": "オークション",
         "pl": "Aukcja",
+        "pt-br": "The Auction",
         "th": "งานประมูล",
         "tr": "Açık Artırma"
+    },
+    "Багровое небо": {
+        "cs": "Crimson Sky",
+        "en": "Crimson Sky",
+        "es": "Crimson Sky",
+        "fr": "Crimson Sky",
+        "hu": "Crimson Sky",
+        "ja": "Crimson Sky",
+        "pt-br": "Crimson Sky",
+        "th": "Crimson Sky",
+        "tr": "Crimson Sky"
     },
     "Бакстер": {
         "de": "Baxter",
@@ -1206,6 +1219,17 @@
     "Веросика Мейдей/Цитаты": {
         "en": "Verosika Mayday/Quotes"
     },
+    "Верёвка": {
+        "cs": "Rope",
+        "en": "Rope",
+        "es": "Rope",
+        "fr": "Rope",
+        "hu": "Rope",
+        "ja": "Rope",
+        "pt-br": "Rope",
+        "th": "Rope",
+        "tr": "Rope"
+    },
     "Весеннее обострение": {
         "cs": "Pokažené jarňáky",
         "de": "Dämonenduell",
@@ -1547,6 +1571,17 @@
         "it": "Cherub Towne",
         "pl": "Miasteczko Cherubów"
     },
+    "Горячие сплетни": {
+        "cs": "Hot Goss",
+        "en": "Hot Goss",
+        "es": "Hot Goss",
+        "fr": "Hot Goss",
+        "hu": "Hot Goss",
+        "ja": "Hot Goss",
+        "pt-br": "Hot Goss",
+        "th": "Hot Goss",
+        "tr": "Hot Goss"
+    },
     "Госпиталь Святой Анны": {
         "en": "St. An's Hospital"
     },
@@ -1751,6 +1786,17 @@
         "ja": "I.M.P Jingle",
         "pl": "I.M.P Jingle",
         "pt-br": "I.M.P Jingle"
+    },
+    "Джингл И.М.П (версия Уолли)": {
+        "cs": "I.M.P Jingle (Wallyho Verze)",
+        "en": "I.M.P Jingle (Wally's Version)",
+        "es": "I.M.P Jingle (Wally's Version)",
+        "fr": "I.M.P Jingle (Wally's Version)",
+        "hu": "I.M.P Jingle (Wally's Version)",
+        "ja": "I.M.P Jingle (Wally's Version)",
+        "pt-br": "I.M.P Jingle (Versão do Wally)",
+        "th": "I.M.P Jingle (Wally's Version)",
+        "tr": "I.M.P Jingle (Wally's Version)"
     },
     "Джингл Х.Е.Р.У.В.И.М": {
         "en": "C.H.E.R.U.B Jingle",
@@ -4954,6 +5000,17 @@
         "fr": "Prick/Galerie",
         "it": "Prick/Galleria"
     },
+    "Принудительное извинение": {
+        "cs": "Court-Ordered Apology",
+        "en": "Court-Ordered Apology",
+        "es": "Court-Ordered Apology",
+        "fr": "Court-Ordered Apology",
+        "hu": "Court-Ordered Apology",
+        "ja": "Court-Ordered Apology",
+        "pt-br": "Court-Ordered Apology",
+        "th": "Court-Ordered Apology",
+        "tr": "Court-Ordered Apology"
+    },
     "Принцесса и гончая": {
         "cs": "The Princess & the Pupper",
         "en": "The Princess & the Pupper",
@@ -5737,6 +5794,7 @@
     },
     "Суд ошибок": {
         "cs": "Soud plný omylů",
+        "de": "Ein Prozess voller Irrtümer",
         "en": "A Trial of Errors",
         "es": "A Trial of Errors",
         "fr": "A Trial of Errors",
@@ -5744,6 +5802,7 @@
         "it": "Processo Agli Errori",
         "ja": "修羅場な裁判",
         "pl": "Osąd Błędów",
+        "pt-br": "A Trial of Errors",
         "th": "ศาลล่ม",
         "tr": "Hatalar Duruşması"
     },
@@ -6716,6 +6775,17 @@
     "Чжин-хе Чжон": {
         "en": "Jinhee Joung",
         "es": "Jinhee Joung"
+    },
+    "Что пошло не так": {
+        "cs": "What Went Wrong",
+        "en": "What Went Wrong",
+        "es": "What Went Wrong",
+        "fr": "What Went Wrong",
+        "hu": "What Went Wrong",
+        "ja": "What Went Wrong",
+        "pt-br": "What Went Wrong",
+        "th": "What Went Wrong",
+        "tr": "What Went Wrong"
     },
     "Чёрная метка": {
         "en": "The Black Dot"
