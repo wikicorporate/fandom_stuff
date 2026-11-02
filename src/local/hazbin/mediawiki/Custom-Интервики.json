@@ -1668,6 +1668,17 @@
         "pt-br": "Grimório de Stolas",
         "tr": "Stolas'ın Büyü Kitabı"
     },
+    "Грустный-грустный мальчик (мальчик, который грустит)": {
+        "cs": "Sad Sad Boy (A Boy Who Is Sad)",
+        "en": "Sad Sad Boy (A Boy Who Is Sad)",
+        "es": "Sad Sad Boy (A Boy Who Is Sad)",
+        "fr": "Sad Sad Boy (A Boy Who Is Sad)",
+        "hu": "Sad Sad Boy (A Boy Who Is Sad)",
+        "ja": "Sad Sad Boy (A Boy Who Is Sad)",
+        "pt-br": "Sad Sad Boy (A Boy Who Is Sad)",
+        "th": "Sad Sad Boy (A Boy Who Is Sad)",
+        "tr": "Sad Sad Boy (A Boy Who Is Sad)"
+    },
     "Грязная птичка": {
         "cs": "Dirty Bird",
         "en": "Dirty Bird",
@@ -1682,6 +1693,17 @@
         "es": "Dirty Healings",
         "fr": "Dirty Healings",
         "it": "Dirty Healings"
+    },
+    "Гулянка Уокфордов (песня)": {
+        "cs": "Wackford Hoedown (píseň)",
+        "en": "Wackford Hoedown (song)",
+        "es": "Wackford Hoedown (canción)",
+        "fr": "Wackford Hoedown (chanson)",
+        "hu": "Wackford Hoedown",
+        "ja": "Wackford Hoedown",
+        "pt-br": "Wackford Hoedown (canção)",
+        "th": "Wackford Hoedown",
+        "tr": "Wackford Hoedown"
     },
     "ДА/НЕТ": {
         "cs": "ANO/NE",
@@ -2243,6 +2265,9 @@
         "pt-br": "Stayed Gone",
         "th": "Stayed Gone",
         "tr": "Özürle Başla"
+    },
+    "Иэн Хекокс": {
+        "en": "Ian Hecox"
     },
     "Кадир Гутьеррес": {
         "en": "Kadyr Gutierrez"
@@ -4407,6 +4432,11 @@
         "ja": "ヘルヴァ･ボスシーズン１（オリジナル・サウンドトラック）",
         "pt-br": "Helluva Boss: Primeira Temporada (Trilha Sonora Original)"
     },
+    "Оригинальный саундтрек Адского Босса (третий сезон, первая часть)": {
+        "en": "Helluva Boss Season Three, Part 1 (Original Soundtrack)",
+        "fr": "Helluva Boss Saison 3, Partie 1 (Bande originale)",
+        "pt-br": "Helluva Boss: Terceira Temporada, 1ª Parte (Trilha Sonora Original)"
+    },
     "Оригинальный саундтрек Отеля Хазбин": {
         "en": "Hazbin Hotel Original Soundtrack",
         "fr": "Hazbin Hotel Bande originale",
@@ -4866,6 +4896,9 @@
     "Пожалуйста, не пой": {
         "en": "Please Don't Sing",
         "fr": "Please Don't Sing"
+    },
+    "Полетт Джонс": {
+        "en": "Paulette Jones"
     },
     "Полли Пейзано": {
         "en": "Paulie Paesano",
@@ -6544,6 +6577,17 @@
         "tr": "Çocuk Melekler",
         "zh": "小天使"
     },
+    "Хозяин": {
+        "cs": "Ringleader",
+        "en": "Ringleader",
+        "es": "Ringleader",
+        "fr": "Ringleader",
+        "hu": "Ringleader",
+        "ja": "Ringleader",
+        "pt-br": "Ringleader",
+        "th": "Ringleader",
+        "tr": "Ringleader"
+    },
     "Хорхе Роберто Гутьеррес": {
         "en": "Jorge R. Gutierrez"
     },
@@ -7022,6 +7066,9 @@
     "Эндрю Дюран": {
         "en": "Andrew Durand",
         "es": "Andrew Durand"
+    },
+    "Энтони Падилья": {
+        "en": "Anthony Padilla"
     },
     "Эрик Шварц": {
         "en": "Eric Schwartz",
