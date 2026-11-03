@@ -4,7 +4,8 @@
         "es": "2 Minutes Notice",
         "fr": "2 Minutes Notice",
         "ja": "2 Minutes Notice",
-        "pt-br": "2 Minutes Notice"
+        "pt-br": "2 Minutes Notice",
+        "th": "2 Minutes Notice"
     },
     "Bento Box Entertainment": {
         "en": "Bento Box Entertainment",
@@ -324,6 +325,7 @@
     },
     "Адский Босс/Руководство по эпизодам": {
         "en": "Helluva Boss/Episode Guide",
+        "es": "Helluva Boss/Guía de episodios",
         "fr": "Helluva Boss/Guide des épisodes",
         "hu": "A Helluva Boss epizódjainak listájája",
         "ja": "ヘルヴァ･ボス/エピソードガイド",
@@ -685,7 +687,8 @@
         "es": "La balada de Striker",
         "fr": "The Ballad of Striker",
         "ja": "The Ballad of Striker",
-        "pt-br": "The Ballad of Striker"
+        "pt-br": "The Ballad of Striker",
+        "th": "The Ballad of Striker"
     },
     "Барби Уайр": {
         "en": "Barbie Wire",
@@ -1469,7 +1472,8 @@
         "es": "All 2 U (Motherf*cker)",
         "fr": "All 2 U (Motherf*cker)",
         "ja": "All 2 U (Motherf*cker)",
-        "pt-br": "All 2 U (Motherf*cker)"
+        "pt-br": "All 2 U (Motherf*cker)",
+        "th": "All 2 U (Motherf*cker)"
     },
     "ГЛАС БОЖИЙ": {
         "de": "Vox Dei",
@@ -1874,6 +1878,9 @@
         "en": "Georgina Leahy",
         "es": "Georgina Leahy"
     },
+    "Джорди": {
+        "en": "Jordie"
+    },
     "Джошуа Томар": {
         "en": "Joshua Tomar",
         "es": "Joshua Tomar"
@@ -2035,7 +2042,8 @@
         "es": "Juggling Iz Cool",
         "fr": "Juggling Iz Cool",
         "ja": "Juggling Iz Cool",
-        "pt-br": "Juggling Iz Cool"
+        "pt-br": "Juggling Iz Cool",
+        "th": "Juggling Iz Cool"
     },
     "Жужжание": {
         "en": "Buzzzn",
@@ -2527,7 +2535,8 @@
         "es": "Klown Bitch",
         "fr": "Klown Bitch",
         "ja": "Klown Bitch",
-        "pt-br": "Klown Bitch"
+        "pt-br": "Klown Bitch",
+        "th": "Klown Bitch"
     },
     "Клуб Ад 666": {
         "en": "Club Hell 666",
@@ -2559,7 +2568,8 @@
         "es": "When I See Him",
         "fr": "When I See Him",
         "ja": "When I See Him",
-        "pt-br": "When I See Him"
+        "pt-br": "When I See Him",
+        "th": "When I See Him"
     },
     "Коллин": {
         "de": "Collin",
@@ -2663,7 +2673,8 @@
         "es": "Crooked",
         "fr": "Crooked",
         "ja": "Crooked",
-        "pt-br": "Crooked"
+        "pt-br": "Crooked",
+        "th": "Crooked"
     },
     "Кримсон": {
         "de": "Crimson",
@@ -4308,7 +4319,8 @@
         "es": "Whatcha Thinkin' About?",
         "fr": "Whatcha Thinkin' About?",
         "ja": "Whatcha Thinkin' About?",
-        "pt-br": "Whatcha Thinkin' About?"
+        "pt-br": "Whatcha Thinkin' About?",
+        "th": "Whatcha Thinkin' About?"
     },
     "Обучающее видео И.М.П": {
         "cs": "IMP Training Video",
@@ -4335,7 +4347,8 @@
         "es": "Regular Joe",
         "fr": "Regular Joe",
         "ja": "Regular Joe",
-        "pt-br": "Regular Joe"
+        "pt-br": "Regular Joe",
+        "th": "Regular Joe"
     },
     "Одетта": {
         "de": "Odette",
@@ -4532,6 +4545,7 @@
     },
     "Отель Хазбин (комиксы)": {
         "en": "Hazbin Hotel (comics)",
+        "es": "Hazbin Hotel (comics)",
         "fr": "Hazbin Hotel (bandes dessinées)"
     },
     "Отель Хазбин (локация)": {
@@ -4965,14 +4979,16 @@
         "es": "Look At This!",
         "fr": "Look At This!",
         "ja": "Look At This!",
-        "pt-br": "Look At This!"
+        "pt-br": "Look At This!",
+        "th": "Look At This!"
     },
     "Посмотрите на меня!": {
         "en": "Everybody Look at Me!",
         "es": "Everybody Look at Me!",
         "fr": "Everybody Look at Me!",
         "ja": "Look At This!",
-        "pt-br": "Everybody Look at Me!"
+        "pt-br": "Everybody Look at Me!",
+        "th": "Everybody Look at Me!"
     },
     "Посольство Рая": {
         "en": "Heaven Embassy",
@@ -5621,7 +5637,8 @@
         "es": "Crashin' a Muthafuckin' Wedding",
         "fr": "Crashin' a Muthafuckin' Wedding",
         "ja": "Crashin' a Muthafuckin' Wedding",
-        "pt-br": "Crashin' a Muthafuckin' Wedding"
+        "pt-br": "Crashin' a Muthafuckin' Wedding",
+        "th": "Crashin' a Muthafuckin' Wedding"
     },
     "Стелла": {
         "de": "Stella",
@@ -5838,6 +5855,9 @@
         "pt-br": "A Trial of Errors",
         "th": "ศาลล่ม",
         "tr": "Hatalar Duruşması"
+    },
+    "Судья Джинер": {
+        "en": "Judge Jiner"
     },
     "Суккубы": {
         "en": "Succubi",
@@ -6140,7 +6160,8 @@
         "es": "You Got the Power (Millie's Big Show)",
         "fr": "You Got the Power (Millie's Big Show)",
         "ja": "You Got the Power (Millie's Big Show)",
-        "pt-br": "You Got the Power (O Grande Show da Millie)"
+        "pt-br": "You Got the Power (O Grande Show da Millie)",
+        "th": "You Got the Power (Millie's Big Show)"
     },
     "Уберись!": {
         "de": "Saubermachen",
