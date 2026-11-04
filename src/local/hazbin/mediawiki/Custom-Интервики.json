@@ -51,7 +51,8 @@
         "es": "Ave Maria",
         "fr": "Ave Maria",
         "ja": "Ave Maria",
-        "pt-br": "Ave Maria"
+        "pt-br": "Ave Maria",
+        "th": "Ave Maria"
     },
     "Авель": {
         "en": "Abel",
@@ -1623,7 +1624,8 @@
         "fr": "A Sinsmas Party (I'll Murder You)",
         "hu": "A Sinsmas Party (I'll Murder You)",
         "ja": "A Sinsmas Party (I'll Murder You)",
-        "pt-br": "A Sinsmas Party (I'll Murder You)"
+        "pt-br": "A Sinsmas Party (I'll Murder You)",
+        "th": "A Sinsmas Party (I'll Murder You)"
     },
     "Грехждество": {
         "cs": "Hříchnoce (epizoda)",
@@ -1690,7 +1692,9 @@
         "fr": "Dirty Bird",
         "hu": "Dirty Bird",
         "ja": "Dirty Bird",
-        "pt-br": "Dirty Bird"
+        "pt-br": "Dirty Bird",
+        "th": "Dirty Bird",
+        "tr": "Kirli Kuş"
     },
     "Грязные исцеления": {
         "en": "Dirty Healings",
@@ -1749,7 +1753,8 @@
         "fr": "Day By Day",
         "hu": "Day By Day",
         "ja": "Day By Day",
-        "pt-br": "Day By Day"
+        "pt-br": "Day By Day",
+        "th": "Day By Day"
     },
     "Дети Марты и Ральфи": {
         "en": "Martha and Ralphie's children",
@@ -2058,6 +2063,7 @@
         "fr": "A Spooky Kind of Love",
         "ja": "A Spooky Kind of Love",
         "pt-br": "A Spooky Kind of Love",
+        "th": "A Spooky Kind of Love",
         "tr": "Perili Bir Aşk"
     },
     "ЗАВИСИМЫЙ": {
@@ -2191,6 +2197,7 @@
     },
     "Идеально для меня": {
         "en": "Perfect For Me",
+        "es": "Perfect For Me",
         "pt-br": "Perfect For Me"
     },
     "Из-за любви": {
@@ -2211,7 +2218,8 @@
         "es": "Over You",
         "fr": "Over You",
         "ja": "Over You",
-        "pt-br": "Over You"
+        "pt-br": "Over You",
+        "th": "Over You"
     },
     "Имп Сити": {
         "en": "Imp City",
@@ -2838,7 +2846,8 @@
         "fr": "Mastermind (chanson)",
         "ja": "Mastermind",
         "pl": "Mastermind (piosenka)",
-        "pt-br": "Mastermind (canção)"
+        "pt-br": "Mastermind (canção)",
+        "th": "Mastermind"
     },
     "Кукловод/Галерея": {
         "en": "Mastermind (episode)/Gallery",
@@ -3123,6 +3132,7 @@
         "en": "Loo Loo Land (song)",
         "es": "Loo Loo Land (canción)",
         "fr": "Loo Loo Land (chanson)",
+        "it": "Loo Loo Land (canzone)",
         "ja": "ルー・ルー・ランド（歌）",
         "pl": "Loo Loo Land (piosenka)",
         "pt-br": "Loo Loo Land (canção)",
@@ -4047,6 +4057,7 @@
     },
     "Монтаж Столица": {
         "en": "Stolitz Montage",
+        "es": "Stolitz Montage",
         "pt-br": "Stolitz Montage"
     },
     "Морган Шиван Грин": {
@@ -5549,6 +5560,7 @@
     },
     "Серафимы": {
         "en": "Seraphim",
+        "es": "Serafines",
         "fr": "Séraphin",
         "it": "Serafino",
         "tr": "Serafimi",
@@ -5578,13 +5590,16 @@
         "en": "Skye Henwood"
     },
     "Сладкая вата": {
+        "cs": "Cotton Candy",
         "en": "Cotton Candy",
         "es": "Cotton Candy",
         "fr": "Cotton Candy",
         "hu": "Cotton Candy",
+        "it": "Belzemiele",
         "ja": "Cotton Candy",
         "pt-br": "Cotton Candy",
-        "th": "ขนมสายไหม"
+        "th": "ขนมสายไหม",
+        "tr": "Pamuk Şeker"
     },
     "Смотровая площадка влюблённых": {
         "en": "Lovers' Lookout",
@@ -5630,7 +5645,8 @@
         "es": "Handle Me",
         "fr": "Handle Me",
         "ja": "Handle Me",
-        "pt-br": "Handle Me"
+        "pt-br": "Handle Me",
+        "th": "Handle Me"
     },
     "Срываем чёртову свадьбу": {
         "en": "Crashin' a Muthafuckin' Wedding",
@@ -6713,6 +6729,7 @@
     },
     "Чарли, наша девочка (итоги первого сезона)": {
         "en": "Our Girl, Charlie (Season 1 Recap)",
+        "es": "Our Girl, Charlie (recap. T1)",
         "pt-br": "Our Girl, Charlie (Resumo da 1ª Temporada)"
     },
     "Часовая башня": {
@@ -6775,6 +6792,7 @@
         "it": "Emoji Della Tartaruga",
         "ja": "カメの絵文字",
         "pl": "Emotka Żółwia",
+        "pt-br": "Turtle Emoji",
         "th": "อีโมจิรูปเต่า",
         "tr": "Kaplumbağa Emojisi"
     },
@@ -7165,7 +7183,8 @@
         "es": "I Wanna Fuck a Ghost",
         "fr": "I Wanna Fuck a Ghost",
         "ja": "I Wanna Fuck a Ghost",
-        "pt-br": "I Wanna Fuck a Ghost"
+        "pt-br": "I Wanna Fuck a Ghost",
+        "th": "I Wanna Fuck a Ghost"
     },
     "Яд": {
         "de": "Gift",
