@@ -4446,12 +4446,14 @@
     },
     "Оригинальный саундтрек Адского Босса (второй сезон)": {
         "en": "Helluva Boss: Season Two (Original Soundtrack)",
+        "es": "Helluva Boss: Season Two (Original Soundtrack)",
         "fr": "Helluva Boss : Saison 2 (Bande originale)",
         "hu": "Helluva Boss: Második évad (Eredeti filmzene)",
         "pt-br": "Helluva Boss: Segunda Temporada (Trilha Sonora Original)"
     },
     "Оригинальный саундтрек Адского Босса (первый сезон)": {
         "en": "Helluva Boss: Season One (Original Soundtrack)",
+        "es": "Helluva Boss: Season One (Original Soundtrack)",
         "fr": "Helluva Boss : Saison 1 (Bande originale)",
         "ja": "ヘルヴァ･ボスシーズン１（オリジナル・サウンドトラック）",
         "pt-br": "Helluva Boss: Primeira Temporada (Trilha Sonora Original)"
@@ -5137,7 +5139,7 @@
     },
     "Радио-Демон": {
         "en": "The Radio Demon (comic)",
-        "es": "The Radio Demon",
+        "es": "The Radio Demon (cómic)",
         "fr": "The Radio Demon (bande dessinée)",
         "it": "A day in the afterlife",
         "ja": "The Radio Demon（漫画）"
@@ -6004,6 +6006,12 @@
         "pl": "Tilla",
         "pt-br": "Tilla"
     },
+    "Тобин Белл": {
+        "en": "Tobin Bell"
+    },
+    "Тодор Манойлович": {
+        "en": "Todor Manojlovic"
+    },
     "Толстый Наггетс": {
         "cs": "Nugetko",
         "de": "Fat Nuggets",
@@ -6263,6 +6271,9 @@
     },
     "Увидеть звёзды/Транскрипт": {
         "en": "Seeing Stars/Transcript"
+    },
+    "Уинстон Уокфорд": {
+        "en": "Winston Wackford"
     },
     "Уолли Уокфорд": {
         "en": "Wally Wackford",
