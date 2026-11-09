@@ -1402,6 +1402,7 @@
     },
     "Вокстаграм": {
         "en": "Voxtagram",
+        "es": "Voxtagram",
         "ja": "Voxtagram",
         "pl": "Voxtagram"
     },
@@ -1603,6 +1604,9 @@
         "pt-br": "Ready For This",
         "th": "Ready For This",
         "tr": "Bunun İçin Hazır"
+    },
+    "Гоэтия": {
+        "en": "Goetia"
     },
     "Гравитация": {
         "en": "Gravity",
@@ -4546,7 +4550,8 @@
         "th": "Vacay to Bonetown"
     },
     "Отель «Чудо с одной звездой»": {
-        "en": "One Star Wonder"
+        "en": "One Star Wonder",
+        "es": "Milagro de Una Estrella"
     },
     "Отель Хазбин": {
         "cs": "Hotel Hazbin (seriál)",
@@ -5021,7 +5026,8 @@
         "fr": "Why Does He Hate Her More Than He Loves Me?"
     },
     "Представление клоунов Маммона": {
-        "en": "Mammon's Clown Pageant"
+        "en": "Mammon's Clown Pageant",
+        "es": "Concurso de Payasos de Mammón"
     },
     "Привет, Рози!": {
         "cs": "Ahoj, Rosie!",
@@ -7140,6 +7146,7 @@
         "cs": "Erica Lindbeck",
         "en": "Erica Lindbeck",
         "es": "Erica Lindbeck",
+        "fr": "Erica Lindbeck",
         "ja": "エリカ・リンドベック"
     },
     "Эрика Хеннингсен": {
