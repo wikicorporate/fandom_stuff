@@ -2268,7 +2268,7 @@
     },
     "Истребление": {
         "en": "Extermination",
-        "es": "La Exterminación",
+        "es": "Exterminación",
         "fr": "L'Extermination",
         "hu": "Megsemmisítés",
         "it": "Sterminio",
@@ -2802,10 +2802,12 @@
         "tr": "Açgözlülük Katı"
     },
     "Круг Зависти": {
-        "en": "Envy Ring"
+        "en": "Envy Ring",
+        "es": "Círculo de la Envidia"
     },
     "Круг Лени": {
         "en": "Sloth Ring",
+        "es": "Círculo de la Pereza",
         "fr": "Cercle de la Paresse",
         "pl": "Krąg Lenistwa"
     },
@@ -4321,6 +4323,7 @@
     },
     "Ну и зрелище/Транскрипт": {
         "en": "That's Entertainment/Transcript",
+        "es": "That’s Entertainment/Transcripción",
         "fr": "That's Entertainment/Transcription",
         "ja": "That's Entertainment/文字起こし",
         "pt-br": "Isso é Entretenimento/Transcrição"
@@ -4889,6 +4892,7 @@
     },
     "Пилотный эпизод Адского Босса/Транскрипт": {
         "en": "Helluva Boss Pilot/Transcript",
+        "es": "Piloto de Helluva Boss/Transcripción",
         "fr": "Pilote de Helluva Boss/Transcription"
     },
     "Плохая репутация": {
@@ -5527,7 +5531,7 @@
     },
     "Семь Смертных Грехов": {
         "en": "Seven Deadly Sins",
-        "es": "Los sietes pecados capitales",
+        "es": "Los Siete Pecados Capitales",
         "fr": "Sept Péchés Capitaux",
         "hu": "Hét főbűn",
         "pl": "Siedem Grzechów Głównych"
