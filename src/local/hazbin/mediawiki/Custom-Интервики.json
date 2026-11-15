@@ -733,7 +733,8 @@
     "Барретт Уилберт Уид": {
         "cs": "Barrett Wilbert Weed",
         "en": "Barrett Wilbert Weed",
-        "es": "Barrett Wilbert Weed"
+        "es": "Barrett Wilbert Weed",
+        "fr": "Barrett Wilbert Weed"
     },
     "Башня Асмодея": {
         "en": "Asmodeus's Tower",
@@ -1821,7 +1822,8 @@
         "hu": "I.M.P Jingle",
         "ja": "I.M.P Jingle",
         "pl": "I.M.P Jingle",
-        "pt-br": "I.M.P Jingle"
+        "pt-br": "I.M.P Jingle",
+        "tr": "A.C.P Jingle"
     },
     "Джингл И.М.П (версия Уолли)": {
         "cs": "I.M.P Jingle (Wallyho Verze)",
@@ -5337,7 +5339,7 @@
     },
     "Робо-шоу Физзи": {
         "en": "Fizzi's Robo Show (Original Score)",
-        "es": "Fizzi's Robo Show (Original Score)",
+        "es": "Fizzi's Robo Show (banda sonora original)",
         "fr": "Fizzi's Robo Show"
     },
     "Рози": {
@@ -5390,6 +5392,9 @@
     "Рози/Цитаты": {
         "en": "Rosie/Quotes",
         "fr": "Rosie/Citations"
+    },
+    "Роланд Русинек": {
+        "en": "Roland Rusinek"
     },
     "Роландо": {
         "en": "Rolando",
