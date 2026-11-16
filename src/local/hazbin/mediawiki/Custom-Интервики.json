@@ -4467,8 +4467,11 @@
         "en": "Helluva Boss: Season Two (Original Soundtrack)",
         "es": "Helluva Boss: Season Two (Original Soundtrack)",
         "fr": "Helluva Boss : Saison 2 (Bande originale)",
-        "hu": "Helluva Boss: Második évad (Eredeti filmzene)",
-        "pt-br": "Helluva Boss: Segunda Temporada (Trilha Sonora Original)"
+        "hu": "Helluva Boss: Season Two (Original Soundtrack)",
+        "it": "Helluva Boss: Stagione Due (Colonna Sonora Originale)",
+        "ja": "ヘルヴァ･ボスシーズン２（オリジナル・サウンドトラック）",
+        "pt-br": "Helluva Boss: Segunda Temporada (Trilha Sonora Original)",
+        "tr": "Helluva Boss: İki Sezon (Orijinal Film Müziği)"
     },
     "Оригинальный саундтрек Адского Босса (первый сезон)": {
         "en": "Helluva Boss: Season One (Original Soundtrack)",
@@ -4485,9 +4488,10 @@
     },
     "Оригинальный саундтрек Отеля Хазбин": {
         "en": "Hazbin Hotel Original Soundtrack",
+        "es": "Hazbin Hotel Original Soundtrack",
         "fr": "Hazbin Hotel Bande originale",
         "hu": "Hazbin Hotel Original Soundtrack",
-        "it": "Colonna Sonora di Hazbin Hotel",
+        "it": "Hazbin Hotel Colonna Sonora Originale",
         "ja": "ハズビン・ホテルへようこそ オリジナル・サウンドトラック",
         "pt-br": "Hazbin Hotel: Trilha Sonora Original",
         "tr": "Hazbin Hotel Orijinal Film Müziği"
@@ -4496,9 +4500,11 @@
         "en": "Hazbin Hotel: Season Two (Original Soundtrack)",
         "es": "Hazbin Hotel: Season Two (Original Soundtrack)",
         "fr": "Hazbin Hotel : Saison 2 (Bande originale)",
-        "it": "Hazbin Hotel: Season Two (Original Soundtrack)",
+        "hu": "Hazbin Hotel: Season Two (Original Soundtrack)",
+        "it": "Hazbin Hotel: Stagione Due (Colonna Sonora Originale)",
         "ja": "ハズビン・ホテルへようこそシーズン２（オリジナル・サウンドトラック）",
-        "pt-br": "Hazbin Hotel: Segunda Temporada (Trilha Sonora Original)"
+        "pt-br": "Hazbin Hotel: Segunda Temporada (Trilha Sonora Original)",
+        "tr": "Hazbin Hotel: İki Sezon (Orijinal Film Müziği)"
     },
     "Оружие массового отвлечения": {
         "cs": "Zbraň hromadného rozptýlení",
@@ -7160,6 +7166,7 @@
         "en": "Erica Lindbeck",
         "es": "Erica Lindbeck",
         "fr": "Erica Lindbeck",
+        "hu": "Erica Lindbeck",
         "ja": "エリカ・リンドベック"
     },
     "Эрика Хеннингсен": {
