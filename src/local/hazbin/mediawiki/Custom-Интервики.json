@@ -29,7 +29,8 @@
         "ja": "Gooseworx"
     },
     "H-8": {
-        "en": "H-8"
+        "en": "H-8",
+        "es": "H-8"
     },
     "HuniCast": {
         "en": "HuniCast",
@@ -749,6 +750,7 @@
     "Белое Рождество": {
         "en": "White Christmas",
         "es": "White Christmas",
+        "fr": "White Christmas",
         "pt-br": "White Christmas"
     },
     "Бельфегор": {
@@ -2871,7 +2873,8 @@
         "en": "Caroline Innerbichler"
     },
     "Кэссити": {
-        "en": "Cassity"
+        "en": "Cassity",
+        "es": "Cassity"
     },
     "Кэти Киллджой": {
         "de": "Katie Killjoy",
@@ -4531,13 +4534,16 @@
         "fr": "Carmine Crafted Blessing-Tipped Rifle"
     },
     "Освящённое лассо": {
-        "en": "Blessed Rope"
+        "en": "Blessed Rope",
+        "es": "Cuerda Bendita"
     },
     "Освящённые револьверы": {
-        "en": "Blessed Revolvers"
+        "en": "Blessed Revolvers",
+        "es": "Révolveres Benditos"
     },
     "Освящённый нож": {
-        "en": "Blessed Knife"
+        "en": "Blessed Knife",
+        "es": "Cuchillo Bendito"
     },
     "Особняк Андреальфуса": {
         "en": "Andrealphus' mansion",
