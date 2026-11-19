@@ -143,7 +143,7 @@
     },
     "Агентство Х.Е.Р.У.В.И.М": {
         "en": "C.H.E.R.U.B (group)",
-        "es": "C.H.E.R.U.B. (grupo)",
+        "es": "C.H.E.R.U.B (grupo)",
         "fr": "C.H.E.R.U.B (groupe)",
         "pl": "C.H.E.R.U.B (organizacja)"
     },
@@ -1819,7 +1819,7 @@
     },
     "Джингл И.М.П": {
         "en": "I.M.P Jingle",
-        "es": "Jingle de I.M.P.",
+        "es": "Jingle de I.M.P",
         "fr": "Jingle d'I.M.P",
         "hu": "I.M.P Jingle",
         "ja": "I.M.P Jingle",
@@ -2091,7 +2091,8 @@
         "it": "ADDICT/Galleria"
     },
     "Загадочная мода": {
-        "en": "Cryptic Couture"
+        "en": "Cryptic Couture",
+        "es": "Cryptic Couture"
     },
     "Заглавная страница": {
         "cs": "",
@@ -2197,7 +2198,7 @@
     },
     "И.М.П": {
         "en": "I.M.P",
-        "es": "I.M.P.",
+        "es": "I.M.P",
         "fr": "I.M.P",
         "hu": "I.M.P",
         "ja": "ＩＭＰ",
@@ -2668,6 +2669,7 @@
     },
     "Кот-фокусник": {
         "en": "Magic Kat",
+        "es": "Magic Kat",
         "ja": "マジック・キャット"
     },
     "Краймини": {
@@ -4116,6 +4118,7 @@
     },
     "Мощь Лилит": {
         "en": "Might of Lilith",
+        "es": "Poder de Lilith",
         "fr": "Puissance de Lilith",
         "tr": "Lilith'in Gücü"
     },
@@ -5751,6 +5754,7 @@
         "cs": "Stephanie Beatriz",
         "en": "Stephanie Beatriz",
         "es": "Stephanie Beatriz",
+        "fr": "Stephanie Beatriz",
         "hu": "Stephanie Beatriz",
         "it": "Stephanie Beatriz",
         "ja": "ステファニー・ベアトリス"
@@ -6512,7 +6516,7 @@
         "cs": "C.H.E.R.U.B (epizoda)",
         "de": "C.H.E.R.U.B (Episode)",
         "en": "C.H.E.R.U.B (episode)",
-        "es": "C.H.E.R.U.B. (episodio)",
+        "es": "C.H.E.R.U.B (episodio)",
         "fr": "C.H.E.R.U.B (épisode)",
         "hu": "K.E.R.U.B (epizód)",
         "it": "Cherub",
@@ -6920,7 +6924,8 @@
         "tr": "What Went Wrong"
     },
     "Чёрная метка": {
-        "en": "The Black Dot"
+        "en": "The Black Dot",
+        "es": "The Black Dot"
     },
     "Шахта Страйкера": {
         "en": "Striker's mine shaft"
@@ -6968,7 +6973,7 @@
     },
     "Штаб-квартира И.М.П": {
         "en": "I.M.P Headquarters",
-        "es": "Sede de I.M.P.",
+        "es": "Sede de I.M.P",
         "fr": "Quartier général d'I.M.P",
         "ja": "ＩＭＰ本部",
         "pl": "Siedziba I.M.P"
