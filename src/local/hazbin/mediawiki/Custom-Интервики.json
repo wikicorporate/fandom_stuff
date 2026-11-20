@@ -239,6 +239,7 @@
         "es": "Teléfono Infernal"
     },
     "Адские гончие": {
+        "de": "Höllenhund",
         "en": "Hellhounds",
         "es": "Canes infernales",
         "fr": "Chiens Démoniaques",
@@ -1609,7 +1610,9 @@
         "tr": "Bunun İçin Hazır"
     },
     "Гоэтия": {
-        "en": "Goetia"
+        "cs": "Goetia",
+        "en": "Goetia",
+        "es": "Goetias"
     },
     "Гравитация": {
         "en": "Gravity",
@@ -2197,6 +2200,7 @@
         "it": "Zeezi/Galleria"
     },
     "И.М.П": {
+        "de": "Immersofort Mord Profis",
         "en": "I.M.P",
         "es": "I.M.P",
         "fr": "I.M.P",
@@ -3563,7 +3567,8 @@
         "hu": "Maszkabál/Galéria"
     },
     "Маскарад/Транскрипт": {
-        "en": "Masquerade/Transcript"
+        "en": "Masquerade/Transcript",
+        "fr": "Mascarade/Transcription"
     },
     "Мать Мокси": {
         "en": "Moxxie's mother",
@@ -5259,7 +5264,8 @@
         "pl": "Ranczo Rough n' Tumbleweed"
     },
     "Распутная паучья поп-полька": {
-        "en": "Slutty Spider Polka Pop"
+        "en": "Slutty Spider Polka Pop",
+        "fr": "Slutty Spider Polka Pop"
     },
     "Рассказчик": {
         "cs": "Vypravěč",
@@ -6386,7 +6392,8 @@
         "es": "Fábrica de Asmodeo"
     },
     "Ферма Веласкес": {
-        "en": "Velazquez farm"
+        "en": "Velazquez farm",
+        "es": "Granja Velazquez"
     },
     "Фестиваль урожайной луны": {
         "cs": "Festival dožínkového měsíce",
@@ -6783,6 +6790,7 @@
     "Чарли, наша девочка (итоги первого сезона)": {
         "en": "Our Girl, Charlie (Season 1 Recap)",
         "es": "Our Girl, Charlie (recap. T1)",
+        "fr": "Our Girl, Charlie (Récapitulation de la Saison 1)",
         "pt-br": "Our Girl, Charlie (Resumo da 1ª Temporada)"
     },
     "Часовая башня": {
@@ -7275,7 +7283,8 @@
         "hu": "Rántotta/Galéria"
     },
     "Яичница-болтунья/Транскрипт": {
-        "en": "Scrambled Eggs/Transcript"
+        "en": "Scrambled Eggs/Transcript",
+        "fr": "Œufs brouillés/Transcription"
     },
     "Яичные приспешники": {
         "de": "Eierlinge",
@@ -7319,6 +7328,7 @@
     },
     "Ярость ледяного маркиза": {
         "en": "Rage of the Frost Marquis",
+        "es": "Rage of the Frost Marquis",
         "fr": "Rage of the Frost Marquis"
     },
     "Ярче": {
