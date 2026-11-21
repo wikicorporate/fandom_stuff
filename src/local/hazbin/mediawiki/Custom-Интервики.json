@@ -521,7 +521,8 @@
         "ja": "アンドレアルフス/セリフ"
     },
     "Антарктида": {
-        "en": "Antarctica"
+        "en": "Antarctica",
+        "es": "Antártida"
     },
     "Апостол Пётр": {
         "de": "Petrus",
@@ -1594,7 +1595,8 @@
         "tr": "Hot Goss"
     },
     "Госпиталь Святой Анны": {
-        "en": "St. An's Hospital"
+        "en": "St. An's Hospital",
+        "es": "Hospital St. An's"
     },
     "Готова к этому": {
         "de": "Bereit dafür",
@@ -1680,7 +1682,7 @@
         "en": "Stolas' Grimoire",
         "es": "Grimorio de Stolas",
         "fr": "Grimoire de Stolas",
-        "it": "Stolas's Grimoire",
+        "it": "Grimorio di Stolas",
         "pl": "Grymuar Stolasa",
         "pt-br": "Grimório de Stolas",
         "tr": "Stolas'ın Büyü Kitabı"
@@ -1930,7 +1932,8 @@
         "es": "Dirigible de Sir Pentious"
     },
     "Дневной спа-салон у Батори": {
-        "en": "Bathory's Day Spa"
+        "en": "Bathory's Day Spa",
+        "es": "Spa de Día de Bathory"
     },
     "До дня нашей смерти": {
         "en": "Til The Day We Die",
@@ -2205,6 +2208,7 @@
         "es": "I.M.P",
         "fr": "I.M.P",
         "hu": "I.M.P",
+        "it": "I.M.P",
         "ja": "ＩＭＰ",
         "pl": "I.M.P",
         "tr": "A.C.P"
@@ -2327,7 +2331,8 @@
         "tr": "Sen Herkesten Farklısın"
     },
     "Кармайн Индастриз": {
-        "en": "Carmine Industries"
+        "en": "Carmine Industries",
+        "es": "Industrias Carmine"
     },
     "Кармилла Кармайн": {
         "de": "Carmilla Carmine",
