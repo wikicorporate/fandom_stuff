@@ -106,7 +106,8 @@
         "fr": "Agent Deux/Galerie"
     },
     "Агент Два/Цитаты": {
-        "en": "Agent Two/Quotes"
+        "en": "Agent Two/Quotes",
+        "fr": "Agent Deux/Citations"
     },
     "Агент Один": {
         "en": "Agent One",
@@ -139,7 +140,8 @@
         "fr": "Agent Un/Galerie"
     },
     "Агент Один/Цитаты": {
-        "en": "Agent One/Quotes"
+        "en": "Agent One/Quotes",
+        "fr": "Agent Un/Citations"
     },
     "Агентство Х.Е.Р.У.В.И.М": {
         "en": "C.H.E.R.U.B (group)",
@@ -518,6 +520,7 @@
     },
     "Андреальфус/Цитаты": {
         "en": "Andrealphus/Quotes",
+        "fr": "Andrealphus/Citations",
         "ja": "アンドレアルフス/セリフ"
     },
     "Антарктида": {
@@ -864,7 +867,8 @@
     },
     "Блиц/Цитаты": {
         "en": "Blitzo/Quotes",
-        "es": "Blitzo/Frases"
+        "es": "Blitzo/Frases",
+        "it": "Blitzo/Citazioni"
     },
     "Больше всего на свете": {
         "de": "Mehr als Irgendwas",
