@@ -73,7 +73,9 @@
         "fr": "Abel/Galerie/HH Saison 2"
     },
     "Авель/Цитаты": {
-        "en": "Abel/Quotes"
+        "en": "Abel/Quotes",
+        "fr": "Abel/Citations",
+        "it": "Abele/Citazioni"
     },
     "Агент Два": {
         "en": "Agent Two",
@@ -107,7 +109,8 @@
     },
     "Агент Два/Цитаты": {
         "en": "Agent Two/Quotes",
-        "fr": "Agent Deux/Citations"
+        "fr": "Agent Deux/Citations",
+        "it": "Agente Due/Citazioni"
     },
     "Агент Один": {
         "en": "Agent One",
@@ -141,7 +144,8 @@
     },
     "Агент Один/Цитаты": {
         "en": "Agent One/Quotes",
-        "fr": "Agent Un/Citations"
+        "fr": "Agent Un/Citations",
+        "it": "Agente Uno/Citazioni"
     },
     "Агентство Х.Е.Р.У.В.И.М": {
         "en": "C.H.E.R.U.B (group)",
@@ -234,6 +238,7 @@
         "en": "Adam/Quotes",
         "es": "Adam/Frases",
         "fr": "Adam/Citations",
+        "it": "Adamo/Citazioni",
         "ja": "アダム/セリフ",
         "pl": "Adam/Cytaty"
     },
@@ -440,6 +445,7 @@
         "en": "Alastor/Quotes",
         "es": "Alastor/Frases",
         "fr": "Alastor/Citations",
+        "it": "Alastor/Citazioni",
         "ja": "アラスター/セリフ",
         "pl": "Alastor/Cytaty"
     },
@@ -521,6 +527,7 @@
     "Андреальфус/Цитаты": {
         "en": "Andrealphus/Quotes",
         "fr": "Andrealphus/Citations",
+        "it": "Andrealfo/Citazioni",
         "ja": "アンドレアルフス/セリフ"
     },
     "Антарктида": {
@@ -610,6 +617,8 @@
     },
     "Асмодей/Цитаты": {
         "en": "Asmodeus/Quotes",
+        "fr": "Asmodeus/Citations",
+        "it": "Asmodeo/Citazioni",
         "ja": "アスモデウス/セリフ"
     },
     "Аукцион": {
@@ -679,7 +688,9 @@
         "fr": "Baxter/Galerie/HH Saison 2"
     },
     "Бакстер/Цитаты": {
-        "en": "Baxter/Quotes"
+        "en": "Baxter/Quotes",
+        "fr": "Baxter/Citations",
+        "it": "Baxter/Citazioni"
     },
     "Бал монстров": {
         "en": "Monster's Ball",
@@ -734,7 +745,9 @@
         "en": "Barbie Wire/Gallery/Merchandise"
     },
     "Барби Уайр/Цитаты": {
-        "en": "Barbie Wire/Quotes"
+        "en": "Barbie Wire/Quotes",
+        "fr": "Barbie Wire/Citations",
+        "it": "Barbie Wire/Citazioni"
     },
     "Барретт Уилберт Уид": {
         "cs": "Barrett Wilbert Weed",
@@ -868,6 +881,7 @@
     "Блиц/Цитаты": {
         "en": "Blitzo/Quotes",
         "es": "Blitzo/Frases",
+        "fr": "Blitzo/Citations",
         "it": "Blitzo/Citazioni"
     },
     "Больше всего на свете": {
@@ -1127,7 +1141,8 @@
         "fr": "Velvette/Galerie/HH Saison 1"
     },
     "Вельвет/Цитаты": {
-        "en": "Velvette/Quotes"
+        "en": "Velvette/Quotes",
+        "fr": "Velvette/Citations"
     },
     "Вельзевул": {
         "en": "Beelzebub",
@@ -1171,7 +1186,9 @@
         "fr": "Belzébuth/Galerie/HB Saison 1"
     },
     "Вельзевул/Цитаты": {
-        "en": "Beelzebub/Quotes"
+        "en": "Beelzebub/Quotes",
+        "fr": "Belzébuth/Citations",
+        "it": "Belzebù/Citazioni"
     },
     "Вельзесок": {
         "en": "Beelzejuice",
@@ -1406,6 +1423,7 @@
     },
     "Вокс/Цитаты": {
         "en": "Vox/Quotes",
+        "fr": "Vox/Citations",
         "it": "Vox/Citazioni",
         "pl": "Vox/Cytaty"
     },
@@ -1954,7 +1972,7 @@
         "es": "Welcome to Heaven (episodio)",
         "fr": "Welcome to Heaven (épisode)",
         "hu": "Üdv a mennyben",
-        "it": "Benvenute in Paradiso (episodio)",
+        "it": "Benvenute in Paradiso",
         "ja": "天国へようこそ",
         "pl": "Witamy w niebie",
         "pt-br": "Boas-vindas ao Paraíso",
@@ -2383,7 +2401,9 @@
         "fr": "Carmilla Carmine/Galerie/HH Saison 1"
     },
     "Кармилла Кармайн/Цитаты": {
-        "en": "Carmilla Carmine/Quotes"
+        "en": "Carmilla Carmine/Quotes",
+        "fr": "Carmilla Carmine/Citations",
+        "it": "Carmilla Carmine/Citazioni"
     },
     "Квартира Барби": {
         "en": "Barbie's apartment"
@@ -2492,7 +2512,9 @@
         "fr": "Keenie/Galerie/Artworks Officiels"
     },
     "Кини/Цитаты": {
-        "en": "Keenie/Quotes"
+        "en": "Keenie/Quotes",
+        "fr": "Keenie/Citations",
+        "it": "Keenie/Citazioni"
     },
     "Кит Дэвид": {
         "cs": "Keith David",
@@ -2559,7 +2581,9 @@
         "fr": "Cletus/Galerie/Artworks Officiels"
     },
     "Клетус/Цитаты": {
-        "en": "Cletus/Quotes"
+        "en": "Cletus/Quotes",
+        "fr": "Cletus/Citations",
+        "it": "Cletus/Citazioni"
     },
     "Клоун, сучка": {
         "en": "Klown Bitch",
@@ -2644,7 +2668,9 @@
         "fr": "Collin/Galerie/Artworks Officiels"
     },
     "Коллин/Цитаты": {
-        "en": "Collin/Quotes"
+        "en": "Collin/Quotes",
+        "fr": "Collin/Citations",
+        "it": "Collin/Citazioni"
     },
     "Конский хрен": {
         "cs": "Mustang Dong",
@@ -2750,7 +2776,9 @@
     },
     "Кримсон/Цитаты": {
         "en": "Crimson/Quotes",
-        "es": "Crimson/Frases"
+        "es": "Crimson/Frases",
+        "fr": "Crimson/Citations",
+        "it": "Crimson/Citazioni"
     },
     "Кристал Лапорте": {
         "en": "Krystal LaPorte",
@@ -2963,7 +2991,9 @@
         "fr": "Cash Buckzo/Galerie"
     },
     "Кэш Баксо/Цитаты": {
-        "en": "Cash Buckzo/Quotes"
+        "en": "Cash Buckzo/Quotes",
+        "fr": "Cash Buckzo/Citations",
+        "it": "Cash Buckzo/Citazioni"
     },
     "Лагерь Обкончабрь": {
         "en": "Camp Ivannakummore",
@@ -3258,7 +3288,8 @@
     },
     "Луна/Цитаты": {
         "en": "Loona/Quotes",
-        "es": "Loona/Frases"
+        "es": "Loona/Frases",
+        "fr": "Loona/Citations"
     },
     "Лупти Гупти": {
         "de": "Loopty Goopty",
@@ -3449,7 +3480,8 @@
         "fr": "Lucifer Morningstar/Galerie/HH Saison 1"
     },
     "Люцифер Морнингстар/Цитаты": {
-        "en": "Lucifer Morningstar/Quotes"
+        "en": "Lucifer Morningstar/Quotes",
+        "fr": "Lucifer Morningstar/Citations"
     },
     "Майкл Джеймс Руокко": {
         "en": "Michael James Ruocco",
@@ -3517,7 +3549,8 @@
         "en": "Mammon/Gallery/Merchandise"
     },
     "Маммон/Цитаты": {
-        "en": "Mammon/Quotes"
+        "en": "Mammon/Quotes",
+        "fr": "Mammon/Citations"
     },
     "Мара Уилсон": {
         "en": "Mara Wilson",
@@ -4068,7 +4101,8 @@
     },
     "Мокси/Цитаты": {
         "en": "Moxxie/Quotes",
-        "es": "Moxxie/Frases"
+        "es": "Moxxie/Frases",
+        "fr": "Moxxie/Citations"
     },
     "Молли": {
         "de": "Molly",
@@ -5588,7 +5622,8 @@
         "zh": "賽拉"
     },
     "Сера/Биография": {
-        "en": "Sera/History"
+        "en": "Sera/History",
+        "it": "Sera/Storia"
     },
     "Сера/Взаимоотношения": {
         "en": "Sera/Relationships",
@@ -6496,7 +6531,8 @@
         "fr": "Fizzarolli/Galerie/Artworks Officiels"
     },
     "Физзаролли/Цитаты": {
-        "en": "Fizzarolli/Quotes"
+        "en": "Fizzarolli/Quotes",
+        "fr": "Fizzarolli/Citations"
     },
     "Финал": {
         "de": "Finale",
@@ -6794,7 +6830,8 @@
     "Чарли Морнингстар/Цитаты": {
         "en": "Charlie Morningstar/Quotes",
         "es": "Charlie Morningstar/Frases",
-        "fr": "Charlie Morningstar/Citations"
+        "fr": "Charlie Morningstar/Citations",
+        "it": "Charlie Stella del Mattino/Citazioni"
     },
     "Чарли, наша девочка (итоги первого сезона)": {
         "en": "Our Girl, Charlie (Season 1 Recap)",
@@ -6850,7 +6887,9 @@
         "en": "Chazwick Thurman/Gallery/Merchandise"
     },
     "Чезвик Турман/Цитаты": {
-        "en": "Chazwick Thurman/Quotes"
+        "en": "Chazwick Thurman/Quotes",
+        "fr": "Chazwick Thurman/Citations",
+        "it": "Chazwick Thurman/Citazioni"
     },
     "Черепаший эмодзи": {
         "cs": "Emoji želvy",
@@ -6923,7 +6962,8 @@
     "Черри Бомб/Цитаты": {
         "en": "Cherri Bomb/Quotes",
         "es": "Cherri Bomb/Frases",
-        "fr": "Cherri Bomb/Citations"
+        "fr": "Cherri Bomb/Citations",
+        "it": "Cherri Bomb/Citazioni"
     },
     "Чжин-хе Чжон": {
         "en": "Jinhee Joung",
@@ -7102,7 +7142,8 @@
         "fr": "Emily/Galerie/HH Saison 1"
     },
     "Эмили/Цитаты": {
-        "en": "Emily/Quotes"
+        "en": "Emily/Quotes",
+        "fr": "Emily/Citations"
     },
     "Энджел Даст": {
         "cs": "Angel Dust",
@@ -7167,6 +7208,7 @@
         "en": "Angel Dust/Quotes",
         "es": "Angel Dust/Frases",
         "fr": "Angel Dust/Citations",
+        "it": "Angel Dust/Citazioni",
         "pl": "Angel Dust/Cytaty"
     },
     "Эндрю Андерберг": {
@@ -7333,6 +7375,7 @@
     },
     "Яичные приспешники/Цитаты": {
         "en": "Egg Boiz/Quotes",
+        "fr": "Egg Boiz/Citations",
         "ja": "エッグ君/セリフ"
     },
     "Ярость ледяного маркиза": {
