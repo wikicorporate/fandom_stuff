@@ -5939,7 +5939,8 @@
         "fr": "Striker/Galerie/HB Saison 1"
     },
     "Страйкер/Цитаты": {
-        "en": "Striker/Quotes"
+        "en": "Striker/Quotes",
+        "fr": "Striker/Citations"
     },
     "Студия новостей 666": {
         "en": "666 News Studio",
@@ -7143,7 +7144,8 @@
     },
     "Эмили/Цитаты": {
         "en": "Emily/Quotes",
-        "fr": "Emily/Citations"
+        "fr": "Emily/Citations",
+        "it": "Emily/Citazioni"
     },
     "Энджел Даст": {
         "cs": "Angel Dust",
