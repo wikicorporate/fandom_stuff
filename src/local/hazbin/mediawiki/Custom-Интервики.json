@@ -1808,6 +1808,7 @@
     "Детка, на улице холодно": {
         "en": "Baby It's Cold Outside",
         "es": "Baby It's Cold Outside",
+        "fr": "Baby It's Cold Outside",
         "pt-br": "Baby It's Cold Outside"
     },
     "Джейден Либран": {
@@ -2238,6 +2239,7 @@
     "Идеально для меня": {
         "en": "Perfect For Me",
         "es": "Perfect For Me",
+        "fr": "Perfect For Me",
         "pt-br": "Perfect For Me"
     },
     "Из-за любви": {
@@ -2415,7 +2417,7 @@
     },
     "Квартира Мокси и Милли": {
         "en": "Moxxie and Millie's apartment",
-        "es": "Apartamento de Millie y Moxxie",
+        "es": "Apartamento de Moxxie y Millie",
         "fr": "Appartement de Millie et Moxxie"
     },
     "Кевин Дель Агилья": {
@@ -4672,6 +4674,8 @@
     },
     "Отель Хазбин представляет: очень яичное Рождество": {
         "en": "Hazbin Hotel Presents: A Very Egg Boi Christmas",
+        "es": "Hazbin Hotel Presents: A Very Egg Boi Christmas",
+        "fr": "Hazbin Hotel Presents: A Very Egg Boi Christmas",
         "pt-br": "Hazbin Hotel Apresenta: A Very Egg Boi Christmas"
     },
     "Отель Хазбин/Второй сезон": {
