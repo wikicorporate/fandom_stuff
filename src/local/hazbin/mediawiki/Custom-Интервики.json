@@ -1737,6 +1737,9 @@
         "fr": "Dirty Healings",
         "it": "Dirty Healings"
     },
+    "Гулянка Уокфордов": {
+        "en": "Wackford Hoedown (event)"
+    },
     "Гулянка Уокфордов (песня)": {
         "cs": "Wackford Hoedown (píseň)",
         "en": "Wackford Hoedown (song)",
@@ -4131,6 +4134,7 @@
     "Монтаж Столица": {
         "en": "Stolitz Montage",
         "es": "Stolitz Montage",
+        "fr": "Stolitz Montage",
         "pt-br": "Stolitz Montage"
     },
     "Морган Шиван Грин": {
